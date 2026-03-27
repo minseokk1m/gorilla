@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import type { Firm } from "@/types/firm";
 import type { ClassificationResult } from "@/types/classification";
 import type { PriceHistory } from "@/types/market";

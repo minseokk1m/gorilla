@@ -18,23 +18,23 @@ export class MockFirmProvider implements FirmDataProvider {
   }
 }
 
-// Pre-compute all classifications (server-side)
-let _cache: Map<string, ClassificationResult> | null = null;
+// Pre-compute all classifications (server-side), keyed by locale
+const _caches: Partial<Record<string, Map<string, ClassificationResult>>> = {};
 
-export async function getAllClassifications(): Promise<Map<string, ClassificationResult>> {
-  if (_cache) return _cache;
-  const results = await Promise.all(MOCK_FIRMS.map((f) => classifyFirm(f)));
-  _cache = new Map(results.map((r) => [r.firmId, r]));
-  return _cache;
+export async function getAllClassifications(locale = "en"): Promise<Map<string, ClassificationResult>> {
+  if (_caches[locale]) return _caches[locale]!;
+  const results = await Promise.all(MOCK_FIRMS.map((f) => classifyFirm(f, locale as "en" | "ko")));
+  _caches[locale] = new Map(results.map((r) => [r.firmId, r]));
+  return _caches[locale]!;
 }
 
-export async function getClassification(firmId: string): Promise<ClassificationResult | null> {
-  const map = await getAllClassifications();
+export async function getClassification(firmId: string, locale = "en"): Promise<ClassificationResult | null> {
+  const map = await getAllClassifications(locale);
   return map.get(firmId) ?? null;
 }
 
-export async function getFirmsByTier(tier: ClassificationTier): Promise<{ firm: Firm; classification: ClassificationResult }[]> {
-  const all = await getAllClassifications();
+export async function getFirmsByTier(tier: ClassificationTier, locale = "en"): Promise<{ firm: Firm; classification: ClassificationResult }[]> {
+  const all = await getAllClassifications(locale);
   return MOCK_FIRMS
     .filter((f) => all.get(f.id)?.tier === tier)
     .map((f) => ({ firm: f, classification: all.get(f.id)! }));

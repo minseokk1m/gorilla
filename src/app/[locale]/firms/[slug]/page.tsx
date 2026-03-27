@@ -9,19 +9,24 @@ import { formatMarketCap, formatPercent, formatPrice, formatDate } from "@/lib/u
 import StockChart from "@/components/firm-detail/StockChart";
 import RSIChart from "@/components/firm-detail/RSIChart";
 import ScoreRadar from "@/components/firm-detail/ScoreRadar";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 
 export async function generateStaticParams() {
-  return MOCK_FIRMS.map((f) => ({ slug: f.slug }));
+  return MOCK_FIRMS.flatMap((f) =>
+    ["en", "ko"].map((locale) => ({ locale, slug: f.slug }))
+  );
 }
 
-export default async function FirmDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function FirmDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
   const firm = MOCK_FIRMS.find((f) => f.slug === slug);
   if (!firm) notFound();
 
+  const t = await getTranslations({ locale, namespace: "firmDetail" });
+
   const [classification, priceHistory, news] = await Promise.all([
-    getClassification(firm.id),
+    getClassification(firm.id, locale),
     getPriceHistory(firm.id),
     getNewsByFirmId(firm.id),
   ]);
@@ -30,22 +35,6 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
 
   const competitorFirms = MOCK_FIRMS.filter((f) => firm.competitors.includes(f.slug));
 
-  const SCORE_LABELS: Record<string, string> = {
-    marketShare: "Market Share",
-    switchingCosts: "Switching Costs",
-    architectureControl: "Architecture Control",
-    revenueGrowth: "Revenue Growth",
-    marketConcentration: "Market Concentration",
-  };
-
-  const SCORE_DESCRIPTIONS: Record<string, string> = {
-    marketShare: "Estimated share of the firm's specific technology niche",
-    switchingCosts: "How hard it is for customers to leave (NRR, proprietary protocols)",
-    architectureControl: "Whether the firm defines the standard others must conform to",
-    revenueGrowth: "Year-over-year revenue growth rate",
-    marketConcentration: "Whether the market is consolidating around this firm",
-  };
-
   const SENTIMENT_COLORS = { Positive: "text-emerald-400", Neutral: "text-zinc-400", Negative: "text-red-400" };
   const SENTIMENT_DOTS = { Positive: "bg-emerald-400", Neutral: "bg-zinc-400", Negative: "bg-red-400" };
 
@@ -53,9 +42,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-zinc-500">
-        <Link href="/" className="hover:text-white transition-colors">Dashboard</Link>
+        <Link href="/" className="hover:text-white transition-colors">{t("breadcrumbDashboard")}</Link>
         <span>/</span>
-        <Link href="/firms" className="hover:text-white transition-colors">Firms</Link>
+        <Link href="/firms" className="hover:text-white transition-colors">{t("breadcrumbFirms")}</Link>
         <span>/</span>
         <span className="text-white">{firm.ticker}</span>
       </div>
@@ -74,7 +63,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
               <div className="flex items-center gap-4 mt-2">
                 <span className="text-2xl font-bold text-white">{formatPrice(priceHistory.currentPrice)}</span>
                 <span className={`text-sm font-medium ${priceHistory.priceChange1D >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-                  {formatPercent(priceHistory.priceChange1D, true)} today
+                  {formatPercent(priceHistory.priceChange1D, true)} {t("today")}
                 </span>
                 <span className={`text-sm ${priceHistory.priceChange1M >= 0 ? "text-emerald-400" : "text-red-400"}`}>
                   {formatPercent(priceHistory.priceChange1M, true)} 1M
@@ -85,21 +74,21 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             <div className="bg-zinc-800 rounded-lg p-3">
               <div className="text-xl font-bold text-white">{classification.totalScore}</div>
-              <div className="text-xs text-zinc-400">Total Score</div>
+              <div className="text-xs text-zinc-400">{t("totalScore")}</div>
             </div>
             <div className="bg-zinc-800 rounded-lg p-3">
               <div className="text-xl font-bold text-white">{formatMarketCap(firm.marketCapUSD)}</div>
-              <div className="text-xs text-zinc-400">Market Cap</div>
+              <div className="text-xs text-zinc-400">{t("marketCap")}</div>
             </div>
             <div className="bg-zinc-800 rounded-lg p-3">
               <div className={`text-xl font-bold ${firm.revenueGrowthYoY >= 0.2 ? "text-emerald-400" : "text-white"}`}>
                 {formatPercent(firm.revenueGrowthYoY, true)}
               </div>
-              <div className="text-xs text-zinc-400">Rev Growth</div>
+              <div className="text-xs text-zinc-400">{t("revGrowth")}</div>
             </div>
             <div className="bg-zinc-800 rounded-lg p-3">
               <div className="text-xl font-bold text-white">{classification.marketPhase}</div>
-              <div className="text-xs text-zinc-400">TALC Phase</div>
+              <div className="text-xs text-zinc-400">{t("talcPhase")}</div>
             </div>
           </div>
         </div>
@@ -109,13 +98,13 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Radar + scores */}
         <div className="lg:col-span-1 bg-zinc-900 border border-zinc-800 rounded-xl p-5 space-y-5">
-          <h2 className="text-white font-semibold">Classification Scorecard</h2>
+          <h2 className="text-white font-semibold">{t("scorecardTitle")}</h2>
           <ScoreRadar scores={classification.scores} />
           <div className="space-y-3 mt-2">
             {Object.entries(classification.scores).map(([key, value]) => (
               <div key={key}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs text-zinc-400">{SCORE_LABELS[key]}</span>
+                  <span className="text-xs text-zinc-400">{t(`scoreLabels.${key}` as "scoreLabels.marketShare")}</span>
                   <span className="text-xs font-medium text-white">{value}/100</span>
                 </div>
                 <div className="w-full bg-zinc-800 rounded-full h-1.5">
@@ -124,7 +113,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
                     style={{ width: `${value}%` }}
                   />
                 </div>
-                <p className="text-xs text-zinc-600 mt-0.5">{SCORE_DESCRIPTIONS[key]}</p>
+                <p className="text-xs text-zinc-600 mt-0.5">{t(`scoreDescriptions.${key}` as "scoreDescriptions.marketShare")}</p>
               </div>
             ))}
           </div>
@@ -134,8 +123,8 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
             <h2 className="text-white font-semibold mb-3">
-              Gorilla Game Analysis
-              <span className="ml-2 text-xs text-zinc-500 font-normal">Rule-based · {formatDate(classification.classifiedAt)}</span>
+              {t("analysisTitle")}
+              <span className="ml-2 text-xs text-zinc-500 font-normal">{t("rulesBased")} · {formatDate(classification.classifiedAt)}</span>
             </h2>
             <div className="text-zinc-300 text-sm leading-relaxed space-y-2">
               {classification.narrative.split("**").map((part, i) =>
@@ -147,20 +136,20 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
           {/* Competitor comparison */}
           {competitorFirms.length > 0 && (
             <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-              <h2 className="text-white font-semibold mb-3">Peer Comparison</h2>
+              <h2 className="text-white font-semibold mb-3">{t("peerTitle")}</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-zinc-800">
-                      <th className="text-left py-2 text-zinc-400 font-medium">Firm</th>
-                      <th className="text-left py-2 text-zinc-400 font-medium">Classification</th>
-                      <th className="text-right py-2 text-zinc-400 font-medium">Score</th>
-                      <th className="text-right py-2 text-zinc-400 font-medium">Mkt Share</th>
+                      <th className="text-left py-2 text-zinc-400 font-medium">{t("breadcrumbFirms")}</th>
+                      <th className="text-left py-2 text-zinc-400 font-medium">{t("scorecardTitle")}</th>
+                      <th className="text-right py-2 text-zinc-400 font-medium">{t("totalScore")}</th>
+                      <th className="text-right py-2 text-zinc-400 font-medium">{t("scoreLabels.marketShare")}</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b border-zinc-800/50 bg-zinc-800/30">
-                      <td className="py-2 font-bold text-white">{firm.ticker} (this firm)</td>
+                      <td className="py-2 font-bold text-white">{firm.ticker} {t("thisFirm")}</td>
                       <td className="py-2"><ClassificationBadge tier={classification.tier} size="sm" /></td>
                       <td className="py-2 text-right text-white font-medium">{classification.totalScore}</td>
                       <td className="py-2 text-right text-zinc-300">{Math.round(firm.classificationSignals.estimatedNicheMarketShare * 100)}%</td>
@@ -188,9 +177,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
       {/* Charts */}
       {priceHistory && (
         <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 space-y-4">
-          <h2 className="text-white font-semibold">Price Chart — 90 Days (Mock Data)</h2>
+          <h2 className="text-white font-semibold">{t("priceChartTitle")}</h2>
           <StockChart priceHistory={priceHistory} />
-          <h3 className="text-zinc-400 text-sm font-medium pt-2">RSI (14)</h3>
+          <h3 className="text-zinc-400 text-sm font-medium pt-2">{t("rsiLabel")}</h3>
           <RSIChart rsi={priceHistory.rsi} dates={priceHistory.candles.map((c) => c.date)} />
         </div>
       )}
@@ -198,11 +187,11 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
       {/* News */}
       <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
         <h2 className="text-white font-semibold mb-4">
-          Recent News & Intelligence
-          <span className="ml-2 text-xs text-zinc-500 font-normal">Mock articles illustrating key signals</span>
+          {t("newsTitle")}
+          <span className="ml-2 text-xs text-zinc-500 font-normal">{t("newsMockNote")}</span>
         </h2>
         {news.length === 0 ? (
-          <p className="text-zinc-500 text-sm">No news articles for this firm yet.</p>
+          <p className="text-zinc-500 text-sm">{t("noNews")}</p>
         ) : (
           <div className="space-y-4">
             {news.map((article) => (
@@ -229,13 +218,13 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ slu
 
       {/* About */}
       <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
-        <h2 className="text-white font-semibold mb-3">About {firm.name}</h2>
+        <h2 className="text-white font-semibold mb-3">{t("aboutTitle", { name: firm.name })}</h2>
         <p className="text-zinc-400 text-sm leading-relaxed">{firm.description}</p>
         <div className="flex gap-6 mt-4 text-xs text-zinc-500">
-          <span>Founded: {firm.founded}</span>
-          <span>Gross Margin: {formatPercent(firm.grossMargin)}</span>
-          <span>NRR: {Math.round(firm.classificationSignals.netRevenueRetention * 100)}%</span>
-          <span>Partners: {firm.classificationSignals.ecosystemPartnerCount.toLocaleString()}</span>
+          <span>{t("founded", { year: firm.founded })}</span>
+          <span>{t("grossMargin", { value: formatPercent(firm.grossMargin) })}</span>
+          <span>{t("nrr", { value: `${Math.round(firm.classificationSignals.netRevenueRetention * 100)}%` })}</span>
+          <span>{t("partners", { count: firm.classificationSignals.ecosystemPartnerCount.toLocaleString() })}</span>
         </div>
       </div>
     </main>

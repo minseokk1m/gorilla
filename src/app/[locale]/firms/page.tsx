@@ -1,14 +1,18 @@
 import { MOCK_FIRMS } from "@/lib/data/mock/firms";
 import { getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import ClassificationBadge from "@/components/firms/ClassificationBadge";
 import SignalBadge from "@/components/firms/SignalBadge";
 import { formatMarketCap, formatPercent, formatPrice } from "@/lib/utils/formatters";
+import { getTranslations } from "next-intl/server";
 
-export default async function FirmsPage() {
+export default async function FirmsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "firms" });
+
   const [classifications, prices] = await Promise.all([
-    getAllClassifications(),
+    getAllClassifications(locale),
     getAllPriceHistories(),
   ]);
   const priceMap = new Map(prices.map((p) => [p.firmId, p]));
@@ -20,23 +24,23 @@ export default async function FirmsPage() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-white mb-2">All Firms</h1>
-        <p className="text-zinc-400">50 US tech companies ranked by Gorilla Game score. Click any row for full analysis.</p>
+        <h1 className="text-3xl font-bold text-white mb-2">{t("title")}</h1>
+        <p className="text-zinc-400">{t("subtitle")}</p>
       </div>
 
       <div className="border border-zinc-800 rounded-xl overflow-hidden">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-zinc-800 bg-zinc-900">
-              <th className="text-left px-4 py-3 text-zinc-400 font-medium">Firm</th>
-              <th className="text-left px-4 py-3 text-zinc-400 font-medium hidden md:table-cell">Sector</th>
-              <th className="text-left px-4 py-3 text-zinc-400 font-medium">Classification</th>
-              <th className="text-left px-4 py-3 text-zinc-400 font-medium">Signal</th>
-              <th className="text-right px-4 py-3 text-zinc-400 font-medium">Score</th>
-              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden lg:table-cell">Price</th>
-              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden lg:table-cell">1D</th>
-              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden xl:table-cell">Mkt Cap</th>
-              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden xl:table-cell">Rev Growth</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium">{t("colFirm")}</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium hidden md:table-cell">{t("colSector")}</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium">{t("colClassification")}</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium">{t("colSignal")}</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium">{t("colScore")}</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden lg:table-cell">{t("colPrice")}</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden lg:table-cell">{t("col1D")}</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden xl:table-cell">{t("colMktCap")}</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden xl:table-cell">{t("colRevGrowth")}</th>
             </tr>
           </thead>
           <tbody>
