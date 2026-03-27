@@ -1,0 +1,101 @@
+import { MOCK_FIRMS } from "@/lib/data/mock/firms";
+import { getAllClassifications } from "@/lib/data/providers/firm-provider";
+import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
+import Link from "next/link";
+import ClassificationBadge from "@/components/firms/ClassificationBadge";
+import SignalBadge from "@/components/firms/SignalBadge";
+import { formatMarketCap, formatPercent, formatPrice } from "@/lib/utils/formatters";
+
+export default async function FirmsPage() {
+  const [classifications, prices] = await Promise.all([
+    getAllClassifications(),
+    getAllPriceHistories(),
+  ]);
+  const priceMap = new Map(prices.map((p) => [p.firmId, p]));
+
+  const rows = MOCK_FIRMS
+    .map((f) => ({ firm: f, classification: classifications.get(f.id)!, price: priceMap.get(f.id) }))
+    .sort((a, b) => b.classification.totalScore - a.classification.totalScore);
+
+  return (
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-white mb-2">All Firms</h1>
+        <p className="text-zinc-400">50 US tech companies ranked by Gorilla Game score. Click any row for full analysis.</p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-xl overflow-hidden">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-zinc-800 bg-zinc-900">
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium">Firm</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium hidden md:table-cell">Sector</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium">Classification</th>
+              <th className="text-left px-4 py-3 text-zinc-400 font-medium">Signal</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium">Score</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden lg:table-cell">Price</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden lg:table-cell">1D</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden xl:table-cell">Mkt Cap</th>
+              <th className="text-right px-4 py-3 text-zinc-400 font-medium hidden xl:table-cell">Rev Growth</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ firm, classification, price }, i) => (
+              <tr
+                key={firm.id}
+                className={`border-b border-zinc-800/50 hover:bg-zinc-900/60 transition-colors ${i % 2 === 0 ? "bg-zinc-950" : "bg-zinc-950/50"}`}
+              >
+                <td className="px-4 py-3">
+                  <Link href={`/firms/${firm.slug}`} className="flex items-center gap-3 group">
+                    <div>
+                      <div className="font-bold text-white group-hover:text-emerald-400 transition-colors">{firm.ticker}</div>
+                      <div className="text-zinc-500 text-xs">{firm.name}</div>
+                    </div>
+                  </Link>
+                </td>
+                <td className="px-4 py-3 hidden md:table-cell">
+                  <span className="text-zinc-400 text-xs">{firm.sector}</span>
+                </td>
+                <td className="px-4 py-3">
+                  <ClassificationBadge tier={classification.tier} size="sm" />
+                </td>
+                <td className="px-4 py-3">
+                  <SignalBadge signal={classification.signal} size="sm" />
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <div className="flex items-center justify-end gap-2">
+                    <div className="w-16 bg-zinc-800 rounded-full h-1.5 hidden sm:block">
+                      <div
+                        className="h-1.5 rounded-full bg-emerald-500"
+                        style={{ width: `${classification.totalScore}%` }}
+                      />
+                    </div>
+                    <span className="text-white font-medium">{classification.totalScore}</span>
+                  </div>
+                </td>
+                <td className="px-4 py-3 text-right hidden lg:table-cell">
+                  <span className="text-white">{price ? formatPrice(price.currentPrice) : "—"}</span>
+                </td>
+                <td className="px-4 py-3 text-right hidden lg:table-cell">
+                  {price && (
+                    <span className={price.priceChange1D >= 0 ? "text-emerald-400" : "text-red-400"}>
+                      {formatPercent(price.priceChange1D, true)}
+                    </span>
+                  )}
+                </td>
+                <td className="px-4 py-3 text-right hidden xl:table-cell">
+                  <span className="text-zinc-400">{formatMarketCap(firm.marketCapUSD)}</span>
+                </td>
+                <td className="px-4 py-3 text-right hidden xl:table-cell">
+                  <span className={firm.revenueGrowthYoY >= 0.2 ? "text-emerald-400" : firm.revenueGrowthYoY >= 0.1 ? "text-blue-400" : "text-zinc-400"}>
+                    {formatPercent(firm.revenueGrowthYoY, true)}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </main>
+  );
+}
