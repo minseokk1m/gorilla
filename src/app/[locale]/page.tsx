@@ -29,24 +29,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">{t("title")}</h1>
-        <p className="text-zinc-400 max-w-2xl">{t("subtitle")}</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">{t("title")}</h1>
+        <p className="text-gray-500 max-w-2xl">{t("subtitle")}</p>
       </div>
 
       <MarketSummaryBar classifications={classificationsList} />
 
-      <div className="bg-emerald-950/40 border border-emerald-900/60 rounded-xl p-5">
-        <h2 className="text-emerald-400 font-semibold text-sm uppercase tracking-wider mb-3">
+      <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h2 className="text-emerald-700 font-semibold text-sm uppercase tracking-wider mb-3">
           {t("buySignalsHeading", { count: buyFirms.length })}
         </h2>
         <div className="flex flex-wrap gap-2">
           {buyFirms.map(({ firm, classification }) => (
             <Link key={firm.id} href={`/firms/${firm.slug}`}>
-              <div className="flex items-center gap-2 bg-zinc-900 border border-zinc-800 hover:border-emerald-700 transition-colors rounded-lg px-3 py-2 text-sm">
-                <span className="font-bold text-white">{firm.ticker}</span>
-                <span className="text-zinc-400 text-xs hidden sm:block">{firm.name}</span>
-                <span className="text-emerald-400 text-xs font-medium">{classification.tier}</span>
-                <span className="text-zinc-500 text-xs">{classification.totalScore}</span>
+              <div className="flex items-center gap-2 bg-white border border-gray-200 hover:border-emerald-400 transition-colors rounded-lg px-3 py-2 text-sm">
+                <span className="font-bold text-gray-900">{firm.ticker}</span>
+                <span className="text-gray-500 text-xs hidden sm:block">{firm.name}</span>
+                <span className="text-emerald-600 text-xs font-medium">{classification.tier}</span>
+                <span className="text-gray-400 text-xs">{classification.totalScore}</span>
               </div>
             </Link>
           ))}
@@ -54,7 +54,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </div>
 
       <div>
-        <h2 className="text-white font-semibold text-lg mb-4">{t("allFirmsHeading")}</h2>
+        <h2 className="text-gray-900 font-semibold text-lg mb-4">{t("allFirmsHeading")}</h2>
         <ClassificationGrid
           firms={MOCK_FIRMS}
           classifications={classificationsMap}
@@ -62,11 +62,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         />
       </div>
 
-      <div className="border border-zinc-800 rounded-xl p-6 bg-zinc-900">
-        <h2 className="text-white font-semibold text-lg mb-2">{t("whyGorillaTitle")}</h2>
-        <p className="text-zinc-400 text-sm leading-relaxed max-w-3xl">
+      <div className="border border-gray-200 rounded-xl p-6 bg-white">
+        <h2 className="text-gray-900 font-semibold text-lg mb-2">{t("whyGorillaTitle")}</h2>
+        <p className="text-gray-500 text-sm leading-relaxed max-w-3xl">
           {t("whyGorillaBody")}{" "}
-          <Link href="/learn" className="text-emerald-400 hover:underline">{t("learnMore")}</Link>
+          <Link href="/learn" className="text-emerald-600 hover:underline">{t("learnMore")}</Link>
         </p>
       </div>
     </main>

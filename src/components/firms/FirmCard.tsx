@@ -24,12 +24,12 @@ export default function FirmCard({ firm, classification, priceHistory }: {
 
   return (
     <Link href={`/firms/${firm.slug}`}>
-      <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-600 transition-all cursor-pointer group">
+      <Card className="bg-white border-gray-200 hover:border-gray-400 transition-all cursor-pointer group">
         <CardContent className="p-4">
           <div className="flex items-start justify-between mb-3">
             <div>
-              <div className="font-bold text-white text-sm group-hover:text-emerald-400 transition-colors">{firm.ticker}</div>
-              <div className="text-zinc-400 text-xs truncate max-w-[110px]">{firm.name}</div>
+              <div className="font-bold text-gray-900 text-sm group-hover:text-emerald-600 transition-colors">{firm.ticker}</div>
+              <div className="text-gray-500 text-xs truncate max-w-[110px]">{firm.name}</div>
             </div>
             <SignalBadge signal={classification.signal} size="sm" />
           </div>
@@ -51,15 +51,15 @@ export default function FirmCard({ firm, classification, priceHistory }: {
           )}
 
           <div className="flex items-center justify-between text-xs mb-2">
-            <span className="text-white font-medium">{priceHistory ? formatPrice(priceHistory.currentPrice) : "—"}</span>
-            <span className={change1D >= 0 ? "text-emerald-400" : "text-red-400"}>
+            <span className="text-gray-900 font-medium">{priceHistory ? formatPrice(priceHistory.currentPrice) : "—"}</span>
+            <span className={change1D >= 0 ? "text-emerald-600" : "text-red-600"}>
               {formatPercent(change1D, true)}
             </span>
           </div>
 
           <ClassificationBadge tier={classification.tier} size="sm" />
 
-          <div className="mt-2 flex items-center justify-between text-xs text-zinc-500">
+          <div className="mt-2 flex items-center justify-between text-xs text-gray-400">
             <span>Score: {classification.totalScore}</span>
             <span>{formatMarketCap(firm.marketCapUSD)}</span>
           </div>

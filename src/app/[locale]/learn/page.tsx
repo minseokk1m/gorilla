@@ -2,21 +2,21 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 
 const PHASES = [
-  { phase: "Early Market", emoji: "🌱", color: "border-zinc-700 bg-zinc-900", desc: "Visionaries and tech enthusiasts buy. No mainstream adoption yet. High risk." },
-  { phase: "Chasm", emoji: "🕳️", color: "border-red-900/50 bg-red-950/20", desc: "The gap between visionaries and pragmatists. Most companies die here. Avoid investing." },
-  { phase: "Bowling Alley", emoji: "🎳", color: "border-yellow-900/50 bg-yellow-950/20", desc: "Niche-by-niche adoption begins. A gorilla candidate is forming. Watch closely." },
-  { phase: "Tornado", emoji: "🌪️", color: "border-emerald-900/50 bg-emerald-950/20", desc: "Explosive mass-market adoption. The gorilla emerges. This is the BUY window." },
-  { phase: "Main Street", emoji: "🏙️", color: "border-blue-900/50 bg-blue-950/20", desc: "Growth normalizes. Gorilla dominates. Hold your position; switching costs protect you." },
-  { phase: "End of Life", emoji: "📉", color: "border-zinc-800 bg-zinc-900/50", desc: "New paradigm displacing the old. Exit the gorilla. Find the next tornado." },
+  { phase: "Early Market", emoji: "🌱", color: "border-gray-200 bg-white", desc: "Visionaries and tech enthusiasts buy. No mainstream adoption yet. High risk." },
+  { phase: "Chasm", emoji: "🕳️", color: "border-red-200 bg-red-50", desc: "The gap between visionaries and pragmatists. Most companies die here. Avoid investing." },
+  { phase: "Bowling Alley", emoji: "🎳", color: "border-yellow-200 bg-yellow-50", desc: "Niche-by-niche adoption begins. A gorilla candidate is forming. Watch closely." },
+  { phase: "Tornado", emoji: "🌪️", color: "border-emerald-200 bg-emerald-50", desc: "Explosive mass-market adoption. The gorilla emerges. This is the BUY window." },
+  { phase: "Main Street", emoji: "🏙️", color: "border-blue-200 bg-blue-50", desc: "Growth normalizes. Gorilla dominates. Hold your position; switching costs protect you." },
+  { phase: "End of Life", emoji: "📉", color: "border-gray-200 bg-gray-50", desc: "New paradigm displacing the old. Exit the gorilla. Find the next tornado." },
 ];
 
 const TIERS = [
-  { tier: "Gorilla", emoji: "🦍", signal: "BUY", color: "border-emerald-800 bg-emerald-950/30", desc: "Controls the proprietary architecture that becomes the market standard. Competitors must conform to its interfaces. Switching costs are prohibitively high. Investors should buy and hold indefinitely.", book: "The Gorilla Game" },
-  { tier: "Potential Gorilla", emoji: "🦍", signal: "BUY", color: "border-teal-800 bg-teal-950/30", desc: "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy now before the market recognizes the winner.", book: "The Gorilla Game" },
-  { tier: "King", emoji: "👑", signal: "WATCH", color: "border-blue-800 bg-blue-950/30", desc: "Market leader in a category without a single proprietary architecture. Has scale advantages but faces credible competition. Generates steady returns but won't compound like a gorilla.", book: "The Gorilla Game" },
-  { tier: "Chimpanzee", emoji: "🐵", signal: "SELL", color: "border-yellow-800 bg-yellow-950/30", desc: "Competed for gorilla status but lost the architecture war. Survives in niche segments but cannot expand into the mainstream. Sell and redeploy into gorillas or potential gorillas.", book: "The Gorilla Game" },
-  { tier: "Monkey", emoji: "🐒", signal: "AVOID", color: "border-orange-800 bg-orange-950/30", desc: "Clones the gorilla architecture at a discount price. Has no sustainable moat — the gorilla can reclaim their customers at will. Do not hold for the long term.", book: "The Gorilla Game" },
-  { tier: "In Chasm", emoji: "🕳️", signal: "AVOID", color: "border-red-800 bg-red-950/30", desc: "Has early adopter enthusiasm but has not crossed to the pragmatist mainstream. Most companies in this position never cross. High risk, avoid until clear beachhead emerges.", book: "Crossing the Chasm" },
+  { tier: "Gorilla", emoji: "🦍", signal: "BUY", color: "border-emerald-200 bg-emerald-50", desc: "Controls the proprietary architecture that becomes the market standard. Competitors must conform to its interfaces. Switching costs are prohibitively high. Investors should buy and hold indefinitely.", book: "The Gorilla Game" },
+  { tier: "Potential Gorilla", emoji: "🦍", signal: "BUY", color: "border-teal-200 bg-teal-50", desc: "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy now before the market recognizes the winner.", book: "The Gorilla Game" },
+  { tier: "King", emoji: "👑", signal: "WATCH", color: "border-blue-200 bg-blue-50", desc: "Market leader in a category without a single proprietary architecture. Has scale advantages but faces credible competition. Generates steady returns but won't compound like a gorilla.", book: "The Gorilla Game" },
+  { tier: "Chimpanzee", emoji: "🐵", signal: "SELL", color: "border-yellow-200 bg-yellow-50", desc: "Competed for gorilla status but lost the architecture war. Survives in niche segments but cannot expand into the mainstream. Sell and redeploy into gorillas or potential gorillas.", book: "The Gorilla Game" },
+  { tier: "Monkey", emoji: "🐒", signal: "AVOID", color: "border-orange-200 bg-orange-50", desc: "Clones the gorilla architecture at a discount price. Has no sustainable moat — the gorilla can reclaim their customers at will. Do not hold for the long term.", book: "The Gorilla Game" },
+  { tier: "In Chasm", emoji: "🕳️", signal: "AVOID", color: "border-red-200 bg-red-50", desc: "Has early adopter enthusiasm but has not crossed to the pragmatist mainstream. Most companies in this position never cross. High risk, avoid until clear beachhead emerges.", book: "Crossing the Chasm" },
 ];
 
 const BOOKS = [
@@ -51,53 +51,53 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       {/* Hero */}
       <div>
-        <h1 className="text-3xl font-bold text-white mb-3">{t("title")}</h1>
-        <p className="text-zinc-400 max-w-2xl leading-relaxed">{t("subtitle")}</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-3">{t("title")}</h1>
+        <p className="text-gray-500 max-w-2xl leading-relaxed">{t("subtitle")}</p>
       </div>
 
       {/* TALC Lifecycle */}
       <section>
-        <h2 className="text-xl font-bold text-white mb-4">{t("talcTitle")}</h2>
-        <p className="text-zinc-400 text-sm mb-6">{t("talcSubtitle")}</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">{t("talcTitle")}</h2>
+        <p className="text-gray-500 text-sm mb-6">{t("talcSubtitle")}</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {PHASES.map((p, i) => (
             <div key={p.phase} className={`border rounded-xl p-4 ${p.color}`}>
               <div className="text-2xl mb-2">{p.emoji}</div>
               <div className="flex items-center gap-1 mb-1">
-                <span className="text-xs text-zinc-500">{t("stage", { n: i + 1 })}</span>
+                <span className="text-xs text-gray-400">{t("stage", { n: i + 1 })}</span>
               </div>
-              <div className="font-semibold text-white text-sm mb-2">{p.phase}</div>
-              <p className="text-zinc-400 text-xs leading-relaxed">{p.desc}</p>
+              <div className="font-semibold text-gray-900 text-sm mb-2">{p.phase}</div>
+              <p className="text-gray-500 text-xs leading-relaxed">{p.desc}</p>
             </div>
           ))}
         </div>
         <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
-          <div className="flex-1 h-0.5 bg-gradient-to-r from-zinc-800 via-emerald-600 to-zinc-800 rounded" />
+          <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-200 via-emerald-500 to-gray-200 rounded" />
           <span>{t("timeAxis")}</span>
         </div>
       </section>
 
       {/* Classification tiers */}
       <section>
-        <h2 className="text-xl font-bold text-white mb-4">{t("tiersTitle")}</h2>
-        <p className="text-zinc-400 text-sm mb-6">{t("tiersSubtitle")}</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">{t("tiersTitle")}</h2>
+        <p className="text-gray-500 text-sm mb-6">{t("tiersSubtitle")}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {TIERS.map((tier) => (
             <div key={tier.tier} className={`border rounded-xl p-5 ${tier.color}`}>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl">{tier.emoji}</span>
                 <div>
-                  <div className="font-bold text-white">{tier.tier}</div>
+                  <div className="font-bold text-gray-900">{tier.tier}</div>
                   <span className={`text-xs font-semibold px-2 py-0.5 rounded ${
-                    tier.signal === "BUY" ? "bg-emerald-500/20 text-emerald-400" :
-                    tier.signal === "WATCH" ? "bg-blue-500/20 text-blue-400" :
-                    tier.signal === "SELL" ? "bg-orange-500/20 text-orange-400" :
-                    "bg-red-500/20 text-red-400"
+                    tier.signal === "BUY" ? "bg-emerald-100 text-emerald-700" :
+                    tier.signal === "WATCH" ? "bg-blue-100 text-blue-700" :
+                    tier.signal === "SELL" ? "bg-orange-100 text-orange-700" :
+                    "bg-red-100 text-red-700"
                   }`}>{tier.signal}</span>
                 </div>
               </div>
-              <p className="text-zinc-300 text-sm leading-relaxed mb-2">{tier.desc}</p>
-              <span className="text-xs text-zinc-500">{t("source", { book: tier.book })}</span>
+              <p className="text-gray-600 text-sm leading-relaxed mb-2">{tier.desc}</p>
+              <span className="text-xs text-gray-400">{t("source", { book: tier.book })}</span>
             </div>
           ))}
         </div>
@@ -105,7 +105,7 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
 
       {/* Core investment rules */}
       <section>
-        <h2 className="text-xl font-bold text-white mb-4">{t("rulesTitle")}</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">{t("rulesTitle")}</h2>
         <div className="space-y-3">
           {[
             ["Buy a basket, keep the gorilla", "During the bowling alley phase, buy all viable gorilla candidates in a category. As the tornado forms and a winner emerges, consolidate into the gorilla. Sell the chimpanzees."],
@@ -114,9 +114,9 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
             ["Never fight the gorilla", "Chimpanzees who directly attack the gorilla force the market to rally behind the incumbent. IBM's OS/2 vs. Windows is the archetypal example. Find a niche instead."],
             ["Sell when the gorilla dies", "Gorillas die when a discontinuous innovation creates a new market with its own tornado. The old gorilla becomes a chimp in the new market. Exit when you see the next paradigm forming."],
           ].map(([rule, explanation]) => (
-            <div key={rule as string} className="bg-zinc-900 border border-zinc-800 rounded-xl p-4">
-              <div className="font-semibold text-white mb-1">{rule}</div>
-              <p className="text-zinc-400 text-sm leading-relaxed">{explanation}</p>
+            <div key={rule as string} className="bg-white border border-gray-200 rounded-xl p-4">
+              <div className="font-semibold text-gray-900 mb-1">{rule}</div>
+              <p className="text-gray-500 text-sm leading-relaxed">{explanation}</p>
             </div>
           ))}
         </div>
@@ -124,17 +124,17 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
 
       {/* Books */}
       <section>
-        <h2 className="text-xl font-bold text-white mb-4">{t("booksTitle")}</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">{t("booksTitle")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {BOOKS.map((b) => (
-            <div key={b.title} className="border rounded-xl p-5 bg-zinc-900 border-zinc-700">
-              <div className="text-xs text-zinc-500 mb-1">{b.subtitle}</div>
-              <h3 className="font-bold text-white text-lg mb-1">{b.title}</h3>
-              <div className="text-xs text-zinc-500 mb-3">{b.author}</div>
-              <p className="text-zinc-300 text-sm leading-relaxed mb-4">{b.keyIdea}</p>
+            <div key={b.title} className="border rounded-xl p-5 bg-white border-gray-200">
+              <div className="text-xs text-gray-400 mb-1">{b.subtitle}</div>
+              <h3 className="font-bold text-gray-900 text-lg mb-1">{b.title}</h3>
+              <div className="text-xs text-gray-400 mb-3">{b.author}</div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">{b.keyIdea}</p>
               <div className="space-y-1">
                 {b.concepts.map((c) => (
-                  <span key={c} className="inline-block text-xs bg-zinc-800 text-zinc-400 rounded px-2 py-0.5 mr-1 mb-1">{c}</span>
+                  <span key={c} className="inline-block text-xs bg-gray-100 text-gray-600 rounded px-2 py-0.5 mr-1 mb-1">{c}</span>
                 ))}
               </div>
             </div>
