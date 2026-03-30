@@ -41,6 +41,13 @@ const BOOKS = [
     keyIdea: "The investment thesis derived from the tornado framework. In every tornado, one company emerges as the gorilla — the architecture standard-setter with compounding competitive advantage. Buy gorillas and potential gorillas. Sell everything else.",
     concepts: ["Gorilla / Chimp / Monkey", "King / Prince / Serf", "Competitive Advantage Period (CAP)", "Architecture Lock-in", "Switching Costs"],
   },
+  {
+    title: "The New Strategic Selling",
+    subtitle: "Revised & Updated",
+    author: "Robert B. Miller, Stephen E. Heiman",
+    keyIdea: "How enterprise companies win complex B2B deals by identifying all buying influences — Economic Buyer, User Buyers, Technical Buyers, and a Coach. Gorillas dominate not just through technology but through superior coverage of every decision-maker in the customer organization.",
+    concepts: ["Complex Sale", "Buying Influences", "Economic Buyer", "Response Modes", "Win-Results", "Sales Funnel", "Red Flags"],
+  },
 ];
 
 export default async function LearnPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -125,7 +132,7 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
       {/* Books */}
       <section>
         <h2 className="text-xl font-bold text-gray-900 mb-4">{t("booksTitle")}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {BOOKS.map((b) => (
             <div key={b.title} className="border rounded-xl p-5 bg-white border-gray-200">
               <div className="text-xs text-gray-400 mb-1">{b.subtitle}</div>

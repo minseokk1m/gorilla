@@ -8,7 +8,7 @@
     "switchLang": "한국어"
   },
   "footer": {
-    "disclaimer": "Based on Geoffrey Moore's Gorilla Game, Inside the Tornado, and Crossing the Chasm · Mock data only · Not financial advice"
+    "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
   },
   "dashboard": {
     "title": "Gorilla Game Dashboard",
@@ -72,13 +72,13 @@
   },
   "learn": {
     "title": "The Gorilla Game Framework",
-    "subtitle": "Geoffrey Moore's trilogy — Crossing the Chasm, Inside the Tornado, and The Gorilla Game — provides the most rigorous framework for understanding why some tech companies generate extraordinary long-term returns while most others disappoint.",
+    "subtitle": "Geoffrey Moore's trilogy — Crossing the Chasm, Inside the Tornado, and The Gorilla Game — combined with Miller Heiman's The New Strategic Selling, provides the most rigorous framework for understanding why some tech companies generate extraordinary long-term returns while most others disappoint.",
     "talcTitle": "Technology Adoption Life Cycle (TALC)",
     "talcSubtitle": "Every disruptive technology market follows this progression. Investment opportunity is concentrated in the Tornado.",
     "tiersTitle": "Company Classification Tiers",
     "tiersSubtitle": "Moore identifies distinct competitive roles in every tornado market. Gorillas win the long game.",
     "rulesTitle": "The Gorilla Game Investment Rules",
-    "booksTitle": "The Three Books",
+    "booksTitle": "The Four Books",
     "viewAllFirms": "View All 50 Firms →",
     "source": "Source: {book}",
     "timeAxis": "Time / Market Maturity →",
@@ -103,6 +103,22 @@
     "buySignals": "BUY Signals",
     "sellAvoid": "SELL / AVOID",
     "footer": "Based on Geoffrey Moore's Gorilla Game framework · 50 US tech firms"
+  },
+  "pipeline": {
+    "title": "Investment Pipeline",
+    "subtitle": "Every firm mapped to its Gorilla Game stage. Click any card to dive deeper.",
+    "suspectsTitle": "Suspects",
+    "suspectsDesc": "In Chasm — pre-mainstream, avoid",
+    "prospectsTitle": "Prospects",
+    "prospectsDesc": "Potential Gorillas — competing for the standard",
+    "gorillasTitle": "Confirmed Gorillas",
+    "gorillasDesc": "Standard-setters — buy & hold by TALC phase",
+    "watchTitle": "Watch — Kings",
+    "watchDesc": "Market leaders, no architecture lock-in",
+    "exitTitle": "Exit Candidates",
+    "exitDesc": "Chimpanzees & Monkeys — sell or avoid",
+    "score": "Score",
+    "noRecentNews": "No recent news"
   },
   "narratives": {
     "Gorilla": "{name} is classified as a **Gorilla** — the dominant force in its technology category. With an estimated {sharePercent}% niche market share and strong architecture control (score: {architectureControl}/100), it defines the standard that competitors must conform to. Geoffrey Moore's framework identifies gorillas as the primary investment target: their switching costs are prohibitively high (Net Revenue Retention: {nrr}%), and they are the last company standing after the tornado. Buy and hold.",
