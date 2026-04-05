@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { MOCK_FIRMS } from "@/lib/data/mock/firms";
-import { getClassification } from "@/lib/data/providers/firm-provider";
+import { getAllFirms, getClassification } from "@/lib/data/providers/firm-provider";
 import { getPriceHistory } from "@/lib/data/providers/price-provider";
 import { getNewsByFirmId } from "@/lib/data/providers/news-provider";
 import ClassificationBadge from "@/components/firms/ClassificationBadge";
@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 
 export default async function FirmDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params;
-  const firm = MOCK_FIRMS.find((f) => f.slug === slug);
+  const allFirms = await getAllFirms();
+  const firm = allFirms.find((f) => f.slug === slug);
   if (!firm) notFound();
 
   const t = await getTranslations({ locale, namespace: "firmDetail" });
@@ -33,7 +34,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
 
   if (!classification) notFound();
 
-  const competitorFirms = MOCK_FIRMS.filter((f) => firm.competitors.includes(f.slug));
+  const competitorFirms = allFirms.filter((f) => firm.competitors.includes(f.slug));
 
   const SENTIMENT_COLORS = { Positive: "text-emerald-600", Neutral: "text-gray-500", Negative: "text-red-500" };
   const SENTIMENT_DOTS = { Positive: "bg-emerald-500", Neutral: "bg-gray-400", Negative: "bg-red-500" };

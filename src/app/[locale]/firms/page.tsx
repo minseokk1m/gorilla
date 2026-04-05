@@ -1,5 +1,4 @@
-import { MOCK_FIRMS } from "@/lib/data/mock/firms";
-import { getAllClassifications } from "@/lib/data/providers/firm-provider";
+import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
 import { Link } from "@/i18n/routing";
 import ClassificationBadge from "@/components/firms/ClassificationBadge";
@@ -11,13 +10,14 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "firms" });
 
-  const [classifications, prices] = await Promise.all([
+  const [allFirms, classifications, prices] = await Promise.all([
+    getAllFirms(),
     getAllClassifications(locale),
     getAllPriceHistories(),
   ]);
   const priceMap = new Map(prices.map((p) => [p.firmId, p]));
 
-  const rows = MOCK_FIRMS
+  const rows = allFirms
     .map((f) => ({ firm: f, classification: classifications.get(f.id)!, price: priceMap.get(f.id) }))
     .sort((a, b) => b.classification.totalScore - a.classification.totalScore);
 

@@ -1,5 +1,4 @@
-import { MOCK_FIRMS } from "@/lib/data/mock/firms";
-import { getAllClassifications } from "@/lib/data/providers/firm-provider";
+import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getLatestNews } from "@/lib/data/providers/news-provider";
 import MarketSummaryBar from "@/components/dashboard/MarketSummaryBar";
 import TALCChart from "@/components/dashboard/TALCChart";
@@ -13,7 +12,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "dashboard" });
 
-  const [classificationsMap, allNews] = await Promise.all([
+  const [firms, classificationsMap, allNews] = await Promise.all([
+    getAllFirms(),
     getAllClassifications(locale),
     getLatestNews(200),
   ]);
@@ -40,7 +40,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* TALC Curve with firm list + interactive chart */}
       <section className="toss-card">
         <TALCChart
-          firms={MOCK_FIRMS}
+          firms={firms}
           classifications={Object.fromEntries(classificationsMap)}
           newsMap={Object.fromEntries(newsMap)}
         />
@@ -49,7 +49,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Pipeline detail breakdown */}
       <PipelineView
         locale={locale}
-        firms={MOCK_FIRMS}
+        firms={firms}
         classifications={classificationsMap}
         newsMap={newsMap}
       />

@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { MOCK_FIRMS } from "@/lib/data/mock/firms";
-import { getAllClassifications } from "@/lib/data/providers/firm-provider";
+import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
+import { DATA_SOURCE } from "@/lib/data/api/config";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -9,14 +11,15 @@ export async function GET(req: NextRequest) {
   const signal = searchParams.get("signal");
   const sector = searchParams.get("sector");
 
-  const [classifications, prices] = await Promise.all([
+  const [allFirms, classifications, prices] = await Promise.all([
+    getAllFirms(),
     getAllClassifications(),
     getAllPriceHistories(),
   ]);
 
   const priceMap = new Map(prices.map((p) => [p.firmId, p]));
 
-  let firms = MOCK_FIRMS.map((f) => ({
+  let firms = allFirms.map((f) => ({
     firm: f,
     classification: classifications.get(f.id)!,
     price: priceMap.get(f.id),
@@ -28,6 +31,10 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({
     data: firms,
-    meta: { timestamp: new Date().toISOString(), source: "mock", classifiedBy: "rules" },
+    meta: {
+      timestamp: new Date().toISOString(),
+      source: DATA_SOURCE,
+      classifiedBy: "rules",
+    },
   });
 }
