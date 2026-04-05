@@ -28,19 +28,19 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
         <p className="text-gray-500 text-[0.9375rem]">{t("subtitle")}</p>
       </div>
 
-      <div className="toss-card !p-0 overflow-hidden">
+      <div className="toss-card !p-0 overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className="text-left px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colFirm")}</th>
-              <th className="text-left px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden md:table-cell">{t("colSector")}</th>
-              <th className="text-left px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colClassification")}</th>
-              <th className="text-left px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colSignal")}</th>
-              <th className="text-right px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colScore")}</th>
-              <th className="text-right px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden lg:table-cell">{t("colPrice")}</th>
-              <th className="text-right px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden lg:table-cell">{t("col1D")}</th>
-              <th className="text-right px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden xl:table-cell">{t("colMktCap")}</th>
-              <th className="text-right px-5 py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden xl:table-cell">{t("colRevGrowth")}</th>
+              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colFirm")}</th>
+              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden md:table-cell">{t("colSector")}</th>
+              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colClassification")}</th>
+              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colSignal")}</th>
+              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colScore")}</th>
+              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden lg:table-cell">{t("colPrice")}</th>
+              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden lg:table-cell">{t("col1D")}</th>
+              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden xl:table-cell">{t("colMktCap")}</th>
+              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden xl:table-cell">{t("colRevGrowth")}</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,7 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
                 key={firm.id}
                 className="border-b border-gray-50 hover:bg-[#F8F9FA] transition-colors"
               >
-                <td className="px-5 py-4">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4">
                   <Link href={`/firms/${firm.slug}`} className="flex items-center gap-3 group">
                     <div>
                       <div className="font-extrabold text-gray-900 group-hover:text-[#0064FF] transition-colors">{firm.ticker}</div>
@@ -57,16 +57,16 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
                     </div>
                   </Link>
                 </td>
-                <td className="px-5 py-4 hidden md:table-cell">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 hidden md:table-cell">
                   <span className="text-gray-500 text-xs font-medium">{firm.sector}</span>
                 </td>
-                <td className="px-5 py-4">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4">
                   <ClassificationBadge tier={classification.tier} size="sm" />
                 </td>
-                <td className="px-5 py-4">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4">
                   <SignalBadge signal={classification.signal} size="sm" />
                 </td>
-                <td className="px-5 py-4 text-right">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right">
                   <div className="flex items-center justify-end gap-2">
                     <div className="w-16 bg-gray-100 rounded-full h-1.5 hidden sm:block">
                       <div
@@ -77,20 +77,20 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
                     <span className="text-gray-900 font-extrabold">{classification.totalScore}</span>
                   </div>
                 </td>
-                <td className="px-5 py-4 text-right hidden lg:table-cell">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden lg:table-cell">
                   <span className="text-gray-900 font-bold">{price ? formatPrice(price.currentPrice) : "—"}</span>
                 </td>
-                <td className="px-5 py-4 text-right hidden lg:table-cell">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden lg:table-cell">
                   {price && (
                     <span className={`font-bold ${price.priceChange1D >= 0 ? "text-emerald-600" : "text-red-500"}`}>
                       {formatPercent(price.priceChange1D, true)}
                     </span>
                   )}
                 </td>
-                <td className="px-5 py-4 text-right hidden xl:table-cell">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden xl:table-cell">
                   <span className="text-gray-500 font-medium">{formatMarketCap(firm.marketCapUSD)}</span>
                 </td>
-                <td className="px-5 py-4 text-right hidden xl:table-cell">
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden xl:table-cell">
                   <span className={`font-bold ${firm.revenueGrowthYoY >= 0.2 ? "text-emerald-600" : firm.revenueGrowthYoY >= 0.1 ? "text-[#0064FF]" : "text-gray-500"}`}>
                     {formatPercent(firm.revenueGrowthYoY, true)}
                   </span>

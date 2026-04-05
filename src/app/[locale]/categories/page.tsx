@@ -153,26 +153,27 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
           return (
             <div key={cat.id} className="toss-card">
               {/* Category Header */}
-              <div className="flex items-start justify-between gap-4 mb-5">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{cat.icon}</span>
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-2 sm:gap-4 mb-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-xl sm:text-2xl">{cat.icon}</span>
                   <div>
-                    <h2 className="!text-lg mb-0.5">{locale === "ko" ? cat.name : cat.nameEn}</h2>
-                    <p className="text-xs text-gray-400 font-medium">{cat.description}</p>
+                    <h2 className="!text-base sm:!text-lg mb-0.5">{locale === "ko" ? cat.name : cat.nameEn}</h2>
+                    <p className="text-xs text-gray-400 font-medium hidden sm:block">{cat.description}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className={`toss-pill ${PHASE_STYLES[dominantPhase].bg} ${PHASE_STYLES[dominantPhase].text}`}>
+                  <span className={`toss-pill text-[10px] sm:text-xs ${PHASE_STYLES[dominantPhase].bg} ${PHASE_STYLES[dominantPhase].text}`}>
                     {PHASE_EMOJI[dominantPhase]} {dominantPhase}
                   </span>
                   {gorillaCount > 0 && (
-                    <span className="toss-pill bg-emerald-50 text-emerald-700">🦍 {gorillaCount}</span>
+                    <span className="toss-pill text-[10px] sm:text-xs bg-emerald-50 text-emerald-700">🦍 {gorillaCount}</span>
                   )}
                 </div>
               </div>
 
-              {/* TALC Phase Timeline */}
-              <div className="grid grid-cols-5 gap-2">
+              {/* TALC Phase Timeline — scrollable on mobile */}
+              <div className="overflow-x-auto -mx-3 px-3 sm:mx-0 sm:px-0">
+                <div className="grid grid-cols-5 gap-1.5 sm:gap-2 min-w-[500px] sm:min-w-0">
                 {PHASE_ORDER.map((phase) => {
                   const items = byPhase.get(phase)!;
                   const isActive = items.length > 0;
@@ -180,27 +181,27 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
                   return (
                     <div
                       key={phase}
-                      className={`rounded-xl p-3 min-h-[80px] transition-all ${
+                      className={`rounded-xl p-2 sm:p-3 min-h-[60px] sm:min-h-[80px] transition-all ${
                         isActive
                           ? `${PHASE_STYLES[phase].bg} border ${PHASE_STYLES[phase].border}`
                           : "bg-gray-50/50 border border-gray-100"
                       }`}
                     >
-                      <div className="flex items-center gap-1 mb-2">
-                        <span className="text-xs">{PHASE_EMOJI[phase]}</span>
-                        <span className={`text-[10px] font-bold uppercase tracking-wide ${isActive ? PHASE_STYLES[phase].text : "text-gray-300"}`}>
+                      <div className="flex items-center gap-1 mb-1.5">
+                        <span className="text-[10px] sm:text-xs">{PHASE_EMOJI[phase]}</span>
+                        <span className={`text-[8px] sm:text-[10px] font-bold uppercase tracking-wide ${isActive ? PHASE_STYLES[phase].text : "text-gray-300"}`}>
                           {phase}
                         </span>
                       </div>
                       <div className="space-y-1">
                         {items.map(({ firm, cls }) => (
                           <Link key={firm.id} href={`/firms/${firm.slug}`}>
-                            <div className="flex items-center gap-1.5 bg-white rounded-lg px-2 py-1.5 hover:shadow-sm transition-all cursor-pointer">
-                              <span className="font-extrabold text-gray-900 text-xs">{firm.ticker}</span>
-                              <span className={`toss-pill !px-1.5 !py-0 text-[9px] ${TIER_COLORS[cls.tier] ?? ""}`}>
+                            <div className="flex items-center gap-1 sm:gap-1.5 bg-white rounded-lg px-1.5 sm:px-2 py-1 sm:py-1.5 hover:shadow-sm transition-all cursor-pointer">
+                              <span className="font-extrabold text-gray-900 text-[10px] sm:text-xs">{firm.ticker}</span>
+                              <span className={`toss-pill !px-1 sm:!px-1.5 !py-0 text-[8px] sm:text-[9px] ${TIER_COLORS[cls.tier] ?? ""}`}>
                                 {cls.tier === "Gorilla" ? "🦍" : cls.tier === "Potential Gorilla" ? "🦍?" : cls.tier === "King" ? "👑" : cls.tier === "Chimpanzee" ? "🐵" : cls.tier === "Monkey" ? "🐒" : "🕳️"}
                               </span>
-                              <span className="text-[10px] font-bold text-gray-400 ml-auto">{cls.totalScore}</span>
+                              <span className="text-[8px] sm:text-[10px] font-bold text-gray-400 ml-auto hidden sm:block">{cls.totalScore}</span>
                             </div>
                           </Link>
                         ))}
@@ -211,6 +212,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
                     </div>
                   );
                 })}
+                </div>
               </div>
             </div>
           );

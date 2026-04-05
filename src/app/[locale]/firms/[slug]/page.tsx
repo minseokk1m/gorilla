@@ -67,8 +67,8 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
               </Link>
             </div>
             {priceHistory && (
-              <div className="flex items-center gap-4 mt-3">
-                <span className="text-3xl font-extrabold text-gray-900">{formatPrice(priceHistory.currentPrice)}</span>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3">
+                <span className="text-2xl sm:text-3xl font-extrabold text-gray-900">{formatPrice(priceHistory.currentPrice)}</span>
                 <span className={`text-sm font-bold ${priceHistory.priceChange1D >= 0 ? "text-emerald-600" : "text-red-500"}`}>
                   {formatPercent(priceHistory.priceChange1D, true)} {t("today")}
                 </span>
@@ -250,7 +250,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
       <div className="toss-card">
         <h2 className="mb-3">{t("aboutTitle", { name: firm.name })}</h2>
         <p className="text-gray-500 text-[0.9375rem] leading-relaxed">{firm.description}</p>
-        <div className="flex gap-6 mt-5 text-xs font-bold text-gray-400">
+        <div className="flex flex-wrap gap-3 sm:gap-6 mt-5 text-xs font-bold text-gray-400">
           <span>{t("founded", { year: firm.founded })}</span>
           <span>{t("grossMargin", { value: formatPercent(firm.grossMargin) })}</span>
           <span>{t("nrr", { value: `${Math.round(firm.classificationSignals.netRevenueRetention * 100)}%` })}</span>

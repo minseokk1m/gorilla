@@ -38,7 +38,7 @@ export default function MarketSummaryBar({ classifications }: { classifications:
   const dominantPhase = Object.entries(phaseCounts).sort((a, b) => b[1] - a[1])[0][0] as MarketPhase;
 
   return (
-    <div className="toss-card flex flex-wrap items-center gap-6">
+    <div className="toss-card flex flex-wrap items-center gap-3 sm:gap-6">
       <div>
         <div className="text-xs font-bold text-gray-400 mb-1.5 uppercase tracking-wide">{t("marketPhase")}</div>
         <span className={`toss-pill ${PHASE_COLOR[dominantPhase]}`}>
