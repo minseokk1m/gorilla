@@ -1,16 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
+import { getSupabase } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
 
-// GET /api/discuss?firmId=msft — get discussions for a firm
-// GET /api/discuss — get all recent discussions
 export async function GET(req: NextRequest) {
+  const supabase = getSupabase();
   const firmId = req.nextUrl.searchParams.get("firmId");
 
   let query = supabase
@@ -29,8 +23,8 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ data });
 }
 
-// POST /api/discuss — create a new discussion comment
 export async function POST(req: NextRequest) {
+  const supabase = getSupabase();
   const body = await req.json();
   const { firmId, authorName, body: commentBody, proposalId } = body;
 

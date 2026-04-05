@@ -1,12 +1,7 @@
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
+import { getSupabase } from "@/lib/supabase/admin";
 
 export default async function DiscussIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -17,6 +12,7 @@ export default async function DiscussIndexPage({ params }: { params: Promise<{ l
   ]);
 
   // Fetch proposal counts per firm
+  const supabase = getSupabase();
   const { data: proposals } = await supabase
     .from("signal_proposals")
     .select("firm_id, status");

@@ -1,16 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabase } from "@/lib/supabase/admin";
 import { invalidateFirmCaches } from "@/lib/data/providers/firm-provider";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
 
 export const dynamic = "force-dynamic";
 
-// GET /api/proposals?firmId=msft&status=open
 export async function GET(req: NextRequest) {
+  const supabase = getSupabase();
   const firmId = req.nextUrl.searchParams.get("firmId");
   const status = req.nextUrl.searchParams.get("status");
 
@@ -28,8 +23,8 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ data });
 }
 
-// POST /api/proposals — create a new signal change proposal
 export async function POST(req: NextRequest) {
+  const supabase = getSupabase();
   const body = await req.json();
   const { firmId, signalField, currentValue, proposedValue, rationale, proposedByName } = body;
 
@@ -51,7 +46,6 @@ export async function POST(req: NextRequest) {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  // Also create a discussion comment for the proposal
   if (rationale) {
     await supabase.from("discussions").insert({
       firm_id: firmId,
@@ -64,16 +58,15 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ data });
 }
 
-// PATCH /api/proposals — accept or reject a proposal
 export async function PATCH(req: NextRequest) {
+  const supabase = getSupabase();
   const body = await req.json();
-  const { proposalId, action } = body; // action: "accept" | "reject"
+  const { proposalId, action } = body;
 
   if (!proposalId || !["accept", "reject"].includes(action)) {
     return NextResponse.json({ error: "proposalId and action (accept/reject) are required" }, { status: 400 });
   }
 
-  // Get the proposal
   const { data: proposal, error: fetchError } = await supabase
     .from("signal_proposals")
     .select("*")
@@ -84,7 +77,6 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Proposal not found" }, { status: 404 });
   }
 
-  // Update proposal status
   await supabase
     .from("signal_proposals")
     .update({
@@ -93,12 +85,10 @@ export async function PATCH(req: NextRequest) {
     })
     .eq("id", proposalId);
 
-  // If accepted, apply the signal override
   if (action === "accept") {
     const field = proposal.signal_field;
     const value = proposal.proposed_value;
 
-    // Map camelCase field to snake_case column
     const fieldMap: Record<string, string> = {
       estimatedNicheMarketShare: "estimated_niche_market_share",
       netRevenueRetention: "net_revenue_retention",
@@ -113,7 +103,6 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: "Unknown signal field" }, { status: 400 });
     }
 
-    // Parse value based on field type
     let parsedValue: number | boolean;
     if (field === "isDefactoStandard" || field === "hasProprietaryProtocol") {
       parsedValue = value === "true" || value === "1";
@@ -121,7 +110,6 @@ export async function PATCH(req: NextRequest) {
       parsedValue = Number(value);
     }
 
-    // Upsert the signal override
     const { error: upsertError } = await supabase
       .from("signal_overrides")
       .upsert(
@@ -137,7 +125,6 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: upsertError.message }, { status: 500 });
     }
 
-    // Invalidate caches so classification recalculates
     invalidateFirmCaches();
   }
 

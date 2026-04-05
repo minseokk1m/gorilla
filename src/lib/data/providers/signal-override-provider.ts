@@ -1,11 +1,6 @@
 import type { ClassificationSignals } from "@/types/firm";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabase } from "@/lib/supabase/admin";
 import { TTLCache } from "../api/cache";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
 
 // Cache overrides for 1 minute (short TTL so edits appear quickly)
 const overrideCache = new TTLCache<Map<string, Partial<ClassificationSignals>>>(60_000);
@@ -21,6 +16,7 @@ export async function getAllSignalOverrides(): Promise<Map<string, Partial<Class
   if (cached) return cached;
 
   try {
+    const supabase = getSupabase();
     const { data, error } = await supabase
       .from("signal_overrides")
       .select("*");
