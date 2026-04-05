@@ -38,12 +38,11 @@ const CURVE_PATH = [
 
 /* ── Segment x-boundaries (adopter groups) ──────────── */
 const SEGMENTS = [
-  { key: "innovators",     label: "Innovators",      xMin: 0,   xMax: 95,   fill: "#86efac", opacity: 0.25 },
-  { key: "earlyAdopters",  label: "Early Adopters",  xMin: 95,  xMax: 265,  fill: "#fde047", opacity: 0.22 },
-  // chasm gap: 265–395
-  { key: "earlyMajority",  label: "Early Majority",  xMin: 395, xMax: 560,  fill: "#fbbf24", opacity: 0.22 },
-  { key: "lateMajority",   label: "Late Majority",   xMin: 560, xMax: 800,  fill: "#fb923c", opacity: 0.22 },
-  { key: "laggards",       label: "Laggards",        xMin: 800, xMax: 1000, fill: "#7f1d1d", opacity: 0.18 },
+  { key: "innovators",     label: "Innovators",      xMin: 0,   xMax: 95,   fill: "#86efac", opacity: 0.2 },
+  { key: "earlyAdopters",  label: "Early Adopters",  xMin: 95,  xMax: 265,  fill: "#fde047", opacity: 0.18 },
+  { key: "earlyMajority",  label: "Early Majority",  xMin: 395, xMax: 560,  fill: "#fbbf24", opacity: 0.18 },
+  { key: "lateMajority",   label: "Late Majority",   xMin: 560, xMax: 800,  fill: "#fb923c", opacity: 0.18 },
+  { key: "laggards",       label: "Laggards",        xMin: 800, xMax: 1000, fill: "#7f1d1d", opacity: 0.14 },
 ];
 
 /* ── Curve annotations ────────────────────────────────── */
@@ -67,7 +66,7 @@ const PHASE_ZONES: Record<MarketPhase, { xMin: number; xMax: number; yBase: numb
 const TIER_DOT: Record<ClassificationTier, string> = {
   "Gorilla":           "#059669",
   "Potential Gorilla": "#0d9488",
-  "King":              "#2563eb",
+  "King":              "#0064FF",
   "Chimpanzee":        "#d97706",
   "Monkey":            "#ea580c",
   "In Chasm":          "#dc2626",
@@ -75,7 +74,7 @@ const TIER_DOT: Record<ClassificationTier, string> = {
 
 const SIGNAL_BG: Record<Signal, string> = {
   BUY:   "#059669",
-  WATCH: "#2563eb",
+  WATCH: "#0064FF",
   SELL:  "#ea580c",
   AVOID: "#dc2626",
 };
@@ -103,7 +102,6 @@ function computePositions(
     byPhase.get(phase)!.push(f);
   }
 
-  // sort each group by score desc
   for (const arr of byPhase.values()) {
     arr.sort((a, b) => (cls[b.id]?.totalScore ?? 0) - (cls[a.id]?.totalScore ?? 0));
   }
@@ -152,7 +150,6 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
     [firms, classifications],
   );
 
-  // Group firms by tier for left panel
   const grouped = useMemo(() => {
     const m = new Map<ClassificationTier, Firm[]>();
     TIER_ORDER.forEach((t) => m.set(t, []));
@@ -161,7 +158,6 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
       if (!c) continue;
       m.get(c.tier)!.push(f);
     }
-    // sort each by score desc
     for (const arr of m.values()) {
       arr.sort((a, b) => (classifications[b.id]?.totalScore ?? 0) - (classifications[a.id]?.totalScore ?? 0));
     }
@@ -177,8 +173,8 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4">
-      {/* ── Left panel: firm list ── */}
+    <div className="flex flex-col lg:flex-row gap-5">
+      {/* Left panel: firm list */}
       <div className="w-full lg:w-72 shrink-0 lg:max-h-[600px] overflow-y-auto space-y-3 pr-1">
         {TIER_ORDER.map((tier) => {
           const arr = grouped.get(tier)!;
@@ -187,8 +183,8 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
             <div key={tier}>
               <div className="flex items-center gap-1.5 mb-1.5 sticky top-0 bg-white/90 backdrop-blur-sm py-1 z-10">
                 <span className="text-sm">{TIER_EMOJI[tier]}</span>
-                <span className="text-xs font-bold text-gray-700">{tier}</span>
-                <span className="text-xs text-gray-400 ml-auto">{arr.length}</span>
+                <span className="text-xs font-extrabold text-gray-700">{tier}</span>
+                <span className="text-xs font-bold text-gray-400 ml-auto">{arr.length}</span>
               </div>
               <div className="space-y-0.5">
                 {arr.map((f) => {
@@ -197,8 +193,8 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                   return (
                     <div
                       key={f.id}
-                      className={`flex items-center gap-2 px-2 py-1 rounded-lg text-xs cursor-pointer transition-colors ${
-                        active ? "bg-gray-100 ring-1 ring-emerald-300" : "hover:bg-gray-50"
+                      className={`flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs cursor-pointer transition-all duration-150 ${
+                        active ? "bg-[#E8F0FE] ring-1 ring-[#0064FF]/30" : "hover:bg-gray-50"
                       }`}
                       onMouseEnter={() => setHoveredId(f.id)}
                       onMouseLeave={() => setHoveredId(null)}
@@ -207,10 +203,10 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                         className="w-2 h-2 rounded-full shrink-0"
                         style={{ backgroundColor: TIER_DOT[tier] }}
                       />
-                      <span className="font-bold text-gray-900 w-10 shrink-0">{f.ticker}</span>
+                      <span className="font-extrabold text-gray-900 w-10 shrink-0">{f.ticker}</span>
                       <span className="text-gray-400 truncate flex-1">{f.name}</span>
                       <span
-                        className="shrink-0 px-1.5 py-0.5 rounded text-white font-semibold"
+                        className="shrink-0 px-1.5 py-0.5 rounded-md text-white font-bold"
                         style={{ backgroundColor: SIGNAL_BG[c.signal], fontSize: 9 }}
                       >
                         {c.signal}
@@ -224,7 +220,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
         })}
       </div>
 
-      {/* ── Right panel: TALC curve chart ── */}
+      {/* Right panel: TALC curve chart */}
       <div className="flex-1 min-w-0 relative" onMouseMove={handleMouseMove}>
         <div className="overflow-x-auto">
           <svg
@@ -233,7 +229,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
             className="w-full min-w-[620px]"
             style={{ height: "auto" }}
           >
-            {/* ── Segment bands ── */}
+            {/* Segment bands */}
             {SEGMENTS.map((seg) => (
               <g key={seg.key}>
                 <rect
@@ -243,15 +239,16 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                   height={BASELINE - 340}
                   fill={seg.fill}
                   fillOpacity={seg.opacity}
-                  rx={4}
+                  rx={6}
                 />
                 <text
                   x={(seg.xMin + seg.xMax) / 2}
                   y={BASELINE - 10}
                   textAnchor="middle"
                   fontSize={9}
-                  fill="#6b7280"
+                  fill="#9ca3af"
                   fontFamily="system-ui, sans-serif"
+                  fontWeight="600"
                 >
                   {seg.label}
                 </text>
@@ -259,7 +256,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
             ))}
 
             {/* Chasm zone highlight */}
-            <rect x={265} y={340} width={130} height={BASELINE - 340} fill="#fecaca" fillOpacity={0.18} rx={4} />
+            <rect x={265} y={340} width={130} height={BASELINE - 340} fill="#fecaca" fillOpacity={0.15} rx={6} />
             <line x1={265} y1={340} x2={265} y2={BASELINE} stroke="#fca5a5" strokeWidth={1} strokeDasharray="4,3" />
             <line x1={395} y1={340} x2={395} y2={BASELINE} stroke="#fca5a5" strokeWidth={1} strokeDasharray="4,3" />
 
@@ -277,6 +274,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                   fontStyle="italic"
                   fill="#9ca3af"
                   fontFamily="system-ui, sans-serif"
+                  fontWeight="500"
                 >
                   {a.text}
                 </text>
@@ -289,6 +287,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                     fontStyle="italic"
                     fill="#9ca3af"
                     fontFamily="system-ui, sans-serif"
+                    fontWeight="500"
                   >
                     {a.text2}
                   </text>
@@ -302,9 +301,9 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
               y={400}
               textAnchor="middle"
               fontSize={13}
-              fontWeight="700"
+              fontWeight="800"
               fontStyle="italic"
-              fill="#6b7280"
+              fill="#9ca3af"
               fontFamily="system-ui, sans-serif"
             >
               (The Chasm)
@@ -318,7 +317,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                 y={zone.yBase - 55}
                 textAnchor="middle"
                 fontSize={9}
-                fontWeight="600"
+                fontWeight="700"
                 fill="#9ca3af"
                 fontFamily="system-ui, sans-serif"
                 letterSpacing="0.05em"
@@ -331,11 +330,11 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
             <path
               d={CURVE_PATH}
               fill="none"
-              stroke="#ef4444"
+              stroke="#0064FF"
               strokeWidth={2.5}
               strokeLinecap="round"
               strokeLinejoin="round"
-              opacity={0.7}
+              opacity={0.6}
             />
 
             {/* Firm dots */}
@@ -350,11 +349,9 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
 
               return (
                 <g key={f.id}>
-                  {/* Glow on hover */}
                   {isHovered && (
                     <circle cx={x} cy={y} r={18} fill={color} fillOpacity={0.12} />
                   )}
-                  {/* Dot */}
                   <circle
                     cx={x}
                     cy={y}
@@ -367,13 +364,12 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                     onMouseEnter={() => setHoveredId(f.id)}
                     onMouseLeave={() => setHoveredId(null)}
                   />
-                  {/* Ticker label */}
                   <text
                     x={x}
                     y={y - (isHovered ? 14 : 11)}
                     textAnchor="middle"
                     fontSize={isHovered ? 10 : 7.5}
-                    fontWeight={isHovered ? "700" : "600"}
+                    fontWeight={isHovered ? "800" : "700"}
                     fill={isHovered ? "#111827" : "#6b7280"}
                     fontFamily="system-ui, sans-serif"
                     style={{ pointerEvents: "none", transition: "font-size 0.15s ease" }}
@@ -391,13 +387,13 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                 <polygon points="0 0, 8 3, 0 6" fill="#d1d5db" />
               </marker>
             </defs>
-            <text x={W / 2} y={BASELINE + 30} textAnchor="middle" fontSize={9} fill="#9ca3af" fontFamily="system-ui, sans-serif">
+            <text x={W / 2} y={BASELINE + 30} textAnchor="middle" fontSize={9} fill="#9ca3af" fontFamily="system-ui, sans-serif" fontWeight="600">
               Time / Market Maturity
             </text>
           </svg>
         </div>
 
-        {/* ── Hover tooltip (HTML overlay) ── */}
+        {/* Hover tooltip (HTML overlay) — Toss-style */}
         {hoveredFirm && hoveredCls && (
           <div
             className="fixed z-50 pointer-events-none"
@@ -406,11 +402,11 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
               top: mousePos.y - 20,
             }}
           >
-            <div className="bg-white border border-gray-200 shadow-xl rounded-xl p-3.5 w-60 space-y-2 text-xs pointer-events-auto">
+            <div className="bg-white rounded-2xl p-4 w-64 space-y-2.5 text-xs pointer-events-auto" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.12), 0 0 1px rgba(0,0,0,0.08)" }}>
               {/* Header */}
               <div className="flex items-center justify-between gap-2">
                 <div>
-                  <span className="font-bold text-gray-900 text-sm">{hoveredFirm.ticker}</span>
+                  <span className="font-extrabold text-gray-900 text-sm">{hoveredFirm.ticker}</span>
                   <span className="text-gray-400 ml-1.5">{hoveredFirm.name}</span>
                 </div>
                 <span className="text-base">{TIER_EMOJI[hoveredCls.tier]}</span>
@@ -418,30 +414,30 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
               {/* Tier + Signal */}
               <div className="flex items-center gap-2">
                 <span
-                  className="px-2 py-0.5 rounded text-white font-bold"
+                  className="px-2 py-0.5 rounded-md text-white font-extrabold"
                   style={{ backgroundColor: SIGNAL_BG[hoveredCls.signal], fontSize: 10 }}
                 >
                   {ts(hoveredCls.signal)}
                 </span>
-                <span className="text-gray-500">{hoveredCls.tier}</span>
+                <span className="text-gray-500 font-bold">{hoveredCls.tier}</span>
               </div>
               {/* Metrics */}
               <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-gray-500">
-                <span>Score: <b className="text-gray-800">{hoveredCls.totalScore}</b></span>
-                <span>Phase: <b className="text-gray-800">{hoveredCls.marketPhase}</b></span>
-                <span>Rev: <b className="text-gray-800">+{Math.round(hoveredFirm.revenueGrowthYoY * 100)}%</b></span>
-                <span>NRR: <b className="text-gray-800">{Math.round(hoveredFirm.classificationSignals.netRevenueRetention * 100)}%</b></span>
+                <span>Score: <b className="text-gray-800 font-extrabold">{hoveredCls.totalScore}</b></span>
+                <span>Phase: <b className="text-gray-800 font-bold">{hoveredCls.marketPhase}</b></span>
+                <span>Rev: <b className="text-gray-800 font-extrabold">+{Math.round(hoveredFirm.revenueGrowthYoY * 100)}%</b></span>
+                <span>NRR: <b className="text-gray-800 font-extrabold">{Math.round(hoveredFirm.classificationSignals.netRevenueRetention * 100)}%</b></span>
               </div>
               {/* News */}
               {hoveredNews && (
-                <p className="text-gray-400 leading-snug line-clamp-2 border-t border-gray-100 pt-1.5">
+                <p className="text-gray-400 leading-snug line-clamp-2 border-t border-gray-100 pt-2">
                   {hoveredNews.title}
                 </p>
               )}
               {/* Link */}
               <Link
                 href={`/firms/${hoveredFirm.slug}`}
-                className="block text-emerald-600 hover:underline font-semibold pt-0.5"
+                className="block text-[#0064FF] hover:underline font-bold pt-0.5"
               >
                 View full analysis →
               </Link>

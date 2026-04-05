@@ -20,29 +20,37 @@ export default function NavBar() {
     router.replace(pathname, { locale: next });
   }
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
-    <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">🦍</span>
-          <span className="font-bold text-gray-900 text-lg tracking-tight">{t("brand")}</span>
+    <header className="bg-white sticky top-0 z-50" style={{ boxShadow: "0 1px 0 rgba(0,0,0,0.06)" }}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="text-xl">🦍</span>
+          <span className="font-extrabold text-gray-900 text-[1.05rem] tracking-tight">{t("brand")}</span>
         </Link>
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center gap-0.5">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="px-4 py-2 rounded-md text-sm font-medium transition-colors text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+              className={`px-3.5 py-1.5 rounded-lg text-[0.8125rem] font-bold transition-colors ${
+                isActive(l.href)
+                  ? "text-[#0064FF] bg-[#E8F0FE]"
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+              }`}
             >
               {l.label}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-gray-400 hidden sm:block">{t("tagline")}</span>
           <button
             onClick={switchLocale}
-            className="text-xs font-medium px-3 py-1.5 rounded-md border border-gray-300 text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors"
+            className="text-xs font-bold px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
           >
             {t("switchLang")}
           </button>

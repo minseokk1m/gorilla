@@ -43,22 +43,22 @@ function FirmCard({
 
   return (
     <Link href={`/firms/${firm.slug}`}>
-      <div className="bg-white border border-gray-200 hover:border-emerald-400 hover:shadow-sm transition-all rounded-xl p-3 space-y-1.5 cursor-pointer">
+      <div className="toss-card-interactive !p-3.5 !rounded-xl cursor-pointer space-y-1.5">
         <div className="flex items-start justify-between gap-1">
           <div className="min-w-0">
-            <span className="font-bold text-gray-900 text-sm">{firm.ticker}</span>
+            <span className="font-extrabold text-gray-900 text-sm">{firm.ticker}</span>
             <span className="text-gray-400 text-xs ml-1.5 truncate hidden sm:inline">{firm.name}</span>
           </div>
           <span title={classification.marketPhase} className="text-sm leading-none shrink-0">
             {phase.emoji}
           </span>
         </div>
-        <div className="text-xs text-gray-400 truncate">{firm.sector}</div>
+        <div className="text-xs font-medium text-gray-400 truncate">{firm.sector}</div>
         <div className="flex items-center gap-2">
           <SignalBadge signal={classification.signal} size="sm" />
-          <span className="text-xs text-gray-400">{classification.totalScore}</span>
+          <span className="text-xs font-bold text-gray-400">{classification.totalScore}</span>
         </div>
-        <div className="flex gap-2 text-xs text-gray-500">
+        <div className="flex gap-2 text-xs font-bold text-gray-500">
           <span>+{rev}%</span>
           <span className="text-gray-200">·</span>
           <span>NRR {nrr}%</span>
@@ -85,12 +85,12 @@ function SectionHeader({
   count: number;
 }) {
   return (
-    <div className="flex items-start gap-2 mb-3">
+    <div className="flex items-start gap-2.5 mb-4">
       <span className="text-lg leading-tight">{emoji}</span>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-gray-900 text-sm">{title}</span>
-          <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5 shrink-0">
+          <span className="font-bold text-gray-900 text-sm">{title}</span>
+          <span className="text-xs font-bold text-gray-400 bg-gray-100 rounded-full px-2.5 py-0.5 shrink-0">
             {count}
           </span>
         </div>
@@ -147,21 +147,21 @@ export default async function PipelineView({
     <div className="space-y-8">
       {/* Pipeline header */}
       <div>
-        <h2 className="text-lg font-bold text-gray-900 mb-1">{t("title")}</h2>
-        <p className="text-sm text-gray-400">{t("subtitle")}</p>
+        <h2 className="mb-1">{t("title")}</h2>
+        <p className="text-sm text-gray-400 font-medium">{t("subtitle")}</p>
       </div>
 
-      {/* ── Main pipeline: 3 columns ── */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Main pipeline: 3 columns */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Stage 1: Suspects (In Chasm) */}
-        <div className="border border-red-200 bg-red-50/30 rounded-xl p-4">
+        <div className="toss-card !bg-red-50/40">
           <SectionHeader
             emoji="🕳️"
             title={t("suspectsTitle")}
             desc={t("suspectsDesc")}
             count={suspects.length}
           />
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {suspects.map((f) => (
               <FirmCard
                 key={f.id}
@@ -174,14 +174,14 @@ export default async function PipelineView({
         </div>
 
         {/* Stage 2: Prospects (Potential Gorillas) */}
-        <div className="border border-teal-200 bg-teal-50/30 rounded-xl p-4">
+        <div className="toss-card !bg-teal-50/40">
           <SectionHeader
             emoji="🦍"
             title={t("prospectsTitle")}
             desc={t("prospectsDesc")}
             count={prospects.length}
           />
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {prospects.map((f) => (
               <FirmCard
                 key={f.id}
@@ -194,7 +194,7 @@ export default async function PipelineView({
         </div>
 
         {/* Stage 3: Confirmed Gorillas by TALC phase */}
-        <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-4">
+        <div className="toss-card !bg-emerald-50/40">
           <SectionHeader
             emoji="🦍"
             title={t("gorillasTitle")}
@@ -206,9 +206,9 @@ export default async function PipelineView({
               <div key={phase}>
                 <div className="flex items-center gap-1.5 mb-2">
                   <span className="text-xs">{PHASE_INFO[phase].emoji}</span>
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{phase}</span>
+                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">{phase}</span>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   {gorillasByPhase.get(phase)!.map((f) => (
                     <FirmCard
                       key={f.id}
@@ -227,7 +227,7 @@ export default async function PipelineView({
         </div>
       </div>
 
-      {/* ── Kings watch list ── */}
+      {/* Kings watch list */}
       <div>
         <SectionHeader
           emoji="👑"
@@ -235,7 +235,7 @@ export default async function PipelineView({
           desc={t("watchDesc")}
           count={kings.length}
         />
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
           {kings.map((f) => (
             <FirmCard
               key={f.id}
@@ -247,7 +247,7 @@ export default async function PipelineView({
         </div>
       </div>
 
-      {/* ── Exit candidates ── */}
+      {/* Exit candidates */}
       <div>
         <SectionHeader
           emoji="⚠️"
@@ -255,7 +255,7 @@ export default async function PipelineView({
           desc={t("exitDesc")}
           count={exitFirms.length}
         />
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
           {exitFirms.map((f) => (
             <FirmCard
               key={f.id}

@@ -29,16 +29,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   }
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">{t("title")}</h1>
-        <p className="text-gray-500 max-w-2xl">{t("subtitle")}</p>
+        <h1 className="mb-2">{t("title")}</h1>
+        <p className="text-gray-500 max-w-2xl text-[0.9375rem] leading-relaxed">{t("subtitle")}</p>
       </div>
 
       <MarketSummaryBar classifications={classificationsList} />
 
       {/* TALC Curve with firm list + interactive chart */}
-      <section className="border border-gray-200 rounded-xl p-4 sm:p-6 bg-white">
+      <section className="toss-card">
         <TALCChart
           firms={MOCK_FIRMS}
           classifications={Object.fromEntries(classificationsMap)}
@@ -54,10 +54,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         newsMap={newsMap}
       />
 
-      <div className="text-center py-4">
+      <div className="text-center py-6">
         <Link
           href="/learn"
-          className="inline-flex items-center gap-2 text-emerald-600 hover:underline font-semibold"
+          className="inline-flex items-center gap-2 text-[#0064FF] hover:underline font-bold text-[0.9375rem]"
         >
           {t("learnMore")}
         </Link>

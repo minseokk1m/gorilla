@@ -4,10 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 
 const CLASS_NAMES: Record<Signal, string> = {
-  BUY:   "bg-emerald-100 text-emerald-700 border-emerald-300",
-  WATCH: "bg-blue-100 text-blue-700 border-blue-300",
-  SELL:  "bg-orange-100 text-orange-700 border-orange-300",
-  AVOID: "bg-red-100 text-red-700 border-red-300",
+  BUY:   "bg-emerald-50 text-emerald-700 border-emerald-200",
+  WATCH: "bg-blue-50 text-[#0064FF] border-blue-200",
+  SELL:  "bg-orange-50 text-orange-700 border-orange-200",
+  AVOID: "bg-red-50 text-red-600 border-red-200",
 };
 
 export default function SignalBadge({ signal, size = "default" }: { signal: Signal; size?: "sm" | "default" | "lg" }) {
@@ -15,7 +15,7 @@ export default function SignalBadge({ signal, size = "default" }: { signal: Sign
   const label = t(signal);
   const className = CLASS_NAMES[signal];
   return (
-    <Badge variant="outline" className={`${className} font-semibold ${size === "lg" ? "text-sm px-3 py-1" : size === "sm" ? "text-xs" : ""}`}>
+    <Badge variant="outline" className={`${className} font-bold ${size === "lg" ? "text-sm px-3 py-1 rounded-xl" : size === "sm" ? "text-xs rounded-lg" : "rounded-lg"}`}>
       {label}
     </Badge>
   );

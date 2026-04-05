@@ -23,8 +23,8 @@ export default async function LocaleLayout({
       <TooltipProvider>
         <NavBar />
         <div className="flex-1">{children}</div>
-        <footer className="border-t border-zinc-800 py-6 mt-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-zinc-600">
+        <footer className="py-8 mt-12">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 text-center text-xs text-gray-400 leading-relaxed">
             {t("disclaimer")}
           </div>
         </footer>

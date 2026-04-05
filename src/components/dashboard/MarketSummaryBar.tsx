@@ -6,18 +6,18 @@ import { useTranslations } from "next-intl";
 const TIER_COLORS: Record<string, string> = {
   "Gorilla": "text-emerald-600",
   "Potential Gorilla": "text-teal-600",
-  "King": "text-blue-600",
+  "King": "text-[#0064FF]",
   "Chimpanzee": "text-yellow-600",
   "Monkey": "text-orange-600",
-  "In Chasm": "text-red-600",
+  "In Chasm": "text-red-500",
 };
 
 const PHASE_COLOR: Record<MarketPhase, string> = {
-  "Tornado": "bg-emerald-100 text-emerald-700 border-emerald-300",
-  "Bowling Alley": "bg-teal-100 text-teal-700 border-teal-300",
-  "Main Street": "bg-blue-100 text-blue-700 border-blue-300",
-  "Early Market": "bg-yellow-100 text-yellow-700 border-yellow-300",
-  "End of Life": "bg-red-100 text-red-700 border-red-300",
+  "Tornado": "bg-emerald-50 text-emerald-700",
+  "Bowling Alley": "bg-teal-50 text-teal-700",
+  "Main Street": "bg-blue-50 text-[#0064FF]",
+  "Early Market": "bg-yellow-50 text-yellow-700",
+  "End of Life": "bg-red-50 text-red-600",
 };
 
 export default function MarketSummaryBar({ classifications }: { classifications: ClassificationResult[] }) {
@@ -38,34 +38,34 @@ export default function MarketSummaryBar({ classifications }: { classifications:
   const dominantPhase = Object.entries(phaseCounts).sort((a, b) => b[1] - a[1])[0][0] as MarketPhase;
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 flex flex-wrap items-center gap-6">
+    <div className="toss-card flex flex-wrap items-center gap-6">
       <div>
-        <div className="text-xs text-gray-400 mb-1">{t("marketPhase")}</div>
-        <span className={`text-xs font-semibold px-2 py-1 rounded border ${PHASE_COLOR[dominantPhase]}`}>
+        <div className="text-xs font-bold text-gray-400 mb-1.5 uppercase tracking-wide">{t("marketPhase")}</div>
+        <span className={`toss-pill ${PHASE_COLOR[dominantPhase]}`}>
           {dominantPhase}
         </span>
       </div>
       <div className="h-8 w-px bg-gray-200 hidden sm:block" />
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex gap-5 flex-wrap">
         {Object.entries(tierCounts).sort((a, b) => b[1] - a[1]).map(([tier, count]) => (
           <div key={tier} className="text-center">
-            <div className={`text-lg font-bold ${TIER_COLORS[tier] ?? "text-gray-900"}`}>{count}</div>
-            <div className="text-xs text-gray-400">{tier}</div>
+            <div className={`text-xl font-extrabold ${TIER_COLORS[tier] ?? "text-gray-900"}`}>{count}</div>
+            <div className="text-xs font-bold text-gray-400">{tier}</div>
           </div>
         ))}
       </div>
       <div className="h-8 w-px bg-gray-200 hidden sm:block" />
       <div className="flex gap-6">
         <div className="text-center">
-          <div className="text-lg font-bold text-emerald-600">{buys}</div>
-          <div className="text-xs text-gray-400">{t("buySignals")}</div>
+          <div className="text-xl font-extrabold text-emerald-600">{buys}</div>
+          <div className="text-xs font-bold text-gray-400">{t("buySignals")}</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold text-red-600">{avoids}</div>
-          <div className="text-xs text-gray-400">{t("sellAvoid")}</div>
+          <div className="text-xl font-extrabold text-red-500">{avoids}</div>
+          <div className="text-xs font-bold text-gray-400">{t("sellAvoid")}</div>
         </div>
       </div>
-      <div className="ml-auto text-xs text-gray-400 hidden lg:block">
+      <div className="ml-auto text-xs text-gray-400 hidden lg:block font-medium">
         {t("footer")}
       </div>
     </div>
