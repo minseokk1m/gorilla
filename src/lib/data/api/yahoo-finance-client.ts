@@ -86,6 +86,43 @@ export async function fetchHistorical(
   }
 }
 
+export interface YFNewsItem {
+  uuid: string;
+  title: string;
+  publisher: string;
+  link: string;
+  publishedAt: string; // ISO string
+  relatedTickers: string[];
+}
+
+export async function fetchNews(
+  ticker: string,
+): Promise<YFNewsItem[] | null> {
+  try {
+    const result = await yf.search(ticker, { newsCount: 8 });
+    if (!result?.news || result.news.length === 0) return null;
+
+    return result.news
+      .filter((n) => n.type === "STORY")
+      .map((n) => ({
+        uuid: n.uuid ?? crypto.randomUUID(),
+        title: n.title ?? "",
+        publisher: n.publisher ?? "Yahoo Finance",
+        link: n.link ?? "#",
+        publishedAt:
+          n.providerPublishTime instanceof Date
+            ? n.providerPublishTime.toISOString()
+            : typeof n.providerPublishTime === "number"
+              ? new Date(n.providerPublishTime * 1000).toISOString()
+              : new Date().toISOString(),
+        relatedTickers: (n.relatedTickers ?? []) as string[],
+      }));
+  } catch (e) {
+    console.warn(`[YF] news failed for ${ticker}:`, (e as Error).message);
+    return null;
+  }
+}
+
 export async function fetchFundamentals(
   ticker: string,
 ): Promise<YFFundamentals | null> {

@@ -3,14 +3,15 @@ import type { Firm } from "@/types/firm";
 import { computeRSI } from "@/lib/indicators/rsi";
 import { TTLCache } from "./cache";
 import { CACHE_TTL, MAX_CONCURRENCY, BATCH_DELAY_MS, DATA_SOURCE } from "./config";
-import { fetchQuote, fetchHistorical, fetchFundamentals } from "./yahoo-finance-client";
-import type { YFQuote, YFFundamentals } from "./yahoo-finance-client";
+import { fetchQuote, fetchHistorical, fetchFundamentals, fetchNews } from "./yahoo-finance-client";
+import type { YFQuote, YFFundamentals, YFNewsItem } from "./yahoo-finance-client";
 
 // ── Caches ──────────────────────────────────────────────
 const quoteCache = new TTLCache<YFQuote>(CACHE_TTL.quote);
 const historicalCache = new TTLCache<OHLCVCandle[]>(CACHE_TTL.historical);
 const fundamentalsCache = new TTLCache<YFFundamentals>(CACHE_TTL.fundamentals);
 const priceHistoryCache = new TTLCache<PriceHistory>(CACHE_TTL.historical);
+const newsCache = new TTLCache<YFNewsItem[]>(CACHE_TTL.historical); // 1 hour
 
 // ── Concurrency limiter ─────────────────────────────────
 async function withConcurrency<T>(
@@ -112,6 +113,21 @@ export async function getLivePriceHistory(
 
   priceHistoryCache.set(firmId, priceHistory);
   return priceHistory;
+}
+
+// ── Public: get live news (cached) ──────────────────────
+export async function getLiveNews(ticker: string): Promise<YFNewsItem[] | null> {
+  if (DATA_SOURCE === "mock") return null;
+
+  const cached = newsCache.get(ticker);
+  if (cached) return cached;
+
+  const news = await fetchNews(ticker);
+  if (news && news.length > 0) {
+    newsCache.set(ticker, news);
+    return news;
+  }
+  return null;
 }
 
 // ── Public: overlay live market data onto a firm ────────
