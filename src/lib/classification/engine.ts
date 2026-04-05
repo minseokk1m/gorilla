@@ -10,12 +10,49 @@ type Locale = keyof typeof MESSAGES;
 
 const aiAdapter: AIClassificationAdapter = new StubAIAdapter();
 
-function resolveTier(totalScore: number, marketShare: number, architectureControl: number, switchingCosts: number): ClassificationTier {
-  if (totalScore >= 80 && marketShare >= 70 && architectureControl >= 80) return "Gorilla";
-  if (totalScore >= 65 && marketShare >= 40 && architectureControl >= 60) return "Potential Gorilla";
-  if (totalScore >= 55 && switchingCosts >= 60) return "King";
-  if (totalScore >= 40) return "Chimpanzee";
-  if (totalScore >= 25) return "Monkey";
+/**
+ * Tier resolution aligned with expert gorilla criteria:
+ * - Gorilla: dominant architecture + high switching costs + high market share + network effects
+ * - Potential Gorilla: strong architecture play, still consolidating
+ * - King: market leader without architecture lock-in
+ * - Chimpanzee: competed for gorilla but lost
+ * - Monkey: commodity player, no architecture
+ * - In Chasm: pre-mainstream
+ */
+function resolveTier(
+  totalScore: number,
+  scores: { marketShare: number; architectureControl: number; switchingCosts: number; networkEffects: number; ecosystemControl: number },
+): ClassificationTier {
+  // Gorilla: strong across all core dimensions
+  if (
+    totalScore >= 75 &&
+    scores.architectureControl >= 80 &&
+    scores.switchingCosts >= 70 &&
+    scores.marketShare >= 60
+  ) {
+    return "Gorilla";
+  }
+
+  // Potential Gorilla: strong architecture play, building dominance
+  if (
+    totalScore >= 60 &&
+    scores.architectureControl >= 60 &&
+    (scores.switchingCosts >= 50 || scores.networkEffects >= 50)
+  ) {
+    return "Potential Gorilla";
+  }
+
+  // King: market leader but without full architecture lock-in
+  if (totalScore >= 50 && scores.marketShare >= 40 && scores.switchingCosts >= 40) {
+    return "King";
+  }
+
+  // Chimpanzee: has some architecture but lost the standard war
+  if (totalScore >= 35) return "Chimpanzee";
+
+  // Monkey: commodity, no architecture
+  if (totalScore >= 20) return "Monkey";
+
   return "In Chasm";
 }
 
@@ -39,7 +76,15 @@ function resolveMarketPhase(firm: Firm, tier: ClassificationTier): MarketPhase {
   return "Main Street";
 }
 
-function buildNarrative(firm: Firm, tier: ClassificationTier, totalScore: number, marketShare: number, architectureControl: number, switchingCosts: number, locale: Locale = "en"): string {
+function buildNarrative(
+  firm: Firm,
+  tier: ClassificationTier,
+  totalScore: number,
+  marketShare: number,
+  architectureControl: number,
+  switchingCosts: number,
+  locale: Locale = "en",
+): string {
   const sharePercent = Math.round(firm.classificationSignals.estimatedNicheMarketShare * 100);
   const growthPercent = Math.round(firm.revenueGrowthYoY * 100);
   const nrr = Math.round(firm.classificationSignals.netRevenueRetention * 100);
@@ -68,7 +113,7 @@ export async function classifyFirm(firm: Firm, locale: Locale = "en"): Promise<C
   }
 
   const totalScore = computeTotalScore(finalScores);
-  const tier = resolveTier(totalScore, finalScores.marketShare, finalScores.architectureControl, finalScores.switchingCosts);
+  const tier = resolveTier(totalScore, finalScores);
   const signal = resolveSignal(tier);
   const marketPhase = resolveMarketPhase(firm, tier);
 

@@ -6,6 +6,8 @@ const LABELS: Record<keyof ClassificationScores, string> = {
   marketShare: "Mkt Share",
   switchingCosts: "Switching",
   architectureControl: "Architecture",
+  networkEffects: "Network FX",
+  ecosystemControl: "Ecosystem",
   revenueGrowth: "Growth",
   marketConcentration: "Concentration",
 };

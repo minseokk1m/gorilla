@@ -8,7 +8,16 @@ export type Sector =
   | "Data & Analytics"
   | "Consumer Tech"
   | "Networking"
-  | "Fintech";
+  | "Fintech"
+  | "Digital Advertising"
+  | "Social Media"
+  | "E-Commerce"
+  | "Semiconductor Equipment"
+  | "Foundry"
+  | "Chip Architecture/IP";
+
+/** Gorilla Game Principle 1 & 2: category type determines buy timing */
+export type CategoryType = "application" | "enabling";
 
 export interface ClassificationSignals {
   estimatedNicheMarketShare: number;   // 0–1
@@ -17,6 +26,8 @@ export interface ClassificationSignals {
   isDefactoStandard: boolean;
   competitorCount: number;
   hasProprietaryProtocol: boolean;
+  /** Network effects / increasing returns strength (0–1) */
+  networkEffects: number;
 }
 
 export interface Firm {
@@ -25,6 +36,7 @@ export interface Firm {
   name: string;
   ticker: string;
   sector: Sector;
+  categoryType: CategoryType;
   marketCapUSD: number;           // billions
   revenueGrowthYoY: number;       // decimal e.g. 0.32
   grossMargin: number;            // decimal

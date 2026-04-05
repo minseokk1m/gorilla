@@ -19,6 +19,8 @@ export interface ClassificationScores {
   marketShare: number;          // 0–100
   switchingCosts: number;       // 0–100
   architectureControl: number;  // 0–100
+  networkEffects: number;       // 0–100 (NEW: increasing returns / network effects)
+  ecosystemControl: number;     // 0–100 (NEW: ecosystem dominance)
   revenueGrowth: number;        // 0–100
   marketConcentration: number;  // 0–100
 }

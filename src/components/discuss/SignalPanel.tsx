@@ -16,6 +16,7 @@ const SIGNAL_LABELS: Record<keyof ClassificationSignals, { label: string; format
   isDefactoStandard: { label: "사실상 표준 여부", format: (v) => v ? "Yes" : "No" },
   competitorCount: { label: "경쟁자 수", format: (v) => String(v) },
   hasProprietaryProtocol: { label: "독점 프로토콜", format: (v) => v ? "Yes" : "No" },
+  networkEffects: { label: "네트워크 효과/수확체증", format: (v) => `${Math.round(Number(v) * 100)}%` },
 };
 
 export default function SignalPanel({ firmId, signals, onPropose }: Props) {

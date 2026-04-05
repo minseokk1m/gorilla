@@ -62,14 +62,18 @@
       "switchingCosts": "전환 비용",
       "architectureControl": "아키텍처 지배력",
       "revenueGrowth": "매출 성장률",
-      "marketConcentration": "시장 집중도"
+      "marketConcentration": "시장 집중도",
+      "networkEffects": "네트워크 효과",
+      "ecosystemControl": "생태계 지배력"
     },
     "scoreDescriptions": {
       "marketShare": "해당 기업의 특정 기술 틈새시장 점유율 추정치",
       "switchingCosts": "고객이 이탈하기 얼마나 어려운지 (NRR, 독점 프로토콜)",
       "architectureControl": "경쟁사가 따라야 할 표준을 이 기업이 정의하는지 여부",
       "revenueGrowth": "전년 대비 매출 성장률",
-      "marketConcentration": "시장이 이 기업을 중심으로 통합되고 있는지 여부"
+      "marketConcentration": "시장이 이 기업을 중심으로 통합되고 있는지 여부",
+      "networkEffects": "사용자/개발자가 늘수록 플랫폼 가치가 기하급수적으로 증가하는 선순환 구조의 강도",
+      "ecosystemControl": "파트너·개발자·고객이 이 기업의 플랫폼 위에서 비즈니스를 구축하는 정도"
     }
   },
   "learn": {

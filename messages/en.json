@@ -62,14 +62,18 @@
       "switchingCosts": "Switching Costs",
       "architectureControl": "Architecture Control",
       "revenueGrowth": "Revenue Growth",
-      "marketConcentration": "Market Concentration"
+      "marketConcentration": "Market Concentration",
+      "networkEffects": "Network Effects",
+      "ecosystemControl": "Ecosystem Control"
     },
     "scoreDescriptions": {
       "marketShare": "Estimated share of the firm's specific technology niche",
       "switchingCosts": "How hard it is for customers to leave (NRR, proprietary protocols)",
       "architectureControl": "Whether the firm defines the standard others must conform to",
       "revenueGrowth": "Year-over-year revenue growth rate",
-      "marketConcentration": "Whether the market is consolidating around this firm"
+      "marketConcentration": "Whether the market is consolidating around this firm",
+      "networkEffects": "Strength of increasing returns — more users/developers create exponentially more platform value",
+      "ecosystemControl": "Degree to which partners, developers, and customers build their business on this firm's platform"
     }
   },
   "learn": {
