@@ -77,8 +77,92 @@
     "talcSubtitle": "Every disruptive technology market follows this progression. Investment opportunity is concentrated in the Tornado.",
     "tiersTitle": "Company Classification Tiers",
     "tiersSubtitle": "Moore identifies distinct competitive roles in every tornado market. Gorillas win the long game.",
-    "rulesTitle": "The Gorilla Game Investment Rules",
-    "booksTitle": "The Four Books",
+    "rulesTitle": "The 10 Gorilla Game Investment Principles",
+    "rulesSubtitle": "The core investment operating principles defined in Geoffrey Moore's The Gorilla Game. Presented with both English and Korean translations to preserve nuance.",
+    "rule1Title": "Application software: buy in the Bowling Alley",
+    "rule1Desc": "If the category is application software, begin buying in the Bowling Alley stage — where niche-by-niche adoption signals a gorilla candidate is forming.",
+    "rule1En": "If the category is application software, begin buying in the bowling alley.",
+    "rule2Title": "Enabling technology: buy after the Tornado forms",
+    "rule2Desc": "If the category is enabling hardware or enabling software, wait until the tornado has clearly formed before buying. These categories need mass-market validation.",
+    "rule2En": "If the category is enabling hardware or software, begin buying after the tornado has formed.",
+    "rule3Title": "Buy a basket of gorilla candidates",
+    "rule3Desc": "Buy all gorilla candidates in a basket — usually at least 2, sometimes 3, and normally no more than 4 companies. This hedges against picking the wrong winner.",
+    "rule3En": "Buy a basket comprising all the gorilla candidates — usually at least two, sometimes three, and normally no more than four companies.",
+    "rule4Title": "Hold gorilla stocks for the long term",
+    "rule4Desc": "Hold gorilla stocks indefinitely. Sell only when a proven substitution threat emerges — a discontinuous innovation creating an entirely new market.",
+    "rule4En": "Hold gorilla stocks for the long term. Sell only on proven substitution threat.",
+    "rule5Title": "Only hold application software chimps",
+    "rule5Desc": "Hold application software chimp stocks as long as they show potential for further market expansion. Never hold enabling-technology chimps — they have no path to recovery.",
+    "rule5En": "Hold application software chimp stocks as long as they exhibit potential for further market expansion. Do not hold enabling-technology chimps.",
+    "rule6Title": "Hold kings and princes lightly",
+    "rule6Desc": "Hold kings and princes with light positions, selling individual stocks on marketplace stumbles and the entire category upon deceleration of hypergrowth.",
+    "rule6En": "Hold kings and princes lightly, selling individual stocks on a marketplace stumble and the category upon deceleration of hypergrowth.",
+    "rule7Title": "Sell immediately if no gorilla potential",
+    "rule7Desc": "Once it becomes clear that a company will never become a gorilla, sell its stock immediately. Don't hold hoping for a turnaround.",
+    "rule7En": "Once it becomes clear to you that a company will never become a gorilla, sell its stock.",
+    "rule8Title": "Reinvest non-gorilla money immediately",
+    "rule8Desc": "Money from sold non-gorilla stocks should immediately be reinvested into remaining gorilla candidates. Capital should always be working toward gorilla exposure.",
+    "rule8En": "Money should immediately be taken out of non-gorilla stocks and be reinvested in the remaining gorilla candidates.",
+    "rule9Title": "In a gorilla collision, hold until outcome",
+    "rule9Desc": "When two gorilla candidates collide head-on, hold your positions in both until there is a definitive outcome. Do not try to pick the winner prematurely.",
+    "rule9En": "In a gorilla collision, hold your gorilla candidates until there has been a definitive outcome.",
+    "rule10Title": "Learn to ignore most news",
+    "rule10Desc": "Most news has nothing to do with the gorilla game. Ignore it. Use AI to track pattern changes only from key influencers, specialist publications, and expert analysts.",
+    "rule10En": "Most news has nothing to do with the gorilla game. Learn to ignore it.",
+    "funnelTitle": "Gorilla Investment Funnel",
+    "funnelSubtitle": "The CIA-GI model adapts Miller & Heiman's Sales Funnel to the Gorilla Game investment framework. A strategic tool for deciding where to focus time and resources at each stage.",
+    "funnel": {
+      "prospecting": {
+        "title": "Habitat Scouting (Prospecting)",
+        "desc": "Scan technology categories and markets where gorillas may emerge. Identify markets in the Bowling Alley to early Tornado stages of the TALC.",
+        "action": "Hype Cycle + TALC phase analysis"
+      },
+      "qualifying": {
+        "title": "Basket Formation (Qualifying)",
+        "desc": "Select 2-4 gorilla candidates within the identified category. Verify architecture control, switching costs, and ecosystem partnerships.",
+        "action": "Gorilla Qualification Sheet"
+      },
+      "inTheFunnel": {
+        "title": "Tracking & Observation (In the Funnel)",
+        "desc": "Track role changes across basket companies: Gorilla/Chimp/Monkey/King. Use AI to monitor influencers, specialist publications, and analyst communications.",
+        "action": "CI & AI-driven signal tracking"
+      },
+      "bestFew": {
+        "title": "Gorilla Concentration (Best Few)",
+        "desc": "When the winner is confirmed, sell non-gorilla stocks and concentrate into the confirmed gorilla. Cross-reference TALC phase and Hype Cycle for timing.",
+        "action": "Position concentration + long-term hold"
+      }
+    },
+    "qualSheetTitle": "Gorilla Qualification Sheet",
+    "qualSheetSubtitle": "A living document adapting Miller & Heiman's Blue Sheet methodology to investment analysis. Restructured for investment decision stages rather than sales stages.",
+    "qualSheet": {
+      "objective": {
+        "title": "Investment Objective",
+        "desc": "Define your investment goal in one sentence: which company, how much, at what timing, under what conditions."
+      },
+      "buyingInfluences": {
+        "title": "Influence Analysis (Buying Influences)",
+        "desc": "Identify 4 forces determining market standards: Economic (budget authority), User (actual users), Technical (spec reviewers), Coach (internal intelligence sources)."
+      },
+      "responseModes": {
+        "title": "Response Modes",
+        "desc": "Market participant states: Growth (embracing change), Trouble (urgent change needed), Even Keel (resisting change), Overconfident (believes nothing needs to change)."
+      },
+      "redFlags": {
+        "title": "Red Flags & Strengths",
+        "desc": "Risk factors that could kill the investment (unconfirmed data, substitution threats) and competitive advantages (architecture lock-in, NRR metrics)."
+      },
+      "winResults": {
+        "title": "Win-Results",
+        "desc": "Beyond investment returns, define the gorilla company's win conditions: standard establishment, ecosystem expansion, compounding switching costs."
+      },
+      "actionPlan": {
+        "title": "Action Plan",
+        "desc": "Concrete 'who, when, what' plans to eliminate red flags and leverage strengths. Includes strategy revision triggers when TALC phase changes."
+      }
+    },
+    "qualSheetNote": "The Gorilla Qualification Sheet is not a one-time document — it must be updated with new information as market phases progress, revising strategy as a 'living document.' Collective Intelligence and Active Participation from all members is essential.",
+    "booksTitle": "Five Books + CIA-GI Adaptation",
     "viewAllFirms": "View All 50 Firms →",
     "source": "Source: {book}",
     "timeAxis": "Time / Market Maturity →",

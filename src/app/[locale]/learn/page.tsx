@@ -48,6 +48,47 @@ const BOOKS = [
     keyIdea: "How enterprise companies win complex B2B deals by identifying all buying influences — Economic Buyer, User Buyers, Technical Buyers, and a Coach. Gorillas dominate not just through technology but through superior coverage of every decision-maker in the customer organization.",
     concepts: ["Complex Sale", "Buying Influences", "Economic Buyer", "Response Modes", "Win-Results", "Sales Funnel", "Red Flags"],
   },
+  {
+    title: "CIA-GI Strategic Selling Adaptation",
+    subtitle: "2026 Draft",
+    author: "CIA-GI Working Group",
+    keyIdea: "Adapts Miller & Heiman's Sales Funnel and Blue Sheet methodology to the Gorilla Game investment framework. Transforms the 4-stage sales pipeline into an investment qualification process: from habitat scouting, through basket formation, to gorilla tracking and concentrated positioning. Introduces the Gorilla Qualification Sheet — a living document that maps TALC phase, Hype Cycle position, competitive dynamics, and the 10 Gorilla Game Principles into a single strategic view. Leverages Collective Intelligence and AI-driven signal tracking to minimize manual overhead.",
+    concepts: ["Gorilla Investment Funnel", "Gorilla Qualification Sheet", "Blue Sheet Adaptation", "Hype Cycle Integration", "10 Investment Principles", "Collective Intelligence", "AI Signal Tracking"],
+  },
+];
+
+/* ── Gorilla Investment Funnel (CIA-GI adaptation of Sales Funnel) ── */
+const FUNNEL_STAGES = [
+  {
+    key: "prospecting",
+    emoji: "🔭",
+    color: "bg-gray-50",
+  },
+  {
+    key: "qualifying",
+    emoji: "🧺",
+    color: "bg-yellow-50/60",
+  },
+  {
+    key: "inTheFunnel",
+    emoji: "🔍",
+    color: "bg-blue-50/60",
+  },
+  {
+    key: "bestFew",
+    emoji: "🎯",
+    color: "bg-emerald-50/60",
+  },
+];
+
+/* ── Gorilla Qualification Sheet (Blue Sheet adaptation) ── */
+const QUAL_SHEET_ITEMS = [
+  { key: "objective", emoji: "🎯" },
+  { key: "buyingInfluences", emoji: "👥" },
+  { key: "responseModes", emoji: "📊" },
+  { key: "redFlags", emoji: "🚩" },
+  { key: "winResults", emoji: "🏆" },
+  { key: "actionPlan", emoji: "📋" },
 ];
 
 export default async function LearnPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -110,22 +151,67 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* Core investment rules */}
+      {/* ══════ Gorilla Game 10 Investment Principles ══════ */}
       <section>
-        <h2 className="mb-4">{t("rulesTitle")}</h2>
+        <h2 className="mb-2">{t("rulesTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("rulesSubtitle")}</p>
         <div className="space-y-3">
-          {[
-            ["Buy a basket, keep the gorilla", "During the bowling alley phase, buy all viable gorilla candidates in a category. As the tornado forms and a winner emerges, consolidate into the gorilla. Sell the chimpanzees."],
-            ["Gorilla switching costs compound forever", "Once customers are locked into a gorilla's architecture, switching requires rebuilding workflows, retraining staff, and migrating data — an exponentially expensive proposition that grows with every passing year."],
-            ["The tornado is the buy window", "The best time to buy is when you can identify that a market is in the tornado — before the gorilla status is obvious to mainstream investors. After the gorilla is obvious, most of the return is already priced in."],
-            ["Never fight the gorilla", "Chimpanzees who directly attack the gorilla force the market to rally behind the incumbent. IBM's OS/2 vs. Windows is the archetypal example. Find a niche instead."],
-            ["Sell when the gorilla dies", "Gorillas die when a discontinuous innovation creates a new market with its own tornado. The old gorilla becomes a chimp in the new market. Exit when you see the next paradigm forming."],
-          ].map(([rule, explanation]) => (
-            <div key={rule as string} className="toss-card">
-              <div className="font-bold text-gray-900 mb-1.5">{rule}</div>
-              <p className="text-gray-500 text-sm leading-relaxed">{explanation}</p>
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            <div key={n} className="toss-card">
+              <div className="flex items-start gap-3">
+                <span className="shrink-0 w-7 h-7 rounded-full bg-[#0064FF] text-white text-xs font-extrabold flex items-center justify-center mt-0.5">
+                  {n}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="font-bold text-gray-900 mb-1">{t(`rule${n}Title`)}</div>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-2">{t(`rule${n}Desc`)}</p>
+                  <p className="text-xs text-gray-400 font-medium italic leading-relaxed">{t(`rule${n}En`)}</p>
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ══════ Gorilla Investment Funnel ══════ */}
+      <section>
+        <h2 className="mb-2">{t("funnelTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("funnelSubtitle")}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {FUNNEL_STAGES.map((stage, i) => (
+            <div key={stage.key} className={`toss-card ${stage.color} relative`}>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl">{stage.emoji}</span>
+                <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">{t("stage", { n: i + 1 })}</span>
+              </div>
+              <div className="font-bold text-gray-900 text-sm mb-2">{t(`funnel.${stage.key}.title`)}</div>
+              <p className="text-gray-500 text-xs leading-relaxed mb-2">{t(`funnel.${stage.key}.desc`)}</p>
+              <p className="text-xs font-bold text-[#0064FF]">{t(`funnel.${stage.key}.action`)}</p>
+              {i < FUNNEL_STAGES.length - 1 && (
+                <div className="hidden lg:flex absolute -right-3 top-1/2 -translate-y-1/2 text-gray-300 text-lg z-10">→</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════ Gorilla Qualification Sheet ══════ */}
+      <section>
+        <h2 className="mb-2">{t("qualSheetTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("qualSheetSubtitle")}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {QUAL_SHEET_ITEMS.map((item) => (
+            <div key={item.key} className="toss-card">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xl">{item.emoji}</span>
+                <div className="font-bold text-gray-900 text-sm">{t(`qualSheet.${item.key}.title`)}</div>
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">{t(`qualSheet.${item.key}.desc`)}</p>
+            </div>
+          ))}
+        </div>
+        <div className="toss-card !bg-[#E8F0FE] mt-4">
+          <p className="text-sm text-[#0064FF] font-bold leading-relaxed">{t("qualSheetNote")}</p>
         </div>
       </section>
 
@@ -134,7 +220,10 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         <h2 className="mb-4">{t("booksTitle")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {BOOKS.map((b) => (
-            <div key={b.title} className="toss-card">
+            <div key={b.title} className={`toss-card ${b.title.startsWith("CIA-GI") ? "!bg-[#E8F0FE]/40 ring-1 ring-[#0064FF]/20" : ""}`}>
+              {b.title.startsWith("CIA-GI") && (
+                <span className="toss-pill bg-[#0064FF] text-white mb-3">NEW</span>
+              )}
               <div className="text-xs font-bold text-gray-400 mb-1">{b.subtitle}</div>
               <h3 className="text-lg mb-1">{b.title}</h3>
               <div className="text-xs font-bold text-gray-400 mb-3">{b.author}</div>

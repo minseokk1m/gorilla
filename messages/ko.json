@@ -77,8 +77,92 @@
     "talcSubtitle": "모든 파괴적 기술 시장은 이 과정을 따릅니다. 투자 기회는 회오리바람 단계에 집중됩니다.",
     "tiersTitle": "기업 분류 등급",
     "tiersSubtitle": "무어는 모든 회오리바람 시장에서 뚜렷한 경쟁 역할을 구분합니다. 고릴라가 장기전에서 승리합니다.",
-    "rulesTitle": "고릴라 게임 투자 원칙",
-    "booksTitle": "4권의 책",
+    "rulesTitle": "고릴라 게임 투자 운영 10대 원칙",
+    "rulesSubtitle": "제프리 무어의 『고릴라 게임』에서 정의한 핵심 투자 원칙입니다. 영한 병기로 원문의 뉘앙스를 보존합니다.",
+    "rule1Title": "응용소프트웨어는 볼링앨리에서 매수 시작",
+    "rule1Desc": "카테고리가 응용소프트웨어(Application Software)라면 볼링앨리(Bowling Alley) 단계에서 매수를 시작하라.",
+    "rule1En": "If the category is application software, begin buying in the bowling alley.",
+    "rule2Title": "지원 기술은 토네이도 형성 후 매수",
+    "rule2Desc": "카테고리가 지원 하드웨어(Enabling Hardware) 혹은 지원 소프트웨어(Enabling Software)라면, 토네이도(돌풍) 형성이 된 단계에 매수를 시작하라.",
+    "rule2En": "If the category is enabling hardware or software, begin buying after the tornado has formed.",
+    "rule3Title": "고릴라 후보를 바구니로 매수",
+    "rule3Desc": "모든 고릴라 후보(Gorilla Candidate)를 바구니(basket) 형태로 사들여라. 고릴라 후보는 보통 2~3개, 통상 4개를 넘지 않아야 한다.",
+    "rule3En": "Buy a basket comprising all the gorilla candidates — usually at least two, sometimes three, and normally no more than four companies.",
+    "rule4Title": "고릴라 주식은 장기 보유",
+    "rule4Desc": "고릴라 주식을 장기간 보유하라. 대체 위협(Substitution Threat)이 입증되었을 때에만 매도하라.",
+    "rule4En": "Hold gorilla stocks for the long term. Sell only on proven substitution threat.",
+    "rule5Title": "응용소프트웨어 침팬지만 보유 가능",
+    "rule5Desc": "시장 확대 잠재력(Market Expansion Potential)을 보이는 한도 내에서 응용소프트웨어 침팬지 주식을 보유하라. 단, 지원 기술(Enabling Technology) 침팬지는 보유하지 말라.",
+    "rule5En": "Hold application software chimp stocks as long as they exhibit potential for further market expansion. Do not hold enabling-technology chimps.",
+    "rule6Title": "킹과 왕자는 가볍게 보유",
+    "rule6Desc": "킹(King)과 왕자(Prince)를 가볍게 보유하고 있다가, 시장 하락세에서는 개별 종목을, 초고성장 감속 시에는 카테고리 전체를 매도하라.",
+    "rule6En": "Hold kings and princes lightly, selling individual stocks on a marketplace stumble and the category upon deceleration of hypergrowth.",
+    "rule7Title": "고릴라 가능성 없으면 즉시 매도",
+    "rule7Desc": "어떤 종목이 고릴라가 될 가능성이 전혀 없다고 판단되면 즉각 그 종목을 매도하라.",
+    "rule7En": "Once it becomes clear to you that a company will never become a gorilla, sell its stock.",
+    "rule8Title": "비고릴라 자금은 즉시 재투자",
+    "rule8Desc": "비고릴라 주식에서 빼내온 돈은 즉각 남아 있는 고릴라 후보들에게 재투자되어야 한다.",
+    "rule8En": "Money should immediately be taken out of non-gorilla stocks and be reinvested in the remaining gorilla candidates.",
+    "rule9Title": "고릴라 충돌 시 결과를 기다려라",
+    "rule9Desc": "고릴라 충돌(Gorilla Collision)의 경우, 결정적 결과가 나올 때까지 고릴라 후보를 보유하라.",
+    "rule9En": "In a gorilla collision, hold your gorilla candidates until there has been a definitive outcome.",
+    "rule10Title": "대부분의 뉴스를 무시하라",
+    "rule10Desc": "대부분의 뉴스는 고릴라 게임과 상관이 없다. 그 뉴스를 무시하도록 하라. AI를 활용하여 영향력 행사자와 전문 분석가의 패턴 변화만을 추적하라.",
+    "rule10En": "Most news has nothing to do with the gorilla game. Learn to ignore it.",
+    "funnelTitle": "고릴라 투자 깔때기",
+    "funnelSubtitle": "밀러 & 하이먼의 세일즈 깔때기(Sales Funnel)를 고릴라 게임 투자 프레임워크에 적용한 CIA-GI 모델입니다. 각 단계에서 시간과 자원을 어디에 집중할지 결정하는 전략적 도구입니다.",
+    "funnel": {
+      "prospecting": {
+        "title": "서식지 탐색 (Prospecting)",
+        "desc": "고릴라가 출현할 가능성이 있는 기술 카테고리와 시장을 스캔합니다. TALC상 볼링앨리 ~ 토네이도 초입 단계의 시장을 식별합니다.",
+        "action": "Hype Cycle + TALC 단계 분석"
+      },
+      "qualifying": {
+        "title": "후보 바구니 (Qualifying)",
+        "desc": "식별된 카테고리 내 고릴라 후보 2~4개를 선별하여 바구니(basket)에 담습니다. 아키텍처 지배력, 전환비용, 생태계 파트너를 검증합니다.",
+        "action": "고릴라 자격검증 시트 작성"
+      },
+      "inTheFunnel": {
+        "title": "추적 관찰 (In the Funnel)",
+        "desc": "바구니 속 기업들의 Gorilla/Chimp/Monkey/King 역할 변화를 추적합니다. AI로 영향력 행사자, 전문지, 주식 분석가의 교신문을 모니터링합니다.",
+        "action": "CI·AI 기반 신호 추적"
+      },
+      "bestFew": {
+        "title": "고릴라 집중 (Best Few)",
+        "desc": "승자가 확정되면 비고릴라 주식을 매도하고, 확정 고릴라에 포지션을 집중합니다. 매수/매도 시점은 TALC 단계와 Hype Cycle을 교차 참조합니다.",
+        "action": "포지션 집중 + 장기 보유"
+      }
+    },
+    "qualSheetTitle": "고릴라 자격검증 시트",
+    "qualSheetSubtitle": "밀러 & 하이먼의 블루시트(Blue Sheet)를 투자 분석에 적용한 살아있는 문서입니다. 영업 단계가 아닌 투자 판단 단계에 맞게 재구성했습니다.",
+    "qualSheet": {
+      "objective": {
+        "title": "투자 목표 (Single Investment Objective)",
+        "desc": "이 카테고리에서 달성하고자 하는 투자 목표를 한 문장으로 정의합니다. 어느 기업에, 얼마를, 어떤 시점에, 어떤 조건으로 투자할 것인가."
+      },
+      "buyingInfluences": {
+        "title": "영향력 행사자 분석 (Buying Influences)",
+        "desc": "시장 표준을 결정하는 4가지 영향력: 경제적(예산 결정권자), 이용자(실제 사용자), 기술적(스펙 검토자), 코치(내부 정보 제공 조력자)를 파악합니다."
+      },
+      "responseModes": {
+        "title": "반응 모드 (Response Modes)",
+        "desc": "시장 참여자의 현재 상태: 성장(Growth) — 변화 수용, 곤경(Trouble) — 즉각 변화 필요, 현상유지(Even Keel) — 변화 거부, 자만(Overconfident) — 완벽 확신."
+      },
+      "redFlags": {
+        "title": "적신호 & 강점 (Red Flags & Strengths)",
+        "desc": "투자를 무산시킬 수 있는 위험 요소(핵심 데이터 미확인, 대체 위협 징후)와 경쟁 우위 요인(아키텍처 잠금, NRR 수치)을 기록합니다."
+      },
+      "winResults": {
+        "title": "Win-Win 결과 (Win-Results)",
+        "desc": "투자의 성공(수익)뿐 아니라, 고릴라 기업 자체의 승리 조건을 정의합니다. 시장 표준 확립, 생태계 확장, 전환비용 복리 증가 등."
+      },
+      "actionPlan": {
+        "title": "실행 계획 (Action Plan)",
+        "desc": "적신호 제거와 강점 활용을 위해 '누가, 언제, 무엇을 할 것인가'를 구체적으로 수립합니다. TALC 단계 변화 시 전략 수정 트리거를 포함합니다."
+      }
+    },
+    "qualSheetNote": "고릴라 자격검증 시트는 한 번 작성하고 끝내는 것이 아니라, 시장 단계가 진행됨에 따라 새로운 정보를 업데이트하며 전략을 수정해 나가는 '살아있는 문서'로 활용해야 합니다. 회원들의 Collective Intelligence와 Active Participation이 필수입니다.",
+    "booksTitle": "5권의 책 + CIA-GI 적용",
     "viewAllFirms": "전체 50개 기업 보기 →",
     "source": "출처: {book}",
     "timeAxis": "시간 / 시장 성숙도 →",
