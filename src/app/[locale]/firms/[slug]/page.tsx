@@ -60,7 +60,12 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
               <ClassificationBadge tier={classification.tier} size="lg" />
               <SignalBadge signal={classification.signal} size="lg" />
             </div>
-            <p className="text-gray-500 font-medium">{firm.name} · {firm.sector}</p>
+            <div className="flex items-center gap-3">
+              <p className="text-gray-500 font-medium">{firm.name} · {firm.sector}</p>
+              <Link href={`/firms/${slug}/discuss`} className="text-xs font-bold text-[#0064FF] bg-[#E8F0FE] px-3 py-1.5 rounded-lg hover:bg-[#0064FF] hover:text-white transition-colors">
+                토론하기
+              </Link>
+            </div>
             {priceHistory && (
               <div className="flex items-center gap-4 mt-3">
                 <span className="text-3xl font-extrabold text-gray-900">{formatPrice(priceHistory.currentPrice)}</span>

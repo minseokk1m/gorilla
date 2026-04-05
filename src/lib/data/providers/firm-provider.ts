@@ -4,6 +4,7 @@ import { MOCK_FIRMS } from "../mock/firms";
 import { classifyFirm } from "@/lib/classification/engine";
 import { DATA_SOURCE } from "../api/config";
 import { getMarketFirmOverlay, hydrateFirm, prefetchAllMarketData } from "../api/market-data-service";
+import { getAllSignalOverrides, applyOverrides, invalidateOverrideCache } from "./signal-override-provider";
 
 // ── Hydrated firms cache ────────────────────────────────
 let _hydratedFirms: Firm[] | null = null;
@@ -11,32 +12,52 @@ let _hydrationTimestamp = 0;
 const HYDRATION_TTL = 5 * 60 * 1000; // 5 minutes
 
 async function getHydratedFirms(): Promise<Firm[]> {
-  if (DATA_SOURCE === "mock") return MOCK_FIRMS;
-
   const now = Date.now();
   if (_hydratedFirms && now - _hydrationTimestamp < HYDRATION_TTL) {
     return _hydratedFirms;
   }
 
-  // Prefetch all market data (batched with concurrency limit)
-  await prefetchAllMarketData(MOCK_FIRMS);
+  // Layer 1: base firms from mock data
+  let firms = [...MOCK_FIRMS];
 
-  const hydrated = await Promise.all(
-    MOCK_FIRMS.map(async (firm) => {
-      const overlay = await getMarketFirmOverlay(firm.ticker);
-      if (overlay) return hydrateFirm(firm, overlay);
-      if (DATA_SOURCE === "hybrid") return firm; // fallback to mock values
-      return firm;
-    }),
-  );
+  // Layer 2: overlay live market data (prices, revenue, market cap)
+  if (DATA_SOURCE !== "mock") {
+    await prefetchAllMarketData(MOCK_FIRMS);
+    firms = await Promise.all(
+      firms.map(async (firm) => {
+        const overlay = await getMarketFirmOverlay(firm.ticker);
+        if (overlay) return hydrateFirm(firm, overlay);
+        return firm;
+      }),
+    );
+  }
 
-  _hydratedFirms = hydrated;
+  // Layer 3: apply signal overrides from Supabase (human-edited values)
+  const overrides = await getAllSignalOverrides();
+  firms = firms.map((firm) => {
+    const override = overrides.get(firm.id);
+    if (override) {
+      return {
+        ...firm,
+        classificationSignals: applyOverrides(firm.classificationSignals, override),
+      };
+    }
+    return firm;
+  });
+
+  _hydratedFirms = firms;
   _hydrationTimestamp = now;
-
-  // Invalidate classification caches since firm data changed
   _classificationCaches = {};
 
-  return hydrated;
+  return firms;
+}
+
+/** Invalidate all caches (call after signal override changes). */
+export function invalidateFirmCaches(): void {
+  _hydratedFirms = null;
+  _hydrationTimestamp = 0;
+  _classificationCaches = {};
+  invalidateOverrideCache();
 }
 
 // ── Provider interface ──────────────────────────────────

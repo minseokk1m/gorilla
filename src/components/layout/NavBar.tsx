@@ -13,6 +13,7 @@ export default function NavBar() {
     { href: "/" as const, label: t("dashboard") },
     { href: "/firms" as const, label: t("firms") },
     { href: "/learn" as const, label: t("learn") },
+    { href: "/discuss" as const, label: t("discuss") },
   ];
 
   function switchLocale() {
