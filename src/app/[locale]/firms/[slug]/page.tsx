@@ -6,6 +6,7 @@ import { getNewsByFirmId } from "@/lib/data/providers/news-provider";
 import ClassificationBadge from "@/components/firms/ClassificationBadge";
 import SignalBadge from "@/components/firms/SignalBadge";
 import { formatMarketCap, formatPercent, formatPrice, formatDate } from "@/lib/utils/formatters";
+import { DATA_SOURCE } from "@/lib/data/api/config";
 import StockChart from "@/components/firm-detail/StockChart";
 import RSIChart from "@/components/firm-detail/RSIChart";
 import ScoreRadar from "@/components/firm-detail/ScoreRadar";
@@ -187,10 +188,25 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
 
       {/* News */}
       <div className="toss-card">
-        <h2 className="mb-5">
-          {t("newsTitle")}
-          <span className="ml-2 text-xs text-gray-400 font-medium">{t("newsMockNote")}</span>
-        </h2>
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="mb-0">
+            {t("newsTitle")}
+          </h2>
+          <div className="flex items-center gap-2 text-xs font-bold text-gray-400 shrink-0">
+            {DATA_SOURCE !== "mock" && news.length > 0 && news[0].url !== "#" ? (
+              <>
+                <span className="inline-flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Live
+                </span>
+                <span>·</span>
+                <span>{t("fetchedAt", { time: new Date().toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" }) })}</span>
+              </>
+            ) : (
+              <span className="text-gray-300">{t("newsMockNote")}</span>
+            )}
+          </div>
+        </div>
         {news.length === 0 ? (
           <p className="text-gray-400 text-sm font-medium">{t("noNews")}</p>
         ) : (
@@ -200,8 +216,16 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
                 <div className="flex items-start gap-3">
                   <div className={`mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0 ${SENTIMENT_DOTS[article.sentiment]}`} />
                   <div>
-                    <h3 className="text-gray-900 text-sm leading-snug mb-1">{article.title}</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed mb-2">{article.summary}</p>
+                    {article.url && article.url !== "#" ? (
+                      <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-gray-900 text-sm leading-snug mb-1 font-bold hover:text-[#0064FF] transition-colors block">
+                        {article.title}
+                      </a>
+                    ) : (
+                      <h3 className="text-gray-900 text-sm leading-snug mb-1">{article.title}</h3>
+                    )}
+                    {article.summary && (
+                      <p className="text-gray-500 text-xs leading-relaxed mb-2">{article.summary}</p>
+                    )}
                     <div className="flex items-center gap-3 text-xs font-bold text-gray-400">
                       <span>{article.source}</span>
                       <span>·</span>
