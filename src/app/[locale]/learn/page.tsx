@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import PrincipleAnnotations from "@/components/discuss/PrincipleAnnotations";
 
 const PHASES = [
   { phase: "Early Market", emoji: "🌱", color: "bg-white", desc: "Visionaries and tech enthusiasts buy. No mainstream adoption yet. High risk." },
@@ -166,6 +167,7 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
                   <div className="font-bold text-gray-900 mb-1">{t(`rule${n}Title`)}</div>
                   <p className="text-gray-500 text-sm leading-relaxed mb-2">{t(`rule${n}Desc`)}</p>
                   <p className="text-xs text-gray-400 font-medium italic leading-relaxed">{t(`rule${n}En`)}</p>
+                  <PrincipleAnnotations principleNumber={n} />
                 </div>
               </div>
             </div>
