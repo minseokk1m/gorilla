@@ -1,22 +1,7 @@
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
-import { Link } from "@/i18n/routing";
-import ClassificationBadge from "@/components/firms/ClassificationBadge";
-import SignalBadge from "@/components/firms/SignalBadge";
-import { formatMarketCap, formatPercent, formatPrice } from "@/lib/utils/formatters";
+import FirmsTable from "@/components/firms/FirmsTable";
 import { getTranslations } from "next-intl/server";
-import type { ClassificationTier } from "@/types/classification";
-
-const MARKET_TYPE: Record<ClassificationTier, "proprietary" | "open" | "chasm"> = {
-  "Gorilla": "proprietary",
-  "Potential Gorilla": "proprietary",
-  "Chimpanzee": "proprietary",
-  "Monkey": "proprietary",
-  "King": "open",
-  "Prince": "open",
-  "Serf": "open",
-  "In Chasm": "chasm",
-};
 
 export default async function FirmsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -30,11 +15,29 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
   const priceMap = new Map(prices.map((p) => [p.firmId, p]));
 
   const rows = allFirms
-    .map((f) => ({ firm: f, classification: classifications.get(f.id)!, price: priceMap.get(f.id) }))
-    .sort((a, b) => b.classification.totalScore - a.classification.totalScore);
+    .map((f) => {
+      const cls = classifications.get(f.id)!;
+      const price = priceMap.get(f.id);
+      return {
+        id: f.id,
+        slug: f.slug,
+        ticker: f.ticker,
+        name: f.name,
+        sector: f.sector,
+        marketCapUSD: f.marketCapUSD,
+        revenueGrowthYoY: f.revenueGrowthYoY,
+        tier: cls.tier,
+        signal: cls.signal,
+        totalScore: cls.totalScore,
+        currentPrice: price?.currentPrice,
+        priceChange1D: price?.priceChange1D,
+        classifiedAt: cls.classifiedAt,
+      };
+    })
+    .sort((a, b) => b.totalScore - a.totalScore);
 
-  // Data timestamp — use the first classification's classifiedAt
-  const classifiedAt = rows[0]?.classification.classifiedAt;
+  // Data timestamp
+  const classifiedAt = rows[0]?.classifiedAt;
   const dataDate = classifiedAt
     ? new Date(classifiedAt).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })
     : "";
@@ -145,93 +148,7 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
         </div>
       </div>
 
-      <div className="toss-card !p-0 overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colFirm")}</th>
-              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden md:table-cell">{t("colSector")}</th>
-              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden sm:table-cell">{t("colMarketType")}</th>
-              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colClassification")}</th>
-              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colSignal")}</th>
-              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colScore")}</th>
-              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden lg:table-cell">{t("colPrice")}</th>
-              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden lg:table-cell">{t("col1D")}</th>
-              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden xl:table-cell">{t("colMktCap")}</th>
-              <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden xl:table-cell">{t("colRevGrowth")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map(({ firm, classification, price }) => (
-              <tr
-                key={firm.id}
-                className="border-b border-gray-50 hover:bg-[#F8F9FA] transition-colors relative cursor-pointer group"
-              >
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4">
-                  <Link href={`/firms/${firm.slug}`} className="flex items-center gap-3 after:absolute after:inset-0 after:content-['']">
-                    <div>
-                      <div className="font-extrabold text-gray-900 group-hover:text-[#0064FF] transition-colors">{firm.ticker}</div>
-                      <div className="text-gray-400 text-xs font-medium">{firm.name}</div>
-                    </div>
-                  </Link>
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 hidden md:table-cell">
-                  <span className="text-gray-500 text-xs font-medium">{firm.sector}</span>
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 hidden sm:table-cell">
-                  {(() => {
-                    const mt = MARKET_TYPE[classification.tier];
-                    return (
-                      <span className={`toss-pill text-[10px] !py-0.5 ${
-                        mt === "proprietary" ? "bg-amber-100 text-amber-700" :
-                        mt === "open" ? "bg-indigo-100 text-indigo-600" :
-                        "bg-gray-100 text-gray-500"
-                      }`}>
-                        {t(`marketType.${mt}`)}
-                      </span>
-                    );
-                  })()}
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4">
-                  <ClassificationBadge tier={classification.tier} size="sm" />
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4">
-                  <SignalBadge signal={classification.signal} size="sm" />
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right">
-                  <div className="flex items-center justify-end gap-2">
-                    <div className="w-16 bg-gray-100 rounded-full h-1.5 hidden sm:block">
-                      <div
-                        className="h-1.5 rounded-full bg-[#0064FF]"
-                        style={{ width: `${classification.totalScore}%` }}
-                      />
-                    </div>
-                    <span className="text-gray-900 font-extrabold">{classification.totalScore}</span>
-                  </div>
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden lg:table-cell">
-                  <span className="text-gray-900 font-bold">{price ? formatPrice(price.currentPrice) : "—"}</span>
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden lg:table-cell">
-                  {price && (
-                    <span className={`font-bold ${price.priceChange1D >= 0 ? "text-emerald-600" : "text-red-500"}`}>
-                      {formatPercent(price.priceChange1D, true)}
-                    </span>
-                  )}
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden xl:table-cell">
-                  <span className="text-gray-500 font-medium">{formatMarketCap(firm.marketCapUSD)}</span>
-                </td>
-                <td className="px-3 sm:px-5 py-2.5 sm:py-4 text-right hidden xl:table-cell">
-                  <span className={`font-bold ${firm.revenueGrowthYoY >= 0.2 ? "text-emerald-600" : firm.revenueGrowthYoY >= 0.1 ? "text-[#0064FF]" : "text-gray-500"}`}>
-                    {formatPercent(firm.revenueGrowthYoY, true)}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <FirmsTable rows={rows} />
     </main>
   );
 }

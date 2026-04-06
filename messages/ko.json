@@ -55,6 +55,7 @@
       "open": "개방형",
       "chasm": "미정"
     },
+    "searchPlaceholder": "기업명, 티커, 섹터로 검색...",
     "colFirm": "기업",
     "colSector": "섹터",
     "colClassification": "분류",

@@ -55,6 +55,7 @@
       "open": "Open",
       "chasm": "TBD"
     },
+    "searchPlaceholder": "Search by name, ticker, or sector...",
     "colFirm": "Firm",
     "colSector": "Sector",
     "colClassification": "Classification",
