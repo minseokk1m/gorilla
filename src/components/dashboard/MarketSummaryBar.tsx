@@ -22,6 +22,8 @@ const PHASE_COLOR: Record<MarketPhase, string> = {
 
 export default function MarketSummaryBar({ classifications }: { classifications: ClassificationResult[] }) {
   const t = useTranslations("marketSummary");
+  const tTiers = useTranslations("tiers");
+  const tPhases = useTranslations("marketPhases");
 
   const tierCounts = classifications.reduce<Record<string, number>>((acc, c) => {
     acc[c.tier] = (acc[c.tier] ?? 0) + 1;
@@ -42,7 +44,7 @@ export default function MarketSummaryBar({ classifications }: { classifications:
       <div>
         <div className="text-xs font-bold text-gray-400 mb-1.5 uppercase tracking-wide">{t("marketPhase")}</div>
         <span className={`toss-pill ${PHASE_COLOR[dominantPhase]}`}>
-          {dominantPhase}
+          {tPhases(dominantPhase)}
         </span>
       </div>
       <div className="h-8 w-px bg-gray-200 hidden sm:block" />
@@ -50,7 +52,7 @@ export default function MarketSummaryBar({ classifications }: { classifications:
         {Object.entries(tierCounts).sort((a, b) => b[1] - a[1]).map(([tier, count]) => (
           <div key={tier} className="text-center">
             <div className={`text-xl font-extrabold ${TIER_COLORS[tier] ?? "text-gray-900"}`}>{count}</div>
-            <div className="text-xs font-bold text-gray-400">{tier}</div>
+            <div className="text-xs font-bold text-gray-400">{tTiers(`${tier}.label` as "Gorilla.label")}</div>
           </div>
         ))}
       </div>

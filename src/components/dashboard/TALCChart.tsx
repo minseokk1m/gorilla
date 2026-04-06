@@ -38,19 +38,18 @@ const CURVE_PATH = [
 
 /* ── Segment x-boundaries (adopter groups) ──────────── */
 const SEGMENTS = [
-  { key: "innovators",     label: "Innovators",      xMin: 0,   xMax: 95,   fill: "#86efac", opacity: 0.2 },
-  { key: "earlyAdopters",  label: "Early Adopters",  xMin: 95,  xMax: 265,  fill: "#fde047", opacity: 0.18 },
-  { key: "earlyMajority",  label: "Early Majority",  xMin: 395, xMax: 560,  fill: "#fbbf24", opacity: 0.18 },
-  { key: "lateMajority",   label: "Late Majority",   xMin: 560, xMax: 800,  fill: "#fb923c", opacity: 0.18 },
-  { key: "laggards",       label: "Laggards",        xMin: 800, xMax: 1000, fill: "#7f1d1d", opacity: 0.14 },
+  { key: "innovators",     xMin: 0,   xMax: 95,   fill: "#86efac", opacity: 0.2 },
+  { key: "earlyAdopters",  xMin: 95,  xMax: 265,  fill: "#fde047", opacity: 0.18 },
+  { key: "earlyMajority",  xMin: 395, xMax: 560,  fill: "#fbbf24", opacity: 0.18 },
+  { key: "lateMajority",   xMin: 560, xMax: 800,  fill: "#fb923c", opacity: 0.18 },
+  { key: "laggards",       xMin: 800, xMax: 1000, fill: "#7f1d1d", opacity: 0.14 },
 ];
 
-/* ── Curve annotations ────────────────────────────────── */
+/* ── Curve annotations (keys map to talcChart.* translations) ── */
 const ANNOTATIONS = [
-  { text: "Peak of Inflated",  text2: "Expectations", x: 135, y: 35, anchor: "end" as const },
-  { text: "The Chasm",         text2: "",              x: 345, y: 420, anchor: "middle" as const },
-  { text: "Slope of",          text2: "Enlightenment", x: 480, y: 180, anchor: "middle" as const },
-  { text: "Plateau of",        text2: "Productivity",  x: 715, y: 75,  anchor: "middle" as const },
+  { key1: "peakInflated",  key2: "expectations", x: 135, y: 35, anchor: "end" as const },
+  { key1: "slopeOf",       key2: "enlightenment", x: 480, y: 180, anchor: "middle" as const },
+  { key1: "plateauOf",     key2: "productivity",  x: 715, y: 75,  anchor: "middle" as const },
 ];
 
 /* ── Phase → zone mapping for firm dots ──────────────── */
@@ -144,6 +143,9 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const svgRef = useRef<SVGSVGElement>(null);
   const ts = useTranslations("signals");
+  const tc = useTranslations("talcChart");
+  const tTiers = useTranslations("tiers");
+  const tPhases = useTranslations("marketPhases");
 
   const positions = useMemo(
     () => computePositions(firms, classifications),
@@ -183,7 +185,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
             <div key={tier}>
               <div className="flex items-center gap-1.5 mb-1.5 sticky top-0 bg-white/90 backdrop-blur-sm py-1 z-10">
                 <span className="text-sm">{TIER_EMOJI[tier]}</span>
-                <span className="text-xs font-extrabold text-gray-700">{tier}</span>
+                <span className="text-xs font-extrabold text-gray-700">{tTiers(`${tier}.label` as "Gorilla.label")}</span>
                 <span className="text-xs font-bold text-gray-400 ml-auto">{arr.length}</span>
               </div>
               <div className="space-y-0.5">
@@ -250,7 +252,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                   fontFamily="system-ui, sans-serif"
                   fontWeight="600"
                 >
-                  {seg.label}
+                  {tc(seg.key)}
                 </text>
               </g>
             ))}
@@ -265,7 +267,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
 
             {/* Annotations */}
             {ANNOTATIONS.map((a) => (
-              <g key={a.text}>
+              <g key={a.key1}>
                 <text
                   x={a.x}
                   y={a.y}
@@ -276,9 +278,9 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                   fontFamily="system-ui, sans-serif"
                   fontWeight="500"
                 >
-                  {a.text}
+                  {tc(a.key1)}
                 </text>
-                {a.text2 && (
+                {a.key2 && (
                   <text
                     x={a.x}
                     y={a.y + 13}
@@ -289,7 +291,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                     fontFamily="system-ui, sans-serif"
                     fontWeight="500"
                   >
-                    {a.text2}
+                    {tc(a.key2)}
                   </text>
                 )}
               </g>
@@ -306,7 +308,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
               fill="#9ca3af"
               fontFamily="system-ui, sans-serif"
             >
-              (The Chasm)
+              {tc("theChasm")}
             </text>
 
             {/* Phase zone labels above the dot clusters */}
@@ -322,7 +324,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                 fontFamily="system-ui, sans-serif"
                 letterSpacing="0.05em"
               >
-                {phase.toUpperCase()}
+                {tPhases(phase as MarketPhase)}
               </text>
             ))}
 
@@ -388,7 +390,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
               </marker>
             </defs>
             <text x={W / 2} y={BASELINE + 30} textAnchor="middle" fontSize={9} fill="#9ca3af" fontFamily="system-ui, sans-serif" fontWeight="600">
-              Time / Market Maturity
+              {tc("timeAxis")}
             </text>
           </svg>
         </div>
@@ -419,13 +421,13 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                 >
                   {ts(hoveredCls.signal)}
                 </span>
-                <span className="text-gray-500 font-bold">{hoveredCls.tier}</span>
+                <span className="text-gray-500 font-bold">{tTiers(`${hoveredCls.tier}.label` as "Gorilla.label")}</span>
               </div>
               {/* Metrics */}
               <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-gray-500">
-                <span>Score: <b className="text-gray-800 font-extrabold">{hoveredCls.totalScore}</b></span>
-                <span>Phase: <b className="text-gray-800 font-bold">{hoveredCls.marketPhase}</b></span>
-                <span>Rev: <b className="text-gray-800 font-extrabold">+{Math.round(hoveredFirm.revenueGrowthYoY * 100)}%</b></span>
+                <span>{tc("score")}: <b className="text-gray-800 font-extrabold">{hoveredCls.totalScore}</b></span>
+                <span>{tc("phase")}: <b className="text-gray-800 font-bold">{tPhases(hoveredCls.marketPhase)}</b></span>
+                <span>{tc("rev")}: <b className="text-gray-800 font-extrabold">+{Math.round(hoveredFirm.revenueGrowthYoY * 100)}%</b></span>
                 <span>NRR: <b className="text-gray-800 font-extrabold">{Math.round(hoveredFirm.classificationSignals.netRevenueRetention * 100)}%</b></span>
               </div>
               {/* News */}
@@ -439,7 +441,7 @@ export default function TALCChart({ firms, classifications, newsMap }: Props) {
                 href={`/firms/${hoveredFirm.slug}`}
                 className="block text-[#0064FF] hover:underline font-bold pt-0.5"
               >
-                View full analysis →
+                {tc("viewFull")}
               </Link>
             </div>
           </div>

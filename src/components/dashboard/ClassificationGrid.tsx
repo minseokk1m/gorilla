@@ -37,7 +37,7 @@ export default function ClassificationGrid({ firms, classifications, priceHistor
             <div className="mb-3">
               <h3 className="font-semibold text-gray-900 flex items-center gap-2">
                 <span>{emoji}</span> {label}
-                <span className="ml-auto text-xs text-gray-400 font-normal">{tierFirms.length} firms</span>
+                <span className="ml-auto text-xs text-gray-400 font-normal">{tierFirms.length}</span>
               </h3>
               <p className="text-xs text-gray-400 mt-0.5">{desc}</p>
             </div>
@@ -52,7 +52,7 @@ export default function ClassificationGrid({ firms, classifications, priceHistor
               ))}
               {tierFirms.length === 0 && (
                 <div className="col-span-2 py-6 text-center text-gray-400 text-sm border border-dashed border-gray-200 rounded-lg">
-                  No firms in this tier
+                  —
                 </div>
               )}
             </div>

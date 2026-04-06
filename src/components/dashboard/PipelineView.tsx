@@ -107,6 +107,7 @@ export default async function PipelineView({
   newsMap,
 }: PipelineViewProps) {
   const t = await getTranslations({ locale, namespace: "pipeline" });
+  const tPhases = await getTranslations({ locale, namespace: "marketPhases" });
 
   const byScore = (a: Firm, b: Firm) =>
     (classifications.get(b.id)?.totalScore ?? 0) - (classifications.get(a.id)?.totalScore ?? 0);
@@ -206,7 +207,7 @@ export default async function PipelineView({
               <div key={phase}>
                 <div className="flex items-center gap-1.5 mb-2">
                   <span className="text-xs">{PHASE_INFO[phase].emoji}</span>
-                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">{phase}</span>
+                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">{tPhases(phase)}</span>
                 </div>
                 <div className="space-y-2.5">
                   {gorillasByPhase.get(phase)!.map((f) => (

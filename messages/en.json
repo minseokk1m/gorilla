@@ -312,11 +312,38 @@
     "Monkey": { "label": "🐒 Monkey", "desc": "Commodity clone. No sustainable moat." },
     "In Chasm": { "label": "🕳️ In Chasm", "desc": "Pre-mainstream. High risk, avoid." }
   },
+  "marketPhases": {
+    "Early Market": "Early Market",
+    "Bowling Alley": "Bowling Alley",
+    "Tornado": "Tornado",
+    "Main Street": "Main Street",
+    "End of Life": "End of Life"
+  },
   "signals": {
     "BUY": "▲ BUY",
     "WATCH": "◎ WATCH",
     "SELL": "▼ SELL",
     "AVOID": "✕ AVOID"
+  },
+  "talcChart": {
+    "timeAxis": "Time / Market Maturity",
+    "theChasm": "(The Chasm)",
+    "innovators": "Innovators",
+    "earlyAdopters": "Early Adopters",
+    "earlyMajority": "Early Majority",
+    "lateMajority": "Late Majority",
+    "laggards": "Laggards",
+    "peakInflated": "Peak of Inflated",
+    "expectations": "Expectations",
+    "slopeOf": "Slope of",
+    "enlightenment": "Enlightenment",
+    "plateauOf": "Plateau of",
+    "productivity": "Productivity",
+    "score": "Score",
+    "phase": "Phase",
+    "rev": "Rev",
+    "viewFull": "View full analysis →",
+    "firms": "firms"
   },
   "marketSummary": {
     "marketPhase": "Market Phase",

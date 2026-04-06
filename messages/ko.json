@@ -312,11 +312,38 @@
     "Monkey": { "label": "🐒 원숭이", "desc": "범용 복제품. 지속적 해자 없음." },
     "In Chasm": { "label": "🕳️ 캐즘", "desc": "대중화 이전. 고위험, 투자 회피." }
   },
+  "marketPhases": {
+    "Early Market": "초기 시장",
+    "Bowling Alley": "볼링앨리",
+    "Tornado": "토네이도",
+    "Main Street": "메인 스트리트",
+    "End of Life": "쇠퇴기"
+  },
   "signals": {
     "BUY": "▲ 매수",
     "WATCH": "◎ 관찰",
     "SELL": "▼ 매도",
     "AVOID": "✕ 회피"
+  },
+  "talcChart": {
+    "timeAxis": "시간 / 시장 성숙도",
+    "theChasm": "(캐즘)",
+    "innovators": "혁신가",
+    "earlyAdopters": "얼리어답터",
+    "earlyMajority": "얼리 머저리티",
+    "lateMajority": "레이트 머저리티",
+    "laggards": "회의론자",
+    "peakInflated": "과대기대",
+    "expectations": "정점",
+    "slopeOf": "계몽의",
+    "enlightenment": "경사면",
+    "plateauOf": "생산성",
+    "productivity": "안정기",
+    "score": "점수",
+    "phase": "단계",
+    "rev": "매출",
+    "viewFull": "상세 분석 보기 →",
+    "firms": "개 기업"
   },
   "marketSummary": {
     "marketPhase": "시장 단계",
