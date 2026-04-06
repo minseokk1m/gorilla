@@ -14,12 +14,20 @@ function g(x: number) {
 const PTS: [number, number][] = [];
 for (let x = 50; x <= 750; x += 3) PTS.push([x, g(x)]);
 
-const SEGS = [
+const SEGS_EN = [
   { id: "innov", line1: "Technology", line2: "Enthusiasts", pct: "2.5%", x0: 50, x1: 135, fill: "#e5e7eb" },
   { id: "early", line1: "Visionaries", line2: null, pct: "13.5%", x0: 135, x1: 256, fill: "#bfdbfe" },
   { id: "emaj", line1: "Pragmatists", line2: "(early majority)", pct: "34%", x0: 280, x1: 460, fill: "#a7f3d0" },
   { id: "lmaj", line1: "Conservatives", line2: "(late majority)", pct: "34%", x0: 460, x1: 630, fill: "#bfdbfe" },
   { id: "lag", line1: "Laggards", line2: null, pct: "16%", x0: 630, x1: 750, fill: "#e5e7eb" },
+];
+
+const SEGS_KO = [
+  { id: "innov", line1: "기술 애호가", line2: null, pct: "2.5%", x0: 50, x1: 135, fill: "#e5e7eb" },
+  { id: "early", line1: "비전가", line2: "(얼리어답터)", pct: "13.5%", x0: 135, x1: 256, fill: "#bfdbfe" },
+  { id: "emaj", line1: "실용주의자", line2: "(얼리 머저리티)", pct: "34%", x0: 280, x1: 460, fill: "#a7f3d0" },
+  { id: "lmaj", line1: "보수주의자", line2: "(레이트 머저리티)", pct: "34%", x0: 460, x1: 630, fill: "#bfdbfe" },
+  { id: "lag", line1: "회의론자", line2: null, pct: "16%", x0: 630, x1: 750, fill: "#e5e7eb" },
 ];
 
 function area(x0: number, x1: number) {
@@ -40,7 +48,26 @@ function line(x0: number, x1: number) {
 
 const FONT: React.CSSProperties = { fontFamily: "system-ui, -apple-system, sans-serif" };
 
-export default function TALCCurve() {
+const HEADERS_EN = { early: "EARLY MARKET", chasm: "THE CHASM", mainstream: "MAINSTREAM MARKET" };
+const HEADERS_KO = { early: "초기 시장", chasm: "캐즘", mainstream: "주류 시장" };
+
+const MOORE_EN = [
+  { label: "🌱 Early Market", x0: 50, x1: 256 },
+  { label: "🎳 Bowling Alley", x0: 280, x1: 370 },
+  { label: "🏙️ Main Street", x0: 460, x1: 630 },
+  { label: "📉 End of Life", x0: 630, x1: 750 },
+];
+const MOORE_KO = [
+  { label: "🌱 초기 시장", x0: 50, x1: 256 },
+  { label: "🎳 볼링앨리", x0: 280, x1: 370 },
+  { label: "🏙️ 메인 스트리트", x0: 460, x1: 630 },
+  { label: "📉 쇠퇴기", x0: 630, x1: 750 },
+];
+
+export default function TALCCurve({ locale = "ko" }: { locale?: string }) {
+  const SEGS = locale === "ko" ? SEGS_KO : SEGS_EN;
+  const HEADERS = locale === "ko" ? HEADERS_KO : HEADERS_EN;
+  const MOORE = locale === "ko" ? MOORE_KO : MOORE_EN;
   const chasmY = g(268);
 
   return (
@@ -49,17 +76,17 @@ export default function TALCCurve() {
         viewBox="0 0 800 400"
         className="w-full h-auto select-none"
         role="img"
-        aria-label="Technology Adoption Life Cycle bell curve"
+        aria-label={locale === "ko" ? "기술 수용 주기 벨 커브" : "Technology Adoption Life Cycle bell curve"}
       >
         {/* ── Region headers ── */}
-        <text x={150} y={22} textAnchor="middle" fill="#9ca3af" fontSize="11" fontWeight="800" letterSpacing="2" style={FONT}>
-          EARLY MARKET
+        <text x={150} y={22} textAnchor="middle" fill="#9ca3af" fontSize="11" fontWeight="800" letterSpacing={locale === "ko" ? "0" : "2"} style={FONT}>
+          {HEADERS.early}
         </text>
-        <text x={268} y={22} textAnchor="middle" fill="#ef4444" fontSize="11" fontWeight="800" letterSpacing="2" style={FONT}>
-          THE CHASM
+        <text x={268} y={22} textAnchor="middle" fill="#ef4444" fontSize="11" fontWeight="800" letterSpacing={locale === "ko" ? "0" : "2"} style={FONT}>
+          {HEADERS.chasm}
         </text>
-        <text x={545} y={22} textAnchor="middle" fill="#9ca3af" fontSize="11" fontWeight="800" letterSpacing="2" style={FONT}>
-          MAINSTREAM MARKET
+        <text x={545} y={22} textAnchor="middle" fill="#9ca3af" fontSize="11" fontWeight="800" letterSpacing={locale === "ko" ? "0" : "2"} style={FONT}>
+          {HEADERS.mainstream}
         </text>
 
         {/* ── Chasm dashed boundaries ── */}
@@ -111,12 +138,7 @@ export default function TALCCurve() {
 
         {/* ── Moore's phase mapping (subtle row below) ── */}
         <line x1={50} y1={BASE + 62} x2={750} y2={BASE + 62} stroke="#e5e7eb" strokeWidth="1" />
-        {[
-          { label: "🌱 Early Market", x0: 50, x1: 256 },
-          { label: "🎳 Bowling Alley", x0: 280, x1: 370 },
-          { label: "🏙️ Main Street", x0: 460, x1: 630 },
-          { label: "📉 End of Life", x0: 630, x1: 750 },
-        ].map((p) => (
+        {MOORE.map((p) => (
           <text
             key={p.label}
             x={(p.x0 + p.x1) / 2}

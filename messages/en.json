@@ -158,8 +158,24 @@
         "desc": "Is the market consolidating around this company? Look for decreasing competitor count, increasing M&A activity, and market restructuring signals."
       }
     },
+    "phases": {
+      "earlyMarket": { "name": "Early Market", "desc": "Visionaries and tech enthusiasts buy. No mainstream adoption yet. High risk." },
+      "chasm": { "name": "Chasm", "desc": "The gap between visionaries and pragmatists. Most companies die here. Avoid investing." },
+      "bowlingAlley": { "name": "Bowling Alley", "desc": "Niche-by-niche adoption begins. A gorilla candidate is forming. Watch closely." },
+      "tornado": { "name": "Tornado", "desc": "Explosive mass-market adoption. The gorilla emerges. This is the BUY window." },
+      "mainStreet": { "name": "Main Street", "desc": "Growth normalizes. Gorilla dominates. Hold your position; switching costs protect you." },
+      "endOfLife": { "name": "End of Life", "desc": "New paradigm displacing the old. Exit the gorilla. Find the next tornado." }
+    },
     "tiersTitle": "⑤ Company Classification System",
     "tiersSubtitle": "After the tornado, every market participant is assigned one of six roles below. Investment signals are determined by role.",
+    "tiers": {
+      "gorilla": { "name": "Gorilla", "signal": "BUY", "desc": "Controls the proprietary architecture that becomes the market standard. Competitors must conform to its interfaces. Switching costs are prohibitively high. Investors should buy and hold indefinitely.", "book": "The Gorilla Game" },
+      "potentialGorilla": { "name": "Potential Gorilla", "signal": "BUY", "desc": "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy now before the market recognizes the winner.", "book": "The Gorilla Game" },
+      "king": { "name": "King", "signal": "WATCH", "desc": "Market leader in a category without a single proprietary architecture. Has scale advantages but faces credible competition. Generates steady returns but won't compound like a gorilla.", "book": "The Gorilla Game" },
+      "chimpanzee": { "name": "Chimpanzee", "signal": "SELL", "desc": "Competed for gorilla status but lost the architecture war. Survives in niche segments but cannot expand into the mainstream. Sell and redeploy into gorillas or potential gorillas.", "book": "The Gorilla Game" },
+      "monkey": { "name": "Monkey", "signal": "AVOID", "desc": "Clones the gorilla architecture at a discount price. Has no sustainable moat — the gorilla can reclaim their customers at will. Do not hold for the long term.", "book": "The Gorilla Game" },
+      "inChasm": { "name": "In Chasm", "signal": "AVOID", "desc": "Has early adopter enthusiasm but has not crossed to the pragmatist mainstream. Most companies in this position never cross. High risk, avoid until clear beachhead emerges.", "book": "Crossing the Chasm" }
+    },
     "rulesTitle": "⑥ The 10 Gorilla Game Investment Principles",
     "rulesSubtitle": "The core investment operating rules from Geoffrey Moore's The Gorilla Game. If the classification system tells you 'what,' these principles tell you 'when and how.'",
     "rule1Title": "Application software: buy in the Bowling Alley",

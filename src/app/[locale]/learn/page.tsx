@@ -4,21 +4,21 @@ import PrincipleAnnotations from "@/components/discuss/PrincipleAnnotations";
 import TALCCurve from "@/components/learn/TALCCurve";
 
 const PHASES = [
-  { phase: "Early Market", emoji: "🌱", color: "bg-white", desc: "Visionaries and tech enthusiasts buy. No mainstream adoption yet. High risk." },
-  { phase: "Chasm", emoji: "🕳️", color: "bg-red-50/60", desc: "The gap between visionaries and pragmatists. Most companies die here. Avoid investing." },
-  { phase: "Bowling Alley", emoji: "🎳", color: "bg-yellow-50/60", desc: "Niche-by-niche adoption begins. A gorilla candidate is forming. Watch closely." },
-  { phase: "Tornado", emoji: "🌪️", color: "bg-emerald-50/60", desc: "Explosive mass-market adoption. The gorilla emerges. This is the BUY window." },
-  { phase: "Main Street", emoji: "🏙️", color: "bg-blue-50/60", desc: "Growth normalizes. Gorilla dominates. Hold your position; switching costs protect you." },
-  { phase: "End of Life", emoji: "📉", color: "bg-gray-50", desc: "New paradigm displacing the old. Exit the gorilla. Find the next tornado." },
+  { key: "earlyMarket", emoji: "🌱", color: "bg-white" },
+  { key: "chasm", emoji: "🕳️", color: "bg-red-50/60" },
+  { key: "bowlingAlley", emoji: "🎳", color: "bg-yellow-50/60" },
+  { key: "tornado", emoji: "🌪️", color: "bg-emerald-50/60" },
+  { key: "mainStreet", emoji: "🏙️", color: "bg-blue-50/60" },
+  { key: "endOfLife", emoji: "📉", color: "bg-gray-50" },
 ];
 
 const TIERS = [
-  { tier: "Gorilla", emoji: "🦍", signal: "BUY", color: "bg-emerald-50/60", desc: "Controls the proprietary architecture that becomes the market standard. Competitors must conform to its interfaces. Switching costs are prohibitively high. Investors should buy and hold indefinitely.", book: "The Gorilla Game" },
-  { tier: "Potential Gorilla", emoji: "🦍", signal: "BUY", color: "bg-teal-50/60", desc: "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy now before the market recognizes the winner.", book: "The Gorilla Game" },
-  { tier: "King", emoji: "👑", signal: "WATCH", color: "bg-blue-50/60", desc: "Market leader in a category without a single proprietary architecture. Has scale advantages but faces credible competition. Generates steady returns but won't compound like a gorilla.", book: "The Gorilla Game" },
-  { tier: "Chimpanzee", emoji: "🐵", signal: "SELL", color: "bg-yellow-50/60", desc: "Competed for gorilla status but lost the architecture war. Survives in niche segments but cannot expand into the mainstream. Sell and redeploy into gorillas or potential gorillas.", book: "The Gorilla Game" },
-  { tier: "Monkey", emoji: "🐒", signal: "AVOID", color: "bg-orange-50/60", desc: "Clones the gorilla architecture at a discount price. Has no sustainable moat — the gorilla can reclaim their customers at will. Do not hold for the long term.", book: "The Gorilla Game" },
-  { tier: "In Chasm", emoji: "🕳️", signal: "AVOID", color: "bg-red-50/60", desc: "Has early adopter enthusiasm but has not crossed to the pragmatist mainstream. Most companies in this position never cross. High risk, avoid until clear beachhead emerges.", book: "Crossing the Chasm" },
+  { key: "gorilla", emoji: "🦍", color: "bg-emerald-50/60" },
+  { key: "potentialGorilla", emoji: "🦍", color: "bg-teal-50/60" },
+  { key: "king", emoji: "👑", color: "bg-blue-50/60" },
+  { key: "chimpanzee", emoji: "🐵", color: "bg-yellow-50/60" },
+  { key: "monkey", emoji: "🐒", color: "bg-orange-50/60" },
+  { key: "inChasm", emoji: "🕳️", color: "bg-red-50/60" },
 ];
 
 const BOOK_KEYS = [
@@ -115,18 +115,18 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         <p className="text-gray-500 text-sm font-medium mb-6">{t("talcSubtitle")}</p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {PHASES.map((p, i) => (
-            <div key={p.phase} className={`toss-card !p-4 ${p.color}`}>
+            <div key={p.key} className={`toss-card !p-4 ${p.color}`}>
               <div className="text-2xl mb-2">{p.emoji}</div>
               <div className="flex items-center gap-1 mb-1">
                 <span className="text-xs font-bold text-gray-400">{t("stage", { n: i + 1 })}</span>
               </div>
-              <div className="font-bold text-gray-900 text-sm mb-2">{p.phase}</div>
-              <p className="text-gray-500 text-xs leading-relaxed">{p.desc}</p>
+              <div className="font-bold text-gray-900 text-sm mb-2">{t(`phases.${p.key}.name`)}</div>
+              <p className="text-gray-500 text-xs leading-relaxed">{t(`phases.${p.key}.desc`)}</p>
             </div>
           ))}
         </div>
         {/* TALC bell curve diagram */}
-        <TALCCurve />
+        <TALCCurve locale={locale} />
 
         <div className="mt-4 flex items-center gap-2 text-xs font-bold text-gray-400">
           <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-200 via-[#0064FF] to-gray-200 rounded" />
@@ -202,24 +202,27 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         <h2 className="mb-3">{t("tiersTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("tiersSubtitle")}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {TIERS.map((tier) => (
-            <div key={tier.tier} className={`toss-card ${tier.color}`}>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-2xl">{tier.emoji}</span>
-                <div>
-                  <div className="font-extrabold text-gray-900">{tier.tier}</div>
-                  <span className={`toss-pill ${
-                    tier.signal === "BUY" ? "bg-emerald-100 text-emerald-700" :
-                    tier.signal === "WATCH" ? "bg-blue-100 text-[#0064FF]" :
-                    tier.signal === "SELL" ? "bg-orange-100 text-orange-700" :
-                    "bg-red-100 text-red-600"
-                  }`}>{tier.signal}</span>
+          {TIERS.map((tier) => {
+            const signal = t(`tiers.${tier.key}.signal`);
+            const signalColor =
+              signal === "BUY" || signal === "매수" ? "bg-emerald-100 text-emerald-700" :
+              signal === "WATCH" || signal === "관망" ? "bg-blue-100 text-[#0064FF]" :
+              signal === "SELL" || signal === "매도" ? "bg-orange-100 text-orange-700" :
+              "bg-red-100 text-red-600";
+            return (
+              <div key={tier.key} className={`toss-card ${tier.color}`}>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">{tier.emoji}</span>
+                  <div>
+                    <div className="font-extrabold text-gray-900">{t(`tiers.${tier.key}.name`)}</div>
+                    <span className={`toss-pill ${signalColor}`}>{signal}</span>
+                  </div>
                 </div>
+                <p className="text-gray-600 text-sm leading-relaxed mb-2">{t(`tiers.${tier.key}.desc`)}</p>
+                <span className="text-xs font-bold text-gray-400">{t("source", { book: t(`tiers.${tier.key}.book`) })}</span>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-2">{tier.desc}</p>
-              <span className="text-xs font-bold text-gray-400">{t("source", { book: tier.book })}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
