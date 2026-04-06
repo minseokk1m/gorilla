@@ -214,7 +214,7 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
           const style = PHASE_CARD_STYLE[z.phase];
           const isTornado = z.phase === "Tornado";
           return (
-            <div key={z.phase} className={`rounded-2xl p-4 ${style.bg} ring-1 ${style.ring} ${isTornado ? "ring-2" : ""}`}>
+            <div key={z.phase} className={`rounded-2xl p-4 ${style.bg} ring-1 ${style.ring} ${isTornado ? "ring-2" : ""} flex flex-col`}>
               <div className="flex items-center gap-1.5 mb-1">
                 <span className="text-base">{z.emoji}</span>
                 <span className={`text-xs font-extrabold ${style.accent}`}>
@@ -230,29 +230,36 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
                 </div>
               )}
 
-              <div className="space-y-1">
-                {items.slice(0, 10).map(({ firm, cls }) => (
-                  <Link key={firm.id} href={`/firms/${firm.slug}`}>
-                    <div className="flex items-center gap-1.5 px-2 py-1.5 rounded-lg bg-white/70 hover:bg-white hover:shadow-sm transition-all cursor-pointer">
-                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${TIER_DOT[cls.tier]}`} />
-                      <span className="font-extrabold text-gray-900 text-[11px]">{firm.ticker}</span>
-                      <span className={`ml-auto text-[9px] font-bold ${TIER_TEXT[cls.tier]}`}>
-                        {tTiers(`${cls.tier}.label` as "Gorilla.label")}
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-                {items.length > 10 && (
-                  <Link href="/firms">
-                    <div className={`text-center text-[10px] font-bold py-1 hover:underline ${style.accent}`}>
-                      +{items.length - 10}개 →
-                    </div>
-                  </Link>
-                )}
+              {/* Scrollable firm list — max-h with overflow */}
+              <div className="space-y-1 max-h-[280px] overflow-y-auto overscroll-contain pr-0.5" style={{ scrollbarWidth: "thin", scrollbarColor: "#d1d5db transparent" }}>
+                {items.map(({ firm, cls }) => {
+                  const isBuy = cls.tier === "Gorilla" || cls.tier === "Potential Gorilla";
+                  return (
+                    <Link key={firm.id} href={`/firms/${firm.slug}`}>
+                      <div className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg hover:shadow-sm transition-all cursor-pointer ${
+                        isBuy
+                          ? "bg-emerald-100/60 hover:bg-emerald-100"
+                          : "bg-white/70 hover:bg-white"
+                      }`}>
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${TIER_DOT[cls.tier]}`} />
+                        <span className={`font-extrabold text-[11px] ${isBuy ? "text-emerald-900" : "text-gray-900"}`}>{firm.ticker}</span>
+                        <span className={`ml-auto text-[9px] font-bold ${TIER_TEXT[cls.tier]}`}>
+                          {tTiers(`${cls.tier}.label` as "Gorilla.label")}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
                 {items.length === 0 && (
                   <div className="text-center text-[10px] text-gray-300 py-2">—</div>
                 )}
               </div>
+              {/* Scroll hint for long lists */}
+              {items.length > 8 && (
+                <div className="text-center text-[9px] text-gray-300 mt-1.5 select-none">
+                  ↕ 스크롤하여 {items.length}개 전체 보기
+                </div>
+              )}
             </div>
           );
         })}
