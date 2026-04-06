@@ -5,6 +5,18 @@ import ClassificationBadge from "@/components/firms/ClassificationBadge";
 import SignalBadge from "@/components/firms/SignalBadge";
 import { formatMarketCap, formatPercent, formatPrice } from "@/lib/utils/formatters";
 import { getTranslations } from "next-intl/server";
+import type { ClassificationTier } from "@/types/classification";
+
+const MARKET_TYPE: Record<ClassificationTier, "proprietary" | "open" | "chasm"> = {
+  "Gorilla": "proprietary",
+  "Potential Gorilla": "proprietary",
+  "Chimpanzee": "proprietary",
+  "Monkey": "proprietary",
+  "King": "open",
+  "Prince": "open",
+  "Serf": "open",
+  "In Chasm": "chasm",
+};
 
 export default async function FirmsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -139,6 +151,7 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
             <tr className="border-b border-gray-100 bg-gray-50/50">
               <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colFirm")}</th>
               <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden md:table-cell">{t("colSector")}</th>
+              <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide hidden sm:table-cell">{t("colMarketType")}</th>
               <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colClassification")}</th>
               <th className="text-left px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colSignal")}</th>
               <th className="text-right px-3 sm:px-5 py-2.5 sm:py-3.5 text-gray-400 font-bold text-xs uppercase tracking-wide">{t("colScore")}</th>
@@ -164,6 +177,20 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
                 </td>
                 <td className="px-3 sm:px-5 py-2.5 sm:py-4 hidden md:table-cell">
                   <span className="text-gray-500 text-xs font-medium">{firm.sector}</span>
+                </td>
+                <td className="px-3 sm:px-5 py-2.5 sm:py-4 hidden sm:table-cell">
+                  {(() => {
+                    const mt = MARKET_TYPE[classification.tier];
+                    return (
+                      <span className={`toss-pill text-[10px] !py-0.5 ${
+                        mt === "proprietary" ? "bg-amber-100 text-amber-700" :
+                        mt === "open" ? "bg-indigo-100 text-indigo-600" :
+                        "bg-gray-100 text-gray-500"
+                      }`}>
+                        {t(`marketType.${mt}`)}
+                      </span>
+                    );
+                  })()}
                 </td>
                 <td className="px-3 sm:px-5 py-2.5 sm:py-4">
                   <ClassificationBadge tier={classification.tier} size="sm" />

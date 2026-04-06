@@ -49,6 +49,12 @@
     "thSerf": "농노 — 하위 참여자, 해자 없음",
     "thChasm": "캐즘 — 주류 시장 미도달",
     "thresholdsNote": "아키텍처 지배력 점수에 따라 같은 점수대에서도 트랙이 갈린다. 아키텍처≥40이면 독점 시장(좌), 미만이면 개방형 시장(우).",
+    "colMarketType": "시장 유형",
+    "marketType": {
+      "proprietary": "독점 아키텍처",
+      "open": "개방형",
+      "chasm": "미정"
+    },
     "colFirm": "기업",
     "colSector": "섹터",
     "colClassification": "분류",

@@ -49,6 +49,12 @@
     "thSerf": "Serf — bottom-tier, no moat",
     "thChasm": "In Chasm — pre-mainstream",
     "thresholdsNote": "Architecture control score determines the track. Arch≥40 → proprietary market (left), below → open market (right).",
+    "colMarketType": "Market",
+    "marketType": {
+      "proprietary": "Proprietary",
+      "open": "Open",
+      "chasm": "TBD"
+    },
     "colFirm": "Firm",
     "colSector": "Sector",
     "colClassification": "Classification",
