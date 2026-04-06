@@ -74,18 +74,13 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
         <div className="toss-card">
           <div className="font-bold text-gray-900 text-sm mb-3">{t("thresholdsTitle")}</div>
 
-          {/* Common top tiers */}
-          <div className="space-y-2 mb-4">
-            {[
-              { emoji: "🦍", key: "thGorilla", score: "≥ 75", color: "bg-emerald-100 text-emerald-700" },
-              { emoji: "🦍", key: "thPotential", score: "≥ 60", color: "bg-teal-100 text-teal-700" },
-            ].map((tier) => (
-              <div key={tier.key} className="flex items-center gap-2">
-                <span className="text-sm">{tier.emoji}</span>
-                <span className={`toss-pill text-[10px] !py-0.5 ${tier.color}`}>{tier.score}</span>
-                <span className="text-xs font-bold text-gray-700 flex-1">{t(tier.key)}</span>
-              </div>
-            ))}
+          {/* Common top: Gorilla only */}
+          <div className="mb-4">
+            <div className="flex items-center gap-2">
+              <span className="text-sm">🦍</span>
+              <span className="toss-pill text-[10px] !py-0.5 bg-emerald-100 text-emerald-700">≥ 75</span>
+              <span className="text-xs font-bold text-gray-700 flex-1">{t("thGorilla")}</span>
+            </div>
           </div>
 
           {/* Dual track split */}
@@ -95,7 +90,7 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
               <div className="text-[10px] font-extrabold text-amber-700 uppercase tracking-wide mb-2">{t("trackProprietary")}</div>
               <div className="space-y-2">
                 {[
-                  { emoji: "👑", key: "thKing", score: "≥ 50", color: "bg-blue-100 text-[#0064FF]" },
+                  { emoji: "🦍", key: "thPotential", score: "≥ 60", color: "bg-teal-100 text-teal-700" },
                   { emoji: "🐵", key: "thChimp", score: "≥ 35", color: "bg-yellow-100 text-yellow-700" },
                   { emoji: "🐒", key: "thMonkey", score: "≥ 20", color: "bg-orange-100 text-orange-700" },
                 ].map((tier) => (
