@@ -79,13 +79,89 @@
   },
   "learn": {
     "title": "The Gorilla Game Framework",
-    "subtitle": "Geoffrey Moore's trilogy — Crossing the Chasm, Inside the Tornado, and The Gorilla Game — combined with Miller Heiman's The New Strategic Selling, provides the most rigorous framework for understanding why some tech companies generate extraordinary long-term returns while most others disappoint.",
-    "talcTitle": "Technology Adoption Life Cycle (TALC)",
-    "talcSubtitle": "Every disruptive technology market follows this progression. Investment opportunity is concentrated in the Tornado.",
-    "tiersTitle": "Company Classification Tiers",
-    "tiersSubtitle": "Moore identifies distinct competitive roles in every tornado market. Gorillas win the long game.",
-    "rulesTitle": "The 10 Gorilla Game Investment Principles",
-    "rulesSubtitle": "The core investment operating principles defined in Geoffrey Moore's The Gorilla Game. Presented with both English and Korean translations to preserve nuance.",
+    "thesis": "In disruptive technology markets, one company seizes the proprietary architecture, locks customers in through switching costs, and subjugates competitors via network effects. That company is the gorilla. Finding the gorilla before the tornado, buying it, and holding until a proven substitution threat emerges — that is the entire gorilla game.",
+    "subtitle": "This page contains the complete theoretical framework extracted from five books, arranged in the causal sequence of 'why does exactly one company win.' Follow the flow below to learn how to identify gorillas yourself.",
+    "flow1": "Market Evolution",
+    "flow2": "The Chasm",
+    "flow3": "The Tornado",
+    "flow4": "Identification",
+    "flow5": "Classification",
+    "flow6": "Principles",
+    "flow7": "Execution",
+    "talcTitle": "① Technology Adoption Life Cycle (TALC)",
+    "talcSubtitle": "Every disruptive technology market follows these six stages. Investment opportunity is concentrated in a single window — the Tornado.",
+    "chasmTitle": "② The Chasm — Where Most Companies Die",
+    "chasmThesis": "Between early adopters (visionaries) and the early majority (pragmatists) lies an unbridgeable gap. Visionary references don't work for pragmatists. If a technology fails to cross this gap, it dies in the market — no matter how brilliant.",
+    "chasm": {
+      "whyDie": {
+        "title": "Why Most Die Here",
+        "desc": "Visionaries (early adopters) buy incomplete technology for competitive advantage. But pragmatists (early majority) only buy proven solutions. A visionary's success story is not a valid reference for a pragmatist — they live in different worlds. This disconnect is the chasm."
+      },
+      "wholeProduct": {
+        "title": "The Whole Product",
+        "desc": "Pragmatists don't buy technology alone. They want the complete package: technology + installation + training + support + integration + standards. To cross the chasm, you must first build a whole product for a single niche market."
+      },
+      "beachhead": {
+        "title": "Beachhead Strategy (D-Day Analogy)",
+        "desc": "Like the Normandy invasion, you don't attack the entire market at once. Pick one narrow niche (beachhead), achieve overwhelming victory there with a whole product. That win becomes the reference that pragmatists need to expand into adjacent markets."
+      }
+    },
+    "tornadoTitle": "③ The Tornado — The Moment the Gorilla Is Born",
+    "tornadoThesis": "When a technology that crossed the chasm hits critical mass, pragmatists move simultaneously. They pick the 'market leader' — because it's safe. This positive feedback loop concentrates customers, partners, and developers onto one company, whose architecture becomes the de facto standard. This is the birth of the gorilla.",
+    "tornado": {
+      "herdBehavior": {
+        "title": "Pragmatist Herd Behavior",
+        "desc": "Pragmatists don't decide independently. They watch what their peers buy. They buy 'whatever is selling the most.' This herd behavior explosively concentrates demand onto the market leader."
+      },
+      "feedbackLoop": {
+        "title": "Positive Feedback Loop",
+        "desc": "More customers → more partners/developers → richer ecosystem → even more customers. This self-reinforcing cycle makes one company the overwhelming #1. The gap with #2 widens over time."
+      },
+      "architectureWar": {
+        "title": "Architecture Standard War",
+        "desc": "The real battle in the tornado is 'whose architecture becomes the standard.' The company that captures the standard becomes the gorilla — competitors must conform to its interfaces, and customers find it hard to leave (switching costs). Losers become chimps."
+      },
+      "winnerTakeAll": {
+        "title": "Winner-Take-All Outcome",
+        "desc": "After the tornado, market structure solidifies: 1 gorilla (standard owner), 1-2 chimps (niche survivors), many monkeys (low-cost clones). Kings lead markets with no proprietary architecture. This structure doesn't change until the next disruptive innovation."
+      }
+    },
+    "anatomyTitle": "④ Anatomy of a Gorilla — 7-Dimension Framework",
+    "anatomyThesis": "You don't pick gorillas by gut feeling. We identify them through 7 measurable dimensions extracted from five books. Each dimension is weighted by its importance in determining gorilla status.",
+    "anatomy": {
+      "architectureControl": {
+        "title": "Architecture Control",
+        "desc": "Does this company define the technical standard that competitors must follow? This is the gorilla's most essential trait. Like NVIDIA's CUDA or Microsoft's Windows API — whoever owns the standard owns the market."
+      },
+      "switchingCosts": {
+        "title": "Switching Costs",
+        "desc": "How hard is it for customers to leave? Measured by net revenue retention (NRR), proprietary protocols, and data lock-in. The higher the switching costs, the deeper the gorilla's moat."
+      },
+      "marketShare": {
+        "title": "Category Dominance",
+        "desc": "Market share within the specific technology niche. The wider the gap between #1 and #2 in a tornado market, the higher the gorilla probability."
+      },
+      "networkEffects": {
+        "title": "Network Effects",
+        "desc": "Does the platform's value increase exponentially as users and developers grow? This increasing-returns structure compounds the gorilla's competitive advantage over time."
+      },
+      "ecosystemControl": {
+        "title": "Ecosystem Control",
+        "desc": "Do partners, ISVs, and developers build their businesses on this company's platform? The thicker the ecosystem, the higher the switching costs and the more entrenched the gorilla position."
+      },
+      "revenueGrowth": {
+        "title": "Revenue Growth",
+        "desc": "Year-over-year revenue growth. Gorillas in the tornado stage show explosive growth. However, the 5 structural factors above matter more than growth rate alone for gorilla identification."
+      },
+      "marketConcentration": {
+        "title": "Market Concentration",
+        "desc": "Is the market consolidating around this company? Look for decreasing competitor count, increasing M&A activity, and market restructuring signals."
+      }
+    },
+    "tiersTitle": "⑤ Company Classification System",
+    "tiersSubtitle": "After the tornado, every market participant is assigned one of six roles below. Investment signals are determined by role.",
+    "rulesTitle": "⑥ The 10 Gorilla Game Investment Principles",
+    "rulesSubtitle": "The core investment operating rules from Geoffrey Moore's The Gorilla Game. If the classification system tells you 'what,' these principles tell you 'when and how.'",
     "rule1Title": "Application software: buy in the Bowling Alley",
     "rule1Desc": "If the category is application software, begin buying in the Bowling Alley stage — where niche-by-niche adoption signals a gorilla candidate is forming.",
     "rule1En": "If the category is application software, begin buying in the bowling alley.",
@@ -116,8 +192,8 @@
     "rule10Title": "Learn to ignore most news",
     "rule10Desc": "Most news has nothing to do with the gorilla game. Ignore it. Use AI to track pattern changes only from key influencers, specialist publications, and expert analysts.",
     "rule10En": "Most news has nothing to do with the gorilla game. Learn to ignore it.",
-    "funnelTitle": "Gorilla Investment Funnel",
-    "funnelSubtitle": "The CIA-GI model adapts Miller & Heiman's Sales Funnel to the Gorilla Game investment framework. A strategic tool for deciding where to focus time and resources at each stage.",
+    "funnelTitle": "⑦ Gorilla Investment Funnel",
+    "funnelSubtitle": "The tool that turns theory into execution. The CIA-GI model adapts Miller & Heiman's Sales Funnel to the investment framework, determining what to focus on at each stage.",
     "funnel": {
       "prospecting": {
         "title": "Habitat Scouting (Prospecting)",
@@ -140,8 +216,8 @@
         "action": "Position concentration + long-term hold"
       }
     },
-    "qualSheetTitle": "Gorilla Qualification Sheet",
-    "qualSheetSubtitle": "A living document adapting Miller & Heiman's Blue Sheet methodology to investment analysis. Restructured for investment decision stages rather than sales stages.",
+    "qualSheetTitle": "⑧ Gorilla Qualification Sheet",
+    "qualSheetSubtitle": "A living document adapting Miller & Heiman's Blue Sheet to investment analysis. Created per company and updated as market phases progress.",
     "qualSheet": {
       "objective": {
         "title": "Investment Objective",
@@ -170,6 +246,43 @@
     },
     "qualSheetNote": "The Gorilla Qualification Sheet is not a one-time document — it must be updated with new information as market phases progress, revising strategy as a 'living document.' Collective Intelligence and Active Participation from all members is essential.",
     "booksTitle": "Five Books + CIA-GI Adaptation",
+    "books": {
+      "crossingTheChasm": {
+        "title": "Crossing the Chasm",
+        "subtitle": "3rd Edition (2014)",
+        "author": "Geoffrey A. Moore",
+        "keyIdea": "The critical gap between early adopters and the pragmatist early majority. Most tech products die here. The solution: pick one beachhead niche, build a whole product for it, and use that win as a reference to cross into the mainstream.",
+        "concepts": "Technology Adoption Life Cycle, The Chasm, Whole Product, Beachhead Strategy, D-Day Analogy"
+      },
+      "insideTheTornado": {
+        "title": "Inside the Tornado",
+        "subtitle": "1995",
+        "author": "Geoffrey A. Moore",
+        "keyIdea": "What happens after you cross the chasm. The Bowling Alley (niche adoption), the Tornado (explosive mainstream growth), and Main Street (mature market) each require completely different strategies. In the tornado: ship fast, attack competitors, expand channels.",
+        "concepts": "Bowling Alley, Tornado, Main Street, Pragmatist Herd Behavior, +1 Marketing"
+      },
+      "theGorillaGame": {
+        "title": "The Gorilla Game",
+        "subtitle": "1999",
+        "author": "Geoffrey A. Moore, Paul Johnson, Tom Kippola",
+        "keyIdea": "The investment thesis derived from the tornado framework. In every tornado, one company emerges as the gorilla — the architecture standard-setter with compounding competitive advantage. Buy gorillas and potential gorillas. Sell everything else.",
+        "concepts": "Gorilla / Chimp / Monkey, King / Prince / Serf, Competitive Advantage Period (CAP), Architecture Lock-in, Switching Costs"
+      },
+      "strategicSelling": {
+        "title": "The New Strategic Selling",
+        "subtitle": "Revised & Updated",
+        "author": "Robert B. Miller, Stephen E. Heiman",
+        "keyIdea": "How enterprise companies win complex B2B deals by identifying all buying influences — Economic Buyer, User Buyers, Technical Buyers, and a Coach. Gorillas dominate not just through technology but through superior coverage of every decision-maker in the customer organization.",
+        "concepts": "Complex Sale, Buying Influences, Economic Buyer, Response Modes, Win-Results, Sales Funnel, Red Flags"
+      },
+      "ciagiAdaptation": {
+        "title": "CIA-GI Strategic Selling Adaptation",
+        "subtitle": "2026 Draft",
+        "author": "CIA-GI Working Group",
+        "keyIdea": "Adapts Miller & Heiman's Sales Funnel and Blue Sheet methodology to the Gorilla Game investment framework. Transforms the 4-stage sales pipeline into an investment qualification process: from habitat scouting, through basket formation, to gorilla tracking and concentrated positioning. Introduces the Gorilla Qualification Sheet — a living document that maps TALC phase, Hype Cycle position, competitive dynamics, and the 10 Gorilla Game Principles into a single strategic view. Leverages Collective Intelligence and AI-driven signal tracking to minimize manual overhead.",
+        "concepts": "Gorilla Investment Funnel, Gorilla Qualification Sheet, Blue Sheet Adaptation, Hype Cycle Integration, 10 Investment Principles, Collective Intelligence, AI Signal Tracking"
+      }
+    },
     "viewAllFirms": "View All 50 Firms →",
     "source": "Source: {book}",
     "timeAxis": "Time / Market Maturity →",

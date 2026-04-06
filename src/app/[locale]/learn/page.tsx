@@ -20,69 +20,21 @@ const TIERS = [
   { tier: "In Chasm", emoji: "🕳️", signal: "AVOID", color: "bg-red-50/60", desc: "Has early adopter enthusiasm but has not crossed to the pragmatist mainstream. Most companies in this position never cross. High risk, avoid until clear beachhead emerges.", book: "Crossing the Chasm" },
 ];
 
-const BOOKS = [
-  {
-    title: "Crossing the Chasm",
-    subtitle: "3rd Edition (2014)",
-    author: "Geoffrey A. Moore",
-    keyIdea: "The critical gap between early adopters and the pragmatist early majority. Most tech products die here. The solution: pick one beachhead niche, build a whole product for it, and use that win as a reference to cross into the mainstream.",
-    concepts: ["Technology Adoption Life Cycle", "The Chasm", "Whole Product", "Beachhead Strategy", "D-Day Analogy"],
-  },
-  {
-    title: "Inside the Tornado",
-    subtitle: "1995",
-    author: "Geoffrey A. Moore",
-    keyIdea: "What happens after you cross the chasm. The Bowling Alley (niche adoption), the Tornado (explosive mainstream growth), and Main Street (mature market) each require completely different strategies. In the tornado: ship fast, attack competitors, expand channels.",
-    concepts: ["Bowling Alley", "Tornado", "Main Street", "Pragmatist Herd Behavior", "+1 Marketing"],
-  },
-  {
-    title: "The Gorilla Game",
-    subtitle: "1999",
-    author: "Geoffrey A. Moore, Paul Johnson, Tom Kippola",
-    keyIdea: "The investment thesis derived from the tornado framework. In every tornado, one company emerges as the gorilla — the architecture standard-setter with compounding competitive advantage. Buy gorillas and potential gorillas. Sell everything else.",
-    concepts: ["Gorilla / Chimp / Monkey", "King / Prince / Serf", "Competitive Advantage Period (CAP)", "Architecture Lock-in", "Switching Costs"],
-  },
-  {
-    title: "The New Strategic Selling",
-    subtitle: "Revised & Updated",
-    author: "Robert B. Miller, Stephen E. Heiman",
-    keyIdea: "How enterprise companies win complex B2B deals by identifying all buying influences — Economic Buyer, User Buyers, Technical Buyers, and a Coach. Gorillas dominate not just through technology but through superior coverage of every decision-maker in the customer organization.",
-    concepts: ["Complex Sale", "Buying Influences", "Economic Buyer", "Response Modes", "Win-Results", "Sales Funnel", "Red Flags"],
-  },
-  {
-    title: "CIA-GI Strategic Selling Adaptation",
-    subtitle: "2026 Draft",
-    author: "CIA-GI Working Group",
-    keyIdea: "Adapts Miller & Heiman's Sales Funnel and Blue Sheet methodology to the Gorilla Game investment framework. Transforms the 4-stage sales pipeline into an investment qualification process: from habitat scouting, through basket formation, to gorilla tracking and concentrated positioning. Introduces the Gorilla Qualification Sheet — a living document that maps TALC phase, Hype Cycle position, competitive dynamics, and the 10 Gorilla Game Principles into a single strategic view. Leverages Collective Intelligence and AI-driven signal tracking to minimize manual overhead.",
-    concepts: ["Gorilla Investment Funnel", "Gorilla Qualification Sheet", "Blue Sheet Adaptation", "Hype Cycle Integration", "10 Investment Principles", "Collective Intelligence", "AI Signal Tracking"],
-  },
+const BOOK_KEYS = [
+  { key: "crossingTheChasm", isNew: false },
+  { key: "insideTheTornado", isNew: false },
+  { key: "theGorillaGame", isNew: false },
+  { key: "strategicSelling", isNew: false },
+  { key: "ciagiAdaptation", isNew: true },
 ];
 
-/* ── Gorilla Investment Funnel (CIA-GI adaptation of Sales Funnel) ── */
 const FUNNEL_STAGES = [
-  {
-    key: "prospecting",
-    emoji: "🔭",
-    color: "bg-gray-50",
-  },
-  {
-    key: "qualifying",
-    emoji: "🧺",
-    color: "bg-yellow-50/60",
-  },
-  {
-    key: "inTheFunnel",
-    emoji: "🔍",
-    color: "bg-blue-50/60",
-  },
-  {
-    key: "bestFew",
-    emoji: "🎯",
-    color: "bg-emerald-50/60",
-  },
+  { key: "prospecting", emoji: "🔭", color: "bg-gray-50" },
+  { key: "qualifying", emoji: "🧺", color: "bg-yellow-50/60" },
+  { key: "inTheFunnel", emoji: "🔍", color: "bg-blue-50/60" },
+  { key: "bestFew", emoji: "🎯", color: "bg-emerald-50/60" },
 ];
 
-/* ── Gorilla Qualification Sheet (Blue Sheet adaptation) ── */
 const QUAL_SHEET_ITEMS = [
   { key: "objective", emoji: "🎯" },
   { key: "buyingInfluences", emoji: "👥" },
@@ -92,19 +44,71 @@ const QUAL_SHEET_ITEMS = [
   { key: "actionPlan", emoji: "📋" },
 ];
 
+/* ── New section data ── */
+const CHASM_ITEMS = [
+  { key: "whyDie", emoji: "💀" },
+  { key: "wholeProduct", emoji: "📦" },
+  { key: "beachhead", emoji: "🏖️" },
+];
+
+const TORNADO_ITEMS = [
+  { key: "herdBehavior", emoji: "🐑" },
+  { key: "feedbackLoop", emoji: "🔄" },
+  { key: "architectureWar", emoji: "⚔️" },
+  { key: "winnerTakeAll", emoji: "🏆" },
+];
+
+const DIMENSIONS = [
+  { key: "architectureControl", weight: 22, emoji: "🏗️", color: "bg-emerald-50/60" },
+  { key: "switchingCosts", weight: 20, emoji: "🔒", color: "bg-emerald-50/60" },
+  { key: "marketShare", weight: 18, emoji: "📊", color: "bg-blue-50/60" },
+  { key: "networkEffects", weight: 15, emoji: "🌐", color: "bg-blue-50/60" },
+  { key: "ecosystemControl", weight: 13, emoji: "🤝", color: "bg-yellow-50/60" },
+  { key: "revenueGrowth", weight: 6, emoji: "📈", color: "bg-gray-50" },
+  { key: "marketConcentration", weight: 6, emoji: "🎯", color: "bg-gray-50" },
+];
+
+const FLOW_STEPS = [
+  { key: "flow1", emoji: "🌱" },
+  { key: "flow2", emoji: "🕳️" },
+  { key: "flow3", emoji: "🌪️" },
+  { key: "flow4", emoji: "🔬" },
+  { key: "flow5", emoji: "🏷️" },
+  { key: "flow6", emoji: "📜" },
+  { key: "flow7", emoji: "🎯" },
+];
+
 export default async function LearnPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "learn" });
 
   return (
     <main className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-14">
-      {/* Hero */}
+      {/* ══════ Hero — Thesis First ══════ */}
       <div>
-        <h1 className="mb-3">{t("title")}</h1>
-        <p className="text-gray-500 max-w-2xl text-[0.9375rem] leading-relaxed">{t("subtitle")}</p>
+        <h1 className="mb-4">{t("title")}</h1>
+        <div className="toss-card !bg-gray-900 !text-white mb-5">
+          <p className="text-[0.9375rem] sm:text-base leading-relaxed font-bold">{t("thesis")}</p>
+        </div>
+        <p className="text-gray-500 text-sm leading-relaxed mb-6">{t("subtitle")}</p>
+
+        {/* Learning flow roadmap */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {FLOW_STEPS.map((step, i) => (
+            <div key={step.key} className="flex items-center gap-1.5 sm:gap-2">
+              <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-full px-3 py-1.5">
+                <span>{step.emoji}</span>
+                <span>{t(step.key)}</span>
+              </span>
+              {i < FLOW_STEPS.length - 1 && (
+                <span className="text-gray-300 text-xs font-bold">→</span>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* TALC Lifecycle */}
+      {/* ══════ ① TALC Lifecycle ══════ */}
       <section>
         <h2 className="mb-3">{t("talcTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("talcSubtitle")}</p>
@@ -126,7 +130,70 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* Classification tiers */}
+      {/* ══════ ② The Chasm ══════ */}
+      <section>
+        <h2 className="mb-3">{t("chasmTitle")}</h2>
+        <div className="toss-card !bg-red-50/40 ring-1 ring-red-200/50 mb-5">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("chasmThesis")}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {CHASM_ITEMS.map((item) => (
+            <div key={item.key} className="toss-card">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl">{item.emoji}</span>
+                <div className="font-bold text-gray-900 text-sm">{t(`chasm.${item.key}.title`)}</div>
+              </div>
+              <p className="text-gray-500 text-sm leading-relaxed">{t(`chasm.${item.key}.desc`)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════ ③ The Tornado ══════ */}
+      <section>
+        <h2 className="mb-3">{t("tornadoTitle")}</h2>
+        <div className="toss-card !bg-emerald-50/40 ring-1 ring-emerald-200/50 mb-5">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("tornadoThesis")}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {TORNADO_ITEMS.map((item, i) => (
+            <div key={item.key} className="toss-card">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-2xl">{item.emoji}</span>
+                <span className="text-xs font-extrabold text-gray-400">{i + 1}/4</span>
+              </div>
+              <div className="font-bold text-gray-900 text-sm mb-2">{t(`tornado.${item.key}.title`)}</div>
+              <p className="text-gray-500 text-sm leading-relaxed">{t(`tornado.${item.key}.desc`)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════ ④ Anatomy — 7 Dimensions ══════ */}
+      <section>
+        <h2 className="mb-3">{t("anatomyTitle")}</h2>
+        <div className="toss-card !bg-[#E8F0FE]/60 ring-1 ring-[#0064FF]/10 mb-5">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("anatomyThesis")}</p>
+        </div>
+        <div className="space-y-3">
+          {DIMENSIONS.map((dim) => (
+            <div key={dim.key} className={`toss-card ${dim.color}`}>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0 mt-0.5">{dim.emoji}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-bold text-gray-900 text-sm">{t(`anatomy.${dim.key}.title`)}</span>
+                    <span className="toss-pill bg-[#0064FF] text-white text-[10px]">{dim.weight}%</span>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed">{t(`anatomy.${dim.key}.desc`)}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════ ⑤ Classification Tiers ══════ */}
       <section>
         <h2 className="mb-3">{t("tiersTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("tiersSubtitle")}</p>
@@ -152,7 +219,7 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* ══════ Gorilla Game 10 Investment Principles ══════ */}
+      {/* ══════ ⑥ 10 Investment Principles ══════ */}
       <section>
         <h2 className="mb-2">{t("rulesTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("rulesSubtitle")}</p>
@@ -175,7 +242,7 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* ══════ Gorilla Investment Funnel ══════ */}
+      {/* ══════ ⑦ Gorilla Investment Funnel ══════ */}
       <section>
         <h2 className="mb-2">{t("funnelTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("funnelSubtitle")}</p>
@@ -197,7 +264,7 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* ══════ Gorilla Qualification Sheet ══════ */}
+      {/* ══════ ⑧ Gorilla Qualification Sheet ══════ */}
       <section>
         <h2 className="mb-2">{t("qualSheetTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("qualSheetSubtitle")}</p>
@@ -217,21 +284,21 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* Books */}
+      {/* ══════ Books ══════ */}
       <section>
         <h2 className="mb-4">{t("booksTitle")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {BOOKS.map((b) => (
-            <div key={b.title} className={`toss-card ${b.title.startsWith("CIA-GI") ? "!bg-[#E8F0FE]/40 ring-1 ring-[#0064FF]/20" : ""}`}>
-              {b.title.startsWith("CIA-GI") && (
+          {BOOK_KEYS.map((b) => (
+            <div key={b.key} className={`toss-card ${b.isNew ? "!bg-[#E8F0FE]/40 ring-1 ring-[#0064FF]/20" : ""}`}>
+              {b.isNew && (
                 <span className="toss-pill bg-[#0064FF] text-white mb-3">NEW</span>
               )}
-              <div className="text-xs font-bold text-gray-400 mb-1">{b.subtitle}</div>
-              <h3 className="text-lg mb-1">{b.title}</h3>
-              <div className="text-xs font-bold text-gray-400 mb-3">{b.author}</div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">{b.keyIdea}</p>
+              <div className="text-xs font-bold text-gray-400 mb-1">{t(`books.${b.key}.subtitle`)}</div>
+              <h3 className="text-lg mb-1">{t(`books.${b.key}.title`)}</h3>
+              <div className="text-xs font-bold text-gray-400 mb-3">{t(`books.${b.key}.author`)}</div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">{t(`books.${b.key}.keyIdea`)}</p>
               <div className="space-y-1">
-                {b.concepts.map((c) => (
+                {t(`books.${b.key}.concepts`).split(", ").map((c) => (
                   <span key={c} className="inline-block text-xs font-bold bg-gray-100 text-gray-600 rounded-lg px-2.5 py-1 mr-1 mb-1">{c}</span>
                 ))}
               </div>
