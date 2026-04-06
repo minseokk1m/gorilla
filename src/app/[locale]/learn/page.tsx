@@ -2,6 +2,7 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import PrincipleAnnotations from "@/components/discuss/PrincipleAnnotations";
 import TALCCurve from "@/components/learn/TALCCurve";
+import HypeCycleCurve from "@/components/learn/HypeCycleCurve";
 
 const PHASES = [
   { key: "earlyMarket", emoji: "🌱", color: "bg-white" },
@@ -133,6 +134,32 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         <div className="mt-4 flex items-center gap-2 text-xs font-bold text-gray-400">
           <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-200 via-[#0064FF] to-gray-200 rounded" />
           <span>{t("timeAxis")}</span>
+        </div>
+      </section>
+
+      {/* ══════ ①-2 Hype Cycle ══════ */}
+      <section>
+        <h2 className="mb-3">{t("hypeTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("hypeSubtitle")}</p>
+        <div className="toss-card !bg-[#E8F0FE]/60 ring-1 ring-[#0064FF]/10 mb-5">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("hypeThesis")}</p>
+        </div>
+        <HypeCycleCurve locale={locale} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+          <div className="toss-card">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">📉</span>
+              <div className="font-bold text-gray-900 text-sm">{t("hype.troughTitle")}</div>
+            </div>
+            <p className="text-gray-500 text-sm leading-relaxed">{t("hype.troughDesc")}</p>
+          </div>
+          <div className="toss-card">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">🔑</span>
+              <div className="font-bold text-gray-900 text-sm">{t("hype.insightTitle")}</div>
+            </div>
+            <p className="text-gray-500 text-sm leading-relaxed">{t("hype.insightDesc")}</p>
+          </div>
         </div>
       </section>
 

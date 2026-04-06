@@ -90,6 +90,15 @@
     "flow7": "Execution",
     "talcTitle": "① Technology Adoption Life Cycle (TALC)",
     "talcSubtitle": "Every disruptive technology market follows these six stages. Investment opportunity is concentrated in a single window — the Tornado.",
+    "hypeTitle": "①-2 Gartner Hype Cycle",
+    "hypeSubtitle": "If TALC shows 'who is buying,' the Hype Cycle shows 'where market expectations are.' Reading both curves together reveals the investment timing.",
+    "hypeThesis": "The Hype Cycle's 'Trough of Disillusionment' roughly coincides with TALC's Chasm. When expectations hit bottom and the Slope of Enlightenment begins — that's the Bowling Alley → Tornado entry signal. You must track both market hype and actual adoption (TALC) simultaneously to capture the buy window.",
+    "hype": {
+      "troughTitle": "Trough of Disillusionment = The Chasm",
+      "troughDesc": "After the peak of inflated expectations, disappointment floods in. The press declares the technology 'dead.' But this moment is precisely the Chasm — pragmatists simply haven't bought yet. Right when public attention vanishes, the company that secured a beachhead quietly enters the Bowling Alley.",
+      "insightTitle": "Cross-Reading the Two Curves",
+      "insightDesc": "If the Hype Cycle shows entry into the 'Slope of Enlightenment' while TALC signals a Bowling Alley → Tornado transition — that's the gorilla candidate buy window. Conversely, if hype is at its peak but TALC is still in Early Market, a Chasm crash awaits. Always cross-validate the two indicators."
+    },
     "chasmTitle": "② The Chasm — Where Most Companies Die",
     "chasmThesis": "Between early adopters (visionaries) and the early majority (pragmatists) lies an unbridgeable gap. Visionary references don't work for pragmatists. If a technology fails to cross this gap, it dies in the market — no matter how brilliant.",
     "chasm": {
