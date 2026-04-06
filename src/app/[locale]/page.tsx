@@ -122,52 +122,115 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
-      {/* ── 8-Tier Classification Grid ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        {TIERS.map((config) => {
+      {/* ── BUY: Gorilla + Potential Gorilla (hero cards) ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {TIERS.filter((c) => c.signal === "BUY").map((config) => {
           const items = tierGroups.get(config.tier) ?? [];
-          const MAX_SHOW = config.tier === "Gorilla" || config.tier === "Potential Gorilla" ? 15 : 8;
+          const isGorilla = config.tier === "Gorilla";
           return (
-            <div key={config.tier} className={`rounded-2xl ${config.bg} ring-1 ${config.ring} p-4`}>
+            <div
+              key={config.tier}
+              className={`relative rounded-2xl p-5 overflow-hidden ${
+                isGorilla
+                  ? "bg-gradient-to-br from-emerald-50 via-emerald-50/80 to-teal-50/60 ring-2 ring-emerald-300 shadow-lg shadow-emerald-100/50"
+                  : "bg-gradient-to-br from-teal-50 via-teal-50/80 to-emerald-50/40 ring-2 ring-teal-300 shadow-md shadow-teal-100/40"
+              }`}
+            >
+              {/* Subtle watermark */}
+              <div className="absolute -right-4 -top-4 text-[100px] opacity-[0.04] leading-none select-none pointer-events-none">
+                {config.emoji}
+              </div>
+
+              {/* Header */}
+              <div className="flex items-center justify-between mb-2 relative">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">{config.emoji}</span>
+                  <div>
+                    <h3 className={`font-extrabold text-base ${config.text} mb-0`}>
+                      {tTiers(`${config.tier}.label` as "Gorilla.label")}
+                    </h3>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className={`text-3xl font-extrabold ${config.text}`}>{items.length}</div>
+                  <span className={`inline-flex px-2.5 py-0.5 rounded-md text-[10px] font-extrabold ${config.signalBg} ${config.signalText}`}>
+                    {SIGNAL_LABEL[config.signal]}
+                  </span>
+                </div>
+              </div>
+
+              <p className={`text-xs leading-relaxed mb-4 ${isGorilla ? "text-emerald-700/70" : "text-teal-700/70"}`}>
+                {tTiers(`${config.tier}.desc` as "Gorilla.desc")}
+              </p>
+
+              {/* Firm list — 2 columns */}
+              <div className="grid grid-cols-2 gap-1.5">
+                {items.slice(0, 16).map(({ firm, cls }) => (
+                  <Link key={firm.id} href={`/firms/${firm.slug}`}>
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/80 hover:bg-white hover:shadow-md transition-all cursor-pointer">
+                      <span className={`w-2 h-2 rounded-full shrink-0 ${config.dot}`} />
+                      <span className="font-extrabold text-gray-900 text-sm">{firm.ticker}</span>
+                      <span className={`ml-auto text-xs font-extrabold ${config.text}`}>{cls.totalScore}</span>
+                    </div>
+                  </Link>
+                ))}
+                {items.length > 16 && (
+                  <Link href="/firms">
+                    <div className={`text-center text-xs font-bold py-2 hover:underline ${config.text} col-span-2`}>
+                      +{items.length - 16}개 더 보기 →
+                    </div>
+                  </Link>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Other 6 tiers (compact grid) ── */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {TIERS.filter((c) => c.signal !== "BUY").map((config) => {
+          const items = tierGroups.get(config.tier) ?? [];
+          return (
+            <div key={config.tier} className={`rounded-2xl ${config.bg} ring-1 ${config.ring} p-3.5`}>
               {/* Tier header */}
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-lg">{config.emoji}</span>
-                <h3 className={`font-extrabold text-sm ${config.text} mb-0`}>
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-base">{config.emoji}</span>
+                <h3 className={`font-extrabold text-xs ${config.text} mb-0`}>
                   {tTiers(`${config.tier}.label` as "Gorilla.label")}
                 </h3>
               </div>
-              <div className="flex items-center gap-2 mb-3">
-                <span className={`inline-flex px-2 py-0.5 rounded text-[10px] font-extrabold ${config.signalBg} ${config.signalText}`}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className={`inline-flex px-1.5 py-0.5 rounded text-[9px] font-extrabold ${config.signalBg} ${config.signalText}`}>
                   {SIGNAL_LABEL[config.signal]}
                 </span>
-                <span className="text-xs font-bold text-gray-400">{items.length}개</span>
+                <span className="text-[10px] font-bold text-gray-400">{items.length}개</span>
               </div>
 
-              {/* Tier description */}
-              <p className="text-[11px] text-gray-500 leading-relaxed mb-3">
+              <p className="text-[10px] text-gray-400 leading-relaxed mb-2.5 line-clamp-2">
                 {tTiers(`${config.tier}.desc` as "Gorilla.desc")}
               </p>
 
               {/* Firm chips */}
               <div className="space-y-1">
-                {items.slice(0, MAX_SHOW).map(({ firm, cls }) => (
+                {items.slice(0, 5).map(({ firm, cls }) => (
                   <Link key={firm.id} href={`/firms/${firm.slug}`}>
-                    <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/70 hover:bg-white hover:shadow-sm transition-all cursor-pointer">
+                    <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-white/60 hover:bg-white hover:shadow-sm transition-all cursor-pointer">
                       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${config.dot}`} />
-                      <span className="font-extrabold text-gray-900 text-xs">{firm.ticker}</span>
-                      <span className="ml-auto text-[10px] font-bold text-gray-400">{cls.totalScore}</span>
+                      <span className="font-extrabold text-gray-900 text-[10px]">{firm.ticker}</span>
+                      <span className="ml-auto text-[9px] font-bold text-gray-400">{cls.totalScore}</span>
                     </div>
                   </Link>
                 ))}
-                {items.length > MAX_SHOW && (
+                {items.length > 5 && (
                   <Link href="/firms">
-                    <div className={`text-center text-[10px] font-bold py-1 hover:underline ${config.text}`}>
-                      +{items.length - MAX_SHOW}개 더 보기 →
+                    <div className={`text-center text-[9px] font-bold py-0.5 hover:underline ${config.text}`}>
+                      +{items.length - 5}개 →
                     </div>
                   </Link>
                 )}
                 {items.length === 0 && (
-                  <div className="text-center text-[10px] text-gray-300 py-2">해당 없음</div>
+                  <div className="text-center text-[9px] text-gray-300 py-1.5">해당 없음</div>
                 )}
               </div>
             </div>
