@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import PrincipleAnnotations from "@/components/discuss/PrincipleAnnotations";
+import TALCCurve from "@/components/learn/TALCCurve";
 
 const PHASES = [
   { phase: "Early Market", emoji: "🌱", color: "bg-white", desc: "Visionaries and tech enthusiasts buy. No mainstream adoption yet. High risk." },
@@ -124,6 +125,9 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
             </div>
           ))}
         </div>
+        {/* TALC bell curve diagram */}
+        <TALCCurve />
+
         <div className="mt-4 flex items-center gap-2 text-xs font-bold text-gray-400">
           <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-200 via-[#0064FF] to-gray-200 rounded" />
           <span>{t("timeAxis")}</span>
