@@ -15,11 +15,11 @@ const PTS: [number, number][] = [];
 for (let x = 50; x <= 750; x += 3) PTS.push([x, g(x)]);
 
 const SEGS = [
-  { id: "innov", label: "Innovators", pct: "2.5%", x0: 50, x1: 135, fill: "#e5e7eb" },
-  { id: "early", label: "Early Adopters", pct: "13.5%", x0: 135, x1: 256, fill: "#bfdbfe" },
-  { id: "emaj", label: "Early Majority", pct: "34%", x0: 280, x1: 460, fill: "#a7f3d0" },
-  { id: "lmaj", label: "Late Majority", pct: "34%", x0: 460, x1: 630, fill: "#bfdbfe" },
-  { id: "lag", label: "Laggards", pct: "16%", x0: 630, x1: 750, fill: "#e5e7eb" },
+  { id: "innov", line1: "Technology", line2: "Enthusiasts", pct: "2.5%", x0: 50, x1: 135, fill: "#e5e7eb" },
+  { id: "early", line1: "Visionaries", line2: null, pct: "13.5%", x0: 135, x1: 256, fill: "#bfdbfe" },
+  { id: "emaj", line1: "Pragmatists", line2: "(early majority)", pct: "34%", x0: 280, x1: 460, fill: "#a7f3d0" },
+  { id: "lmaj", line1: "Conservatives", line2: "(late majority)", pct: "34%", x0: 460, x1: 630, fill: "#bfdbfe" },
+  { id: "lag", line1: "Laggards", line2: null, pct: "16%", x0: 630, x1: 750, fill: "#e5e7eb" },
 ];
 
 function area(x0: number, x1: number) {
@@ -46,7 +46,7 @@ export default function TALCCurve() {
   return (
     <div className="toss-card !p-4 sm:!p-6 mt-5 overflow-hidden">
       <svg
-        viewBox="0 0 800 385"
+        viewBox="0 0 800 400"
         className="w-full h-auto select-none"
         role="img"
         aria-label="Technology Adoption Life Cycle bell curve"
@@ -91,12 +91,18 @@ export default function TALCCurve() {
         {/* ── Segment labels ── */}
         {SEGS.map((s) => {
           const mx = (s.x0 + s.x1) / 2;
+          const hasLine2 = !!s.line2;
           return (
             <g key={`${s.id}-lbl`}>
-              <text x={mx} y={BASE + 22} textAnchor="middle" fill="#374151" fontSize="13" fontWeight="700" style={FONT}>
-                {s.label}
+              <text x={mx} y={BASE + 20} textAnchor="middle" fill="#374151" fontSize="12" fontWeight="700" style={FONT}>
+                {s.line1}
               </text>
-              <text x={mx} y={BASE + 40} textAnchor="middle" fill="#9ca3af" fontSize="12" fontWeight="700" style={FONT}>
+              {hasLine2 && (
+                <text x={mx} y={BASE + 34} textAnchor="middle" fill="#6b7280" fontSize="10" fontWeight="600" style={FONT}>
+                  {s.line2}
+                </text>
+              )}
+              <text x={mx} y={hasLine2 ? BASE + 50 : BASE + 36} textAnchor="middle" fill="#9ca3af" fontSize="11" fontWeight="700" style={FONT}>
                 {s.pct}
               </text>
             </g>
@@ -104,7 +110,7 @@ export default function TALCCurve() {
         })}
 
         {/* ── Moore's phase mapping (subtle row below) ── */}
-        <line x1={50} y1={BASE + 55} x2={750} y2={BASE + 55} stroke="#f3f4f6" strokeWidth="1" />
+        <line x1={50} y1={BASE + 62} x2={750} y2={BASE + 62} stroke="#e5e7eb" strokeWidth="1" />
         {[
           { label: "🌱 Early Market", x0: 50, x1: 256 },
           { label: "🎳 Bowling Alley", x0: 280, x1: 370 },
@@ -114,7 +120,7 @@ export default function TALCCurve() {
           <text
             key={p.label}
             x={(p.x0 + p.x1) / 2}
-            y={BASE + 72}
+            y={BASE + 80}
             textAnchor="middle"
             fill="#9ca3af"
             fontSize="11"
@@ -126,8 +132,8 @@ export default function TALCCurve() {
         ))}
 
         {/* ── BUY window: Tornado highlight ── */}
-        <rect x={370} y={BASE + 58} width={90} height={20} rx="4" fill="#ecfdf5" opacity="0.6" />
-        <text x={415} y={BASE + 72} textAnchor="middle" fill="#059669" fontSize="11" fontWeight="800" style={FONT}>
+        <rect x={370} y={BASE + 65} width={90} height={20} rx="4" fill="#ecfdf5" opacity="0.6" />
+        <text x={415} y={BASE + 80} textAnchor="middle" fill="#059669" fontSize="11" fontWeight="800" style={FONT}>
           🌪️ Tornado
         </text>
       </svg>
