@@ -144,10 +144,10 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
             캐즘
           </text>
 
-          {/* Tornado BUY window highlight */}
-          <rect x={370} y={g(415) - 8} width={90} height={16} rx="8" fill="#059669" opacity="0.15" />
-          <text x={415} y={g(415) + 3} textAnchor="middle" fill="#059669" fontSize="9" fontWeight="800" style={FONT}>
-            BUY WINDOW
+          {/* Tornado highlight — standard is decided here */}
+          <rect x={365} y={g(415) - 8} width={100} height={16} rx="8" fill="#059669" opacity="0.12" />
+          <text x={415} y={g(415) + 3} textAnchor="middle" fill="#059669" fontSize="8" fontWeight="800" style={FONT}>
+            표준 결정 구간
           </text>
 
           {/* Baseline */}
@@ -226,7 +226,7 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
 
               {isTornado && items.length > 0 && (
                 <div className="toss-pill bg-emerald-100 text-emerald-700 text-[9px] mb-2">
-                  매수 윈도우
+                  고릴라가 결정되는 구간
                 </div>
               )}
 
