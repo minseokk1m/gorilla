@@ -77,14 +77,14 @@ export async function getLatestNews(limit = 10): Promise<NewsArticle[]> {
   if (DATA_SOURCE !== "mock") {
     // Fetch news for a subset of key firms (top gorilla candidates)
     const keyTickers = MOCK_FIRMS.slice(0, 15); // top firms by definition order
-    const allNews: NewsArticle[] = [];
 
-    for (const firm of keyTickers) {
-      const liveNews = await getLiveNews(firm.ticker);
-      if (liveNews) {
-        allNews.push(...liveNews.map((n) => toNewsArticle(n, firm.id)));
-      }
-    }
+    const results = await Promise.all(
+      keyTickers.map(async (firm) => {
+        const liveNews = await getLiveNews(firm.ticker);
+        return liveNews ? liveNews.map((n) => toNewsArticle(n, firm.id)) : [];
+      })
+    );
+    const allNews = results.flat();
 
     if (allNews.length > 0) {
       return allNews
