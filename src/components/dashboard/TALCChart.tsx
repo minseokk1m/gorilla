@@ -1,457 +1,250 @@
 "use client";
 
-import { useState, useCallback, useMemo, useRef } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import type { Firm } from "@/types/firm";
-import type { ClassificationResult, ClassificationTier, MarketPhase, Signal } from "@/types/classification";
+import type { ClassificationResult, ClassificationTier, MarketPhase } from "@/types/classification";
 import type { NewsArticle } from "@/types/news";
 
-/* ── types ─────────────────────────────────────────────── */
 interface Props {
   firms: Firm[];
   classifications: Record<string, ClassificationResult>;
   newsMap: Record<string, NewsArticle>;
 }
 
-/* ── SVG dimensions ────────────────────────────────────── */
-const W = 1000;
-const H = 500;
-const BASELINE = 470;
-
-/* ── The TALC curve ──────────────────────────────────── */
-const CURVE_PATH = [
-  "M 0,470",
-  "C 35,468 65,400 105,270",
-  "C 130,200 155,95 185,45",
-  "C 200,20 215,12 230,12",
-  "C 250,12 265,35 282,120",
-  "C 300,210 315,400 338,465",
-  "C 350,472 362,472 378,468",
-  "C 400,458 425,385 462,300",
-  "C 490,235 520,170 555,135",
-  "C 580,115 608,105 640,102",
-  "C 680,99 720,100 760,105",
-  "C 810,112 870,128 935,148",
-  "C 965,155 985,160 1000,165",
-].join(" ");
-
-/* ── Segment x-boundaries (adopter groups) ──────────── */
-const SEGMENTS = [
-  { key: "innovators",     xMin: 0,   xMax: 95,   fill: "#86efac", opacity: 0.2 },
-  { key: "earlyAdopters",  xMin: 95,  xMax: 265,  fill: "#fde047", opacity: 0.18 },
-  { key: "earlyMajority",  xMin: 395, xMax: 560,  fill: "#fbbf24", opacity: 0.18 },
-  { key: "lateMajority",   xMin: 560, xMax: 800,  fill: "#fb923c", opacity: 0.18 },
-  { key: "laggards",       xMin: 800, xMax: 1000, fill: "#7f1d1d", opacity: 0.14 },
+const PHASE_ORDER: MarketPhase[] = [
+  "Early Market",
+  "Bowling Alley",
+  "Tornado",
+  "Main Street",
+  "End of Life",
 ];
 
-/* ── Curve annotations (keys map to talcChart.* translations) ── */
-const ANNOTATIONS = [
-  { key1: "peakInflated",  key2: "expectations", x: 135, y: 35, anchor: "end" as const },
-  { key1: "slopeOf",       key2: "enlightenment", x: 480, y: 180, anchor: "middle" as const },
-  { key1: "plateauOf",     key2: "productivity",  x: 715, y: 75,  anchor: "middle" as const },
-];
-
-/* ── Phase → zone mapping for firm dots ──────────────── */
-const PHASE_ZONES: Record<MarketPhase, { xMin: number; xMax: number; yBase: number }> = {
-  "Early Market":  { xMin: 100, xMax: 230, yBase: 190 },
-  "Bowling Alley": { xMin: 405, xMax: 530, yBase: 275 },
-  "Tornado":       { xMin: 545, xMax: 660, yBase: 120 },
-  "Main Street":   { xMin: 670, xMax: 800, yBase: 108 },
-  "End of Life":   { xMin: 820, xMax: 970, yBase: 145 },
+const PHASE_EMOJI: Record<MarketPhase, string> = {
+  "Early Market": "🌱",
+  "Bowling Alley": "🎳",
+  "Tornado": "🌪️",
+  "Main Street": "🏙️",
+  "End of Life": "📉",
 };
 
-/* ── Colour helpers ──────────────────────────────────── */
+const PHASE_STYLE: Record<MarketPhase, { bg: string; ring: string; accent: string }> = {
+  "Early Market":  { bg: "bg-gray-50",      ring: "ring-gray-200",    accent: "text-gray-500" },
+  "Bowling Alley": { bg: "bg-yellow-50/60", ring: "ring-yellow-200",  accent: "text-yellow-700" },
+  "Tornado":       { bg: "bg-emerald-50/60",ring: "ring-emerald-200", accent: "text-emerald-700" },
+  "Main Street":   { bg: "bg-blue-50/60",   ring: "ring-blue-200",    accent: "text-[#0064FF]" },
+  "End of Life":   { bg: "bg-red-50/40",     ring: "ring-red-200",     accent: "text-red-500" },
+};
+
 const TIER_DOT: Record<ClassificationTier, string> = {
-  "Gorilla":           "#059669",
-  "Potential Gorilla": "#0d9488",
-  "King":              "#0064FF",
-  "Prince":            "#6366f1",
-  "Serf":              "#78716c",
-  "Chimpanzee":        "#d97706",
-  "Monkey":            "#ea580c",
-  "In Chasm":          "#dc2626",
+  "Gorilla":           "bg-emerald-500",
+  "Potential Gorilla": "bg-teal-500",
+  "King":              "bg-[#0064FF]",
+  "Prince":            "bg-indigo-500",
+  "Serf":              "bg-stone-400",
+  "Chimpanzee":        "bg-yellow-500",
+  "Monkey":            "bg-orange-500",
+  "In Chasm":          "bg-red-500",
 };
 
-const SIGNAL_BG: Record<Signal, string> = {
-  BUY:   "#059669",
-  WATCH: "#0064FF",
-  SELL:  "#ea580c",
-  AVOID: "#dc2626",
+const SIGNAL_COLOR: Record<string, string> = {
+  "BUY":   "bg-emerald-100 text-emerald-700",
+  "WATCH": "bg-blue-100 text-[#0064FF]",
+  "SELL":  "bg-orange-100 text-orange-700",
+  "AVOID": "bg-red-100 text-red-600",
 };
 
-const TIER_EMOJI: Record<ClassificationTier, string> = {
-  "Gorilla":           "🦍",
-  "Potential Gorilla": "🦍",
-  "King":              "👑",
-  "Prince":            "🤴",
-  "Serf":              "⛏️",
-  "Chimpanzee":        "🐵",
-  "Monkey":            "🐒",
-  "In Chasm":          "🕳️",
-};
-
-/* ── Position computation ────────────────────────────── */
-function computePositions(
-  firms: Firm[],
-  cls: Record<string, ClassificationResult>,
-): Map<string, [number, number]> {
-  const byPhase = new Map<MarketPhase, Firm[]>();
-  for (const f of firms) {
-    const c = cls[f.id];
-    if (!c) continue;
-    const phase = c.marketPhase;
-    if (!byPhase.has(phase)) byPhase.set(phase, []);
-    byPhase.get(phase)!.push(f);
-  }
-
-  for (const arr of byPhase.values()) {
-    arr.sort((a, b) => (cls[b.id]?.totalScore ?? 0) - (cls[a.id]?.totalScore ?? 0));
-  }
-
-  const out = new Map<string, [number, number]>();
-
-  for (const [phase, arr] of byPhase) {
-    const zone = PHASE_ZONES[phase];
-    if (!zone) continue;
-    const n = arr.length;
-    const cols = Math.min(n, Math.max(3, Math.ceil(Math.sqrt(n * 2))));
-    const xRange = zone.xMax - zone.xMin;
-    const xStep = cols > 1 ? xRange / (cols - 1) : 0;
-    const yStep = 28;
-
-    arr.forEach((f, i) => {
-      const col = i % cols;
-      const row = Math.floor(i / cols);
-      const x = zone.xMin + col * xStep;
-      const y = zone.yBase - row * yStep;
-      out.set(f.id, [x, y]);
-    });
-  }
-  return out;
-}
-
-/* ── Left-panel grouping order ───────────────────────── */
-const TIER_ORDER: ClassificationTier[] = [
-  "Gorilla",
-  "Potential Gorilla",
-  "In Chasm",
-  "King",
-  "Prince",
-  "Serf",
-  "Chimpanzee",
-  "Monkey",
-];
-
-/* ── Component ───────────────────────────────────────── */
 export default function TALCChart({ firms, classifications, newsMap }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const svgRef = useRef<SVGSVGElement>(null);
   const ts = useTranslations("signals");
-  const tc = useTranslations("talcChart");
   const tTiers = useTranslations("tiers");
   const tPhases = useTranslations("marketPhases");
+  const tc = useTranslations("talcChart");
 
-  const positions = useMemo(
-    () => computePositions(firms, classifications),
-    [firms, classifications],
-  );
+  // Group firms by market phase
+  const phaseGroups = useMemo(() => {
+    const groups = new Map<MarketPhase, { firm: Firm; cls: ClassificationResult }[]>();
+    PHASE_ORDER.forEach((p) => groups.set(p, []));
+    for (const firm of firms) {
+      const cls = classifications[firm.id];
+      if (!cls) continue;
+      groups.get(cls.marketPhase)?.push({ firm, cls });
+    }
+    // Sort each group by score desc
+    for (const arr of groups.values()) {
+      arr.sort((a, b) => b.cls.totalScore - a.cls.totalScore);
+    }
+    return groups;
+  }, [firms, classifications]);
 
-  const grouped = useMemo(() => {
-    const m = new Map<ClassificationTier, Firm[]>();
-    TIER_ORDER.forEach((t) => m.set(t, []));
-    for (const f of firms) {
-      const c = classifications[f.id];
-      if (!c) continue;
-      m.get(c.tier)!.push(f);
+  // Tier summary counts
+  const tierCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const firm of firms) {
+      const cls = classifications[firm.id];
+      if (!cls) continue;
+      counts[cls.tier] = (counts[cls.tier] ?? 0) + 1;
     }
-    for (const arr of m.values()) {
-      arr.sort((a, b) => (classifications[b.id]?.totalScore ?? 0) - (classifications[a.id]?.totalScore ?? 0));
-    }
-    return m;
+    return counts;
   }, [firms, classifications]);
 
   const hoveredFirm = hoveredId ? firms.find((f) => f.id === hoveredId) : null;
   const hoveredCls = hoveredId ? classifications[hoveredId] : null;
   const hoveredNews = hoveredId ? newsMap[hoveredId] : null;
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  }, []);
-
   return (
-    <div className="flex flex-col lg:flex-row gap-5">
-      {/* Left panel: firm list */}
-      <div className="w-full lg:w-72 shrink-0 lg:max-h-[600px] overflow-y-auto space-y-3 pr-1">
-        {TIER_ORDER.map((tier) => {
-          const arr = grouped.get(tier)!;
-          if (arr.length === 0) return null;
+    <div className="space-y-5">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="!text-base mb-0.5">{tc("phasesTitle")}</h2>
+          <p className="text-xs text-gray-400 font-medium">{tc("phasesSubtitle")}</p>
+        </div>
+        <div className="flex gap-3 text-xs">
+          {[
+            { label: tTiers("Gorilla.label"), dot: "bg-emerald-500" },
+            { label: tTiers("King.label"), dot: "bg-[#0064FF]" },
+            { label: tTiers("In Chasm.label"), dot: "bg-red-500" },
+          ].map((l) => (
+            <span key={l.label} className="hidden sm:flex items-center gap-1.5 text-gray-500 font-medium">
+              <span className={`w-2 h-2 rounded-full ${l.dot}`} />
+              {l.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* TALC Flow Arrow */}
+      <div className="flex items-center gap-1 text-xs text-gray-300 font-bold">
+        {PHASE_ORDER.map((phase, i) => (
+          <div key={phase} className="flex items-center gap-1 flex-1 min-w-0">
+            <span className={`truncate ${PHASE_STYLE[phase].accent} font-extrabold`}>
+              {PHASE_EMOJI[phase]} {tPhases(phase)}
+            </span>
+            {i < PHASE_ORDER.length - 1 && <span className="text-gray-200 shrink-0">→</span>}
+          </div>
+        ))}
+      </div>
+
+      {/* Phase cards grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        {PHASE_ORDER.map((phase) => {
+          const items = phaseGroups.get(phase) ?? [];
+          const style = PHASE_STYLE[phase];
+          const isTornado = phase === "Tornado";
           return (
-            <div key={tier}>
-              <div className="flex items-center gap-1.5 mb-1.5 sticky top-0 bg-white/90 backdrop-blur-sm py-1 z-10">
-                <span className="text-sm">{TIER_EMOJI[tier]}</span>
-                <span className="text-xs font-extrabold text-gray-700">{tTiers(`${tier}.label` as "Gorilla.label")}</span>
-                <span className="text-xs font-bold text-gray-400 ml-auto">{arr.length}</span>
+            <div
+              key={phase}
+              className={`rounded-2xl p-3.5 ${style.bg} ring-1 ${style.ring} ${isTornado ? "ring-2 ring-emerald-300" : ""} relative`}
+            >
+              {/* Phase header */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-lg">{PHASE_EMOJI[phase]}</span>
+                  <span className={`text-xs font-extrabold ${style.accent}`}>{tPhases(phase)}</span>
+                </div>
+                <span className="text-sm font-extrabold text-gray-400">{items.length}</span>
               </div>
-              <div className="space-y-0.5">
-                {arr.map((f) => {
-                  const c = classifications[f.id]!;
-                  const active = hoveredId === f.id;
-                  return (
+
+              {isTornado && (
+                <div className="toss-pill bg-emerald-100 text-emerald-700 text-[9px] mb-2.5">
+                  {tc("buyWindow")}
+                </div>
+              )}
+
+              {/* Firm chips */}
+              <div className="space-y-1.5">
+                {items.slice(0, 8).map(({ firm, cls }) => (
+                  <Link key={firm.id} href={`/firms/${firm.slug}`}>
                     <div
-                      key={f.id}
-                      className={`flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs cursor-pointer transition-all duration-150 ${
-                        active ? "bg-[#E8F0FE] ring-1 ring-[#0064FF]/30" : "hover:bg-gray-50"
+                      className={`flex items-center gap-1.5 rounded-xl px-2 py-1.5 bg-white/70 hover:bg-white hover:shadow-sm transition-all cursor-pointer ${
+                        hoveredId === firm.id ? "ring-1 ring-[#0064FF]/30 bg-white shadow-sm" : ""
                       }`}
-                      onMouseEnter={() => setHoveredId(f.id)}
+                      onMouseEnter={() => setHoveredId(firm.id)}
                       onMouseLeave={() => setHoveredId(null)}
                     >
-                      <span
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ backgroundColor: TIER_DOT[tier] }}
-                      />
-                      <span className="font-extrabold text-gray-900 w-10 shrink-0">{f.ticker}</span>
-                      <span className="text-gray-400 truncate flex-1">{f.name}</span>
-                      <span
-                        className="shrink-0 px-1.5 py-0.5 rounded-md text-white font-bold"
-                        style={{ backgroundColor: SIGNAL_BG[c.signal], fontSize: 9 }}
-                      >
-                        {c.signal}
+                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${TIER_DOT[cls.tier]}`} />
+                      <span className="font-extrabold text-gray-900 text-[11px]">{firm.ticker}</span>
+                      <span className={`ml-auto toss-pill !px-1.5 !py-0 text-[8px] ${SIGNAL_COLOR[cls.signal]}`}>
+                        {ts(cls.signal)}
                       </span>
                     </div>
-                  );
-                })}
+                  </Link>
+                ))}
+                {items.length > 8 && (
+                  <div className="text-center text-[10px] text-gray-400 font-bold pt-1">
+                    +{items.length - 8} {tc("more")}
+                  </div>
+                )}
+                {items.length === 0 && (
+                  <div className="text-center text-xs text-gray-300 py-3">—</div>
+                )}
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Right panel: TALC curve chart */}
-      <div className="flex-1 min-w-0 relative" onMouseMove={handleMouseMove}>
-        <div className="overflow-x-auto">
-          <svg
-            ref={svgRef}
-            viewBox={`0 0 ${W} ${H}`}
-            className="w-full min-w-[620px]"
-            style={{ height: "auto" }}
-          >
-            {/* Segment bands */}
-            {SEGMENTS.map((seg) => (
-              <g key={seg.key}>
-                <rect
-                  x={seg.xMin}
-                  y={340}
-                  width={seg.xMax - seg.xMin}
-                  height={BASELINE - 340}
-                  fill={seg.fill}
-                  fillOpacity={seg.opacity}
-                  rx={6}
-                />
-                <text
-                  x={(seg.xMin + seg.xMax) / 2}
-                  y={BASELINE - 10}
-                  textAnchor="middle"
-                  fontSize={9}
-                  fill="#9ca3af"
-                  fontFamily="system-ui, sans-serif"
-                  fontWeight="600"
-                >
-                  {tc(seg.key)}
-                </text>
-              </g>
-            ))}
-
-            {/* Chasm zone highlight */}
-            <rect x={265} y={340} width={130} height={BASELINE - 340} fill="#fecaca" fillOpacity={0.15} rx={6} />
-            <line x1={265} y1={340} x2={265} y2={BASELINE} stroke="#fca5a5" strokeWidth={1} strokeDasharray="4,3" />
-            <line x1={395} y1={340} x2={395} y2={BASELINE} stroke="#fca5a5" strokeWidth={1} strokeDasharray="4,3" />
-
-            {/* Baseline */}
-            <line x1={0} y1={BASELINE} x2={W} y2={BASELINE} stroke="#e5e7eb" strokeWidth={1.5} />
-
-            {/* Annotations */}
-            {ANNOTATIONS.map((a) => (
-              <g key={a.key1}>
-                <text
-                  x={a.x}
-                  y={a.y}
-                  textAnchor={a.anchor}
-                  fontSize={10}
-                  fontStyle="italic"
-                  fill="#9ca3af"
-                  fontFamily="system-ui, sans-serif"
-                  fontWeight="500"
-                >
-                  {tc(a.key1)}
-                </text>
-                {a.key2 && (
-                  <text
-                    x={a.x}
-                    y={a.y + 13}
-                    textAnchor={a.anchor}
-                    fontSize={10}
-                    fontStyle="italic"
-                    fill="#9ca3af"
-                    fontFamily="system-ui, sans-serif"
-                    fontWeight="500"
-                  >
-                    {tc(a.key2)}
-                  </text>
-                )}
-              </g>
-            ))}
-
-            {/* The Chasm label */}
-            <text
-              x={330}
-              y={400}
-              textAnchor="middle"
-              fontSize={13}
-              fontWeight="800"
-              fontStyle="italic"
-              fill="#9ca3af"
-              fontFamily="system-ui, sans-serif"
-            >
-              {tc("theChasm")}
-            </text>
-
-            {/* Phase zone labels above the dot clusters */}
-            {Object.entries(PHASE_ZONES).map(([phase, zone]) => (
-              <text
-                key={phase}
-                x={(zone.xMin + zone.xMax) / 2}
-                y={zone.yBase - 55}
-                textAnchor="middle"
-                fontSize={9}
-                fontWeight="700"
-                fill="#9ca3af"
-                fontFamily="system-ui, sans-serif"
-                letterSpacing="0.05em"
-              >
-                {tPhases(phase as MarketPhase)}
-              </text>
-            ))}
-
-            {/* Main TALC curve */}
-            <path
-              d={CURVE_PATH}
-              fill="none"
-              stroke="#0064FF"
-              strokeWidth={2.5}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              opacity={0.6}
-            />
-
-            {/* Firm dots */}
-            {firms.map((f) => {
-              const pos = positions.get(f.id);
-              if (!pos) return null;
-              const [x, y] = pos;
-              const c = classifications[f.id];
-              if (!c) return null;
-              const isHovered = hoveredId === f.id;
-              const color = TIER_DOT[c.tier];
-
-              return (
-                <g key={f.id}>
-                  {isHovered && (
-                    <circle cx={x} cy={y} r={18} fill={color} fillOpacity={0.12} />
-                  )}
-                  <circle
-                    cx={x}
-                    cy={y}
-                    r={isHovered ? 10 : 7}
-                    fill={color}
-                    fillOpacity={0.92}
-                    stroke="white"
-                    strokeWidth={isHovered ? 2.5 : 1.5}
-                    style={{ cursor: "pointer", transition: "r 0.15s ease" }}
-                    onMouseEnter={() => setHoveredId(f.id)}
-                    onMouseLeave={() => setHoveredId(null)}
-                  />
-                  <text
-                    x={x}
-                    y={y - (isHovered ? 14 : 11)}
-                    textAnchor="middle"
-                    fontSize={isHovered ? 10 : 7.5}
-                    fontWeight={isHovered ? "800" : "700"}
-                    fill={isHovered ? "#111827" : "#6b7280"}
-                    fontFamily="system-ui, sans-serif"
-                    style={{ pointerEvents: "none", transition: "font-size 0.15s ease" }}
-                  >
-                    {f.ticker}
-                  </text>
-                </g>
-              );
-            })}
-
-            {/* Time arrow */}
-            <line x1={20} y1={BASELINE + 18} x2={W - 20} y2={BASELINE + 18} stroke="#d1d5db" strokeWidth={1} markerEnd="url(#arrowhead)" />
-            <defs>
-              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                <polygon points="0 0, 8 3, 0 6" fill="#d1d5db" />
-              </marker>
-            </defs>
-            <text x={W / 2} y={BASELINE + 30} textAnchor="middle" fontSize={9} fill="#9ca3af" fontFamily="system-ui, sans-serif" fontWeight="600">
-              {tc("timeAxis")}
-            </text>
-          </svg>
-        </div>
-
-        {/* Hover tooltip (HTML overlay) — Toss-style */}
-        {hoveredFirm && hoveredCls && (
-          <div
-            className="fixed z-50 pointer-events-none"
-            style={{
-              left: mousePos.x + 18,
-              top: mousePos.y - 20,
-            }}
-          >
-            <div className="bg-white rounded-2xl p-4 w-64 space-y-2.5 text-xs pointer-events-auto" style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.12), 0 0 1px rgba(0,0,0,0.08)" }}>
-              {/* Header */}
-              <div className="flex items-center justify-between gap-2">
-                <div>
-                  <span className="font-extrabold text-gray-900 text-sm">{hoveredFirm.ticker}</span>
-                  <span className="text-gray-400 ml-1.5">{hoveredFirm.name}</span>
-                </div>
-                <span className="text-base">{TIER_EMOJI[hoveredCls.tier]}</span>
+      {/* Hover detail card */}
+      {hoveredFirm && hoveredCls && (
+        <div className="toss-card !p-4 !bg-[#F8F9FA] border border-gray-100">
+          <div className="flex items-start gap-4 flex-wrap">
+            <div className="flex items-center gap-3">
+              <div>
+                <span className="font-extrabold text-gray-900">{hoveredFirm.ticker}</span>
+                <span className="text-gray-400 text-sm ml-2">{hoveredFirm.name}</span>
               </div>
-              {/* Tier + Signal */}
-              <div className="flex items-center gap-2">
-                <span
-                  className="px-2 py-0.5 rounded-md text-white font-extrabold"
-                  style={{ backgroundColor: SIGNAL_BG[hoveredCls.signal], fontSize: 10 }}
-                >
-                  {ts(hoveredCls.signal)}
-                </span>
-                <span className="text-gray-500 font-bold">{tTiers(`${hoveredCls.tier}.label` as "Gorilla.label")}</span>
-              </div>
-              {/* Metrics */}
-              <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-gray-500">
-                <span>{tc("score")}: <b className="text-gray-800 font-extrabold">{hoveredCls.totalScore}</b></span>
-                <span>{tc("phase")}: <b className="text-gray-800 font-bold">{tPhases(hoveredCls.marketPhase)}</b></span>
-                <span>{tc("rev")}: <b className="text-gray-800 font-extrabold">+{Math.round(hoveredFirm.revenueGrowthYoY * 100)}%</b></span>
-                <span>NRR: <b className="text-gray-800 font-extrabold">{Math.round(hoveredFirm.classificationSignals.netRevenueRetention * 100)}%</b></span>
-              </div>
-              {/* News */}
-              {hoveredNews && (
-                <p className="text-gray-400 leading-snug line-clamp-2 border-t border-gray-100 pt-2">
-                  {hoveredNews.title}
-                </p>
-              )}
-              {/* Link */}
-              <Link
-                href={`/firms/${hoveredFirm.slug}`}
-                className="block text-[#0064FF] hover:underline font-bold pt-0.5"
-              >
-                {tc("viewFull")}
-              </Link>
             </div>
+            <div className="flex items-center gap-2">
+              <span className={`toss-pill text-[10px] ${SIGNAL_COLOR[hoveredCls.signal]}`}>
+                {ts(hoveredCls.signal)}
+              </span>
+              <span className="text-xs font-bold text-gray-500">
+                {tTiers(`${hoveredCls.tier}.label` as "Gorilla.label")}
+              </span>
+            </div>
+            <div className="flex gap-4 text-xs text-gray-500">
+              <span>{tc("score")}: <b className="text-gray-800">{hoveredCls.totalScore}</b></span>
+              <span>{tc("phase")}: <b className="text-gray-800">{tPhases(hoveredCls.marketPhase)}</b></span>
+              <span>{tc("rev")}: <b className="text-gray-800">+{Math.round(hoveredFirm.revenueGrowthYoY * 100)}%</b></span>
+              <span>NRR: <b className="text-gray-800">{Math.round(hoveredFirm.classificationSignals.netRevenueRetention * 100)}%</b></span>
+            </div>
+            {hoveredNews && (
+              <p className="text-xs text-gray-400 leading-snug line-clamp-1 flex-1 min-w-0">
+                {hoveredNews.title}
+              </p>
+            )}
           </div>
-        )}
+        </div>
+      )}
+
+      {/* Tier distribution bar */}
+      <div className="flex items-center gap-1 h-3 rounded-full overflow-hidden">
+        {(["Gorilla", "Potential Gorilla", "King", "Prince", "Chimpanzee", "Monkey", "Serf", "In Chasm"] as ClassificationTier[]).map((tier) => {
+          const count = tierCounts[tier] ?? 0;
+          if (count === 0) return null;
+          return (
+            <div
+              key={tier}
+              className={`h-full ${TIER_DOT[tier]} opacity-80 rounded-sm transition-all`}
+              style={{ flex: count }}
+              title={`${tTiers(`${tier}.label` as "Gorilla.label")}: ${count}`}
+            />
+          );
+        })}
+      </div>
+      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-gray-400 font-bold">
+        {(["Gorilla", "Potential Gorilla", "King", "Prince", "Chimpanzee", "Monkey", "Serf", "In Chasm"] as ClassificationTier[]).map((tier) => {
+          const count = tierCounts[tier] ?? 0;
+          if (count === 0) return null;
+          return (
+            <span key={tier} className="flex items-center gap-1">
+              <span className={`w-2 h-2 rounded-sm ${TIER_DOT[tier]}`} />
+              {tTiers(`${tier}.label` as "Gorilla.label")} {count}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
