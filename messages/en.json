@@ -24,6 +24,7 @@
   "firms": {
     "title": "All Firms",
     "subtitle": "50 US tech companies ranked by Gorilla Game score. Click any row for full analysis.",
+    "dataAsOf": "Data as of {date} · Prices & market cap from Yahoo Finance (live), classification scores from rules-based engine",
     "scoringThesis": "Each company is scored 0–100 across 7 dimensions, and the weighted total determines how close it is to gorilla status. Score alone doesn't decide classification — architecture control, switching costs, and market share must each pass critical thresholds.",
     "dimensionsTitle": "7-Dimension Weights",
     "dim.architectureControl": "Architecture Control",

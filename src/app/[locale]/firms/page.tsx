@@ -21,11 +21,22 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
     .map((f) => ({ firm: f, classification: classifications.get(f.id)!, price: priceMap.get(f.id) }))
     .sort((a, b) => b.classification.totalScore - a.classification.totalScore);
 
+  // Data timestamp — use the first classification's classifiedAt
+  const classifiedAt = rows[0]?.classification.classifiedAt;
+  const dataDate = classifiedAt
+    ? new Date(classifiedAt).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" })
+    : "";
+
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
       <div className="mb-8">
         <h1 className="mb-2">{t("title")}</h1>
         <p className="text-gray-500 text-[0.9375rem]">{t("subtitle")}</p>
+        {dataDate && (
+          <p className="text-xs text-gray-400 font-medium mt-2">
+            🕐 {t("dataAsOf", { date: dataDate })}
+          </p>
+        )}
       </div>
 
       {/* ── Scoring explainer ── */}
