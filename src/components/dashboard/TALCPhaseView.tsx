@@ -163,36 +163,48 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
                 <text x={mx} y={BASE + 18} textAnchor="middle" fill={isTornado ? "#059669" : "#6b7280"} fontSize="11" fontWeight="800" style={FONT}>
                   {z.emoji} {locale === "ko" ? z.labelKo : z.labelEn}
                 </text>
-                <text x={mx} y={BASE + 34} textAnchor="middle" fill={isTornado ? "#059669" : "#9ca3af"} fontSize="12" fontWeight="800" style={FONT}>
-                  {count}개
+                <text x={mx} y={BASE + 36} textAnchor="middle" fill={isTornado ? "#059669" : "#9ca3af"} fontSize="11" fontWeight="700" style={FONT}>
+                  {count}개 기업
                 </text>
               </g>
             );
           })}
 
-          {/* Firm ticker dots on the curve (top firms per phase) */}
+          {/* #1 firm dot per phase — highest score in each phase */}
           {PHASE_ZONES.map((z) => {
             const items = phaseGroups.get(z.phase) ?? [];
-            const showCount = Math.min(items.length, z.phase === "Tornado" ? 6 : 4);
-            const spacing = showCount > 0 ? (z.x1 - z.x0) / (showCount + 1) : 0;
-            return items.slice(0, showCount).map((item, i) => {
-              const x = z.x0 + spacing * (i + 1);
-              const y = g(x);
-              return (
-                <g key={`dot-${item.firm.id}`}>
-                  <circle cx={x} cy={y - 14} r="3.5" fill={
-                    item.cls.tier === "Gorilla" ? "#10b981" :
-                    item.cls.tier === "Potential Gorilla" ? "#14b8a6" :
-                    item.cls.tier === "King" ? "#3b82f6" :
-                    "#9ca3af"
-                  } />
-                  <text x={x} y={y - 22} textAnchor="middle" fill="#374151" fontSize="8" fontWeight="800" style={FONT}>
-                    {item.firm.ticker}
-                  </text>
-                </g>
-              );
-            });
+            if (items.length === 0) return null;
+            const top = items[0]; // already sorted by totalScore desc
+            const mx = (z.x0 + z.x1) / 2;
+            const cy = g(mx) - 16;
+            const dotColor =
+              top.cls.tier === "Gorilla" ? "#10b981" :
+              top.cls.tier === "Potential Gorilla" ? "#14b8a6" :
+              top.cls.tier === "King" ? "#3b82f6" :
+              top.cls.tier === "Chimpanzee" ? "#eab308" :
+              "#9ca3af";
+            return (
+              <g key={`top-${z.phase}`}>
+                {/* Connector line */}
+                <line x1={mx} y1={cy + 4} x2={mx} y2={g(mx) - 2} stroke={dotColor} strokeWidth="1" strokeDasharray="2,2" opacity="0.5" />
+                {/* Dot */}
+                <circle cx={mx} cy={cy} r="4" fill={dotColor} stroke="white" strokeWidth="1.5" />
+                {/* Ticker label */}
+                <text x={mx} y={cy - 10} textAnchor="middle" fill="#374151" fontSize="9" fontWeight="800" style={FONT}>
+                  {top.firm.ticker}
+                </text>
+                {/* Score */}
+                <text x={mx} y={cy - 1} textAnchor="middle" fill="white" fontSize="5" fontWeight="800" style={FONT}>
+                  {top.cls.totalScore}
+                </text>
+              </g>
+            );
           })}
+
+          {/* Legend */}
+          <text x={760} y={18} textAnchor="end" fill="#9ca3af" fontSize="8" fontWeight="600" style={FONT}>
+            ● 각 단계 최고점수 기업
+          </text>
         </svg>
       </div>
 
