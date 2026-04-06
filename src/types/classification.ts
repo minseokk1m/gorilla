@@ -2,6 +2,8 @@ export type ClassificationTier =
   | "Gorilla"
   | "Potential Gorilla"
   | "King"
+  | "Prince"
+  | "Serf"
   | "Chimpanzee"
   | "Monkey"
   | "In Chasm";

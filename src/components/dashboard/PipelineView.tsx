@@ -116,8 +116,10 @@ export default async function PipelineView({
   const prospects: Firm[] = [];
   const gorillas: Firm[] = [];
   const kings: Firm[] = [];
+  const princes: Firm[] = [];
   const chimps: Firm[] = [];
   const monkeys: Firm[] = [];
+  const serfs: Firm[] = [];
 
   for (const firm of firms) {
     const c = classifications.get(firm.id);
@@ -127,12 +129,14 @@ export default async function PipelineView({
       case "Potential Gorilla": prospects.push(firm); break;
       case "Gorilla":           gorillas.push(firm); break;
       case "King":              kings.push(firm); break;
+      case "Prince":            princes.push(firm); break;
+      case "Serf":              serfs.push(firm); break;
       case "Chimpanzee":        chimps.push(firm); break;
       case "Monkey":            monkeys.push(firm); break;
     }
   }
 
-  [suspects, prospects, gorillas, kings, chimps, monkeys].forEach((arr) => arr.sort(byScore));
+  [suspects, prospects, gorillas, kings, princes, chimps, monkeys, serfs].forEach((arr) => arr.sort(byScore));
 
   // Group gorillas by TALC phase
   const gorillasByPhase = new Map<MarketPhase, Firm[]>();
@@ -142,7 +146,7 @@ export default async function PipelineView({
     gorillasByPhase.get(phase)!.push(f);
   }
 
-  const exitFirms = [...chimps, ...monkeys];
+  const exitFirms = [...chimps, ...monkeys, ...serfs];
 
   return (
     <div className="space-y-8">
@@ -228,16 +232,16 @@ export default async function PipelineView({
         </div>
       </div>
 
-      {/* Kings watch list */}
+      {/* Kings & Princes watch list */}
       <div>
         <SectionHeader
           emoji="👑"
           title={t("watchTitle")}
           desc={t("watchDesc")}
-          count={kings.length}
+          count={kings.length + princes.length}
         />
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-          {kings.map((f) => (
+          {[...kings, ...princes].map((f) => (
             <FirmCard
               key={f.id}
               firm={f}

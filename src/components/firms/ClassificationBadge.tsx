@@ -7,6 +7,8 @@ const CLASS_NAMES: Record<ClassificationTier, string> = {
   "Gorilla":           "bg-emerald-50 text-emerald-700 border-emerald-200",
   "Potential Gorilla": "bg-teal-50 text-teal-700 border-teal-200",
   "King":              "bg-blue-50 text-[#0064FF] border-blue-200",
+  "Prince":            "bg-indigo-50 text-indigo-600 border-indigo-200",
+  "Serf":              "bg-stone-50 text-stone-600 border-stone-200",
   "Chimpanzee":        "bg-yellow-50 text-yellow-700 border-yellow-200",
   "Monkey":            "bg-orange-50 text-orange-700 border-orange-200",
   "In Chasm":          "bg-red-50 text-red-600 border-red-200",

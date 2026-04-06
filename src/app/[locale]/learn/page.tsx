@@ -16,6 +16,8 @@ const TIERS = [
   { key: "gorilla", emoji: "🦍", color: "bg-emerald-50/60" },
   { key: "potentialGorilla", emoji: "🦍", color: "bg-teal-50/60" },
   { key: "king", emoji: "👑", color: "bg-blue-50/60" },
+  { key: "prince", emoji: "🤴", color: "bg-indigo-50/60" },
+  { key: "serf", emoji: "⛏️", color: "bg-stone-50/60" },
   { key: "chimpanzee", emoji: "🐵", color: "bg-yellow-50/60" },
   { key: "monkey", emoji: "🐒", color: "bg-orange-50/60" },
   { key: "inChasm", emoji: "🕳️", color: "bg-red-50/60" },

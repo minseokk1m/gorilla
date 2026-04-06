@@ -167,12 +167,14 @@
       "endOfLife": { "name": "End of Life", "desc": "New paradigm displacing the old. Exit the gorilla. Find the next tornado." }
     },
     "tiersTitle": "⑤ Company Classification System",
-    "tiersSubtitle": "After the tornado, every market participant is assigned one of six roles below. Investment signals are determined by role.",
+    "tiersSubtitle": "After the tornado, every market participant is assigned to one of two tracks. Markets with a proprietary architecture produce Gorillas/Chimps/Monkeys; open markets produce Kings/Princes/Serfs.",
     "tiers": {
       "gorilla": { "name": "Gorilla", "signal": "BUY", "desc": "Controls the proprietary architecture that becomes the market standard. Competitors must conform to its interfaces. Switching costs are prohibitively high. Investors should buy and hold indefinitely.", "book": "The Gorilla Game" },
       "potentialGorilla": { "name": "Potential Gorilla", "signal": "BUY", "desc": "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy now before the market recognizes the winner.", "book": "The Gorilla Game" },
-      "king": { "name": "King", "signal": "WATCH", "desc": "Market leader in a category without a single proprietary architecture. Has scale advantages but faces credible competition. Generates steady returns but won't compound like a gorilla.", "book": "The Gorilla Game" },
-      "chimpanzee": { "name": "Chimpanzee", "signal": "SELL", "desc": "Competed for gorilla status but lost the architecture war. Survives in niche segments but cannot expand into the mainstream. Sell and redeploy into gorillas or potential gorillas.", "book": "The Gorilla Game" },
+      "king": { "name": "King", "signal": "WATCH", "desc": "Market leader in an open category without a single proprietary architecture. Has scale advantages but no architecture lock-in, so competitors can credibly challenge. Generates steady returns but won't compound like a gorilla. Hold lightly.", "book": "The Gorilla Game" },
+      "prince": { "name": "Prince", "signal": "WATCH", "desc": "Credible #2 challenger to the King in an open market. Threatens the King's position but hasn't overtaken it yet. Hold even more lightly than Kings — sell first on any market stumble.", "book": "The Gorilla Game" },
+      "serf": { "name": "Serf", "signal": "AVOID", "desc": "Bottom-tier participant in an open market. Has no differentiated advantage over the King or Prince, and lacks the scale to compete. Cannot generate sustainable returns. Avoid.", "book": "The Gorilla Game" },
+      "chimpanzee": { "name": "Chimpanzee", "signal": "SELL", "desc": "Competed for gorilla status but lost the architecture war. Survives in niche segments with a proprietary approach but cannot expand into the mainstream. Sell and redeploy into gorillas or potential gorillas.", "book": "The Gorilla Game" },
       "monkey": { "name": "Monkey", "signal": "AVOID", "desc": "Clones the gorilla architecture at a discount price. Has no sustainable moat — the gorilla can reclaim their customers at will. Do not hold for the long term.", "book": "The Gorilla Game" },
       "inChasm": { "name": "In Chasm", "signal": "AVOID", "desc": "Has early adopter enthusiasm but has not crossed to the pragmatist mainstream. Most companies in this position never cross. High risk, avoid until clear beachhead emerges.", "book": "Crossing the Chasm" }
     },
@@ -310,7 +312,9 @@
     "King": { "label": "👑 King", "desc": "Market leader, no architecture lock-in." },
     "Chimpanzee": { "label": "🐵 Chimpanzee", "desc": "Lost the standard war. Exit position." },
     "Monkey": { "label": "🐒 Monkey", "desc": "Commodity clone. No sustainable moat." },
-    "In Chasm": { "label": "🕳️ In Chasm", "desc": "Pre-mainstream. High risk, avoid." }
+    "In Chasm": { "label": "🕳️ In Chasm", "desc": "Pre-mainstream. High risk, avoid." },
+    "Prince": { "label": "🤴 Prince", "desc": "Credible #2 to the King. Hold lightly." },
+    "Serf": { "label": "⛏️ Serf", "desc": "Bottom-tier in open market. Avoid." }
   },
   "marketPhases": {
     "Early Market": "Early Market",
@@ -360,17 +364,19 @@
     "prospectsDesc": "Potential Gorillas — competing for the standard",
     "gorillasTitle": "Confirmed Gorillas",
     "gorillasDesc": "Standard-setters — buy & hold by TALC phase",
-    "watchTitle": "Watch — Kings",
-    "watchDesc": "Market leaders, no architecture lock-in",
+    "watchTitle": "Watch — Kings & Princes",
+    "watchDesc": "Open market leaders and challengers, no architecture lock-in",
     "exitTitle": "Exit Candidates",
-    "exitDesc": "Chimpanzees & Monkeys — sell or avoid",
+    "exitDesc": "Chimpanzees, Monkeys & Serfs — sell or avoid",
     "score": "Score",
     "noRecentNews": "No recent news"
   },
   "narratives": {
     "Gorilla": "{name} is classified as a **Gorilla** — the dominant force in its technology category. With an estimated {sharePercent}% niche market share and strong architecture control (score: {architectureControl}/100), it defines the standard that competitors must conform to. Geoffrey Moore's framework identifies gorillas as the primary investment target: their switching costs are prohibitively high (Net Revenue Retention: {nrr}%), and they are the last company standing after the tornado. Buy and hold.",
     "Potential Gorilla": "{name} is a **Potential Gorilla** — currently competing in a tornado-phase market where the dominant standard is still being decided. With {sharePercent}% niche share and {growthPercent}% revenue growth, it has a credible path to gorilla status. Per Moore's framework, this is the optimal entry point before market consolidation locks in the winner. The risk: another competitor could take the architecture standard instead.",
-    "King": "{name} is classified as a **King** — a strong market leader in a category without a single dominant proprietary standard. Kings enjoy scale advantages and brand recognition (NRR: {nrr}%) but lack the switching cost moat that defines a true Gorilla. Moore's framework treats Kings as solid but not exceptional investments: they generate steady returns but won't compound like Gorillas because competitors can credibly challenge them.",
+    "King": "{name} is classified as a **King** — a market leader in an open category without a single dominant proprietary standard. Kings enjoy scale advantages and brand recognition (NRR: {nrr}%) but lack architecture lock-in, so Princes and new challengers can always pursue them. Moore's framework treats Kings as solid but not exceptional investments: they generate steady returns but won't compound like Gorillas. Hold lightly.",
+    "Prince": "{name} is classified as a **Prince** — a credible #2 challenger to the King in an open market. With {sharePercent}% niche share and {growthPercent}% revenue growth, it threatens the King's position but hasn't overtaken it yet. In a market without proprietary architecture, switching costs are low and competitive dynamics are fluid. Hold even more lightly than Kings — sell first on any market stumble.",
+    "Serf": "{name} is classified as a **Serf** — a bottom-tier participant in an open market. It lacks both the scale of the King and any differentiated architecture (score: {architectureControl}/100). In markets without a proprietary standard, participants without scale cannot build sustainable competitive advantage. Avoid.",
     "Chimpanzee": "{name} is classified as a **Chimpanzee** — a company that competed for gorilla status but did not win the architecture standard. It survives in niche segments where its proprietary approach retains loyal customers, but it cannot expand aggressively into the mainstream. Per Moore's framework, chimpanzees face a shrinking addressable market as gorilla standards absorb more of the customer base. This is a sell signal for long-term investors.",
     "Monkey": "{name} is classified as a **Monkey** — a commodity clone that competes on price against the gorilla's architecture without offering architectural differentiation. Monkeys generate revenue during tornado phases by undercutting the gorilla, but have no sustainable moat. The gorilla can reclaim their customers at will. Moore's framework recommends avoiding monkey stocks for long-term portfolios.",
     "In Chasm": "{name} is classified as **In Chasm** — it has captured early adopter enthusiasm but has not yet crossed to the pragmatist early majority. This is the most dangerous stage of the Technology Adoption Life Cycle: many companies never cross. Until {name} demonstrates a clear beachhead niche domination and a whole product strategy for pragmatists, the investment thesis remains unproven. Avoid."

@@ -5,12 +5,14 @@ import type { PriceHistory } from "@/types/market";
 import FirmCard from "@/components/firms/FirmCard";
 import { useTranslations } from "next-intl";
 
-const TIERS: ClassificationTier[] = ["Gorilla", "Potential Gorilla", "King", "Chimpanzee", "Monkey", "In Chasm"];
+const TIERS: ClassificationTier[] = ["Gorilla", "Potential Gorilla", "King", "Prince", "Serf", "Chimpanzee", "Monkey", "In Chasm"];
 
 const TIER_EMOJIS: Record<ClassificationTier, string> = {
   "Gorilla":           "🦍",
   "Potential Gorilla": "🦍",
   "King":              "👑",
+  "Prince":            "🤴",
+  "Serf":              "⛏️",
   "Chimpanzee":        "🐵",
   "Monkey":            "🐒",
   "In Chasm":          "🕳️",

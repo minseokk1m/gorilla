@@ -92,6 +92,8 @@ const TIER_COLORS: Record<string, string> = {
   Gorilla: "bg-emerald-100 text-emerald-700",
   "Potential Gorilla": "bg-teal-100 text-teal-700",
   King: "bg-blue-100 text-[#0064FF]",
+  Prince: "bg-indigo-100 text-indigo-600",
+  Serf: "bg-stone-100 text-stone-600",
   Chimpanzee: "bg-yellow-100 text-yellow-700",
   Monkey: "bg-orange-100 text-orange-700",
   "In Chasm": "bg-red-100 text-red-600",
@@ -199,7 +201,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
                             <div className="flex items-center gap-1 sm:gap-1.5 bg-white rounded-lg px-1.5 sm:px-2 py-1 sm:py-1.5 hover:shadow-sm transition-all cursor-pointer">
                               <span className="font-extrabold text-gray-900 text-[10px] sm:text-xs">{firm.ticker}</span>
                               <span className={`toss-pill !px-1 sm:!px-1.5 !py-0 text-[8px] sm:text-[9px] ${TIER_COLORS[cls.tier] ?? ""}`}>
-                                {cls.tier === "Gorilla" ? "🦍" : cls.tier === "Potential Gorilla" ? "🦍?" : cls.tier === "King" ? "👑" : cls.tier === "Chimpanzee" ? "🐵" : cls.tier === "Monkey" ? "🐒" : "🕳️"}
+                                {cls.tier === "Gorilla" ? "🦍" : cls.tier === "Potential Gorilla" ? "🦍?" : cls.tier === "King" ? "👑" : cls.tier === "Prince" ? "🤴" : cls.tier === "Serf" ? "⛏️" : cls.tier === "Chimpanzee" ? "🐵" : cls.tier === "Monkey" ? "🐒" : "🕳️"}
                               </span>
                               <span className="text-[8px] sm:text-[10px] font-bold text-gray-400 ml-auto hidden sm:block">{cls.totalScore}</span>
                             </div>

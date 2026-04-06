@@ -47,11 +47,20 @@ function resolveTier(
     return "King";
   }
 
-  // Chimpanzee: has some architecture but lost the standard war
-  if (totalScore >= 35) return "Chimpanzee";
+  // Two-track split based on architecture control:
+  // High arch → proprietary market (Chimp/Monkey), Low arch → open market (Prince/Serf)
 
-  // Monkey: commodity, no architecture
-  if (totalScore >= 20) return "Monkey";
+  // Chimpanzee: lost the architecture war but had a proprietary play
+  if (totalScore >= 35 && scores.architectureControl >= 40) return "Chimpanzee";
+
+  // Prince: credible competitor in an open market (no proprietary standard)
+  if (totalScore >= 35) return "Prince";
+
+  // Monkey: clones the gorilla architecture at a discount
+  if (totalScore >= 20 && scores.architectureControl >= 30) return "Monkey";
+
+  // Serf: undifferentiated small player in an open market
+  if (totalScore >= 20) return "Serf";
 
   return "In Chasm";
 }
@@ -61,6 +70,8 @@ function resolveSignal(tier: ClassificationTier): Signal {
     case "Gorilla": return "BUY";
     case "Potential Gorilla": return "BUY";
     case "King": return "WATCH";
+    case "Prince": return "WATCH";
+    case "Serf": return "AVOID";
     case "Chimpanzee": return "SELL";
     case "Monkey": return "AVOID";
     case "In Chasm": return "AVOID";

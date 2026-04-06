@@ -7,6 +7,8 @@ const TIER_COLORS: Record<string, string> = {
   "Gorilla": "text-emerald-600",
   "Potential Gorilla": "text-teal-600",
   "King": "text-[#0064FF]",
+  "Prince": "text-indigo-600",
+  "Serf": "text-stone-600",
   "Chimpanzee": "text-yellow-600",
   "Monkey": "text-orange-600",
   "In Chasm": "text-red-500",
