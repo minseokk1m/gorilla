@@ -12,13 +12,25 @@ import { getSupabase } from "@/lib/supabase/admin";
 
 /* ── Category definitions (same as categories page) ── */
 const CATEGORIES = [
-  { id: "ai-compute", name: "AI / GPU 가속", icon: "🧠", filter: (f: Firm) => ["nvda", "amd", "intc"].includes(f.id) || f.sector === "AI/ML Platform" },
-  { id: "semi-chain", name: "반도체 밸류체인", icon: "⚡", filter: (f: Firm) => ["asml", "tsm", "arm"].includes(f.id) },
+  // Tech
+  { id: "ai-compute", name: "AI / GPU 가속", icon: "🧠", filter: (f: Firm) => ["nvda", "amd", "intc", "avgo", "mu"].includes(f.id) || f.sector === "AI/ML Platform" },
+  { id: "semi-chain", name: "반도체 밸류체인", icon: "⚡", filter: (f: Firm) => ["asml", "tsm", "arm", "lrcx", "amat", "tsem", "simo", "axti"].includes(f.id) || f.sector === "Semiconductor Equipment" || f.sector === "Foundry" || f.sector === "Chip Architecture/IP" },
+  { id: "optical", name: "광학/포토닉스", icon: "💡", filter: (f: Firm) => f.sector === "Optical & Photonics" || f.sector === "Data Storage" },
   { id: "cloud", name: "클라우드", icon: "☁️", filter: (f: Firm) => f.sector === "Cloud Infrastructure" },
-  { id: "enterprise", name: "엔터프라이즈", icon: "🏢", filter: (f: Firm) => f.sector === "Enterprise Software" && ["crm", "now", "wday", "orcl", "sap", "hubs"].includes(f.id) },
+  { id: "enterprise", name: "엔터프라이즈", icon: "🏢", filter: (f: Firm) => f.sector === "Enterprise Software" },
   { id: "security", name: "보안", icon: "🔒", filter: (f: Firm) => f.sector === "Cybersecurity" },
-  { id: "ads-social", name: "광고/소셜", icon: "📱", filter: (f: Firm) => ["googl", "meta", "ttd"].includes(f.id) },
+  { id: "ads-social", name: "광고/소셜", icon: "📱", filter: (f: Firm) => ["googl", "meta", "ttd"].includes(f.id) || f.sector === "Digital Advertising" || f.sector === "Social Media" },
   { id: "dev-data", name: "개발/데이터", icon: "🛠️", filter: (f: Firm) => f.sector === "Developer Tools" || f.sector === "Data & Analytics" },
+  { id: "consumer", name: "소비자 플랫폼", icon: "📲", filter: (f: Firm) => ["amzn", "aapl", "nflx", "tsla"].includes(f.id) || f.sector === "Consumer Tech" || f.sector === "Fintech" || f.sector === "E-Commerce" },
+  // Non-Tech
+  { id: "defense", name: "방위/우주", icon: "🛡️", filter: (f: Firm) => f.sector === "Defense & Aerospace" || f.sector === "Space Technology" },
+  { id: "energy", name: "에너지/인프라", icon: "⚡", filter: (f: Firm) => f.sector === "Energy Infrastructure" || f.sector === "Renewable Energy" || f.sector === "Nuclear Energy" || f.sector === "Oil & Gas" },
+  { id: "crypto", name: "크립토", icon: "🔗", filter: (f: Firm) => f.sector === "Crypto & Digital Assets" },
+  { id: "finance", name: "금융/결제", icon: "💳", filter: (f: Firm) => f.sector === "Financial Services" || f.sector === "Payment Processing" },
+  { id: "healthcare", name: "헬스케어", icon: "💊", filter: (f: Firm) => f.sector === "Pharmaceuticals" || f.sector === "Healthcare Services" },
+  { id: "industrial", name: "산업재", icon: "🏗️", filter: (f: Firm) => f.sector === "Industrial Manufacturing" || f.sector === "Materials & Specialty" },
+  { id: "telecom", name: "통신", icon: "📡", filter: (f: Firm) => f.sector === "Telecommunications" || f.sector === "Networking" },
+  { id: "retail", name: "유통/소비재", icon: "🛒", filter: (f: Firm) => f.sector === "Retail & Consumer" },
 ];
 
 const PHASE_COLORS: Record<MarketPhase, string> = {

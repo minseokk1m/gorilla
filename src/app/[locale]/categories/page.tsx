@@ -9,22 +9,39 @@ import type { ClassificationResult, MarketPhase } from "@/types/classification";
  * Each category groups related sectors into a meaningful "habitat"
  * that can be analyzed as a unit on the TALC curve.
  */
-const TECH_CATEGORIES = [
+const CATEGORIES = [
+  // ── Tech ──
   {
     id: "ai-compute",
     name: "AI / GPU 가속 컴퓨팅",
     nameEn: "AI / GPU Accelerated Computing",
     description: "AI 훈련·추론을 위한 GPU, 가속기, CUDA 생태계",
     icon: "🧠",
-    firmFilter: (f: Firm) => ["nvda", "amd", "intc"].includes(f.id) || f.sector === "AI/ML Platform",
+    firmFilter: (f: Firm) => ["nvda", "amd", "intc", "avgo", "mu"].includes(f.id) || f.sector === "AI/ML Platform",
   },
   {
     id: "semiconductor-chain",
     name: "반도체 밸류체인",
     nameEn: "Semiconductor Value Chain",
-    description: "파운드리, 장비, 칩 설계 IP — 반도체 생산의 핵심 인프라",
+    description: "파운드리, 장비, 칩 설계 IP, 소재 — 반도체 생산의 핵심 인프라",
     icon: "⚡",
-    firmFilter: (f: Firm) => ["asml", "tsm", "arm"].includes(f.id),
+    firmFilter: (f: Firm) => ["asml", "tsm", "arm", "lrcx", "amat", "tsem", "simo", "axti"].includes(f.id) || f.sector === "Semiconductor Equipment" || f.sector === "Foundry" || f.sector === "Chip Architecture/IP" || f.sector === "EDA & Semiconductor Tools",
+  },
+  {
+    id: "optical-photonics",
+    name: "광학 / 포토닉스",
+    nameEn: "Optical & Photonics",
+    description: "광트랜시버, 레이저, 광섬유 — AI 데이터센터 네트워킹 인프라",
+    icon: "💡",
+    firmFilter: (f: Firm) => f.sector === "Optical & Photonics",
+  },
+  {
+    id: "data-storage",
+    name: "데이터 스토리지",
+    nameEn: "Data Storage",
+    description: "HDD, SSD, NAND 플래시 — 데이터 저장 인프라",
+    icon: "💾",
+    firmFilter: (f: Firm) => f.sector === "Data Storage",
   },
   {
     id: "cloud-infra",
@@ -40,7 +57,7 @@ const TECH_CATEGORIES = [
     nameEn: "Enterprise Platforms",
     description: "CRM, ITSM, HCM, ERP 등 기업용 핵심 플랫폼 소프트웨어",
     icon: "🏢",
-    firmFilter: (f: Firm) => f.sector === "Enterprise Software" && ["crm", "now", "wday", "orcl", "sap", "hubs"].includes(f.id),
+    firmFilter: (f: Firm) => f.sector === "Enterprise Software",
   },
   {
     id: "cybersecurity",
@@ -67,12 +84,85 @@ const TECH_CATEGORIES = [
     firmFilter: (f: Firm) => f.sector === "Developer Tools" || f.sector === "Data & Analytics",
   },
   {
-    id: "ecommerce-consumer",
-    name: "이커머스 / 소비자",
-    nameEn: "E-Commerce / Consumer",
-    description: "온라인 쇼핑, 소비자향 기술, 핀테크",
+    id: "consumer-platform",
+    name: "소비자 플랫폼 / 핀테크",
+    nameEn: "Consumer Platforms / Fintech",
+    description: "소비자향 기술, 이커머스, 스트리밍, 핀테크",
+    icon: "📲",
+    firmFilter: (f: Firm) => ["amzn", "aapl", "nflx", "tsla"].includes(f.id) || f.sector === "Consumer Tech" || f.sector === "Fintech" || f.sector === "E-Commerce",
+  },
+  // ── Non-Tech ──
+  {
+    id: "defense-aerospace",
+    name: "방위산업 / 우주항공",
+    nameEn: "Defense & Aerospace",
+    description: "방위 계약, 전투 시스템, 우주 발사, 위성 — 국가 안보 인프라",
+    icon: "🛡️",
+    firmFilter: (f: Firm) => f.sector === "Defense & Aerospace" || f.sector === "Space Technology",
+  },
+  {
+    id: "energy-infra",
+    name: "에너지 / 인프라",
+    nameEn: "Energy & Infrastructure",
+    description: "발전 설비, 데이터센터 전력, 재생에너지, 원자력, 전력망",
+    icon: "⚡",
+    firmFilter: (f: Firm) => f.sector === "Energy Infrastructure" || f.sector === "Renewable Energy" || f.sector === "Nuclear Energy",
+  },
+  {
+    id: "oil-gas",
+    name: "석유 / 가스",
+    nameEn: "Oil & Gas",
+    description: "탐사, 생산, 정제, 운송 — 전통 에너지 밸류체인",
+    icon: "🛢️",
+    firmFilter: (f: Firm) => f.sector === "Oil & Gas",
+  },
+  {
+    id: "crypto-digital",
+    name: "크립토 / 디지털 자산",
+    nameEn: "Crypto & Digital Assets",
+    description: "거래소, 스테이블코인, 디지털 자산 인프라",
+    icon: "🔗",
+    firmFilter: (f: Firm) => f.sector === "Crypto & Digital Assets",
+  },
+  {
+    id: "finance-payments",
+    name: "금융 / 결제",
+    nameEn: "Finance & Payments",
+    description: "글로벌 결제 네트워크, 투자은행, 보험",
+    icon: "💳",
+    firmFilter: (f: Firm) => f.sector === "Financial Services" || f.sector === "Payment Processing",
+  },
+  {
+    id: "healthcare-pharma",
+    name: "헬스케어 / 제약",
+    nameEn: "Healthcare & Pharma",
+    description: "신약 개발, 의료서비스, 보험 — 생명과학 밸류체인",
+    icon: "💊",
+    firmFilter: (f: Firm) => f.sector === "Pharmaceuticals" || f.sector === "Healthcare Services",
+  },
+  {
+    id: "industrial",
+    name: "산업재 / 소재",
+    nameEn: "Industrials & Materials",
+    description: "중장비, 산업용 가스, 특수 소재, 건설 장비",
+    icon: "🏗️",
+    firmFilter: (f: Firm) => f.sector === "Industrial Manufacturing" || f.sector === "Materials & Specialty",
+  },
+  {
+    id: "telecom",
+    name: "통신",
+    nameEn: "Telecommunications",
+    description: "무선 통신, 광네트워크, 위성 통신",
+    icon: "📡",
+    firmFilter: (f: Firm) => f.sector === "Telecommunications" || f.sector === "Networking",
+  },
+  {
+    id: "retail-consumer",
+    name: "유통 / 소비재",
+    nameEn: "Retail & Consumer Goods",
+    description: "대형 유통, 소비재, 음료, 생활용품",
     icon: "🛒",
-    firmFilter: (f: Firm) => ["amzn"].includes(f.id) || f.sector === "Consumer Tech" || f.sector === "Fintech" || f.sector === "E-Commerce",
+    firmFilter: (f: Firm) => f.sector === "Retail & Consumer",
   },
 ];
 
@@ -111,7 +201,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
       <div>
         <h1 className="mb-2">카테고리별 TALC 매핑</h1>
         <p className="text-gray-500 text-[0.9375rem] leading-relaxed max-w-3xl">
-          각 기술 카테고리가 기술 수용 주기(TALC)의 어느 단계에 있는지, 그리고 해당 카테고리 내 기업들의 고릴라/침프/원숭이 분류를 한눈에 파악합니다.
+          각 섹터 카테고리가 기술 수용 주기(TALC)의 어느 단계에 있는지, 그리고 해당 카테고리 내 기업들의 고릴라/침프/원숭이 분류를 한눈에 파악합니다. 테크부터 방산·에너지·금융·헬스케어까지, 모든 섹터에서 고릴라를 찾습니다.
         </p>
       </div>
 
@@ -126,7 +216,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
 
       {/* Category Cards */}
       <div className="space-y-6">
-        {TECH_CATEGORIES.map((cat) => {
+        {CATEGORIES.map((cat) => {
           const catFirms = firms.filter(cat.firmFilter);
           if (catFirms.length === 0) return null;
 

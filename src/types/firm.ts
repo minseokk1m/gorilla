@@ -1,4 +1,5 @@
 export type Sector =
+  // ── Tech ──
   | "Cloud Infrastructure"
   | "Enterprise Software"
   | "Semiconductors"
@@ -14,7 +15,33 @@ export type Sector =
   | "E-Commerce"
   | "Semiconductor Equipment"
   | "Foundry"
-  | "Chip Architecture/IP";
+  | "Chip Architecture/IP"
+  // ── Semiconductors & Optical ──
+  | "Optical & Photonics"
+  | "Data Storage"
+  | "EDA & Semiconductor Tools"
+  // ── Energy & Infrastructure ──
+  | "Energy Infrastructure"
+  | "Renewable Energy"
+  | "Oil & Gas"
+  | "Nuclear Energy"
+  // ── Defense & Aerospace ──
+  | "Defense & Aerospace"
+  | "Space Technology"
+  // ── Finance & Crypto ──
+  | "Financial Services"
+  | "Payment Processing"
+  | "Crypto & Digital Assets"
+  // ── Healthcare & Pharma ──
+  | "Pharmaceuticals"
+  | "Healthcare Services"
+  // ── Industrial & Materials ──
+  | "Industrial Manufacturing"
+  | "Materials & Specialty"
+  // ── Telecom ──
+  | "Telecommunications"
+  // ── Consumer & Retail ──
+  | "Retail & Consumer";
 
 /** Gorilla Game Principle 1 & 2: category type determines buy timing */
 export type CategoryType = "application" | "enabling";
