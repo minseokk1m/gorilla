@@ -33,7 +33,7 @@
       "marketShare": "Category Dominance",
       "networkEffects": "Network Effects",
       "ecosystemControl": "Ecosystem Control",
-      "revenueGrowth": "Revenue Growth",
+      "revenueGrowth": "Revenue Growth (YoY)",
       "marketConcentration": "Market Concentration"
     },
     "thresholdsTitle": "Score-Based Classification",
@@ -63,7 +63,7 @@
     "colPrice": "Price",
     "col1D": "1D",
     "colMktCap": "Mkt Cap",
-    "colRevGrowth": "Rev Growth"
+    "colRevGrowth": "Rev YoY"
   },
   "firmDetail": {
     "breadcrumbDashboard": "Dashboard",

@@ -33,7 +33,7 @@
       "marketShare": "카테고리 지배력",
       "networkEffects": "네트워크 효과",
       "ecosystemControl": "생태계 지배력",
-      "revenueGrowth": "매출 성장률",
+      "revenueGrowth": "매출 성장률 (YoY)",
       "marketConcentration": "시장 집중도"
     },
     "thresholdsTitle": "점수별 분류 기준",
@@ -63,7 +63,7 @@
     "colPrice": "주가",
     "col1D": "1일",
     "colMktCap": "시가총액",
-    "colRevGrowth": "매출 성장률"
+    "colRevGrowth": "매출 YoY"
   },
   "firmDetail": {
     "breadcrumbDashboard": "대시보드",
