@@ -106,9 +106,8 @@ export default function TALCCurve() {
         {/* ── Moore's phase mapping (subtle row below) ── */}
         <line x1={50} y1={BASE + 55} x2={750} y2={BASE + 55} stroke="#f3f4f6" strokeWidth="1" />
         {[
-          { label: "🌱 Early Mkt", x0: 50, x1: 135 },
-          { label: "🎳 Bowling Alley", x0: 135, x1: 256 },
-          { label: "🌪️ Tornado", x0: 280, x1: 460 },
+          { label: "🌱 Early Market", x0: 50, x1: 256 },
+          { label: "🎳 Bowling Alley", x0: 280, x1: 370 },
           { label: "🏙️ Main Street", x0: 460, x1: 630 },
           { label: "📉 End of Life", x0: 630, x1: 750 },
         ].map((p) => (
@@ -126,9 +125,9 @@ export default function TALCCurve() {
           </text>
         ))}
 
-        {/* ── BUY window highlight ── */}
-        <rect x={280} y={BASE + 58} width={180} height={20} rx="4" fill="#ecfdf5" opacity="0.6" />
-        <text x={370} y={BASE + 72} textAnchor="middle" fill="#059669" fontSize="11" fontWeight="800" style={FONT}>
+        {/* ── BUY window: Tornado highlight ── */}
+        <rect x={370} y={BASE + 58} width={90} height={20} rx="4" fill="#ecfdf5" opacity="0.6" />
+        <text x={415} y={BASE + 72} textAnchor="middle" fill="#059669" fontSize="11" fontWeight="800" style={FONT}>
           🌪️ Tornado
         </text>
       </svg>
