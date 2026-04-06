@@ -189,13 +189,12 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
                 <line x1={mx} y1={cy + 4} x2={mx} y2={g(mx) - 2} stroke={dotColor} strokeWidth="1" strokeDasharray="2,2" opacity="0.5" />
                 {/* Dot */}
                 <circle cx={mx} cy={cy} r="4" fill={dotColor} stroke="white" strokeWidth="1.5" />
-                {/* Ticker label */}
+                {/* Ticker + score label */}
                 <text x={mx} y={cy - 10} textAnchor="middle" fill="#374151" fontSize="9" fontWeight="800" style={FONT}>
                   {top.firm.ticker}
                 </text>
-                {/* Score */}
-                <text x={mx} y={cy - 1} textAnchor="middle" fill="white" fontSize="5" fontWeight="800" style={FONT}>
-                  {top.cls.totalScore}
+                <text x={mx} y={cy + 12} textAnchor="middle" fill={dotColor} fontSize="8" fontWeight="800" style={FONT}>
+                  {top.cls.totalScore}점
                 </text>
               </g>
             );
