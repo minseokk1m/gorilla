@@ -348,14 +348,14 @@
     "stage": "Stage {n}"
   },
   "tiers": {
-    "Gorilla": { "label": "🦍 Gorilla", "desc": "Dominant standard-setter. Buy and hold." },
-    "Potential Gorilla": { "label": "🦍 Potential Gorilla", "desc": "Competing for the standard. Early entry." },
-    "King": { "label": "👑 King", "desc": "Market leader, no architecture lock-in." },
-    "Chimpanzee": { "label": "🐵 Chimpanzee", "desc": "Lost the standard war. Exit position." },
-    "Monkey": { "label": "🐒 Monkey", "desc": "Commodity clone. No sustainable moat." },
-    "In Chasm": { "label": "🕳️ In Chasm", "desc": "Pre-mainstream. High risk, avoid." },
-    "Prince": { "label": "🤴 Prince", "desc": "Credible #2 to the King. Hold lightly." },
-    "Serf": { "label": "⛏️ Serf", "desc": "Bottom-tier in open market. Avoid." }
+    "Gorilla": { "label": "🦍 Gorilla", "desc": "Dominates the proprietary architecture that became the market standard. Competitors must conform to its interface. Switching costs are extreme. Buy and hold indefinitely." },
+    "Potential Gorilla": { "label": "🦍 Potential Gorilla", "desc": "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy before the market recognizes the winner." },
+    "King": { "label": "👑 King", "desc": "Market leader in an open market without architecture lock-in. Has scale advantages but competitors can challenge. Hold lightly." },
+    "Prince": { "label": "🤴 Prince", "desc": "Credible #2 challenger to the King. Threatening the King's position but hasn't overtaken yet. Hold even more lightly — sell first in downturns." },
+    "Serf": { "label": "⛏️ Serf", "desc": "Bottom-tier player in an open market. No differentiation from King or Prince, insufficient scale. Cannot sustain competitive returns. Avoid." },
+    "Chimpanzee": { "label": "🐵 Chimpanzee", "desc": "Competed for gorilla status but lost the architecture war. Survives in niches with proprietary approach but cannot expand to mainstream. Sell and reinvest in gorillas." },
+    "Monkey": { "label": "🐒 Monkey", "desc": "Clones the gorilla's architecture at a discount. No sustainable moat — the gorilla can reclaim its customers at any time. Do not hold long-term." },
+    "In Chasm": { "label": "🕳️ In Chasm", "desc": "Has early adopter enthusiasm but hasn't crossed to the pragmatist mainstream. Most companies here never cross. High risk — avoid until a clear beachhead emerges." }
   },
   "marketPhases": {
     "Early Market": "Early Market",
