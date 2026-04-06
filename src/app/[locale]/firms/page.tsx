@@ -28,6 +28,62 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
         <p className="text-gray-500 text-[0.9375rem]">{t("subtitle")}</p>
       </div>
 
+      {/* ── Scoring explainer ── */}
+      <div className="toss-card !bg-gray-900 !text-white mb-5">
+        <p className="text-[0.9375rem] leading-relaxed font-bold">{t("scoringThesis")}</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+        {/* Dimensions summary */}
+        <div className="toss-card">
+          <div className="font-bold text-gray-900 text-sm mb-3">{t("dimensionsTitle")}</div>
+          <div className="space-y-2">
+            {[
+              { key: "architectureControl", weight: 22, emoji: "🏗️" },
+              { key: "switchingCosts", weight: 20, emoji: "🔒" },
+              { key: "marketShare", weight: 18, emoji: "📊" },
+              { key: "networkEffects", weight: 15, emoji: "🌐" },
+              { key: "ecosystemControl", weight: 13, emoji: "🤝" },
+              { key: "revenueGrowth", weight: 6, emoji: "📈" },
+              { key: "marketConcentration", weight: 6, emoji: "🎯" },
+            ].map((d) => (
+              <div key={d.key} className="flex items-center gap-2">
+                <span className="text-sm">{d.emoji}</span>
+                <span className="text-xs font-bold text-gray-700 flex-1">{t(`dim.${d.key}`)}</span>
+                <div className="w-20 bg-gray-100 rounded-full h-1.5">
+                  <div className="h-1.5 rounded-full bg-[#0064FF]" style={{ width: `${(d.weight / 22) * 100}%` }} />
+                </div>
+                <span className="text-xs font-extrabold text-gray-400 w-8 text-right">{d.weight}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tier thresholds */}
+        <div className="toss-card">
+          <div className="font-bold text-gray-900 text-sm mb-3">{t("thresholdsTitle")}</div>
+          <div className="space-y-2">
+            {[
+              { emoji: "🦍", key: "thGorilla", score: "≥ 75", color: "bg-emerald-100 text-emerald-700" },
+              { emoji: "🦍", key: "thPotential", score: "≥ 60", color: "bg-teal-100 text-teal-700" },
+              { emoji: "👑", key: "thKing", score: "≥ 50", color: "bg-blue-100 text-[#0064FF]" },
+              { emoji: "🐵", key: "thChimp", score: "≥ 35", color: "bg-yellow-100 text-yellow-700" },
+              { emoji: "🤴", key: "thPrince", score: "≥ 35", color: "bg-indigo-100 text-indigo-600" },
+              { emoji: "🐒", key: "thMonkey", score: "≥ 20", color: "bg-orange-100 text-orange-700" },
+              { emoji: "⛏️", key: "thSerf", score: "≥ 20", color: "bg-stone-100 text-stone-600" },
+              { emoji: "🕳️", key: "thChasm", score: "< 20", color: "bg-red-100 text-red-600" },
+            ].map((tier) => (
+              <div key={tier.key} className="flex items-center gap-2">
+                <span className="text-sm">{tier.emoji}</span>
+                <span className={`toss-pill text-[10px] !py-0.5 ${tier.color}`}>{tier.score}</span>
+                <span className="text-xs font-bold text-gray-700 flex-1">{t(tier.key)}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-400 mt-3 leading-relaxed">{t("thresholdsNote")}</p>
+        </div>
+      </div>
+
       <div className="toss-card !p-0 overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
