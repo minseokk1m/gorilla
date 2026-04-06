@@ -388,19 +388,16 @@
   },
   "pipeline": {
     "title": "Investment Pipeline",
-    "subtitle": "Every firm mapped to its Gorilla Game stage. Click any card to dive deeper.",
-    "suspectsTitle": "Suspects",
-    "suspectsDesc": "In Chasm — pre-mainstream, avoid",
-    "prospectsTitle": "Prospects",
-    "prospectsDesc": "Potential Gorillas — competing for the standard",
-    "gorillasTitle": "Confirmed Gorillas",
-    "gorillasDesc": "Standard-setters — buy & hold by TALC phase",
+    "subtitle": "Four investment decision stages based on the Gorilla Game framework. Click any firm for full analysis.",
+    "buyTitle": "Buy — Gorillas & Potential Gorillas",
+    "buyDesc": "Firms that own or are competing for the proprietary architecture standard. Optimal buy window is around the Tornado. Hold long-term.",
     "watchTitle": "Watch — Kings & Princes",
-    "watchDesc": "Open market leaders and challengers, no architecture lock-in",
-    "exitTitle": "Exit Candidates",
-    "exitDesc": "Chimpanzees, Monkeys & Serfs — sell or avoid",
-    "score": "Score",
-    "noRecentNews": "No recent news"
+    "watchDesc": "Open market leaders and challengers. No architecture lock-in, so competitive dynamics are fluid. Hold lightly, exit on stumbles.",
+    "exitTitle": "Exit — Chimps · Monkeys · Serfs",
+    "exitDesc": "Architecture war losers, discount clones, and undifferentiated open-market players. Sell and redeploy into gorillas.",
+    "avoidTitle": "Avoid — In Chasm",
+    "avoidDesc": "Firms that haven't reached mainstream adoption. Most never cross the chasm. Do not invest until a clear beachhead emerges.",
+    "more": "more firms →"
   },
   "narratives": {
     "Gorilla": "{name} is classified as a **Gorilla** — the dominant force in its technology category. With an estimated {sharePercent}% niche market share and strong architecture control (score: {architectureControl}/100), it defines the standard that competitors must conform to. Geoffrey Moore's framework identifies gorillas as the primary investment target: their switching costs are prohibitively high (Net Revenue Retention: {nrr}%), and they are the last company standing after the tornado. Buy and hold.",
