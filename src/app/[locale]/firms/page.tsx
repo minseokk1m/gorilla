@@ -165,10 +165,10 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
             {rows.map(({ firm, classification, price }) => (
               <tr
                 key={firm.id}
-                className="border-b border-gray-50 hover:bg-[#F8F9FA] transition-colors"
+                className="border-b border-gray-50 hover:bg-[#F8F9FA] transition-colors relative cursor-pointer group"
               >
                 <td className="px-3 sm:px-5 py-2.5 sm:py-4">
-                  <Link href={`/firms/${firm.slug}`} className="flex items-center gap-3 group">
+                  <Link href={`/firms/${firm.slug}`} className="flex items-center gap-3 after:absolute after:inset-0 after:content-['']">
                     <div>
                       <div className="font-extrabold text-gray-900 group-hover:text-[#0064FF] transition-colors">{firm.ticker}</div>
                       <div className="text-gray-400 text-xs font-medium">{firm.name}</div>
