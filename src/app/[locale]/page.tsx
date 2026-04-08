@@ -212,6 +212,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       {/* ── Hype Ride: Rising technologies (hero card) ── */}
       {(() => {
+        const firmMap = new Map(firms.map((f) => [f.id, f]));
         const risingTechs = HYPE_TECHNOLOGIES.filter((t) => t.peakStatus === "rising");
         const risingFirmIds = new Set(risingTechs.flatMap((t) => t.firmIds));
         const risingFirms = firms
@@ -239,18 +240,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
             </div>
             <p className="text-xs text-orange-700/60 leading-relaxed mb-4">
-              과대 기대의 정점으로 올라가는 기술에 속한 기업들. 하입을 타고 단기 수익을 먹되, 꺾이는 순간 빠져야 한다.
+              캐즘 이전 초기시장 기업 중 과대 기대의 정점으로 올라가는 기술. 하입을 타고 단기 수익을 먹되, 꺾이는 순간 빠져야 한다.
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-              {risingFirms.slice(0, 20).map(({ firm, cls }) => (
-                <Link key={firm.id} href={`/firms/${firm.slug}`}>
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/80 hover:bg-white hover:shadow-md transition-all cursor-pointer">
-                    <span className="w-2 h-2 rounded-full shrink-0 bg-orange-500" />
-                    <span className="font-extrabold text-gray-900 text-sm truncate">{firm.ticker}</span>
-                    <span className="ml-auto text-xs font-extrabold text-orange-600">{cls.totalScore}</span>
+            <div className="space-y-2">
+              {risingTechs.map((tech) => {
+                const techFirms = tech.firmIds
+                  .map((id) => ({ firm: firmMap.get(id), cls: classificationsMap.get(id) }))
+                  .filter((x): x is { firm: Firm; cls: ClassificationResult } => !!x.firm && !!x.cls);
+                return (
+                  <div key={tech.id} className="rounded-xl bg-white/80 p-3">
+                    <div className="text-[11px] font-extrabold text-orange-800 mb-1">{tech.nameKo}</div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {techFirms.map(({ firm, cls }) => (
+                        <Link key={firm.id} href={`/firms/${firm.slug}`}>
+                          <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 transition-all cursor-pointer">
+                            <span className="w-2 h-2 rounded-full shrink-0 bg-orange-500" />
+                            <span className="font-extrabold text-gray-900 text-sm">{firm.ticker}</span>
+                            <span className="text-xs font-extrabold text-orange-600">{cls.totalScore}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
         );

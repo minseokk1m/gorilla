@@ -78,12 +78,17 @@ function resolveSignal(tier: ClassificationTier): Signal {
   }
 }
 
-function resolveMarketPhase(firm: Firm, tier: ClassificationTier): MarketPhase {
+function resolveMarketPhase(firm: Firm, tier: ClassificationTier, totalScore: number): MarketPhase {
   const growth = firm.revenueGrowthYoY;
-  if (growth >= 0.4 && (tier === "Gorilla" || tier === "Potential Gorilla")) return "Tornado";
-  if (growth >= 0.2 && tier !== "In Chasm") return "Bowling Alley";
-  if (growth >= 0.08) return "Main Street";
+
+  // In Chasm or very low score → Early Market regardless of growth
+  // A firm with score < 25 hasn't proven product-market fit even if growing
   if (tier === "In Chasm") return "Early Market";
+  if (totalScore < 25 && growth < 0.2) return "Early Market";
+
+  if (growth >= 0.4 && (tier === "Gorilla" || tier === "Potential Gorilla")) return "Tornado";
+  if (growth >= 0.2) return "Bowling Alley";
+  if (growth >= 0.08) return "Main Street";
   return "Main Street";
 }
 
@@ -126,7 +131,7 @@ export async function classifyFirm(firm: Firm, locale: Locale = "en"): Promise<C
   const totalScore = computeTotalScore(finalScores);
   const tier = resolveTier(totalScore, finalScores);
   const signal = resolveSignal(tier);
-  const marketPhase = resolveMarketPhase(firm, tier);
+  const marketPhase = resolveMarketPhase(firm, tier, totalScore);
 
   const partialResult = {
     firmId: firm.id,
