@@ -27,18 +27,14 @@ export interface ClassificationScores {
   marketConcentration: number;  // 0–100
 }
 
-export type HypePhase =
-  | "Innovation Trigger"
-  | "Peak of Inflated Expectations"
-  | "Trough of Disillusionment"
-  | "Slope of Enlightenment"
-  | "Plateau of Productivity";
+/** Peak of Inflated Expectations — the only hype phase we track for investment signals */
+export type PeakStatus = "rising" | "falling";
 
 export interface HypeTechnology {
   id: string;
   name: string;
   nameKo: string;
-  hypePhase: HypePhase;
+  peakStatus: PeakStatus;
   description: string;
   descriptionKo: string;
   firmIds: string[];
