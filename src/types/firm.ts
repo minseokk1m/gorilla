@@ -40,6 +40,12 @@ export type Sector =
   | "Materials & Specialty"
   // ── Telecom ──
   | "Telecommunications"
+  // ── Shipbuilding ──
+  | "Shipbuilding"
+  // ── Automotive ──
+  | "Automotive"
+  // ── Battery & Energy Storage ──
+  | "Battery & Energy Storage"
   // ── Consumer & Retail ──
   | "Retail & Consumer";
 

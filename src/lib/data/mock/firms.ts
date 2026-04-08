@@ -1065,6 +1065,160 @@ export const MOCK_FIRMS: Firm[] = [
     classificationSignals: { estimatedNicheMarketShare: 0.20, netRevenueRetention: 1.03, ecosystemPartnerCount: 2000, isDefactoStandard: false, competitorCount: 3, hasProprietaryProtocol: false, networkEffects: 0.2 },
   },
 
+  // ── KOREAN FIRMS (KRX) ─────────────────────────────────────
+
+  // ── 반도체 (Memory Semiconductors) ──
+  {
+    id: "sec", slug: "samsung-electronics", name: "삼성전자", ticker: "005930.KS", sector: "Semiconductors", categoryType: "enabling" as const,
+    marketCapUSD: 310, revenueGrowthYoY: 0.17, grossMargin: 0.37, founded: 1969,
+    description: "삼성전자는 메모리 반도체(DRAM·NAND)의 글로벌 고릴라다. 전 세계 DRAM 시장의 40%+, NAND 시장의 33%를 점유하며 업계 기술표준을 정의한다. 동시에 스마트폰(갤럭시), TV, 가전에서도 글로벌 1~2위를 유지하는 초대형 복합 기업이다. 파운드리 사업에서 TSMC에 도전 중이며, HBM에서 SK하이닉스를 추격하고 있다.",
+    competitors: ["sk-hynix", "micron", "tsmc"],
+    website: "https://samsung.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.42, netRevenueRetention: 1.15, ecosystemPartnerCount: 5000, isDefactoStandard: true, competitorCount: 2, hasProprietaryProtocol: true, networkEffects: 0.4 },
+  },
+  {
+    id: "skhynix", slug: "sk-hynix", name: "SK하이닉스", ticker: "000660.KS", sector: "Semiconductors", categoryType: "enabling" as const,
+    marketCapUSD: 110, revenueGrowthYoY: 0.75, grossMargin: 0.42, founded: 1983,
+    description: "SK하이닉스는 AI 시대의 핵심 부품인 HBM(High Bandwidth Memory)의 글로벌 1위이다. NVIDIA H100/B200 GPU에 탑재되는 HBM3E를 독점적으로 공급하며, AI 인프라의 필수 공급자 지위를 확보했다. DRAM 2위, NAND 3위이지만 HBM에서는 잠재 고릴라에서 고릴라로 진화 중이다.",
+    competitors: ["samsung-electronics", "micron"],
+    website: "https://skhynix.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.50, netRevenueRetention: 1.30, ecosystemPartnerCount: 500, isDefactoStandard: true, competitorCount: 2, hasProprietaryProtocol: true, networkEffects: 0.3 },
+  },
+
+  // ── 조선 (Shipbuilding) ──
+  {
+    id: "hhih", slug: "hd-korea-shipbuilding", name: "HD한국조선해양", ticker: "009540.KS", sector: "Shipbuilding", categoryType: "enabling" as const,
+    marketCapUSD: 18, revenueGrowthYoY: 0.25, grossMargin: 0.08, founded: 1972,
+    description: "HD한국조선해양은 세계 최대 조선 지주회사다. 산하에 HD현대중공업, 현대미포조선, 현대삼호중공업을 두고 LNG선, 컨테이너선, VLCC 등 전 선종을 장악한다. 특히 LNG 운반선에서 글로벌 수주의 60%+를 차지하며, 멤브레인·Mark III 기술력과 건조 경험에서 압도적 우위를 보인다.",
+    competitors: ["hanwha-ocean", "samsung-heavy"],
+    website: "https://hhih.co.kr",
+    classificationSignals: { estimatedNicheMarketShare: 0.35, netRevenueRetention: 1.10, ecosystemPartnerCount: 300, isDefactoStandard: true, competitorCount: 2, hasProprietaryProtocol: true, networkEffects: 0.15 },
+  },
+  {
+    id: "hho", slug: "hanwha-ocean", name: "한화오션", ticker: "042660.KS", sector: "Shipbuilding", categoryType: "enabling" as const,
+    marketCapUSD: 12, revenueGrowthYoY: 0.30, grossMargin: 0.05, founded: 1973,
+    description: "한화오션(구 대우조선해양)은 잠수함·구축함 등 해군 함정과 LNG선에 특화된 조선소다. 한화그룹 편입 후 방산 시너지가 부각되며, 폴란드·호주 등 해외 해군 수출이 급증하고 있다. 잠수함 건조 능력은 한국에서 유일하며, 방산 조선의 잠재 고릴라다.",
+    competitors: ["hd-korea-shipbuilding", "samsung-heavy"],
+    website: "https://hanwhaoceanco.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.25, netRevenueRetention: 1.08, ecosystemPartnerCount: 200, isDefactoStandard: false, competitorCount: 2, hasProprietaryProtocol: true, networkEffects: 0.1 },
+  },
+  {
+    id: "shi", slug: "samsung-heavy", name: "삼성중공업", ticker: "010140.KS", sector: "Shipbuilding", categoryType: "enabling" as const,
+    marketCapUSD: 8, revenueGrowthYoY: 0.20, grossMargin: 0.06, founded: 1974,
+    description: "삼성중공업은 LNG·FLNG(부유식 액화천연가스)·드릴십 등 고부가가치 해양플랜트와 LNG선에 강점을 가진 조선소다. 한국 빅3 조선 중 하나로 LNG선 수주 경쟁에서 HD현대, 한화오션과 과점 구조를 형성한다.",
+    competitors: ["hd-korea-shipbuilding", "hanwha-ocean"],
+    website: "https://samsungheavy.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.20, netRevenueRetention: 1.05, ecosystemPartnerCount: 150, isDefactoStandard: false, competitorCount: 2, hasProprietaryProtocol: false, networkEffects: 0.1 },
+  },
+
+  // ── 방산 (Defense) ──
+  {
+    id: "hwa", slug: "hanwha-aerospace", name: "한화에어로스페이스", ticker: "012450.KS", sector: "Defense & Aerospace", categoryType: "enabling" as const,
+    marketCapUSD: 35, revenueGrowthYoY: 0.40, grossMargin: 0.22, founded: 1977,
+    description: "한화에어로스페이스는 K-방산 수출의 핵심 기업이다. K9 자주포(세계 점유율 1위), 항공엔진, 방산전자를 생산하며, 폴란드·호주·사우디 등에 대규모 수출 계약을 체결했다. 한화그룹의 방산 중심축으로서 한화오션·한화시스템과의 시너지가 강력하다. K-방산 토네이도의 잠재 고릴라.",
+    competitors: ["lig-nex1", "hyundai-rotem"],
+    website: "https://hanwhaaerospace.co.kr",
+    classificationSignals: { estimatedNicheMarketShare: 0.15, netRevenueRetention: 1.15, ecosystemPartnerCount: 200, isDefactoStandard: false, competitorCount: 3, hasProprietaryProtocol: true, networkEffects: 0.15 },
+  },
+  {
+    id: "lig", slug: "lig-nex1", name: "LIG넥스원", ticker: "079550.KS", sector: "Defense & Aerospace", categoryType: "application" as const,
+    marketCapUSD: 5, revenueGrowthYoY: 0.25, grossMargin: 0.18, founded: 1976,
+    description: "LIG넥스원은 한국의 유도무기·미사일 전문 방산기업이다. 천궁(M-SAM), 해성(함대함미사일), 현무 등 핵심 유도무기를 독점 개발·생산한다. UAE·사우디 등 중동 수출이 확대되고 있으며, 한국 유도무기 시장에서는 사실상의 독점 기업이다.",
+    competitors: ["hanwha-aerospace"],
+    website: "https://lignex1.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.80, netRevenueRetention: 1.10, ecosystemPartnerCount: 80, isDefactoStandard: true, competitorCount: 1, hasProprietaryProtocol: true, networkEffects: 0.1 },
+  },
+  {
+    id: "hrt", slug: "hyundai-rotem", name: "현대로템", ticker: "064350.KS", sector: "Defense & Aerospace", categoryType: "enabling" as const,
+    marketCapUSD: 6, revenueGrowthYoY: 0.30, grossMargin: 0.12, founded: 1977,
+    description: "현대로템은 K2 흑표전차와 K21 보병전투장갑차를 생산하는 한국의 지상 방산 핵심 기업이다. 폴란드 K2전차 1,000대 수출 계약이 상징하듯 K-방산 수출 붐의 직접적 수혜자다. 철도차량(KTX, 수출용 동차)도 주요 사업이다.",
+    competitors: ["hanwha-aerospace"],
+    website: "https://hyundai-rotem.co.kr",
+    classificationSignals: { estimatedNicheMarketShare: 0.90, netRevenueRetention: 1.08, ecosystemPartnerCount: 100, isDefactoStandard: true, competitorCount: 1, hasProprietaryProtocol: true, networkEffects: 0.1 },
+  },
+
+  // ── 자동차 (Automotive) ──
+  {
+    id: "hyundai", slug: "hyundai-motor", name: "현대자동차", ticker: "005380.KS", sector: "Automotive", categoryType: "application" as const,
+    marketCapUSD: 42, revenueGrowthYoY: 0.10, grossMargin: 0.22, founded: 1967,
+    description: "현대자동차는 기아와 함께 글로벌 3위 자동차 그룹을 형성한다. 전기차(아이오닉), 수소차(넥쏘)에서 기술 리더십을 보유하며, 인도·미국·유럽에서 시장점유율을 확대 중이다. 제네시스 브랜드로 프리미엄 시장에도 진출했다. 자동차는 개방형 시장이나 현대차는 King 수준의 포지션.",
+    competitors: ["kia", "toyota", "volkswagen"],
+    website: "https://hyundai.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.08, netRevenueRetention: 1.05, ecosystemPartnerCount: 2000, isDefactoStandard: false, competitorCount: 5, hasProprietaryProtocol: false, networkEffects: 0.15 },
+  },
+  {
+    id: "kia", slug: "kia", name: "기아", ticker: "000270.KS", sector: "Automotive", categoryType: "application" as const,
+    marketCapUSD: 30, revenueGrowthYoY: 0.12, grossMargin: 0.23, founded: 1944,
+    description: "기아는 현대차그룹의 핵심 자회사로, EV6·EV9으로 전기차 시장에서 디자인·가성비 리더십을 확보했다. 미국·유럽에서 시장점유율이 빠르게 상승 중이며, 수익성(영업이익률 10%+)은 글로벌 OEM 중 최상위권이다.",
+    competitors: ["hyundai-motor", "toyota", "volkswagen"],
+    website: "https://kia.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.05, netRevenueRetention: 1.05, ecosystemPartnerCount: 1500, isDefactoStandard: false, competitorCount: 5, hasProprietaryProtocol: false, networkEffects: 0.1 },
+  },
+
+  // ── 배터리 (Battery) ──
+  {
+    id: "lges", slug: "lg-energy-solution", name: "LG에너지솔루션", ticker: "373220.KS", sector: "Battery & Energy Storage", categoryType: "enabling" as const,
+    marketCapUSD: 70, revenueGrowthYoY: -0.05, grossMargin: 0.15, founded: 2020,
+    description: "LG에너지솔루션은 글로벌 2위 EV배터리 제조사다. GM(Ultium), 현대차, 테슬라 등 주요 OEM에 파우치·원통형 셀을 공급한다. CATL과 함께 글로벌 배터리 시장의 양대 축을 형성하며, 북미·유럽 공장 증설로 로컬 생산 체제를 구축 중이다.",
+    competitors: ["samsung-sdi", "catl", "panasonic"],
+    website: "https://lgensol.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.14, netRevenueRetention: 1.10, ecosystemPartnerCount: 300, isDefactoStandard: false, competitorCount: 3, hasProprietaryProtocol: false, networkEffects: 0.15 },
+  },
+  {
+    id: "sdi", slug: "samsung-sdi", name: "삼성SDI", ticker: "006400.KS", sector: "Battery & Energy Storage", categoryType: "enabling" as const,
+    marketCapUSD: 25, revenueGrowthYoY: -0.08, grossMargin: 0.12, founded: 1970,
+    description: "삼성SDI는 EV용 각형 배터리와 ESS(에너지저장장치)를 생산한다. BMW, 폭스바겐 등 유럽 OEM에 강한 파트너십을 보유하며, 전고체 배터리 개발에서도 선두권이다. LG에너지솔루션·CATL에 이은 글로벌 3~4위 포지션.",
+    competitors: ["lg-energy-solution", "catl", "panasonic"],
+    website: "https://samsungsdi.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.08, netRevenueRetention: 1.05, ecosystemPartnerCount: 200, isDefactoStandard: false, competitorCount: 3, hasProprietaryProtocol: false, networkEffects: 0.1 },
+  },
+
+  // ── 인터넷/플랫폼 ──
+  {
+    id: "naver", slug: "naver", name: "네이버", ticker: "035420.KS", sector: "Consumer Tech", categoryType: "application" as const,
+    marketCapUSD: 28, revenueGrowthYoY: 0.12, grossMargin: 0.62, founded: 1999,
+    description: "네이버는 한국 검색 시장의 고릴라다. 검색 점유율 55%+로 한국 디지털 광고의 사실상 표준이며, 네이버쇼핑·네이버페이·라인·웹툰 등 거대 생태계를 구축했다. 일본 라인(메신저 1위)과 글로벌 웹툰 플랫폼은 해외 성장 동력이다. 한국 인터넷의 로컬 고릴라.",
+    competitors: ["kakao", "google", "coupang"],
+    website: "https://navercorp.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.55, netRevenueRetention: 1.15, ecosystemPartnerCount: 3000, isDefactoStandard: true, competitorCount: 2, hasProprietaryProtocol: true, networkEffects: 0.7 },
+  },
+  {
+    id: "kakao", slug: "kakao", name: "카카오", ticker: "035720.KS", sector: "Consumer Tech", categoryType: "application" as const,
+    marketCapUSD: 13, revenueGrowthYoY: 0.05, grossMargin: 0.56, founded: 2010,
+    description: "카카오는 카카오톡(국민 메신저, MAU 4,800만+)을 기반으로 카카오페이, 카카오모빌리티, 카카오뱅크, 카카오엔터 등 방대한 생태계를 운영한다. 카카오톡은 한국 모바일 메시징의 독점적 고릴라이나, 모회사 카카오는 수익화·규제 이슈로 '고릴라 본체의 가치 희석' 구조.",
+    competitors: ["naver", "line"],
+    website: "https://kakaocorp.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.95, netRevenueRetention: 1.05, ecosystemPartnerCount: 1500, isDefactoStandard: true, competitorCount: 1, hasProprietaryProtocol: true, networkEffects: 0.9 },
+  },
+
+  // ── 바이오 (Bio) ──
+  {
+    id: "celltrion", slug: "celltrion", name: "셀트리온", ticker: "068270.KS", sector: "Pharmaceuticals", categoryType: "application" as const,
+    marketCapUSD: 25, revenueGrowthYoY: 0.15, grossMargin: 0.55, founded: 2002,
+    description: "셀트리온은 글로벌 바이오시밀러 시장의 선두기업이다. 램시마(레미케이드 바이오시밀러)로 세계 최초 항체 바이오시밀러를 출시했고, 트룩시마, 유플라이마 등 블록버스터 바이오시밀러 포트폴리오를 보유한다. 바이오시밀러 영역에서 King 수준의 입지.",
+    competitors: ["samsung-biologics", "amgen", "teva"],
+    website: "https://celltrion.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.15, netRevenueRetention: 1.10, ecosystemPartnerCount: 150, isDefactoStandard: false, competitorCount: 4, hasProprietaryProtocol: true, networkEffects: 0.1 },
+  },
+  {
+    id: "sbiologics", slug: "samsung-biologics", name: "삼성바이오로직스", ticker: "207940.KS", sector: "Healthcare Services", categoryType: "enabling" as const,
+    marketCapUSD: 45, revenueGrowthYoY: 0.20, grossMargin: 0.40, founded: 2011,
+    description: "삼성바이오로직스는 세계 최대 바이오의약품 CDMO(위탁개발생산)다. 인천 송도에 세계 최대 단일 바이오 생산기지(62만L+)를 운영하며, 글로벌 빅파마의 항체의약품을 위탁생산한다. CDMO 시장에서 규모와 품질 양면에서 고릴라 후보이며, 5공장 증설로 지배력 확대 중.",
+    competitors: ["lonza", "wuxi-biologics", "celltrion"],
+    website: "https://samsungbiologics.com",
+    classificationSignals: { estimatedNicheMarketShare: 0.12, netRevenueRetention: 1.20, ecosystemPartnerCount: 200, isDefactoStandard: false, competitorCount: 3, hasProprietaryProtocol: false, networkEffects: 0.15 },
+  },
+
+  // ── 소재 (Materials) ──
+  {
+    id: "posco", slug: "posco-holdings", name: "POSCO홀딩스", ticker: "005490.KS", sector: "Materials & Specialty", categoryType: "enabling" as const,
+    marketCapUSD: 18, revenueGrowthYoY: -0.05, grossMargin: 0.08, founded: 1968,
+    description: "POSCO홀딩스는 세계 6위 철강 생산 기업이며, 한국 철강의 사실상 고릴라다. 포스코퓨처엠을 통해 2차전지 양·음극재 사업에도 진출, 배터리 소재 밸류체인을 구축 중이다. 철강은 개방형 시장이지만, POSCO는 기술력(FINEX 공법)과 규모에서 한국 로컬 고릴라.",
+    competitors: ["nippon-steel", "baowu-steel", "arcelormittal"],
+    website: "https://posco.co.kr",
+    classificationSignals: { estimatedNicheMarketShare: 0.03, netRevenueRetention: 1.03, ecosystemPartnerCount: 500, isDefactoStandard: false, competitorCount: 5, hasProprietaryProtocol: false, networkEffects: 0.1 },
+  },
+
   // ── CONGLOMERATE / OTHER ──────────────────────────────────
   {
     id: "brk", slug: "berkshire-hathaway", name: "Berkshire Hathaway", ticker: "BRK-B", sector: "Financial Services", categoryType: "application" as const,

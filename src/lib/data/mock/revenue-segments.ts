@@ -241,4 +241,110 @@ export const REVENUE_SEGMENTS: Record<string, RevenueSegment[]> = {
     { name: "Subscription & Services", revenuePercent: 13, description: "Coinbase One, Base L2, 데이터", competitors: [] },
     { name: "Interest & Other", revenuePercent: 5, description: "USDC 이자, 기타", competitors: [] },
   ],
+
+  // ── KOREAN FIRMS ──
+
+  sec: [
+    { name: "반도체 (DS)", revenuePercent: 32, description: "DRAM, NAND, 파운드리, 시스템LSI", competitors: ["sk-hynix", "micron", "tsmc"] },
+    { name: "MX (모바일)", revenuePercent: 30, description: "갤럭시 스마트폰, 태블릿, 웨어러블", competitors: ["apple"] },
+    { name: "VD (영상디스플레이)", revenuePercent: 15, description: "TV, 모니터, 디지털 사이니지", competitors: ["lg-electronics", "sony"] },
+    { name: "SDC (디스플레이)", revenuePercent: 12, description: "OLED 패널 (스마트폰·TV용)", competitors: ["lg-display", "boe"] },
+    { name: "Harman", revenuePercent: 6, description: "차량용 인포테인먼트, JBL 오디오", competitors: [] },
+    { name: "가전 (DA)", revenuePercent: 5, description: "냉장고, 세탁기, 에어컨", competitors: ["lg-electronics", "whirlpool"] },
+  ],
+  skhynix: [
+    { name: "DRAM", revenuePercent: 68, description: "서버/모바일/PC용 DRAM, HBM 포함", competitors: ["samsung-electronics", "micron"] },
+    { name: "NAND (Solidigm)", revenuePercent: 25, description: "SSD, eMMC, UFS (Solidigm 인수분 포함)", competitors: ["samsung-electronics", "micron", "western-digital"] },
+    { name: "System IC & Others", revenuePercent: 7, description: "CIS, DDI 등 비메모리", competitors: [] },
+  ],
+
+  hhih: [
+    { name: "조선 (HD현대중공업)", revenuePercent: 45, description: "LNG선, 컨테이너선, VLCC, 벌크선", competitors: ["hanwha-ocean", "samsung-heavy"] },
+    { name: "엔진기계 (HD현대인프라코어)", revenuePercent: 18, description: "선박용 엔진, 건설기계, 발전설비", competitors: [] },
+    { name: "해양플랜트", revenuePercent: 12, description: "FPSO, 해양구조물", competitors: ["samsung-heavy"] },
+    { name: "전기전자 (HD현대일렉트릭)", revenuePercent: 15, description: "변압기, 배전반, 전력 인프라", competitors: [] },
+    { name: "중·소형 조선 (현대미포)", revenuePercent: 10, description: "석유화학 운반선, 중소형 컨테이너선", competitors: [] },
+  ],
+  hho: [
+    { name: "상선 (LNG·컨테이너)", revenuePercent: 50, description: "LNG 운반선, 컨테이너선 건조", competitors: ["hd-korea-shipbuilding", "samsung-heavy"] },
+    { name: "해군 함정", revenuePercent: 25, description: "잠수함, 구축함, 호위함", competitors: [] },
+    { name: "해양플랜트", revenuePercent: 15, description: "FPSO, 해양 구조물", competitors: ["samsung-heavy"] },
+    { name: "특수선", revenuePercent: 10, description: "쇄빙선, 해양경찰선, 수출 함정", competitors: [] },
+  ],
+  shi: [
+    { name: "LNG 운반선", revenuePercent: 50, description: "LNG 운반선 건조 (핵심 선종)", competitors: ["hd-korea-shipbuilding", "hanwha-ocean"] },
+    { name: "해양플랜트 (FLNG/FPSO)", revenuePercent: 25, description: "부유식 LNG 생산설비, FPSO", competitors: ["hd-korea-shipbuilding"] },
+    { name: "컨테이너선·기타 상선", revenuePercent: 20, description: "대형 컨테이너선, 셔틀 탱커", competitors: ["hd-korea-shipbuilding"] },
+    { name: "풍력·기타", revenuePercent: 5, description: "해상풍력 하부구조물", competitors: [] },
+  ],
+
+  hwa: [
+    { name: "지상 방산 (K9 자주포 등)", revenuePercent: 40, description: "K9 자주포, 장갑차, 탄약", competitors: ["hyundai-rotem"] },
+    { name: "항공엔진", revenuePercent: 25, description: "T-50 엔진, 민수 항공엔진 MRO", competitors: ["ge-aerospace", "rtx"] },
+    { name: "해외 방산 수출", revenuePercent: 20, description: "폴란드·호주·사우디 등 수출 계약", competitors: [] },
+    { name: "기타 (방산전자·우주)", revenuePercent: 15, description: "위성, UAM, 방산전자", competitors: ["lig-nex1"] },
+  ],
+  lig: [
+    { name: "유도무기", revenuePercent: 50, description: "천궁(M-SAM), 해성, 현무 등 미사일", competitors: [] },
+    { name: "감시·정찰 체계", revenuePercent: 20, description: "레이더, 전자전, 정밀타격 체계", competitors: ["hanwha-aerospace"] },
+    { name: "해외 수출", revenuePercent: 18, description: "UAE·사우디 등 중동 유도무기 수출", competitors: [] },
+    { name: "수중 무기·기타", revenuePercent: 12, description: "어뢰, 기뢰, 무인체계", competitors: [] },
+  ],
+  hrt: [
+    { name: "방산 (K2 전차·K21)", revenuePercent: 45, description: "K2 흑표전차, K21 보병전투장갑차", competitors: ["hanwha-aerospace"] },
+    { name: "철도 (KTX·도시철도)", revenuePercent: 35, description: "KTX, 전동차, 해외 철도차량 수출", competitors: [] },
+    { name: "방산 수출 (폴란드 등)", revenuePercent: 15, description: "K2PL 전차 폴란드 수출", competitors: [] },
+    { name: "플랜트", revenuePercent: 5, description: "발전설비, 환경설비", competitors: [] },
+  ],
+
+  hyundai: [
+    { name: "완성차 (내연기관)", revenuePercent: 55, description: "승용차, SUV, 상용차 (내연기관)", competitors: ["kia", "toyota"] },
+    { name: "전기차 (아이오닉·E-GMP)", revenuePercent: 15, description: "아이오닉 5/6, 제네시스 EV", competitors: ["tesla", "byd"] },
+    { name: "제네시스", revenuePercent: 10, description: "프리미엄 브랜드 (G80, GV80 등)", competitors: ["bmw", "mercedes"] },
+    { name: "금융 (현대캐피탈 등)", revenuePercent: 12, description: "자동차 금융, 리스, 보험", competitors: [] },
+    { name: "수소·기타", revenuePercent: 8, description: "넥쏘 수소차, 로보틱스(보스턴 다이나믹스)", competitors: ["toyota"] },
+  ],
+  kia: [
+    { name: "승용차·SUV", revenuePercent: 65, description: "셀토스, 스포티지, 쏘렌토, K시리즈", competitors: ["hyundai-motor", "toyota"] },
+    { name: "전기차 (EV6·EV9)", revenuePercent: 18, description: "EV6, EV9, EV3 등 E-GMP 전기차", competitors: ["tesla", "byd"] },
+    { name: "PBV (목적기반차량)", revenuePercent: 5, description: "전기 상용차, MaaS 플랫폼", competitors: [] },
+    { name: "기타 (부품·금융)", revenuePercent: 12, description: "A/S 부품, 금융 서비스", competitors: [] },
+  ],
+
+  lges: [
+    { name: "EV 배터리 (파우치)", revenuePercent: 45, description: "GM Ultium, 현대·포드 등 파우치형 셀", competitors: ["catl", "samsung-sdi"] },
+    { name: "EV 배터리 (원통형)", revenuePercent: 30, description: "테슬라 등 원통형 4680/2170 셀", competitors: ["panasonic", "catl"] },
+    { name: "ESS (에너지저장장치)", revenuePercent: 15, description: "유틸리티·상업용 ESS 배터리", competitors: ["catl", "byd"] },
+    { name: "소형 배터리·기타", revenuePercent: 10, description: "전동공구, e-모빌리티, 소형전지", competitors: [] },
+  ],
+
+  naver: [
+    { name: "서치플랫폼 (검색·광고)", revenuePercent: 35, description: "검색 광고, 디스플레이 광고, 스마트스토어 광고", competitors: ["kakao", "google"] },
+    { name: "커머스", revenuePercent: 22, description: "네이버쇼핑, 스마트스토어, 네이버페이", competitors: ["coupang", "kakao"] },
+    { name: "핀테크", revenuePercent: 13, description: "네이버페이, 네이버파이낸셜", competitors: ["kakao"] },
+    { name: "콘텐츠 (웹툰·스노우)", revenuePercent: 15, description: "네이버웹툰, 스노우, V LIVE", competitors: [] },
+    { name: "클라우드", revenuePercent: 8, description: "네이버클라우드 (NCP), HyperCLOVA AI", competitors: ["amazon", "microsoft"] },
+    { name: "LINE·기타", revenuePercent: 7, description: "LINE 메신저 (일본), 글로벌 자회사", competitors: ["kakao"] },
+  ],
+  kakao: [
+    { name: "플랫폼 (광고·커머스)", revenuePercent: 30, description: "카카오톡 비즈보드, 톡스토어, 선물하기", competitors: ["naver"] },
+    { name: "콘텐츠 (카카오엔터)", revenuePercent: 25, description: "카카오페이지(웹소설/웹툰), 음악(멜론), IP", competitors: ["naver"] },
+    { name: "모빌리티", revenuePercent: 12, description: "카카오T (택시·대리·주차)", competitors: [] },
+    { name: "페이·금융", revenuePercent: 18, description: "카카오페이, 카카오뱅크, 카카오보험", competitors: ["naver"] },
+    { name: "클라우드·AI·기타", revenuePercent: 15, description: "카카오클라우드, 카카오브레인, 기타 자회사", competitors: ["naver"] },
+  ],
+
+  sbiologics: [
+    { name: "CMO (위탁생산)", revenuePercent: 65, description: "글로벌 빅파마 항체의약품 위탁생산", competitors: ["lonza", "wuxi-biologics"] },
+    { name: "CDO (위탁개발)", revenuePercent: 20, description: "바이오의약품 공정 개발, 세포주 개발", competitors: ["lonza", "wuxi-biologics"] },
+    { name: "바이오시밀러 (셀트리온 등)", revenuePercent: 10, description: "자체 바이오시밀러 파이프라인", competitors: ["celltrion"] },
+    { name: "기타", revenuePercent: 5, description: "mRNA 등 신규 모달리티", competitors: [] },
+  ],
+  posco: [
+    { name: "철강", revenuePercent: 60, description: "열연·냉연·스테인리스 철강재", competitors: ["nippon-steel", "baowu-steel"] },
+    { name: "2차전지 소재 (포스코퓨처엠)", revenuePercent: 15, description: "양극재·음극재 등 배터리 소재", competitors: ["lg-chem", "umicore"] },
+    { name: "건설·인프라 (포스코건설)", revenuePercent: 10, description: "건설, 플랜트, 인프라", competitors: [] },
+    { name: "에너지 (포스코인터내셔널)", revenuePercent: 10, description: "LNG 트레이딩, 해외자원개발", competitors: [] },
+    { name: "리튬·니켈 (신소재)", revenuePercent: 5, description: "아르헨티나 리튬, 니켈 습식제련", competitors: ["albemarle", "ganfeng"] },
+  ],
 };
