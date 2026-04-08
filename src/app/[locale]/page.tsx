@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { getSupabase } from "@/lib/supabase/admin";
 import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
+import HypeCycleSection from "@/components/dashboard/HypeCycleSection";
 
 /* ── Tier config — mirrors the Learn page 8-tier theory ── */
 const TIERS: {
@@ -283,6 +284,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
         </div>
       </div>
+
+      {/* ── Hype Cycle — Pre-Chasm Technologies ── */}
+      <HypeCycleSection locale={locale} firms={firms} classifications={classificationsMap} />
 
       {/* ── TALC Phase View ── */}
       <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />

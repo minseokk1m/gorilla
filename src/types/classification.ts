@@ -27,6 +27,23 @@ export interface ClassificationScores {
   marketConcentration: number;  // 0–100
 }
 
+export type HypePhase =
+  | "Innovation Trigger"
+  | "Peak of Inflated Expectations"
+  | "Trough of Disillusionment"
+  | "Slope of Enlightenment"
+  | "Plateau of Productivity";
+
+export interface HypeTechnology {
+  id: string;
+  name: string;
+  nameKo: string;
+  hypePhase: HypePhase;
+  description: string;
+  descriptionKo: string;
+  firmIds: string[];
+}
+
 export interface ClassificationResult {
   firmId: string;
   tier: ClassificationTier;
