@@ -90,6 +90,10 @@
     "marketCap": "Market Cap",
     "revGrowth": "Rev Growth",
     "talcPhase": "TALC Phase",
+    "revenueTitle": "{name} Revenue Pipeline",
+    "revenueShare": "Revenue Share",
+    "revenueCompetitors": "Competitors",
+    "revenueNoData": "No revenue segment data available yet.",
     "scoreLabels": {
       "marketShare": "Market Share",
       "switchingCosts": "Switching Costs",

@@ -90,6 +90,10 @@
     "marketCap": "시가총액",
     "revGrowth": "매출 성장률",
     "talcPhase": "TALC 단계",
+    "revenueTitle": "{name} 매출 파이프라인",
+    "revenueShare": "매출 비중",
+    "revenueCompetitors": "경쟁사",
+    "revenueNoData": "매출 세그먼트 데이터가 아직 없습니다.",
     "scoreLabels": {
       "marketShare": "시장 점유율",
       "switchingCosts": "전환 비용",

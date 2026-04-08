@@ -10,6 +10,8 @@ import { DATA_SOURCE } from "@/lib/data/api/config";
 import StockChart from "@/components/firm-detail/StockChart";
 import RSIChart from "@/components/firm-detail/RSIChart";
 import ScoreRadar from "@/components/firm-detail/ScoreRadar";
+import RevenueBreakdown from "@/components/firm-detail/RevenueBreakdown";
+import { REVENUE_SEGMENTS } from "@/lib/data/mock/revenue-segments";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 
@@ -180,6 +182,23 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           )}
         </div>
       </div>
+
+      {/* Revenue Breakdown */}
+      {REVENUE_SEGMENTS[firm.id] && (
+        <div className="toss-card">
+          <RevenueBreakdown
+            segments={REVENUE_SEGMENTS[firm.id]}
+            firmName={firm.name}
+            allFirms={allFirms.map((f) => ({ slug: f.slug, ticker: f.ticker }))}
+            labels={{
+              title: t("revenueTitle", { name: firm.name }),
+              revenueShare: t("revenueShare"),
+              competitors: t("revenueCompetitors"),
+              noSegments: t("revenueNoData"),
+            }}
+          />
+        </div>
+      )}
 
       {/* Charts */}
       {priceHistory && (

@@ -57,6 +57,13 @@ export interface ClassificationSignals {
   networkEffects: number;
 }
 
+export interface RevenueSegment {
+  name: string;              // e.g. "Azure", "iPhone"
+  revenuePercent: number;    // 0–100
+  description: string;       // one-liner: what this segment does
+  competitors?: string[];    // competitor firm slugs competing in this segment
+}
+
 export interface Firm {
   id: string;
   slug: string;
@@ -72,4 +79,5 @@ export interface Firm {
   competitors: string[];          // slugs
   website: string;
   classificationSignals: ClassificationSignals;
+  revenueSegments?: RevenueSegment[];
 }
