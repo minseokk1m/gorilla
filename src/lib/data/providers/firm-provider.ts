@@ -25,7 +25,7 @@ async function getHydratedFirms(): Promise<Firm[]> {
     await prefetchAllMarketData(MOCK_FIRMS);
     firms = await Promise.all(
       firms.map(async (firm) => {
-        const overlay = await getMarketFirmOverlay(firm.ticker);
+        const overlay = await getMarketFirmOverlay(firm.yahooTicker ?? firm.ticker);
         if (overlay) return hydrateFirm(firm, overlay);
         return firm;
       }),

@@ -8,7 +8,7 @@ export async function getPriceHistory(firmId: string): Promise<PriceHistory | nu
   if (DATA_SOURCE !== "mock") {
     const firm = MOCK_FIRMS.find((f) => f.id === firmId);
     if (firm) {
-      const live = await getLivePriceHistory(firmId, firm.ticker);
+      const live = await getLivePriceHistory(firmId, firm.yahooTicker ?? firm.ticker);
       if (live) return live;
       if (DATA_SOURCE === "live") return null; // strict mode: no fallback
     }
@@ -21,7 +21,7 @@ export async function getAllPriceHistories(): Promise<PriceHistory[]> {
   if (DATA_SOURCE !== "mock") {
     const results = await Promise.all(
       MOCK_FIRMS.map(async (f) => {
-        const live = await getLivePriceHistory(f.id, f.ticker);
+        const live = await getLivePriceHistory(f.id, f.yahooTicker ?? f.ticker);
         if (live) return live;
         // Per-ticker fallback to mock in hybrid mode
         if (DATA_SOURCE === "hybrid") {

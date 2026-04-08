@@ -60,7 +60,7 @@ export async function getNewsByFirmId(firmId: string): Promise<NewsArticle[]> {
   if (DATA_SOURCE !== "mock") {
     const firm = MOCK_FIRMS.find((f) => f.id === firmId);
     if (firm) {
-      const liveNews = await getLiveNews(firm.ticker);
+      const liveNews = await getLiveNews(firm.yahooTicker ?? firm.ticker);
       if (liveNews && liveNews.length > 0) {
         return liveNews.map((n) => toNewsArticle(n, firmId));
       }
@@ -80,7 +80,7 @@ export async function getLatestNews(limit = 10): Promise<NewsArticle[]> {
 
     const results = await Promise.all(
       keyTickers.map(async (firm) => {
-        const liveNews = await getLiveNews(firm.ticker);
+        const liveNews = await getLiveNews(firm.yahooTicker ?? firm.ticker);
         return liveNews ? liveNews.map((n) => toNewsArticle(n, firm.id)) : [];
       })
     );

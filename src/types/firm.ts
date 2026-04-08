@@ -75,6 +75,8 @@ export interface Firm {
   slug: string;
   name: string;
   ticker: string;
+  /** Yahoo Finance compatible ticker (e.g. "005930.KS"). Falls back to ticker if absent. */
+  yahooTicker?: string;
   sector: Sector;
   categoryType: CategoryType;
   marketCapUSD: number;           // billions
