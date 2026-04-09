@@ -72,6 +72,14 @@ const DIMENSIONS = [
   { key: "marketConcentration", weight: 6, emoji: "🎯", color: "bg-gray-50" },
 ];
 
+const ACTION_PRINCIPLES = [
+  { key: "1", emoji: "🔭", phase: "action1Phase", color: "bg-gray-50" },
+  { key: "2", emoji: "🧺", phase: "action2Phase", color: "bg-yellow-50/60" },
+  { key: "3", emoji: "🎯", phase: "action3Phase", color: "bg-emerald-50/60" },
+  { key: "4", emoji: "💎", phase: "action4Phase", color: "bg-blue-50/60" },
+  { key: "5", emoji: "🚪", phase: "action5Phase", color: "bg-red-50/40" },
+];
+
 const FLOW_STEPS = [
   { key: "flow1", emoji: "🌱" },
   { key: "flow2", emoji: "🕳️" },
@@ -255,7 +263,31 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* ══════ ⑥ 10 Investment Principles ══════ */}
+      {/* ══════ ⑥ 5 Action Principles ══════ */}
+      <section>
+        <h2 className="mb-2">{t("actionTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("actionSubtitle")}</p>
+        <div className="space-y-3">
+          {ACTION_PRINCIPLES.map((ap) => (
+            <div key={ap.key} className={`toss-card ${ap.color}`}>
+              <div className="flex items-start gap-3">
+                <span className="shrink-0 w-8 h-8 rounded-full bg-gray-900 text-white text-sm font-extrabold flex items-center justify-center mt-0.5">
+                  {ap.key}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <span className="font-bold text-gray-900 text-sm">{t(`action${ap.key}Title`)}</span>
+                    <span className="toss-pill bg-gray-200 text-gray-600 text-[10px]">{t(ap.phase)}</span>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed">{t(`action${ap.key}Desc`)}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════ ⑦ 10 Investment Principles ══════ */}
       <section>
         <h2 className="mb-2">{t("rulesTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("rulesSubtitle")}</p>

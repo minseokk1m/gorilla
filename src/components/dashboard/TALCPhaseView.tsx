@@ -71,12 +71,13 @@ const PHASE_ZONES: {
   labelKo: string;
   labelEn: string;
   descKo: string;
+  actionKo: string;
 }[] = [
-  { phase: "Early Market",  x0: 50,  x1: 256, fill: "#e5e7eb", fillOpacity: 0.7, emoji: "🌱", labelKo: "초기 시장",      labelEn: "Early Market",   descKo: "캐즘 이전. 하입사이클로 과열 여부를 감지하여 단기 투자 기회(RIDE)와 탈출 시점(EXIT)을 판단" },
-  { phase: "Bowling Alley", x0: 280, x1: 370, fill: "#fef3c7", fillOpacity: 0.8, emoji: "🎳", labelKo: "볼링앨리",      labelEn: "Bowling Alley",  descKo: "틈새시장 공략 중. 실용주의자들이 하나씩 채택 시작" },
-  { phase: "Tornado",       x0: 370, x1: 460, fill: "#a7f3d0", fillOpacity: 0.8, emoji: "🌪️", labelKo: "토네이도",      labelEn: "Tornado",        descKo: "폭발적 성장. 고릴라가 결정되는 순간 — 매수 윈도우" },
-  { phase: "Main Street",   x0: 460, x1: 630, fill: "#bfdbfe", fillOpacity: 0.7, emoji: "🏙️", labelKo: "메인 스트리트", labelEn: "Main Street",    descKo: "성숙기. 안정적 수익 + 배당 단계" },
-  { phase: "End of Life",   x0: 630, x1: 750, fill: "#e5e7eb", fillOpacity: 0.5, emoji: "📉", labelKo: "쇠퇴기",        labelEn: "End of Life",    descKo: "시장 축소. 차세대 기술로 교체 진행" },
+  { phase: "Early Market",  x0: 50,  x1: 256, fill: "#e5e7eb", fillOpacity: 0.7, emoji: "🌱", labelKo: "초기 시장",      labelEn: "Early Market",   descKo: "캐즘 이전. 하입사이클로 과열을 감지하여 RIDE/EXIT 판단", actionKo: "🔭 초고성장 시장을 발견하라" },
+  { phase: "Bowling Alley", x0: 280, x1: 370, fill: "#fef3c7", fillOpacity: 0.8, emoji: "🎳", labelKo: "볼링앨리",      labelEn: "Bowling Alley",  descKo: "틈새시장 공략 중. 실용주의자들이 채택 시작", actionKo: "🧺 고릴라 후보를 바구니로 매입하라" },
+  { phase: "Tornado",       x0: 370, x1: 460, fill: "#a7f3d0", fillOpacity: 0.8, emoji: "🌪️", labelKo: "토네이도",      labelEn: "Tornado",        descKo: "폭발적 성장. 고릴라가 결정되는 순간", actionKo: "🎯 고릴라에 집중하고 나머지를 처분하라" },
+  { phase: "Main Street",   x0: 460, x1: 630, fill: "#bfdbfe", fillOpacity: 0.7, emoji: "🏙️", labelKo: "메인 스트리트", labelEn: "Main Street",    descKo: "성숙기. 안정적 수익 + 배당 단계", actionKo: "💎 고릴라를 장기 보유하라" },
+  { phase: "End of Life",   x0: 630, x1: 750, fill: "#e5e7eb", fillOpacity: 0.5, emoji: "📉", labelKo: "쇠퇴기",        labelEn: "End of Life",    descKo: "시장 축소. 차세대 기술로 교체 진행", actionKo: "🚪 대체기술이 카테고리를 위협할 때 팔아라" },
 ];
 
 const TIER_DOT: Record<ClassificationTier, string> = {
@@ -340,7 +341,8 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
                 </span>
                 <span className="ml-auto text-xs font-extrabold text-gray-400">{items.length}</span>
               </div>
-              <p className="text-[10px] text-gray-400 leading-relaxed mb-3">{z.descKo}</p>
+              <p className="text-[10px] text-gray-400 leading-relaxed mb-2">{z.descKo}</p>
+              <p className="text-[9px] font-bold text-gray-900 bg-gray-100 rounded-lg px-2 py-1 mb-2">{z.actionKo}</p>
 
               {z.phase === "Early Market" && items.length > 0 && (
                 <div className="toss-pill bg-amber-100 text-amber-700 text-[9px] mb-2">
