@@ -34,8 +34,14 @@ export default function FirmDiscussion({ firmId }: { firmId: string }) {
         fetch(`/api/discuss?firmId=${firmId}`),
         fetch(`/api/proposals?firmId=${firmId}`),
       ]);
-      if (cRes.ok) setComments(await cRes.json());
-      if (pRes.ok) setProposals(await pRes.json());
+      if (cRes.ok) {
+        const cJson = await cRes.json();
+        setComments(Array.isArray(cJson) ? cJson : cJson.data ?? []);
+      }
+      if (pRes.ok) {
+        const pJson = await pRes.json();
+        setProposals(Array.isArray(pJson) ? pJson : pJson.data ?? []);
+      }
     } catch {} finally {
       setLoading(false);
     }
