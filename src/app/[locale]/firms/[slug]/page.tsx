@@ -14,6 +14,7 @@ import RevenueBreakdown from "@/components/firm-detail/RevenueBreakdown";
 import { REVENUE_SEGMENTS } from "@/lib/data/mock/revenue-segments";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import { analyzeNewsImpact, DIMENSION_META } from "@/lib/utils/news-impact";
 
 export async function generateStaticParams() {
   return MOCK_FIRMS.flatMap((f) =>
@@ -235,32 +236,54 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           <p className="text-gray-400 text-sm font-medium">{t("noNews")}</p>
         ) : (
           <div className="space-y-4">
-            {news.map((article) => (
-              <div key={article.id} className="border-b border-gray-50 pb-4 last:border-0 last:pb-0">
-                <div className="flex items-start gap-3">
-                  <div className={`mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0 ${SENTIMENT_DOTS[article.sentiment]}`} />
-                  <div>
-                    {article.url && article.url !== "#" ? (
-                      <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-gray-900 text-sm leading-snug mb-1 font-bold hover:text-[#0064FF] transition-colors block">
-                        {article.title}
-                      </a>
-                    ) : (
-                      <h3 className="text-gray-900 text-sm leading-snug mb-1">{article.title}</h3>
-                    )}
-                    {article.summary && (
-                      <p className="text-gray-500 text-xs leading-relaxed mb-2">{article.summary}</p>
-                    )}
-                    <div className="flex items-center gap-3 text-xs font-bold text-gray-400">
-                      <span>{article.source}</span>
-                      <span>·</span>
-                      <span>{formatDate(article.publishedAt)}</span>
-                      <span>·</span>
-                      <span className={SENTIMENT_COLORS[article.sentiment]}>{article.sentiment}</span>
+            {news.map((article) => {
+              const revenueSegs = REVENUE_SEGMENTS[firm.id as keyof typeof REVENUE_SEGMENTS];
+              const impact = analyzeNewsImpact(article, revenueSegs);
+              const hasImpact = impact.segments.length > 0 || impact.dimensions.length > 0;
+              return (
+                <div key={article.id} className="border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+                  <div className="flex items-start gap-3">
+                    <div className={`mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0 ${SENTIMENT_DOTS[article.sentiment]}`} />
+                    <div className="min-w-0">
+                      {article.url && article.url !== "#" ? (
+                        <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-gray-900 text-sm leading-snug mb-1 font-bold hover:text-[#0064FF] transition-colors block">
+                          {article.title}
+                        </a>
+                      ) : (
+                        <h3 className="text-gray-900 text-sm leading-snug mb-1">{article.title}</h3>
+                      )}
+                      {article.summary && (
+                        <p className="text-gray-500 text-xs leading-relaxed mb-2">{article.summary}</p>
+                      )}
+                      <div className="flex items-center gap-3 text-xs font-bold text-gray-400 mb-1.5">
+                        <span>{article.source}</span>
+                        <span>·</span>
+                        <span>{formatDate(article.publishedAt)}</span>
+                        <span>·</span>
+                        <span className={SENTIMENT_COLORS[article.sentiment]}>{article.sentiment}</span>
+                      </div>
+                      {hasImpact && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {impact.segments.map((seg) => (
+                            <span key={seg} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-100 text-gray-600">
+                              📊 {seg}
+                            </span>
+                          ))}
+                          {impact.dimensions.map((dim) => {
+                            const meta = DIMENSION_META[dim];
+                            return (
+                              <span key={dim} className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-bold ${meta.color}`}>
+                                {locale === "ko" ? meta.labelKo : meta.labelEn}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
