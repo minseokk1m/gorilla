@@ -136,8 +136,19 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
     if (!cls) continue;
     phaseGroups.get(cls.marketPhase)?.push({ firm, cls });
   }
-  for (const arr of phaseGroups.values()) {
-    arr.sort((a, b) => b.cls.totalScore - a.cls.totalScore);
+  for (const [phase, arr] of phaseGroups.entries()) {
+    if (phase === "Early Market") {
+      // Hype firms first: rising → falling → rest (by score)
+      arr.sort((a, b) => {
+        const ha = hypeFirmStatus.get(a.firm.id);
+        const hb = hypeFirmStatus.get(b.firm.id);
+        const rank = (s: "rising" | "falling" | undefined) => s === "rising" ? 0 : s === "falling" ? 1 : 2;
+        if (rank(ha) !== rank(hb)) return rank(ha) - rank(hb);
+        return b.cls.totalScore - a.cls.totalScore;
+      });
+    } else {
+      arr.sort((a, b) => b.cls.totalScore - a.cls.totalScore);
+    }
   }
 
   const chasmY = g(268);
@@ -339,6 +350,12 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
                 <span className="ml-auto text-xs font-extrabold text-gray-400">{items.length}</span>
               </div>
               <p className="text-[10px] text-gray-400 leading-relaxed mb-3">{z.descKo}</p>
+
+              {z.phase === "Early Market" && items.length > 0 && (
+                <div className="toss-pill bg-amber-100 text-amber-700 text-[9px] mb-2">
+                  하입사이클에 따라 거품이 생기는 구간
+                </div>
+              )}
 
               {isTornado && items.length > 0 && (
                 <div className="toss-pill bg-emerald-100 text-emerald-700 text-[9px] mb-2">
