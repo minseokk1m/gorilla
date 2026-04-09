@@ -157,16 +157,7 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
     <section className="space-y-4">
       <div>
         <h2 className="mb-1">시장 단계별 기업 분포</h2>
-        <p className="text-sm text-gray-400 font-medium mb-2">초기 시장은 하입사이클로 과열을 감지하고, 캐즘 이후에는 TALC로 고릴라를 포착합니다</p>
-        <div className="flex items-center gap-2 text-xs font-bold flex-wrap">
-          <span className="px-2.5 py-1 rounded-lg bg-red-100 text-red-600">🔥 과열 → 단기 수익</span>
-          <span className="text-gray-300">→</span>
-          <span className="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-700">💎 환멸 → 장기 매수</span>
-          <span className="text-gray-300">→</span>
-          <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700">📈 계몽 → 캐즘 대기</span>
-          <span className="text-gray-300">→</span>
-          <span className="px-2.5 py-1 rounded-lg bg-blue-100 text-blue-600">🌪️ TALC 토네이도</span>
-        </div>
+        <p className="text-sm text-gray-400 font-medium">초기 시장은 하입사이클로 과열을 감지하고, 캐즘 이후에는 TALC로 고릴라를 포착합니다</p>
       </div>
 
       {/* ── TALC Curve SVG ── */}

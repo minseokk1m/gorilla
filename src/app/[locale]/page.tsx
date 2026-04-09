@@ -100,42 +100,46 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
-      {/* ── Tier distribution bar ── */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-0.5 h-4 rounded-full overflow-hidden">
-          {TIERS.map(({ tier, dot }) => {
-            const count = tierGroups.get(tier)?.length ?? 0;
-            if (count === 0) return null;
-            return (
-              <div key={tier} className={`h-full ${dot} opacity-80 rounded-sm relative group`} style={{ flex: count }}>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-white text-[9px] font-extrabold drop-shadow-sm">{count}</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-gray-500 font-bold">
-          {TIERS.map(({ tier, dot }) => {
-            const count = tierGroups.get(tier)?.length ?? 0;
-            if (count === 0) return null;
-            return (
-              <span key={tier} className="flex items-center gap-1">
-                <span className={`w-2 h-2 rounded-sm ${dot}`} />
-                {tTiers(`${tier}.label` as "Gorilla.label")} {count}
-              </span>
-            );
-          })}
-        </div>
-      </div>
-
       {/* ── TALC Phase View — 전체 시장 조망 (하입사이클 통합) ── */}
       <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />
 
       {/* ── Section divider: 기업 성격 분류 ── */}
-      <div className="pt-4">
-        <h2 className="mb-1">기업 성격 분류</h2>
-        <p className="text-sm text-gray-400 font-medium">7차원 가중 점수 기반 이중 트랙 8등급 분류 — 매수(BUY) 대상부터 회피(AVOID)까지</p>
+      <div className="pt-4 space-y-3">
+        <div>
+          <h2 className="mb-1">기업 성격 분류</h2>
+          <p className="text-sm text-gray-400 font-medium">
+            초기 시장에서 하입사이클 과열을 타고 단기 수익을 빠르게 먹고, 캐즘을 넘긴 고릴라는 장기 매집하여 복리로 키운다. 7차원 가중 점수로 8등급을 분류하고, 매수 대상(고릴라·잠재 고릴라)을 선별합니다.
+          </p>
+        </div>
+
+        {/* Tier distribution bar */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-0.5 h-4 rounded-full overflow-hidden">
+            {TIERS.map(({ tier, dot }) => {
+              const count = tierGroups.get(tier)?.length ?? 0;
+              if (count === 0) return null;
+              return (
+                <div key={tier} className={`h-full ${dot} opacity-80 rounded-sm relative group`} style={{ flex: count }}>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-white text-[9px] font-extrabold drop-shadow-sm">{count}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-gray-500 font-bold">
+            {TIERS.map(({ tier, dot }) => {
+              const count = tierGroups.get(tier)?.length ?? 0;
+              if (count === 0) return null;
+              return (
+                <span key={tier} className="flex items-center gap-1">
+                  <span className={`w-2 h-2 rounded-sm ${dot}`} />
+                  {tTiers(`${tier}.label` as "Gorilla.label")} {count}
+                </span>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       {/* ── BUY: Gorilla + Potential Gorilla (hero cards) ── */}

@@ -46,7 +46,7 @@ export default function DashboardSearch({ firms }: { firms: FirmEntry[] }) {
           onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
           onFocus={() => setOpen(true)}
           placeholder="기업 검색 (티커 또는 이름)"
-          className="w-full pl-9 pr-3 py-2 rounded-xl bg-gray-100 text-sm font-medium text-gray-900 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0064FF]/30 transition-all"
+          className="w-full pl-9 pr-3 py-2 rounded-xl bg-white text-sm font-medium text-gray-900 placeholder:text-gray-400 outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-[#0064FF]/30 transition-all"
         />
       </div>
 
