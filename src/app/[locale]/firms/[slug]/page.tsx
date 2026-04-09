@@ -11,6 +11,7 @@ import StockChart from "@/components/firm-detail/StockChart";
 import RSIChart from "@/components/firm-detail/RSIChart";
 import ScoreRadar from "@/components/firm-detail/ScoreRadar";
 import RevenueBreakdown from "@/components/firm-detail/RevenueBreakdown";
+import FirmDiscussion from "@/components/firm-detail/FirmDiscussion";
 import { REVENUE_SEGMENTS } from "@/lib/data/mock/revenue-segments";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
@@ -182,6 +183,15 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
             </div>
           )}
         </div>
+      </div>
+
+      {/* Gorilla Game Discussion — inline */}
+      <div className="toss-card">
+        <h2 className="mb-4">고릴라 게임 토론</h2>
+        <p className="text-sm text-gray-400 font-medium mb-4">
+          이 기업의 고릴라 지위, 분류 신호, 투자 판단에 대해 의견을 나눠보세요.
+        </p>
+        <FirmDiscussion firmId={firm.id} />
       </div>
 
       {/* Revenue Breakdown */}
