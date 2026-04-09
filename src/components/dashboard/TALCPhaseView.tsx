@@ -1,5 +1,6 @@
 import type { Firm } from "@/types/firm";
 import type { ClassificationResult, ClassificationTier, MarketPhase } from "@/types/classification";
+import { HYPE_TECHNOLOGIES } from "@/lib/data/mock/hype-technologies";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 
@@ -31,6 +32,33 @@ function linePath(x0: number, x1: number) {
   const p = PTS.filter(([x]) => x >= x0 && x <= x1);
   return `M${p[0][0]},${p[0][1]}${p.slice(1).map(([x, y]) => `L${x},${y}`).join("")}`;
 }
+
+/* ── Mini Hype Cycle overlay within Early Market zone (x: 50–256) ── */
+// Hype cycle shape: trigger(55) → peak(155) → trough(245)
+const HYPE_PEAK_X = 155;
+const HYPE_PEAK_Y = 52;   // above the TALC curve
+const HYPE_TROUGH_Y = BASE - 30;
+const HYPE_CURVE = [
+  "M 60,225",
+  "C 75,220 90,200 105,170",
+  "C 120,135 135,95 145,70",
+  `C 150,55 155,${HYPE_PEAK_Y} 160,${HYPE_PEAK_Y}`,   // peak
+  `C 165,${HYPE_PEAK_Y} 170,58 175,75`,
+  "C 185,110 195,145 205,175",
+  `C 215,200 225,${HYPE_TROUGH_Y - 5} 235,${HYPE_TROUGH_Y}`, // trough
+  `C 240,${HYPE_TROUGH_Y + 2} 245,${HYPE_TROUGH_Y + 2} 250,${HYPE_TROUGH_Y - 2}`,
+].join(" ");
+
+// Positions for rising/falling firm dots on hype curve
+const HYPE_RISING_POS = [
+  { x: 120, y: 145 },  // slot 1
+  { x: 132, y: 110 },  // slot 2
+  { x: 144, y: 75 },   // slot 3
+];
+const HYPE_FALLING_POS = [
+  { x: 195, y: 145 },  // slot 1
+  { x: 210, y: 185 },  // slot 2
+];
 
 /* ── Phase zones mapped to x-coordinates on the curve ── */
 const PHASE_ZONES: {
@@ -126,6 +154,71 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
             <path key={z.phase} d={areaPath(z.x0, z.x1)} fill={z.fill} opacity={z.fillOpacity} />
           ))}
 
+          {/* ── Hype Cycle overlay in Early Market ── */}
+          <defs>
+            <linearGradient id="hypeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.08" />
+              <stop offset="40%" stopColor="#f59e0b" stopOpacity="0.15" />
+              <stop offset="60%" stopColor="#ef4444" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#ef4444" stopOpacity="0.06" />
+            </linearGradient>
+          </defs>
+          {/* Hype curve fill */}
+          <path d={`${HYPE_CURVE} L250,${BASE} L60,${BASE} Z`} fill="url(#hypeGrad)" />
+          {/* Hype curve stroke */}
+          <path d={HYPE_CURVE} fill="none" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6,3" opacity="0.8" />
+
+          {/* Peak label */}
+          <text x={HYPE_PEAK_X} y={HYPE_PEAK_Y - 10} textAnchor="middle" fill="#b45309" fontSize="7.5" fontWeight="800" style={FONT}>
+            과대기대 정점
+          </text>
+
+          {/* Rising / Falling zone labels */}
+          <text x={105} y={BASE - 6} textAnchor="middle" fill="#f59e0b" fontSize="7.5" fontWeight="800" style={FONT}>
+            🔥 RIDE
+          </text>
+          <text x={218} y={BASE - 6} textAnchor="middle" fill="#ef4444" fontSize="7.5" fontWeight="800" style={FONT}>
+            📉 EXIT
+          </text>
+
+          {/* Hype firm dots — rising */}
+          {(() => {
+            const rising = HYPE_TECHNOLOGIES.filter(t => t.peakStatus === "rising");
+            return rising.map((tech, i) => {
+              const pos = HYPE_RISING_POS[i % HYPE_RISING_POS.length];
+              const firmId = tech.firmIds[0];
+              const firm = firms.find(f => f.id === firmId);
+              if (!firm) return null;
+              return (
+                <g key={`hype-r-${tech.id}`}>
+                  <circle cx={pos.x} cy={pos.y} r="3.5" fill="#f59e0b" stroke="white" strokeWidth="1.5" />
+                  <text x={pos.x} y={pos.y - 8} textAnchor="middle" fill="#92400e" fontSize="7.5" fontWeight="800" style={FONT}>
+                    {firm.ticker}
+                  </text>
+                </g>
+              );
+            });
+          })()}
+
+          {/* Hype firm dots — falling */}
+          {(() => {
+            const falling = HYPE_TECHNOLOGIES.filter(t => t.peakStatus === "falling");
+            return falling.map((tech, i) => {
+              const pos = HYPE_FALLING_POS[i % HYPE_FALLING_POS.length];
+              const firmId = tech.firmIds[0];
+              const firm = firms.find(f => f.id === firmId);
+              if (!firm) return null;
+              return (
+                <g key={`hype-f-${tech.id}`}>
+                  <circle cx={pos.x} cy={pos.y} r="3.5" fill="#ef4444" stroke="white" strokeWidth="1.5" />
+                  <text x={pos.x} y={pos.y - 8} textAnchor="middle" fill="#991b1b" fontSize="7.5" fontWeight="800" style={FONT}>
+                    {firm.ticker}
+                  </text>
+                </g>
+              );
+            });
+          })()}
+
           {/* Chasm gap */}
           <line x1={256} y1={20} x2={256} y2={BASE} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="5,4" />
           <line x1={280} y1={20} x2={280} y2={BASE} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="5,4" />
@@ -201,9 +294,15 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
           })}
 
           {/* Legend */}
-          <text x={760} y={18} textAnchor="end" fill="#9ca3af" fontSize="8" fontWeight="600" style={FONT}>
-            ● 각 단계 최고점수 기업
-          </text>
+          <g>
+            <text x={760} y={14} textAnchor="end" fill="#9ca3af" fontSize="7.5" fontWeight="600" style={FONT}>
+              ● 각 단계 최고점수 기업
+            </text>
+            <line x1={672} y1={23} x2={692} y2={23} stroke="#f59e0b" strokeWidth="2" strokeDasharray="4,2" />
+            <text x={760} y={27} textAnchor="end" fill="#b45309" fontSize="7.5" fontWeight="600" style={FONT}>
+              하입사이클 (초기 시장)
+            </text>
+          </g>
         </svg>
       </div>
 
