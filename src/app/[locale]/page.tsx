@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { getSupabase } from "@/lib/supabase/admin";
 import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
+import DashboardSearch from "@/components/dashboard/DashboardSearch";
 
 /* ── Tier config — mirrors the Learn page 8-tier theory ── */
 const TIERS: {
@@ -91,6 +92,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </span>
           <span className="text-gray-400 font-medium">{firms.length}개 기업 · 7차원 가중 점수 · 이중 트랙 8등급</span>
         </div>
+        <div className="mt-3">
+          <DashboardSearch firms={firms.map((f) => {
+            const cls = classificationsMap.get(f.id);
+            return { slug: f.slug, ticker: f.ticker, name: f.name, tier: cls?.tier ?? "", score: cls?.totalScore ?? 0 };
+          })} />
+        </div>
       </div>
 
       {/* ── Tier distribution bar ── */}
@@ -124,6 +131,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       {/* ── TALC Phase View — 전체 시장 조망 (하입사이클 통합) ── */}
       <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />
+
+      {/* ── Section divider: 기업 성격 분류 ── */}
+      <div className="pt-4">
+        <h2 className="mb-1">기업 성격 분류</h2>
+        <p className="text-sm text-gray-400 font-medium">7차원 가중 점수 기반 이중 트랙 8등급 분류 — 매수(BUY) 대상부터 회피(AVOID)까지</p>
+      </div>
 
       {/* ── BUY: Gorilla + Potential Gorilla (hero cards) ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
