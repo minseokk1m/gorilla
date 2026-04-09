@@ -15,7 +15,7 @@ export const DIMENSION_META: Record<string, { labelKo: string; labelEn: string; 
 };
 
 /** Keywords → classification dimensions */
-const DIMENSION_KEYWORDS: Record<string, string[]> = {
+export const DIMENSION_KEYWORDS: Record<string, string[]> = {
   architectureControl: [
     "standard", "architecture", "platform", "api", "protocol", "ecosystem lock", "proprietary",
     "표준", "아키텍처", "플랫폼", "독점", "프로토콜",

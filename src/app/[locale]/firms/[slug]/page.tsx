@@ -1,21 +1,17 @@
 import { notFound } from "next/navigation";
 import { MOCK_FIRMS } from "@/lib/data/mock/firms";
 import { getAllFirms, getClassification } from "@/lib/data/providers/firm-provider";
-import { getPriceHistory } from "@/lib/data/providers/price-provider";
-import { getNewsByFirmId } from "@/lib/data/providers/news-provider";
 import ClassificationBadge from "@/components/firms/ClassificationBadge";
 import SignalBadge from "@/components/firms/SignalBadge";
-import { formatMarketCap, formatPercent, formatPrice, formatDate } from "@/lib/utils/formatters";
-import { DATA_SOURCE } from "@/lib/data/api/config";
-import StockChart from "@/components/firm-detail/StockChart";
-import RSIChart from "@/components/firm-detail/RSIChart";
+import { formatMarketCap, formatPercent, formatDate } from "@/lib/utils/formatters";
 import ScoreRadar from "@/components/firm-detail/ScoreRadar";
 import RevenueBreakdown from "@/components/firm-detail/RevenueBreakdown";
 import FirmDiscussion from "@/components/firm-detail/FirmDiscussion";
+import LiveDataSection from "@/components/firm-detail/LiveDataSection";
 import { REVENUE_SEGMENTS } from "@/lib/data/mock/revenue-segments";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import { analyzeNewsImpact, DIMENSION_META } from "@/lib/utils/news-impact";
+import { DIMENSION_META, DIMENSION_KEYWORDS } from "@/lib/utils/news-impact";
 
 export async function generateStaticParams() {
   return MOCK_FIRMS.flatMap((f) =>
@@ -31,18 +27,11 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
 
   const t = await getTranslations({ locale, namespace: "firmDetail" });
 
-  const [classification, priceHistory, news] = await Promise.all([
-    getClassification(firm.id, locale),
-    getPriceHistory(firm.id),
-    getNewsByFirmId(firm.id),
-  ]);
-
+  const classification = await getClassification(firm.id, locale);
   if (!classification) notFound();
 
   const competitorFirms = allFirms.filter((f) => firm.competitors.includes(f.slug));
-
-  const SENTIMENT_COLORS = { Positive: "text-emerald-600", Neutral: "text-gray-500", Negative: "text-red-500" };
-  const SENTIMENT_DOTS = { Positive: "bg-emerald-500", Neutral: "bg-gray-400", Negative: "bg-red-500" };
+  const revenueSegs = REVENUE_SEGMENTS[firm.id];
 
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
@@ -70,17 +59,6 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
                 토론하기
               </a>
             </div>
-            {priceHistory && (
-              <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3">
-                <span className="text-2xl sm:text-3xl font-extrabold text-gray-900">{formatPrice(priceHistory.currentPrice)}</span>
-                <span className={`text-sm font-bold ${priceHistory.priceChange1D >= 0 ? "text-emerald-600" : "text-red-500"}`}>
-                  {formatPercent(priceHistory.priceChange1D, true)} {t("today")}
-                </span>
-                <span className={`text-sm font-bold ${priceHistory.priceChange1M >= 0 ? "text-emerald-600" : "text-red-500"}`}>
-                  {formatPercent(priceHistory.priceChange1M, true)} 1M
-                </span>
-              </div>
-            )}
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div className="bg-[#F4F4F4] rounded-2xl p-4">
@@ -211,92 +189,19 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
         </div>
       )}
 
-      {/* Charts */}
-      {priceHistory && (
-        <div className="toss-card space-y-4">
-          <h2>{t("priceChartTitle")}</h2>
-          <StockChart priceHistory={priceHistory} />
-          <h3 className="text-gray-500 font-bold pt-2">{t("rsiLabel")}</h3>
-          <RSIChart rsi={priceHistory.rsi} dates={priceHistory.candles.map((c) => c.date)} />
-        </div>
-      )}
-
-      {/* News */}
-      <div className="toss-card">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="mb-0">
-            {t("newsTitle")}
-          </h2>
-          <div className="flex items-center gap-2 text-xs font-bold text-gray-400 shrink-0">
-            {DATA_SOURCE !== "mock" && news.length > 0 && news[0].url !== "#" ? (
-              <>
-                <span className="inline-flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Live
-                </span>
-                <span>·</span>
-                <span>{t("fetchedAt", { time: new Date().toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" }) })}</span>
-              </>
-            ) : (
-              <span className="text-gray-300">{t("newsMockNote")}</span>
-            )}
-          </div>
-        </div>
-        {news.length === 0 ? (
-          <p className="text-gray-400 text-sm font-medium">{t("noNews")}</p>
-        ) : (
-          <div className="space-y-4">
-            {news.map((article) => {
-              const revenueSegs = REVENUE_SEGMENTS[firm.id];
-              const impact = analyzeNewsImpact(article, revenueSegs);
-              const hasImpact = impact.segments.length > 0 || impact.dimensions.length > 0;
-              return (
-                <div key={article.id} className="border-b border-gray-50 pb-4 last:border-0 last:pb-0">
-                  <div className="flex items-start gap-3">
-                    <div className={`mt-1.5 w-2.5 h-2.5 rounded-full flex-shrink-0 ${SENTIMENT_DOTS[article.sentiment]}`} />
-                    <div className="min-w-0">
-                      {article.url && article.url !== "#" ? (
-                        <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-gray-900 text-sm leading-snug mb-1 font-bold hover:text-[#0064FF] transition-colors block">
-                          {article.title}
-                        </a>
-                      ) : (
-                        <h3 className="text-gray-900 text-sm leading-snug mb-1">{article.title}</h3>
-                      )}
-                      {article.summary && (
-                        <p className="text-gray-500 text-xs leading-relaxed mb-2">{article.summary}</p>
-                      )}
-                      <div className="flex items-center gap-3 text-xs font-bold text-gray-400 mb-1.5">
-                        <span>{article.source}</span>
-                        <span>·</span>
-                        <span>{formatDate(article.publishedAt)}</span>
-                        <span>·</span>
-                        <span className={SENTIMENT_COLORS[article.sentiment]}>{article.sentiment}</span>
-                      </div>
-                      {hasImpact && (
-                        <div className="flex flex-wrap gap-1.5">
-                          {impact.segments.map((seg) => (
-                            <span key={seg} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-100 text-gray-600">
-                              📊 {seg}
-                            </span>
-                          ))}
-                          {impact.dimensions.map((dim) => {
-                            const meta = DIMENSION_META[dim];
-                            return (
-                              <span key={dim} className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-bold ${meta.color}`}>
-                                {locale === "ko" ? meta.labelKo : meta.labelEn}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
+      {/* Charts + News — loaded progressively on client */}
+      <LiveDataSection
+        firmSlug={firm.slug}
+        locale={locale}
+        priceChartTitle={t("priceChartTitle")}
+        rsiLabel={t("rsiLabel")}
+        newsTitle={t("newsTitle")}
+        newsMockNote={t("newsMockNote")}
+        noNews={t("noNews")}
+        revenueSegments={revenueSegs}
+        dimensionMeta={DIMENSION_META}
+        dimensionKeywords={DIMENSION_KEYWORDS}
+      />
 
       {/* About */}
       <div className="toss-card">

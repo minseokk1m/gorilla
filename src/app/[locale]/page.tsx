@@ -184,9 +184,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {tTiers(`${config.tier}.desc` as "Gorilla.desc")}
               </p>
 
-              {/* Firm list — 2 columns */}
-              <div className="grid grid-cols-2 gap-1.5">
-                {items.slice(0, 16).map(({ firm, cls }) => (
+              {/* Firm list — 2 columns, scrollable */}
+              <div className="grid grid-cols-2 gap-1.5 max-h-[320px] overflow-y-auto overscroll-contain pr-0.5" style={{ scrollbarWidth: "thin", scrollbarColor: "#d1d5db transparent" }}>
+                {items.map(({ firm, cls }) => (
                   <Link key={firm.id} href={`/firms/${firm.slug}`}>
                     <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/80 hover:bg-white hover:shadow-md transition-all cursor-pointer">
                       <span className={`w-2 h-2 rounded-full shrink-0 ${config.dot}`} />
@@ -195,14 +195,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </div>
                   </Link>
                 ))}
-                {items.length > 16 && (
-                  <Link href="/firms">
-                    <div className={`text-center text-xs font-bold py-2 hover:underline ${config.text} col-span-2`}>
-                      +{items.length - 16}개 더 보기 →
-                    </div>
-                  </Link>
-                )}
               </div>
+              {items.length > 10 && (
+                <div className="text-center text-[9px] text-gray-300 mt-1.5 select-none">
+                  ↕ 스크롤하여 {items.length}개 전체 보기
+                </div>
+              )}
             </div>
           );
         })}
@@ -232,9 +230,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {tTiers(`${config.tier}.desc` as "Gorilla.desc")}
               </p>
 
-              {/* Firm chips */}
-              <div className="space-y-1">
-                {items.slice(0, 5).map(({ firm, cls }) => (
+              {/* Firm chips — scrollable */}
+              <div className="space-y-1 max-h-[200px] overflow-y-auto overscroll-contain pr-0.5" style={{ scrollbarWidth: "thin", scrollbarColor: "#d1d5db transparent" }}>
+                {items.map(({ firm, cls }) => (
                   <Link key={firm.id} href={`/firms/${firm.slug}`}>
                     <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-white/60 hover:bg-white hover:shadow-sm transition-all cursor-pointer">
                       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${config.dot}`} />
@@ -243,17 +241,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     </div>
                   </Link>
                 ))}
-                {items.length > 5 && (
-                  <Link href="/firms">
-                    <div className={`text-center text-[9px] font-bold py-0.5 hover:underline ${config.text}`}>
-                      +{items.length - 5}개 →
-                    </div>
-                  </Link>
-                )}
                 {items.length === 0 && (
                   <div className="text-center text-[9px] text-gray-300 py-1.5">해당 없음</div>
                 )}
               </div>
+              {items.length > 6 && (
+                <div className="text-center text-[9px] text-gray-300 mt-1 select-none">
+                  ↕ {items.length}개 전체
+                </div>
+              )}
             </div>
           );
         })}
