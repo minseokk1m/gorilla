@@ -66,9 +66,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
             </div>
             <div className="flex items-center gap-3">
               <p className="text-gray-500 font-medium">{firm.name} · {firm.sector}</p>
-              <Link href={`/firms/${slug}/discuss`} className="text-xs font-bold text-[#0064FF] bg-[#E8F0FE] px-3 py-1.5 rounded-lg hover:bg-[#0064FF] hover:text-white transition-colors">
+              <a href="#discussion" className="text-xs font-bold text-[#0064FF] bg-[#E8F0FE] px-3 py-1.5 rounded-lg hover:bg-[#0064FF] hover:text-white transition-colors">
                 토론하기
-              </Link>
+              </a>
             </div>
             {priceHistory && (
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-3">
@@ -186,7 +186,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
       </div>
 
       {/* Gorilla Game Discussion — inline */}
-      <div className="toss-card">
+      <div id="discussion" className="toss-card scroll-mt-8">
         <h2 className="mb-4">고릴라 게임 토론</h2>
         <p className="text-sm text-gray-400 font-medium mb-4">
           이 기업의 고릴라 지위, 분류 신호, 투자 판단에 대해 의견을 나눠보세요.

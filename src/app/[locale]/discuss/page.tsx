@@ -72,7 +72,7 @@ export default async function DiscussIndexPage({ params }: { params: Promise<{ l
           const hasActivity = (pCount?.total ?? 0) > 0 || cCount > 0;
 
           return (
-            <Link key={firm.id} href={`/firms/${firm.slug}/discuss`}>
+            <Link key={firm.id} href={`/firms/${firm.slug}#discussion`}>
               <div className="toss-card-interactive !p-4 !rounded-xl flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="min-w-0">
