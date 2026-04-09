@@ -5,8 +5,6 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { getSupabase } from "@/lib/supabase/admin";
 import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
-import HypeCycleSection from "@/components/dashboard/HypeCycleSection";
-import { HYPE_TECHNOLOGIES } from "@/lib/data/mock/hype-technologies";
 
 /* ── Tier config — mirrors the Learn page 8-tier theory ── */
 const TIERS: {
@@ -145,6 +143,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
+      {/* ── TALC Phase View — 전체 시장 조망 (하입사이클 통합) ── */}
+      <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />
+
       {/* ── BUY: Gorilla + Potential Gorilla (hero cards) ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {TIERS.filter((c) => c.signal === "BUY").map((config) => {
@@ -209,65 +210,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           );
         })}
       </div>
-
-      {/* ── Hype Ride: Rising technologies (hero card) ── */}
-      {(() => {
-        const firmMap = new Map(firms.map((f) => [f.id, f]));
-        const risingTechs = HYPE_TECHNOLOGIES.filter((t) => t.peakStatus === "rising");
-        const risingFirmIds = new Set(risingTechs.flatMap((t) => t.firmIds));
-        const risingFirms = firms
-          .filter((f) => risingFirmIds.has(f.id))
-          .map((f) => ({ firm: f, cls: classificationsMap.get(f.id)! }))
-          .filter(({ cls }) => cls);
-        return (
-          <div className="relative rounded-2xl p-5 overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/80 to-yellow-50/60 ring-2 ring-orange-300 shadow-lg shadow-orange-100/50">
-            <div className="absolute -right-4 -top-4 text-[100px] opacity-[0.04] leading-none select-none pointer-events-none">
-              🔥
-            </div>
-            <div className="flex items-center justify-between mb-2 relative">
-              <div className="flex items-center gap-2.5">
-                <span className="text-2xl">🔥</span>
-                <div>
-                  <h3 className="font-extrabold text-base text-orange-700 mb-0">하입 매수 — 과열 오르막</h3>
-                  <span className="text-[10px] font-bold text-orange-500">Peak of Inflated Expectations 진입 기술</span>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-extrabold text-orange-700">{risingFirms.length}</div>
-                <span className="inline-flex px-2.5 py-0.5 rounded-md text-[10px] font-extrabold bg-orange-500 text-white">
-                  RIDE
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-orange-700/60 leading-relaxed mb-4">
-              캐즘 이전 초기시장 기업 중 과대 기대의 정점으로 올라가는 기술. 하입을 타고 단기 수익을 먹되, 꺾이는 순간 빠져야 한다.
-            </p>
-            <div className="space-y-2">
-              {risingTechs.map((tech) => {
-                const techFirms = tech.firmIds
-                  .map((id) => ({ firm: firmMap.get(id), cls: classificationsMap.get(id) }))
-                  .filter((x): x is { firm: Firm; cls: ClassificationResult } => !!x.firm && !!x.cls);
-                return (
-                  <div key={tech.id} className="rounded-xl bg-white/80 p-3">
-                    <div className="text-[11px] font-extrabold text-orange-800 mb-1">{tech.nameKo}</div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {techFirms.map(({ firm, cls }) => (
-                        <Link key={firm.id} href={`/firms/${firm.slug}`}>
-                          <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 transition-all cursor-pointer">
-                            <span className="w-2 h-2 rounded-full shrink-0 bg-orange-500" />
-                            <span className="font-extrabold text-gray-900 text-sm">{firm.ticker}</span>
-                            <span className="text-xs font-extrabold text-orange-600">{cls.totalScore}</span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })()}
 
       {/* ── Other 6 tiers (compact grid) ── */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -366,11 +308,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
-      {/* ── Hype Cycle — Pre-Chasm Technologies ── */}
-      <HypeCycleSection locale={locale} firms={firms} classifications={classificationsMap} />
-
-      {/* ── TALC Phase View ── */}
-      <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />
 
       {/* ── Quick Navigation ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

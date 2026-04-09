@@ -72,7 +72,7 @@ const PHASE_ZONES: {
   labelEn: string;
   descKo: string;
 }[] = [
-  { phase: "Early Market",  x0: 50,  x1: 256, fill: "#e5e7eb", fillOpacity: 0.7, emoji: "🌱", labelKo: "초기 시장",      labelEn: "Early Market",   descKo: "얼리어답터 단계. 기술은 있으나 실용적 시장 진입 전" },
+  { phase: "Early Market",  x0: 50,  x1: 256, fill: "#e5e7eb", fillOpacity: 0.7, emoji: "🌱", labelKo: "초기 시장",      labelEn: "Early Market",   descKo: "캐즘 이전. 하입사이클로 과열 여부를 감지하여 단기 투자 기회(RIDE)와 탈출 시점(EXIT)을 판단" },
   { phase: "Bowling Alley", x0: 280, x1: 370, fill: "#fef3c7", fillOpacity: 0.8, emoji: "🎳", labelKo: "볼링앨리",      labelEn: "Bowling Alley",  descKo: "틈새시장 공략 중. 실용주의자들이 하나씩 채택 시작" },
   { phase: "Tornado",       x0: 370, x1: 460, fill: "#a7f3d0", fillOpacity: 0.8, emoji: "🌪️", labelKo: "토네이도",      labelEn: "Tornado",        descKo: "폭발적 성장. 고릴라가 결정되는 순간 — 매수 윈도우" },
   { phase: "Main Street",   x0: 460, x1: 630, fill: "#bfdbfe", fillOpacity: 0.7, emoji: "🏙️", labelKo: "메인 스트리트", labelEn: "Main Street",    descKo: "성숙기. 안정적 수익 + 배당 단계" },
@@ -120,6 +120,14 @@ interface Props {
 export default async function TALCPhaseView({ locale, firms, classifications }: Props) {
   const tTiers = await getTranslations({ locale, namespace: "tiers" });
 
+  // Build hype firm lookup: firmId → "rising" | "falling"
+  const hypeFirmStatus = new Map<string, "rising" | "falling">();
+  for (const tech of HYPE_TECHNOLOGIES) {
+    for (const fid of tech.firmIds) {
+      hypeFirmStatus.set(fid, tech.peakStatus);
+    }
+  }
+
   // Group firms by market phase
   const phaseGroups = new Map<MarketPhase, { firm: Firm; cls: ClassificationResult }[]>();
   PHASE_ZONES.forEach((z) => phaseGroups.set(z.phase, []));
@@ -137,8 +145,8 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
   return (
     <section className="space-y-4">
       <div>
-        <h2 className="mb-1">기술 수용 주기(TALC) 단계별 기업 분포</h2>
-        <p className="text-sm text-gray-400 font-medium">각 기업이 TALC의 어느 단계에 있는지 — 토네이도 구간이 매수 윈도우입니다</p>
+        <h2 className="mb-1">시장 단계별 기업 분포</h2>
+        <p className="text-sm text-gray-400 font-medium">초기 시장은 하입사이클로 과열을 감지하고, 캐즘 이후에는 TALC로 고릴라를 포착합니다</p>
       </div>
 
       {/* ── TALC Curve SVG ── */}
@@ -333,18 +341,37 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
               <div className="space-y-1 max-h-[280px] overflow-y-auto overscroll-contain pr-0.5" style={{ scrollbarWidth: "thin", scrollbarColor: "#d1d5db transparent" }}>
                 {items.map(({ firm, cls }) => {
                   const isBuy = cls.tier === "Gorilla" || cls.tier === "Potential Gorilla";
+                  const hypeStatus = z.phase === "Early Market" ? hypeFirmStatus.get(firm.id) : undefined;
+                  const rowBg = hypeStatus === "rising"
+                    ? "bg-emerald-100/70 hover:bg-emerald-100"
+                    : hypeStatus === "falling"
+                      ? "bg-orange-100/70 hover:bg-orange-100"
+                      : isBuy
+                        ? "bg-emerald-100/60 hover:bg-emerald-100"
+                        : "bg-white/70 hover:bg-white";
+                  const tickerColor = hypeStatus === "rising"
+                    ? "text-emerald-900"
+                    : hypeStatus === "falling"
+                      ? "text-orange-900"
+                      : isBuy ? "text-emerald-900" : "text-gray-900";
                   return (
                     <Link key={firm.id} href={`/firms/${firm.slug}`}>
-                      <div className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg hover:shadow-sm transition-all cursor-pointer ${
-                        isBuy
-                          ? "bg-emerald-100/60 hover:bg-emerald-100"
-                          : "bg-white/70 hover:bg-white"
-                      }`}>
-                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${TIER_DOT[cls.tier]}`} />
-                        <span className={`font-extrabold text-[11px] ${isBuy ? "text-emerald-900" : "text-gray-900"}`}>{firm.ticker}</span>
-                        <span className={`ml-auto text-[9px] font-bold ${TIER_TEXT[cls.tier]}`}>
-                          {tTiers(`${cls.tier}.label` as "Gorilla.label")}
-                        </span>
+                      <div className={`flex items-center gap-1.5 px-2 py-1.5 rounded-lg hover:shadow-sm transition-all cursor-pointer ${rowBg}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                          hypeStatus === "rising" ? "bg-emerald-500" : hypeStatus === "falling" ? "bg-orange-500" : TIER_DOT[cls.tier]
+                        }`} />
+                        <span className={`font-extrabold text-[11px] ${tickerColor}`}>{firm.ticker}</span>
+                        {hypeStatus ? (
+                          <span className={`ml-auto text-[9px] font-extrabold ${
+                            hypeStatus === "rising" ? "text-emerald-600" : "text-orange-600"
+                          }`}>
+                            {hypeStatus === "rising" ? "🔥 RIDE" : "📉 EXIT"}
+                          </span>
+                        ) : (
+                          <span className={`ml-auto text-[9px] font-bold ${TIER_TEXT[cls.tier]}`}>
+                            {tTiers(`${cls.tier}.label` as "Gorilla.label")}
+                          </span>
+                        )}
                       </div>
                     </Link>
                   );
