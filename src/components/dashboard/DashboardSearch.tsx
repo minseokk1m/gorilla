@@ -7,6 +7,7 @@ interface FirmEntry {
   slug: string;
   ticker: string;
   name: string;
+  nameKo?: string;
   tier: string;
   score: number;
 }
@@ -22,7 +23,8 @@ export default function DashboardSearch({ firms }: { firms: FirmEntry[] }) {
     ? firms.filter(
         (f) =>
           f.ticker.toLowerCase().includes(q) ||
-          f.name.toLowerCase().includes(q),
+          f.name.toLowerCase().includes(q) ||
+          (f.nameKo && f.nameKo.toLowerCase().includes(q)),
       ).slice(0, 8)
     : [];
 

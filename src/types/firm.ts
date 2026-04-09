@@ -74,6 +74,8 @@ export interface Firm {
   id: string;
   slug: string;
   name: string;
+  /** Korean display name for search (e.g. "테슬라"). Falls back to name if absent. */
+  nameKo?: string;
   ticker: string;
   /** Yahoo Finance compatible ticker (e.g. "005930.KS"). Falls back to ticker if absent. */
   yahooTicker?: string;

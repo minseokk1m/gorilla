@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { getSupabase } from "@/lib/supabase/admin";
 import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
 import DashboardSearch from "@/components/dashboard/DashboardSearch";
+import { FIRM_NAMES_KO } from "@/lib/data/mock/firm-names-ko";
 
 /* ── Tier config — mirrors the Learn page 8-tier theory ── */
 const TIERS: {
@@ -95,7 +96,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <div className="mt-3">
           <DashboardSearch firms={firms.map((f) => {
             const cls = classificationsMap.get(f.id);
-            return { slug: f.slug, ticker: f.ticker, name: f.name, tier: cls?.tier ?? "", score: cls?.totalScore ?? 0 };
+            return { slug: f.slug, ticker: f.ticker, name: f.name, nameKo: FIRM_NAMES_KO[f.id] ?? f.nameKo, tier: cls?.tier ?? "", score: cls?.totalScore ?? 0 };
           })} />
         </div>
       </div>
