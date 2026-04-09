@@ -93,27 +93,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
-      {/* ── Integrated Model Explainer ── */}
-      <div className="toss-card !bg-gray-50/80">
-        <div className="text-center">
-          <h3 className="font-extrabold text-sm text-gray-900 mb-1">하입사이클 × TALC 통합 모델</h3>
-          <p className="text-xs text-gray-400 max-w-xl mx-auto leading-relaxed">
-            캐즘 이전(초기시장)에서는 <span className="font-bold text-red-500">가트너 하입사이클</span>이 투자 타이밍을 결정합니다.
-            기술이 캐즘을 넘으면 <span className="font-bold text-emerald-600">TALC 토네이도</span>에서 고릴라가 결정됩니다.
-            두 모델은 시간축 위에서 자연스럽게 연결됩니다.
-          </p>
-        </div>
-        <div className="flex items-center justify-center gap-2 mt-3 text-xs font-bold flex-wrap">
-          <span className="px-2.5 py-1 rounded-lg bg-red-100 text-red-600">🔥 과열 → 단기 수익</span>
-          <span className="text-gray-300">→</span>
-          <span className="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-700">💎 환멸 → 장기 매수</span>
-          <span className="text-gray-300">→</span>
-          <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700">📈 계몽 → 캐즘 대기</span>
-          <span className="text-gray-300">→</span>
-          <span className="px-2.5 py-1 rounded-lg bg-blue-100 text-blue-600">🌪️ TALC 토네이도</span>
-        </div>
-      </div>
-
       {/* ── Tier distribution bar ── */}
       <div className="space-y-2">
         <div className="flex items-center gap-0.5 h-4 rounded-full overflow-hidden">
