@@ -59,7 +59,7 @@ export function analyzeNewsImpact(
   article: NewsArticle,
   revenueSegments: RevenueSegment[] | undefined,
 ): NewsImpact {
-  const text = `${article.title} ${article.summary}`.toLowerCase();
+  const text = `${article.title ?? ""} ${article.summary ?? ""}`.toLowerCase();
 
   // Match revenue segments by segment name keywords
   const segments: string[] = [];

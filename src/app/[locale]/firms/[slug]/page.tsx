@@ -247,7 +247,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
         ) : (
           <div className="space-y-4">
             {news.map((article) => {
-              const revenueSegs = REVENUE_SEGMENTS[firm.id as keyof typeof REVENUE_SEGMENTS];
+              const revenueSegs = REVENUE_SEGMENTS[firm.id];
               const impact = analyzeNewsImpact(article, revenueSegs);
               const hasImpact = impact.segments.length > 0 || impact.dimensions.length > 0;
               return (
