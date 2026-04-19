@@ -166,16 +166,35 @@ const CATEGORIES = [
   },
 ];
 
-const PHASE_ORDER: MarketPhase[] = ["Early Market", "Bowling Alley", "Tornado", "Main Street", "End of Life"];
+const PHASE_ORDER: MarketPhase[] = [
+  "Early Market",
+  "Bowling Alley",
+  "Tornado",
+  "Thriving Main Street",
+  "Maturing Main Street",
+  "Declining Main Street",
+  "Fault Line",
+  "End of Life",
+];
 const PHASE_STYLES: Record<MarketPhase, { bg: string; text: string; border: string }> = {
-  "Early Market":  { bg: "bg-gray-50",      text: "text-gray-600",    border: "border-gray-200" },
-  "Bowling Alley": { bg: "bg-yellow-50/60", text: "text-yellow-700",  border: "border-yellow-200" },
-  "Tornado":       { bg: "bg-emerald-50/60", text: "text-emerald-700", border: "border-emerald-200" },
-  "Main Street":   { bg: "bg-blue-50/60",   text: "text-[#0064FF]",  border: "border-blue-200" },
-  "End of Life":   { bg: "bg-red-50/60",    text: "text-red-600",    border: "border-red-200" },
+  "Early Market":           { bg: "bg-gray-50",       text: "text-gray-600",    border: "border-gray-200" },
+  "Bowling Alley":          { bg: "bg-yellow-50/60",  text: "text-yellow-700",  border: "border-yellow-200" },
+  "Tornado":                { bg: "bg-emerald-50/60", text: "text-emerald-700", border: "border-emerald-200" },
+  "Thriving Main Street":   { bg: "bg-blue-50/60",    text: "text-[#0064FF]",   border: "border-blue-200" },
+  "Maturing Main Street":   { bg: "bg-blue-50/40",    text: "text-blue-600",    border: "border-blue-200" },
+  "Declining Main Street":  { bg: "bg-amber-50/60",   text: "text-amber-700",   border: "border-amber-200" },
+  "Fault Line":             { bg: "bg-red-50/60",     text: "text-red-600",     border: "border-red-200" },
+  "End of Life":            { bg: "bg-gray-50/40",    text: "text-gray-500",    border: "border-gray-200" },
 };
 const PHASE_EMOJI: Record<MarketPhase, string> = {
-  "Early Market": "🌱", "Bowling Alley": "🎳", "Tornado": "🌪️", "Main Street": "🏙️", "End of Life": "📉",
+  "Early Market": "🌱",
+  "Bowling Alley": "🎳",
+  "Tornado": "🌪️",
+  "Thriving Main Street": "🌿",
+  "Maturing Main Street": "🏙️",
+  "Declining Main Street": "🍂",
+  "Fault Line": "⚡",
+  "End of Life": "📉",
 };
 
 const TIER_COLORS: Record<string, string> = {
@@ -237,7 +256,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
 
           // Determine dominant phase
           const phaseCounts = PHASE_ORDER.map((p) => ({ phase: p, count: byPhase.get(p)!.length }));
-          const dominantPhase = phaseCounts.sort((a, b) => b.count - a.count)[0]?.phase ?? "Main Street";
+          const dominantPhase = phaseCounts.sort((a, b) => b.count - a.count)[0]?.phase ?? "Maturing Main Street";
 
           // Count gorillas
           const gorillaCount = catFirms.filter((f) => classifications.get(f.id)?.tier === "Gorilla").length;

@@ -14,7 +14,10 @@ export type MarketPhase =
   | "Early Market"
   | "Bowling Alley"
   | "Tornado"
-  | "Main Street"
+  | "Thriving Main Street"
+  | "Maturing Main Street"
+  | "Declining Main Street"
+  | "Fault Line"
   | "End of Life";
 
 export interface ClassificationScores {

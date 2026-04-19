@@ -81,15 +81,24 @@ function resolveSignal(tier: ClassificationTier): Signal {
 function resolveMarketPhase(firm: Firm, tier: ClassificationTier, totalScore: number): MarketPhase {
   const growth = firm.revenueGrowthYoY;
 
-  // In Chasm or very low score → Early Market regardless of growth
-  // A firm with score < 25 hasn't proven product-market fit even if growing
+  // Pre-chasm filters — score < 25 without product-market fit stays Early regardless of growth
   if (tier === "In Chasm") return "Early Market";
   if (totalScore < 25 && growth < 0.2) return "Early Market";
 
+  // Tornado: explosive growth in a gorilla candidate
   if (growth >= 0.4 && (tier === "Gorilla" || tier === "Potential Gorilla")) return "Tornado";
+
+  // Bowling Alley: niche-by-niche adoption, strong growth
   if (growth >= 0.2) return "Bowling Alley";
-  if (growth >= 0.08) return "Main Street";
-  return "Main Street";
+
+  // Main Street subdivisions (Moore's Living on the Fault Line model)
+  if (growth >= 0.15) return "Thriving Main Street";   // post-tornado high growth
+  if (growth >= 0.05) return "Maturing Main Street";   // stable cashflow era
+  if (growth >= 0) return "Declining Main Street";     // flat, growth decaying
+
+  // Post-Main Street decline — automatic fault line detection by growth
+  if (growth >= -0.1) return "Fault Line";              // structural disruption warning
+  return "End of Life";                                 // replacement well underway
 }
 
 function buildNarrative(

@@ -17,7 +17,10 @@ const PHASE_ORDER: MarketPhase[] = [
   "Early Market",
   "Bowling Alley",
   "Tornado",
-  "Main Street",
+  "Thriving Main Street",
+  "Maturing Main Street",
+  "Declining Main Street",
+  "Fault Line",
   "End of Life",
 ];
 
@@ -25,16 +28,22 @@ const PHASE_EMOJI: Record<MarketPhase, string> = {
   "Early Market": "🌱",
   "Bowling Alley": "🎳",
   "Tornado": "🌪️",
-  "Main Street": "🏙️",
+  "Thriving Main Street": "🌿",
+  "Maturing Main Street": "🏙️",
+  "Declining Main Street": "🍂",
+  "Fault Line": "⚡",
   "End of Life": "📉",
 };
 
 const PHASE_STYLE: Record<MarketPhase, { bg: string; ring: string; accent: string }> = {
-  "Early Market":  { bg: "bg-gray-50",      ring: "ring-gray-200",    accent: "text-gray-500" },
-  "Bowling Alley": { bg: "bg-yellow-50/60", ring: "ring-yellow-200",  accent: "text-yellow-700" },
-  "Tornado":       { bg: "bg-emerald-50/60",ring: "ring-emerald-200", accent: "text-emerald-700" },
-  "Main Street":   { bg: "bg-blue-50/60",   ring: "ring-blue-200",    accent: "text-[#0064FF]" },
-  "End of Life":   { bg: "bg-red-50/40",     ring: "ring-red-200",     accent: "text-red-500" },
+  "Early Market":           { bg: "bg-gray-50",       ring: "ring-gray-200",    accent: "text-gray-500" },
+  "Bowling Alley":          { bg: "bg-yellow-50/60",  ring: "ring-yellow-200",  accent: "text-yellow-700" },
+  "Tornado":                { bg: "bg-emerald-50/60", ring: "ring-emerald-200", accent: "text-emerald-700" },
+  "Thriving Main Street":   { bg: "bg-blue-50/60",    ring: "ring-blue-200",    accent: "text-[#0064FF]" },
+  "Maturing Main Street":   { bg: "bg-blue-50/40",    ring: "ring-blue-200",    accent: "text-blue-600" },
+  "Declining Main Street":  { bg: "bg-amber-50/60",   ring: "ring-amber-200",   accent: "text-amber-700" },
+  "Fault Line":             { bg: "bg-red-50/60",     ring: "ring-red-200",     accent: "text-red-600" },
+  "End of Life":            { bg: "bg-gray-50/40",    ring: "ring-gray-200",    accent: "text-gray-500" },
 };
 
 const TIER_DOT: Record<ClassificationTier, string> = {

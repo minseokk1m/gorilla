@@ -382,8 +382,11 @@
     "Early Market": "초기 시장",
     "Bowling Alley": "볼링앨리",
     "Tornado": "토네이도",
-    "Main Street": "메인 스트리트",
-    "End of Life": "쇠퇴기"
+    "Thriving Main Street": "성장 메인",
+    "Maturing Main Street": "성숙 메인",
+    "Declining Main Street": "쇠퇴 메인",
+    "Fault Line": "단층선",
+    "End of Life": "수명 종료"
   },
   "signals": {
     "BUY": "▲ 매수",

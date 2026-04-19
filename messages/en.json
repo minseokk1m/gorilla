@@ -382,7 +382,10 @@
     "Early Market": "Early Market",
     "Bowling Alley": "Bowling Alley",
     "Tornado": "Tornado",
-    "Main Street": "Main Street",
+    "Thriving Main Street": "Thriving Main Street",
+    "Maturing Main Street": "Maturing Main Street",
+    "Declining Main Street": "Declining Main Street",
+    "Fault Line": "Fault Line",
     "End of Life": "End of Life"
   },
   "signals": {

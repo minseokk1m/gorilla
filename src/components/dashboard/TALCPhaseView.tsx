@@ -72,12 +72,16 @@ const PHASE_ZONES: {
   labelEn: string;
   descKo: string;
   actionKo: string;
+  group: "pre-chasm" | "pre-standard" | "main-street" | "decline";
 }[] = [
-  { phase: "Early Market",  x0: 50,  x1: 256, fill: "#e5e7eb", fillOpacity: 0.7, emoji: "🌱", labelKo: "초기 시장",      labelEn: "Early Market",   descKo: "캐즘 이전. 하입사이클로 과열을 감지하여 RIDE/EXIT 판단", actionKo: "🔭 초고성장 시장을 발견하라" },
-  { phase: "Bowling Alley", x0: 280, x1: 370, fill: "#fef3c7", fillOpacity: 0.8, emoji: "🎳", labelKo: "볼링앨리",      labelEn: "Bowling Alley",  descKo: "틈새시장 공략 중. 실용주의자들이 채택 시작", actionKo: "🧺 고릴라 후보를 바구니로 매입하라" },
-  { phase: "Tornado",       x0: 370, x1: 460, fill: "#a7f3d0", fillOpacity: 0.8, emoji: "🌪️", labelKo: "토네이도",      labelEn: "Tornado",        descKo: "폭발적 성장. 고릴라가 결정되는 순간", actionKo: "🎯 고릴라에 집중하고 나머지를 처분하라" },
-  { phase: "Main Street",   x0: 460, x1: 630, fill: "#bfdbfe", fillOpacity: 0.7, emoji: "🏙️", labelKo: "메인 스트리트", labelEn: "Main Street",    descKo: "성숙기. 안정적 수익 + 배당 단계", actionKo: "💎 고릴라를 장기 보유하라" },
-  { phase: "End of Life",   x0: 630, x1: 750, fill: "#e5e7eb", fillOpacity: 0.5, emoji: "📉", labelKo: "쇠퇴기",        labelEn: "End of Life",    descKo: "시장 축소. 차세대 기술로 교체 진행", actionKo: "🚪 대체기술이 카테고리를 위협할 때 팔아라" },
+  { phase: "Early Market",           x0: 50,  x1: 256, fill: "#e5e7eb", fillOpacity: 0.7, emoji: "🌱", labelKo: "초기 시장",   labelEn: "Early Market",           descKo: "캐즘 이전. 하입사이클로 과열을 감지하여 RIDE/EXIT 판단", actionKo: "🔭 초고성장 시장을 발견하라",         group: "pre-chasm" },
+  { phase: "Bowling Alley",          x0: 280, x1: 365, fill: "#fef3c7", fillOpacity: 0.8, emoji: "🎳", labelKo: "볼링앨리",    labelEn: "Bowling Alley",          descKo: "틈새시장 공략 중. 실용주의자들이 채택 시작",           actionKo: "🧺 고릴라 후보를 바구니로 매입하라",  group: "pre-standard" },
+  { phase: "Tornado",                x0: 365, x1: 445, fill: "#a7f3d0", fillOpacity: 0.85, emoji: "🌪️", labelKo: "토네이도",    labelEn: "Tornado",                descKo: "폭발적 성장. 고릴라가 결정되는 순간",                  actionKo: "🎯 고릴라에 집중하고 나머지를 처분하라", group: "pre-standard" },
+  { phase: "Thriving Main Street",   x0: 445, x1: 520, fill: "#bfdbfe", fillOpacity: 0.8, emoji: "🌿", labelKo: "성장 메인",   labelEn: "Thriving Main Street",   descKo: "토네이도 직후 고속 성장. 아직 강한 외연 확장",          actionKo: "💎 핵심 보유 + 추가 매수 검토",         group: "main-street" },
+  { phase: "Maturing Main Street",   x0: 520, x1: 590, fill: "#dbeafe", fillOpacity: 0.7, emoji: "🏙️", labelKo: "성숙 메인",   labelEn: "Maturing Main Street",   descKo: "캐시카우 구간. 고마진 + 배당 본격화",                   actionKo: "💰 보유 + 배당 수취",                  group: "main-street" },
+  { phase: "Declining Main Street",  x0: 590, x1: 650, fill: "#fde68a", fillOpacity: 0.55, emoji: "🍂", labelKo: "쇠퇴 메인",   labelEn: "Declining Main Street",  descKo: "성장 둔화, 아직 흑자. 경쟁자 급부상 주의",              actionKo: "⚠️ 비중 축소 + 재검토",                group: "main-street" },
+  { phase: "Fault Line",             x0: 650, x1: 705, fill: "#fecaca", fillOpacity: 0.6, emoji: "⚡", labelKo: "단층선",      labelEn: "Fault Line",             descKo: "구조적 단절 경고. 대체기술이 카테고리를 위협",          actionKo: "🚪 탈출 준비 — 포지션 정리",           group: "decline" },
+  { phase: "End of Life",            x0: 705, x1: 750, fill: "#e5e7eb", fillOpacity: 0.5, emoji: "📉", labelKo: "수명 종료",   labelEn: "End of Life",            descKo: "시장 축소 완료. 차세대 기술로 교체",                    actionKo: "❌ 매도",                              group: "decline" },
 ];
 
 const TIER_DOT: Record<ClassificationTier, string> = {
@@ -103,11 +107,14 @@ const TIER_TEXT: Record<ClassificationTier, string> = {
 };
 
 const PHASE_CARD_STYLE: Record<MarketPhase, { bg: string; ring: string; accent: string }> = {
-  "Early Market":  { bg: "bg-gray-50/60",       ring: "ring-gray-200",    accent: "text-gray-600" },
-  "Bowling Alley": { bg: "bg-yellow-50/60",     ring: "ring-yellow-200",  accent: "text-yellow-700" },
-  "Tornado":       { bg: "bg-emerald-50/60",    ring: "ring-emerald-300", accent: "text-emerald-700" },
-  "Main Street":   { bg: "bg-blue-50/50",       ring: "ring-blue-200",    accent: "text-[#0064FF]" },
-  "End of Life":   { bg: "bg-gray-50/40",       ring: "ring-gray-200",    accent: "text-gray-500" },
+  "Early Market":           { bg: "bg-gray-50/60",    ring: "ring-gray-200",    accent: "text-gray-600" },
+  "Bowling Alley":          { bg: "bg-yellow-50/60",  ring: "ring-yellow-200",  accent: "text-yellow-700" },
+  "Tornado":                { bg: "bg-emerald-50/60", ring: "ring-emerald-300", accent: "text-emerald-700" },
+  "Thriving Main Street":   { bg: "bg-blue-50/60",    ring: "ring-blue-200",    accent: "text-[#0064FF]" },
+  "Maturing Main Street":   { bg: "bg-blue-50/40",    ring: "ring-blue-200",    accent: "text-blue-600" },
+  "Declining Main Street":  { bg: "bg-amber-50/60",   ring: "ring-amber-200",   accent: "text-amber-700" },
+  "Fault Line":             { bg: "bg-red-50/60",     ring: "ring-red-200",     accent: "text-red-600" },
+  "End of Life":            { bg: "bg-gray-50/40",    ring: "ring-gray-200",    accent: "text-gray-500" },
 };
 
 const FONT: React.CSSProperties = { fontFamily: "system-ui, -apple-system, sans-serif" };
@@ -158,13 +165,13 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
     <section className="space-y-4">
       <div>
         <h2 className="mb-1">시장 단계별 기업 분포</h2>
-        <p className="text-sm text-gray-400 font-medium">초기 시장은 하입사이클로 과열을 감지하고, 캐즘 이후에는 TALC로 고릴라를 포착합니다</p>
+        <p className="text-sm text-gray-400 font-medium">Moore의 전체 생애주기 — Phase 1(캐즘 돌파) · Phase 2(메인 스트리트 3단계) · Phase 3(단층선·수명 종료)</p>
       </div>
 
       {/* ── TALC Curve SVG ── */}
       <div className="toss-card !p-4 sm:!p-6 overflow-hidden">
         <svg
-          viewBox="0 0 800 320"
+          viewBox="0 0 800 340"
           className="w-full h-auto select-none"
           role="img"
           aria-label="TALC 단계별 기업 분포"
@@ -258,26 +265,59 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
           </text>
 
           {/* Tornado highlight — standard is decided here */}
-          <rect x={365} y={g(415) - 8} width={100} height={16} rx="8" fill="#059669" opacity="0.12" />
-          <text x={415} y={g(415) + 3} textAnchor="middle" fill="#059669" fontSize="8" fontWeight="800" style={FONT}>
-            표준 결정 구간
+          <rect x={370} y={g(405) - 8} width={70} height={16} rx="8" fill="#059669" opacity="0.12" />
+          <text x={405} y={g(405) + 3} textAnchor="middle" fill="#059669" fontSize="7.5" fontWeight="800" style={FONT}>
+            표준 결정
           </text>
+
+          {/* Fault Line fracture marker */}
+          {(() => {
+            const flX = 677;
+            const flY = g(flX);
+            return (
+              <g>
+                <path
+                  d={`M${flX - 4},${flY + 6}L${flX + 2},${flY + 16}L${flX - 2},${flY + 16}L${flX + 6},${flY + 28}`}
+                  fill="none" stroke="#dc2626" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+                />
+              </g>
+            );
+          })()}
 
           {/* Baseline */}
           <line x1={40} y1={BASE} x2={760} y2={BASE} stroke="#e5e7eb" strokeWidth="1.5" />
+
+          {/* Phase group bands (Moore's Phase 1/2/3) */}
+          <g opacity="0.85">
+            <line x1={50} y1={BASE + 50} x2={445} y2={BASE + 50} stroke="#9ca3af" strokeWidth="1" />
+            <text x={247} y={BASE + 62} textAnchor="middle" fill="#6b7280" fontSize="8.5" fontWeight="700" style={FONT}>
+              Phase 1 · 캐즘 돌파
+            </text>
+            <line x1={445} y1={BASE + 50} x2={650} y2={BASE + 50} stroke="#60a5fa" strokeWidth="1" />
+            <text x={547} y={BASE + 62} textAnchor="middle" fill="#2563eb" fontSize="8.5" fontWeight="700" style={FONT}>
+              Phase 2 · 메인 스트리트
+            </text>
+            <line x1={650} y1={BASE + 50} x2={750} y2={BASE + 50} stroke="#f87171" strokeWidth="1" />
+            <text x={700} y={BASE + 62} textAnchor="middle" fill="#dc2626" fontSize="8.5" fontWeight="700" style={FONT}>
+              Phase 3 · 쇠퇴
+            </text>
+          </g>
 
           {/* Phase labels with counts */}
           {PHASE_ZONES.map((z) => {
             const count = phaseGroups.get(z.phase)?.length ?? 0;
             const mx = (z.x0 + z.x1) / 2;
             const isTornado = z.phase === "Tornado";
+            const isFaultLine = z.phase === "Fault Line";
+            const labelFill = isTornado ? "#059669" : isFaultLine ? "#dc2626" : "#6b7280";
+            const countFill = isTornado ? "#059669" : isFaultLine ? "#dc2626" : "#9ca3af";
             return (
               <g key={`label-${z.phase}`}>
-                <text x={mx} y={BASE + 18} textAnchor="middle" fill={isTornado ? "#059669" : "#6b7280"} fontSize="11" fontWeight="800" style={FONT}>
+                <text x={mx} y={BASE + 18} textAnchor="middle" fill={labelFill} fontSize="9.5" fontWeight="800" style={FONT}>
                   {z.emoji} {locale === "ko" ? z.labelKo : z.labelEn}
                 </text>
-                <text x={mx} y={BASE + 36} textAnchor="middle" fill={isTornado ? "#059669" : "#9ca3af"} fontSize="11" fontWeight="700" style={FONT}>
-                  {count}개 기업
+                <text x={mx} y={BASE + 32} textAnchor="middle" fill={countFill} fontSize="9" fontWeight="700" style={FONT}>
+                  {count}
                 </text>
               </g>
             );
@@ -327,13 +367,15 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
       </div>
 
       {/* ── Phase detail cards ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {PHASE_ZONES.map((z) => {
           const items = phaseGroups.get(z.phase) ?? [];
           const style = PHASE_CARD_STYLE[z.phase];
           const isTornado = z.phase === "Tornado";
+          const isFaultLine = z.phase === "Fault Line";
+          const emphasized = isTornado || isFaultLine;
           return (
-            <div key={z.phase} className={`rounded-2xl p-4 ${style.bg} ring-1 ${style.ring} ${isTornado ? "ring-2" : ""} flex flex-col`}>
+            <div key={z.phase} className={`rounded-2xl p-4 ${style.bg} ring-1 ${style.ring} ${emphasized ? "ring-2" : ""} flex flex-col`}>
               <div className="flex items-center gap-1.5 mb-1">
                 <span className="text-base">{z.emoji}</span>
                 <span className={`text-xs font-extrabold ${style.accent}`}>
@@ -353,6 +395,12 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
               {isTornado && items.length > 0 && (
                 <div className="toss-pill bg-emerald-100 text-emerald-700 text-[9px] mb-2">
                   고릴라가 결정되는 구간
+                </div>
+              )}
+
+              {isFaultLine && items.length > 0 && (
+                <div className="toss-pill bg-red-100 text-red-700 text-[9px] mb-2">
+                  구조적 단절 — 탈출 준비 구간
                 </div>
               )}
 

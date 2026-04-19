@@ -26,6 +26,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
   if (!firm) notFound();
 
   const t = await getTranslations({ locale, namespace: "firmDetail" });
+  const tPhases = await getTranslations({ locale, namespace: "marketPhases" });
 
   const classification = await getClassification(firm.id, locale);
   if (!classification) notFound();
@@ -76,7 +77,7 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
               <div className="text-xs font-bold text-gray-400 mt-0.5">{t("revGrowth")}</div>
             </div>
             <div className="bg-[#F4F4F4] rounded-2xl p-4">
-              <div className="text-lg font-extrabold text-gray-900">{classification.marketPhase}</div>
+              <div className="text-lg font-extrabold text-gray-900">{tPhases(classification.marketPhase)}</div>
               <div className="text-xs font-bold text-gray-400 mt-0.5">{t("talcPhase")}</div>
             </div>
           </div>
