@@ -208,46 +208,34 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
 
   return (
     <section className="space-y-4">
-      <div className="space-y-3">
-        <div>
-          <h2 className="mb-1">시장 단계별 기업 분포</h2>
-          <p className="text-sm text-gray-400 font-medium">Moore의 전체 제품 수명 주기에 따라 146개 기업이 어느 단계에 있는지 한눈에 파악하는 차트</p>
-        </div>
-
-        <div className="toss-card !p-4 !bg-[#F8F9FA] !shadow-none ring-1 ring-gray-100">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-            <div>
-              <div className="font-extrabold text-gray-900 mb-1">📏 곡선 높이 = 매출·시총 규모</div>
-              <p className="text-gray-500 leading-relaxed">토네이도 이후 메인 스트리트 구간이 실제로 가장 크다. 성숙 메인이 캐시카우 정점.</p>
-            </div>
-            <div>
-              <div className="font-extrabold text-gray-900 mb-1">🎯 8단계 자동 분류</div>
-              <p className="text-gray-500 leading-relaxed">매출 성장률 YoY 기준 — 토네이도(≥40%+고릴라) · 성장(≥15%) · 성숙(5~15%) · 쇠퇴(0~5%) · 단층선(-10~0%) · 수명종료(&lt;-10%).</p>
-            </div>
-            <div>
-              <div className="font-extrabold text-gray-900 mb-1">🧭 Phase 1 · 2 · 3</div>
-              <p className="text-gray-500 leading-relaxed">캐즘 돌파(표준 경쟁) → 메인 스트리트(장기 보유) → 쇠퇴(탈출). 각 Phase는 투자 액션이 완전히 다르다.</p>
-            </div>
-          </div>
-          <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-2 flex-wrap">
-            <p className="text-[11px] text-gray-500 font-medium">
-              초기 시장은 하입사이클로 과열을 감지(🔥 RIDE / 📉 EXIT), 캐즘 이후는 TALC·Product Life Cycle로 고릴라를 포착합니다.
-            </p>
-            <Link href="/learn#product-life-cycle" className="toss-pill bg-[#E8F0FE] text-[#0064FF] text-[10px] font-extrabold hover:bg-[#0064FF] hover:text-white transition-colors">
-              📚 모델 자세히 보기
-            </Link>
-          </div>
-        </div>
+      <div>
+        <h2 className="mb-1">시장 단계별 기업 분포</h2>
+        <p className="text-sm text-gray-500 font-medium leading-relaxed">
+          하입사이클, TALC, 제품 수명 주기에 따라 146개 기업이 어느 단계에 있는지 한눈에 파악하는 차트입니다. 초기 시장에서는 하입사이클로 과열을 감지(🔥 RIDE / 📉 EXIT) 하고, 캐즘 이후는 TALC·Product Life Cycle로 고릴라를 포착합니다.
+        </p>
       </div>
 
       {/* ── TALC Curve SVG ── */}
       <div className="toss-card !p-4 sm:!p-6 overflow-hidden">
         <svg
-          viewBox="0 0 800 340"
+          viewBox="0 -30 800 370"
           className="w-full h-auto select-none"
           role="img"
           aria-label="TALC 단계별 기업 분포"
         >
+          {/* ── Top section title banners: TALC (left) vs Product Life Cycle (right) ── */}
+          <g>
+            <rect x={50} y={-22} width={395} height={16} rx="4" fill="#f3f4f6" />
+            <text x={247} y={-11} textAnchor="middle" fill="#374151" fontSize="9" fontWeight="800" style={FONT}>
+              TALC · 기술 채택 주기
+            </text>
+            <rect x={450} y={-22} width={300} height={16} rx="4" fill="#dbeafe" />
+            <text x={600} y={-11} textAnchor="middle" fill="#1e40af" fontSize="9" fontWeight="800" style={FONT}>
+              제품 수명 주기 (Moore 확장)
+            </text>
+            {/* Vertical divider between the two sections */}
+            <line x1={445} y1={-24} x2={445} y2={BASE + 5} stroke="#93c5fd" strokeWidth="1.2" strokeDasharray="4,3" opacity="0.65" />
+          </g>
           {/* Phase zone fills */}
           {PHASE_ZONES.map((z) => (
             <path key={z.phase} d={areaPath(z.x0, z.x1)} fill={z.fill} opacity={z.fillOpacity} />
@@ -323,9 +311,13 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
           <line x1={280} y1={20} x2={280} y2={BASE} stroke="#fca5a5" strokeWidth="1.5" strokeDasharray="5,4" />
           <rect x={256} y={20} width={24} height={BASE - 20} fill="#fef2f2" opacity="0.5" />
 
-          {/* Curve strokes */}
+          {/* Curve strokes — TALC (gray) and Product Life Cycle (indigo), with a small gap at the handoff */}
           <path d={linePath(50, 256)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
-          <path d={linePath(280, 750)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
+          <path d={linePath(280, 441)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
+          <path d={linePath(449, 750)} fill="none" stroke="#1e40af" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Small handoff dots to signal the two curves meet here */}
+          <circle cx={443} cy={g(443)} r="2.5" fill="#374151" />
+          <circle cx={447} cy={g(447)} r="2.5" fill="#1e40af" />
 
           {/* Chasm lightning bolt — sits in the gap at curve level */}
           <path
