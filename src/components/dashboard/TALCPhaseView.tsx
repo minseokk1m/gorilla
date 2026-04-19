@@ -8,41 +8,53 @@ import { getTranslations } from "next-intl/server";
 const BASE = 240;
 
 // Anchor points (x, y) — smaller y = taller on screen. Maturing Main Street is the peak.
+// Kept sparse so the monotone Hermite spline below produces clean, flowing curves.
 const CURVE_ANCHORS: [number, number][] = [
-  [50, 237],
-  [110, 220],
-  [155, 198],   // Early Market — small bump
-  [215, 218],
-  [256, 228],   // pre-chasm trough
-  // chasm gap 256–280 (no curve drawn)
-  [280, 222],
-  [310, 188],
-  [365, 140],
+  [50, 236],
+  [155, 200],   // Early Market peak (small bump)
+  [256, 232],   // pre-chasm trough
+  // chasm gap 256–280 (drawn as a break in the curve)
+  [280, 224],   // post-chasm rise starts
   [405, 115],   // Tornado peak
-  [445, 85],
   [485, 60],    // Thriving Main Street peak
-  [520, 48],
-  [555, 40],    // Maturing Main Street — HIGHEST
-  [590, 62],
-  [620, 105],   // Declining Main Street
-  [650, 160],
+  [555, 42],    // Maturing Main Street — HIGHEST
+  [620, 115],   // Declining Main Street midpoint
   [677, 195],   // Fault Line low
-  [705, 180],   // small bump post-FL (Structural Innovation)
-  [730, 215],
-  [750, 233],
+  [705, 180],   // small rebound (Structural Innovation)
+  [750, 232],   // tail to baseline
 ];
 
-function smoothstep(t: number) {
-  return t * t * (3 - 2 * t);
-}
+// Fritsch–Carlson monotone tangents: zero at extrema, weighted average elsewhere.
+// This prevents the overshoot/squiggle that comes from naive splines or zero-slope smoothstep.
+const CURVE_TANGENTS: number[] = (() => {
+  const n = CURVE_ANCHORS.length;
+  const d: number[] = [];
+  for (let i = 0; i < n - 1; i++) {
+    d.push((CURVE_ANCHORS[i + 1][1] - CURVE_ANCHORS[i][1]) / (CURVE_ANCHORS[i + 1][0] - CURVE_ANCHORS[i][0]));
+  }
+  const m: number[] = new Array(n);
+  m[0] = d[0];
+  m[n - 1] = d[n - 2];
+  for (let i = 1; i < n - 1; i++) {
+    m[i] = d[i - 1] * d[i] <= 0 ? 0 : (d[i - 1] + d[i]) / 2;
+  }
+  return m;
+})();
 
 function g(x: number): number {
   for (let i = 0; i < CURVE_ANCHORS.length - 1; i++) {
     const [x0, y0] = CURVE_ANCHORS[i];
     const [x1, y1] = CURVE_ANCHORS[i + 1];
     if (x >= x0 && x <= x1) {
-      const t = (x - x0) / (x1 - x0);
-      return y0 + (y1 - y0) * smoothstep(t);
+      const dx = x1 - x0;
+      const t = (x - x0) / dx;
+      const t2 = t * t;
+      const t3 = t2 * t;
+      const h00 = 2 * t3 - 3 * t2 + 1;
+      const h10 = t3 - 2 * t2 + t;
+      const h01 = -2 * t3 + 3 * t2;
+      const h11 = t3 - t2;
+      return h00 * y0 + h10 * CURVE_TANGENTS[i] * dx + h01 * y1 + h11 * CURVE_TANGENTS[i + 1] * dx;
     }
   }
   if (x < CURVE_ANCHORS[0][0]) return CURVE_ANCHORS[0][1];
@@ -288,12 +300,12 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
           <path d={linePath(50, 256)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
           <path d={linePath(280, 750)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
 
-          {/* Chasm lightning bolt — compressed to fit in the low gap */}
+          {/* Chasm lightning bolt — sits in the gap at curve level */}
           <path
-            d={`M260,90L270,120L264,120L276,155`}
+            d={`M260,200L270,218L264,218L276,236`}
             fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
           />
-          <text x={268} y={78} textAnchor="middle" fill="#ef4444" fontSize="9" fontWeight="800" style={FONT}>
+          <text x={268} y={188} textAnchor="middle" fill="#ef4444" fontSize="9" fontWeight="800" style={FONT}>
             캐즘
           </text>
 
