@@ -208,9 +208,36 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
 
   return (
     <section className="space-y-4">
-      <div>
-        <h2 className="mb-1">시장 단계별 기업 분포</h2>
-        <p className="text-sm text-gray-400 font-medium">Moore의 전체 생애주기 — Phase 1(캐즘 돌파) · Phase 2(메인 스트리트 3단계) · Phase 3(단층선·수명 종료)</p>
+      <div className="space-y-3">
+        <div>
+          <h2 className="mb-1">시장 단계별 기업 분포</h2>
+          <p className="text-sm text-gray-400 font-medium">Moore의 전체 제품 수명 주기에 따라 146개 기업이 어느 단계에 있는지 한눈에 파악하는 차트</p>
+        </div>
+
+        <div className="toss-card !p-4 !bg-[#F8F9FA] !shadow-none ring-1 ring-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div>
+              <div className="font-extrabold text-gray-900 mb-1">📏 곡선 높이 = 매출·시총 규모</div>
+              <p className="text-gray-500 leading-relaxed">토네이도 이후 메인 스트리트 구간이 실제로 가장 크다. 성숙 메인이 캐시카우 정점.</p>
+            </div>
+            <div>
+              <div className="font-extrabold text-gray-900 mb-1">🎯 8단계 자동 분류</div>
+              <p className="text-gray-500 leading-relaxed">매출 성장률 YoY 기준 — 토네이도(≥40%+고릴라) · 성장(≥15%) · 성숙(5~15%) · 쇠퇴(0~5%) · 단층선(-10~0%) · 수명종료(&lt;-10%).</p>
+            </div>
+            <div>
+              <div className="font-extrabold text-gray-900 mb-1">🧭 Phase 1 · 2 · 3</div>
+              <p className="text-gray-500 leading-relaxed">캐즘 돌파(표준 경쟁) → 메인 스트리트(장기 보유) → 쇠퇴(탈출). 각 Phase는 투자 액션이 완전히 다르다.</p>
+            </div>
+          </div>
+          <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-2 flex-wrap">
+            <p className="text-[11px] text-gray-500 font-medium">
+              초기 시장은 하입사이클로 과열을 감지(🔥 RIDE / 📉 EXIT), 캐즘 이후는 TALC·Product Life Cycle로 고릴라를 포착합니다.
+            </p>
+            <Link href="/learn#product-life-cycle" className="toss-pill bg-[#E8F0FE] text-[#0064FF] text-[10px] font-extrabold hover:bg-[#0064FF] hover:text-white transition-colors">
+              📚 모델 자세히 보기
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* ── TALC Curve SVG ── */}

@@ -171,6 +171,21 @@
         "desc": "After the tornado, market structure solidifies: 1 gorilla (standard owner), 1-2 chimps (niche survivors), many monkeys (low-cost clones). Kings lead markets with no proprietary architecture. This structure doesn't change until the next disruptive innovation."
       }
     },
+    "productLifeCycleTitle": "③-2 Product Life Cycle — The Journey After the Tornado",
+    "productLifeCycleSubtitle": "TALC takes you through the chasm. Moore's Living on the Fault Line (2000) extends the story: Main Street is actually three sub-phases, followed by the Fault Line and End of Life.",
+    "productLifeCycleThesis": "Once the Tornado crowns a gorilla, a long Main Street begins. In reality it has three sub-phases — Thriving, Maturing, Declining — before a Fault Line rupture and eventual End of Life. The dashboard's 'Firms by Market Phase' chart classifies all 146 firms against this extended model automatically.",
+    "productLifeCycleGroups": {
+      "phase1": { "title": "Phase 1 — Crossing the Chasm", "desc": "Early Market → Bowling Alley → Tornado. The race to become the standard." },
+      "phase2": { "title": "Phase 2 — Main Street", "desc": "Thriving · Maturing · Declining Main Street. The biggest revenue and market cap era." },
+      "phase3": { "title": "Phase 3 — Decline", "desc": "Fault Line · End of Life. Replacement technology fractures the category." }
+    },
+    "productLifeCycleNew": {
+      "thriving":  { "name": "Thriving Main Street",   "growth": "Revenue growth ≥ 15%",      "action": "💎 Core hold · consider adding",  "desc": "Right after the Tornado. The gorilla expands fast, switching costs accrue, the ecosystem solidifies." },
+      "maturing":  { "name": "Maturing Main Street",   "growth": "Revenue growth 5 – 15%",    "action": "💰 Hold · collect dividends",      "desc": "The cash-cow era. High margins, free cash flow, dividends — market cap near its peak." },
+      "declining": { "name": "Declining Main Street",  "growth": "Revenue growth 0 – 5%",     "action": "⚠️ Trim · reassess",               "desc": "Growth flattens but still profitable. Watch for next-gen tech or rising competitors." },
+      "faultLine": { "name": "Fault Line",             "growth": "Revenue growth -10 – 0%",   "action": "🚪 Prepare to exit",                "desc": "Moore's 'structural rupture.' A new paradigm threatens the whole category; revenue turns negative and transformation pressure mounts." }
+    },
+    "productLifeCycleDashboardCallout": "💡 This model drives the dashboard's 'Firms by Market Phase' chart — curve height reflects the revenue/market-cap scale of each stage, and the per-phase cards show the automatic classifications.",
     "anatomyTitle": "④ Anatomy of a Gorilla — 7-Dimension Framework",
     "anatomyThesis": "You don't pick gorillas by gut feeling. We identify them through 7 measurable dimensions extracted from five books. Each dimension is weighted by its importance in determining gorilla status.",
     "anatomy": {

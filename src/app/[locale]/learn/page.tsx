@@ -90,9 +90,23 @@ const FLOW_STEPS = [
   { key: "flow7", emoji: "🎯" },
 ];
 
+const PLC_GROUPS = [
+  { key: "phase1", emoji: "⚔️", color: "bg-yellow-50/60", phaseKeys: ["Early Market", "Bowling Alley", "Tornado"] as const },
+  { key: "phase2", emoji: "🏙️", color: "bg-blue-50/60",   phaseKeys: ["Thriving Main Street", "Maturing Main Street", "Declining Main Street"] as const },
+  { key: "phase3", emoji: "📉", color: "bg-red-50/40",    phaseKeys: ["Fault Line", "End of Life"] as const },
+];
+
+const PLC_NEW_PHASES = [
+  { key: "thriving",  emoji: "🌿", color: "bg-blue-50/60",  ring: "ring-blue-200" },
+  { key: "maturing",  emoji: "🏙️", color: "bg-blue-50/40",  ring: "ring-blue-200" },
+  { key: "declining", emoji: "🍂", color: "bg-amber-50/60", ring: "ring-amber-200" },
+  { key: "faultLine", emoji: "⚡", color: "bg-red-50/60",   ring: "ring-red-300" },
+];
+
 export default async function LearnPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "learn" });
+  const tPhases = await getTranslations({ locale, namespace: "marketPhases" });
 
   return (
     <main className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-14">
@@ -208,6 +222,57 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ══════ ③-2 Product Life Cycle ══════ */}
+      <section id="product-life-cycle" className="scroll-mt-20">
+        <h2 className="mb-3">{t("productLifeCycleTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-5">{t("productLifeCycleSubtitle")}</p>
+
+        <div className="toss-card !bg-[#E8F0FE]/60 ring-1 ring-[#0064FF]/10 mb-6">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("productLifeCycleThesis")}</p>
+        </div>
+
+        {/* 3 phase groups (Moore's Phase 1/2/3) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {PLC_GROUPS.map((g) => (
+            <div key={g.key} className={`toss-card !p-5 ${g.color}`}>
+              <div className="text-2xl mb-2">{g.emoji}</div>
+              <div className="font-extrabold text-gray-900 text-sm mb-2">{t(`productLifeCycleGroups.${g.key}.title` as "productLifeCycleGroups.phase1.title")}</div>
+              <p className="text-gray-500 text-xs leading-relaxed mb-3">{t(`productLifeCycleGroups.${g.key}.desc` as "productLifeCycleGroups.phase1.desc")}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {g.phaseKeys.map((pk) => (
+                  <span key={pk} className="toss-pill text-[10px] bg-white/80 text-gray-700 font-extrabold">
+                    {tPhases(pk)}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* New 4 phases introduced by Living on the Fault Line */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">
+            기본 TALC에 새로 추가되는 4단계
+          </span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+          {PLC_NEW_PHASES.map((p) => (
+            <div key={p.key} className={`toss-card !p-4 ${p.color} ring-1 ${p.ring}`}>
+              <div className="text-2xl mb-2">{p.emoji}</div>
+              <div className="font-extrabold text-gray-900 text-sm mb-1">{t(`productLifeCycleNew.${p.key}.name` as "productLifeCycleNew.thriving.name")}</div>
+              <div className="text-[10px] text-gray-500 font-bold mb-2">{t(`productLifeCycleNew.${p.key}.growth` as "productLifeCycleNew.thriving.growth")}</div>
+              <div className="toss-pill bg-gray-100 text-gray-800 text-[10px] font-extrabold mb-2 inline-block">{t(`productLifeCycleNew.${p.key}.action` as "productLifeCycleNew.thriving.action")}</div>
+              <p className="text-gray-500 text-xs leading-relaxed">{t(`productLifeCycleNew.${p.key}.desc` as "productLifeCycleNew.thriving.desc")}</p>
+            </div>
+          ))}
+        </div>
+
+        <Link href="/" className="toss-card !bg-emerald-50/40 ring-1 ring-emerald-200/50 hover:ring-2 block transition-all">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("productLifeCycleDashboardCallout")}</p>
+        </Link>
       </section>
 
       {/* ══════ ④ Anatomy — 7 Dimensions ══════ */}
