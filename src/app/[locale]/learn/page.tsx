@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import PrincipleAnnotations from "@/components/discuss/PrincipleAnnotations";
 import TALCCurve from "@/components/learn/TALCCurve";
 import HypeCycleCurve from "@/components/learn/HypeCycleCurve";
+import ProductLifeCycleCurve from "@/components/learn/ProductLifeCycleCurve";
 
 const PHASES = [
   { key: "earlyMarket", emoji: "🌱", color: "bg-white" },
@@ -233,8 +234,11 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
           <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("productLifeCycleThesis")}</p>
         </div>
 
+        {/* Full product life cycle curve (Moore's extended model) */}
+        <ProductLifeCycleCurve locale={locale} />
+
         {/* 3 phase groups (Moore's Phase 1/2/3) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 mt-8">
           {PLC_GROUPS.map((g) => (
             <div key={g.key} className={`toss-card !p-5 ${g.color}`}>
               <div className="text-2xl mb-2">{g.emoji}</div>
