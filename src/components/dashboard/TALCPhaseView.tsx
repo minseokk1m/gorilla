@@ -4,18 +4,53 @@ import { HYPE_TECHNOLOGIES } from "@/lib/data/mock/hype-technologies";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 
-/* ── Gaussian curve math (same as Learn TALCCurve) ── */
-const MU = 400;
-const SIGMA = 155;
-const AMP = 200;
+/* ── Moore's asymmetric life-cycle curve — Main Street region is the tallest ── */
 const BASE = 240;
 
-function g(x: number) {
-  return BASE - AMP * Math.exp(-((x - MU) ** 2) / (2 * SIGMA ** 2));
+// Anchor points (x, y) — smaller y = taller on screen. Maturing Main Street is the peak.
+const CURVE_ANCHORS: [number, number][] = [
+  [50, 237],
+  [110, 220],
+  [155, 198],   // Early Market — small bump
+  [215, 218],
+  [256, 228],   // pre-chasm trough
+  // chasm gap 256–280 (no curve drawn)
+  [280, 222],
+  [310, 188],
+  [365, 140],
+  [405, 115],   // Tornado peak
+  [445, 85],
+  [485, 60],    // Thriving Main Street peak
+  [520, 48],
+  [555, 40],    // Maturing Main Street — HIGHEST
+  [590, 62],
+  [620, 105],   // Declining Main Street
+  [650, 160],
+  [677, 195],   // Fault Line low
+  [705, 180],   // small bump post-FL (Structural Innovation)
+  [730, 215],
+  [750, 233],
+];
+
+function smoothstep(t: number) {
+  return t * t * (3 - 2 * t);
+}
+
+function g(x: number): number {
+  for (let i = 0; i < CURVE_ANCHORS.length - 1; i++) {
+    const [x0, y0] = CURVE_ANCHORS[i];
+    const [x1, y1] = CURVE_ANCHORS[i + 1];
+    if (x >= x0 && x <= x1) {
+      const t = (x - x0) / (x1 - x0);
+      return y0 + (y1 - y0) * smoothstep(t);
+    }
+  }
+  if (x < CURVE_ANCHORS[0][0]) return CURVE_ANCHORS[0][1];
+  return CURVE_ANCHORS[CURVE_ANCHORS.length - 1][1];
 }
 
 const PTS: [number, number][] = [];
-for (let x = 50; x <= 750; x += 3) PTS.push([x, g(x)]);
+for (let x = 50; x <= 750; x += 2) PTS.push([x, g(x)]);
 
 function areaPath(x0: number, x1: number) {
   const p = PTS.filter(([x]) => x >= x0 && x <= x1);
@@ -159,8 +194,6 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
     }
   }
 
-  const chasmY = g(268);
-
   return (
     <section className="space-y-4">
       <div>
@@ -255,12 +288,12 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
           <path d={linePath(50, 256)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
           <path d={linePath(280, 750)} fill="none" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" />
 
-          {/* Chasm lightning bolt */}
+          {/* Chasm lightning bolt — compressed to fit in the low gap */}
           <path
-            d={`M260,${chasmY + 5}L270,${chasmY + 22}L264,${chasmY + 22}L276,${chasmY + 42}`}
+            d={`M260,90L270,120L264,120L276,155`}
             fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
           />
-          <text x={268} y={chasmY - 2} textAnchor="middle" fill="#ef4444" fontSize="9" fontWeight="800" style={FONT}>
+          <text x={268} y={78} textAnchor="middle" fill="#ef4444" fontSize="9" fontWeight="800" style={FONT}>
             캐즘
           </text>
 
@@ -329,7 +362,7 @@ export default async function TALCPhaseView({ locale, firms, classifications }: 
             if (items.length === 0) return null;
             const top = items[0]; // already sorted by totalScore desc
             const mx = (z.x0 + z.x1) / 2;
-            const cy = g(mx) - 16;
+            const cy = Math.max(g(mx) - 16, 28); // cap so ticker label stays inside viewBox
             const dotColor =
               top.cls.tier === "Gorilla" ? "#10b981" :
               top.cls.tier === "Potential Gorilla" ? "#14b8a6" :
