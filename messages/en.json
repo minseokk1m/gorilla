@@ -124,6 +124,108 @@
     "flow5": "Classification",
     "flow6": "Principles",
     "flow7": "Execution",
+    "whyTitle": "⓪ Why The Gorilla Game?",
+    "whySubtitle": "There are countless investing methodologies — value, momentum, theme. Why the Gorilla Game? Chapter 1 of the book answers directly.",
+    "whyThesis": "“To give the risk-averse, capital-constrained investor access to the high returns of high-tech stocks while sidestepping the brutal volatility of that market.” That is the true purpose of the Gorilla Game. (Ch. 1, p. 50)",
+    "whyContext": "Life expectancy is rising while social safety nets thin out. Society is shifting from institutional trust toward self-reliance — families must fund their own retirements, which means returns must beat traditional investment vehicles by a wide margin. But that doesn't mean exposing the family savings to the brutal volatility of high-tech markets. This dilemma is the reason the Gorilla Game exists.",
+    "whyVirtuesLabel": "The 3 Virtues of This Game",
+    "whyVirtues": {
+      "upside": {
+        "title": "Upside is still enormous",
+        "desc": "Microsoft's market cap was about $660M at its 1986 IPO and exceeded $130B ten years later — a 200× return. Not 2×, not 10×, but 200×. The next 50× compounder is still out there to be caught.",
+        "ref": "Ch. 1, p. 51"
+      },
+      "downside": {
+        "title": "Downside is small",
+        "desc": "The Gorilla Game does not bet as the cards fall. You only buy when a category market has entered hyper-growth, and during your holding period stocks in such markets generally do not lose money.",
+        "ref": "Ch. 1, p. 51"
+      },
+      "tolerantOfMistakes": {
+        "title": "Mistakes are forgiven",
+        "desc": "The game does not demand precise timing or a perfect basket — only that the basket contains the eventual gorilla. It is, as the book puts it, “an honest game for honest people.”",
+        "ref": "Ch. 1, p. 52"
+      }
+    },
+    "whyConstraintsLabel": "But, the 3 Constraints of This Game",
+    "whyConstraints": {
+      "discipline": {
+        "title": "Strict discipline is required",
+        "desc": "If you love trading frequently, if gambling, gut-feel, or contrarian instincts pull at you — this is not your game. The Gorilla Game requires the discipline to grab the obvious winner and never let go.",
+        "ref": "Ch. 1, p. 53"
+      },
+      "research": {
+        "title": "You must track the high-tech industry",
+        "desc": "You don't have to be an expert. But you do have to follow what's happening in the high-tech industry — set aside time, away from family, to study. You only need to follow one category at a time; you don't need to play many gorilla games at once.",
+        "ref": "Ch. 1, p. 53"
+      },
+      "fairFunds": {
+        "title": "Use the funds with restraint",
+        "desc": "This is not a game for grabbing as much money as possible. If that's your goal, look elsewhere. The Gorilla Game offers a sensible way to invest the family savings — nothing more, nothing less.",
+        "ref": "Ch. 1, p. 54"
+      }
+    },
+    "whyAlternativesTitle": "How It Differs From Other Methodologies",
+    "whyAlternativesSubtitle": "The Gorilla Game is a form of growth investing. But Chapter 1 directly contrasts it with five common alternatives — and the differences are decisive.",
+    "whyAlternatives": {
+      "concept": {
+        "name": "Concept Investing vs Gorilla Game",
+        "vs": "Vague speculation → Proven financial track record",
+        "desc": "Concept investing buys on hype right after the IPO; those success stories are usually short-lived. The Gorilla Game enters only after the market is well developed, anchoring on real revenue. It does not get caught in false hyper-growth."
+      },
+      "momentum": {
+        "name": "Momentum Investing vs Gorilla Game",
+        "vs": "Buy the whole category → Buy the single safest name in it",
+        "desc": "Momentum investing buys every name in the category — “follow the herd until everyone falls off the cliff.” The Gorilla Game picks only the single safest play in that category (the gorilla). It is the one safe ride on the same trend."
+      },
+      "theme": {
+        "name": "Theme Investing vs Gorilla Game",
+        "vs": "Broad portfolio → Consolidate into one name",
+        "desc": "Theme investing buys a dozen names tied to a macro trend. The Gorilla Game starts from a small basket and consolidates into a single position — the gorilla. That's why it can succeed with limited capital and limited industry knowledge."
+      },
+      "value": {
+        "name": "Value Investing vs Gorilla Game",
+        "vs": "Hunt the underpriced → Hunt the obvious champion",
+        "desc": "Value investors look for unloved, underpriced stocks. Gorilla stocks are never that. Microsoft was never a value stock. The two portfolios share almost no names."
+      },
+      "technical": {
+        "name": "Technical Analysis vs Gorilla Game",
+        "vs": "Follow the price → Follow the industry dynamics",
+        "desc": "Technical analysis only looks at the chart. It ignores industry dynamics. The Gorilla Game runs in the opposite direction — it starts from market structure, competitive advantage, and category dynamics."
+      }
+    },
+    "whyEssence": "Bottom line: the Gorilla Game is a form of growth investing, with two distinguishing features — (1) it focuses exclusively on product-oriented companies in high-tech hyper-growth markets, and (2) it uses concentration, not diversification, as its risk-reduction strategy. Those two choices are what separate it from every other methodology. (Ch. 1, p. 59)",
+    "audienceTitle": "⓪-2 Who Should Play This Game",
+    "audienceSubtitle": "In the introduction, the three authors define their reader very precisely. If you fit this picture — this game is for you.",
+    "audienceFitLabel": "The book's true reader",
+    "audienceFit": {
+      "primary": {
+        "title": "The individual investor saving for the family",
+        "desc": "Not wealthy. Starts with limited capital. Worries constantly about losing it. “Risk-averse and capital-constrained” — this is the book's true reader.",
+        "ref": "Introduction, p. 27"
+      },
+      "knowledge": {
+        "title": "Someone with mid-tier knowledge",
+        "desc": "More industry knowledge than a retail broker but less than a venture capitalist. More investing knowledge than a business reporter but less than a professional fund manager. Too little or too much knowledge erodes the book's value.",
+        "ref": "Introduction, pp. 26–27"
+      },
+      "goal": {
+        "title": "Conservative but ambitious",
+        "desc": "Wants to build wealth faster and larger than traditional vehicles allow — yet hates risk. Wants to ride high-tech upside while protecting the family savings. The book is written precisely for that dilemma.",
+        "ref": "Introduction, p. 21"
+      }
+    },
+    "audienceSecondaryLabel": "Other readers who benefit",
+    "audienceSecondary": {
+      "exec": { "title": "High-tech executives", "desc": "Get a consistent analytical framework for discussing how business strategy affects the stock — a shared vocabulary for talking to Wall Street, employees, and customers." },
+      "vc":   { "title": "Venture capital partners", "desc": "In a sense, VCs are excellent gorilla-game operators — they run the game from the very beginning of the technology adoption life cycle. The book's scenarios sharpen post-IPO ‘liquidity event’ decisions." },
+      "fund": { "title": "Tech fund managers", "desc": "Get insight that links manager behavior, market reaction, market position, and stock price causally. Some intentionally relax the book's conservative rules to chase higher returns." }
+    },
+    "audienceMisfitLabel": "Who this book is NOT for",
+    "audienceMisfit": {
+      "title": "Day traders",
+      "desc": "“Day trading is closer to gambling than investing.” Unless you can break the short-term trading habit, the goals and methods in this book have nothing to do with you. Day trading only works in a bull market — when everyone is making money anyway.",
+      "ref": "Introduction, pp. 29–30"
+    },
     "talcTitle": "① Technology Adoption Life Cycle (TALC)",
     "talcSubtitle": "Every disruptive technology market follows these six stages. Investment opportunity is concentrated in a single window — the Tornado.",
     "hypeTitle": "①-2 Gartner Hype Cycle",

@@ -104,6 +104,38 @@ const PLC_NEW_PHASES = [
   { key: "faultLine", emoji: "⚡", color: "bg-red-50/60",   ring: "ring-red-300" },
 ];
 
+const VIRTUES = [
+  { key: "upside",             emoji: "🚀", color: "bg-emerald-50/60" },
+  { key: "downside",           emoji: "🛡️", color: "bg-blue-50/60" },
+  { key: "tolerantOfMistakes", emoji: "🎯", color: "bg-amber-50/60" },
+] as const;
+
+const CONSTRAINTS = [
+  { key: "discipline", emoji: "📏", color: "bg-stone-50/60" },
+  { key: "research",   emoji: "🔬", color: "bg-stone-50/60" },
+  { key: "fairFunds",  emoji: "⚖️", color: "bg-stone-50/60" },
+] as const;
+
+const ALTERNATIVES = [
+  { key: "concept",   emoji: "💭" },
+  { key: "momentum",  emoji: "🌊" },
+  { key: "theme",     emoji: "🎨" },
+  { key: "value",     emoji: "💎" },
+  { key: "technical", emoji: "📈" },
+] as const;
+
+const AUDIENCE_FIT = [
+  { key: "primary",   emoji: "👨‍👩‍👧" },
+  { key: "knowledge", emoji: "📚" },
+  { key: "goal",      emoji: "🎯" },
+] as const;
+
+const AUDIENCE_SECONDARY = [
+  { key: "exec", emoji: "🏢" },
+  { key: "vc",   emoji: "🌱" },
+  { key: "fund", emoji: "📊" },
+] as const;
+
 export default async function LearnPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "learn" });
@@ -134,6 +166,142 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
           ))}
         </div>
       </div>
+
+      {/* ══════ ⓪ Why The Gorilla Game ══════ */}
+      <section>
+        <h2 className="mb-3">{t("whyTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-5">{t("whySubtitle")}</p>
+
+        {/* Mission statement — direct quote from the book */}
+        <div className="toss-card !bg-gray-900 !text-white mb-5">
+          <p className="text-[0.9375rem] sm:text-base leading-relaxed font-bold">{t("whyThesis")}</p>
+        </div>
+
+        {/* Macro context — why this matters now */}
+        <div className="toss-card !bg-[#E8F0FE]/60 ring-1 ring-[#0064FF]/10 mb-8">
+          <p className="text-gray-800 text-sm leading-relaxed">{t("whyContext")}</p>
+        </div>
+
+        {/* 3 Virtues */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">
+            {t("whyVirtuesLabel")}
+          </span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {VIRTUES.map((v) => (
+            <div key={v.key} className={`toss-card ${v.color}`}>
+              <div className="text-2xl mb-2">{v.emoji}</div>
+              <div className="font-extrabold text-gray-900 text-sm mb-2">{t(`whyVirtues.${v.key}.title` as "whyVirtues.upside.title")}</div>
+              <p className="text-gray-500 text-sm leading-relaxed mb-3">{t(`whyVirtues.${v.key}.desc` as "whyVirtues.upside.desc")}</p>
+              <span className="text-xs font-bold text-gray-400">{t(`whyVirtues.${v.key}.ref` as "whyVirtues.upside.ref")}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* 3 Constraints */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">
+            {t("whyConstraintsLabel")}
+          </span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {CONSTRAINTS.map((c) => (
+            <div key={c.key} className={`toss-card ${c.color}`}>
+              <div className="text-2xl mb-2">{c.emoji}</div>
+              <div className="font-extrabold text-gray-900 text-sm mb-2">{t(`whyConstraints.${c.key}.title` as "whyConstraints.discipline.title")}</div>
+              <p className="text-gray-500 text-sm leading-relaxed mb-3">{t(`whyConstraints.${c.key}.desc` as "whyConstraints.discipline.desc")}</p>
+              <span className="text-xs font-bold text-gray-400">{t(`whyConstraints.${c.key}.ref` as "whyConstraints.discipline.ref")}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Alternatives — 5 methodology comparisons */}
+        <h3 className="text-lg mb-2">{t("whyAlternativesTitle")}</h3>
+        <p className="text-gray-500 text-sm font-medium mb-5">{t("whyAlternativesSubtitle")}</p>
+        <div className="space-y-3 mb-6">
+          {ALTERNATIVES.map((a) => (
+            <div key={a.key} className="toss-card">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0 mt-0.5">{a.emoji}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="font-bold text-gray-900 text-sm mb-1">{t(`whyAlternatives.${a.key}.name` as "whyAlternatives.concept.name")}</div>
+                  <div className="toss-pill bg-gray-100 text-gray-700 text-[10px] font-extrabold mb-2 inline-block">{t(`whyAlternatives.${a.key}.vs` as "whyAlternatives.concept.vs")}</div>
+                  <p className="text-gray-500 text-sm leading-relaxed">{t(`whyAlternatives.${a.key}.desc` as "whyAlternatives.concept.desc")}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Closing — 2 distinguishing features */}
+        <div className="toss-card !bg-emerald-50/40 ring-1 ring-emerald-200/50">
+          <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("whyEssence")}</p>
+        </div>
+      </section>
+
+      {/* ══════ ⓪-2 Who Should Play ══════ */}
+      <section>
+        <h2 className="mb-3">{t("audienceTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("audienceSubtitle")}</p>
+
+        {/* Primary fit — the book's true reader */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-[#0064FF] uppercase tracking-wide">
+            {t("audienceFitLabel")}
+          </span>
+          <div className="flex-1 h-px bg-[#0064FF]/20" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {AUDIENCE_FIT.map((a) => (
+            <div key={a.key} className="toss-card !bg-[#E8F0FE]/40 ring-1 ring-[#0064FF]/15">
+              <div className="text-2xl mb-2">{a.emoji}</div>
+              <div className="font-extrabold text-gray-900 text-sm mb-2">{t(`audienceFit.${a.key}.title` as "audienceFit.primary.title")}</div>
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">{t(`audienceFit.${a.key}.desc` as "audienceFit.primary.desc")}</p>
+              <span className="text-xs font-bold text-gray-400">{t(`audienceFit.${a.key}.ref` as "audienceFit.primary.ref")}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Secondary fit */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">
+            {t("audienceSecondaryLabel")}
+          </span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {AUDIENCE_SECONDARY.map((a) => (
+            <div key={a.key} className="toss-card">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xl">{a.emoji}</span>
+                <div className="font-bold text-gray-900 text-sm">{t(`audienceSecondary.${a.key}.title` as "audienceSecondary.exec.title")}</div>
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">{t(`audienceSecondary.${a.key}.desc` as "audienceSecondary.exec.desc")}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Misfit — day traders */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-red-500/80 uppercase tracking-wide">
+            {t("audienceMisfitLabel")}
+          </span>
+          <div className="flex-1 h-px bg-red-200/60" />
+        </div>
+        <div className="toss-card !bg-red-50/40 ring-1 ring-red-200/50">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl shrink-0 mt-0.5">⛔</span>
+            <div className="flex-1 min-w-0">
+              <div className="font-extrabold text-gray-900 text-sm mb-2">{t("audienceMisfit.title")}</div>
+              <p className="text-gray-700 text-sm leading-relaxed mb-2">{t("audienceMisfit.desc")}</p>
+              <span className="text-xs font-bold text-gray-400">{t("audienceMisfit.ref")}</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ══════ ① TALC Lifecycle ══════ */}
       <section>
