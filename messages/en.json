@@ -194,7 +194,85 @@
       }
     },
     "whyEssence": "Bottom line: the Gorilla Game is a form of growth investing, with two distinguishing features — (1) it focuses exclusively on product-oriented companies in high-tech hyper-growth markets, and (2) it uses concentration, not diversification, as its risk-reduction strategy. Those two choices are what separate it from every other methodology. (Ch. 1, p. 59)",
-    "audienceTitle": "⓪-2 Who Should Play This Game",
+    "landscapeTitle": "⓪-2 The Gorilla Game on the Map of Investing Methodologies",
+    "landscapeSubtitle": "The five comparisons in Chapter 1 (concept/momentum/theme/value/technical) reflect the book's 1999 perspective. Retail investors today encounter five more methodologies in everyday life — index, dividend, GARP, quality, DCA. This section places the Gorilla Game on that broader map and explains why it fits ordinary investors.",
+    "landscapeMapLabel": "Beyond the book — 5 methodologies retail investors actually encounter (web-sourced)",
+    "landscapeMap": {
+      "index": {
+        "name": "Index · Passive Investing",
+        "vs": "Buy the entire market",
+        "desc": "Bogle launched the Vanguard S&P 500 fund in 1976 (now ≈ $1.5T AUM). From July 2024–June 2025, only 33% of active funds beat their passive counterparts; over the long term, 75%+ of active funds trail the index. That's why it became the retail default. Diversifies away single-stock risk — but is structurally locked at the market average.",
+        "fit": "✅ Default for most retail investors",
+        "ref": "Bogle / Vanguard · Morningstar 2025"
+      },
+      "dividend": {
+        "name": "Dividend Investing",
+        "vs": "Quarterly cash flow + stable companies",
+        "desc": "Quarterly dividends and lower volatility from mature firms — popular with retirees. Drawbacks are clear: (1) dividends aren't guaranteed and get cut in crises, (2) less retained capital limits capital gains, (3) double taxation (corporate + personal), (4) ‘dividend traps’ where falling prices inflate yield.",
+        "fit": "⚠️ Only for retirees needing income",
+        "ref": "Britannica Money · Morningstar"
+      },
+      "garp": {
+        "name": "GARP — Growth at a Reasonable Price",
+        "vs": "Growth + Value compromise",
+        "desc": "Peter Lynch's approach. Hunt companies growing earnings 15–25% annually with a PEG ratio (P/E ÷ growth) at or below 1.0. Lynch returned ~29% per year at Magellan (1977–1990), growing the fund from $18M to $14B. ‘Invest in what you know’ — companies you spot in everyday life count.",
+        "fit": "✅ Retail investors who can read financials",
+        "ref": "Peter Lynch · Fidelity Magellan 1977-1990"
+      },
+      "quality": {
+        "name": "Quality · Wide Moat Investing",
+        "vs": "Excellent companies with strong moats",
+        "desc": "Buffett & Munger's approach. ‘Better to buy a wonderful company at a fair price than a fair company at a wonderful price.’ Verify the moat — brand (Coca-Cola), switching costs, network effects, scale — then concentrate and hold long. Berkshire has compounded ~20% per year since 1965.",
+        "fit": "✅ The closest cousin to the Gorilla Game",
+        "ref": "Buffett · Munger / Berkshire 1965-"
+      },
+      "dca": {
+        "name": "DCA — Dollar Cost Averaging",
+        "vs": "Buy a fixed amount on a schedule",
+        "desc": "Don't lump-sum; invest the same amount monthly. Vanguard's 1926–2011 backtest shows lump-sum mathematically beats DCA 67% of the time (avg. 2–3% over 10y). But behaviorally, DCA softens volatility-fear and helps investors actually stay invested. ‘Investors live in sequences, not averages.’",
+        "fit": "✅ A buying schedule — combinable with any strategy",
+        "ref": "Vanguard 1926-2011 backtest"
+      }
+    },
+    "landscapePositionLabel": "The Gorilla Game's coordinates — 5 axes",
+    "landscapePositionSubtitle": "On the standard 5-axis taxonomy of investment strategies, here is exactly where the Gorilla Game sits.",
+    "landscapePosition": {
+      "horizon":   { "icon": "⏰", "label": "Time horizon",      "value": "Indefinite long-term", "scale": "Short → Medium → Long → Indefinite", "note": "Don't sell until a substitution threat is proven." },
+      "analysis":  { "icon": "🧐", "label": "Analysis style",     "value": "Industry structure",   "scale": "Charts → Multiples → Financials → Industry structure", "note": "Not accounting modeling — category dynamics." },
+      "portfolio": { "icon": "📦", "label": "Portfolio strategy", "value": "Concentration (1–4 → 1)", "scale": "Hyper-diversified → 30 → 5 → Concentrated", "note": "Risk is reduced by consolidation, not diversification." },
+      "efficiency":{ "icon": "🎯", "label": "Market assumption",  "value": "Inefficient",          "scale": "Efficient → Weakly inefficient → Strongly inefficient", "note": "The market underprices the long-run impact of discontinuous innovation." },
+      "style":     { "icon": "🎨", "label": "Style",              "value": "Growth — Category champion", "scale": "Value → GARP → Quality → Growth → Momentum", "note": "Growth, but restricted to high-tech hyper-growth markets." }
+    },
+    "landscapePositionTaxonomyLabel": "Standard taxonomy in one phrase →",
+    "landscapePositionTaxonomy": "Concentrated Growth + Fundamental Sector Bet",
+    "landscapePositionEssence": "One-line summary — within high-tech categories, pick a single name through fundamental industry-structure analysis, hold indefinitely, and assume the market is structurally inefficient.",
+    "landscapeRetailLabel": "So — why this game fits retail investors (4 real-world constraints)",
+    "landscapeRetailSubtitle": "Compare other methodologies against the four real-world constraints faced by ‘risk-averse, capital-constrained’ retail investors. The Gorilla Game's fit becomes obvious.",
+    "landscapeRetail": {
+      "lowCapital": {
+        "icon": "💰",
+        "title": "Low capital → concentration beats diversification",
+        "desc": "$10,000 across 30 names = $333 each. Trading costs and tracking burden are inefficient. Index ETFs solve this — but lock you to the market average. The Gorilla Game concentrates capital efficiently in a single category champion. Same philosophy as Buffett & Munger: ‘bet big when you have real conviction.’"
+      },
+      "limitedTime": {
+        "icon": "⏰",
+        "title": "Time-poor → indefinite holds = fewer decisions",
+        "desc": "GARP and quality investing still require quarterly earnings analysis. The Gorilla Game says: ‘once you grab the obvious winner, don't sell until a substitution threat is proven’ — perhaps 5–10 trade decisions in a lifetime. The most realistic strategy for someone with a day job."
+      },
+      "limitedExpertise": {
+        "icon": "📚",
+        "title": "Limited expertise → one industry pattern, not accounting",
+        "desc": "Value investing demands DCF and residual-income models. Technical analysis demands chart-pattern memorization. The Gorilla Game asks one question: ‘who captured the architecture standard?’ — an industry pattern, not a finance certification. You need time to track the industry, not the skills of an accountant."
+      },
+      "emotionalRisk": {
+        "icon": "🧠",
+        "title": "Emotional risk → frequent trading is blocked by design",
+        "desc": "Momentum trading is a ‘exit-just-before-the-fall’ timing game — virtually impossible for retail emotions (you fall off the cliff with the herd). The Gorilla Game's ‘hold indefinitely’ rule structurally blocks loss-aversion, confirmation bias, and herd behavior."
+      }
+    },
+    "landscapeComboLabel": "Recommended combo — Index (default) + Gorilla (alpha)",
+    "landscapeCombo": "For most retail investors, an index fund is the default — it solves the time/knowledge gap with the market average. But if you have the will and interest to track high-tech, you can carve out a portion of your portfolio for the Gorilla Game and aim for alpha. The two strategies share the same core philosophy (long-term holds · no market timing · self-reliance), so they complement rather than conflict.",
+    "audienceTitle": "⓪-3 Who Should Play This Game",
     "audienceSubtitle": "In the introduction, the three authors define their reader very precisely. If you fit this picture — this game is for you.",
     "audienceFitLabel": "The book's true reader",
     "audienceFit": {

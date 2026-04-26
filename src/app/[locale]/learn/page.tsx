@@ -124,6 +124,29 @@ const ALTERNATIVES = [
   { key: "technical", emoji: "📈" },
 ] as const;
 
+const LANDSCAPE_MAP = [
+  { key: "index",    emoji: "🌐", color: "bg-emerald-50/40", ring: "ring-emerald-200" },
+  { key: "dividend", emoji: "💵", color: "bg-amber-50/40",   ring: "ring-amber-200" },
+  { key: "garp",     emoji: "📐", color: "bg-blue-50/40",    ring: "ring-blue-200" },
+  { key: "quality",  emoji: "🏰", color: "bg-blue-50/40",    ring: "ring-blue-200" },
+  { key: "dca",      emoji: "📅", color: "bg-stone-50/40",   ring: "ring-stone-200" },
+] as const;
+
+const LANDSCAPE_AXES = [
+  "horizon",
+  "analysis",
+  "portfolio",
+  "efficiency",
+  "style",
+] as const;
+
+const LANDSCAPE_RETAIL = [
+  { key: "lowCapital",       color: "bg-emerald-50/60" },
+  { key: "limitedTime",      color: "bg-blue-50/60" },
+  { key: "limitedExpertise", color: "bg-amber-50/60" },
+  { key: "emotionalRisk",    color: "bg-stone-50/60" },
+] as const;
+
 const AUDIENCE_FIT = [
   { key: "primary",   emoji: "👨‍👩‍👧" },
   { key: "knowledge", emoji: "📚" },
@@ -242,7 +265,89 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
-      {/* ══════ ⓪-2 Who Should Play ══════ */}
+      {/* ══════ ⓪-2 Landscape — Where the Gorilla Game Sits ══════ */}
+      <section>
+        <h2 className="mb-3">{t("landscapeTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("landscapeSubtitle")}</p>
+
+        {/* Sub-section A: 5 web-sourced methodologies */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">
+            {t("landscapeMapLabel")}
+          </span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+        <div className="space-y-3 mb-10">
+          {LANDSCAPE_MAP.map((m) => (
+            <div key={m.key} className={`toss-card ${m.color} ring-1 ${m.ring}`}>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0 mt-0.5">{m.emoji}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <span className="font-bold text-gray-900 text-sm">{t(`landscapeMap.${m.key}.name` as "landscapeMap.index.name")}</span>
+                    <span className="toss-pill bg-white/80 text-gray-700 text-[10px] font-extrabold">{t(`landscapeMap.${m.key}.fit` as "landscapeMap.index.fit")}</span>
+                  </div>
+                  <div className="toss-pill bg-gray-100 text-gray-700 text-[10px] font-extrabold mb-2 inline-block">{t(`landscapeMap.${m.key}.vs` as "landscapeMap.index.vs")}</div>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-2">{t(`landscapeMap.${m.key}.desc` as "landscapeMap.index.desc")}</p>
+                  <span className="text-xs font-bold text-gray-400">{t(`landscapeMap.${m.key}.ref` as "landscapeMap.index.ref")}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Sub-section B: 5-axis position */}
+        <h3 className="text-lg mb-2">{t("landscapePositionLabel")}</h3>
+        <p className="text-gray-500 text-sm font-medium mb-5">{t("landscapePositionSubtitle")}</p>
+        <div className="space-y-3 mb-5">
+          {LANDSCAPE_AXES.map((axis) => (
+            <div key={axis} className="toss-card !p-4">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0 mt-0.5">{t(`landscapePosition.${axis}.icon` as "landscapePosition.horizon.icon")}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">{t(`landscapePosition.${axis}.label` as "landscapePosition.horizon.label")}</span>
+                    <span className="text-gray-300">→</span>
+                    <span className="toss-pill bg-[#0064FF] text-white text-xs font-extrabold">{t(`landscapePosition.${axis}.value` as "landscapePosition.horizon.value")}</span>
+                  </div>
+                  <div className="text-[11px] font-bold text-gray-400 mb-1.5">{t(`landscapePosition.${axis}.scale` as "landscapePosition.horizon.scale")}</div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{t(`landscapePosition.${axis}.note` as "landscapePosition.horizon.note")}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="toss-card !bg-gray-900 !text-white mb-10">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <span className="text-xs font-extrabold text-gray-400 uppercase tracking-wide">{t("landscapePositionTaxonomyLabel")}</span>
+            <span className="toss-pill bg-white text-gray-900 text-xs font-extrabold">{t("landscapePositionTaxonomy")}</span>
+          </div>
+          <p className="text-gray-100 text-sm leading-relaxed">{t("landscapePositionEssence")}</p>
+        </div>
+
+        {/* Sub-section C: 4 retail-fit reasons */}
+        <h3 className="text-lg mb-2">{t("landscapeRetailLabel")}</h3>
+        <p className="text-gray-500 text-sm font-medium mb-5">{t("landscapeRetailSubtitle")}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          {LANDSCAPE_RETAIL.map((r) => (
+            <div key={r.key} className={`toss-card ${r.color}`}>
+              <div className="text-2xl mb-2">{t(`landscapeRetail.${r.key}.icon` as "landscapeRetail.lowCapital.icon")}</div>
+              <div className="font-extrabold text-gray-900 text-sm mb-2">{t(`landscapeRetail.${r.key}.title` as "landscapeRetail.lowCapital.title")}</div>
+              <p className="text-gray-600 text-sm leading-relaxed">{t(`landscapeRetail.${r.key}.desc` as "landscapeRetail.lowCapital.desc")}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Sub-section D: Recommended combo callout */}
+        <div className="toss-card !bg-[#E8F0FE]/60 ring-1 ring-[#0064FF]/15">
+          <div className="text-xs font-extrabold text-[#0064FF] uppercase tracking-wide mb-2">
+            {t("landscapeComboLabel")}
+          </div>
+          <p className="text-gray-800 text-sm leading-relaxed">{t("landscapeCombo")}</p>
+        </div>
+      </section>
+
+      {/* ══════ ⓪-3 Who Should Play ══════ */}
       <section>
         <h2 className="mb-3">{t("audienceTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("audienceSubtitle")}</p>
