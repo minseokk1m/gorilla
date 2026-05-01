@@ -7,7 +7,22 @@
     "tagline": "미국 기술주 · 모의 데이터",
     "switchLang": "English",
     "categories": "카테고리",
+    "ecosystems": "이코시스템",
     "discuss": "토론"
+  },
+  "ecosystems": {
+    "title": "이코시스템 × 가치사슬 Layer",
+    "subtitle": "9개 거시 테마(이코시스템) 안에서 각 기업이 어느 가치사슬 layer에 속하는지 매핑. Moore의 whole product 사상에 따라 같은 layer에서는 고릴라가 하나라는 원칙이 자동 검증됩니다.",
+    "thesisLabel": "테제",
+    "layersLabel": "Layer",
+    "firmsLabel": "기업",
+    "tierBreakdown": "등급 분포",
+    "viewLayers": "Layer 보기 →",
+    "stats": "{layers}개 Layer · {firms}개 기업",
+    "noFirms": "(기업 매핑 없음)",
+    "totalSummary": "총 9개 이코시스템 · 51개 layer · {primary}개 primary 매핑 + {secondary}개 secondary 교차 + {uncategorized}개 미분류",
+    "uncategorizedTitle": "아직 어디에도 매핑되지 않은 기업",
+    "uncategorizedHint": "Financial · Telecom · Consumer Staples 등 — 향후 ecosystem 확장 후보"
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"

@@ -7,7 +7,22 @@
     "tagline": "US Tech · Mock Data",
     "switchLang": "한국어",
     "categories": "Categories",
+    "ecosystems": "Ecosystems",
     "discuss": "Discuss"
+  },
+  "ecosystems": {
+    "title": "Ecosystems × Value-Chain Layers",
+    "subtitle": "Map each firm into one of 9 macro themes and locate it in a specific value-chain layer. Moore's whole-product principle — one gorilla per category — is auto-validated within each layer.",
+    "thesisLabel": "Thesis",
+    "layersLabel": "Layers",
+    "firmsLabel": "Firms",
+    "tierBreakdown": "Tier breakdown",
+    "viewLayers": "View layers →",
+    "stats": "{layers} layers · {firms} firms",
+    "noFirms": "(no firm mapped)",
+    "totalSummary": "9 ecosystems · 51 layers · {primary} primary + {secondary} secondary cross-cut + {uncategorized} uncategorized",
+    "uncategorizedTitle": "Not yet mapped",
+    "uncategorizedHint": "Financial · Telecom · Consumer Staples — candidates for future ecosystem expansion"
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
