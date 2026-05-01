@@ -11,6 +11,7 @@ import {
 } from "@/lib/data/providers/ecosystem-provider";
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getCachedLayerMomentum, type LayerMomentum } from "@/lib/data/providers/layer-momentum";
+import { MomentumPanel } from "@/components/ecosystems/MomentumPanel";
 
 const TIER_ORDER: ClassificationTier[] = [
   "Gorilla",
@@ -122,95 +123,6 @@ const KIND_BADGE: Record<ConflictKind, { bg: string; emoji: string; labelKo: str
   "data-error": { bg: "bg-rose-100 text-rose-800", emoji: "🔴", labelKo: "데이터 보정 후보", labelEn: "Data correction candidate" },
 };
 
-function priceColor(pct: number): string {
-  if (pct >= 0.05) return "text-emerald-600";
-  if (pct >= 0.01) return "text-emerald-500";
-  if (pct <= -0.05) return "text-rose-600";
-  if (pct <= -0.01) return "text-rose-500";
-  return "text-gray-500";
-}
-
-function newsColor(s: number): string {
-  if (s >= 0.4) return "text-emerald-600";
-  if (s >= 0.1) return "text-emerald-500";
-  if (s <= -0.4) return "text-rose-600";
-  if (s <= -0.1) return "text-rose-500";
-  return "text-gray-500";
-}
-
-function fmtPct(p: number): string {
-  const sign = p > 0 ? "+" : "";
-  return `${sign}${(p * 100).toFixed(1)}%`;
-}
-
-function fmtSentiment(s: number): string {
-  if (s >= 0.6) return "매우 긍정";
-  if (s >= 0.2) return "긍정";
-  if (s <= -0.6) return "매우 부정";
-  if (s <= -0.2) return "부정";
-  return "중립";
-}
-
-function fmtSentimentEn(s: number): string {
-  if (s >= 0.6) return "Very positive";
-  if (s >= 0.2) return "Positive";
-  if (s <= -0.6) return "Very negative";
-  if (s <= -0.2) return "Negative";
-  return "Neutral";
-}
-
-function MomentumPanel({
-  m,
-  locale,
-  t,
-}: {
-  m: import("@/lib/data/providers/layer-momentum").LayerMomentum;
-  locale: string;
-  t: (key: string, params?: Record<string, string | number>) => string;
-}) {
-  const ko = locale === "ko";
-  const sentimentLabel = m.newsSentiment !== null
-    ? (ko ? fmtSentiment(m.newsSentiment) : fmtSentimentEn(m.newsSentiment))
-    : null;
-
-  return (
-    <div className="rounded-xl border border-gray-100 bg-gray-50/60 p-3 space-y-2 mb-3">
-      <div className="text-[0.625rem] font-extrabold text-gray-500 uppercase tracking-wider">
-        {t("momentumTitle")}
-      </div>
-      <div className="space-y-1.5">
-        {/* Price */}
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-bold text-gray-500">📈 {t("priceLabel")}</span>
-          {m.priceMomentum !== null ? (
-            <span className={`font-extrabold ${priceColor(m.priceMomentum)}`}>
-              {fmtPct(m.priceMomentum)}
-              <span className="font-medium text-gray-400 ml-1">
-                ({t("sampleSize", { n: m.sampleSize.price })})
-              </span>
-            </span>
-          ) : (
-            <span className="text-gray-400 font-bold">{t("noData")}</span>
-          )}
-        </div>
-        {/* News */}
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-bold text-gray-500">🗞️ {t("newsLabel")}</span>
-          {m.newsSentiment !== null && sentimentLabel ? (
-            <span className={`font-extrabold ${newsColor(m.newsSentiment)}`}>
-              {sentimentLabel}
-              <span className="font-medium text-gray-400 ml-1">
-                ({t("sampleSize", { n: m.sampleSize.news })})
-              </span>
-            </span>
-          ) : (
-            <span className="text-gray-400 font-bold">{t("noData")}</span>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default async function EcosystemDetailPage({
   params,
@@ -335,7 +247,21 @@ export default async function EcosystemDetailPage({
                 </div>
 
                 {/* Momentum bar */}
-                {momentum && <MomentumPanel m={momentum} locale={locale} t={tList} />}
+                {momentum && (
+                  <MomentumPanel
+                    m={momentum}
+                    locale={locale}
+                    labels={{
+                      title: tList("momentumTitle"),
+                      priceLabel: tList("priceLabel"),
+                      newsLabel: tList("newsLabel"),
+                      sampleSize: (n: number) => tList("sampleSize", { n }),
+                      noData: tList("noData"),
+                      tf: { "1w": tList("tf1w"), "4w": tList("tf4w"), "12w": tList("tf12w") },
+                      trendBase: tList("trendBase"),
+                    }}
+                  />
+                )}
 
                 {/* Conflict badge */}
                 {conflict && kindBadge && annotation && (

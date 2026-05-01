@@ -37,7 +37,12 @@
     "vsLayerAvg": "Layer 평균 대비",
     "hotLayersTitle": "🔥 4주 가격 상승 Top",
     "coldLayersTitle": "🧊 4주 가격 하락 Top",
-    "momentumExplain": "가격은 Yahoo Finance 1개월 변동률 평균(실데이터) · 뉴스는 헤드라인 sentiment 평균(현재 mock+keyword heuristic)"
+    "momentumExplain": "가격은 Yahoo Finance 1개월 변동률 평균(실데이터) · 뉴스는 헤드라인 sentiment 평균(현재 mock+keyword heuristic)",
+    "tf1w": "1주",
+    "tf4w": "4주",
+    "tf12w": "12주",
+    "priceTrend": "가격 추이",
+    "trendBase": "12주 시작 = 100"
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"

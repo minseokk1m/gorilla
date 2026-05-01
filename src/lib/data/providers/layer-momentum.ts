@@ -14,17 +14,26 @@
 
 import type { NewsArticle } from "@/types/news";
 import type { EcosystemId } from "@/types/ecosystem";
+import type { OHLCVCandle, PriceHistory } from "@/types/market";
 import { getAllFirms } from "./firm-provider";
 import { getAllPriceHistories } from "./price-provider";
 import { getNewsByFirmId } from "./news-provider";
 import { getLayerMemberships } from "./ecosystem-provider";
 import { ECOSYSTEMS } from "../mock/ecosystems";
 
+export type Timeframe = "1w" | "4w" | "12w";
+export const TIMEFRAMES: Timeframe[] = ["1w", "4w", "12w"];
+const TIMEFRAME_DAYS: Record<Timeframe, number> = { "1w": 5, "4w": 21, "12w": 60 };
+
 export interface LayerMomentum {
   ecosystemId: EcosystemId;
   layerId: string;
-  /** Decimal 1M change averaged over primary firms (e.g. 0.082 = +8.2%). null if no data. */
+  /** Default 4-week change averaged over primary firms — kept for back-compat. */
   priceMomentum: number | null;
+  /** Multi-timeframe price momentum (1w / 4w / 12w) for UI toggling. */
+  priceMomentumByTimeframe: Record<Timeframe, number | null>;
+  /** Layer-average normalised price index, last ~60 trading days, base 100. */
+  priceSparkline: number[] | null;
   /** Average news sentiment from -1 (all negative) to +1 (all positive). null if no data. */
   newsSentiment: number | null;
   sampleSize: { price: number; news: number };
@@ -32,6 +41,48 @@ export interface LayerMomentum {
   firmPriceChanges: { firmId: string; ticker: string; name: string; change1M: number }[];
   /** Most recent 3 headlines across the layer. */
   recentHeadlines: NewsArticle[];
+}
+
+function changeOverDays(candles: OHLCVCandle[], days: number): number | null {
+  if (candles.length < days + 1) return null;
+  const last = candles[candles.length - 1];
+  const past = candles[candles.length - 1 - days];
+  if (!last || !past || past.close === 0) return null;
+  return (last.close - past.close) / past.close;
+}
+
+function avgChangeAcrossFirms(prices: PriceHistory[], days: number): number | null {
+  const changes = prices
+    .map((p) => changeOverDays(p.candles, days))
+    .filter((c): c is number => c !== null && Number.isFinite(c));
+  if (changes.length === 0) return null;
+  return changes.reduce((a, b) => a + b, 0) / changes.length;
+}
+
+/**
+ * Layer-average normalised price index, last `days` trading days, base 100.
+ * Skips firms with insufficient candles.
+ */
+function computeSparkline(prices: PriceHistory[], days = 60): number[] | null {
+  const usable = prices.filter((p) => p.candles.length >= days + 1);
+  if (usable.length === 0) return null;
+
+  const result: number[] = [];
+  for (let i = 0; i <= days; i++) {
+    let sum = 0;
+    let n = 0;
+    for (const p of usable) {
+      const baseIdx = p.candles.length - days - 1;
+      const baseClose = p.candles[baseIdx]?.close;
+      const cur = p.candles[baseIdx + i]?.close;
+      if (baseClose && cur) {
+        sum += (cur / baseClose) * 100;
+        n += 1;
+      }
+    }
+    if (n > 0) result.push(Number((sum / n).toFixed(2)));
+  }
+  return result.length > 0 ? result : null;
 }
 
 const NEWS_LOOKBACK_MS = 90 * 24 * 60 * 60 * 1000; // 90 days; mock data spans ~1y so this is loose
@@ -48,25 +99,31 @@ export async function getLayerMomentum(
   const firmById = new Map(firms.map((f) => [f.id, f]));
   const priceById = new Map(prices.map((p) => [p.firmId, p]));
 
-  // Price momentum
-  const firmPriceChanges = memberships
-    .map((m) => {
-      const firm = firmById.get(m.firmId);
-      const price = priceById.get(m.firmId);
-      if (!firm || !price) return null;
-      return {
-        firmId: firm.id,
-        ticker: firm.ticker,
-        name: firm.name,
-        change1M: price.priceChange1M,
-      };
-    })
-    .filter((x): x is NonNullable<typeof x> => x !== null);
+  // Price momentum (per-firm sample + multi-timeframe averages)
+  const layerPrices: PriceHistory[] = [];
+  const firmPriceChanges: LayerMomentum["firmPriceChanges"] = [];
+  for (const m of memberships) {
+    const firm = firmById.get(m.firmId);
+    const price = priceById.get(m.firmId);
+    if (!firm || !price) continue;
+    layerPrices.push(price);
+    firmPriceChanges.push({
+      firmId: firm.id,
+      ticker: firm.ticker,
+      name: firm.name,
+      change1M: price.priceChange1M,
+    });
+  }
 
-  const priceMomentum =
-    firmPriceChanges.length > 0
-      ? firmPriceChanges.reduce((sum, x) => sum + x.change1M, 0) / firmPriceChanges.length
-      : null;
+  const priceMomentumByTimeframe: Record<Timeframe, number | null> = {
+    "1w": avgChangeAcrossFirms(layerPrices, TIMEFRAME_DAYS["1w"]),
+    "4w": avgChangeAcrossFirms(layerPrices, TIMEFRAME_DAYS["4w"]),
+    "12w": avgChangeAcrossFirms(layerPrices, TIMEFRAME_DAYS["12w"]),
+  };
+  // Backward-compat default
+  const priceMomentum = priceMomentumByTimeframe["4w"];
+
+  const priceSparkline = computeSparkline(layerPrices, TIMEFRAME_DAYS["12w"]);
 
   // News sentiment — fetch in parallel
   const newsArrays = await Promise.all(
@@ -105,6 +162,8 @@ export async function getLayerMomentum(
     ecosystemId,
     layerId,
     priceMomentum,
+    priceMomentumByTimeframe,
+    priceSparkline,
     newsSentiment,
     sampleSize: { price: firmPriceChanges.length, news: allNews.length },
     firmPriceChanges,

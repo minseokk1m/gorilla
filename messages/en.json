@@ -37,7 +37,12 @@
     "vsLayerAvg": "vs layer avg",
     "hotLayersTitle": "🔥 Top price gainers",
     "coldLayersTitle": "🧊 Top price decliners",
-    "momentumExplain": "Price = mean of Yahoo Finance 1M change (live data) · News = headline sentiment average (currently mock + keyword heuristic)"
+    "momentumExplain": "Price = mean of Yahoo Finance 1M change (live data) · News = headline sentiment average (currently mock + keyword heuristic)",
+    "tf1w": "1W",
+    "tf4w": "4W",
+    "tf12w": "12W",
+    "priceTrend": "Price trend",
+    "trendBase": "12W start = 100"
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
