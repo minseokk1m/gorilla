@@ -82,9 +82,13 @@ export async function getLayerMomentum(
     allNews = newsArrays.flat();
   }
 
-  const sentimentScores: number[] = allNews.map((n) =>
-    n.sentiment === "Positive" ? 1 : n.sentiment === "Negative" ? -1 : 0,
-  );
+  // Prefer continuous sentimentScore (computed by news-provider via weighted
+  // keyword + negation heuristic). Fall back to categorical mapping for any
+  // legacy article missing the score.
+  const sentimentScores: number[] = allNews.map((n) => {
+    if (typeof n.sentimentScore === "number") return n.sentimentScore;
+    return n.sentiment === "Positive" ? 1 : n.sentiment === "Negative" ? -1 : 0;
+  });
   const newsSentiment =
     sentimentScores.length > 0
       ? sentimentScores.reduce((a, b) => a + b, 0) / sentimentScores.length
