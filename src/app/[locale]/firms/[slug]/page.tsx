@@ -21,7 +21,15 @@ import { getCachedLayerMomentum } from "@/lib/data/providers/layer-momentum";
 import { getPriceHistory } from "@/lib/data/providers/price-provider";
 import { getFirmCategories } from "@/lib/data/providers/product-category-provider";
 import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
+import { getSellSignalsForFirm } from "@/lib/data/providers/sell-signal-engine";
+import type { SellSignalSeverity } from "@/types/sell-signal";
 import type { EcosystemId } from "@/types/ecosystem";
+
+const SEVERITY_STYLE: Record<SellSignalSeverity, { bg: string; text: string; border: string; emoji: string }> = {
+  "EXIT":      { bg: "bg-rose-50",   text: "text-rose-700",   border: "border-rose-200",   emoji: "🚪" },
+  "REBALANCE": { bg: "bg-amber-50",  text: "text-amber-800",  border: "border-amber-200",  emoji: "♻️" },
+  "WARN":      { bg: "bg-yellow-50", text: "text-yellow-800", border: "border-yellow-200", emoji: "⚠️" },
+};
 
 const ECO_BAR: Record<EcosystemId, string> = {
   "ai": "bg-blue-500",
@@ -81,6 +89,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
   // Product category participation (across all categories)
   const firmCategoryEntries = getFirmCategories(firm.id);
 
+  // Sell / rebalance signals
+  const sellSignals = await getSellSignalsForFirm(firm.id);
+
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
       {/* Breadcrumb */}
@@ -130,6 +141,51 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </div>
+
+      {/* Sell / Rebalance / Warn signals */}
+      {sellSignals.length > 0 && (
+        <section className="toss-card !bg-gray-50/50">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-[0.6875rem] font-extrabold text-gray-500 uppercase tracking-wider">
+              {tEco("firmSellPanelTitle")}
+            </span>
+            <span className="text-[0.625rem] font-bold text-gray-400">
+              {sellSignals.length}
+            </span>
+          </div>
+          <p className="text-xs text-gray-500 leading-snug mb-3">
+            {tEco("firmSellPanelHint")}
+          </p>
+          <div className="space-y-2">
+            {sellSignals.map((s, i) => {
+              const sty = SEVERITY_STYLE[s.severity];
+              return (
+                <div
+                  key={i}
+                  className={`rounded-xl border ${sty.border} ${sty.bg} px-3 py-2.5`}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${sty.text} bg-white/70`}>
+                      {sty.emoji} {s.severity}
+                    </span>
+                    <span className="text-[0.6875rem] font-extrabold text-gray-700">
+                      {s.kind}
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-800 leading-snug">
+                    {locale === "ko" ? s.reasonKo : s.reasonEn}
+                  </p>
+                  {s.evidence.successorCategoryName && (
+                    <div className="text-[0.6875rem] font-bold text-gray-500 mt-1">
+                      → {tEco("categorySuccessor")}: {s.evidence.successorCategoryName}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Ecosystem position */}
       <section className="toss-card">

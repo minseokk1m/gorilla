@@ -51,7 +51,14 @@
     "firmCategoryHeading": "이 기업의 카테고리 참여",
     "firmCategoryHint": "같은 layer 안에서도 카테고리마다 위치(고릴라/왕자/도전자)가 다릅니다. 카테고리 단계와 함께 매수·매도·리밸런싱 신호의 1차 입력입니다.",
     "categorySuccessor": "후계 카테고리",
-    "noCategoriesInLayer": "이 layer는 아직 카테고리 분류가 미완성입니다 (secondary firm만 매핑된 layer일 수 있음)."
+    "noCategoriesInLayer": "이 layer는 아직 카테고리 분류가 미완성입니다 (secondary firm만 매핑된 layer일 수 있음).",
+    "sellExitTitle": "🚪 매도 후보 (EXIT)",
+    "sellRebalanceTitle": "♻️ 리밸런싱 후보 (REBALANCE)",
+    "sellWarnTitle": "⚠️ 관찰 경고 (WARN)",
+    "sellEmpty": "현재 신호 없음",
+    "sellSeeAll": "전체 신호 보기",
+    "firmSellPanelTitle": "매도·리밸런싱 신호",
+    "firmSellPanelHint": "카테고리 phase·firm role·가격 모멘텀·뉴스 sentiment·Moore 충돌을 결합한 자동 신호. 등급은 그대로 유지하되 토론 트리거로 사용."
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"

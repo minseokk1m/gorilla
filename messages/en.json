@@ -51,7 +51,14 @@
     "firmCategoryHeading": "This firm's category participation",
     "firmCategoryHint": "Even within the same layer, this firm holds different positions (Gorilla/Prince/Challenger) per category. With category lifecycle phase, this is the primary input for buy/sell/rebalance signals.",
     "categorySuccessor": "Successor",
-    "noCategoriesInLayer": "Categories not yet defined for this layer (may only have secondary firms)."
+    "noCategoriesInLayer": "Categories not yet defined for this layer (may only have secondary firms).",
+    "sellExitTitle": "🚪 Exit candidates (EXIT)",
+    "sellRebalanceTitle": "♻️ Rebalance candidates (REBALANCE)",
+    "sellWarnTitle": "⚠️ Watch warnings (WARN)",
+    "sellEmpty": "No signals at the moment",
+    "sellSeeAll": "See all signals",
+    "firmSellPanelTitle": "Sell · Rebalance signals",
+    "firmSellPanelHint": "Auto-generated from category phase + firm role + price momentum + news sentiment + Moore conflict. Tier unchanged — use as discussion trigger."
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
