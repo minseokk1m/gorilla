@@ -10,6 +10,7 @@ import {
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllEcosystemMomentums, type EcosystemMomentum } from "@/lib/data/providers/layer-momentum";
 import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
+import { EcosystemOverlayChart, type OverlayEcosystemSeries } from "@/components/ecosystems/EcosystemOverlayChart";
 
 const TIER_ORDER: ClassificationTier[] = [
   "Gorilla",
@@ -85,6 +86,19 @@ const ECO_ACCENT: Record<EcosystemId, { bar: string; tint: string }> = {
   "space": { bar: "bg-indigo-600", tint: "bg-indigo-50" },
 };
 
+/** Hex colors matching ECO_ACCENT.bar — used by recharts overlay chart. */
+const ECO_HEX: Record<EcosystemId, string> = {
+  "ai": "#3b82f6",
+  "cybersecurity": "#f43f5e",
+  "energy-transition": "#10b981",
+  "defense": "#475569",
+  "korean-industrial": "#f97316",
+  "crypto": "#8b5cf6",
+  "biotech": "#14b8a6",
+  "auto-ev-battery": "#eab308",
+  "space": "#4f46e5",
+};
+
 export default async function EcosystemsPage({
   params,
 }: {
@@ -131,6 +145,21 @@ export default async function EcosystemsPage({
     .map((id) => firmById.get(id))
     .filter((f): f is NonNullable<typeof f> => Boolean(f));
 
+  // Overlay chart series — only ecosystems with a usable sparkline
+  const overlaySeries: OverlayEcosystemSeries[] = ECOSYSTEMS
+    .map((eco) => {
+      const m = momentumById.get(eco.id);
+      if (!m || !m.priceSparkline || m.priceSparkline.length < 2) return null;
+      return {
+        id: eco.id,
+        name: locale === "ko" ? eco.nameKo : eco.name,
+        color: ECO_HEX[eco.id],
+        sparkline: m.priceSparkline,
+        pct4w: m.priceMomentumByTimeframe["4w"],
+      };
+    })
+    .filter((x): x is OverlayEcosystemSeries => x !== null);
+
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
       {/* Header */}
@@ -141,6 +170,18 @@ export default async function EcosystemsPage({
           {t("totalSummary", totals)}
         </p>
       </div>
+
+      {/* Overlay chart — 9 ecosystems on one canvas */}
+      {overlaySeries.length > 0 && (
+        <div className="mb-6">
+          <EcosystemOverlayChart
+            series={overlaySeries}
+            locale={locale}
+            title={t("overlayTitle")}
+            subtitle={t("overlaySubtitle")}
+          />
+        </div>
+      )}
 
       {/* Ecosystem cards grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">

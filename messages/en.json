@@ -42,7 +42,9 @@
     "tf4w": "4W",
     "tf12w": "12W",
     "priceTrend": "Price trend",
-    "trendBase": "12W start = 100"
+    "trendBase": "12W start = 100",
+    "overlayTitle": "Ecosystem macro comparison (12W price)",
+    "overlaySubtitle": "All series rebased to 100 at 12W start · click to toggle"
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
