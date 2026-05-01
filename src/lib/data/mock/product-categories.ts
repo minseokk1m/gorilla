@@ -1472,4 +1472,522 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Cybersecurity > endpoint
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "edr-xdr-platform",
+    name: "EDR/XDR Platform",
+    nameKo: "엔드포인트 EDR/XDR 플랫폼",
+    ecosystemId: "cybersecurity",
+    layerId: "endpoint",
+    description: "단말 위협 탐지·대응 통합 플랫폼 — Microsoft Defender 외부 위협",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "CrowdStrike Falcon이 cloud-native EDR 표준이지만 Microsoft Defender 번들 위협. 2024 outage 후 SentinelOne 점유 일부 회복.",
+    participants: [
+      {
+        firmId: "crwd",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "CrowdStrike Falcon — cloud-native EDR/XDR 표준, F500 60%+ 도입.",
+      },
+      {
+        firmId: "sent",
+        role: "Prince",
+        revenueWeight: 0.95,
+        rationale: "SentinelOne — AI-native EDR로 CRWD 추격, 2024 outage 수혜.",
+      },
+    ],
+  },
+  {
+    id: "threat-intel-services",
+    name: "Threat Intelligence & MDR",
+    nameKo: "위협 인텔리전스·관리형 탐지대응 (MDR)",
+    ecosystemId: "cybersecurity",
+    layerId: "endpoint",
+    description: "AI 기반 threat hunting + 24x7 MDR 서비스 — EDR 위 layer",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "EDR 도입 완료 후 enterprise가 MDR 외주화 가속. CrowdStrike·SentinelOne 모두 핵심 upsell 영역.",
+    participants: [
+      {
+        firmId: "crwd",
+        role: "King",
+        revenueWeight: 0.20,
+        rationale: "Falcon Complete MDR — 가장 큰 MDR 서비스 매출.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Cybersecurity > network-firewall
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "ngfw-physical",
+    name: "Next-Gen Firewall (NGFW)",
+    nameKo: "차세대 방화벽 (NGFW)",
+    ecosystemId: "cybersecurity",
+    layerId: "network-firewall",
+    description: "온프렘 NGFW 어플라이언스 — Palo Alto·Fortinet 양강",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "온프렘 방화벽 시장은 cloud SASE로 일부 잠식되지만 enterprise·정부 lock-in 강함. PANW가 종합 leader, FTNT가 가성비 강자.",
+    participants: [
+      {
+        firmId: "panw",
+        role: "Gorilla",
+        revenueWeight: 0.55,
+        rationale: "Palo Alto Networks — NGFW 종합 leader, 정부·F500 도입 1위.",
+      },
+      {
+        firmId: "ftnt",
+        role: "Prince",
+        revenueWeight: 0.85,
+        rationale: "Fortinet — FortiGate 가성비 강자, mid-market·국제 강세.",
+      },
+    ],
+  },
+  {
+    id: "sase-zero-trust",
+    name: "SASE & Zero Trust",
+    nameKo: "SASE·제로 트러스트",
+    ecosystemId: "cybersecurity",
+    layerId: "network-firewall",
+    description: "클라우드형 보안 엣지·제로 트러스트 — Zscaler/Cloudflare 외부 + Prisma",
+    phase: "Tornado",
+    phaseRationale:
+      "재택·클라우드 전환으로 SASE 토네이도 진입. Zscaler·Cloudflare(외부)와 Prisma·FortiSASE 경쟁.",
+    participants: [
+      {
+        firmId: "panw",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "Prisma SASE — 고성장 segment, NGFW와 통합 강점.",
+      },
+      {
+        firmId: "ftnt",
+        role: "Challenger",
+        revenueWeight: 0.10,
+        rationale: "FortiSASE — Fortinet ecosystem 통합으로 추격.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Cybersecurity > identity
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "iam-sso-mfa",
+    name: "Workforce IAM & SSO",
+    nameKo: "인력 IAM·SSO",
+    ecosystemId: "cybersecurity",
+    layerId: "identity",
+    description: "직원 신원관리·SSO·MFA — Okta vs Microsoft Entra",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Okta가 cloud-native IAM 표준이지만 Microsoft Entra 번들에 점유 잠식. CIAM(Auth0)으로 확장.",
+    participants: [
+      {
+        firmId: "okta",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Okta — cloud-native IAM 표준, Auth0 인수로 CIAM 확장.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > shipbuilding
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "lng-carrier-orderbook",
+    name: "LNG Carrier",
+    nameKo: "LNG 운반선",
+    ecosystemId: "korean-industrial",
+    layerId: "shipbuilding",
+    description: "LNG 운반선 — 한국 3사 글로벌 점유 90%+ 카르텔에 가까움",
+    phase: "Tornado",
+    phaseRationale:
+      "유럽 가스 위기 + 미국 LNG 수출 확대로 발주 폭발, 2030년까지 도크 만석. 한국 3사가 사실상 글로벌 oligopoly.",
+    participants: [
+      {
+        firmId: "hhih",
+        role: "Gorilla",
+        revenueWeight: 0.55,
+        rationale: "HD한국조선해양 — 글로벌 LNG 운반선 점유 1위.",
+      },
+      {
+        firmId: "shi",
+        role: "Prince",
+        revenueWeight: 0.50,
+        rationale: "삼성중공업 — LNG 운반선 #2, 도크 만석.",
+      },
+      {
+        firmId: "hho",
+        role: "Prince",
+        revenueWeight: 0.40,
+        rationale: "한화오션(구 대우조선) — 한화 인수 후 흑자 전환, LNG 운반선 강자.",
+      },
+    ],
+  },
+  {
+    id: "offshore-energy-platform",
+    name: "Offshore Energy Platform",
+    nameKo: "해양 에너지 플랜트",
+    ecosystemId: "korean-industrial",
+    layerId: "shipbuilding",
+    description: "FPSO·해양 시추 설비 — 유가 사이클 의존",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "유가 회복으로 FPSO 발주 회복, 그러나 LNG 운반선만큼 토네이도는 아님.",
+    participants: [
+      {
+        firmId: "hhih",
+        role: "King",
+        revenueWeight: 0.20,
+        rationale: "HD한국조선해양 — FPSO 강자.",
+      },
+      {
+        firmId: "shi",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "삼성중공업 — FPSO 글로벌 강자.",
+      },
+    ],
+  },
+  {
+    id: "naval-shipbuilding-export",
+    name: "Naval Shipbuilding Export",
+    nameKo: "함정 수출 (해군 조선)",
+    ecosystemId: "korean-industrial",
+    layerId: "shipbuilding",
+    description: "잠수함·구축함 수출 — 미·호주·캐나다 협력 가속",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "미 해군 함정 정비·신조 협력 논의 진전, 호주·캐나다 잠수함 입찰. 한화오션·HD한국조선해양 양강 입찰 경쟁.",
+    participants: [
+      {
+        firmId: "hho",
+        role: "King",
+        revenueWeight: 0.20,
+        rationale: "한화오션 — 호주 잠수함·미 해군 정비 협력 추진.",
+      },
+      {
+        firmId: "hhih",
+        role: "Prince",
+        revenueWeight: 0.10,
+        rationale: "HD한국조선해양 — 캐나다 잠수함·함정 수출 입찰.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > defense (한국 방산)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "k9-self-propelled-artillery",
+    name: "Self-Propelled Artillery (K9)",
+    nameKo: "K9 자주포",
+    ecosystemId: "korean-industrial",
+    layerId: "defense",
+    description: "K9 자주포 — 글로벌 자주포 카테고리 사실상 표준",
+    phase: "Tornado",
+    phaseRationale:
+      "폴란드 1차 계약 후 이집트·노르웨이·핀란드·루마니아 추가 수주. 글로벌 자주포 카테고리에서 K9이 사실상 표준.",
+    participants: [
+      {
+        firmId: "hwa",
+        role: "Gorilla",
+        revenueWeight: 0.50,
+        rationale: "한화에어로스페이스 — K9 자주포 글로벌 점유 50%+, 사실상 카테고리 표준.",
+      },
+    ],
+  },
+  {
+    id: "k2-tank-export",
+    name: "K2 Tank Export",
+    nameKo: "K2 전차 수출",
+    ecosystemId: "korean-industrial",
+    layerId: "defense",
+    description: "K2 흑표 전차 — 폴란드 1000대 + 추가 수주, 글로벌 전차 시장 진입",
+    phase: "Tornado",
+    phaseRationale:
+      "폴란드 K2 1차 180대 + 2차 820대 협상 진행, 루마니아·노르웨이 등 추가 입찰. 글로벌 전차 시장에서 Leopard 2(독일)·Abrams(미)와 차별화된 가격·납기로 점유 확대.",
+    participants: [
+      {
+        firmId: "hrt",
+        role: "Gorilla",
+        revenueWeight: 0.55,
+        rationale: "현대로템 — K2 전차 단독 제조, 폴란드 등 수출 가속.",
+      },
+    ],
+  },
+  {
+    id: "precision-guided-missile-kr",
+    name: "Korean Precision-Guided Missile",
+    nameKo: "한국 정밀유도무기·미사일",
+    ecosystemId: "korean-industrial",
+    layerId: "defense",
+    description: "천궁(M-SAM)·해성·현무 — UAE·사우디 수출 확대",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "한국 시장에서는 사실상 독점이지만 글로벌 미사일 카테고리에서는 도전자급. UAE·사우디 천궁 수출이 첫 글로벌 토네이도 신호.",
+    participants: [
+      {
+        firmId: "lig",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "LIG넥스원 — 한국 유도무기·미사일 표준, 글로벌 수출 확대.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > auto (한국 자동차)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "korean-ev-platform",
+    name: "Korean EV Platform (E-GMP)",
+    nameKo: "한국 EV 플랫폼 (E-GMP)",
+    ecosystemId: "korean-industrial",
+    layerId: "auto",
+    description: "Ioniq 5/6/9·EV6/EV9 — 800V 플랫폼 글로벌 EV 카테고리 강자",
+    phase: "Tornado",
+    phaseRationale:
+      "E-GMP 플랫폼이 800V·400kW 충전 기술로 글로벌 EV 차별화. 미 IRA 거점 조지아 메타플랜트 가동, 유럽·미국 점유 확대.",
+    participants: [
+      {
+        firmId: "hyundai",
+        role: "King",
+        revenueWeight: 0.20,
+        rationale: "현대차 — Ioniq 라인업, 글로벌 EV 점유 상위.",
+      },
+      {
+        firmId: "kia",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "기아 — EV6/EV9, E-GMP 플랫폼 공유, 가격 차별화.",
+      },
+    ],
+  },
+  {
+    id: "korean-ice-vehicle",
+    name: "Korean ICE/Hybrid Vehicle",
+    nameKo: "한국 ICE·하이브리드 차량",
+    ecosystemId: "korean-industrial",
+    layerId: "auto",
+    description: "Sonata·Tucson·K5·Sportage 등 — 캐시카우 본업",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "글로벌 ICE/하이브리드 시장은 성숙. 현대·기아가 미·유럽 점유 안정 확대. EV 전환 가속이 장기적 declining 압력.",
+    participants: [
+      {
+        firmId: "hyundai",
+        role: "King",
+        revenueWeight: 0.70,
+        rationale: "현대차 — ICE/하이브리드 본업, 글로벌 점유 상위.",
+      },
+      {
+        firmId: "kia",
+        role: "Prince",
+        revenueWeight: 0.65,
+        rationale: "기아 — Sportage·K5 등 안정 캐시카우.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > battery (한국 배터리)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "ev-battery-cell-pouch",
+    name: "EV Battery Cell (Pouch)",
+    nameKo: "EV 배터리 셀 (파우치형)",
+    ecosystemId: "korean-industrial",
+    layerId: "battery",
+    description: "파우치형 배터리 셀 — 현대·GM·VW 등 OEM 공급",
+    phase: "Tornado",
+    phaseRationale:
+      "EV 토네이도 둔화에도 IRA 보조금 + 미국 거점화로 한국 셀 메이커 안정. 파우치형은 LGES가 leader.",
+    participants: [
+      {
+        firmId: "lges",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "LG에너지솔루션 — 파우치형 셀 글로벌 #1, GM·VW·Stellantis 공급.",
+      },
+    ],
+  },
+  {
+    id: "ev-battery-cell-prismatic",
+    name: "EV Battery Cell (Prismatic)",
+    nameKo: "EV 배터리 셀 (각형)",
+    ecosystemId: "korean-industrial",
+    layerId: "battery",
+    description: "각형 배터리 셀 — BMW·Audi 등 프리미엄 OEM 공급",
+    phase: "Tornado",
+    phaseRationale:
+      "각형 셀 비중 점진 확대(중국 CATL·BYD 영향). SDI가 한국 각형 leader.",
+    participants: [
+      {
+        firmId: "sdi",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "삼성SDI — 각형 셀 글로벌 강자, BMW·Audi·Stellantis 공급.",
+      },
+    ],
+  },
+  {
+    id: "grid-ess-battery",
+    name: "Grid Energy Storage Battery",
+    nameKo: "그리드 ESS 배터리",
+    ecosystemId: "korean-industrial",
+    layerId: "battery",
+    description: "그리드·산업용 ESS — 재생에너지 backup 수요 증가",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "재생에너지 변동성 흡수 + AI DC backup 수요로 ESS 시장 진입. 한국·미·중 oligopoly 경쟁.",
+    participants: [
+      {
+        firmId: "lges",
+        role: "King",
+        revenueWeight: 0.10,
+        rationale: "LG에너지솔루션 — ESS 셀 공급, 미국 IRA 거점.",
+      },
+      {
+        firmId: "sdi",
+        role: "Prince",
+        revenueWeight: 0.10,
+        rationale: "삼성SDI — ESS 셀, 데이터센터 backup 시장.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > internet
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "korean-search",
+    name: "Korean Search & Web Portal",
+    nameKo: "한국 검색·웹 포털",
+    ecosystemId: "korean-industrial",
+    layerId: "internet",
+    description: "NAVER 검색·뉴스·쇼핑 — 한국 검색 카테고리 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Google에 일부 검색 점유 잠식되었으나 한국에서는 여전히 #1. 쇼핑·페이로 슈퍼앱화 시도.",
+    participants: [
+      {
+        firmId: "naver",
+        role: "Gorilla",
+        revenueWeight: 0.65,
+        rationale: "NAVER — 한국 검색·포털 표준, 쇼핑·페이로 확장.",
+      },
+    ],
+  },
+  {
+    id: "korean-messenger-platform",
+    name: "Korean Messenger Platform",
+    nameKo: "한국 메신저 플랫폼",
+    ecosystemId: "korean-industrial",
+    layerId: "internet",
+    description: "카카오톡·카카오페이·카카오뱅크 — 한국 메신저 슈퍼앱",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "카카오톡 한국 메신저 표준 확고하지만 부속 사업(페이·뱅크·모빌리티) 성장 둔화 + 규제 압박.",
+    participants: [
+      {
+        firmId: "kakao",
+        role: "Gorilla",
+        revenueWeight: 0.50,
+        rationale: "카카오 — 한국 메신저 표준, 슈퍼앱 lock-in.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > bio
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "biosimilars-global",
+    name: "Global Biosimilars",
+    nameKo: "글로벌 바이오시밀러",
+    ecosystemId: "korean-industrial",
+    layerId: "bio",
+    description: "휴미라·아바스틴·허셉틴 등 바이오시밀러 — 글로벌 가격 경쟁",
+    phase: "Tornado",
+    phaseRationale:
+      "오리지널 바이오 의약품 특허 만료 가속 + 미·유럽 보험사 바이오시밀러 우대로 토네이도 진입. 셀트리온·삼바·산도즈 oligopoly.",
+    participants: [
+      {
+        firmId: "celltrion",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "셀트리온 — 글로벌 바이오시밀러 강자, 휴미라 시밀러 등 다수 보유.",
+      },
+    ],
+  },
+  {
+    id: "biopharma-cdmo",
+    name: "Biopharma CDMO",
+    nameKo: "바이오 의약품 CDMO",
+    ecosystemId: "korean-industrial",
+    layerId: "bio",
+    description: "바이오 의약품 위탁 생산 — 글로벌 빅파마 외주 거점",
+    phase: "Tornado",
+    phaseRationale:
+      "GLP-1·항암·백신 등 바이오 수요 폭발로 CDMO capa 부족. 삼성바이오로직스가 글로벌 1위 capa.",
+    participants: [
+      {
+        firmId: "sbiologics",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "삼성바이오로직스 — 글로벌 바이오 CDMO capa 1위, 4·5공장 가동·증설.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Korean Industrial > materials
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "korean-steel",
+    name: "Korean Steel",
+    nameKo: "한국 철강",
+    ecosystemId: "korean-industrial",
+    layerId: "materials",
+    description: "조선·자동차용 후판·고급강 — 글로벌 oligopoly 안정",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "글로벌 철강은 성숙·중국 공급과잉 압력. POSCO가 후판·고급강에서 안정 점유.",
+    participants: [
+      {
+        firmId: "posco",
+        role: "King",
+        revenueWeight: 0.65,
+        rationale: "POSCO — 한국 철강 표준, 후판·고급강 글로벌 점유.",
+      },
+    ],
+  },
+  {
+    id: "battery-cathode-precursor",
+    name: "Battery Cathode & Precursor",
+    nameKo: "배터리 양극재·전구체",
+    ecosystemId: "korean-industrial",
+    layerId: "materials",
+    description: "EV 배터리 양극재·전구체 — 한국 셀 3사 전·후방 통합",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "EV 토네이도 둔화로 양극재 가격·물량 압박, 그러나 IRA 미국 거점화 수혜는 지속. POSCO Future M(POSCO 계열).",
+    participants: [
+      {
+        firmId: "posco",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "POSCO Future M — 한국 양극재·전구체 leader, IRA 미국 생산 거점화.",
+      },
+    ],
+  },
 ];
