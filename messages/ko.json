@@ -22,7 +22,13 @@
     "noFirms": "(기업 매핑 없음)",
     "totalSummary": "총 9개 이코시스템 · 51개 layer · {primary}개 primary 매핑 + {secondary}개 secondary 교차 + {uncategorized}개 미분류",
     "uncategorizedTitle": "아직 어디에도 매핑되지 않은 기업",
-    "uncategorizedHint": "Financial · Telecom · Consumer Staples 등 — 향후 ecosystem 확장 후보"
+    "uncategorizedHint": "Financial · Telecom · Consumer Staples 등 — 향후 ecosystem 확장 후보",
+    "position": "이코시스템 위치",
+    "primaryRole": "주 위치",
+    "secondaryRole": "교차 영역",
+    "layerPeers": "같은 layer 기업",
+    "viewFullLayer": "Layer 전체 보기 →",
+    "notMapped": "아직 ecosystem에 매핑되지 않은 기업입니다. 향후 분류 토론 후 추가됩니다."
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"

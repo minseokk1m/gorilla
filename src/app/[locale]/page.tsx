@@ -7,6 +7,7 @@ import { getSupabase } from "@/lib/supabase/admin";
 import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
 import DashboardSearch from "@/components/dashboard/DashboardSearch";
 import { FIRM_NAMES_KO } from "@/lib/data/mock/firm-names-ko";
+import { detectMooreConflicts } from "@/lib/data/providers/ecosystem-provider";
 
 /* ── Tier config — mirrors the Learn page 8-tier theory ── */
 const TIERS: {
@@ -37,9 +38,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "dashboard" });
   const tTiers = await getTranslations({ locale, namespace: "tiers" });
 
-  const [firms, classificationsMap] = await Promise.all([
+  const [firms, classificationsMap, mooreConflicts] = await Promise.all([
     getAllFirms(),
     getAllClassifications(locale),
+    detectMooreConflicts(locale as "en" | "ko"),
   ]);
 
   // Fetch discussion activity
@@ -303,7 +305,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
 
       {/* ── Quick Navigation ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <Link href="/ecosystems">
+          <div className="toss-card-interactive !p-4 text-center relative">
+            <div className="text-2xl mb-1">🌐</div>
+            <div className="text-sm font-extrabold text-gray-900">이코시스템</div>
+            <div className="text-xs text-gray-400 font-medium mt-0.5">9개 거시 × 51 layer</div>
+            {mooreConflicts.length > 0 && (
+              <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[0.625rem] font-extrabold">
+                ⚠️ {mooreConflicts.length}
+              </div>
+            )}
+          </div>
+        </Link>
         <Link href="/categories">
           <div className="toss-card-interactive !p-4 text-center">
             <div className="text-2xl mb-1">🗺️</div>

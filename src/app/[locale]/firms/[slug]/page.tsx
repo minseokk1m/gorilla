@@ -12,6 +12,24 @@ import { REVENUE_SEGMENTS } from "@/lib/data/mock/revenue-segments";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { DIMENSION_META, DIMENSION_KEYWORDS } from "@/lib/utils/news-impact";
+import {
+  getFirmEcosystems,
+  getLayerMemberships,
+} from "@/lib/data/providers/ecosystem-provider";
+import { findEcosystem } from "@/lib/data/mock/ecosystems";
+import type { EcosystemId } from "@/types/ecosystem";
+
+const ECO_BAR: Record<EcosystemId, string> = {
+  "ai": "bg-blue-500",
+  "cybersecurity": "bg-rose-500",
+  "energy-transition": "bg-emerald-500",
+  "defense": "bg-slate-600",
+  "korean-industrial": "bg-orange-500",
+  "crypto": "bg-violet-500",
+  "biotech": "bg-teal-500",
+  "auto-ev-battery": "bg-yellow-500",
+  "space": "bg-indigo-600",
+};
 
 export async function generateStaticParams() {
   return MOCK_FIRMS.flatMap((f) =>
@@ -33,6 +51,20 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
 
   const competitorFirms = allFirms.filter((f) => firm.competitors.includes(f.slug));
   const revenueSegs = REVENUE_SEGMENTS[firm.id];
+
+  const tEco = await getTranslations({ locale, namespace: "ecosystems" });
+  const memberships = getFirmEcosystems(firm.id);
+  const primaryMem = memberships.find((m) => m.role === "primary");
+  const secondaryMems = memberships.filter((m) => m.role === "secondary");
+  const primaryEco = primaryMem ? findEcosystem(primaryMem.ecosystemId) : null;
+  const primaryLayer = primaryEco?.layers.find((l) => l.id === primaryMem!.layerId) ?? null;
+  const layerPeers = primaryMem
+    ? getLayerMemberships(primaryMem.ecosystemId, primaryMem.layerId)
+        .filter((m) => m.firmId !== firm.id)
+        .map((m) => allFirms.find((f) => f.id === m.firmId))
+        .filter((f): f is NonNullable<typeof f> => Boolean(f))
+        .slice(0, 8)
+    : [];
 
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
@@ -83,6 +115,97 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </div>
+
+      {/* Ecosystem position */}
+      <section className="toss-card">
+        <div className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider mb-3">
+          {tEco("position")}
+        </div>
+        {primaryEco && primaryMem && primaryLayer ? (
+          <div className="space-y-4">
+            <Link
+              href={`/ecosystems/${primaryEco.slug}`}
+              className="block relative pl-4 group"
+            >
+              <div className={`absolute left-0 top-0 bottom-0 w-1 ${ECO_BAR[primaryEco.id]} rounded-full`} />
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="font-extrabold text-gray-900 text-lg">
+                  {locale === "ko" ? primaryEco.nameKo : primaryEco.name}
+                </span>
+                <span className="text-gray-400 font-bold">›</span>
+                <span className="font-bold text-gray-700">
+                  {locale === "ko" ? primaryLayer.nameKo : primaryLayer.name}
+                </span>
+                <span className="text-[0.6875rem] font-extrabold text-gray-400 uppercase ml-1">
+                  L{primaryLayer.position}
+                </span>
+              </div>
+              <p className="text-[0.8125rem] text-gray-500 leading-snug group-hover:text-gray-700 transition-colors">
+                {primaryLayer.description}
+              </p>
+            </Link>
+
+            {/* Secondary cross-cut memberships */}
+            {secondaryMems.length > 0 && (
+              <div className="border-t border-gray-100 pt-4">
+                <div className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider mb-2">
+                  {tEco("secondaryRole")}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {secondaryMems.map((m) => {
+                    const sEco = findEcosystem(m.ecosystemId);
+                    const sLayer = sEco?.layers.find((l) => l.id === m.layerId);
+                    if (!sEco || !sLayer) return null;
+                    return (
+                      <Link
+                        key={`${m.ecosystemId}-${m.layerId}`}
+                        href={`/ecosystems/${sEco.slug}`}
+                        className="flex items-center gap-2 rounded-lg border border-dashed border-gray-200 bg-gray-50 px-3 py-2 text-xs font-bold hover:border-gray-300 transition-colors"
+                        title={m.rationale}
+                      >
+                        <span className={`inline-block w-1.5 h-1.5 rounded-full ${ECO_BAR[sEco.id]}`} />
+                        <span className="text-gray-700">{locale === "ko" ? sEco.nameKo : sEco.name}</span>
+                        <span className="text-gray-400">›</span>
+                        <span className="text-gray-500">{locale === "ko" ? sLayer.nameKo : sLayer.name}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Layer peers */}
+            {layerPeers.length > 0 && (
+              <div className="border-t border-gray-100 pt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider">
+                    {tEco("layerPeers")}
+                  </span>
+                  <Link
+                    href={`/ecosystems/${primaryEco.slug}`}
+                    className="text-[0.6875rem] font-bold text-[#0064FF] hover:underline"
+                  >
+                    {tEco("viewFullLayer")}
+                  </Link>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {layerPeers.map((peer) => (
+                    <Link
+                      key={peer.id}
+                      href={`/firms/${peer.slug}`}
+                      className="px-2.5 py-1 rounded-md bg-white text-xs font-bold text-gray-700 hover:text-gray-900 border border-gray-200 hover:border-gray-300 transition-colors"
+                    >
+                      {peer.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <p className="text-sm text-gray-400 italic">{tEco("notMapped")}</p>
+        )}
+      </section>
 
       {/* Analysis + Score */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">

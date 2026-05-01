@@ -22,7 +22,13 @@
     "noFirms": "(no firm mapped)",
     "totalSummary": "9 ecosystems · 51 layers · {primary} primary + {secondary} secondary cross-cut + {uncategorized} uncategorized",
     "uncategorizedTitle": "Not yet mapped",
-    "uncategorizedHint": "Financial · Telecom · Consumer Staples — candidates for future ecosystem expansion"
+    "uncategorizedHint": "Financial · Telecom · Consumer Staples — candidates for future ecosystem expansion",
+    "position": "Ecosystem position",
+    "primaryRole": "Primary",
+    "secondaryRole": "Cross-cut",
+    "layerPeers": "Peers in this layer",
+    "viewFullLayer": "View entire layer →",
+    "notMapped": "Not yet mapped to any ecosystem. Will be added after classification discussion."
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
