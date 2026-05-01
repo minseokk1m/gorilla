@@ -725,4 +725,751 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  // AI > data-platform (데이터·분석 플랫폼)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "cloud-data-warehouse",
+    name: "Cloud Data Warehouse",
+    nameKo: "클라우드 데이터 웨어하우스",
+    ecosystemId: "ai",
+    layerId: "data-platform",
+    description: "엔터프라이즈 분석용 데이터 웨어하우스 — Snowflake vs Databricks 양강",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "초기 폭발 성장 후 안정화. Databricks(비상장)·BigQuery·Redshift와 oligopoly. AI 워크로드의 데이터 허브로 안정 수요.",
+    participants: [
+      {
+        firmId: "snow",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Snowflake — 멀티 클라우드 데이터 공유 표준, 엔터프라이즈 도입 1위.",
+      },
+    ],
+  },
+  {
+    id: "nosql-document-db",
+    name: "NoSQL Document Database",
+    nameKo: "NoSQL 도큐먼트 DB",
+    ecosystemId: "ai",
+    layerId: "data-platform",
+    description: "JSON 문서 기반 NoSQL DB — 신규 앱의 default 선택 중 하나",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "MongoDB가 표준이지만 AWS DynamoDB·Cosmos DB가 cloud-native 워크로드 잠식. Vector search 추가로 AI 시대 재포지셔닝.",
+    participants: [
+      {
+        firmId: "mdb",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "MongoDB — 도큐먼트 DB 사실상 표준, Atlas로 cloud 매출 확대.",
+      },
+    ],
+  },
+  {
+    id: "search-analytics",
+    name: "Search & Analytics Engine",
+    nameKo: "검색·분석 엔진",
+    ecosystemId: "ai",
+    layerId: "data-platform",
+    description: "엔터프라이즈 검색·로그 분석·옵저버빌리티 — Elastic stack",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "ELK stack 사실상 표준이지만 OpenSearch fork·observability 경쟁사 잠식. AI 검색(vector)으로 재포지셔닝 중.",
+    participants: [
+      {
+        firmId: "elastic",
+        role: "Gorilla",
+        revenueWeight: 0.85,
+        rationale: "Elastic — ELK stack open-source, 엔터프라이즈 검색·로그 표준.",
+      },
+    ],
+  },
+  {
+    id: "event-streaming-kafka",
+    name: "Event Streaming (Kafka)",
+    nameKo: "이벤트 스트리밍(Kafka)",
+    ecosystemId: "ai",
+    layerId: "data-platform",
+    description: "Apache Kafka 기반 실시간 이벤트 처리 — 데이터 파이프라인 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Kafka가 사실상 표준 protocol. Confluent Cloud가 commercial leader, AWS MSK·Redpanda 경쟁.",
+    participants: [
+      {
+        firmId: "cflt",
+        role: "Gorilla",
+        revenueWeight: 0.90,
+        rationale: "Confluent — Kafka 창업자, 사실상 commercial 표준.",
+      },
+    ],
+  },
+  {
+    id: "product-analytics",
+    name: "Product Analytics",
+    nameKo: "제품 분석",
+    ecosystemId: "ai",
+    layerId: "data-platform",
+    description: "B2C/B2B 제품 사용 데이터 분석 — Mixpanel/Amplitude/Pendo oligopoly",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "PMF 후 안정 시장. Amplitude·Mixpanel·Pendo 분할.",
+    participants: [
+      {
+        firmId: "ampl",
+        role: "Prince",
+        revenueWeight: 0.95,
+        rationale: "Amplitude — Mixpanel과 양분 경쟁.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // AI > ai-platform (AI 플랫폼·옵저버빌리티)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "enterprise-ai-platform",
+    name: "Enterprise AI Application Platform",
+    nameKo: "엔터프라이즈 AI 애플리케이션 플랫폼",
+    ecosystemId: "ai",
+    layerId: "ai-platform",
+    description: "Ontology 기반 의사결정/운영 OS — 정부·국방·산업 도입 가속",
+    phase: "Tornado",
+    phaseRationale:
+      "Palantir AIP가 미 정부·국방·F500 도입 폭발. 경쟁 부재(C3.ai 추격 미미). 토네이도 단계.",
+    participants: [
+      {
+        firmId: "pltr",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Palantir AIP/Foundry/Apollo — 엔터프라이즈 AI OS 표준 굳히기.",
+      },
+      {
+        firmId: "c3ai",
+        role: "Challenger",
+        revenueWeight: 0.95,
+        rationale: "C3.ai — Palantir에 비해 sales·tech 모두 열세, 점유 격차 확대.",
+      },
+    ],
+  },
+  {
+    id: "application-observability",
+    name: "Application Observability (APM)",
+    nameKo: "애플리케이션 옵저버빌리티 (APM)",
+    ecosystemId: "ai",
+    layerId: "ai-platform",
+    description: "분산 시스템 모니터링·트레이싱·메트릭 — Datadog 종합 leader",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "DDOG·DT·NR oligopoly 안정. AI 워크로드 옵저버빌리티(LLM cost, latency)로 일부 신규 수요.",
+    participants: [
+      {
+        firmId: "ddog",
+        role: "King",
+        revenueWeight: 0.90,
+        rationale: "Datadog — APM·인프라·로그 통합 platform 종합 leader.",
+      },
+      {
+        firmId: "dynt",
+        role: "Prince",
+        revenueWeight: 0.90,
+        rationale: "Dynatrace — 엔터프라이즈 deep-instrumentation 강자.",
+      },
+      {
+        firmId: "nrg",
+        role: "Niche",
+        revenueWeight: 0.95,
+        rationale: "New Relic — DDOG에 점유 잠식, 사모펀드에 인수돼 비상장 전환.",
+      },
+    ],
+  },
+  {
+    id: "log-siem-analytics",
+    name: "Log & SIEM Analytics",
+    nameKo: "로그·SIEM 분석",
+    ecosystemId: "ai",
+    layerId: "ai-platform",
+    description: "엔터프라이즈 로그 분석·보안 정보 이벤트 관리 — Splunk legacy + Cisco 통합",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Splunk가 enterprise SIEM 표준이지만 Datadog·Microsoft Sentinel 등 cloud-native에 점유 잠식. Cisco 인수로 enterprise 통합 강화.",
+    participants: [
+      {
+        firmId: "splk",
+        role: "Gorilla",
+        revenueWeight: 0.90,
+        rationale: "Splunk — 엔터프라이즈 SIEM 표준, Cisco 인수 후 비상장.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // AI > dev-tools (개발도구·통합)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "artifact-repository",
+    name: "Binary Artifact Repository",
+    nameKo: "바이너리 아티팩트 저장소",
+    ecosystemId: "ai",
+    layerId: "dev-tools",
+    description: "엔터프라이즈 빌드 산출물·컨테이너 이미지 저장소 — JFrog 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "JFrog Artifactory가 enterprise 표준. GitHub Packages·Cloud-native registry 경쟁이지만 enterprise lock-in 강함.",
+    participants: [
+      {
+        firmId: "frog",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "JFrog Artifactory — enterprise binary repo 사실상 표준.",
+      },
+    ],
+  },
+  {
+    id: "devops-platform",
+    name: "End-to-End DevOps Platform",
+    nameKo: "통합 DevOps 플랫폼",
+    ecosystemId: "ai",
+    layerId: "dev-tools",
+    description: "소스관리+CI/CD+이슈 통합 플랫폼 — GitHub vs GitLab 양강",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "GitHub(Microsoft 산하)이 점유 1위, GitLab이 self-hosted·enterprise에서 강세. AI Copilot 통합 경쟁.",
+    participants: [
+      {
+        firmId: "gtlb",
+        role: "Prince",
+        revenueWeight: 0.95,
+        rationale: "GitLab — self-hosted·regulated industry에서 GitHub 대안.",
+      },
+    ],
+  },
+  {
+    id: "iac-infra-automation",
+    name: "Infrastructure as Code",
+    nameKo: "인프라 코드 자동화 (IaC)",
+    ecosystemId: "ai",
+    layerId: "dev-tools",
+    description: "Terraform·Vault 등 인프라 자동화 — HashiCorp 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Terraform이 사실상 IaC 표준, OpenTofu fork와 라이선스 갈등. IBM 인수 후 비상장.",
+    participants: [
+      {
+        firmId: "hashi",
+        role: "Gorilla",
+        revenueWeight: 0.90,
+        rationale: "HashiCorp Terraform·Vault — IaC 표준, IBM 인수 진행.",
+      },
+    ],
+  },
+  {
+    id: "communications-api",
+    name: "Communications API (CPaaS)",
+    nameKo: "통신 API (CPaaS)",
+    ecosystemId: "ai",
+    layerId: "dev-tools",
+    description: "SMS·voice·video API — Twilio 종합 leader, 가격 압박 큼",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Twilio가 종합 leader지만 Sinch·Bandwidth 등 가격 경쟁 심화. AWS Connect·MS Teams 통합 위협.",
+    participants: [
+      {
+        firmId: "twlo",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "Twilio — 통신 API 종합 leader, 마진 압박으로 구조조정 진행.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // AI > enterprise-saas (기업용 SaaS — 가장 sub-카테고리 많음)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "sales-crm",
+    name: "Sales CRM",
+    nameKo: "영업 CRM",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "영업·고객관계 관리 SaaS — Salesforce 압도적 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Salesforce가 enterprise CRM 표준, HubSpot이 SMB·marketing 자동화 강세. Agentforce(Salesforce)·Breeze(HubSpot) AI agent 경쟁.",
+    participants: [
+      {
+        firmId: "crm",
+        role: "Gorilla",
+        revenueWeight: 0.70,
+        rationale: "Salesforce — enterprise CRM 표준, AppExchange 생태계 lock-in.",
+      },
+      {
+        firmId: "hubs",
+        role: "Prince",
+        revenueWeight: 0.85,
+        rationale: "HubSpot — SMB·marketing 자동화 1위, enterprise 진입 가속.",
+      },
+    ],
+  },
+  {
+    id: "itsm-workflow",
+    name: "ITSM & Enterprise Workflow",
+    nameKo: "ITSM·엔터프라이즈 워크플로",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "IT 서비스 관리·전사 워크플로 OS — ServiceNow 사실상 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "ServiceNow가 ITSM 표준, HR/finance/customer ops로 확장 중. Now Assist AI agent로 토네이도 재진입 시도.",
+    participants: [
+      {
+        firmId: "now",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "ServiceNow — ITSM 표준, F500 90%+ 도입.",
+      },
+    ],
+  },
+  {
+    id: "hcm-payroll",
+    name: "Cloud HCM & Payroll",
+    nameKo: "클라우드 HCM·급여",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "인사·급여·재무 클라우드 SaaS — Workday enterprise 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Workday가 enterprise HCM 표준, SAP SuccessFactors 점유 꾸준히 잠식. AI 기능으로 upsell.",
+    participants: [
+      {
+        firmId: "wday",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Workday — enterprise HCM 사실상 표준, 재무까지 확장.",
+      },
+    ],
+  },
+  {
+    id: "smb-financial-saas",
+    name: "SMB Financial & Tax SaaS",
+    nameKo: "SMB 재무·세무 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "QuickBooks·TurboTax·Mailchimp 통합 — Intuit 압도",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Intuit가 미국 SMB·소비자 세무 사실상 독점. TurboTax 정부 무료 세무 시도 위협, 그러나 lock-in 강력.",
+    participants: [
+      {
+        firmId: "intu",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Intuit — QuickBooks·TurboTax·Credit Karma·Mailchimp 통합.",
+      },
+    ],
+  },
+  {
+    id: "erp-suite",
+    name: "Enterprise ERP",
+    nameKo: "엔터프라이즈 ERP",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "전사 통합 ERP 시스템 — SAP S/4HANA 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "SAP S/4HANA cloud 이전 진행, Oracle Fusion·Workday Financials 잠식. AI Joule로 업셀.",
+    participants: [
+      {
+        firmId: "sap",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "SAP — 글로벌 enterprise ERP 표준, S/4HANA cloud 전환 진행.",
+      },
+    ],
+  },
+  {
+    id: "creative-design-saas",
+    name: "Creative & Design SaaS",
+    nameKo: "창작·디자인 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "Photoshop·Premiere·Figma — Adobe 종합 + 생성 AI Firefly",
+    phase: "Tornado",
+    phaseRationale:
+      "Generative AI(Firefly)가 창작 SaaS 카테고리에 토네이도 재점화. Canva·Figma(Adobe 인수 무산) 경쟁.",
+    participants: [
+      {
+        firmId: "adbe",
+        role: "Gorilla",
+        revenueWeight: 0.90,
+        rationale: "Adobe Creative Cloud + Firefly — 창작 SaaS 사실상 표준, 생성 AI 통합 leader.",
+      },
+    ],
+  },
+  {
+    id: "ad-tech-dsp",
+    name: "Programmatic Ad Tech (DSP)",
+    nameKo: "프로그래매틱 광고 (DSP)",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "오픈 인터넷 광고 입찰 자동화 — The Trade Desk 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "TTD가 오픈 인터넷 DSP 사실상 표준, UID 2.0이 post-cookie 표준 선점. Google Privacy Sandbox 위협.",
+    participants: [
+      {
+        firmId: "ttd",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "The Trade Desk — 오픈 인터넷 DSP·UID 2.0 표준 주도.",
+      },
+    ],
+  },
+  {
+    id: "life-sciences-vertical-saas",
+    name: "Life Sciences Vertical SaaS",
+    nameKo: "생명과학 수직 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "제약·바이오 임상시험·CRM·QMS — Veeva 사실상 표준",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Veeva가 글로벌 제약·바이오 SaaS 표준 (Salesforce platform 이탈 후 자체 platform 구축).",
+    participants: [
+      {
+        firmId: "veeva",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Veeva Systems — 글로벌 제약·바이오 SaaS 표준.",
+      },
+    ],
+  },
+  {
+    id: "video-conferencing",
+    name: "Video Conferencing",
+    nameKo: "영상 회의",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "Zoom·Teams·Meet — 코로나 토네이도 후 Maturing",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "MS Teams 번들에 enterprise share 잠식, Zoom 성장 정체. AI Companion으로 차별화 시도.",
+    participants: [
+      {
+        firmId: "zm",
+        role: "Prince",
+        revenueWeight: 0.90,
+        rationale: "Zoom — UI 우수하지만 Teams 번들에 enterprise share 잠식.",
+      },
+    ],
+  },
+  {
+    id: "ucaas-business-comms",
+    name: "Cloud Business Communications (UCaaS)",
+    nameKo: "기업 통합 통신 (UCaaS)",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "기업 전화·통합 메시징 클라우드 — RingCentral 종합",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "MS Teams Phone, Zoom Phone에 점유 압박. RingCentral 구조조정 진행.",
+    participants: [
+      {
+        firmId: "rng",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "RingCentral — 독립 UCaaS 1위, MS Teams Phone에 점유 압박.",
+      },
+    ],
+  },
+  {
+    id: "ccaas-contact-center",
+    name: "Cloud Contact Center (CCaaS)",
+    nameKo: "클라우드 컨택센터 (CCaaS)",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "고객센터 클라우드·AI agent 통합 — Five9·Sprinklr·NICE 분할",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "AI agent 통합으로 카테고리 재정의 중. AWS Connect·MS Dynamics 경쟁.",
+    participants: [
+      {
+        firmId: "fivn",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Five9 — 독립 CCaaS 강자.",
+      },
+      {
+        firmId: "spk",
+        role: "Prince",
+        revenueWeight: 0.85,
+        rationale: "Sprinklr — 소셜·고객 경험 통합 platform.",
+      },
+      {
+        firmId: "lspn",
+        role: "Niche",
+        revenueWeight: 0.95,
+        rationale: "LivePerson — 채팅 봇 강자였으나 점유 잠식.",
+      },
+    ],
+  },
+  {
+    id: "customer-support-saas",
+    name: "Customer Support SaaS",
+    nameKo: "고객 지원 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "Zendesk 등 헬프데스크·티켓팅 — AI agent 시대 재정의",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Zendesk PE 인수 후 비상장. AI agent(Sierra·Decagon 등 비상장)가 카테고리 재정의 중.",
+    participants: [
+      {
+        firmId: "zen",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Zendesk — 헬프데스크 SaaS 표준, PE 인수 후 비상장.",
+      },
+    ],
+  },
+  {
+    id: "esignature",
+    name: "E-signature",
+    nameKo: "전자서명",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "DocuSign·Adobe Sign — 카테고리 표준 굳어짐",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "DocuSign 카테고리 표준이지만 성장 정체, Adobe Sign·HelloSign 등 경쟁.",
+    participants: [
+      {
+        firmId: "dxcm",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "DocuSign — 전자서명 카테고리 표준, IAM(Identity·Agreement Mgmt)으로 확장 시도.",
+      },
+    ],
+  },
+  {
+    id: "file-sync-share",
+    name: "File Sync & Share",
+    nameKo: "파일 공유·동기화",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "Box·Dropbox — 클라우드 파일 저장·협업, MS·Google에 점유 잠식",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "MS OneDrive·Google Drive 번들 위협으로 enterprise·소비자 양쪽 점유 잠식. AI 통합으로 일부 차별화.",
+    participants: [
+      {
+        firmId: "box",
+        role: "Niche",
+        revenueWeight: 0.95,
+        rationale: "Box — enterprise 파일 협업 niche.",
+      },
+      {
+        firmId: "drp",
+        role: "Niche",
+        revenueWeight: 0.95,
+        rationale: "Dropbox — 소비자 파일 동기화 niche, AI 기능 통합.",
+      },
+    ],
+  },
+  {
+    id: "work-management",
+    name: "Work Management",
+    nameKo: "업무 관리",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "프로젝트·태스크 관리 SaaS — Asana·Monday·ClickUp 분할",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "PMF 완료 후 안정 분할. AI 기능 통합으로 차별화 경쟁.",
+    participants: [
+      {
+        firmId: "asan",
+        role: "Challenger",
+        revenueWeight: 0.95,
+        rationale: "Asana — 업무 관리 SaaS 분할 시장의 한 축.",
+      },
+    ],
+  },
+  {
+    id: "rpa-automation",
+    name: "Robotic Process Automation (RPA)",
+    nameKo: "로봇 프로세스 자동화 (RPA)",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "UI 자동화·문서 처리 — UiPath 표준이지만 AI agent에 위협",
+    phase: "Declining Main Street",
+    phaseRationale:
+      "AI agent(LLM-기반)가 RPA의 brittle UI 자동화 대체 시도. UiPath가 AI agent로 재포지셔닝 중이지만 카테고리 자체 위협.",
+    participants: [
+      {
+        firmId: "path",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "UiPath — RPA 카테고리 1위, AI agent 통합으로 재포지셔닝.",
+      },
+    ],
+    successorCategoryId: "enterprise-ai-platform",
+  },
+  {
+    id: "customer-engagement-marketing",
+    name: "Customer Engagement & Marketing Automation",
+    nameKo: "고객 인게이지먼트·마케팅 자동화",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "Braze·Iterable·Salesforce Marketing — 푸시·이메일·SMS 자동화",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "PMF 완료, Salesforce Marketing Cloud·HubSpot과 경쟁.",
+    participants: [
+      {
+        firmId: "brze",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Braze — 모바일 우선 고객 인게이지먼트 강자.",
+      },
+    ],
+  },
+  {
+    id: "legal-vertical-saas",
+    name: "Legal & Professional Services Vertical SaaS",
+    nameKo: "법률·전문서비스 수직 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "법무법인·회계법인 운영 SaaS — Intapp 강자",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "고도 vertical로 niche 경쟁자 적음, AI 통합 진행.",
+    participants: [
+      {
+        firmId: "ints",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Intapp — 법무·회계 vertical SaaS 강자.",
+      },
+    ],
+  },
+  {
+    id: "real-estate-saas",
+    name: "Property Management SaaS",
+    nameKo: "부동산 관리 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "주택·상업 부동산 관리 SaaS — AppFolio 강자",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Niche vertical, AppFolio·RealPage·Yardi 분할 안정.",
+    participants: [
+      {
+        firmId: "appf",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "AppFolio — 중소형 부동산 관리 SaaS 강자.",
+      },
+    ],
+  },
+  {
+    id: "industrial-process-optimization",
+    name: "Industrial Process Optimization",
+    nameKo: "산업 공정 최적화 SaaS",
+    ecosystemId: "ai",
+    layerId: "enterprise-saas",
+    description: "정유·화학·제조 공정 최적화 — AspenTech 강자",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "정유·화학 vertical, Emerson 인수 후 비상장. AI/디지털 트윈 진화.",
+    participants: [
+      {
+        firmId: "azpn",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "AspenTech — 정유·화학 공정 최적화 표준, Emerson 인수.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // AI > consumer-ai-apps (소비자 AI 앱)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "internet-search",
+    name: "Internet Search",
+    nameKo: "인터넷 검색",
+    ecosystemId: "ai",
+    layerId: "consumer-ai-apps",
+    description: "글로벌 검색·광고 — Google 사실상 독점, AI 검색이 첫 위협",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Google이 글로벌 검색 독점이지만 ChatGPT·Perplexity 등 AI 검색이 처음으로 의미있는 위협 등장. Gemini 통합으로 반격.",
+    participants: [
+      {
+        firmId: "googl",
+        role: "Gorilla",
+        revenueWeight: 0.55,
+        rationale: "Google Search — 글로벌 검색·광고 독점, Gemini AI 통합.",
+      },
+    ],
+  },
+  {
+    id: "social-network",
+    name: "Social Network & Messaging",
+    nameKo: "소셜 네트워크·메신저",
+    ecosystemId: "ai",
+    layerId: "consumer-ai-apps",
+    description: "Facebook·Instagram·WhatsApp — Meta family of apps, 광고 매출",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "TikTok 위협에 Reels로 대응. 광고 ROAS 회복, Llama AI로 반격.",
+    participants: [
+      {
+        firmId: "meta",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Meta — Facebook·Instagram·WhatsApp 글로벌 SNS·메신저 표준.",
+      },
+    ],
+  },
+  {
+    id: "consumer-device-os",
+    name: "Consumer Devices & OS Ecosystem",
+    nameKo: "소비자 디바이스·OS 생태계",
+    ecosystemId: "ai",
+    layerId: "consumer-ai-apps",
+    description: "iPhone·Mac·iPad+Apple Intelligence — 디바이스+OS+서비스 lock-in",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "스마트폰 시장 성숙, Services 매출이 새 성장축. Apple Intelligence(on-device LLM)로 AI 통합.",
+    participants: [
+      {
+        firmId: "aapl",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Apple — 디바이스+OS+서비스 lock-in 생태계 표준.",
+      },
+    ],
+  },
+  {
+    id: "streaming-content",
+    name: "Streaming Content",
+    nameKo: "스트리밍 콘텐츠",
+    ecosystemId: "ai",
+    layerId: "consumer-ai-apps",
+    description: "Netflix·Disney+·Prime Video — SVOD 카테고리, AI 추천 알고리즘이 핵심",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "SVOD 가입자 성장 둔화, 광고 tier·번들 경쟁. AI 추천 알고리즘이 시청 시간 차별화의 핵심.",
+    participants: [
+      {
+        firmId: "nflx",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Netflix — 글로벌 SVOD 1위, AI 추천이 핵심 lock-in.",
+      },
+    ],
+  },
 ];
