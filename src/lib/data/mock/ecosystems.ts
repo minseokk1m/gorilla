@@ -36,10 +36,10 @@ export const ECOSYSTEMS: Ecosystem[] = [
         position: 2,
       },
       {
-        id: "memory",
-        name: "Memory",
-        nameKo: "메모리",
-        description: "HBM·DRAM·NAND — AI 학습·추론의 데이터 보관층",
+        id: "memory-storage",
+        name: "Memory & Storage",
+        nameKo: "메모리·스토리지",
+        description: "HBM·DRAM·NAND·HDD — AI 학습·추론의 데이터 보관층 전반",
         position: 3,
       },
       {

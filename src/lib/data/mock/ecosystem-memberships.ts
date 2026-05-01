@@ -26,11 +26,11 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
   { firmId: "tsem", ecosystemId: "ai", layerId: "foundry", role: "primary" },
 
   // L3 memory
-  { firmId: "mu", ecosystemId: "ai", layerId: "memory", role: "primary" },
-  { firmId: "sndk", ecosystemId: "ai", layerId: "memory", role: "primary" },
-  { firmId: "wdc", ecosystemId: "ai", layerId: "memory", role: "primary" },
-  { firmId: "stx", ecosystemId: "ai", layerId: "memory", role: "primary" },
-  { firmId: "simo", ecosystemId: "ai", layerId: "memory", role: "primary" },
+  { firmId: "mu", ecosystemId: "ai", layerId: "memory-storage", role: "primary" },
+  { firmId: "sndk", ecosystemId: "ai", layerId: "memory-storage", role: "primary" },
+  { firmId: "wdc", ecosystemId: "ai", layerId: "memory-storage", role: "primary" },
+  { firmId: "stx", ecosystemId: "ai", layerId: "memory-storage", role: "primary" },
+  { firmId: "simo", ecosystemId: "ai", layerId: "memory-storage", role: "primary" },
 
   // L4 compute
   { firmId: "nvda", ecosystemId: "ai", layerId: "compute", role: "primary" },
@@ -63,15 +63,15 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
   { firmId: "mdb", ecosystemId: "ai", layerId: "data-platform", role: "primary" },
   { firmId: "elastic", ecosystemId: "ai", layerId: "data-platform", role: "primary" },
   { firmId: "cflt", ecosystemId: "ai", layerId: "data-platform", role: "primary" },
-  { firmId: "splk", ecosystemId: "ai", layerId: "data-platform", role: "primary" },
   { firmId: "ampl", ecosystemId: "ai", layerId: "data-platform", role: "primary" },
 
-  // L9 ai-platform (AI 플랫폼·옵저버빌리티)
+  // L9 ai-platform (AI 플랫폼·옵저버빌리티 — SPLK는 SIEM/관측 본업이라 data-platform에서 이동)
   { firmId: "pltr", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
   { firmId: "c3ai", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
   { firmId: "ddog", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
   { firmId: "dynt", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
   { firmId: "nrg", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
+  { firmId: "splk", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
 
   // L10 dev-tools (개발도구·통합)
   { firmId: "frog", ecosystemId: "ai", layerId: "dev-tools", role: "primary" },
@@ -109,6 +109,7 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
   { firmId: "googl", ecosystemId: "ai", layerId: "consumer-ai-apps", role: "primary" },
   { firmId: "meta", ecosystemId: "ai", layerId: "consumer-ai-apps", role: "primary" },
   { firmId: "aapl", ecosystemId: "ai", layerId: "consumer-ai-apps", role: "primary" },
+  { firmId: "nflx", ecosystemId: "ai", layerId: "consumer-ai-apps", role: "primary" },
 
   // ─────────────────────────────────────────────────────────────
   // Cybersecurity (primary 5) — AI에서 분리된 별도 ecosystem
@@ -230,14 +231,14 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
   {
     firmId: "sec",
     ecosystemId: "ai",
-    layerId: "memory",
+    layerId: "memory-storage",
     role: "secondary",
     rationale: "HBM·DRAM·NAND 글로벌 메모리 표준 — AI 컴퓨트의 핵심 입력",
   },
   {
     firmId: "skhynix",
     ecosystemId: "ai",
-    layerId: "memory",
+    layerId: "memory-storage",
     role: "secondary",
     rationale: "HBM3E 단일 공급에 가까운 위치 — NVIDIA 학습 GPU의 종속 부품",
   },
@@ -376,14 +377,47 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
     role: "secondary",
     rationale: "양극재·전구체 — 한국 셀 3사의 전·후방 통합",
   },
+
+  // 파운드리 글로벌 #2/#3 → AI foundry에서도 보임 (TSM 1강 외 도전자 가시화)
+  {
+    firmId: "sec",
+    ecosystemId: "ai",
+    layerId: "foundry",
+    role: "secondary",
+    rationale: "삼성 파운드리 — 글로벌 #2, 첨단 노드 TSM 추격",
+  },
+  {
+    firmId: "intc",
+    ecosystemId: "ai",
+    layerId: "foundry",
+    role: "secondary",
+    rationale: "Intel Foundry Services(IFS) — IDM 분사형 파운드리, 18A 노드 진입",
+  },
+
+  // 클라우드 → GCP는 hyperscaler #3, 광고/검색 본업과 별개로 가시화
+  {
+    firmId: "googl",
+    ecosystemId: "ai",
+    layerId: "cloud",
+    role: "secondary",
+    rationale: "Google Cloud(GCP) — hyperscaler #3, AI Vertex/TPU 차별화",
+  },
+
+  // 원자력 부품 → nuclear-reactor (Curtiss-Wright는 항공+해군원자로 둘 다)
+  {
+    firmId: "cw",
+    ecosystemId: "energy-transition",
+    layerId: "nuclear-reactor",
+    role: "secondary",
+    rationale: "Curtiss-Wright — 미 해군 원자로·민간 원전 부품 매출 비중 큼",
+  },
 ];
 
 /**
- * Stage A v1에서 어디에도 매핑하지 않은 기업 — 추후 ecosystem 확장 시 검토용.
+ * 어디에도 매핑하지 않은 기업 — 추후 ecosystem 확장 시 검토용.
  * 주로 Financial / Telecom / Consumer Staples / 전통 산업.
  */
 export const UNCATEGORIZED_FIRM_IDS: readonly string[] = [
-  "nflx",
   "v",
   "jpm",
   "brk",
