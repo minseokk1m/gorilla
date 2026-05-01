@@ -12,6 +12,7 @@
 
 export type EcosystemId =
   | "ai"
+  | "cybersecurity"
   | "energy-transition"
   | "defense"
   | "korean-industrial"

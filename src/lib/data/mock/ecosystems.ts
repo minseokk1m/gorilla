@@ -1,8 +1,12 @@
 import type { Ecosystem } from "@/types/ecosystem";
 
 /**
- * 8 macro ecosystems. 각 ecosystem 안의 layer는 upstream(소재·장비) → downstream(앱·서비스)
+ * 9 macro ecosystems. 각 ecosystem 안의 layer는 upstream(소재·장비) → downstream(앱·서비스)
  * 순서로 position 부여. 같은 layer에서 고릴라는 하나라는 Moore 원칙으로 자동 검증된다.
+ *
+ * v2 (Stage A 재정비): foundry/memory 분리, networking을 optical에 흡수,
+ * ai-platform과 dev-tools 분리, ai-apps를 enterprise-saas와 consumer-ai-apps로 분리,
+ * ai-security는 별도 Cybersecurity ecosystem으로 독립, Energy에 energy-storage 추가.
  */
 export const ECOSYSTEMS: Ecosystem[] = [
   // ─────────────────────────────────────────────────────────────
@@ -15,7 +19,7 @@ export const ECOSYSTEMS: Ecosystem[] = [
     nameKo: "인공지능 인프라·플랫폼·앱",
     tagline: "반도체 장비부터 최종 AI 앱까지 — 전 가치사슬에서 누가 표준이 되는가",
     thesis:
-      "AI는 단일 카테고리가 아니라 11개 layer로 쌓인 가치사슬이다. Moore 관점에서 각 layer의 고릴라는 다르고, 한 layer의 표준이 다른 layer의 whole product 완성도를 좌우한다. 장비(ASML)·파운드리(TSMC)·컴퓨트(NVIDIA)·클라우드(MSFT/AWS)·플랫폼(PLTR)·앱(CRM Agentforce) 흐름을 한 곳에서 본다.",
+      "AI는 단일 카테고리가 아니라 12개 layer로 쌓인 가치사슬이다. Moore 관점에서 각 layer의 고릴라는 다르고, 한 layer의 표준이 다른 layer의 whole product 완성도를 좌우한다. 장비(ASML)·파운드리(TSMC)·메모리(SK하이닉스)·컴퓨트(NVIDIA)·클라우드(MSFT/AWS)·플랫폼(PLTR)·앱(CRM Agentforce) 흐름을 한 곳에서 본다.",
     layers: [
       {
         id: "semi-equipment",
@@ -25,38 +29,38 @@ export const ECOSYSTEMS: Ecosystem[] = [
         position: 1,
       },
       {
-        id: "foundry-memory",
-        name: "Foundry & Memory",
-        nameKo: "파운드리·메모리",
-        description: "첨단 노드 파운드리와 HBM/DRAM/NAND — 컴퓨트의 물리적 기반",
+        id: "foundry",
+        name: "Foundry",
+        nameKo: "파운드리",
+        description: "첨단 노드 위탁 생산 — 컴퓨트 칩의 물리적 생산 거점",
         position: 2,
+      },
+      {
+        id: "memory",
+        name: "Memory",
+        nameKo: "메모리",
+        description: "HBM·DRAM·NAND — AI 학습·추론의 데이터 보관층",
+        position: 3,
       },
       {
         id: "compute",
         name: "Compute (GPU/CPU/IP)",
         nameKo: "컴퓨트(GPU·CPU·IP)",
         description: "AI 학습·추론용 가속기와 명령어 아키텍처 — 모델 학습의 표준",
-        position: 3,
+        position: 4,
       },
       {
-        id: "optical",
-        name: "Optical & Interconnect",
-        nameKo: "광학·인터커넥트",
-        description: "데이터센터 내·외부 광통신 — GPU 간 대역폭이 학습 효율을 좌우",
-        position: 4,
+        id: "optical-networking",
+        name: "Optical & Networking",
+        nameKo: "광학·네트워킹",
+        description: "데이터센터 광통신·스위칭·라우팅 — GPU 간·DC 간 대역폭",
+        position: 5,
       },
       {
         id: "dc-power",
         name: "Data Center Power & Cooling",
         nameKo: "데이터센터 전력·냉각",
         description: "AI 클러스터의 전력·냉각 인프라 — GPU 밀도가 만드는 새 병목",
-        position: 5,
-      },
-      {
-        id: "networking",
-        name: "Networking",
-        nameKo: "네트워킹",
-        description: "데이터센터 간·캠퍼스 네트워크 장비 — 스위칭과 라우팅 표준",
         position: 6,
       },
       {
@@ -75,39 +79,82 @@ export const ECOSYSTEMS: Ecosystem[] = [
       },
       {
         id: "ai-platform",
-        name: "AI Platform & Developer Tools",
-        nameKo: "AI 플랫폼·개발도구",
-        description: "AI 워크로드 플랫폼·옵저버빌리티·MLOps — 모델 운영의 표준",
+        name: "AI Platform & Observability",
+        nameKo: "AI 플랫폼·옵저버빌리티",
+        description: "AI 워크로드 플랫폼·모델 관제·MLOps — 모델 운영의 표준",
         position: 9,
       },
       {
-        id: "ai-apps",
-        name: "AI-Native Applications",
-        nameKo: "AI 활용 앱",
-        description: "CRM·생산성·광고·검색 등 AI가 핵심 차별점인 최종 사용자 앱",
+        id: "dev-tools",
+        name: "Developer Tools & Integration",
+        nameKo: "개발도구·통합",
+        description: "소스관리·아티팩트·인프라 코드·통신 API — 코드와 시스템 연결층",
         position: 10,
       },
       {
-        id: "ai-security",
-        name: "AI/Cyber Security",
-        nameKo: "AI·사이버 보안",
-        description: "엔드포인트·네트워크·아이덴티티 보안 — AI 도입이 가장 빠른 수직",
+        id: "enterprise-saas",
+        name: "Enterprise SaaS",
+        nameKo: "기업용 SaaS",
+        description: "CRM·ITSM·HCM·창작·협업 등 B2B SaaS — AI가 차별점을 만드는 거대 카테고리 묶음",
         position: 11,
+      },
+      {
+        id: "consumer-ai-apps",
+        name: "Consumer AI Apps",
+        nameKo: "소비자 AI 앱",
+        description: "검색·SNS·디바이스 — 사용자 단에서 AI가 바로 닿는 표면",
+        position: 12,
       },
     ],
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 2. Energy Transition — 원자력·재생·그리드·석유의 전환 흐름
+  // 2. Cybersecurity — AI ecosystem에서 분리한 독립 ecosystem
+  // ─────────────────────────────────────────────────────────────
+  {
+    id: "cybersecurity",
+    slug: "cybersecurity",
+    name: "Cybersecurity",
+    nameKo: "사이버 보안",
+    tagline: "엔드포인트·네트워크·아이덴티티 — 보안 통합의 가속",
+    thesis:
+      "AI 도입으로 위협 탐지·대응이 자동화되며 단일 플랫폼화가 빨라진 카테고리. 엔드포인트(EDR)·네트워크 방화벽(NGFW)·아이덴티티(IAM) 3축에서 각자 토네이도가 진행 중. AI ecosystem과 인접하지만 본업이 보안이라 별도 ecosystem으로 분리.",
+    layers: [
+      {
+        id: "endpoint",
+        name: "Endpoint Security",
+        nameKo: "엔드포인트 보안",
+        description: "EDR·XDR — 단말 단위 위협 탐지·대응의 통합층",
+        position: 1,
+      },
+      {
+        id: "network-firewall",
+        name: "Network & Firewall",
+        nameKo: "네트워크·방화벽",
+        description: "차세대 방화벽·SASE — 트래픽 단위 보안",
+        position: 2,
+      },
+      {
+        id: "identity",
+        name: "Identity & Access",
+        nameKo: "아이덴티티·접근관리",
+        description: "SSO·MFA·IAM — 사용자·기기 신원 표준",
+        position: 3,
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 3. Energy Transition — 원자력·재생·저장·그리드·석유
   // ─────────────────────────────────────────────────────────────
   {
     id: "energy-transition",
     slug: "energy-transition",
     name: "Energy Transition",
     nameKo: "에너지 대전환",
-    tagline: "원자력 부활·AI 전력 수요·재생에너지·석유의 동시 변화",
+    tagline: "원자력 부활·AI 전력 수요·재생·저장·석유의 동시 변화",
     thesis:
-      "AI 데이터센터의 전력 수요 폭증과 탄소중립 압력이 만드는 에너지 가치사슬 재편. 원자력(SMR 부활)·재생(태양·풍력)·그리드 인프라·기존 석유의 4축이 동시에 움직인다. AI ecosystem의 dc-power layer와 직접 맞물림.",
+      "AI 데이터센터의 전력 수요 폭증과 탄소중립 압력이 만드는 에너지 가치사슬 재편. 원자력(SMR 부활)·재생(태양·풍력)·저장(ESS)·그리드 인프라·기존 석유의 5축이 동시에 움직인다. AI ecosystem의 dc-power layer와 직접 맞물림.",
     layers: [
       {
         id: "nuclear-fuel",
@@ -131,31 +178,38 @@ export const ECOSYSTEMS: Ecosystem[] = [
         position: 3,
       },
       {
+        id: "energy-storage",
+        name: "Energy Storage (ESS)",
+        nameKo: "에너지 저장(ESS)",
+        description: "그리드·산업용 저장 — 재생 변동성을 흡수하는 향후 토네이도",
+        position: 4,
+      },
+      {
         id: "grid-infrastructure",
         name: "Grid & Power Infrastructure",
         nameKo: "송전·전력 인프라",
         description: "변압기·송전망·EPC — AI/재생전력 연결의 병목",
-        position: 4,
+        position: 5,
       },
       {
         id: "critical-materials",
         name: "Critical Materials",
         nameKo: "핵심 광물",
         description: "리튬·구리 등 전환의 원자재",
-        position: 5,
+        position: 6,
       },
       {
         id: "oil-gas",
         name: "Oil & Gas Incumbent",
         nameKo: "석유·가스(기존)",
         description: "전환기 캐시카우 — 자본배분이 신에너지로 흐르는지가 관건",
-        position: 6,
+        position: 7,
       },
     ],
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 3. Defense Resurgence — 방산 부활
+  // 4. Defense Resurgence
   // ─────────────────────────────────────────────────────────────
   {
     id: "defense",
@@ -212,7 +266,7 @@ export const ECOSYSTEMS: Ecosystem[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 4. Korean Industrial — 한국 산업 렌즈 (function이 아닌 'lens')
+  // 5. Korean Industrial — 한국 산업 렌즈
   // ─────────────────────────────────────────────────────────────
   {
     id: "korean-industrial",
@@ -283,7 +337,7 @@ export const ECOSYSTEMS: Ecosystem[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 5. Crypto & Digital Assets
+  // 6. Crypto & Digital Assets
   // ─────────────────────────────────────────────────────────────
   {
     id: "crypto",
@@ -319,7 +373,7 @@ export const ECOSYSTEMS: Ecosystem[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 6. Biotech & Pharma
+  // 7. Biotech & Pharma
   // ─────────────────────────────────────────────────────────────
   {
     id: "biotech",
@@ -355,7 +409,7 @@ export const ECOSYSTEMS: Ecosystem[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 7. Auto-EV-Battery
+  // 8. Auto-EV-Battery
   // ─────────────────────────────────────────────────────────────
   {
     id: "auto-ev-battery",
@@ -391,7 +445,7 @@ export const ECOSYSTEMS: Ecosystem[] = [
   },
 
   // ─────────────────────────────────────────────────────────────
-  // 8. Space Economy
+  // 9. Space Economy
   // ─────────────────────────────────────────────────────────────
   {
     id: "space",
