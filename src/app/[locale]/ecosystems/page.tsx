@@ -8,6 +8,8 @@ import {
   UNCATEGORIZED_FIRM_IDS,
 } from "@/lib/data/mock/ecosystem-memberships";
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
+import { getAllEcosystemMomentums, type EcosystemMomentum } from "@/lib/data/providers/layer-momentum";
+import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
 
 const TIER_ORDER: ClassificationTier[] = [
   "Gorilla",
@@ -42,6 +44,35 @@ const TIER_LABEL_KO: Record<ClassificationTier, string> = {
   "In Chasm": "캐즘 추락",
 };
 
+function fmtPct(p: number): string {
+  const sign = p > 0 ? "+" : "";
+  return `${sign}${(p * 100).toFixed(1)}%`;
+}
+
+function MacroRow({ macro, locale }: { macro: import("@/lib/data/providers/layer-momentum").EcosystemMomentum; locale: string }) {
+  const pct = macro.priceMomentum ?? 0;
+  const positive = pct >= 0;
+  const color = positive ? "#10b981" : "#f43f5e";
+  const top = macro.topMovers[0];
+  const topName = top ? (locale === "ko" ? top.layerNameKo : top.layerName) : null;
+  return (
+    <div className="rounded-lg bg-gray-50 px-2.5 py-2 mb-3 flex items-center gap-2.5">
+      <span className={`text-sm font-extrabold ${positive ? "text-emerald-600" : "text-rose-600"}`}>
+        {fmtPct(pct)}
+      </span>
+      <span className="text-[0.625rem] font-bold text-gray-400 uppercase">4w</span>
+      {macro.priceSparkline && (
+        <InlineSparkline data={macro.priceSparkline} color={color} />
+      )}
+      {top && topName && (
+        <span className="text-[0.6875rem] font-bold text-gray-500 ml-auto truncate">
+          ↗ {topName} {fmtPct(top.change)}
+        </span>
+      )}
+    </div>
+  );
+}
+
 const ECO_ACCENT: Record<EcosystemId, { bar: string; tint: string }> = {
   "ai": { bar: "bg-blue-500", tint: "bg-blue-50" },
   "cybersecurity": { bar: "bg-rose-500", tint: "bg-rose-50" },
@@ -62,11 +93,15 @@ export default async function EcosystemsPage({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "ecosystems" });
 
-  const [firms, classifications] = await Promise.all([
+  const [firms, classifications, ecoMomentums] = await Promise.all([
     getAllFirms(),
     getAllClassifications(locale),
+    getAllEcosystemMomentums(),
   ]);
   const firmById = new Map(firms.map((f) => [f.id, f]));
+  const momentumById = new Map<string, EcosystemMomentum>(
+    ecoMomentums.map((m) => [m.ecosystemId, m]),
+  );
 
   // Aggregate per-ecosystem stats
   const summaries = ECOSYSTEMS.map((eco) => {
@@ -113,6 +148,7 @@ export default async function EcosystemsPage({
           const accent = ECO_ACCENT[eco.id];
           const ecoName = locale === "ko" ? eco.nameKo : eco.name;
           const ecoSubName = locale === "ko" ? eco.name : eco.nameKo;
+          const macro = momentumById.get(eco.id);
           return (
             <Link
               key={eco.id}
@@ -143,6 +179,11 @@ export default async function EcosystemsPage({
                     </span>
                   )}
                 </div>
+
+                {/* Macro momentum (4w + sparkline + top mover) */}
+                {macro && macro.priceMomentum !== null && (
+                  <MacroRow macro={macro} locale={locale} />
+                )}
 
                 {/* Tier mini bar */}
                 {primaries.length > 0 ? (

@@ -223,3 +223,127 @@ export async function getHotColdLayers(top = 3): Promise<{
     cold: sorted.slice(-top).reverse(),
   };
 }
+
+// ── Ecosystem-level (macro) momentum ──────────────────────────────────
+
+export interface EcosystemMomentumLayerMover {
+  layerId: string;
+  layerName: string;
+  layerNameKo: string;
+  change: number;
+}
+
+export interface EcosystemMomentum {
+  ecosystemId: EcosystemId;
+  /** Default 4w (= priceMomentumByTimeframe["4w"]). */
+  priceMomentum: number | null;
+  priceMomentumByTimeframe: Record<Timeframe, number | null>;
+  priceSparkline: number[] | null;
+  newsSentiment: number | null;
+  sampleSize: { firms: number; news: number; layers: number };
+  /** Layers with the strongest positive 4w move (top 3). */
+  topMovers: EcosystemMomentumLayerMover[];
+  /** Layers with the strongest negative 4w move (bottom 3, sorted ascending). */
+  bottomMovers: EcosystemMomentumLayerMover[];
+}
+
+/**
+ * Compute macro momentum for one ecosystem — averages every PRIMARY firm
+ * across all of its layers. Top/Bottom movers come from per-layer 4w averages
+ * so users can drill down to the layer driving the move.
+ */
+export async function getEcosystemMomentum(
+  ecosystemId: EcosystemId,
+): Promise<EcosystemMomentum | null> {
+  const eco = ECOSYSTEMS.find((e) => e.id === ecosystemId);
+  if (!eco) return null;
+
+  // Pull all primary firm ids in this ecosystem (de-duped — a firm
+  // can only be primary once by construction)
+  const firmIds = new Set<string>();
+  for (const layer of eco.layers) {
+    for (const m of getLayerMemberships(ecosystemId, layer.id)) {
+      if (m.role === "primary") firmIds.add(m.firmId);
+    }
+  }
+
+  const [firms, prices] = await Promise.all([getAllFirms(), getAllPriceHistories()]);
+  const priceById = new Map(prices.map((p) => [p.firmId, p]));
+  const ecosystemPrices: PriceHistory[] = [];
+  for (const id of firmIds) {
+    const p = priceById.get(id);
+    if (p) ecosystemPrices.push(p);
+  }
+
+  const priceMomentumByTimeframe: Record<Timeframe, number | null> = {
+    "1w": avgChangeAcrossFirms(ecosystemPrices, TIMEFRAME_DAYS["1w"]),
+    "4w": avgChangeAcrossFirms(ecosystemPrices, TIMEFRAME_DAYS["4w"]),
+    "12w": avgChangeAcrossFirms(ecosystemPrices, TIMEFRAME_DAYS["12w"]),
+  };
+  const priceSparkline = computeSparkline(ecosystemPrices, TIMEFRAME_DAYS["12w"]);
+
+  // News sentiment (across all primary firms of the ecosystem)
+  const newsArrays = await Promise.all(
+    Array.from(firmIds).map((id) => getNewsByFirmId(id)),
+  );
+  const allNews = newsArrays.flat();
+  const sentimentScores: number[] = allNews.map((n) => {
+    if (typeof n.sentimentScore === "number") return n.sentimentScore;
+    return n.sentiment === "Positive" ? 1 : n.sentiment === "Negative" ? -1 : 0;
+  });
+  const newsSentiment =
+    sentimentScores.length > 0
+      ? sentimentScores.reduce((a, b) => a + b, 0) / sentimentScores.length
+      : null;
+
+  // Layer movers — recompute per-layer 4w (cheap; uses cache when warm)
+  const perLayer = await Promise.all(
+    eco.layers.map(async (l) => {
+      const m = await getCachedLayerMomentum(ecosystemId, l.id);
+      return {
+        layerId: l.id,
+        layerName: l.name,
+        layerNameKo: l.nameKo,
+        change: m.priceMomentumByTimeframe["4w"],
+        sample: m.sampleSize.price,
+      };
+    }),
+  );
+  const usableLayers = perLayer.filter(
+    (l): l is typeof l & { change: number } => l.change !== null && l.sample > 0,
+  );
+  const sortedDesc = [...usableLayers].sort((a, b) => b.change - a.change);
+  const sortedAsc = [...usableLayers].sort((a, b) => a.change - b.change);
+
+  const layerOnlyFields = ({ layerId, layerName, layerNameKo, change }: typeof usableLayers[number]) =>
+    ({ layerId, layerName, layerNameKo, change });
+
+  return {
+    ecosystemId,
+    priceMomentum: priceMomentumByTimeframe["4w"],
+    priceMomentumByTimeframe,
+    priceSparkline,
+    newsSentiment,
+    sampleSize: { firms: ecosystemPrices.length, news: allNews.length, layers: eco.layers.length },
+    topMovers: sortedDesc.slice(0, 3).map(layerOnlyFields),
+    bottomMovers: sortedAsc.slice(0, 3).map(layerOnlyFields),
+  };
+}
+
+const _ecoCache = new Map<EcosystemId, { data: EcosystemMomentum; ts: number }>();
+
+export async function getCachedEcosystemMomentum(
+  ecosystemId: EcosystemId,
+): Promise<EcosystemMomentum | null> {
+  const hit = _ecoCache.get(ecosystemId);
+  if (hit && Date.now() - hit.ts < TTL_MS) return hit.data;
+  const data = await getEcosystemMomentum(ecosystemId);
+  if (data) _ecoCache.set(ecosystemId, { data, ts: Date.now() });
+  return data;
+}
+
+export async function getAllEcosystemMomentums(): Promise<EcosystemMomentum[]> {
+  const tasks = ECOSYSTEMS.map((e) => getCachedEcosystemMomentum(e.id));
+  const results = await Promise.all(tasks);
+  return results.filter((m): m is EcosystemMomentum => m !== null);
+}

@@ -10,8 +10,13 @@ import {
   type MooreConflict,
 } from "@/lib/data/providers/ecosystem-provider";
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
-import { getCachedLayerMomentum, type LayerMomentum } from "@/lib/data/providers/layer-momentum";
+import {
+  getCachedLayerMomentum,
+  getCachedEcosystemMomentum,
+  type LayerMomentum,
+} from "@/lib/data/providers/layer-momentum";
 import { MomentumPanel } from "@/components/ecosystems/MomentumPanel";
+import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
 
 const TIER_ORDER: ClassificationTier[] = [
   "Gorilla",
@@ -150,10 +155,11 @@ export default async function EcosystemDetailPage({
     if (c.ecosystemId === eco.id) conflictByLayer.set(c.layerId, c);
   }
 
-  // Fetch momentum for every layer in parallel
-  const momentums = await Promise.all(
-    eco.layers.map((l) => getCachedLayerMomentum(eco.id, l.id)),
-  );
+  // Fetch momentum for every layer in parallel + ecosystem-level macro
+  const [momentums, ecoMacro] = await Promise.all([
+    Promise.all(eco.layers.map((l) => getCachedLayerMomentum(eco.id, l.id))),
+    getCachedEcosystemMomentum(eco.id),
+  ]);
   const momentumByLayer = new Map<string, LayerMomentum>(
     momentums.map((m) => [m.layerId, m]),
   );
@@ -198,6 +204,117 @@ export default async function EcosystemDetailPage({
         </div>
       </section>
 
+      {/* Ecosystem-level macro band */}
+      {ecoMacro && ecoMacro.priceMomentum !== null && (
+        <section className="toss-card mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5">
+            {/* Left: numbers + sparkline */}
+            <div>
+              <div className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider mb-2">
+                {locale === "ko" ? "이코시스템 거시 모멘텀" : "Ecosystem macro momentum"}
+              </div>
+              <div className="flex items-baseline gap-3 mb-2">
+                <span
+                  className={`text-3xl font-extrabold ${
+                    ecoMacro.priceMomentum >= 0 ? "text-emerald-600" : "text-rose-600"
+                  }`}
+                >
+                  {ecoMacro.priceMomentum > 0 ? "+" : ""}
+                  {(ecoMacro.priceMomentum * 100).toFixed(1)}%
+                </span>
+                <span className="text-xs font-bold text-gray-400 uppercase">4w</span>
+              </div>
+              {ecoMacro.priceSparkline && (
+                <div className="mb-3">
+                  <InlineSparkline
+                    data={ecoMacro.priceSparkline}
+                    width={260}
+                    height={50}
+                    color={ecoMacro.priceMomentum >= 0 ? "#10b981" : "#f43f5e"}
+                    strokeWidth={1.5}
+                  />
+                  <div className="text-[0.625rem] font-bold text-gray-400 mt-1">
+                    {tList("trendBase")}
+                  </div>
+                </div>
+              )}
+              <div className="flex items-center gap-3 text-[0.6875rem] font-bold text-gray-500">
+                <span>
+                  1w{" "}
+                  <span className={ecoMacro.priceMomentumByTimeframe["1w"] !== null && ecoMacro.priceMomentumByTimeframe["1w"] >= 0 ? "text-emerald-600" : "text-rose-600"}>
+                    {ecoMacro.priceMomentumByTimeframe["1w"] !== null
+                      ? `${ecoMacro.priceMomentumByTimeframe["1w"] > 0 ? "+" : ""}${(ecoMacro.priceMomentumByTimeframe["1w"] * 100).toFixed(1)}%`
+                      : "—"}
+                  </span>
+                </span>
+                <span className="text-gray-300">·</span>
+                <span>
+                  12w{" "}
+                  <span className={ecoMacro.priceMomentumByTimeframe["12w"] !== null && ecoMacro.priceMomentumByTimeframe["12w"] >= 0 ? "text-emerald-600" : "text-rose-600"}>
+                    {ecoMacro.priceMomentumByTimeframe["12w"] !== null
+                      ? `${ecoMacro.priceMomentumByTimeframe["12w"] > 0 ? "+" : ""}${(ecoMacro.priceMomentumByTimeframe["12w"] * 100).toFixed(1)}%`
+                      : "—"}
+                  </span>
+                </span>
+                <span className="text-gray-300">·</span>
+                <span className="text-gray-400">
+                  {ecoMacro.sampleSize.firms} firms · {ecoMacro.sampleSize.layers} layers
+                </span>
+              </div>
+            </div>
+
+            {/* Right: top/bottom layer movers */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <div className="text-[0.6875rem] font-extrabold text-emerald-700 uppercase tracking-wider mb-2">
+                  ↗ {locale === "ko" ? "주도 layer" : "Top movers"} (4w)
+                </div>
+                <div className="space-y-1.5">
+                  {ecoMacro.topMovers.map((mv) => (
+                    <a
+                      key={mv.layerId}
+                      href={`#layer-${mv.layerId}`}
+                      className="flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 bg-emerald-50/60 hover:bg-emerald-100 transition-colors"
+                    >
+                      <span className="text-xs font-bold text-gray-800 truncate">
+                        {locale === "ko" ? mv.layerNameKo : mv.layerName}
+                      </span>
+                      <span className="text-xs font-extrabold text-emerald-700 shrink-0">
+                        {mv.change > 0 ? "+" : ""}
+                        {(mv.change * 100).toFixed(1)}%
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="text-[0.6875rem] font-extrabold text-rose-700 uppercase tracking-wider mb-2">
+                  ↘ {locale === "ko" ? "약세 layer" : "Bottom movers"} (4w)
+                </div>
+                <div className="space-y-1.5">
+                  {ecoMacro.bottomMovers.map((mv) => (
+                    <a
+                      key={mv.layerId}
+                      href={`#layer-${mv.layerId}`}
+                      className="flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 bg-rose-50/60 hover:bg-rose-100 transition-colors"
+                    >
+                      <span className="text-xs font-bold text-gray-800 truncate">
+                        {locale === "ko" ? mv.layerNameKo : mv.layerName}
+                      </span>
+                      <span className="text-xs font-extrabold text-rose-700 shrink-0">
+                        {mv.change > 0 ? "+" : ""}
+                        {(mv.change * 100).toFixed(1)}%
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Layer cards */}
       <div className="space-y-4">
         {eco.layers.map((layer) => {
@@ -224,7 +341,8 @@ export default async function EcosystemDetailPage({
           return (
             <section
               key={layer.id}
-              className="toss-card grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-5"
+              id={`layer-${layer.id}`}
+              className="toss-card grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-5 scroll-mt-6"
             >
               {/* Layer info (left) */}
               <div>
