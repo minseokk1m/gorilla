@@ -12,6 +12,7 @@ import { getHotColdLayers } from "@/lib/data/providers/layer-momentum";
 import { findEcosystem } from "@/lib/data/mock/ecosystems";
 import { getGroupedSellCandidates } from "@/lib/data/providers/sell-signal-engine";
 import { getFunnelCounts, getFirmsAtStage } from "@/lib/data/providers/funnel-engine";
+import { getTopSentimentDrivenFirms } from "@/lib/data/providers/sentiment-driven-engine";
 import type { EcosystemId } from "@/types/ecosystem";
 import type { FunnelStage } from "@/types/funnel";
 
@@ -56,7 +57,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "dashboard" });
   const tTiers = await getTranslations({ locale, namespace: "tiers" });
 
-  const [firms, classificationsMap, mooreConflicts, hotCold, sellGroups, funnelCounts, holdFirms, confirmedFirms, potentialFirms] = await Promise.all([
+  const [firms, classificationsMap, mooreConflicts, hotCold, sellGroups, funnelCounts, holdFirms, confirmedFirms, potentialFirms, topSentimentFirms] = await Promise.all([
     getAllFirms(),
     getAllClassifications(locale),
     detectMooreConflicts(locale as "en" | "ko"),
@@ -66,6 +67,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     getFirmsAtStage("Hold"),
     getFirmsAtStage("Confirmed"),
     getFirmsAtStage("Potential"),
+    getTopSentimentDrivenFirms(5),
   ]);
   const tEco = await getTranslations({ locale, namespace: "ecosystems" });
   const firmName = (id: string) => firms.find((f) => f.id === id)?.name ?? id;
@@ -487,9 +489,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       )}
 
-      {/* ── Layer Momentum (Hot / Cold) ── */}
-      {(hotCold.hot.length > 0 || hotCold.cold.length > 0) && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {/* ── Layer Momentum (Hot / Cold) + Sentiment-driven ── */}
+      {(hotCold.hot.length > 0 || hotCold.cold.length > 0 || topSentimentFirms.length > 0) && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {/* Hot */}
           <div className="toss-card !bg-gradient-to-br !from-emerald-50 !to-white">
             <div className="flex items-center justify-between mb-3">
@@ -556,6 +558,37 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <span className="shrink-0 text-sm font-extrabold text-rose-600">
                       {(m.priceMomentum * 100).toFixed(1)}%
                     </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Sentiment-driven */}
+          <div className="toss-card !bg-gradient-to-br !from-indigo-50 !to-white">
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-sm font-extrabold text-gray-900">{tEco("sentimentDrivenTitle")}</div>
+              <div className="text-[0.6875rem] font-bold text-gray-400">/100</div>
+            </div>
+            <div className="space-y-1">
+              {topSentimentFirms.map((p) => {
+                const f = firms.find((x) => x.id === p.firmId);
+                if (!f) return null;
+                const tone = p.score >= 70 ? "text-indigo-700" : p.score >= 50 ? "text-indigo-600" : "text-gray-600";
+                return (
+                  <Link
+                    key={p.firmId}
+                    href={`/firms/${f.slug}`}
+                    className="block rounded-lg px-2.5 py-1.5 hover:bg-white/60 transition-colors"
+                    title={p.topDriversKo[0] ?? ""}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-extrabold text-gray-900 truncate">{f.name}</span>
+                      <span className={`shrink-0 text-sm font-extrabold ${tone}`}>{p.score}</span>
+                    </div>
+                    <div className="text-[0.6875rem] text-gray-500 mt-0.5 line-clamp-1">
+                      {locale === "ko" ? p.topDriversKo[0] ?? p.level : p.topDriversEn[0] ?? p.level}
+                    </div>
                   </Link>
                 );
               })}

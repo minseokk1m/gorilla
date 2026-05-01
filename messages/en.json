@@ -67,7 +67,16 @@
     "stageHold": "Long-term Hold",
     "firmFunnelPosition": "Funnel position",
     "firmFunnelReasons": "Why this stage",
-    "firmFunnelBlockers": "Conditions for next stage"
+    "firmFunnelBlockers": "Conditions for next stage",
+    "sentimentDrivenTitle": "🧠 Top sentiment-driven firms",
+    "sentimentDrivenHint": "Weighted: price volatility + news sentiment + hype cycle + narrative valuation. Tier unchanged — use to weigh buy/sell with extra caution.",
+    "firmSentimentPanelTitle": "Sentiment vs fundamentals score",
+    "firmSentimentPanelHint": "4 factors: price volatility · news sentiment · hype cycle · narrative valuation. Higher score = price moves more on sentiment than fundamentals.",
+    "factorPriceVol": "Price volatility",
+    "factorNewsIntensity": "News intensity",
+    "factorHypeMember": "Hype cycle",
+    "factorNarrativeVal": "Narrative valuation",
+    "sentimentDrivers": "Top drivers"
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"

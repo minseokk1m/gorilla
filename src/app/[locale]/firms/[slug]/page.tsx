@@ -23,9 +23,18 @@ import { getFirmCategories } from "@/lib/data/providers/product-category-provide
 import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
 import { getSellSignalsForFirm } from "@/lib/data/providers/sell-signal-engine";
 import { getFunnelPositionForFirm } from "@/lib/data/providers/funnel-engine";
+import { getSentimentProfileForFirm } from "@/lib/data/providers/sentiment-driven-engine";
 import type { SellSignalSeverity } from "@/types/sell-signal";
 import type { FunnelStage } from "@/types/funnel";
+import type { SentimentLevel } from "@/types/sentiment-driven";
 import type { EcosystemId } from "@/types/ecosystem";
+
+const SENTIMENT_LEVEL_STYLE: Record<SentimentLevel, { bg: string; text: string }> = {
+  "Low":       { bg: "bg-gray-100",    text: "text-gray-700" },
+  "Moderate":  { bg: "bg-indigo-100",  text: "text-indigo-700" },
+  "High":      { bg: "bg-indigo-500",  text: "text-white" },
+  "Very High": { bg: "bg-rose-500",    text: "text-white" },
+};
 
 const FUNNEL_STAGE_STYLE: Record<FunnelStage, { bg: string; text: string; idx: number }> = {
   "Candidate": { bg: "bg-gray-100",     text: "text-gray-700",    idx: 1 },
@@ -104,6 +113,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
   // Investment Funnel position
   const funnelPosition = await getFunnelPositionForFirm(firm.id);
 
+  // Sentiment-driven profile
+  const sentimentProfile = await getSentimentProfileForFirm(firm.id);
+
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
       {/* Breadcrumb */}
@@ -153,6 +165,57 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </div>
+
+      {/* Sentiment-driven profile */}
+      {sentimentProfile && (
+        <section className="toss-card">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[0.6875rem] font-extrabold text-gray-500 uppercase tracking-wider">
+              {tEco("firmSentimentPanelTitle")}
+            </span>
+            <span className={`text-[0.625rem] font-extrabold px-2 py-0.5 rounded ${SENTIMENT_LEVEL_STYLE[sentimentProfile.level].bg} ${SENTIMENT_LEVEL_STYLE[sentimentProfile.level].text}`}>
+              {sentimentProfile.score}/100 · {sentimentProfile.level}
+            </span>
+          </div>
+          <p className="text-xs text-gray-500 leading-snug mb-3">
+            {tEco("firmSentimentPanelHint")}
+          </p>
+
+          {/* 4 factor mini bars */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+            {([
+              { key: "factorPriceVol",      v: sentimentProfile.factors.priceVolatility,        boolean: false },
+              { key: "factorNewsIntensity", v: sentimentProfile.factors.newsSentimentIntensity, boolean: false },
+              { key: "factorHypeMember",    v: sentimentProfile.factors.hypeCycleMembership ? 100 : 0, boolean: true, value: sentimentProfile.factors.hypeCycleMembership },
+              { key: "factorNarrativeVal",  v: sentimentProfile.factors.narrativeValuation,     boolean: false },
+            ] as const).map((f) => (
+              <div key={f.key} className="rounded-lg bg-gray-50 px-2.5 py-2">
+                <div className="text-[0.625rem] font-bold text-gray-500 mb-1 truncate">{tEco(f.key as "factorPriceVol")}</div>
+                <div className="text-sm font-extrabold text-gray-900">
+                  {f.boolean ? (f.value ? "✓" : "—") : `${f.v}/100`}
+                </div>
+                <div className="mt-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="h-full bg-indigo-500" style={{ width: `${f.v}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Top drivers */}
+          {sentimentProfile.topDriversKo.length > 0 && (
+            <div>
+              <div className="text-[0.625rem] font-extrabold text-gray-400 uppercase tracking-wider mb-1.5">
+                {tEco("sentimentDrivers")}
+              </div>
+              <ul className="space-y-1">
+                {(locale === "ko" ? sentimentProfile.topDriversKo : sentimentProfile.topDriversEn).map((d, i) => (
+                  <li key={i} className="text-xs text-gray-700 leading-snug">· {d}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Investment Funnel position */}
       {funnelPosition && (

@@ -67,7 +67,16 @@
     "stageHold": "장기 보유",
     "firmFunnelPosition": "깔때기 위치",
     "firmFunnelReasons": "현재 단계 이유",
-    "firmFunnelBlockers": "다음 단계 진입 조건"
+    "firmFunnelBlockers": "다음 단계 진입 조건",
+    "sentimentDrivenTitle": "🧠 심리 변동성 높은 firm Top",
+    "sentimentDrivenHint": "가격 변동성 + 뉴스 sentiment + 하입사이클 + 서사 가격 4factor 가중. 등급은 그대로, 매수·매도 시 더 신중하게 판단.",
+    "firmSentimentPanelTitle": "심리 vs 펀더멘털 점수",
+    "firmSentimentPanelHint": "가격 변동성·뉴스 sentiment·하입사이클·서사 가격 4factor — 점수가 높을수록 펀더멘털보다 심리에 의해 가격이 움직이는 firm.",
+    "factorPriceVol": "가격 변동성",
+    "factorNewsIntensity": "뉴스 sentiment 강도",
+    "factorHypeMember": "하입사이클",
+    "factorNarrativeVal": "서사 가격",
+    "sentimentDrivers": "주요 driver"
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"
