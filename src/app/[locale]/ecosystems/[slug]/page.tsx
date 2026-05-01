@@ -17,6 +17,8 @@ import {
 } from "@/lib/data/providers/layer-momentum";
 import { MomentumPanel } from "@/components/ecosystems/MomentumPanel";
 import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
+import { getCategoriesByLayer } from "@/lib/data/providers/product-category-provider";
+import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
 
 const TIER_ORDER: ClassificationTier[] = [
   "Gorilla",
@@ -404,8 +406,17 @@ export default async function EcosystemDetailPage({
                 )}
               </div>
 
-              {/* Firm grid (right) */}
-              <div>
+              {/* Firm grid + categories (right) */}
+              <div className="space-y-4">
+                {/* Product Category list */}
+                <CategoryListForLayer
+                  ecosystemId={eco.id}
+                  layerId={layer.id}
+                  locale={locale}
+                  headingLabel={tList("categoriesInLayer")}
+                  noCatLabel={tList("noCategoriesInLayer")}
+                />
+
                 {rows.length === 0 ? (
                   <div className="text-sm text-gray-400 italic py-3">
                     {tList("noFirms")}
@@ -453,5 +464,68 @@ export default async function EcosystemDetailPage({
         })}
       </div>
     </main>
+  );
+}
+
+function CategoryListForLayer({
+  ecosystemId,
+  layerId,
+  locale,
+  headingLabel,
+  noCatLabel,
+}: {
+  ecosystemId: EcosystemId;
+  layerId: string;
+  locale: string;
+  headingLabel: string;
+  noCatLabel: string;
+}) {
+  const cats = getCategoriesByLayer(ecosystemId, layerId);
+  if (cats.length === 0) {
+    return (
+      <div className="rounded-lg border border-dashed border-gray-200 bg-gray-50/40 px-3 py-2 text-[0.6875rem] font-medium text-gray-400">
+        {noCatLabel}
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className="text-[0.625rem] font-extrabold text-gray-500 uppercase tracking-wider mb-1.5">
+        {headingLabel}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+        {cats.map((c) => {
+          const phaseStyle = PHASE_BADGE[c.phase];
+          const leader = c.participants[0];
+          const leaderRole = leader ? ROLE_BADGE[leader.role] : null;
+          return (
+            <div
+              key={c.id}
+              className="flex items-center justify-between gap-2 rounded-lg border border-gray-100 bg-white px-2.5 py-1.5"
+              title={c.phaseRationale}
+            >
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1.5">
+                  <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${phaseStyle.bg} ${phaseStyle.text}`}>
+                    {phaseStyle.emoji} {phaseLabel(c.phase, locale)}
+                  </span>
+                </div>
+                <div className="text-xs font-bold text-gray-800 mt-0.5 truncate">
+                  {locale === "ko" ? c.nameKo : c.name}
+                </div>
+              </div>
+              {leader && leaderRole && (
+                <span
+                  className={`shrink-0 text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${leaderRole.bg} ${leaderRole.text}`}
+                  title={leader.rationale}
+                >
+                  {roleLabel(leader.role, locale)} · {leader.firmId.toUpperCase()}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

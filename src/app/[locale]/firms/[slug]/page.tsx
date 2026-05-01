@@ -19,6 +19,8 @@ import {
 import { findEcosystem } from "@/lib/data/mock/ecosystems";
 import { getCachedLayerMomentum } from "@/lib/data/providers/layer-momentum";
 import { getPriceHistory } from "@/lib/data/providers/price-provider";
+import { getFirmCategories } from "@/lib/data/providers/product-category-provider";
+import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
 import type { EcosystemId } from "@/types/ecosystem";
 
 const ECO_BAR: Record<EcosystemId, string> = {
@@ -75,6 +77,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
         getPriceHistory(firm.id),
       ])
     : [null, null];
+
+  // Product category participation (across all categories)
+  const firmCategoryEntries = getFirmCategories(firm.id);
 
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
@@ -286,6 +291,62 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           <p className="text-sm text-gray-400 italic">{tEco("notMapped")}</p>
         )}
       </section>
+
+      {/* Product Category participation */}
+      {firmCategoryEntries.length > 0 && (
+        <section className="toss-card">
+          <div className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider mb-1">
+            {tEco("firmCategoryHeading")}
+          </div>
+          <p className="text-xs text-gray-500 leading-snug mb-4">{tEco("firmCategoryHint")}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {firmCategoryEntries.map(({ category, participation }) => {
+              const phaseStyle = PHASE_BADGE[category.phase];
+              const roleStyle = ROLE_BADGE[participation.role];
+              return (
+                <div
+                  key={category.id}
+                  className="rounded-xl border border-gray-100 p-3 bg-white"
+                >
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm font-extrabold text-gray-900 truncate">
+                        {locale === "ko" ? category.nameKo : category.name}
+                      </div>
+                      <div className="text-[0.6875rem] font-bold text-gray-400 mt-0.5">
+                        {category.ecosystemId} · {category.layerId}
+                      </div>
+                    </div>
+                    <span className={`shrink-0 text-[0.6875rem] font-extrabold px-2 py-1 rounded-md ${roleStyle.bg} ${roleStyle.text}`}>
+                      {roleLabel(participation.role, locale)}
+                      {typeof participation.revenueWeight === "number" && (
+                        <span className="ml-1 opacity-80">
+                          · {Math.round(participation.revenueWeight * 100)}%
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${phaseStyle.bg} ${phaseStyle.text}`}>
+                      {phaseStyle.emoji} {phaseLabel(category.phase, locale)}
+                    </span>
+                    {category.successorCategoryId && (
+                      <span className="text-[0.625rem] font-bold text-gray-400">
+                        → {tEco("categorySuccessor")}: {category.successorCategoryId}
+                      </span>
+                    )}
+                  </div>
+                  {participation.rationale && (
+                    <p className="text-[0.6875rem] text-gray-500 leading-snug mt-2 line-clamp-2">
+                      {participation.rationale}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Analysis + Score */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">

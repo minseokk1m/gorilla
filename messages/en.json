@@ -44,7 +44,14 @@
     "priceTrend": "Price trend",
     "trendBase": "12W start = 100",
     "overlayTitle": "Ecosystem macro comparison (12W price)",
-    "overlaySubtitle": "All series rebased to 100 at 12W start · click to toggle"
+    "overlaySubtitle": "All series rebased to 100 at 12W start · click to toggle",
+    "categoriesInLayer": "Product categories in this layer",
+    "categoryLeader": "Leader",
+    "categoryWeight": "Weight",
+    "firmCategoryHeading": "This firm's category participation",
+    "firmCategoryHint": "Even within the same layer, this firm holds different positions (Gorilla/Prince/Challenger) per category. With category lifecycle phase, this is the primary input for buy/sell/rebalance signals.",
+    "categorySuccessor": "Successor",
+    "noCategoriesInLayer": "Categories not yet defined for this layer (may only have secondary firms)."
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"

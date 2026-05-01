@@ -44,7 +44,14 @@
     "priceTrend": "가격 추이",
     "trendBase": "12주 시작 = 100",
     "overlayTitle": "이코시스템 거시 비교 (12주 가격 추이)",
-    "overlaySubtitle": "모두 12주 시작 = 100 · 클릭으로 토글"
+    "overlaySubtitle": "모두 12주 시작 = 100 · 클릭으로 토글",
+    "categoriesInLayer": "Layer 내 제품 카테고리",
+    "categoryLeader": "리더",
+    "categoryWeight": "비중",
+    "firmCategoryHeading": "이 기업의 카테고리 참여",
+    "firmCategoryHint": "같은 layer 안에서도 카테고리마다 위치(고릴라/왕자/도전자)가 다릅니다. 카테고리 단계와 함께 매수·매도·리밸런싱 신호의 1차 입력입니다.",
+    "categorySuccessor": "후계 카테고리",
+    "noCategoriesInLayer": "이 layer는 아직 카테고리 분류가 미완성입니다 (secondary firm만 매핑된 layer일 수 있음)."
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"
