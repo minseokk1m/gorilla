@@ -22,8 +22,17 @@ import { getPriceHistory } from "@/lib/data/providers/price-provider";
 import { getFirmCategories } from "@/lib/data/providers/product-category-provider";
 import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
 import { getSellSignalsForFirm } from "@/lib/data/providers/sell-signal-engine";
+import { getFunnelPositionForFirm } from "@/lib/data/providers/funnel-engine";
 import type { SellSignalSeverity } from "@/types/sell-signal";
+import type { FunnelStage } from "@/types/funnel";
 import type { EcosystemId } from "@/types/ecosystem";
+
+const FUNNEL_STAGE_STYLE: Record<FunnelStage, { bg: string; text: string; idx: number }> = {
+  "Candidate": { bg: "bg-gray-100",     text: "text-gray-700",    idx: 1 },
+  "Potential": { bg: "bg-blue-100",     text: "text-blue-800",    idx: 2 },
+  "Confirmed": { bg: "bg-emerald-100",  text: "text-emerald-800", idx: 3 },
+  "Hold":      { bg: "bg-emerald-500",  text: "text-white",       idx: 4 },
+};
 
 const SEVERITY_STYLE: Record<SellSignalSeverity, { bg: string; text: string; border: string; emoji: string }> = {
   "EXIT":      { bg: "bg-rose-50",   text: "text-rose-700",   border: "border-rose-200",   emoji: "🚪" },
@@ -92,6 +101,9 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
   // Sell / rebalance signals
   const sellSignals = await getSellSignalsForFirm(firm.id);
 
+  // Investment Funnel position
+  const funnelPosition = await getFunnelPositionForFirm(firm.id);
+
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
       {/* Breadcrumb */}
@@ -141,6 +153,59 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </div>
+
+      {/* Investment Funnel position */}
+      {funnelPosition && (
+        <section className="toss-card">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-[0.6875rem] font-extrabold text-gray-500 uppercase tracking-wider">
+              {tEco("firmFunnelPosition")}
+            </span>
+            <span className={`text-[0.625rem] font-extrabold px-2 py-0.5 rounded ${FUNNEL_STAGE_STYLE[funnelPosition.stage].bg} ${FUNNEL_STAGE_STYLE[funnelPosition.stage].text}`}>
+              {FUNNEL_STAGE_STYLE[funnelPosition.stage].idx}/4 · {tEco(`stage${funnelPosition.stage}` as "stageHold")}
+            </span>
+          </div>
+
+          {/* Funnel progress bar — 4 segments, current stage highlighted */}
+          <div className="flex gap-1 mb-3">
+            {(["Candidate", "Potential", "Confirmed", "Hold"] as FunnelStage[]).map((s) => {
+              const reached = FUNNEL_STAGE_STYLE[funnelPosition.stage].idx >= FUNNEL_STAGE_STYLE[s].idx;
+              return (
+                <div
+                  key={s}
+                  className={`h-1.5 flex-1 rounded-full ${reached ? FUNNEL_STAGE_STYLE[s].bg : "bg-gray-100"}`}
+                  title={tEco(`stage${s}` as "stageHold")}
+                />
+              );
+            })}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <div className="text-[0.625rem] font-extrabold text-gray-400 uppercase tracking-wider mb-1.5">
+                {tEco("firmFunnelReasons")}
+              </div>
+              <ul className="space-y-1">
+                {(locale === "ko" ? funnelPosition.reasonsKo : funnelPosition.reasonsEn).map((r, i) => (
+                  <li key={i} className="text-xs text-gray-700 leading-snug">· {r}</li>
+                ))}
+              </ul>
+            </div>
+            {funnelPosition.blockersKo.length > 0 && (
+              <div>
+                <div className="text-[0.625rem] font-extrabold text-gray-400 uppercase tracking-wider mb-1.5">
+                  {tEco("firmFunnelBlockers")}
+                </div>
+                <ul className="space-y-1">
+                  {(locale === "ko" ? funnelPosition.blockersKo : funnelPosition.blockersEn).map((r, i) => (
+                    <li key={i} className="text-xs text-gray-500 leading-snug">· {r}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Sell / Rebalance / Warn signals */}
       {sellSignals.length > 0 && (

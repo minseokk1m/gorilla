@@ -58,7 +58,16 @@
     "sellEmpty": "현재 신호 없음",
     "sellSeeAll": "전체 신호 보기",
     "firmSellPanelTitle": "매도·리밸런싱 신호",
-    "firmSellPanelHint": "카테고리 phase·firm role·가격 모멘텀·뉴스 sentiment·Moore 충돌을 결합한 자동 신호. 등급은 그대로 유지하되 토론 트리거로 사용."
+    "firmSellPanelHint": "카테고리 phase·firm role·가격 모멘텀·뉴스 sentiment·Moore 충돌을 결합한 자동 신호. 등급은 그대로 유지하되 토론 트리거로 사용.",
+    "funnelTitle": "투자 깔때기",
+    "funnelHint": "모든 후보 → 잠재 → 가격 검증 → 장기 보유. 145개 firm을 4단계로 자동 분류.",
+    "stageCandidate": "후보",
+    "stagePotential": "잠재",
+    "stageConfirmed": "가격 검증",
+    "stageHold": "장기 보유",
+    "firmFunnelPosition": "깔때기 위치",
+    "firmFunnelReasons": "현재 단계 이유",
+    "firmFunnelBlockers": "다음 단계 진입 조건"
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"

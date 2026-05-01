@@ -58,7 +58,16 @@
     "sellEmpty": "No signals at the moment",
     "sellSeeAll": "See all signals",
     "firmSellPanelTitle": "Sell · Rebalance signals",
-    "firmSellPanelHint": "Auto-generated from category phase + firm role + price momentum + news sentiment + Moore conflict. Tier unchanged — use as discussion trigger."
+    "firmSellPanelHint": "Auto-generated from category phase + firm role + price momentum + news sentiment + Moore conflict. Tier unchanged — use as discussion trigger.",
+    "funnelTitle": "Investment Funnel",
+    "funnelHint": "All candidates → potential → price-validated → long-term hold. 145 firms auto-classified into 4 stages.",
+    "stageCandidate": "Candidate",
+    "stagePotential": "Potential",
+    "stageConfirmed": "Price-validated",
+    "stageHold": "Long-term Hold",
+    "firmFunnelPosition": "Funnel position",
+    "firmFunnelReasons": "Why this stage",
+    "firmFunnelBlockers": "Conditions for next stage"
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
