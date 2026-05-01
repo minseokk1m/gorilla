@@ -28,7 +28,16 @@
     "secondaryRole": "교차 영역",
     "layerPeers": "같은 layer 기업",
     "viewFullLayer": "Layer 전체 보기 →",
-    "notMapped": "아직 ecosystem에 매핑되지 않은 기업입니다. 향후 분류 토론 후 추가됩니다."
+    "notMapped": "아직 ecosystem에 매핑되지 않은 기업입니다. 향후 분류 토론 후 추가됩니다.",
+    "momentumTitle": "Layer 4주 모멘텀",
+    "priceLabel": "가격",
+    "newsLabel": "뉴스",
+    "sampleSize": "{n}곳",
+    "noData": "—",
+    "vsLayerAvg": "Layer 평균 대비",
+    "hotLayersTitle": "🔥 4주 가격 상승 Top",
+    "coldLayersTitle": "🧊 4주 가격 하락 Top",
+    "momentumExplain": "가격은 Yahoo Finance 1개월 변동률 평균(실데이터) · 뉴스는 헤드라인 sentiment 평균(현재 mock+keyword heuristic)"
   },
   "footer": {
     "disclaimer": "제프리 무어의 3부작 및 밀러 하이먼의 『신전략적 판매』를 기반으로 함 · 모의 데이터 전용 · 투자 조언 아님"

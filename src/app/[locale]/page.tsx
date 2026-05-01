@@ -8,6 +8,21 @@ import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
 import DashboardSearch from "@/components/dashboard/DashboardSearch";
 import { FIRM_NAMES_KO } from "@/lib/data/mock/firm-names-ko";
 import { detectMooreConflicts } from "@/lib/data/providers/ecosystem-provider";
+import { getHotColdLayers } from "@/lib/data/providers/layer-momentum";
+import { findEcosystem } from "@/lib/data/mock/ecosystems";
+import type { EcosystemId } from "@/types/ecosystem";
+
+const ECO_DOT: Record<EcosystemId, string> = {
+  "ai": "bg-blue-500",
+  "cybersecurity": "bg-rose-500",
+  "energy-transition": "bg-emerald-500",
+  "defense": "bg-slate-600",
+  "korean-industrial": "bg-orange-500",
+  "crypto": "bg-violet-500",
+  "biotech": "bg-teal-500",
+  "auto-ev-battery": "bg-yellow-500",
+  "space": "bg-indigo-600",
+};
 
 /* ── Tier config — mirrors the Learn page 8-tier theory ── */
 const TIERS: {
@@ -38,11 +53,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "dashboard" });
   const tTiers = await getTranslations({ locale, namespace: "tiers" });
 
-  const [firms, classificationsMap, mooreConflicts] = await Promise.all([
+  const [firms, classificationsMap, mooreConflicts, hotCold] = await Promise.all([
     getAllFirms(),
     getAllClassifications(locale),
     detectMooreConflicts(locale as "en" | "ko"),
+    getHotColdLayers(3),
   ]);
+  const tEco = await getTranslations({ locale, namespace: "ecosystems" });
 
   // Fetch discussion activity
   let openProposals = 0;
@@ -303,6 +320,83 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
+
+      {/* ── Layer Momentum (Hot / Cold) ── */}
+      {(hotCold.hot.length > 0 || hotCold.cold.length > 0) && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {/* Hot */}
+          <div className="toss-card !bg-gradient-to-br !from-emerald-50 !to-white">
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-sm font-extrabold text-gray-900">{tEco("hotLayersTitle")}</div>
+              <div className="text-[0.6875rem] font-bold text-gray-400">4w · Yahoo</div>
+            </div>
+            <div className="space-y-1.5">
+              {hotCold.hot.map((m) => {
+                const eco = findEcosystem(m.ecosystemId);
+                const layer = eco?.layers.find((l) => l.id === m.layerId);
+                if (!eco || !layer || m.priceMomentum === null) return null;
+                return (
+                  <Link
+                    key={`${m.ecosystemId}-${m.layerId}`}
+                    href={`/ecosystems/${eco.slug}`}
+                    className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-white/60 transition-colors"
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className={`shrink-0 inline-block w-2 h-2 rounded-full ${ECO_DOT[m.ecosystemId]}`} />
+                      <span className="text-xs font-bold text-gray-700 truncate">
+                        {locale === "ko" ? eco.nameKo : eco.name}
+                      </span>
+                      <span className="text-gray-300">›</span>
+                      <span className="text-xs font-bold text-gray-900 truncate">
+                        {locale === "ko" ? layer.nameKo : layer.name}
+                      </span>
+                    </div>
+                    <span className="shrink-0 text-sm font-extrabold text-emerald-600">
+                      +{(m.priceMomentum * 100).toFixed(1)}%
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Cold */}
+          <div className="toss-card !bg-gradient-to-br !from-rose-50 !to-white">
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-sm font-extrabold text-gray-900">{tEco("coldLayersTitle")}</div>
+              <div className="text-[0.6875rem] font-bold text-gray-400">4w · Yahoo</div>
+            </div>
+            <div className="space-y-1.5">
+              {hotCold.cold.map((m) => {
+                const eco = findEcosystem(m.ecosystemId);
+                const layer = eco?.layers.find((l) => l.id === m.layerId);
+                if (!eco || !layer || m.priceMomentum === null) return null;
+                return (
+                  <Link
+                    key={`${m.ecosystemId}-${m.layerId}`}
+                    href={`/ecosystems/${eco.slug}`}
+                    className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-white/60 transition-colors"
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className={`shrink-0 inline-block w-2 h-2 rounded-full ${ECO_DOT[m.ecosystemId]}`} />
+                      <span className="text-xs font-bold text-gray-700 truncate">
+                        {locale === "ko" ? eco.nameKo : eco.name}
+                      </span>
+                      <span className="text-gray-300">›</span>
+                      <span className="text-xs font-bold text-gray-900 truncate">
+                        {locale === "ko" ? layer.nameKo : layer.name}
+                      </span>
+                    </div>
+                    <span className="shrink-0 text-sm font-extrabold text-rose-600">
+                      {(m.priceMomentum * 100).toFixed(1)}%
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Quick Navigation ── */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">

@@ -28,7 +28,16 @@
     "secondaryRole": "Cross-cut",
     "layerPeers": "Peers in this layer",
     "viewFullLayer": "View entire layer →",
-    "notMapped": "Not yet mapped to any ecosystem. Will be added after classification discussion."
+    "notMapped": "Not yet mapped to any ecosystem. Will be added after classification discussion.",
+    "momentumTitle": "Layer 4-week momentum",
+    "priceLabel": "Price",
+    "newsLabel": "News",
+    "sampleSize": "{n} firms",
+    "noData": "—",
+    "vsLayerAvg": "vs layer avg",
+    "hotLayersTitle": "🔥 Top price gainers",
+    "coldLayersTitle": "🧊 Top price decliners",
+    "momentumExplain": "Price = mean of Yahoo Finance 1M change (live data) · News = headline sentiment average (currently mock + keyword heuristic)"
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"

@@ -17,6 +17,8 @@ import {
   getLayerMemberships,
 } from "@/lib/data/providers/ecosystem-provider";
 import { findEcosystem } from "@/lib/data/mock/ecosystems";
+import { getCachedLayerMomentum } from "@/lib/data/providers/layer-momentum";
+import { getPriceHistory } from "@/lib/data/providers/price-provider";
 import type { EcosystemId } from "@/types/ecosystem";
 
 const ECO_BAR: Record<EcosystemId, string> = {
@@ -65,6 +67,14 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
         .filter((f): f is NonNullable<typeof f> => Boolean(f))
         .slice(0, 8)
     : [];
+
+  // Layer momentum + this firm's own 1M price change for comparison
+  const [layerMomentum, ownPriceHistory] = primaryMem
+    ? await Promise.all([
+        getCachedLayerMomentum(primaryMem.ecosystemId, primaryMem.layerId),
+        getPriceHistory(firm.id),
+      ])
+    : [null, null];
 
   return (
     <main className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 space-y-6">
@@ -170,6 +180,76 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
                       </Link>
                     );
                   })}
+                </div>
+              </div>
+            )}
+
+            {/* Layer momentum */}
+            {layerMomentum && (layerMomentum.priceMomentum !== null || layerMomentum.newsSentiment !== null) && (
+              <div className="border-t border-gray-100 pt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider">
+                    {tEco("momentumTitle")}
+                  </span>
+                  <span className="text-[0.6875rem] font-medium text-gray-400">
+                    {tEco("momentumExplain")}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Price momentum */}
+                  <div className="rounded-xl bg-gray-50 p-3">
+                    <div className="text-[0.6875rem] font-bold text-gray-500 mb-1">
+                      📈 {tEco("priceLabel")}
+                    </div>
+                    {layerMomentum.priceMomentum !== null ? (
+                      <>
+                        <div className={`text-xl font-extrabold ${layerMomentum.priceMomentum >= 0 ? "text-emerald-600" : "text-rose-600"}`}>
+                          {layerMomentum.priceMomentum > 0 ? "+" : ""}
+                          {(layerMomentum.priceMomentum * 100).toFixed(1)}%
+                        </div>
+                        <div className="text-[0.6875rem] font-medium text-gray-400 mt-0.5">
+                          {tEco("sampleSize", { n: layerMomentum.sampleSize.price })}
+                        </div>
+                        {ownPriceHistory && (
+                          <div className="mt-2 pt-2 border-t border-gray-200/60 text-[0.6875rem]">
+                            <span className="text-gray-500 font-bold">{firm.ticker}: </span>
+                            <span className={`font-extrabold ${ownPriceHistory.priceChange1M >= 0 ? "text-emerald-600" : "text-rose-600"}`}>
+                              {ownPriceHistory.priceChange1M > 0 ? "+" : ""}
+                              {(ownPriceHistory.priceChange1M * 100).toFixed(1)}%
+                            </span>
+                            <span className="text-gray-400 ml-1">{tEco("vsLayerAvg")}</span>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="text-gray-400 font-bold">{tEco("noData")}</div>
+                    )}
+                  </div>
+
+                  {/* News sentiment */}
+                  <div className="rounded-xl bg-gray-50 p-3">
+                    <div className="text-[0.6875rem] font-bold text-gray-500 mb-1">
+                      🗞️ {tEco("newsLabel")}
+                    </div>
+                    {layerMomentum.newsSentiment !== null ? (
+                      <>
+                        <div className={`text-xl font-extrabold ${layerMomentum.newsSentiment >= 0.1 ? "text-emerald-600" : layerMomentum.newsSentiment <= -0.1 ? "text-rose-600" : "text-gray-600"}`}>
+                          {layerMomentum.newsSentiment > 0 ? "+" : ""}
+                          {layerMomentum.newsSentiment.toFixed(2)}
+                        </div>
+                        <div className="text-[0.6875rem] font-medium text-gray-400 mt-0.5">
+                          {tEco("sampleSize", { n: layerMomentum.sampleSize.news })}
+                        </div>
+                        {layerMomentum.recentHeadlines.length > 0 && (
+                          <div className="mt-2 pt-2 border-t border-gray-200/60 text-[0.6875rem] text-gray-500 font-medium line-clamp-2">
+                            {layerMomentum.recentHeadlines[0].title}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="text-gray-400 font-bold">{tEco("noData")}</div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
