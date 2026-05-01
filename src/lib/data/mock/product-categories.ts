@@ -1990,4 +1990,829 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
       },
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Defense Resurgence > prime-contractors
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "missile-defense-systems",
+    name: "Missile Defense Systems",
+    nameKo: "미사일 방어 시스템",
+    ecosystemId: "defense",
+    layerId: "prime-contractors",
+    description: "패트리어트·THAAD·이지스 — 글로벌 방공망 수요 폭발",
+    phase: "Tornado",
+    phaseRationale:
+      "우크라전·중동·인태 동시 위기로 패트리어트·THAAD·이지스 수요 사상 최대. 미·동맹국 방공망 증설 발주 폭증.",
+    participants: [
+      {
+        firmId: "rtx",
+        role: "Gorilla",
+        revenueWeight: 0.30,
+        rationale: "RTX(Raytheon) — Patriot 미사일·SM-6/3 단독 공급, 우크라 + 중동 수요 폭발.",
+      },
+      {
+        firmId: "lmt",
+        role: "Prince",
+        revenueWeight: 0.25,
+        rationale: "Lockheed Martin — THAAD/Aegis 통합·PAC-3 미사일 생산.",
+      },
+    ],
+  },
+  {
+    id: "next-gen-fighter-bomber",
+    name: "Next-Gen Fighter & Bomber",
+    nameKo: "차세대 전투기·폭격기",
+    ecosystemId: "defense",
+    layerId: "prime-contractors",
+    description: "F-35·B-21·NGAD — 5/6세대 전투/폭격 플랫폼",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "F-35 안정 양산 + B-21 시제기 비행, NGAD 차세대 전투기 사업 진행. 일부 성숙·일부 도입 초기 혼재.",
+    participants: [
+      {
+        firmId: "lmt",
+        role: "Gorilla",
+        revenueWeight: 0.40,
+        rationale: "Lockheed Martin — F-35 전 세계 단독 공급, NGAD 입찰 참여.",
+      },
+      {
+        firmId: "noc",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "Northrop Grumman — B-21 Raider 단독 개발·양산.",
+      },
+    ],
+  },
+  {
+    id: "munitions-stockpile",
+    name: "Munitions Stockpile Replenishment",
+    nameKo: "탄약·재고 보충",
+    ecosystemId: "defense",
+    layerId: "prime-contractors",
+    description: "포탄·미사일 등 소모성 탄약 재고 보충 — 우크라전 인한 다년 capex 사이클",
+    phase: "Tornado",
+    phaseRationale:
+      "우크라 지원으로 미·NATO 탄약 재고 고갈, 다년 capex 사이클 진행. GD·LMT·HII 등이 양산 capa 증설.",
+    participants: [
+      {
+        firmId: "gd",
+        role: "King",
+        revenueWeight: 0.30,
+        rationale: "General Dynamics — 155mm 포탄·전차포탄 미 정부 단독 공급.",
+      },
+      {
+        firmId: "lmt",
+        role: "Prince",
+        revenueWeight: 0.15,
+        rationale: "LMT — JAVELIN·HIMARS 미사일 양산 capa 2배 증설.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Defense > aerospace-systems
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "commercial-jet-engines",
+    name: "Commercial Jet Engines",
+    nameKo: "민항기 엔진",
+    ecosystemId: "defense",
+    layerId: "aerospace-systems",
+    description: "GE9X·LEAP·GTF 등 민항기 엔진 — 안정 oligopoly + AS service",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "GE Aerospace·RTX(Pratt&Whitney)·Rolls-Royce 3강 oligopoly. 항공 수요 회복으로 aftermarket 호황.",
+    participants: [
+      {
+        firmId: "ge",
+        role: "Gorilla",
+        revenueWeight: 0.85,
+        rationale: "GE Aerospace — LEAP·GE9X 글로벌 점유 1위, aftermarket 캐시카우.",
+      },
+      {
+        firmId: "rtx",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "RTX Pratt & Whitney — GTF 엔진, A320neo 일부 점유.",
+      },
+    ],
+  },
+  {
+    id: "aerospace-suppliers",
+    name: "Aerospace Component Suppliers",
+    nameKo: "항공 부품 공급사",
+    ecosystemId: "defense",
+    layerId: "aerospace-systems",
+    description: "액추에이터·항전·구조 부품 — Honeywell·Moog·Curtiss-Wright",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "민항기·방산 양쪽 수요. 한화에어로(secondary)도 항공 부품 공급망에 일부 참여.",
+    participants: [
+      {
+        firmId: "hon",
+        role: "King",
+        revenueWeight: 0.35,
+        rationale: "Honeywell Aerospace — 항전·APU·기계 부품 종합 강자.",
+      },
+      {
+        firmId: "moga",
+        role: "Prince",
+        revenueWeight: 0.85,
+        rationale: "Moog — 항공·방산 액추에이터 specialist.",
+      },
+      {
+        firmId: "cw",
+        role: "Challenger",
+        revenueWeight: 0.50,
+        rationale: "Curtiss-Wright — 항공·방산 부품, 원자력도 함께.",
+      },
+    ],
+  },
+  {
+    id: "engine-aftermarket-leasing",
+    name: "Engine Aftermarket & Leasing",
+    nameKo: "엔진 정비·리스",
+    ecosystemId: "defense",
+    layerId: "aerospace-systems",
+    description: "민항기 엔진 정비·리스·부품 거래 — 항공 수요 회복 직접 수혜",
+    phase: "Tornado",
+    phaseRationale:
+      "팬데믹 후 항공 수요 회복 + 신조 엔진 인도 지연으로 aftermarket·리스 수요 폭발. FTAI Aviation 직접 수혜.",
+    participants: [
+      {
+        firmId: "ftai",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "FTAI Aviation — CFM56 엔진 PMA 부품·리스, 고마진 토네이도 segment.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Defense > naval-shipbuilding
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "us-naval-shipbuilding",
+    name: "US Naval Shipbuilding",
+    nameKo: "미 해군 함정 건조",
+    ecosystemId: "defense",
+    layerId: "naval-shipbuilding",
+    description: "미 해군 함정 건조·정비 — 단독 공급, 한국 협력 논의",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "미 해군 함정 부족 + 정비 backlog로 capex 사이클. 한국 조선소(한화오션·HD현대)와 협력 논의.",
+    participants: [
+      {
+        firmId: "hii",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Huntington Ingalls — 미 해군 함정·잠수함 단독 건조.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Defense > defense-electronics
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "tactical-comms-ew",
+    name: "Tactical Comms & Electronic Warfare",
+    nameKo: "전술 통신·전자전",
+    ecosystemId: "defense",
+    layerId: "defense-electronics",
+    description: "전술 무전기·재머·전자전 시스템 — L3Harris 종합",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "우크라전이 전자전 가치 재발견. 점진 capex 사이클. L3Harris 종합 leader.",
+    participants: [
+      {
+        firmId: "lhx",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "L3Harris — 미군 전술 통신·전자전 종합 표준.",
+      },
+    ],
+  },
+  {
+    id: "sensor-imaging-defense",
+    name: "Defense Sensor & Imaging",
+    nameKo: "방산 센서·이미징",
+    ecosystemId: "defense",
+    layerId: "defense-electronics",
+    description: "EO/IR 센서·열화상·정찰 카메라 — Teledyne 강자",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "방산·우주·산업 센서 수요 안정. AI/자율 무기에 센서 비중 증가.",
+    participants: [
+      {
+        firmId: "tdy",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "Teledyne — EO/IR 센서·이미징 종합 강자.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Defense > nextgen-autonomy
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "autonomous-target-drone",
+    name: "Autonomous Target & Tactical Drone",
+    nameKo: "자율 표적기·전술 드론",
+    ecosystemId: "defense",
+    layerId: "nextgen-autonomy",
+    description: "Kratos Valkyrie·표적기·자율 드론 — CCA(Collaborative Combat Aircraft)",
+    phase: "Tornado",
+    phaseRationale:
+      "미 공군 CCA 사업 + 무인기 수요 폭발. Kratos가 저비용 자율 무기에서 신생 강자.",
+    participants: [
+      {
+        firmId: "ktos",
+        role: "Gorilla",
+        revenueWeight: 0.55,
+        rationale: "Kratos — Valkyrie·표적기 자율 무기 leader, CCA 입찰.",
+      },
+    ],
+  },
+  {
+    id: "battle-management-ai",
+    name: "Battle Management AI",
+    nameKo: "전장 관리 AI",
+    ecosystemId: "defense",
+    layerId: "nextgen-autonomy",
+    description: "지휘·통제 AI 운영체제 — Palantir AIP/Maven Smart System",
+    phase: "Tornado",
+    phaseRationale:
+      "미 국방부 Maven Smart System(Palantir 단독), 우크라전·이스라엘 적용 사례. 차세대 자율 의사결정 OS 토네이도.",
+    participants: [
+      {
+        firmId: "pltr",
+        role: "Gorilla",
+        revenueWeight: 0.40,
+        rationale: "Palantir — Maven Smart System 단독 공급, 미 국방부 표준화.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Defense > defense-materials
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "high-temp-aerospace-alloys",
+    name: "High-Temp Aerospace Alloys",
+    nameKo: "고온 항공 합금",
+    ecosystemId: "defense",
+    layerId: "defense-materials",
+    description: "Ni 기 고온 합금·티타늄 — 제트 엔진·미사일 핵심 소재",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "민항·방산 엔진 수요 안정. 차세대 엔진(GE9X·LEAP) 소재 lock-in.",
+    participants: [
+      {
+        firmId: "crs",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "Carpenter Technology — 항공·방산 specialty alloys 강자.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Energy Transition > nuclear-fuel
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "uranium-mining-conversion",
+    name: "Uranium Mining & Conversion",
+    nameKo: "우라늄 채굴·전환",
+    ecosystemId: "energy-transition",
+    layerId: "nuclear-fuel",
+    description: "U3O8 채굴·UF6 전환 — 원자력 부활의 upstream",
+    phase: "Tornado",
+    phaseRationale:
+      "원전 신설·재가동 + SMR 수요로 우라늄 가격 다년 상승 사이클. 미 정부 전략 비축 정책으로 미 본토 채굴사 직접 수혜.",
+    participants: [
+      {
+        firmId: "uec",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Uranium Energy Corp — 미 본토 ISR 채굴·전략 비축 핵심 공급자.",
+      },
+      {
+        firmId: "uuuu",
+        role: "Prince",
+        revenueWeight: 0.85,
+        rationale: "Energy Fuels — 미 본토 우라늄 + 희토류 다각화.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Energy Transition > nuclear-reactor
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "smr-reactor",
+    name: "Small Modular Reactor (SMR)",
+    nameKo: "소형 모듈 원자로 (SMR)",
+    ecosystemId: "energy-transition",
+    layerId: "nuclear-reactor",
+    description: "차세대 SMR — AI DC 전력 수요와 결합",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "Microsoft·Amazon·Google이 SMR PPA 체결로 시장 형성. NRC 인허가 진행 중, 2030년 전후 상업 가동 예정.",
+    participants: [
+      {
+        firmId: "bwxt",
+        role: "King",
+        revenueWeight: 0.30,
+        rationale: "BWX Technologies — SMR 원자로 압력용기·핵연료 핵심 공급자.",
+      },
+    ],
+  },
+  {
+    id: "naval-civil-reactor-components",
+    name: "Naval & Civil Reactor Components",
+    nameKo: "해군·민간 원자로 부품",
+    ecosystemId: "energy-transition",
+    layerId: "nuclear-reactor",
+    description: "미 해군 잠수함·항모 원자로 + 민간 원전 부품",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "미 해군 잠수함·항모 신조·정비 안정 사이클 + 민간 원전 재가동·수명 연장 수요.",
+    participants: [
+      {
+        firmId: "bwxt",
+        role: "Gorilla",
+        revenueWeight: 0.55,
+        rationale: "BWX — 미 해군 원자로 단독 공급(50년+).",
+      },
+      {
+        firmId: "cw",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "Curtiss-Wright — 해군·민간 원전 부품, 항공과 dual segment.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Energy Transition > renewables
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "utility-scale-renewables",
+    name: "Utility-Scale Solar & Wind",
+    nameKo: "유틸리티급 태양·풍력",
+    ecosystemId: "energy-transition",
+    layerId: "renewables",
+    description: "대형 태양·풍력 발전 utility — 미 IRA 보조금 수혜",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "IRA 보조금으로 안정 capex 사이클. 그러나 트럼프 정책 방향에 의한 정책 risk.",
+    participants: [
+      {
+        firmId: "nee",
+        role: "Gorilla",
+        revenueWeight: 0.70,
+        rationale: "NextEra Energy — 미 최대 재생에너지 utility, 태양·풍력 종합.",
+      },
+    ],
+  },
+  {
+    id: "hydrogen-fuel-cell",
+    name: "Hydrogen & Fuel Cell",
+    nameKo: "수소·연료전지",
+    ecosystemId: "energy-transition",
+    layerId: "renewables",
+    description: "고체산화물 연료전지(SOFC) — DC 전력·산업용 분산형 발전",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "수소 자체는 토네이도 미진입이나 연료전지의 데이터센터·산업 분산 발전 수요 점진. Bloom Energy가 niche leader.",
+    participants: [
+      {
+        firmId: "be",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Bloom Energy — SOFC 연료전지 leader, 데이터센터 backup·prime power.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Energy Transition > grid-infrastructure
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "power-transmission-grid",
+    name: "Power Transmission Grid",
+    nameKo: "송전망",
+    ecosystemId: "energy-transition",
+    layerId: "grid-infrastructure",
+    description: "변압기·송전선·HVDC 등 송전망 capex — AI DC 수요 폭발",
+    phase: "Tornado",
+    phaseRationale:
+      "AI 데이터센터 전력 수요 + 재생에너지 연결로 송전망 capex 폭증. 변압기 lead time 다년화.",
+    participants: [
+      {
+        firmId: "gev",
+        role: "Gorilla",
+        revenueWeight: 0.50,
+        rationale: "GE Vernova — 변압기·송전 솔루션 글로벌 leader, AI DC 직접 수혜.",
+      },
+      {
+        firmId: "pwr",
+        role: "King",
+        revenueWeight: 0.50,
+        rationale: "Quanta Services — 송전망 EPC 미 1위, backlog 사상 최대.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Energy Transition > critical-materials
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "lithium-extraction-refining",
+    name: "Lithium Extraction & Refining",
+    nameKo: "리튬 채굴·정제",
+    ecosystemId: "energy-transition",
+    layerId: "critical-materials",
+    description: "EV 배터리 리튬 — 가격 사이클 큰 변동성",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "EV 토네이도 둔화로 2024 리튬 가격 폭락 후 바닥 다지기. 장기 EV·ESS 수요로 회복 가능성.",
+    participants: [
+      {
+        firmId: "alb",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Albemarle — 글로벌 리튬 정제 1위, 가격 사이클 직격탄.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Energy Transition > oil-gas
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "integrated-oil-major",
+    name: "Integrated Oil Major",
+    nameKo: "통합 석유 메이저",
+    ecosystemId: "energy-transition",
+    layerId: "oil-gas",
+    description: "ExxonMobil·Chevron — upstream+downstream 통합, 캐시카우",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "고배당·자사주 매입 캐시카우 모드. 자본배분의 일부가 LNG·바이오 연료·CCUS로 전환.",
+    participants: [
+      {
+        firmId: "xom",
+        role: "Gorilla",
+        revenueWeight: 0.85,
+        rationale: "ExxonMobil — 통합 메이저 #1, Permian + Guyana 핵심 자산.",
+      },
+      {
+        firmId: "cvx",
+        role: "Prince",
+        revenueWeight: 0.85,
+        rationale: "Chevron — 통합 메이저 #2, Permian + Hess 인수 추진.",
+      },
+    ],
+  },
+  {
+    id: "shale-e-and-p",
+    name: "Shale E&P",
+    nameKo: "셰일 E&P",
+    ecosystemId: "energy-transition",
+    layerId: "oil-gas",
+    description: "Permian 등 셰일 시추·생산 — 자본 효율 위주",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "성장보다 캐시플로 위주, M&A 통합 사이클(Diamondback + Endeavor 등).",
+    participants: [
+      {
+        firmId: "fang",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Diamondback Energy — Permian 셰일 강자, Endeavor 인수.",
+      },
+    ],
+  },
+  {
+    id: "oilfield-services",
+    name: "Oilfield Services & LNG Equipment",
+    nameKo: "유전 서비스·LNG 장비",
+    ecosystemId: "energy-transition",
+    layerId: "oil-gas",
+    description: "시추 서비스·LNG 액화 장비 — Baker Hughes 종합",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "유가 회복 + LNG 신증설 capex 사이클. SLB·Halliburton과 oligopoly.",
+    participants: [
+      {
+        firmId: "bkr",
+        role: "Prince",
+        revenueWeight: 0.80,
+        rationale: "Baker Hughes — 유전 서비스 + LNG 액화 장비 dual segment.",
+      },
+    ],
+  },
+  {
+    id: "refining-marketing",
+    name: "Refining & Marketing",
+    nameKo: "정유·마케팅",
+    ecosystemId: "energy-transition",
+    layerId: "oil-gas",
+    description: "원유 정제·소매 — crack spread 사이클",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "정유 마진(crack spread) 변동성 큼. Valero가 미 독립 정유 1위.",
+    participants: [
+      {
+        firmId: "vlo",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Valero — 미 독립 정유 #1, 마진 사이클 직접 노출.",
+      },
+    ],
+  },
+  {
+    id: "tanker-shipping",
+    name: "Crude Tanker Shipping",
+    nameKo: "원유 탱커 운송",
+    ecosystemId: "energy-transition",
+    layerId: "oil-gas",
+    description: "VLCC·Suezmax 원유 운송 — 톤마일 수요·운임 사이클",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "러시아 제재로 인한 ton-mile 증가 + 노후 선박 폐선으로 운임 회복. 사이클 카테고리.",
+    participants: [
+      {
+        firmId: "insw",
+        role: "Prince",
+        revenueWeight: 0.95,
+        rationale: "International Seaways — Suezmax·VLCC 운영, 운임 사이클 노출.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Crypto
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "us-retail-crypto-exchange",
+    name: "US Retail Crypto Exchange",
+    nameKo: "미국 리테일 암호화폐 거래소",
+    ecosystemId: "crypto",
+    layerId: "exchange-broker",
+    description: "리테일 매매·수탁·스테이킹 — Coinbase 미 1위",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "BTC ETF 통과 후 제도권 진입, Coinbase가 ETF 수탁사로 fee 매출 확대. 그러나 수수료 압박과 규제 risk.",
+    participants: [
+      {
+        firmId: "coin",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Coinbase — 미 리테일 거래소 #1, BTC ETF 수탁사.",
+      },
+    ],
+  },
+  {
+    id: "btc-corporate-treasury",
+    name: "BTC Corporate Treasury",
+    nameKo: "BTC 기업 트레저리 전략",
+    ecosystemId: "crypto",
+    layerId: "treasury",
+    description: "기업 재무에 BTC를 핵심 자산으로 보유 — MSTR 단독 카테고리",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "MicroStrategy(Strategy)가 단독 카테고리 정의·표준 형성. 일부 기업 모방 시도 — niche but growing.",
+    participants: [
+      {
+        firmId: "mstr",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "Strategy(MSTR) — BTC 기업 트레저리 전략 카테고리 사실상 표준.",
+      },
+    ],
+  },
+  {
+    id: "usd-stablecoin-issuer",
+    name: "USD Stablecoin Issuer",
+    nameKo: "USD 스테이블코인 발행사",
+    ecosystemId: "crypto",
+    layerId: "stablecoin",
+    description: "USDC 등 USD 페그 스테이블코인 — 결제·정산 인프라",
+    phase: "Tornado",
+    phaseRationale:
+      "GENIUS 법안 통과로 미 스테이블코인 제도권 진입. Tether·USDC 양강 구도, Circle이 규제 친화 이점.",
+    participants: [
+      {
+        firmId: "crcl",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Circle — USDC 발행, 미 규제 친화 + 미 IPO 후 제도권 토네이도.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Biotech & Pharma > big-pharma
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "glp-1-obesity-diabetes",
+    name: "GLP-1 (Obesity & Diabetes)",
+    nameKo: "GLP-1 (비만·당뇨)",
+    ecosystemId: "biotech",
+    layerId: "big-pharma",
+    description: "Mounjaro·Ozempic·Wegovy — 21세기 최대 블록버스터",
+    phase: "Tornado",
+    phaseRationale:
+      "비만·당뇨·심혈관 적응증 확대로 매출 폭발. Lilly·Novo Nordisk 양강, 다른 빅파마 진입은 늦음.",
+    participants: [
+      {
+        firmId: "lly",
+        role: "Gorilla",
+        revenueWeight: 0.50,
+        rationale: "Eli Lilly — Mounjaro/Zepbound 단독, 글로벌 GLP-1 leader.",
+      },
+    ],
+  },
+  {
+    id: "oncology-immunology",
+    name: "Oncology & Immunology",
+    nameKo: "항암·면역학",
+    ecosystemId: "biotech",
+    layerId: "big-pharma",
+    description: "Keytruda·Stelara 등 면역항암제 — 안정 캐시카우",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Keytruda(Merck) 2028 특허 만료 + Stelara(JNJ) 2024 만료로 빅파마 R&D·M&A 사이클. ADC·이중특이항체 등 차세대 토네이도 후보.",
+    participants: [
+      {
+        firmId: "mrk",
+        role: "Gorilla",
+        revenueWeight: 0.50,
+        rationale: "Merck — Keytruda 글로벌 #1 항암제, ADC 파이프라인 보강.",
+      },
+      {
+        firmId: "jnj",
+        role: "Prince",
+        revenueWeight: 0.30,
+        rationale: "JNJ — Stelara·Darzalex 등 면역·혈액암 다각화.",
+      },
+    ],
+  },
+  {
+    id: "vaccines-rare-disease",
+    name: "Vaccines & Rare Disease",
+    nameKo: "백신·희귀질환",
+    ecosystemId: "biotech",
+    layerId: "big-pharma",
+    description: "백신·희귀질환 — 안정 캐시카우",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "코로나 후 일반 백신 수요 정상화, RSV 등 신규 백신 토네이도 후 정착.",
+    participants: [
+      {
+        firmId: "mrk",
+        role: "King",
+        revenueWeight: 0.20,
+        rationale: "Merck — Gardasil(HPV) 글로벌 #1 + 폐렴구균.",
+      },
+      {
+        firmId: "jnj",
+        role: "Prince",
+        revenueWeight: 0.15,
+        rationale: "JNJ — RSV 백신·희귀질환 파이프라인.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Biotech > healthcare-services
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "us-managed-care",
+    name: "US Managed Care",
+    nameKo: "미 의료보험 관리",
+    ecosystemId: "biotech",
+    layerId: "healthcare-services",
+    description: "Medicare Advantage·약제급여(PBM) — UNH 종합 leader",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "Medicare Advantage 안정 성장이지만 PBM 정치 risk. UNH 종합이지만 사업 분리 압박.",
+    participants: [
+      {
+        firmId: "unh",
+        role: "Gorilla",
+        revenueWeight: 0.95,
+        rationale: "UnitedHealth — 의료보험 + PBM(OptumRx) + 진료(Optum) 통합 1위.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Auto-EV-Battery > oem
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "us-ev-pure-play",
+    name: "US EV Pure-Play OEM",
+    nameKo: "미 EV 순수 OEM",
+    ecosystemId: "auto-ev-battery",
+    layerId: "oem",
+    description: "Tesla — 미 EV 토네이도 졸업 후 자율주행·로봇으로 재포지셔닝",
+    phase: "Maturing Main Street",
+    phaseRationale:
+      "EV 자체는 메인스트리트 진입, 가격 인하 사이클. FSD/Robotaxi/Optimus가 차세대 토네이도 후보.",
+    participants: [
+      {
+        firmId: "tsla",
+        role: "King",
+        revenueWeight: 0.85,
+        rationale: "Tesla — 미 EV 점유 1위, FSD/Optimus로 신규 카테고리 시도.",
+      },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Space Economy
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: "small-medium-launch",
+    name: "Small/Medium Launch Vehicle",
+    nameKo: "소형·중형 발사체",
+    ecosystemId: "space",
+    layerId: "launch",
+    description: "Electron·Neutron — 위성 군집 시대의 enabling launch",
+    phase: "Tornado",
+    phaseRationale:
+      "위성 군집·정부 정찰 위성 발주 폭발. SpaceX는 비상장. RKLB의 Electron이 소형, Neutron이 중형 진입.",
+    participants: [
+      {
+        firmId: "rklb",
+        role: "King",
+        revenueWeight: 0.55,
+        rationale: "Rocket Lab — Electron 소형 발사 글로벌 #2(SpaceX 다음), Neutron 진입.",
+      },
+    ],
+  },
+  {
+    id: "satellite-direct-to-cell",
+    name: "Satellite Direct-to-Cell",
+    nameKo: "위성-스마트폰 직통신",
+    ecosystemId: "space",
+    layerId: "satellite-comms",
+    description: "기존 스마트폰을 위성에 직접 연결 — 통신 카테고리 재정의",
+    phase: "Tornado",
+    phaseRationale:
+      "AT&T·Verizon·라쿠텐 모바일 등 통신사 협력 확정. 위성-셀룰러 통합 신 카테고리 토네이도.",
+    participants: [
+      {
+        firmId: "asts",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "AST SpaceMobile — 위성-스마트폰 직통신 카테고리 선구자, AT&T·Verizon 협력.",
+      },
+    ],
+  },
+  {
+    id: "satellite-broadband-tv",
+    name: "Satellite Broadband & TV",
+    nameKo: "위성 광대역·TV",
+    ecosystemId: "space",
+    layerId: "satellite-comms",
+    description: "위성 인터넷·TV — Starlink에 점유 잠식 중인 legacy 카테고리",
+    phase: "Declining Main Street",
+    phaseRationale:
+      "Starlink가 소비자 광대역 점유 잠식, EchoStar 등 legacy 사업자는 declining. EchoStar는 5G 스펙트럼 자산 매각으로 변화.",
+    participants: [
+      {
+        firmId: "sats",
+        role: "Niche",
+        revenueWeight: 0.85,
+        rationale: "EchoStar — 위성 TV/광대역 legacy, 스펙트럼 자산 가치가 핵심.",
+      },
+    ],
+    successorCategoryId: "satellite-direct-to-cell",
+  },
+  {
+    id: "earth-observation-imaging",
+    name: "Earth Observation Imaging",
+    nameKo: "지구 관측 영상",
+    ecosystemId: "space",
+    layerId: "earth-observation",
+    description: "다일별·고해상 위성 영상 SaaS — 정부·농업·환경 수요",
+    phase: "Bowling Alley",
+    phaseRationale:
+      "정부 정찰·국방 + 상업 농업·환경 모니터링 수요 점진. SaaS 모델로 전환 진행.",
+    participants: [
+      {
+        firmId: "pl",
+        role: "King",
+        revenueWeight: 0.95,
+        rationale: "Planet Labs — 다일별 지구 관측 영상 SaaS leader.",
+      },
+    ],
+  },
 ];
