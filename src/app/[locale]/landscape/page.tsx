@@ -25,6 +25,11 @@ export default async function LandscapePage({
         <p className="text-gray-500 text-[0.9375rem] leading-relaxed max-w-3xl">{t("subtitle")}</p>
       </div>
 
+      {/* Pot Gorilla / In Chasm은 클럽 보조 라벨임을 명시 — 만화 thesis와 일관 */}
+      <div className="rounded-xl bg-amber-50/60 ring-1 ring-amber-200 px-4 py-3">
+        <p className="text-[0.8125rem] text-amber-900 leading-relaxed">{t("auxLabelNote")}</p>
+      </div>
+
       <TALCPhaseView locale={locale} firms={firms} classifications={classifications} />
     </main>
   );

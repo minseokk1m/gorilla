@@ -13,7 +13,8 @@
   },
   "landscape": {
     "title": "Market Landscape — Moore's 8-stage lifecycle",
-    "subtitle": "Where the 145 firms sit on Moore's 8-stage market lifecycle. Hype cycle overlay (rising/falling) + tier classification (gorilla/potential, etc.) combined into one integrated curve."
+    "subtitle": "Where the 145 firms sit on Moore's 8-stage market lifecycle. Hype cycle overlay (rising/falling) + tier classification (gorilla/potential, etc.) combined into one integrated curve.",
+    "auxLabelNote": "💡 Notation — Moore's book defines 6 tiers (Gorilla/Chimpanzee/Monkey + King/Prince/Serf). 'In Chasm' is not a tier but a **position/state** (any category can fall into the chasm and return to its own tier when it exits). 'Potential Gorilla' is our club's **auxiliary label** for marking pre-tornado candidates. Both are operational tools, not the main thesis."
   },
   "ecosystems": {
     "title": "Ecosystems × Value-Chain Layers",

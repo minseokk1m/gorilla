@@ -13,7 +13,8 @@
   },
   "landscape": {
     "title": "시장 풍경 — Moore 8단계 수명주기",
-    "subtitle": "145개 firm이 Moore의 시장 수명주기 8단계 위 어디에 위치하는가. 하입사이클(과열 진입·꺾임)과 분류 등급(고릴라/잠재 등)을 결합한 통합 곡선입니다."
+    "subtitle": "145개 firm이 Moore의 시장 수명주기 8단계 위 어디에 위치하는가. 하입사이클(과열 진입·꺾임)과 분류 등급(고릴라/잠재 등)을 결합한 통합 곡선입니다.",
+    "auxLabelNote": "💡 표기 안내 — Moore 책의 본 분류는 6등급(Gorilla/Chimpanzee/Monkey + King/Prince/Serf)입니다. 'In Chasm'은 등급이 아닌 **위치/상태**(어떤 카테고리든 캐즘에 빠질 수 있고, 빠져나오면 다시 자기 등급을 받음). 'Potential Gorilla'는 토네이도 진입 전 후보 표시용 클럽 **보조 라벨**입니다. 둘 다 본 thesis가 아닌 운영 도구."
   },
   "ecosystems": {
     "title": "이코시스템 × 가치사슬 Layer",
