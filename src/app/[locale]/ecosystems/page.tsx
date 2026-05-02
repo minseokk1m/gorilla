@@ -14,6 +14,7 @@ import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-pr
 import { getAllEcosystemMomentums, type EcosystemMomentum } from "@/lib/data/providers/layer-momentum";
 import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
 import { EcosystemOverlayChart, type OverlayEcosystemSeries } from "@/components/ecosystems/EcosystemOverlayChart";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const TIER_ORDER: ClassificationTier[] = [
   "Gorilla",
@@ -186,8 +187,14 @@ export default async function EcosystemsPage({
         </div>
       )}
 
+      <SectionHeader
+        emoji="🌐"
+        title={t("listSectionTitle")}
+        subtitle={t("listSectionHint")}
+      />
+
       {/* Ecosystem cards grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 mt-3">
         {summaries.map(({ eco, primaries, secondaries, tierCounts, totalForBar }) => {
           const accent = ECO_ACCENT[eco.id];
           const ecoName = locale === "ko" ? eco.nameKo : eco.name;
@@ -273,12 +280,14 @@ export default async function EcosystemsPage({
 
       {/* Uncategorized */}
       {uncategorizedFirms.length > 0 && (
-        <section className="toss-card !bg-gray-50">
-          <div className="font-extrabold text-gray-900 text-sm mb-1">
-            {t("uncategorizedTitle")} · {uncategorizedFirms.length}
-          </div>
-          <p className="text-xs text-gray-500 mb-4">{t("uncategorizedHint")}</p>
-          <div className="flex flex-wrap gap-2">
+        <>
+          <SectionHeader
+            emoji="⚪"
+            title={`${t("uncategorizedSectionTitle")} · ${uncategorizedFirms.length}`}
+            subtitle={t("uncategorizedSectionHint")}
+          />
+          <section className="toss-card !bg-gray-50 mt-3">
+            <div className="flex flex-wrap gap-2">
             {uncategorizedFirms.map((f) => (
               <Link
                 key={f.id}
@@ -288,8 +297,9 @@ export default async function EcosystemsPage({
                 {f.name}
               </Link>
             ))}
-          </div>
-        </section>
+            </div>
+          </section>
+        </>
       )}
     </main>
   );

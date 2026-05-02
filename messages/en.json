@@ -87,7 +87,11 @@
     "subPositioned": "Positioned",
     "subAtRisk": "At risk (no successor play)",
     "subPureSuccessor": "Pure successor plays",
-    "subFromArrow": "→ Successor"
+    "subFromArrow": "→ Successor",
+    "listSectionTitle": "9 macro ecosystems",
+    "listSectionHint": "145 firms classified into Moore × value-chain matrix. Click a card for that ecosystem's layer × phase matrix.",
+    "uncategorizedSectionTitle": "Not yet mapped",
+    "uncategorizedSectionHint": "Financial · Telecom · Consumer Staples — candidates for future ecosystem expansion."
   },
   "footer": {
     "disclaimer": "Based on Geoffrey Moore's trilogy and Miller Heiman's The New Strategic Selling · Mock data only · Not financial advice"
