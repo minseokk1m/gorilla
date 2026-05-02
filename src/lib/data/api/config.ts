@@ -1,14 +1,17 @@
 /**
  * Data source configuration.
  *
- * "mock"   – 모든 데이터 mock (dev 환경 전용; Yahoo 호출 부담 회피).
- * "live"   – Yahoo Finance 실데이터만 사용. price/news는 yahoo 실패 시 빈 값.
- *            firms.ts의 base 필드(marketCap·revenueGrowth 등)는 yahoo가 못
- *            덮을 때 firms.ts 값 그대로 분류 엔진 입력으로 사용 (다음 단계에서
- *            'mock-fallback' marker 추가 예정).
- * "hybrid" – 호환용. 동작은 live와 동일 (mock fallback 제거됨).
+ * 임시: vercel function timeout (free tier 10s 한도)으로 'live' 사용 시 cold
+ * start에 ecosystem detail 페이지가 22초+ → 500. 정공법(Suspense streaming +
+ * lazy yahoo) 적용 전까지 default를 'mock'으로 회귀. Vercel env에서 'live'로
+ * override 가능.
+ *
+ * "mock"   – 모든 데이터 mock. 가격은 결정적 시드 기반 가짜. 분류·매도·funnel·
+ *            substitution 등 핵심 비전은 모두 작동.
+ * "live"   – Yahoo Finance 실데이터. 단 cold start에 timeout 위험.
+ * "hybrid" – 호환용. live와 동일.
  */
-export const DATA_SOURCE = (process.env.DATA_SOURCE ?? "live") as
+export const DATA_SOURCE = (process.env.DATA_SOURCE ?? "mock") as
   | "mock"
   | "live"
   | "hybrid";
