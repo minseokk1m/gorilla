@@ -5,6 +5,7 @@ import { TTLCache } from "./cache";
 import { CACHE_TTL, MAX_CONCURRENCY, BATCH_DELAY_MS, DATA_SOURCE } from "./config";
 import { fetchQuote, fetchHistorical, fetchFundamentals, fetchNews } from "./yahoo-finance-client";
 import type { YFQuote, YFFundamentals, YFNewsItem } from "./yahoo-finance-client";
+import { getSecAnnualRevenue } from "./sec-revenue";
 
 // ── Caches ──────────────────────────────────────────────
 const quoteCache = new TTLCache<YFQuote>(CACHE_TTL.quote);
@@ -141,11 +142,19 @@ export async function getMarketFirmOverlay(
     getFundamentals(ticker),
   ]);
 
-  if (!quote && !fundamentals) return null;
+  // Yahoo fundamentals 부재 시 SEC EDGAR fallback (미국 firm만 — 한국 ticker는
+  // SEC에 매핑 없음). marketCap은 yahoo가 전적으로 책임 (SEC는 quote 안 줌).
+  let revGrowth = fundamentals?.revenueGrowthYoY ?? 0;
+  if (!fundamentals?.revenueGrowthYoY) {
+    const sec = await getSecAnnualRevenue(ticker);
+    if (sec && Number.isFinite(sec.growthYoY)) revGrowth = sec.growthYoY;
+  }
+
+  if (!quote && !fundamentals && revGrowth === 0) return null;
 
   return {
     marketCapUSD: quote ? +(quote.marketCap / 1_000_000_000).toFixed(1) : 0,
-    revenueGrowthYoY: fundamentals?.revenueGrowthYoY ?? 0,
+    revenueGrowthYoY: revGrowth,
     grossMargin: fundamentals?.grossMargin ?? 0,
   };
 }

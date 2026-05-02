@@ -84,6 +84,8 @@ export interface SECConcept {
 }
 
 export interface SECConceptValue {
+  /** Fiscal period start date (YYYY-MM-DD). Missing for instant values (balance sheet). */
+  start?: string;
   /** Fiscal period end date (YYYY-MM-DD) */
   end: string;
   /** Reported value */
