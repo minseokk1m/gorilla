@@ -18,13 +18,8 @@ import {
   getFirmsByIds,
   getClassificationsByIds,
 } from "@/lib/data/providers/firm-provider";
-import {
-  getCachedLayerMomentum,
-  getCachedEcosystemMomentum,
-  type LayerMomentum,
-} from "@/lib/data/providers/layer-momentum";
-import { MomentumPanel } from "@/components/ecosystems/MomentumPanel";
-import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
+import { LayerMomentumLazy } from "@/components/ecosystems/LayerMomentumLazy";
+import { EcosystemMacroBandLazy } from "@/components/ecosystems/EcosystemMacroBandLazy";
 import { getCategoriesByLayer, getCategoryById } from "@/lib/data/providers/product-category-provider";
 import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
 
@@ -150,12 +145,10 @@ export default async function EcosystemDetailPage({
       {/* Hero — sync, no data deps */}
       <Hero eco={eco} locale={locale} accent={accent} tList={tList} />
 
-      {/* Macro band — Suspense */}
-      <Suspense fallback={<MacroBandSkeleton />}>
-        <MacroBand ecoId={eco.id} locale={locale} tList={tList} />
-      </Suspense>
+      {/* Macro band — client lazy (yahoo on /api/ecosystem-momentum/[ecoId]/macro) */}
+      <EcosystemMacroBandLazy ecoId={eco.id} locale={locale} />
 
-      {/* Layer cards — Suspense (firm + classification + momentum + conflicts) */}
+      {/* Layer cards — Suspense (firm + classification + conflicts; momentum은 client lazy) */}
       <Suspense fallback={<LayerCardsSkeleton layerCount={eco.layers.length} />}>
         <LayerCards eco={eco} locale={locale} accent={accent} />
       </Suspense>
@@ -208,131 +201,6 @@ function Hero({
   );
 }
 
-// ── MacroBand (async, Suspense child) ──
-
-async function MacroBand({
-  ecoId,
-  locale,
-  tList,
-}: {
-  ecoId: EcosystemId;
-  locale: string;
-  tList: Awaited<ReturnType<typeof getTranslations>>;
-}) {
-  const ecoMacro = await getCachedEcosystemMomentum(ecoId);
-  if (!ecoMacro || ecoMacro.priceMomentum === null) return null;
-
-  return (
-    <section className="toss-card mb-6">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5">
-        {/* Left: numbers + sparkline */}
-        <div>
-          <div className="text-[0.6875rem] font-extrabold text-gray-400 uppercase tracking-wider mb-2">
-            {locale === "ko" ? "이코시스템 거시 모멘텀" : "Ecosystem macro momentum"}
-          </div>
-          <div className="flex items-baseline gap-3 mb-2">
-            <span
-              className={`text-3xl font-extrabold ${
-                ecoMacro.priceMomentum >= 0 ? "text-emerald-600" : "text-rose-600"
-              }`}
-            >
-              {ecoMacro.priceMomentum > 0 ? "+" : ""}
-              {(ecoMacro.priceMomentum * 100).toFixed(1)}%
-            </span>
-            <span className="text-xs font-bold text-gray-400 uppercase">4w</span>
-          </div>
-          {ecoMacro.priceSparkline && (
-            <div className="mb-3">
-              <InlineSparkline
-                data={ecoMacro.priceSparkline}
-                width={260}
-                height={50}
-                color={ecoMacro.priceMomentum >= 0 ? "#10b981" : "#f43f5e"}
-                strokeWidth={1.5}
-              />
-              <div className="text-[0.625rem] font-bold text-gray-400 mt-1">
-                {tList("trendBase")}
-              </div>
-            </div>
-          )}
-          <div className="flex items-center gap-3 text-[0.6875rem] font-bold text-gray-500">
-            <span>
-              1w{" "}
-              <span className={ecoMacro.priceMomentumByTimeframe["1w"] !== null && ecoMacro.priceMomentumByTimeframe["1w"] >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                {ecoMacro.priceMomentumByTimeframe["1w"] !== null
-                  ? `${ecoMacro.priceMomentumByTimeframe["1w"] > 0 ? "+" : ""}${(ecoMacro.priceMomentumByTimeframe["1w"] * 100).toFixed(1)}%`
-                  : "—"}
-              </span>
-            </span>
-            <span className="text-gray-300">·</span>
-            <span>
-              12w{" "}
-              <span className={ecoMacro.priceMomentumByTimeframe["12w"] !== null && ecoMacro.priceMomentumByTimeframe["12w"] >= 0 ? "text-emerald-600" : "text-rose-600"}>
-                {ecoMacro.priceMomentumByTimeframe["12w"] !== null
-                  ? `${ecoMacro.priceMomentumByTimeframe["12w"] > 0 ? "+" : ""}${(ecoMacro.priceMomentumByTimeframe["12w"] * 100).toFixed(1)}%`
-                  : "—"}
-              </span>
-            </span>
-            <span className="text-gray-300">·</span>
-            <span className="text-gray-400">
-              {ecoMacro.sampleSize.firms} firms · {ecoMacro.sampleSize.layers} layers
-            </span>
-          </div>
-        </div>
-
-        {/* Right: top/bottom layer movers */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <div className="text-[0.6875rem] font-extrabold text-emerald-700 uppercase tracking-wider mb-2">
-              ↗ {locale === "ko" ? "주도 layer" : "Top movers"} (4w)
-            </div>
-            <div className="space-y-1.5">
-              {ecoMacro.topMovers.map((mv) => (
-                <a
-                  key={mv.layerId}
-                  href={`#layer-${mv.layerId}`}
-                  className="flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 bg-emerald-50/60 hover:bg-emerald-100 transition-colors"
-                >
-                  <span className="text-xs font-bold text-gray-800 truncate">
-                    {locale === "ko" ? mv.layerNameKo : mv.layerName}
-                  </span>
-                  <span className="text-xs font-extrabold text-emerald-700 shrink-0">
-                    {mv.change > 0 ? "+" : ""}
-                    {(mv.change * 100).toFixed(1)}%
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="text-[0.6875rem] font-extrabold text-rose-700 uppercase tracking-wider mb-2">
-              ↘ {locale === "ko" ? "약세 layer" : "Bottom movers"} (4w)
-            </div>
-            <div className="space-y-1.5">
-              {ecoMacro.bottomMovers.map((mv) => (
-                <a
-                  key={mv.layerId}
-                  href={`#layer-${mv.layerId}`}
-                  className="flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 bg-rose-50/60 hover:bg-rose-100 transition-colors"
-                >
-                  <span className="text-xs font-bold text-gray-800 truncate">
-                    {locale === "ko" ? mv.layerNameKo : mv.layerName}
-                  </span>
-                  <span className="text-xs font-extrabold text-rose-700 shrink-0">
-                    {mv.change > 0 ? "+" : ""}
-                    {(mv.change * 100).toFixed(1)}%
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ── LayerCards (async, Suspense child) ──
 
 async function LayerCards({
@@ -346,22 +214,20 @@ async function LayerCards({
 }) {
   const tList = await getTranslations({ locale, namespace: "ecosystems" });
 
-  // Scoped fetch — only this ecosystem's firms (not all 145)
+  // Scoped fetch — only this ecosystem's firms (not all 145).
+  // momentum/macro는 client lazy로 분리(LayerMomentumLazy / EcosystemMacroBandLazy)
+  // — 각 API 호출이 독립 vercel function이라 layer 단위 timeout budget 가짐.
   const ids = getFirmIdsForEcosystem(eco.id);
 
-  const [firms, classifications, conflicts, momentums] = await Promise.all([
+  const [firms, classifications, conflicts] = await Promise.all([
     getFirmsByIds(ids),
     getClassificationsByIds(ids, locale),
     detectMooreConflictsForEcosystem(eco.id, locale as "en" | "ko"),
-    Promise.all(eco.layers.map((l) => getCachedLayerMomentum(eco.id, l.id))),
   ]);
 
   const firmById = new Map(firms.map((f) => [f.id, f]));
   const conflictByLayer = new Map<string, MooreConflict>();
   for (const c of conflicts) conflictByLayer.set(c.layerId, c);
-  const momentumByLayer = new Map<string, LayerMomentum>(
-    momentums.map((m) => [m.layerId, m]),
-  );
 
   return (
     <div className="space-y-4">
@@ -384,7 +250,6 @@ async function LayerCards({
         const conflict = conflictByLayer.get(layer.id);
         const annotation = conflict ? CONFLICT_ANNOTATIONS[`${eco.id}:${layer.id}`] : null;
         const kindBadge = annotation ? KIND_BADGE[annotation.kind] : null;
-        const momentum = momentumByLayer.get(layer.id);
 
         return (
           <section
@@ -412,22 +277,8 @@ async function LayerCards({
                 )}
               </div>
 
-              {/* Momentum bar */}
-              {momentum && (
-                <MomentumPanel
-                  m={momentum}
-                  locale={locale}
-                  labels={{
-                    title: tList("momentumTitle"),
-                    priceLabel: tList("priceLabel"),
-                    newsLabel: tList("newsLabel"),
-                    sampleSize: (n: number) => tList("sampleSize", { n }),
-                    noData: tList("noData"),
-                    tf: { "1w": tList("tf1w"), "4w": tList("tf4w"), "12w": tList("tf12w") },
-                    trendBase: tList("trendBase"),
-                  }}
-                />
-              )}
+              {/* Momentum bar — client lazy fetch */}
+              <LayerMomentumLazy ecoId={eco.id} layerId={layer.id} locale={locale} />
 
               {/* Conflict badge */}
               {conflict && kindBadge && annotation && (
@@ -513,35 +364,6 @@ async function LayerCards({
 }
 
 // ── Skeletons (Suspense fallback) ──
-
-function MacroBandSkeleton() {
-  return (
-    <section className="toss-card mb-6 animate-pulse">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5">
-        <div>
-          <div className="h-3 bg-gray-200 rounded w-32 mb-3" />
-          <div className="h-8 bg-gray-200 rounded w-24 mb-3" />
-          <div className="h-12 bg-gray-100 rounded mb-2" />
-          <div className="h-3 bg-gray-100 rounded w-40" />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="space-y-1.5">
-            <div className="h-3 bg-gray-200 rounded w-20 mb-2" />
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-7 bg-gray-100 rounded" />
-            ))}
-          </div>
-          <div className="space-y-1.5">
-            <div className="h-3 bg-gray-200 rounded w-20 mb-2" />
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-7 bg-gray-100 rounded" />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function LayerCardsSkeleton({ layerCount }: { layerCount: number }) {
   return (
