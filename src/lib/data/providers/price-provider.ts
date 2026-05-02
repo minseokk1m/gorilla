@@ -27,3 +27,16 @@ export async function getAllPriceHistories(): Promise<PriceHistory[]> {
   );
   return results.filter((p): p is PriceHistory => p !== null);
 }
+
+/** Fetch price histories only for the requested firm ids — used by scoped pages
+ *  (ecosystem detail, layer momentum) to avoid the 145-firm yahoo overlay. */
+export async function getPriceHistoriesByIds(ids: string[]): Promise<PriceHistory[]> {
+  if (DATA_SOURCE === "mock") {
+    return MOCK_PRICE_HISTORIES.filter((p) => ids.includes(p.firmId));
+  }
+  const firms = MOCK_FIRMS.filter((f) => ids.includes(f.id));
+  const results = await Promise.all(
+    firms.map((f) => getLivePriceHistory(f.id, f.yahooTicker ?? f.ticker)),
+  );
+  return results.filter((p): p is PriceHistory => p !== null);
+}

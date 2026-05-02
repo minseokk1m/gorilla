@@ -3,7 +3,7 @@ import type { Firm } from "@/types/firm";
 import type { ClassificationResult, ClassificationTier } from "@/types/classification";
 import { ECOSYSTEMS, findEcosystem } from "../mock/ecosystems";
 import { ECOSYSTEM_MEMBERSHIPS, UNCATEGORIZED_FIRM_IDS } from "../mock/ecosystem-memberships";
-import { getAllFirms, getAllClassifications } from "./firm-provider";
+import { getAllFirms, getAllClassifications, getClassificationsByIds } from "./firm-provider";
 
 // ── Read-only registry queries (no async — pure data) ──────────────
 
@@ -42,6 +42,15 @@ export function getLayerMemberships(
 
 export function isUncategorized(firmId: string): boolean {
   return UNCATEGORIZED_FIRM_IDS.includes(firmId);
+}
+
+/** All firm-ids (primary + secondary) participating in an ecosystem. */
+export function getFirmIdsForEcosystem(ecosystemId: EcosystemId): string[] {
+  const ids = new Set<string>();
+  for (const m of ECOSYSTEM_MEMBERSHIPS) {
+    if (m.ecosystemId === ecosystemId) ids.add(m.firmId);
+  }
+  return [...ids];
 }
 
 // ── Hydrated queries (cross with classification) ──────────────
@@ -159,6 +168,59 @@ export async function detectMooreConflicts(
           firmIds: [...gorillas.map((g) => g.firmId), ...potentials.map((p) => p.firmId)],
         });
       }
+    }
+  }
+
+  return conflicts;
+}
+
+/**
+ * Detect Moore conflicts for a single ecosystem only — uses scoped firm fetch
+ * (~30 firm)으로 cold start cost 축소. ecosystem detail 페이지에서 detect 전체
+ * (145 firm classify) 대신 사용.
+ */
+export async function detectMooreConflictsForEcosystem(
+  ecosystemId: EcosystemId,
+  locale: "en" | "ko" = "ko",
+): Promise<MooreConflict[]> {
+  const eco = ECOSYSTEMS.find((e) => e.id === ecosystemId);
+  if (!eco) return [];
+
+  const ids = getFirmIdsForEcosystem(ecosystemId);
+  const classifications = await getClassificationsByIds(ids, locale);
+
+  const conflicts: MooreConflict[] = [];
+  for (const layer of eco.layers) {
+    const memberships = getLayerMemberships(ecosystemId, layer.id);
+    const primaries = memberships.filter((m) => m.role === "primary");
+    if (primaries.length < 2) continue;
+
+    const tiers = primaries.map((m) => ({
+      firmId: m.firmId,
+      tier: classifications.get(m.firmId)?.tier,
+    }));
+
+    const gorillas = tiers.filter((t) => t.tier === "Gorilla");
+    const potentials = tiers.filter((t) => t.tier === "Potential Gorilla");
+
+    if (gorillas.length >= 2) {
+      conflicts.push({
+        ecosystemId,
+        ecosystemName: locale === "ko" ? eco.nameKo : eco.name,
+        layerId: layer.id,
+        layerName: locale === "ko" ? layer.nameKo : layer.name,
+        kind: "gorilla-collision",
+        firmIds: gorillas.map((g) => g.firmId),
+      });
+    } else if (gorillas.length === 1 && potentials.length >= 1) {
+      conflicts.push({
+        ecosystemId,
+        ecosystemName: locale === "ko" ? eco.nameKo : eco.name,
+        layerId: layer.id,
+        layerName: locale === "ko" ? layer.nameKo : layer.name,
+        kind: "succession-pressure",
+        firmIds: [...gorillas.map((g) => g.firmId), ...potentials.map((p) => p.firmId)],
+      });
     }
   }
 

@@ -15,8 +15,8 @@
 import type { NewsArticle } from "@/types/news";
 import type { EcosystemId } from "@/types/ecosystem";
 import type { OHLCVCandle, PriceHistory } from "@/types/market";
-import { getAllFirms } from "./firm-provider";
-import { getAllPriceHistories } from "./price-provider";
+import { getFirmsByIds } from "./firm-provider";
+import { getPriceHistoriesByIds } from "./price-provider";
 import { getNewsByFirmId } from "./news-provider";
 import { getLayerMemberships } from "./ecosystem-provider";
 import { ECOSYSTEMS } from "../mock/ecosystems";
@@ -95,7 +95,12 @@ export async function getLayerMomentum(
     (m) => m.role === "primary",
   );
 
-  const [firms, prices] = await Promise.all([getAllFirms(), getAllPriceHistories()]);
+  // Scoped fetch — only this layer's firms (5-15 typical), not all 145
+  const layerIds = memberships.map((m) => m.firmId);
+  const [firms, prices] = await Promise.all([
+    getFirmsByIds(layerIds),
+    getPriceHistoriesByIds(layerIds),
+  ]);
   const firmById = new Map(firms.map((f) => [f.id, f]));
   const priceById = new Map(prices.map((p) => [p.firmId, p]));
 
@@ -267,13 +272,9 @@ export async function getEcosystemMomentum(
     }
   }
 
-  const [firms, prices] = await Promise.all([getAllFirms(), getAllPriceHistories()]);
-  const priceById = new Map(prices.map((p) => [p.firmId, p]));
-  const ecosystemPrices: PriceHistory[] = [];
-  for (const id of firmIds) {
-    const p = priceById.get(id);
-    if (p) ecosystemPrices.push(p);
-  }
+  // Scoped fetch — only this ecosystem's firms (~30 typical), not all 145
+  const idArr = Array.from(firmIds);
+  const ecosystemPrices = await getPriceHistoriesByIds(idArr);
 
   const priceMomentumByTimeframe: Record<Timeframe, number | null> = {
     "1w": avgChangeAcrossFirms(ecosystemPrices, TIMEFRAME_DAYS["1w"]),
