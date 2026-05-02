@@ -14,6 +14,15 @@ const fundamentalsCache = new TTLCache<YFFundamentals>(CACHE_TTL.fundamentals);
 const priceHistoryCache = new TTLCache<PriceHistory>(CACHE_TTL.historical);
 const newsCache = new TTLCache<YFNewsItem[]>(CACHE_TTL.historical); // 1 hour
 
+// ── In-flight Promise dedupe ────────────────────────────
+// Cache miss 동시 호출 race 방지: 같은 ticker가 동시에 요청되면 하나의 Promise를
+// 공유. fetch 끝나면 자동 cleanup. Suspense streaming에서 여러 영역이 같은 firm
+// 데이터를 동시에 요청할 때 yahoo 호출 중복 회피.
+const quoteInflight = new Map<string, Promise<YFQuote | null>>();
+const historicalInflight = new Map<string, Promise<OHLCVCandle[] | null>>();
+const fundamentalsInflight = new Map<string, Promise<YFFundamentals | null>>();
+const newsInflight = new Map<string, Promise<YFNewsItem[] | null>>();
+
 // ── Concurrency limiter ─────────────────────────────────
 async function withConcurrency<T>(
   tasks: (() => Promise<T>)[],
@@ -32,51 +41,75 @@ async function withConcurrency<T>(
   return results;
 }
 
-// ── Public: get live quote (cached) ─────────────────────
+// ── Public: get live quote (cached + dedupe) ────────────
 export async function getQuote(ticker: string): Promise<YFQuote | null> {
   if (DATA_SOURCE === "mock") return null;
-
   const cached = quoteCache.get(ticker);
   if (cached) return cached;
-
-  const quote = await fetchQuote(ticker);
-  if (quote) quoteCache.set(ticker, quote);
-  return quote;
+  const inflight = quoteInflight.get(ticker);
+  if (inflight) return inflight;
+  const promise = (async () => {
+    try {
+      const quote = await fetchQuote(ticker);
+      if (quote) quoteCache.set(ticker, quote);
+      return quote;
+    } finally {
+      quoteInflight.delete(ticker);
+    }
+  })();
+  quoteInflight.set(ticker, promise);
+  return promise;
 }
 
-// ── Public: get live candles (cached) ───────────────────
+// ── Public: get live candles (cached + dedupe) ──────────
 export async function getCandles(ticker: string): Promise<OHLCVCandle[] | null> {
   if (DATA_SOURCE === "mock") return null;
-
   const cached = historicalCache.get(ticker);
   if (cached) return cached;
-
-  const raw = await fetchHistorical(ticker, 90);
-  if (raw) {
-    const candles: OHLCVCandle[] = raw.map((c) => ({
-      date: c.date,
-      open: c.open,
-      high: c.high,
-      low: c.low,
-      close: c.close,
-      volume: c.volume,
-    }));
-    historicalCache.set(ticker, candles);
-    return candles;
-  }
-  return null;
+  const inflight = historicalInflight.get(ticker);
+  if (inflight) return inflight;
+  const promise = (async () => {
+    try {
+      const raw = await fetchHistorical(ticker, 90);
+      if (raw) {
+        const candles: OHLCVCandle[] = raw.map((c) => ({
+          date: c.date,
+          open: c.open,
+          high: c.high,
+          low: c.low,
+          close: c.close,
+          volume: c.volume,
+        }));
+        historicalCache.set(ticker, candles);
+        return candles;
+      }
+      return null;
+    } finally {
+      historicalInflight.delete(ticker);
+    }
+  })();
+  historicalInflight.set(ticker, promise);
+  return promise;
 }
 
-// ── Public: get live fundamentals (cached) ──────────────
+// ── Public: get live fundamentals (cached + dedupe) ─────
 export async function getFundamentals(ticker: string): Promise<YFFundamentals | null> {
   if (DATA_SOURCE === "mock") return null;
-
   const cached = fundamentalsCache.get(ticker);
   if (cached) return cached;
-
-  const data = await fetchFundamentals(ticker);
-  if (data) fundamentalsCache.set(ticker, data);
-  return data;
+  const inflight = fundamentalsInflight.get(ticker);
+  if (inflight) return inflight;
+  const promise = (async () => {
+    try {
+      const data = await fetchFundamentals(ticker);
+      if (data) fundamentalsCache.set(ticker, data);
+      return data;
+    } finally {
+      fundamentalsInflight.delete(ticker);
+    }
+  })();
+  fundamentalsInflight.set(ticker, promise);
+  return promise;
 }
 
 // ── Public: build full PriceHistory from live data ──────
@@ -116,19 +149,27 @@ export async function getLivePriceHistory(
   return priceHistory;
 }
 
-// ── Public: get live news (cached) ──────────────────────
+// ── Public: get live news (cached + dedupe) ─────────────
 export async function getLiveNews(ticker: string): Promise<YFNewsItem[] | null> {
   if (DATA_SOURCE === "mock") return null;
-
   const cached = newsCache.get(ticker);
   if (cached) return cached;
-
-  const news = await fetchNews(ticker);
-  if (news && news.length > 0) {
-    newsCache.set(ticker, news);
-    return news;
-  }
-  return null;
+  const inflight = newsInflight.get(ticker);
+  if (inflight) return inflight;
+  const promise = (async () => {
+    try {
+      const news = await fetchNews(ticker);
+      if (news && news.length > 0) {
+        newsCache.set(ticker, news);
+        return news;
+      }
+      return null;
+    } finally {
+      newsInflight.delete(ticker);
+    }
+  })();
+  newsInflight.set(ticker, promise);
+  return promise;
 }
 
 // ── Public: overlay live market data onto a firm ────────

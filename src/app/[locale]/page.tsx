@@ -10,16 +10,16 @@ import { FIRM_NAMES_KO } from "@/lib/data/mock/firm-names-ko";
 // ISR: 30분 캐시 (Yahoo Finance fundamentals/price 호출 비용 분산).
 export const revalidate = 1800;
 
+import { Suspense } from "react";
 import { detectMooreConflicts } from "@/lib/data/providers/ecosystem-provider";
-import { getHotColdLayers } from "@/lib/data/providers/layer-momentum";
-import { findEcosystem } from "@/lib/data/mock/ecosystems";
-import { getGroupedSellCandidates } from "@/lib/data/providers/sell-signal-engine";
-import { getFunnelCounts, getFirmsAtStage } from "@/lib/data/providers/funnel-engine";
-import { getTopSentimentDrivenFirms } from "@/lib/data/providers/sentiment-driven-engine";
 import { getSubstitutionPaths } from "@/lib/data/providers/product-category-provider";
 import { PHASE_BADGE, phaseLabel } from "@/components/ecosystems/category-style";
 import type { EcosystemId } from "@/types/ecosystem";
-import type { FunnelStage } from "@/types/funnel";
+// Streaming sections (yahoo 의존 — Suspense로 점진 paint)
+import { FunnelSection } from "@/components/dashboard/sections/FunnelSection";
+import { SellStripSection } from "@/components/dashboard/sections/SellStripSection";
+import { HotColdSentimentSection } from "@/components/dashboard/sections/HotColdSentimentSection";
+import { FunnelSkeleton, SellStripSkeleton, HotColdSentimentSkeleton } from "@/components/dashboard/sections/SectionSkeletons";
 
 const ECO_DOT: Record<EcosystemId, string> = {
   "ai": "bg-blue-500",
@@ -62,22 +62,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "dashboard" });
   const tTiers = await getTranslations({ locale, namespace: "tiers" });
 
-  const [firms, classificationsMap, mooreConflicts, hotCold, sellGroups, funnelCounts, holdFirms, confirmedFirms, potentialFirms, topSentimentFirms] = await Promise.all([
+  // 빠른 영역만 page에서 await — yahoo 호출 안 하는 분류·큐레이션 데이터.
+  // 무거운 영역(funnel, sell, hot/cold, sentiment)은 자체 Suspense section에서
+  // 별도로 fetch — page는 즉시 paint, 영역마다 데이터 들어오면 swap.
+  const [firms, classificationsMap, mooreConflicts] = await Promise.all([
     getAllFirms(),
     getAllClassifications(locale),
     detectMooreConflicts(locale as "en" | "ko"),
-    getHotColdLayers(3),
-    getGroupedSellCandidates(),
-    getFunnelCounts(),
-    getFirmsAtStage("Hold"),
-    getFirmsAtStage("Confirmed"),
-    getFirmsAtStage("Potential"),
-    getTopSentimentDrivenFirms(5),
   ]);
   const substitutionPaths = getSubstitutionPaths();
   const tEco = await getTranslations({ locale, namespace: "ecosystems" });
-  const firmName = (id: string) => firms.find((f) => f.id === id)?.name ?? id;
-  const firmSlug = (id: string) => firms.find((f) => f.id === id)?.slug ?? id;
 
   // Fetch discussion activity
   let openProposals = 0;
@@ -339,60 +333,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </div>
 
 
-      {/* ── Investment Funnel ── */}
-      <section className="toss-card">
-        <div className="flex items-baseline justify-between mb-1">
-          <h2 className="!text-base">{tEco("funnelTitle")}</h2>
-          <span className="text-[0.6875rem] font-bold text-gray-400">
-            {firms.length} → {funnelCounts.Potential} → {funnelCounts.Confirmed} → {funnelCounts.Hold}
-          </span>
-        </div>
-        <p className="text-xs text-gray-500 leading-snug mb-4">{tEco("funnelHint")}</p>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          {(
-            [
-              { stage: "Candidate" as FunnelStage, count: funnelCounts.Candidate, top: [], bg: "bg-gray-50",     ring: "ring-gray-200",     accent: "text-gray-600",   labelKey: "stageCandidate", widthClass: "w-full" },
-              { stage: "Potential" as FunnelStage, count: funnelCounts.Potential, top: potentialFirms.slice(0, 3), bg: "bg-blue-50",     ring: "ring-blue-200",     accent: "text-blue-700",   labelKey: "stagePotential", widthClass: "w-[88%]" },
-              { stage: "Confirmed" as FunnelStage, count: funnelCounts.Confirmed, top: confirmedFirms.slice(0, 3), bg: "bg-emerald-50",  ring: "ring-emerald-200",  accent: "text-emerald-700",labelKey: "stageConfirmed", widthClass: "w-[76%]" },
-              { stage: "Hold" as FunnelStage,      count: funnelCounts.Hold,      top: holdFirms.slice(0, 5),      bg: "bg-emerald-100", ring: "ring-emerald-300",  accent: "text-emerald-800",labelKey: "stageHold", widthClass: "w-[64%]" },
-            ] as const
-          ).map((s, i) => (
-            <div
-              key={s.stage}
-              className={`relative rounded-2xl ${s.bg} ring-1 ${s.ring} p-3 mx-auto ${s.widthClass} transition-shadow`}
-            >
-              <div className="flex items-baseline justify-between mb-1.5">
-                <span className={`text-[0.6875rem] font-extrabold uppercase tracking-wider ${s.accent}`}>
-                  {i + 1}. {tEco(s.labelKey as "stageCandidate")}
-                </span>
-                <span className={`text-lg font-extrabold ${s.accent}`}>{s.count}</span>
-              </div>
-              {s.top.length === 0 ? (
-                <div className="text-[0.6875rem] text-gray-400 italic">
-                  {s.stage === "Candidate" ? `전체 ${firms.length}` : "—"}
-                </div>
-              ) : (
-                <div className="space-y-0.5">
-                  {s.top.map((p) => {
-                    const f = firms.find((x) => x.id === p.firmId);
-                    if (!f) return null;
-                    return (
-                      <Link
-                        key={p.firmId}
-                        href={`/firms/${f.slug}`}
-                        className="block text-[0.6875rem] font-bold text-gray-700 hover:text-gray-900 truncate"
-                      >
-                        · {f.name}
-                      </Link>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* ── Investment Funnel (Suspense streaming) ── */}
+      <Suspense fallback={<FunnelSkeleton />}>
+        <FunnelSection locale={locale} />
+      </Suspense>
 
       {/* ── Category Substitution ── */}
       {substitutionPaths.length > 0 && (
@@ -512,214 +456,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
-      {/* ── Sell · Rebalance · Warn ── */}
-      {(sellGroups.exit.length > 0 || sellGroups.rebalance.length > 0 || sellGroups.warn.length > 0) && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {/* EXIT */}
-          <div className="toss-card !bg-gradient-to-br !from-rose-50 !to-white">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-extrabold text-gray-900">{tEco("sellExitTitle")}</div>
-              <div className="text-[0.6875rem] font-bold text-rose-700">{sellGroups.exit.length}</div>
-            </div>
-            {sellGroups.exit.length === 0 ? (
-              <div className="text-xs text-gray-400 italic">{tEco("sellEmpty")}</div>
-            ) : (
-              <div className="space-y-1">
-                {sellGroups.exit.slice(0, 4).map((c) => (
-                  <Link
-                    key={c.firmId}
-                    href={`/firms/${firmSlug(c.firmId)}`}
-                    className="block rounded-lg px-2.5 py-1.5 hover:bg-white/60 transition-colors"
-                    title={c.topSignal.reasonKo}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-gray-900 truncate">{firmName(c.firmId)}</span>
-                      <span className="shrink-0 text-[0.625rem] font-extrabold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">
-                        {c.topSignal.kind.replace("EXIT-", "")}
-                      </span>
-                    </div>
-                    <div className="text-[0.6875rem] text-gray-500 mt-0.5 line-clamp-1">
-                      {c.topSignal.reasonKo}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+      {/* ── Sell · Rebalance · Warn (Suspense streaming) ── */}
+      <Suspense fallback={<SellStripSkeleton />}>
+        <SellStripSection locale={locale} />
+      </Suspense>
 
-          {/* REBALANCE */}
-          <div className="toss-card !bg-gradient-to-br !from-amber-50 !to-white">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-extrabold text-gray-900">{tEco("sellRebalanceTitle")}</div>
-              <div className="text-[0.6875rem] font-bold text-amber-700">{sellGroups.rebalance.length}</div>
-            </div>
-            {sellGroups.rebalance.length === 0 ? (
-              <div className="text-xs text-gray-400 italic">{tEco("sellEmpty")}</div>
-            ) : (
-              <div className="space-y-1">
-                {sellGroups.rebalance.slice(0, 4).map((c) => (
-                  <Link
-                    key={c.firmId}
-                    href={`/firms/${firmSlug(c.firmId)}`}
-                    className="block rounded-lg px-2.5 py-1.5 hover:bg-white/60 transition-colors"
-                    title={c.topSignal.reasonKo}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-gray-900 truncate">{firmName(c.firmId)}</span>
-                      <span className="shrink-0 text-[0.625rem] font-extrabold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded">
-                        REBAL
-                      </span>
-                    </div>
-                    <div className="text-[0.6875rem] text-gray-500 mt-0.5 line-clamp-1">
-                      {c.topSignal.reasonKo}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* WARN */}
-          <div className="toss-card !bg-gradient-to-br !from-yellow-50 !to-white">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-extrabold text-gray-900">{tEco("sellWarnTitle")}</div>
-              <div className="text-[0.6875rem] font-bold text-yellow-700">{sellGroups.warn.length}</div>
-            </div>
-            {sellGroups.warn.length === 0 ? (
-              <div className="text-xs text-gray-400 italic">{tEco("sellEmpty")}</div>
-            ) : (
-              <div className="space-y-1">
-                {sellGroups.warn.slice(0, 4).map((c) => (
-                  <Link
-                    key={c.firmId}
-                    href={`/firms/${firmSlug(c.firmId)}`}
-                    className="block rounded-lg px-2.5 py-1.5 hover:bg-white/60 transition-colors"
-                    title={c.topSignal.reasonKo}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-extrabold text-gray-900 truncate">{firmName(c.firmId)}</span>
-                      <span className="shrink-0 text-[0.625rem] font-extrabold text-yellow-700 bg-yellow-100 px-1.5 py-0.5 rounded">
-                        {c.topSignal.kind.replace("WARN-", "")}
-                      </span>
-                    </div>
-                    <div className="text-[0.6875rem] text-gray-500 mt-0.5 line-clamp-1">
-                      {c.topSignal.reasonKo}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* ── Layer Momentum (Hot / Cold) + Sentiment-driven ── */}
-      {(hotCold.hot.length > 0 || hotCold.cold.length > 0 || topSentimentFirms.length > 0) && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {/* Hot */}
-          <div className="toss-card !bg-gradient-to-br !from-emerald-50 !to-white">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-extrabold text-gray-900">{tEco("hotLayersTitle")}</div>
-              <div className="text-[0.6875rem] font-bold text-gray-400">4w · Yahoo</div>
-            </div>
-            <div className="space-y-1.5">
-              {hotCold.hot.map((m) => {
-                const eco = findEcosystem(m.ecosystemId);
-                const layer = eco?.layers.find((l) => l.id === m.layerId);
-                if (!eco || !layer || m.priceMomentum === null) return null;
-                return (
-                  <Link
-                    key={`${m.ecosystemId}-${m.layerId}`}
-                    href={`/ecosystems/${eco.slug}`}
-                    className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-white/60 transition-colors"
-                  >
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className={`shrink-0 inline-block w-2 h-2 rounded-full ${ECO_DOT[m.ecosystemId]}`} />
-                      <span className="text-xs font-bold text-gray-700 truncate">
-                        {locale === "ko" ? eco.nameKo : eco.name}
-                      </span>
-                      <span className="text-gray-300">›</span>
-                      <span className="text-xs font-bold text-gray-900 truncate">
-                        {locale === "ko" ? layer.nameKo : layer.name}
-                      </span>
-                    </div>
-                    <span className="shrink-0 text-sm font-extrabold text-emerald-600">
-                      +{(m.priceMomentum * 100).toFixed(1)}%
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Cold */}
-          <div className="toss-card !bg-gradient-to-br !from-rose-50 !to-white">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-extrabold text-gray-900">{tEco("coldLayersTitle")}</div>
-              <div className="text-[0.6875rem] font-bold text-gray-400">4w · Yahoo</div>
-            </div>
-            <div className="space-y-1.5">
-              {hotCold.cold.map((m) => {
-                const eco = findEcosystem(m.ecosystemId);
-                const layer = eco?.layers.find((l) => l.id === m.layerId);
-                if (!eco || !layer || m.priceMomentum === null) return null;
-                return (
-                  <Link
-                    key={`${m.ecosystemId}-${m.layerId}`}
-                    href={`/ecosystems/${eco.slug}`}
-                    className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-white/60 transition-colors"
-                  >
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className={`shrink-0 inline-block w-2 h-2 rounded-full ${ECO_DOT[m.ecosystemId]}`} />
-                      <span className="text-xs font-bold text-gray-700 truncate">
-                        {locale === "ko" ? eco.nameKo : eco.name}
-                      </span>
-                      <span className="text-gray-300">›</span>
-                      <span className="text-xs font-bold text-gray-900 truncate">
-                        {locale === "ko" ? layer.nameKo : layer.name}
-                      </span>
-                    </div>
-                    <span className="shrink-0 text-sm font-extrabold text-rose-600">
-                      {(m.priceMomentum * 100).toFixed(1)}%
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Sentiment-driven */}
-          <div className="toss-card !bg-gradient-to-br !from-indigo-50 !to-white">
-            <div className="flex items-center justify-between mb-3">
-              <div className="text-sm font-extrabold text-gray-900">{tEco("sentimentDrivenTitle")}</div>
-              <div className="text-[0.6875rem] font-bold text-gray-400">/100</div>
-            </div>
-            <div className="space-y-1">
-              {topSentimentFirms.map((p) => {
-                const f = firms.find((x) => x.id === p.firmId);
-                if (!f) return null;
-                const tone = p.score >= 70 ? "text-indigo-700" : p.score >= 50 ? "text-indigo-600" : "text-gray-600";
-                return (
-                  <Link
-                    key={p.firmId}
-                    href={`/firms/${f.slug}`}
-                    className="block rounded-lg px-2.5 py-1.5 hover:bg-white/60 transition-colors"
-                    title={p.topDriversKo[0] ?? ""}
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-extrabold text-gray-900 truncate">{f.name}</span>
-                      <span className={`shrink-0 text-sm font-extrabold ${tone}`}>{p.score}</span>
-                    </div>
-                    <div className="text-[0.6875rem] text-gray-500 mt-0.5 line-clamp-1">
-                      {locale === "ko" ? p.topDriversKo[0] ?? p.level : p.topDriversEn[0] ?? p.level}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* ── Hot/Cold layer + 심리 변동성 (Suspense streaming) ── */}
+      <Suspense fallback={<HotColdSentimentSkeleton />}>
+        <HotColdSentimentSection locale={locale} />
+      </Suspense>
 
       {/* ── Quick Navigation ── */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">

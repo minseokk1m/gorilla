@@ -20,8 +20,8 @@ export const CACHE_TTL = {
   fundamentals: 24 * 60 * 60 * 1000, // 24 hours – revenue growth, gross margin
 } as const;
 
-/** Max concurrent Yahoo Finance requests */
-export const MAX_CONCURRENCY = 5;
+/** Max concurrent Yahoo Finance requests (yahoo는 ~10/sec까지 견딤) */
+export const MAX_CONCURRENCY = 10;
 
 /** Delay between batches (ms) to avoid throttling */
-export const BATCH_DELAY_MS = 200;
+export const BATCH_DELAY_MS = 100;
