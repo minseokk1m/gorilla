@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "src/app/[locale]/page.tsx": { "maxDuration": 60 },
+    "src/app/[locale]/landscape/page.tsx": { "maxDuration": 60 },
+    "src/app/[locale]/firms/page.tsx": { "maxDuration": 60 },
+    "src/app/[locale]/firms/[slug]/page.tsx": { "maxDuration": 60 },
+    "src/app/[locale]/ecosystems/page.tsx": { "maxDuration": 60 },
+    "src/app/[locale]/ecosystems/[slug]/page.tsx": { "maxDuration": 60 }
+  }
+}

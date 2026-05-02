@@ -3,7 +3,7 @@ import type { ClassificationTier, ClassificationResult } from "@/types/classific
 import { MOCK_FIRMS } from "../mock/firms";
 import { classifyFirm } from "@/lib/classification/engine";
 import { DATA_SOURCE } from "../api/config";
-import { getMarketFirmOverlay, hydrateFirm, prefetchAllMarketData } from "../api/market-data-service";
+import { getMarketFirmOverlay, hydrateFirm } from "../api/market-data-service";
 import { getAllSignalOverrides, applyOverrides, invalidateOverrideCache } from "./signal-override-provider";
 
 // ── Hydrated firms cache ────────────────────────────────
@@ -21,8 +21,10 @@ async function getHydratedFirms(): Promise<Firm[]> {
   let firms = [...MOCK_FIRMS];
 
   // Layer 2: overlay live market data (prices, revenue, market cap)
+  // prefetchAllMarketData(145 ticker) 제거 — vercel function timeout 회피.
+  // getMarketFirmOverlay가 in-flight dedupe + 5분 cache로 lazy 호출. 같은 firm
+  // 중복 fetch 자동 회피.
   if (DATA_SOURCE !== "mock") {
-    await prefetchAllMarketData(MOCK_FIRMS);
     firms = await Promise.all(
       firms.map(async (firm) => {
         const overlay = await getMarketFirmOverlay(firm.yahooTicker ?? firm.ticker);
