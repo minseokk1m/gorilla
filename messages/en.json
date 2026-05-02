@@ -8,7 +8,12 @@
     "switchLang": "한국어",
     "categories": "Categories",
     "ecosystems": "Ecosystems",
+    "landscape": "Landscape",
     "discuss": "Discuss"
+  },
+  "landscape": {
+    "title": "Market Landscape — Moore's 8-stage lifecycle",
+    "subtitle": "Where the 145 firms sit on Moore's 8-stage market lifecycle. Hype cycle overlay (rising/falling) + tier classification (gorilla/potential, etc.) combined into one integrated curve."
   },
   "ecosystems": {
     "title": "Ecosystems × Value-Chain Layers",

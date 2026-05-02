@@ -8,7 +8,12 @@
     "switchLang": "English",
     "categories": "카테고리",
     "ecosystems": "이코시스템",
+    "landscape": "시장 풍경",
     "discuss": "토론"
+  },
+  "landscape": {
+    "title": "시장 풍경 — Moore 8단계 수명주기",
+    "subtitle": "145개 firm이 Moore의 시장 수명주기 8단계 위 어디에 위치하는가. 하입사이클(과열 진입·꺾임)과 분류 등급(고릴라/잠재 등)을 결합한 통합 곡선입니다."
   },
   "ecosystems": {
     "title": "이코시스템 × 가치사슬 Layer",

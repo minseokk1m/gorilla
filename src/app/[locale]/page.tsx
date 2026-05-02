@@ -4,8 +4,8 @@ import type { Firm } from "@/types/firm";
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { getSupabase } from "@/lib/supabase/admin";
-import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
 import DashboardSearch from "@/components/dashboard/DashboardSearch";
+import { MarketPhaseMini } from "@/components/dashboard/sections/MarketPhaseMini";
 import { FIRM_NAMES_KO } from "@/lib/data/mock/firm-names-ko";
 // ISR: 30분 캐시 (Yahoo Finance fundamentals/price 호출 비용 분산).
 export const revalidate = 1800;
@@ -132,22 +132,44 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
+      {/* ── 페이지 anchor nav (5 그룹 jump) ── */}
+      <nav className="flex flex-wrap gap-1.5 -mt-1">
+        {[
+          { id: "market", emoji: "🌍", label: t("sectionMarketTitle") },
+          { id: "buy", emoji: "🦍", label: t("sectionBuyTitle") },
+          { id: "sell", emoji: "📉", label: t("sectionSellTitle") },
+          { id: "flow", emoji: "🔥", label: t("sectionFlowTitle") },
+          { id: "learn", emoji: "📚", label: t("sectionLearnTitle") },
+        ].map((n) => (
+          <a
+            key={n.id}
+            href={`#${n.id}`}
+            className="text-xs font-bold text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors px-2.5 py-1 rounded-md"
+          >
+            <span className="mr-1">{n.emoji}</span>
+            {n.label}
+          </a>
+        ))}
+      </nav>
+
       {/* ═══════════════════════════════════════════════════════════
           그룹 1: 🌍 지금 시장은? (TALC + 카테고리 substitution)
           ═══════════════════════════════════════════════════════════ */}
       <SectionHeader
+        id="market"
         emoji="🌍"
         title={t("sectionMarketTitle")}
         subtitle={t("sectionMarketHint")}
       />
 
-      {/* ── TALC Phase View — 전체 시장 조망 (하입사이클 통합) ── */}
-      <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />
+      {/* ── Market Phase Mini — 큰 곡선은 /landscape 페이지로 ── */}
+      <MarketPhaseMini classifications={classificationsMap} locale={locale} viewAllLabel={t("viewAllShort")} />
 
       {/* ═══════════════════════════════════════════════════════════
           그룹 2: 🦍 사야 할 것 (BUY hero + 8등급 + 깔때기)
           ═══════════════════════════════════════════════════════════ */}
       <SectionHeader
+        id="buy"
         emoji="🦍"
         title={t("sectionBuyTitle")}
         subtitle={t("sectionBuyHint")}
@@ -474,6 +496,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           그룹 3: 📉 팔거나 조심해야 할 것
           ═══════════════════════════════════════════════════════════ */}
       <SectionHeader
+        id="sell"
         emoji="📉"
         title={t("sectionSellTitle")}
         subtitle={t("sectionSellHint")}
@@ -486,6 +509,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           그룹 4: 🔥 주목할 흐름 (Hot/Cold layer + 심리)
           ═══════════════════════════════════════════════════════════ */}
       <SectionHeader
+        id="flow"
         emoji="🔥"
         title={t("sectionFlowTitle")}
         subtitle={t("sectionFlowHint")}
@@ -500,17 +524,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           그룹 5: 📚 더 깊이 보기 (Quick Nav)
           ═══════════════════════════════════════════════════════════ */}
       <SectionHeader
+        id="learn"
         emoji="📚"
         title={t("sectionLearnTitle")}
         subtitle={t("sectionLearnHint")}
       />
-      {/* ── Quick Navigation ── */}
+      {/* ── Quick Navigation (각 카드: 이 페이지 = 무엇 한 줄) ── */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <Link href="/landscape">
+          <div className="toss-card-interactive !p-4 text-center">
+            <div className="text-2xl mb-1">🗺️</div>
+            <div className="text-sm font-extrabold text-gray-900">시장 풍경</div>
+            <div className="text-xs text-gray-400 font-medium mt-0.5">Moore 8단계 곡선</div>
+          </div>
+        </Link>
         <Link href="/ecosystems">
           <div className="toss-card-interactive !p-4 text-center relative">
             <div className="text-2xl mb-1">🌐</div>
             <div className="text-sm font-extrabold text-gray-900">이코시스템</div>
-            <div className="text-xs text-gray-400 font-medium mt-0.5">9개 거시 × 51 layer</div>
+            <div className="text-xs text-gray-400 font-medium mt-0.5">9 거시 × 51 layer</div>
             {mooreConflicts.length > 0 && (
               <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[0.625rem] font-extrabold">
                 ⚠️ {mooreConflicts.length}
@@ -518,35 +550,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             )}
           </div>
         </Link>
-        <Link href="/categories">
-          <div className="toss-card-interactive !p-4 text-center">
-            <div className="text-2xl mb-1">🗺️</div>
-            <div className="text-sm font-extrabold text-gray-900">카테고리 TALC</div>
-            <div className="text-xs text-gray-400 font-medium mt-0.5">19개 섹터별 분류</div>
-          </div>
-        </Link>
         <Link href="/firms">
           <div className="toss-card-interactive !p-4 text-center">
             <div className="text-2xl mb-1">📊</div>
-            <div className="text-sm font-extrabold text-gray-900">전체 기업 분류</div>
-            <div className="text-xs text-gray-400 font-medium mt-0.5">{firms.length}개 기업 · 7차원 점수</div>
-          </div>
-        </Link>
-        <Link href="/discuss">
-          <div className="toss-card-interactive !p-4 text-center">
-            <div className="text-2xl mb-1">💬</div>
-            <div className="text-sm font-extrabold text-gray-900">토론 게시판</div>
-            <div className="text-xs text-gray-400 font-medium mt-0.5">
-              {openProposals > 0 ? `${openProposals}건 제안` : "합의 기반 편집"}
-              {totalComments > 0 && ` · ${totalComments} 댓글`}
-            </div>
+            <div className="text-sm font-extrabold text-gray-900">기업 검색</div>
+            <div className="text-xs text-gray-400 font-medium mt-0.5">{firms.length}개 firm · 등급</div>
           </div>
         </Link>
         <Link href="/learn">
           <div className="toss-card-interactive !p-4 text-center">
             <div className="text-2xl mb-1">📖</div>
-            <div className="text-sm font-extrabold text-gray-900">10대 원칙 & 학습</div>
-            <div className="text-xs text-gray-400 font-medium mt-0.5">GG 원칙 · 멤버 주석</div>
+            <div className="text-sm font-extrabold text-gray-900">학습</div>
+            <div className="text-xs text-gray-400 font-medium mt-0.5">10대 원칙 · 이론</div>
+          </div>
+        </Link>
+        <Link href="/discuss">
+          <div className="toss-card-interactive !p-4 text-center">
+            <div className="text-2xl mb-1">💬</div>
+            <div className="text-sm font-extrabold text-gray-900">토론</div>
+            <div className="text-xs text-gray-400 font-medium mt-0.5">
+              {openProposals > 0 ? `${openProposals}건 제안` : "합의 기반 편집"}
+            </div>
           </div>
         </Link>
       </div>
@@ -568,12 +592,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
  * 첫 방문자가 페이지 위계를 파악할 수 있게 함.
  */
 function SectionHeader({
+  id,
   emoji,
   title,
   subtitle,
   viewAllHref,
   viewAllLabel,
 }: {
+  id?: string;
   emoji: string;
   title: string;
   subtitle: string;
@@ -581,7 +607,10 @@ function SectionHeader({
   viewAllLabel?: string;
 }) {
   return (
-    <div className="pt-6 pb-1 flex items-baseline justify-between gap-3 border-t border-gray-100 first:border-t-0 first:pt-2">
+    <div
+      id={id}
+      className="pt-6 pb-1 flex items-baseline justify-between gap-3 border-t border-gray-100 first:border-t-0 first:pt-2 scroll-mt-20"
+    >
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline gap-2 mb-1">
           <span className="text-2xl shrink-0">{emoji}</span>

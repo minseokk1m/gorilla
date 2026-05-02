@@ -13,9 +13,9 @@ export default function NavBar() {
 
   const links = [
     { href: "/" as const, label: t("dashboard") },
+    { href: "/landscape" as const, label: t("landscape") },
     { href: "/firms" as const, label: t("firms") },
     { href: "/ecosystems" as const, label: t("ecosystems") },
-    { href: "/categories" as const, label: t("categories") },
     { href: "/learn" as const, label: t("learn") },
     { href: "/discuss" as const, label: t("discuss") },
   ];
