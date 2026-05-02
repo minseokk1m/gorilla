@@ -1,3 +1,6 @@
+// ISR: 30분 캐시 (ecosystem momentum overlay에 yahoo 호출)
+export const revalidate = 1800;
+
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import type { ClassificationTier } from "@/types/classification";

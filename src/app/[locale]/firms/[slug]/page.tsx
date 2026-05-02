@@ -1,3 +1,6 @@
+// ISR: 30분 캐시 (Yahoo + Supabase 호출 비용 분산)
+export const revalidate = 1800;
+
 import { notFound } from "next/navigation";
 import { MOCK_FIRMS } from "@/lib/data/mock/firms";
 import { getAllFirms, getClassification } from "@/lib/data/providers/firm-provider";

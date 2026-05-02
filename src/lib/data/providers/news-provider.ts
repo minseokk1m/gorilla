@@ -168,49 +168,39 @@ function dedupNews(articles: NewsArticle[]): NewsArticle[] {
 }
 
 export async function getNewsByFirmId(firmId: string): Promise<NewsArticle[]> {
-  if (DATA_SOURCE !== "mock") {
-    const firm = MOCK_FIRMS.find((f) => f.id === firmId);
-    if (firm) {
-      const liveNews = await getLiveNews(firm.yahooTicker ?? firm.ticker);
-      if (liveNews && liveNews.length > 0) {
-        return dedupNews(liveNews.map((n) => toNewsArticle(n, firmId)));
-      }
-      if (DATA_SOURCE === "live") return [];
-    }
+  if (DATA_SOURCE === "mock") {
+    return dedupNews(
+      MOCK_NEWS.filter((a) => a.firmId === firmId)
+        .map(hydrateMockSentiment)
+        .sort(
+          (a, b) =>
+            new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+        ),
+    );
   }
-  // Fallback to mock — hydrate continuous score on the fly
-  return dedupNews(
-    MOCK_NEWS.filter((a) => a.firmId === firmId)
-      .map(hydrateMockSentiment)
-      .sort(
-        (a, b) =>
-          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-      ),
-  );
+  const firm = MOCK_FIRMS.find((f) => f.id === firmId);
+  if (!firm) return [];
+  const liveNews = await getLiveNews(firm.yahooTicker ?? firm.ticker);
+  if (!liveNews || liveNews.length === 0) return [];
+  return dedupNews(liveNews.map((n) => toNewsArticle(n, firmId)));
 }
 
 export async function getLatestNews(limit = 10): Promise<NewsArticle[]> {
-  if (DATA_SOURCE !== "mock") {
-    // Fetch news for a subset of key firms (top gorilla candidates)
-    const keyTickers = MOCK_FIRMS.slice(0, 15);
-
-    const results = await Promise.all(
-      keyTickers.map(async (firm) => {
-        const liveNews = await getLiveNews(firm.yahooTicker ?? firm.ticker);
-        return liveNews ? liveNews.map((n) => toNewsArticle(n, firm.id)) : [];
-      })
-    );
-    const allNews = results.flat();
-
-    if (allNews.length > 0) {
-      return dedupNews(allNews)
-        .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-        .slice(0, limit);
-    }
-
-    if (DATA_SOURCE === "live") return [];
+  if (DATA_SOURCE === "mock") {
+    return dedupNews([...MOCK_NEWS].map(hydrateMockSentiment))
+      .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+      .slice(0, limit);
   }
-  return dedupNews([...MOCK_NEWS].map(hydrateMockSentiment))
+  // Fetch news for a subset of key firms (top gorilla candidates)
+  const keyTickers = MOCK_FIRMS.slice(0, 15);
+  const results = await Promise.all(
+    keyTickers.map(async (firm) => {
+      const liveNews = await getLiveNews(firm.yahooTicker ?? firm.ticker);
+      return liveNews ? liveNews.map((n) => toNewsArticle(n, firm.id)) : [];
+    }),
+  );
+  const allNews = results.flat();
+  return dedupNews(allNews)
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, limit);
 }

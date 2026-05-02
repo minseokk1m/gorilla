@@ -1,3 +1,6 @@
+// ISR: 30분 캐시 (Yahoo 호출 비용 분산)
+export const revalidate = 1800;
+
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
 import FirmsTable from "@/components/firms/FirmsTable";

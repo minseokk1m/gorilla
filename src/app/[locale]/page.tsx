@@ -7,6 +7,9 @@ import { getSupabase } from "@/lib/supabase/admin";
 import TALCPhaseView from "@/components/dashboard/TALCPhaseView";
 import DashboardSearch from "@/components/dashboard/DashboardSearch";
 import { FIRM_NAMES_KO } from "@/lib/data/mock/firm-names-ko";
+// ISR: 30분 캐시 (Yahoo Finance fundamentals/price 호출 비용 분산).
+export const revalidate = 1800;
+
 import { detectMooreConflicts } from "@/lib/data/providers/ecosystem-provider";
 import { getHotColdLayers } from "@/lib/data/providers/layer-momentum";
 import { findEcosystem } from "@/lib/data/mock/ecosystems";

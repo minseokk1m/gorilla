@@ -1,3 +1,6 @@
+// ISR: 30분 캐시 (layer momentum + yahoo 호출 다수)
+export const revalidate = 1800;
+
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
