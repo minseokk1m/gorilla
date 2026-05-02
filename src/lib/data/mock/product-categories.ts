@@ -876,12 +876,6 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
         revenueWeight: 0.90,
         rationale: "Dynatrace — 엔터프라이즈 deep-instrumentation 강자.",
       },
-      {
-        firmId: "nrg",
-        role: "Niche",
-        revenueWeight: 0.95,
-        rationale: "New Relic — DDOG에 점유 잠식, 사모펀드에 인수돼 비상장 전환.",
-      },
     ],
   },
   {
@@ -894,14 +888,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     phase: "Maturing Main Street",
     phaseRationale:
       "Splunk가 enterprise SIEM 표준이지만 Datadog·Microsoft Sentinel 등 cloud-native에 점유 잠식. Cisco 인수로 enterprise 통합 강화.",
-    participants: [
-      {
-        firmId: "splk",
-        role: "Gorilla",
-        revenueWeight: 0.90,
-        rationale: "Splunk — 엔터프라이즈 SIEM 표준, Cisco 인수 후 비상장.",
-      },
-    ],
+    participants: [],
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -955,14 +942,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     phase: "Maturing Main Street",
     phaseRationale:
       "Terraform이 사실상 IaC 표준, OpenTofu fork와 라이선스 갈등. IBM 인수 후 비상장.",
-    participants: [
-      {
-        firmId: "hashi",
-        role: "Gorilla",
-        revenueWeight: 0.90,
-        rationale: "HashiCorp Terraform·Vault — IaC 표준, IBM 인수 진행.",
-      },
-    ],
+    participants: [],
   },
   {
     id: "communications-api",
@@ -1224,14 +1204,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     phase: "Maturing Main Street",
     phaseRationale:
       "Zendesk PE 인수 후 비상장. AI agent(Sierra·Decagon 등 비상장)가 카테고리 재정의 중.",
-    participants: [
-      {
-        firmId: "zen",
-        role: "King",
-        revenueWeight: 0.95,
-        rationale: "Zendesk — 헬프데스크 SaaS 표준, PE 인수 후 비상장.",
-      },
-    ],
+    participants: [],
   },
   {
     id: "esignature",
@@ -1383,14 +1356,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     phase: "Maturing Main Street",
     phaseRationale:
       "정유·화학 vertical, Emerson 인수 후 비상장. AI/디지털 트윈 진화.",
-    participants: [
-      {
-        firmId: "azpn",
-        role: "Gorilla",
-        revenueWeight: 0.95,
-        rationale: "AspenTech — 정유·화학 공정 최적화 표준, Emerson 인수.",
-      },
-    ],
+    participants: [],
   },
 
   // ═══════════════════════════════════════════════════════════════

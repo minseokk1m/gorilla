@@ -70,13 +70,10 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
   { firmId: "c3ai", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
   { firmId: "ddog", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
   { firmId: "dynt", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
-  { firmId: "nrg", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
-  { firmId: "splk", ecosystemId: "ai", layerId: "ai-platform", role: "primary" },
 
   // L10 dev-tools (개발도구·통합)
   { firmId: "frog", ecosystemId: "ai", layerId: "dev-tools", role: "primary" },
   { firmId: "gtlb", ecosystemId: "ai", layerId: "dev-tools", role: "primary" },
-  { firmId: "hashi", ecosystemId: "ai", layerId: "dev-tools", role: "primary" },
   { firmId: "twlo", ecosystemId: "ai", layerId: "dev-tools", role: "primary" },
 
   // L11 enterprise-saas (기업용 SaaS — CRM·ITSM·HCM·창작·협업·수직)
@@ -101,9 +98,7 @@ export const ECOSYSTEM_MEMBERSHIPS: FirmEcosystemMembership[] = [
   { firmId: "box", ecosystemId: "ai", layerId: "enterprise-saas", role: "primary" },
   { firmId: "drp", ecosystemId: "ai", layerId: "enterprise-saas", role: "primary" },
   { firmId: "dxcm", ecosystemId: "ai", layerId: "enterprise-saas", role: "primary" },
-  { firmId: "zen", ecosystemId: "ai", layerId: "enterprise-saas", role: "primary" },
   { firmId: "appf", ecosystemId: "ai", layerId: "enterprise-saas", role: "primary" },
-  { firmId: "azpn", ecosystemId: "ai", layerId: "enterprise-saas", role: "primary" },
 
   // L12 consumer-ai-apps (소비자 AI 앱)
   { firmId: "googl", ecosystemId: "ai", layerId: "consumer-ai-apps", role: "primary" },

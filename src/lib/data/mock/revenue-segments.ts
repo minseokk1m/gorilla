@@ -21,7 +21,7 @@ export const REVENUE_SEGMENTS: Record<string, RevenueSegment[]> = {
   ],
   crm: [
     { name: "Sales Cloud", revenuePercent: 26, description: "CRM 핵심 — 영업 파이프라인, 리드 관리", competitors: ["hubspot", "oracle", "sap"] },
-    { name: "Service Cloud", revenuePercent: 24, description: "고객 서비스, 콜센터, 필드 서비스", competitors: ["zendesk", "servicenow"] },
+    { name: "Service Cloud", revenuePercent: 24, description: "고객 서비스, 콜센터, 필드 서비스", competitors: ["servicenow"] },
     { name: "Platform & Other (Slack, Tableau)", revenuePercent: 22, description: "Slack 협업, Tableau 분석, AppExchange", competitors: ["microsoft", "google"] },
     { name: "Marketing & Commerce Cloud", revenuePercent: 16, description: "마케팅 자동화, 이커머스", competitors: ["adobe", "hubspot"] },
     { name: "Data Cloud (MuleSoft)", revenuePercent: 12, description: "데이터 통합, API 관리, AI(Einstein)", competitors: ["informatica", "snowflake"] },
@@ -29,7 +29,7 @@ export const REVENUE_SEGMENTS: Record<string, RevenueSegment[]> = {
   now: [
     { name: "IT Workflows (ITSM)", revenuePercent: 45, description: "IT 서비스 관리, IT 운영 관리", competitors: ["ibm", "bmc"] },
     { name: "Employee Workflows", revenuePercent: 20, description: "HR 서비스 딜리버리, 직원 경험", competitors: ["workday", "sap"] },
-    { name: "Customer Workflows", revenuePercent: 18, description: "고객 서비스 관리, 필드 서비스", competitors: ["salesforce", "zendesk"] },
+    { name: "Customer Workflows", revenuePercent: 18, description: "고객 서비스 관리, 필드 서비스", competitors: ["salesforce"] },
     { name: "Creator Workflows", revenuePercent: 10, description: "로우코드 앱 개발, 통합 허브", competitors: ["microsoft"] },
     { name: "Security Operations", revenuePercent: 7, description: "보안 사고 대응, 취약점 관리", competitors: ["crowdstrike", "palo-alto"] },
   ],
@@ -50,16 +50,16 @@ export const REVENUE_SEGMENTS: Record<string, RevenueSegment[]> = {
     { name: "Professional Services", revenuePercent: 8, description: "컨설팅, 교육, 구현 서비스", competitors: [] },
   ],
   ddog: [
-    { name: "Infrastructure Monitoring", revenuePercent: 35, description: "클라우드 인프라 메트릭, 호스트 모니터링", competitors: ["newrelic", "dynatrace"] },
-    { name: "APM & Tracing", revenuePercent: 25, description: "애플리케이션 성능 모니터링, 분산 추적", competitors: ["newrelic", "dynatrace", "elastic"] },
-    { name: "Log Management", revenuePercent: 22, description: "로그 수집, 인덱싱, 분석", competitors: ["splunk", "elastic"] },
+    { name: "Infrastructure Monitoring", revenuePercent: 35, description: "클라우드 인프라 메트릭, 호스트 모니터링", competitors: ["dynatrace"] },
+    { name: "APM & Tracing", revenuePercent: 25, description: "애플리케이션 성능 모니터링, 분산 추적", competitors: ["dynatrace", "elastic"] },
+    { name: "Log Management", revenuePercent: 22, description: "로그 수집, 인덱싱, 분석", competitors: ["elastic"] },
     { name: "Security & Other Products", revenuePercent: 18, description: "Cloud SIEM, CI Visibility, RUM, 합성 모니터링", competitors: ["crowdstrike", "palo-alto"] },
   ],
   crwd: [
     { name: "Endpoint Security (Falcon)", revenuePercent: 50, description: "EDR/XDR, 차세대 안티바이러스", competitors: ["sentinelone", "microsoft"] },
     { name: "Cloud Security", revenuePercent: 18, description: "CNAPP, 클라우드 워크로드 보호", competitors: ["palo-alto", "wiz"] },
     { name: "Identity Protection", revenuePercent: 12, description: "제로트러스트 ID 보호, AD 보안", competitors: ["microsoft", "okta"] },
-    { name: "Log Management (LogScale)", revenuePercent: 10, description: "차세대 SIEM, 위협 사냥", competitors: ["splunk", "elastic"] },
+    { name: "Log Management (LogScale)", revenuePercent: 10, description: "차세대 SIEM, 위협 사냥", competitors: ["elastic"] },
     { name: "Managed Services (Falcon Complete)", revenuePercent: 10, description: "MDR, 인시던트 대응", competitors: [] },
   ],
   pltr: [
