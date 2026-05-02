@@ -94,7 +94,18 @@
     "allFirmsHeading": "All 50 Firms by Classification",
     "whyGorillaTitle": "Why Gorilla Game?",
     "whyGorillaBody": "Geoffrey Moore's framework identifies that in every technology category that undergoes a Tornado — a period of explosive mass-market adoption — one company emerges as the Gorilla: the firm whose proprietary architecture becomes the de facto standard. Gorillas compound wealth because their switching costs make customers nearly impossible to lose. The strategy: buy gorillas and potential gorillas during or just before the tornado, and hold.",
-    "learnMore": "Learn more →"
+    "learnMore": "Learn more →",
+    "sectionMarketTitle": "Where is the market right now?",
+    "sectionMarketHint": "Where the 145 firms cluster on Moore's 8-stage market lifecycle. Category transitions (declining → emerging) are also shown.",
+    "sectionBuyTitle": "What to buy",
+    "sectionBuyHint": "Gorilla / Potential Gorilla tiers are buy candidates. Once price validates, they move to long-term hold (Investment Funnel).",
+    "sectionSellTitle": "What to sell or watch",
+    "sectionSellHint": "Auto-signals from category decline · late main street · sharp news / Moore conflicts. Tier unchanged — use as discussion triggers.",
+    "sectionFlowTitle": "Flows to watch",
+    "sectionFlowHint": "Layer-level acceleration / deceleration from live Yahoo prices, plus firms with the largest fundamentals-vs-sentiment gap.",
+    "sectionLearnTitle": "Go deeper",
+    "sectionLearnHint": "Drill into the ecosystem matrix, search firms, study theory, or join discussions.",
+    "viewAllShort": "View all →"
   },
   "firms": {
     "title": "All Firms",

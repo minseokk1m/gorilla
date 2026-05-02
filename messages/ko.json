@@ -94,7 +94,18 @@
     "allFirmsHeading": "분류별 전체 50개 기업",
     "whyGorillaTitle": "왜 고릴라 게임인가?",
     "whyGorillaBody": "제프리 무어의 프레임워크는 모든 기술 카테고리에서 회오리바람 — 폭발적 대중시장 수용 시기 — 이 발생할 때, 한 기업이 고릴라로 부상한다는 것을 밝힙니다. 고릴라는 독점 아키텍처가 사실상의 표준이 되는 기업입니다. 전환 비용이 고객을 사실상 잃지 않게 하므로 고릴라는 복리 성장을 만들어냅니다. 전략은 단순합니다: 회오리바람 이전이나 중에 고릴라와 잠재 고릴라를 매수하고 보유하세요.",
-    "learnMore": "더 알아보기 →"
+    "learnMore": "더 알아보기 →",
+    "sectionMarketTitle": "지금 시장은 어디에 있나",
+    "sectionMarketHint": "Moore의 8단계 시장 수명주기에서 145개 firm이 어디에 모여있는가. 카테고리 단위 전환(쇠퇴→신생) 흐름도 함께.",
+    "sectionBuyTitle": "사야 할 것",
+    "sectionBuyHint": "Gorilla·Potential Gorilla 등급이 매수 후보. 그 다음 가격이 검증되면 장기 보유로 이동(투자 깔때기).",
+    "sectionSellTitle": "팔거나 조심해야 할 것",
+    "sectionSellHint": "카테고리 쇠퇴·메인스트리트 후반·뉴스 급변·Moore 충돌 등 자동 신호. 등급은 그대로 유지하되 토론 트리거.",
+    "sectionFlowTitle": "주목할 흐름",
+    "sectionFlowHint": "Yahoo Finance 실시간 가격으로 본 layer 단위 가속·감속과 펀더멘털 vs 심리 격차가 큰 firm.",
+    "sectionLearnTitle": "더 깊이 보기",
+    "sectionLearnHint": "이코시스템 매트릭스·firm 검색·이론 학습·토론으로 이어가는 진입 동선.",
+    "viewAllShort": "전체 보기 →"
   },
   "firms": {
     "title": "전체 기업",

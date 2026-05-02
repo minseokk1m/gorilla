@@ -132,18 +132,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </div>
 
+      {/* ═══════════════════════════════════════════════════════════
+          그룹 1: 🌍 지금 시장은? (TALC + 카테고리 substitution)
+          ═══════════════════════════════════════════════════════════ */}
+      <SectionHeader
+        emoji="🌍"
+        title={t("sectionMarketTitle")}
+        subtitle={t("sectionMarketHint")}
+      />
+
       {/* ── TALC Phase View — 전체 시장 조망 (하입사이클 통합) ── */}
       <TALCPhaseView locale={locale} firms={firms} classifications={classificationsMap} />
 
-      {/* ── Section divider: 기업 성격 분류 ── */}
-      <div className="pt-4 space-y-3">
-        <div>
-          <h2 className="mb-1">기업 성격 분류</h2>
-          <p className="text-sm text-gray-400 font-medium">
-            초기 시장에서 하입사이클 과열을 타고 단기 수익을 빠르게 먹고, 캐즘을 넘긴 고릴라는 장기 매집하여 복리로 키운다. 7차원 가중 점수로 8등급을 분류하고, 매수 대상(고릴라·잠재 고릴라)을 선별합니다.
-          </p>
-        </div>
+      {/* ═══════════════════════════════════════════════════════════
+          그룹 2: 🦍 사야 할 것 (BUY hero + 8등급 + 깔때기)
+          ═══════════════════════════════════════════════════════════ */}
+      <SectionHeader
+        emoji="🦍"
+        title={t("sectionBuyTitle")}
+        subtitle={t("sectionBuyHint")}
+        viewAllHref="/firms"
+        viewAllLabel={t("viewAllShort")}
+      />
 
+      <div className="space-y-3">
         {/* Tier distribution bar */}
         <div className="space-y-2">
           <div className="flex items-center gap-0.5 h-4 rounded-full overflow-hidden">
@@ -338,17 +350,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <FunnelSection locale={locale} />
       </Suspense>
 
-      {/* ── Category Substitution ── */}
+      {/* ── Category Substitution (mini — top 2 paths, 전체는 /ecosystems) ── */}
       {substitutionPaths.length > 0 && (
         <section className="toss-card">
           <div className="flex items-baseline justify-between mb-1">
             <h2 className="!text-base">{tEco("substitutionTitle")}</h2>
-            <span className="text-[0.6875rem] font-bold text-gray-400">{substitutionPaths.length} paths</span>
+            <Link href="/ecosystems" className="text-[0.6875rem] font-bold text-[#0064FF] hover:underline shrink-0">
+              {substitutionPaths.length} paths · {t("viewAllShort")}
+            </Link>
           </div>
           <p className="text-xs text-gray-500 leading-snug mb-4">{tEco("substitutionHint")}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {substitutionPaths.map((p) => {
+            {substitutionPaths.slice(0, 2).map((p) => {
               const fromPhase = PHASE_BADGE[p.from.phase];
               const toPhase = PHASE_BADGE[p.to.phase];
               return (
@@ -456,16 +470,40 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </section>
       )}
 
-      {/* ── Sell · Rebalance · Warn (Suspense streaming) ── */}
+      {/* ═══════════════════════════════════════════════════════════
+          그룹 3: 📉 팔거나 조심해야 할 것
+          ═══════════════════════════════════════════════════════════ */}
+      <SectionHeader
+        emoji="📉"
+        title={t("sectionSellTitle")}
+        subtitle={t("sectionSellHint")}
+      />
       <Suspense fallback={<SellStripSkeleton />}>
         <SellStripSection locale={locale} />
       </Suspense>
 
-      {/* ── Hot/Cold layer + 심리 변동성 (Suspense streaming) ── */}
+      {/* ═══════════════════════════════════════════════════════════
+          그룹 4: 🔥 주목할 흐름 (Hot/Cold layer + 심리)
+          ═══════════════════════════════════════════════════════════ */}
+      <SectionHeader
+        emoji="🔥"
+        title={t("sectionFlowTitle")}
+        subtitle={t("sectionFlowHint")}
+        viewAllHref="/ecosystems"
+        viewAllLabel={t("viewAllShort")}
+      />
       <Suspense fallback={<HotColdSentimentSkeleton />}>
         <HotColdSentimentSection locale={locale} />
       </Suspense>
 
+      {/* ═══════════════════════════════════════════════════════════
+          그룹 5: 📚 더 깊이 보기 (Quick Nav)
+          ═══════════════════════════════════════════════════════════ */}
+      <SectionHeader
+        emoji="📚"
+        title={t("sectionLearnTitle")}
+        subtitle={t("sectionLearnHint")}
+      />
       {/* ── Quick Navigation ── */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         <Link href="/ecosystems">
@@ -522,5 +560,43 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Link>
       </div>
     </main>
+  );
+}
+
+/**
+ * 페이지 섹션 헤더 — 큰 그룹 사이 시각 구분 + "왜 보여주는가" 한 줄 설명.
+ * 첫 방문자가 페이지 위계를 파악할 수 있게 함.
+ */
+function SectionHeader({
+  emoji,
+  title,
+  subtitle,
+  viewAllHref,
+  viewAllLabel,
+}: {
+  emoji: string;
+  title: string;
+  subtitle: string;
+  viewAllHref?: string;
+  viewAllLabel?: string;
+}) {
+  return (
+    <div className="pt-6 pb-1 flex items-baseline justify-between gap-3 border-t border-gray-100 first:border-t-0 first:pt-2">
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-2 mb-1">
+          <span className="text-2xl shrink-0">{emoji}</span>
+          <h2 className="!text-lg !mb-0">{title}</h2>
+        </div>
+        <p className="text-xs text-gray-500 leading-snug">{subtitle}</p>
+      </div>
+      {viewAllHref && (
+        <Link
+          href={viewAllHref}
+          className="text-[0.6875rem] font-bold text-[#0064FF] hover:underline shrink-0 whitespace-nowrap"
+        >
+          {viewAllLabel ?? "전체 보기 →"}
+        </Link>
+      )}
+    </div>
   );
 }
