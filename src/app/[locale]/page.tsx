@@ -13,6 +13,8 @@ import { findEcosystem } from "@/lib/data/mock/ecosystems";
 import { getGroupedSellCandidates } from "@/lib/data/providers/sell-signal-engine";
 import { getFunnelCounts, getFirmsAtStage } from "@/lib/data/providers/funnel-engine";
 import { getTopSentimentDrivenFirms } from "@/lib/data/providers/sentiment-driven-engine";
+import { getSubstitutionPaths } from "@/lib/data/providers/product-category-provider";
+import { PHASE_BADGE, phaseLabel } from "@/components/ecosystems/category-style";
 import type { EcosystemId } from "@/types/ecosystem";
 import type { FunnelStage } from "@/types/funnel";
 
@@ -69,6 +71,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     getFirmsAtStage("Potential"),
     getTopSentimentDrivenFirms(5),
   ]);
+  const substitutionPaths = getSubstitutionPaths();
   const tEco = await getTranslations({ locale, namespace: "ecosystems" });
   const firmName = (id: string) => firms.find((f) => f.id === id)?.name ?? id;
   const firmSlug = (id: string) => firms.find((f) => f.id === id)?.slug ?? id;
@@ -387,6 +390,124 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           ))}
         </div>
       </section>
+
+      {/* ── Category Substitution ── */}
+      {substitutionPaths.length > 0 && (
+        <section className="toss-card">
+          <div className="flex items-baseline justify-between mb-1">
+            <h2 className="!text-base">{tEco("substitutionTitle")}</h2>
+            <span className="text-[0.6875rem] font-bold text-gray-400">{substitutionPaths.length} paths</span>
+          </div>
+          <p className="text-xs text-gray-500 leading-snug mb-4">{tEco("substitutionHint")}</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {substitutionPaths.map((p) => {
+              const fromPhase = PHASE_BADGE[p.from.phase];
+              const toPhase = PHASE_BADGE[p.to.phase];
+              return (
+                <div key={`${p.from.id}-${p.to.id}`} className="rounded-2xl border border-gray-100 bg-white">
+                  {/* From → To headline */}
+                  <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 p-3 border-b border-gray-100">
+                    <Link
+                      href={`/ecosystems/${p.from.ecosystemId}#layer-${p.from.layerId}`}
+                      className="min-w-0 group"
+                    >
+                      <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${fromPhase.bg} ${fromPhase.text}`}>
+                        {fromPhase.emoji} {phaseLabel(p.from.phase, locale)}
+                      </span>
+                      <div className="text-xs font-extrabold text-gray-800 mt-1 truncate group-hover:underline">
+                        {locale === "ko" ? p.from.nameKo : p.from.name}
+                      </div>
+                    </Link>
+                    <span className="text-gray-400 text-lg shrink-0 font-bold">→</span>
+                    <Link
+                      href={`/ecosystems/${p.to.ecosystemId}#layer-${p.to.layerId}`}
+                      className="min-w-0 group text-right"
+                    >
+                      <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${toPhase.bg} ${toPhase.text}`}>
+                        {toPhase.emoji} {phaseLabel(p.to.phase, locale)}
+                      </span>
+                      <div className="text-xs font-extrabold text-gray-800 mt-1 truncate group-hover:underline">
+                        {locale === "ko" ? p.to.nameKo : p.to.name}
+                      </div>
+                    </Link>
+                  </div>
+
+                  {/* Firm groups */}
+                  <div className="p-3 space-y-2">
+                    {p.atRiskFirmIds.length > 0 && (
+                      <div>
+                        <div className="text-[0.625rem] font-extrabold uppercase tracking-wider text-rose-700 mb-0.5">
+                          ⚠ {tEco("subAtRisk")}
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {p.atRiskFirmIds.map((id) => {
+                            const f = firms.find((x) => x.id === id);
+                            if (!f) return null;
+                            return (
+                              <Link
+                                key={id}
+                                href={`/firms/${f.slug}`}
+                                className="text-[0.6875rem] font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 px-1.5 py-0.5 rounded"
+                              >
+                                {f.name}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                    {p.positionedFirmIds.length > 0 && (
+                      <div>
+                        <div className="text-[0.625rem] font-extrabold uppercase tracking-wider text-emerald-700 mb-0.5">
+                          ✓ {tEco("subPositioned")}
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {p.positionedFirmIds.map((id) => {
+                            const f = firms.find((x) => x.id === id);
+                            if (!f) return null;
+                            return (
+                              <Link
+                                key={id}
+                                href={`/firms/${f.slug}`}
+                                className="text-[0.6875rem] font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-1.5 py-0.5 rounded"
+                              >
+                                {f.name}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                    {p.pureSuccessorFirmIds.length > 0 && (
+                      <div>
+                        <div className="text-[0.625rem] font-extrabold uppercase tracking-wider text-blue-700 mb-0.5">
+                          🆕 {tEco("subPureSuccessor")}
+                        </div>
+                        <div className="flex flex-wrap gap-1">
+                          {p.pureSuccessorFirmIds.map((id) => {
+                            const f = firms.find((x) => x.id === id);
+                            if (!f) return null;
+                            return (
+                              <Link
+                                key={id}
+                                href={`/firms/${f.slug}`}
+                                className="text-[0.6875rem] font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 px-1.5 py-0.5 rounded"
+                              >
+                                {f.name}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* ── Sell · Rebalance · Warn ── */}
       {(sellGroups.exit.length > 0 || sellGroups.rebalance.length > 0 || sellGroups.warn.length > 0) && (

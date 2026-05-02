@@ -17,7 +17,7 @@ import {
 } from "@/lib/data/providers/layer-momentum";
 import { MomentumPanel } from "@/components/ecosystems/MomentumPanel";
 import { InlineSparkline } from "@/components/ecosystems/InlineSparkline";
-import { getCategoriesByLayer } from "@/lib/data/providers/product-category-provider";
+import { getCategoriesByLayer, getCategoryById } from "@/lib/data/providers/product-category-provider";
 import { PHASE_BADGE, ROLE_BADGE, phaseLabel, roleLabel } from "@/components/ecosystems/category-style";
 
 const TIER_ORDER: ClassificationTier[] = [
@@ -498,29 +498,43 @@ function CategoryListForLayer({
           const phaseStyle = PHASE_BADGE[c.phase];
           const leader = c.participants[0];
           const leaderRole = leader ? ROLE_BADGE[leader.role] : null;
+          const successor = c.successorCategoryId ? getCategoryById(c.successorCategoryId) : null;
           return (
             <div
               key={c.id}
-              className="flex items-center justify-between gap-2 rounded-lg border border-gray-100 bg-white px-2.5 py-1.5"
+              className="rounded-lg border border-gray-100 bg-white px-2.5 py-1.5"
               title={c.phaseRationale}
             >
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1.5">
-                  <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${phaseStyle.bg} ${phaseStyle.text}`}>
-                    {phaseStyle.emoji} {phaseLabel(c.phase, locale)}
+              <div className="flex items-center justify-between gap-2">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className={`text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${phaseStyle.bg} ${phaseStyle.text}`}>
+                      {phaseStyle.emoji} {phaseLabel(c.phase, locale)}
+                    </span>
+                  </div>
+                  <div className="text-xs font-bold text-gray-800 mt-0.5 truncate">
+                    {locale === "ko" ? c.nameKo : c.name}
+                  </div>
+                </div>
+                {leader && leaderRole && (
+                  <span
+                    className={`shrink-0 text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${leaderRole.bg} ${leaderRole.text}`}
+                    title={leader.rationale}
+                  >
+                    {roleLabel(leader.role, locale)} · {leader.firmId.toUpperCase()}
                   </span>
-                </div>
-                <div className="text-xs font-bold text-gray-800 mt-0.5 truncate">
-                  {locale === "ko" ? c.nameKo : c.name}
-                </div>
+                )}
               </div>
-              {leader && leaderRole && (
-                <span
-                  className={`shrink-0 text-[0.625rem] font-extrabold px-1.5 py-0.5 rounded ${leaderRole.bg} ${leaderRole.text}`}
-                  title={leader.rationale}
-                >
-                  {roleLabel(leader.role, locale)} · {leader.firmId.toUpperCase()}
-                </span>
+              {successor && (
+                <div className="mt-1 pt-1 border-t border-gray-100 text-[0.6875rem] text-gray-500">
+                  <span className="text-gray-400">→</span>{" "}
+                  <Link
+                    href={`/ecosystems/${successor.ecosystemId}#layer-${successor.layerId}`}
+                    className="font-bold text-gray-700 hover:text-gray-900 hover:underline"
+                  >
+                    {locale === "ko" ? successor.nameKo : successor.name}
+                  </Link>
+                </div>
               )}
             </div>
           );
