@@ -462,7 +462,11 @@
     },
     "productLifeCycleDashboardCallout": "💡 This model drives the dashboard's 'Firms by Market Phase' chart — curve height reflects the revenue/market-cap scale of each stage, and the per-phase cards show the automatic classifications.",
     "anatomyTitle": "④ Anatomy of a Gorilla — 7-Dimension Framework",
-    "anatomyThesis": "You don't pick gorillas by gut feeling. We identify them through 7 measurable dimensions extracted from five books. Each dimension is weighted by its importance in determining gorilla status.",
+    "anatomyThesis": "You don't pick gorillas by gut feeling. We identify them through **Moore's 4 core criteria (70%) + 3 auxiliary dimensions our club added (30%)**. The main thesis is limited to Moore's 4 — the extra variables are club analysis tools.",
+    "anatomyMooreLabel": "Moore's 4 Core Criteria (main thesis)",
+    "anatomyMooreDesc": "The core gorilla-judgment criteria Geoffrey Moore explicitly named in 'The Gorilla Game' (1998). Combined weight 70%.",
+    "anatomyAuxLabel": "Our Club's 3 Auxiliary Dimensions",
+    "anatomyAuxDesc": "Variables our club added to rank candidates that already passed Moore's 4. Not specified in Moore's books. Combined weight 30%.",
     "anatomy": {
       "architectureControl": {
         "title": "Architecture Control",
@@ -502,7 +506,13 @@
       "endOfLife": { "name": "End of Life", "desc": "New paradigm displacing the old. Exit the gorilla. Find the next tornado." }
     },
     "tiersTitle": "⑤ Company Classification System",
-    "tiersSubtitle": "After the tornado, every market participant is assigned to one of two tracks. Markets with a proprietary architecture produce Gorillas/Chimps/Monkeys; open markets produce Kings/Princes/Serfs.",
+    "tiersSubtitle": "Moore's book defines **6 tiers (Gorilla/Chimpanzee/Monkey + King/Prince/Serf)**. Our club added **Potential Gorilla and In-Chasm position** as auxiliary labels for operational analysis — not main thesis, just analysis tools.",
+    "tiersPrimateLabel": "🦍 Primate Jungle (Proprietary Architecture)",
+    "tiersPrimateDesc": "Different DNA — interbreeding impossible. The gap is permanent: once a gorilla, the chimp can never catch up.",
+    "tiersKingdomLabel": "👑 Kingdom Jungle (Open Architecture)",
+    "tiersKingdomDesc": "A status-mobility game within the same species. The throne can be shaken — that's why kings get WATCH (not BUY like a primate gorilla).",
+    "tiersAuxLabel": "🛠️ Our Club's Auxiliary Labels",
+    "tiersAuxDesc": "Labels not in Moore's 6 tiers. 'Pot Gorilla' marks pre-tornado candidates. 'In Chasm' is a position/state, not a tier. Not main thesis.",
     "tiers": {
       "gorilla": { "name": "Gorilla", "signal": "BUY", "desc": "Controls the proprietary architecture that becomes the market standard. Competitors must conform to its interfaces. Switching costs are prohibitively high. Investors should buy and hold indefinitely.", "book": "The Gorilla Game" },
       "potentialGorilla": { "name": "Potential Gorilla", "signal": "BUY", "desc": "Competing in a tornado where the standard is not yet decided. Has the technical and market momentum to become the gorilla. Buy now before the market recognizes the winner.", "book": "The Gorilla Game" },

@@ -14,15 +14,37 @@ const PHASES = [
   { key: "endOfLife", emoji: "📉", color: "bg-gray-50" },
 ];
 
-const TIERS = [
-  { key: "gorilla", emoji: "🦍", color: "bg-emerald-50/60" },
-  { key: "potentialGorilla", emoji: "🦍", color: "bg-teal-50/60" },
-  { key: "king", emoji: "👑", color: "bg-blue-50/60" },
-  { key: "prince", emoji: "🤴", color: "bg-indigo-50/60" },
-  { key: "serf", emoji: "⛏️", color: "bg-stone-50/60" },
-  { key: "chimpanzee", emoji: "🐵", color: "bg-yellow-50/60" },
-  { key: "monkey", emoji: "🐒", color: "bg-orange-50/60" },
-  { key: "inChasm", emoji: "🕳️", color: "bg-red-50/60" },
+// Moore 6등급(영장류 3 + 킹덤 3)을 그룹별로 정렬, 우리 클럽 보조 라벨 2개는 별도 그룹.
+const TIER_GROUPS = [
+  {
+    group: "primate" as const,
+    labelKey: "tiersPrimateLabel",
+    descKey: "tiersPrimateDesc",
+    tiers: [
+      { key: "gorilla",     emoji: "🦍", color: "bg-emerald-50/60" },
+      { key: "chimpanzee",  emoji: "🐵", color: "bg-yellow-50/60" },
+      { key: "monkey",      emoji: "🐒", color: "bg-orange-50/60" },
+    ],
+  },
+  {
+    group: "kingdom" as const,
+    labelKey: "tiersKingdomLabel",
+    descKey: "tiersKingdomDesc",
+    tiers: [
+      { key: "king",   emoji: "👑", color: "bg-blue-50/60" },
+      { key: "prince", emoji: "🤴", color: "bg-indigo-50/60" },
+      { key: "serf",   emoji: "⛏️", color: "bg-stone-50/60" },
+    ],
+  },
+  {
+    group: "aux" as const,
+    labelKey: "tiersAuxLabel",
+    descKey: "tiersAuxDesc",
+    tiers: [
+      { key: "potentialGorilla", emoji: "🦍", color: "bg-teal-50/60" },
+      { key: "inChasm",          emoji: "🕳️", color: "bg-red-50/60" },
+    ],
+  },
 ];
 
 const BOOK_KEYS = [
@@ -63,14 +85,15 @@ const TORNADO_ITEMS = [
   { key: "winnerTakeAll", emoji: "🏆" },
 ];
 
+// Moore 책 정통 4기준 + 우리 클럽 추가 3차원 (보조). category로 시각 구분.
 const DIMENSIONS = [
-  { key: "architectureControl", weight: 22, emoji: "🏗️", color: "bg-emerald-50/60" },
-  { key: "switchingCosts", weight: 20, emoji: "🔒", color: "bg-emerald-50/60" },
-  { key: "marketShare", weight: 18, emoji: "📊", color: "bg-blue-50/60" },
-  { key: "networkEffects", weight: 15, emoji: "🌐", color: "bg-blue-50/60" },
-  { key: "ecosystemControl", weight: 13, emoji: "🤝", color: "bg-yellow-50/60" },
-  { key: "revenueGrowth", weight: 6, emoji: "📈", color: "bg-gray-50" },
-  { key: "marketConcentration", weight: 6, emoji: "🎯", color: "bg-gray-50" },
+  { key: "architectureControl", weight: 22, emoji: "🏗️", color: "bg-emerald-50/60", category: "moore" as const },
+  { key: "switchingCosts",      weight: 20, emoji: "🔒", color: "bg-emerald-50/60", category: "moore" as const },
+  { key: "networkEffects",      weight: 15, emoji: "🌐", color: "bg-emerald-50/60", category: "moore" as const },
+  { key: "ecosystemControl",    weight: 13, emoji: "🤝", color: "bg-emerald-50/60", category: "moore" as const },
+  { key: "marketShare",         weight: 18, emoji: "📊", color: "bg-stone-50/60",   category: "aux" as const },
+  { key: "revenueGrowth",       weight: 6,  emoji: "📈", color: "bg-stone-50/60",   category: "aux" as const },
+  { key: "marketConcentration", weight: 6,  emoji: "🎯", color: "bg-stone-50/60",   category: "aux" as const },
 ];
 
 const ACTION_PRINCIPLES = [
@@ -552,14 +575,23 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
         </Link>
       </section>
 
-      {/* ══════ ④ Anatomy — 7 Dimensions ══════ */}
+      {/* ══════ ④ Anatomy — Moore 4 + 우리 클럽 추가 3 ══════ */}
       <section>
         <h2 className="mb-3">{t("anatomyTitle")}</h2>
         <div className="toss-card !bg-[#E8F0FE]/60 ring-1 ring-[#0064FF]/10 mb-5">
           <p className="text-gray-800 text-sm leading-relaxed font-bold">{t("anatomyThesis")}</p>
         </div>
-        <div className="space-y-3">
-          {DIMENSIONS.map((dim) => (
+
+        {/* Moore 4기준 (본 thesis) */}
+        <div className="mb-3">
+          <div className="flex items-baseline gap-2 mb-1">
+            <h3 className="!text-base font-extrabold text-emerald-700">{t("anatomyMooreLabel")}</h3>
+            <span className="toss-pill bg-emerald-100 text-emerald-700 text-[10px]">70%</span>
+          </div>
+          <p className="text-xs text-gray-500 leading-snug">{t("anatomyMooreDesc")}</p>
+        </div>
+        <div className="space-y-3 mb-6">
+          {DIMENSIONS.filter((d) => d.category === "moore").map((dim) => (
             <div key={dim.key} className={`toss-card ${dim.color}`}>
               <div className="flex items-start gap-3">
                 <span className="text-2xl shrink-0 mt-0.5">{dim.emoji}</span>
@@ -574,35 +606,90 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
             </div>
           ))}
         </div>
+
+        {/* 우리 클럽 추가 3차원 (보조 도구) */}
+        <div className="mb-3">
+          <div className="flex items-baseline gap-2 mb-1">
+            <h3 className="!text-base font-extrabold text-stone-600">{t("anatomyAuxLabel")}</h3>
+            <span className="toss-pill bg-stone-200 text-stone-700 text-[10px]">30%</span>
+          </div>
+          <p className="text-xs text-gray-500 leading-snug">{t("anatomyAuxDesc")}</p>
+        </div>
+        <div className="space-y-3">
+          {DIMENSIONS.filter((d) => d.category === "aux").map((dim) => (
+            <div key={dim.key} className={`toss-card ${dim.color}`}>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0 mt-0.5">{dim.emoji}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-bold text-gray-900 text-sm">{t(`anatomy.${dim.key}.title`)}</span>
+                    <span className="toss-pill bg-stone-300 text-stone-700 text-[10px]">{dim.weight}%</span>
+                    <span className="toss-pill bg-stone-100 text-stone-500 text-[10px]">보조</span>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed">{t(`anatomy.${dim.key}.desc`)}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* ══════ ⑤ Classification Tiers ══════ */}
+      {/* ══════ ⑤ Classification Tiers — 영장류 + 킹덤 + 보조 라벨 ══════ */}
       <section>
         <h2 className="mb-3">{t("tiersTitle")}</h2>
         <p className="text-gray-500 text-sm font-medium mb-6">{t("tiersSubtitle")}</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {TIERS.map((tier) => {
-            const signal = t(`tiers.${tier.key}.signal`);
-            const signalColor =
-              signal === "BUY" || signal === "매수" ? "bg-emerald-100 text-emerald-700" :
-              signal === "WATCH" || signal === "관망" ? "bg-blue-100 text-[#0064FF]" :
-              signal === "SELL" || signal === "매도" ? "bg-orange-100 text-orange-700" :
-              "bg-red-100 text-red-600";
-            return (
-              <div key={tier.key} className={`toss-card ${tier.color}`}>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">{tier.emoji}</span>
-                  <div>
-                    <div className="font-extrabold text-gray-900">{t(`tiers.${tier.key}.name`)}</div>
-                    <span className={`toss-pill ${signalColor}`}>{signal}</span>
-                  </div>
+
+        {TIER_GROUPS.map((g) => {
+          const groupAccent =
+            g.group === "primate" ? "text-emerald-700"
+            : g.group === "kingdom" ? "text-blue-700"
+            : "text-stone-600";
+          const groupPill =
+            g.group === "primate" ? "bg-emerald-100 text-emerald-700"
+            : g.group === "kingdom" ? "bg-blue-100 text-blue-700"
+            : "bg-stone-200 text-stone-700";
+          return (
+            <div key={g.group} className="mb-7 last:mb-0">
+              <div className="mb-3">
+                <div className="flex items-baseline gap-2 mb-1">
+                  <h3 className={`!text-base font-extrabold ${groupAccent}`}>{t(g.labelKey)}</h3>
+                  <span className={`toss-pill ${groupPill} text-[10px]`}>
+                    {g.group === "aux" ? "보조 도구" : "Moore 책"}
+                  </span>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed mb-2">{t(`tiers.${tier.key}.desc`)}</p>
-                <span className="text-xs font-bold text-gray-400">{t("source", { book: t(`tiers.${tier.key}.book`) })}</span>
+                <p className="text-xs text-gray-500 leading-snug">{t(g.descKey)}</p>
               </div>
-            );
-          })}
-        </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {g.tiers.map((tier) => {
+                  const signal = t(`tiers.${tier.key}.signal`);
+                  const signalColor =
+                    signal === "BUY" || signal === "매수" ? "bg-emerald-100 text-emerald-700" :
+                    signal === "WATCH" || signal === "관망" ? "bg-blue-100 text-[#0064FF]" :
+                    signal === "SELL" || signal === "매도" ? "bg-orange-100 text-orange-700" :
+                    "bg-red-100 text-red-600";
+                  return (
+                    <div key={tier.key} className={`toss-card ${tier.color}`}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-2xl">{tier.emoji}</span>
+                        <div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="font-extrabold text-gray-900">{t(`tiers.${tier.key}.name`)}</span>
+                            {g.group === "aux" && (
+                              <span className="toss-pill bg-stone-100 text-stone-500 text-[9px]">보조</span>
+                            )}
+                          </div>
+                          <span className={`toss-pill ${signalColor}`}>{signal}</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-2">{t(`tiers.${tier.key}.desc`)}</p>
+                      <span className="text-xs font-bold text-gray-400">{t("source", { book: t(`tiers.${tier.key}.book`) })}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </section>
 
       {/* ══════ ⑥ 5 Action Principles ══════ */}

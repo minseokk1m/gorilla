@@ -123,13 +123,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             {evalDateStr} 기준 평가
           </span>
-          <span className="text-gray-400 font-medium">{firms.length}개 기업 · 7차원 가중 점수 · 이중 트랙 8등급</span>
+          <span className="text-gray-400 font-medium">{firms.length}개 기업 · Moore 4기준 + 클럽 보조 3차원 · 책 6등급 + 보조 2 라벨</span>
         </div>
         <div className="mt-3">
           <DashboardSearch firms={firms.map((f) => {
             const cls = classificationsMap.get(f.id);
             return { slug: f.slug, ticker: f.ticker, name: f.name, nameKo: FIRM_NAMES_KO[f.id] ?? f.nameKo, tier: cls?.tier ?? "", score: cls?.totalScore ?? 0 };
           })} />
+        </div>
+
+        {/* 일반인 우위 메시지 — 고릴라 게임이 왜 직장인·일반 투자자에게 가장 적합한가 */}
+        <div className="mt-4 toss-card !bg-emerald-50/40 ring-1 ring-emerald-100">
+          <div className="text-[0.8125rem] text-gray-700 leading-relaxed">
+            <span className="font-extrabold text-emerald-800">왜 고릴라 게임인가?</span>{" "}
+            가치투자(저평가)·성장투자(매출)·모멘텀(추세)은 모두 <strong>‘결과’를 본다 — 그 데이터는 펀드매니저가 1초 빠르다.</strong> 고릴라 게임은 <strong>‘구조’(아키텍처·전환비용·네트워크 효과)</strong>를 본다.
+            결정이 적고, 장기 보유라 시간 압박이 없고, 펀드매니저가 단기 성과 압박 때문에 오히려 못 하는 게임 — <strong className="text-emerald-700">일반인이 프로보다 잘할 수 있는 거의 유일한 영역.</strong>
+            <Link href="/learn" className="ml-1.5 text-emerald-700 hover:underline font-bold whitespace-nowrap">학습 페이지 →</Link>
+          </div>
         </div>
       </div>
 
