@@ -411,16 +411,24 @@
       "insightTitle": "Cross-Reading the Two Curves",
       "insightDesc": "If the Hype Cycle shows entry into the 'Slope of Enlightenment' while TALC signals a Bowling Alley → Tornado transition — that's the gorilla candidate buy window. Conversely, if hype is at its peak but TALC is still in Early Market, a Chasm crash awaits. Always cross-validate the two indicators."
     },
-    "chasmTitle": "② The Chasm — Where Most Companies Die",
-    "chasmThesis": "Between early adopters (visionaries) and the early majority (pragmatists) lies an unbridgeable gap. Visionary references don't work for pragmatists. If a technology fails to cross this gap, it dies in the market — no matter how brilliant.",
+    "chasmTitle": "② The Chasm — A Structural Break, Not a Temporary Lull",
+    "chasmThesis": "Between early adopters (visionaries) and the early majority (pragmatists) lies an unbridgeable gap. **This is not a temporary slowdown that time heals — it is a structural problem rooted in how the two groups make decisions differently.** Without a bridge (whole product + beachhead), it doesn't dissolve in five years.",
     "chasm": {
-      "whyDie": {
-        "title": "Why Most Die Here",
-        "desc": "Visionaries (early adopters) buy incomplete technology for competitive advantage. But pragmatists (early majority) only buy proven solutions. A visionary's success story is not a valid reference for a pragmatist — they live in different worlds. This disconnect is the chasm."
+      "structural": {
+        "title": "A Structural Problem — Time Doesn't Solve It",
+        "desc": "Visionaries buy because 'this is the future' (vision-based). Pragmatists buy when '5 industry peers are using it well' (reference-based). **The two groups never accept each other's references — this is the structure of human decision-making.** Segway, Google Glass, and C3.ai all died from the same structural break."
+      },
+      "compellingReason": {
+        "title": "Compelling Reason to Buy — Real Pain, Not Curiosity",
+        "desc": "The first condition for crossing the chasm. Pragmatists need a real, severe pain point that forces them to buy. Early Salesforce: 'we can't manage 100 sales reps in spreadsheets anymore' — real pain. Segway: 'just walk faster?' — no pain, no purchase. **A new technology without compelling pain dies in the chasm.**"
+      },
+      "discontinuous": {
+        "title": "Discontinuous Innovation — Does It Change the Category?",
+        "desc": "For the jungle game to operate, the technology must be **discontinuous**. iPhone (2007) bundled comm + computing + camera into a new category — discontinuous. Galaxy S25 is a continuous improvement — better camera each year. **In a continuous-only market, the gap between #1 and the rest never widens — the jungle game has no meaning here.**"
       },
       "wholeProduct": {
-        "title": "The Whole Product",
-        "desc": "Pragmatists don't buy technology alone. They want the complete package: technology + installation + training + support + integration + standards. To cross the chasm, you must first build a whole product for a single niche market."
+        "title": "The Whole Product — The Bridge Across the Chasm",
+        "desc": "Pragmatists don't buy technology alone. They want the complete package: technology + installation + training + support + integration + standards + ecosystem of supporting tools + consultants. To cross the chasm, you must first build a whole product for a single niche market."
       },
       "beachhead": {
         "title": "Beachhead Strategy (D-Day Analogy)",

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { MOCK_FIRMS } from "@/lib/data/mock/firms";
 import { getAllFirms, getClassification } from "@/lib/data/providers/firm-provider";
 import ClassificationBadge from "@/components/firms/ClassificationBadge";
+import FirmSources from "@/components/firms/FirmSources";
 import SignalBadge from "@/components/firms/SignalBadge";
 import { formatMarketCap, formatPercent, formatDate } from "@/lib/utils/formatters";
 import ScoreRadar from "@/components/firm-detail/ScoreRadar";
@@ -167,6 +168,8 @@ export default async function FirmDetailPage({ params }: { params: Promise<{ loc
             </div>
           </div>
         </div>
+
+        <FirmSources ticker={firm.ticker} yahooTicker={firm.yahooTicker} name={firm.name} />
       </div>
 
       {/* Sentiment-driven profile */}

@@ -73,9 +73,11 @@ const QUAL_SHEET_ITEMS = [
 
 /* ── New section data ── */
 const CHASM_ITEMS = [
-  { key: "whyDie", emoji: "💀" },
-  { key: "wholeProduct", emoji: "📦" },
-  { key: "beachhead", emoji: "🏖️" },
+  { key: "structural",       emoji: "🧬" },
+  { key: "compellingReason", emoji: "💢" },
+  { key: "discontinuous",    emoji: "⚡" },
+  { key: "wholeProduct",     emoji: "📦" },
+  { key: "beachhead",        emoji: "🏖️" },
 ];
 
 const TORNADO_ITEMS = [
