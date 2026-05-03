@@ -506,6 +506,51 @@
       "mainStreet": { "name": "메인 스트리트", "desc": "성장이 정상화된다. 고릴라가 지배한다. 포지션을 유지하라 — 전환비용이 당신을 보호한다." },
       "endOfLife": { "name": "쇠퇴기", "desc": "새로운 패러다임이 기존을 대체한다. 고릴라에서 퇴장하라. 다음 토네이도를 찾아라." }
     },
+    "nonIctTitle": "④-B 비ICT 산업 사례 — Moore 4기준의 산업 보편성",
+    "nonIctSubtitle": "Moore 4기준은 IT 외 산업에서도 작동한다. 각 사례에서 4기준이 어떻게 분포하는지, 그 결과 어떤 등급·위치가 나오는지 본다 — 본 분석 프레임을 비ICT 카테고리에도 적용할 수 있음을 검증한다.",
+    "nonIct": {
+      "cocaCola": {
+        "industry": "음료",
+        "title": "코카콜라 (KO) — 100년 영장류 고릴라",
+        "period": "1886~현재",
+        "criteria": "Architecture ✅ 브랜드 + 비밀 제조법(독점 IP) · Switching ✅ 소비자 습관·미각 학습 · Network ✅ 글로벌 유통망(편의점·식당·자판기) · Whole Product ✅ 마케팅·라이센스·로컬 보틀러 인프라",
+        "status": "Main Street (Maturing)",
+        "insight": "Moore 4기준 모두 통과. 비ICT 영장류 정글의 모범 사례. 시총 ~$280B(2025)."
+      },
+      "telecom3": {
+        "industry": "통신",
+        "title": "모토롤라 → 노키아 → 애플 — 카테고리 PLC + 영장류 교체",
+        "period": "1980s~현재",
+        "criteria": "각 시대 카테고리(아날로그/피처폰/스마트폰)에서 표준·OS·앱·통신 인프라·개발자 생태계를 4기준으로 통과한 영장류 고릴라.",
+        "status": "PLC 정점·쇠퇴 → 다음 카테고리에서 새 고릴라 등장",
+        "insight": "각 시대 영장류 고릴라였지만 카테고리 자체 사망으로 회사 운명 종료. PLC와 영장류 정글의 동시 작용 — 영장류 격차는 영원하나 카테고리는 죽는다."
+      },
+      "emartCoupang": {
+        "industry": "리테일",
+        "title": "이마트 → 쿠팡 — Main Street → Tornado 전환",
+        "period": "1993~현재 (한국)",
+        "criteria": "이마트: Whole Product ✅(주말 가족 장보기 풀스택) / Architecture ⚠️(누구나 점포 가능). 쿠팡: Switching↑(로켓 락인) / Network↑(플레이 + 마켓플레이스) / Architecture 강화 중(자체 물류 IP).",
+        "status": "이마트 Main Street → 쿠팡 Tornado 진행",
+        "insight": "리테일에서도 Tornado → Main Street → 다음 Tornado 사이클이 작동. 4기준 통과 진척이 1등 교체를 결정한다."
+      },
+      "dyson": {
+        "industry": "가전",
+        "title": "다이슨 — 카테고리 단위 고릴라(비치헤드 + 볼링앨리)",
+        "period": "1991~현재",
+        "criteria": "Architecture ✅ 모터 IP(디지털 모터 V11/V12 등) · Switching ⚠️ 약(재구매 주기 길고 다른 카테고리로 락인 안 됨) · Network ❌ 거의 없음 · Whole Product ✅ 전용 액세서리·서비스망",
+        "status": "각 카테고리(청소기·헤어드라이어·공기청정기) 안에서 1등",
+        "insight": "4기준 부분 통과. 카테고리 단위 고릴라이지 회사 단위 영장류 정글 고릴라는 아님 — 분석할 때 카테고리 단위로 쪼개야 함."
+      },
+      "kitchen": {
+        "industry": "부엌(주방가전)",
+        "title": "아궁이 → 구공탄 → 가스레인지 → 인덕션 — PLC + TALC 동시 작동",
+        "period": "1960s~현재 (한국)",
+        "criteria": "각 시대별 카테고리가 별도 PLC 곡선을 가짐. TALC도 각 카테고리 안에서 별도 작동(혁신가 → 선각자 → 실용주의자 → ...).",
+        "status": "현재 인덕션 Tornado 진행, 가스레인지 Declining",
+        "insight": "한 산업 내에서 카테고리 자체가 바뀜. 각 카테고리의 1등이 다음 카테고리에선 침팬지로 추락. PLC가 영장류 격차를 끊어내는 메커니즘."
+      }
+    },
+    "nonIctClosing": "💡 패턴 — Moore 4기준은 음료·통신·리테일·가전 모두에서 동일하게 작동한다. 단, IT 대비 (1) 1등 격차가 작고(점유율 30~50%), (2) 카테고리 PLC가 짧을 수 있어 영장류 격차가 끊어지기 쉽다. 그래서 본 분석 핵심은 여전히 IT 영장류 정글이며, 비ICT는 보조 검증 영역.",
     "tiersTitle": "⑤ 기업 분류 체계",
     "tiersSubtitle": "Moore 책의 분류는 **6등급(Gorilla/Chimpanzee/Monkey + King/Prince/Serf)** 이다. 우리 클럽은 운영을 위해 **잠재 고릴라(Pot Gorilla)와 캐즘 위치**를 보조 라벨로 추가했다 — 본 thesis가 아니라 분석 도구.",
     "tiersPrimateLabel": "🦍 영장류 정글 (독점 아키텍처)",

@@ -506,6 +506,51 @@
       "mainStreet": { "name": "Main Street", "desc": "Growth normalizes. Gorilla dominates. Hold your position; switching costs protect you." },
       "endOfLife": { "name": "End of Life", "desc": "New paradigm displacing the old. Exit the gorilla. Find the next tornado." }
     },
+    "nonIctTitle": "④-B Non-ICT Industry Cases — Universality of Moore's 4 Criteria",
+    "nonIctSubtitle": "Moore's 4 criteria operate in industries beyond IT. For each case we examine how the 4 criteria distribute, what tier/position results, and whether the framework still applies — validating that the same analytical lens works on non-ICT categories.",
+    "nonIct": {
+      "cocaCola": {
+        "industry": "Beverages",
+        "title": "Coca-Cola (KO) — 100-year primate gorilla",
+        "period": "1886~present",
+        "criteria": "Architecture ✅ Brand + secret formula (proprietary IP) · Switching ✅ Consumer habits & taste conditioning · Network ✅ Global distribution (convenience stores, restaurants, vending) · Whole Product ✅ Marketing, licensing, local-bottler infrastructure",
+        "status": "Main Street (Maturing)",
+        "insight": "All 4 Moore criteria pass. Textbook example of a non-ICT primate gorilla. Market cap ~$280B (2025)."
+      },
+      "telecom3": {
+        "industry": "Telecom",
+        "title": "Motorola → Nokia → Apple — Category PLC + primate-tier replacement",
+        "period": "1980s~present",
+        "criteria": "Each era's category (analog/feature-phone/smartphone) had a primate gorilla passing all 4 — standard, OS, apps, telco infra, developer ecosystem.",
+        "status": "PLC peak/decline → new gorilla in next category",
+        "insight": "Each era's primate gorilla still died because the category itself died. PLC + primate jungle operate together — the gap is permanent within a category, but categories themselves don't last."
+      },
+      "emartCoupang": {
+        "industry": "Retail",
+        "title": "E-Mart → Coupang — Main Street → Tornado handoff",
+        "period": "1993~present (Korea)",
+        "criteria": "E-Mart: Whole Product ✅ (full-stack weekend family shopping) / Architecture ⚠️ (anyone can open a store). Coupang: Switching↑ (Rocket lock-in) / Network↑ (Coupang Play + marketplace) / Architecture strengthening (proprietary logistics IP).",
+        "status": "E-Mart Main Street → Coupang Tornado in progress",
+        "insight": "Retail also follows Tornado → Main Street → next Tornado cycles. Progress on the 4 criteria determines who replaces #1."
+      },
+      "dyson": {
+        "industry": "Home Appliances",
+        "title": "Dyson — Category-level gorilla (beachhead + bowling alley)",
+        "period": "1991~present",
+        "criteria": "Architecture ✅ Motor IP (Digital Motor V11/V12) · Switching ⚠️ Weak (long replacement cycle, no cross-category lock-in) · Network ❌ Almost none · Whole Product ✅ Dedicated accessories/service",
+        "status": "#1 in each category (vacuum, hair dryer, air purifier)",
+        "insight": "Partial pass on Moore 4. Category-level gorilla, not a company-level primate gorilla — analyze category by category."
+      },
+      "kitchen": {
+        "industry": "Kitchen (appliances)",
+        "title": "Briquette stove → coal briquette → gas range → induction — PLC + TALC together",
+        "period": "1960s~present (Korea)",
+        "criteria": "Each era's category has its own PLC curve. TALC also runs separately within each category (innovator → early adopter → pragmatist → ...).",
+        "status": "Induction in Tornado now; gas range in Decline",
+        "insight": "The category itself changes within an industry. The #1 of each category becomes a chimp in the next — PLC is the mechanism that cuts off primate-tier dominance."
+      }
+    },
+    "nonIctClosing": "💡 Pattern — Moore's 4 criteria operate identically in beverage, telecom, retail, and home-appliance industries. However vs IT: (1) #1 gaps are smaller (30~50% share), (2) category PLC may be shorter, breaking primate-tier dominance more easily. Hence the core focus remains the IT primate jungle; non-ICT is a supplementary validation domain.",
     "tiersTitle": "⑤ Company Classification System",
     "tiersSubtitle": "Moore's book defines **6 tiers (Gorilla/Chimpanzee/Monkey + King/Prince/Serf)**. Our club added **Potential Gorilla and In-Chasm position** as auxiliary labels for operational analysis — not main thesis, just analysis tools.",
     "tiersPrimateLabel": "🦍 Primate Jungle (Proprietary Architecture)",

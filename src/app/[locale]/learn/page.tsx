@@ -85,6 +85,16 @@ const TORNADO_ITEMS = [
   { key: "winnerTakeAll", emoji: "🏆" },
 ];
 
+// 비ICT 산업 케이스 — Moore 4기준의 산업 보편성 검증.
+// 만화 시즌 3 Ep 25-26과 일관. 전문가 분석용 — "쉬운 비유"가 아니라 케이스 스터디 framing.
+const NON_ICT_CASES = [
+  { key: "cocaCola",     emoji: "🥤", color: "bg-rose-50/60",    accent: "text-rose-700" },
+  { key: "telecom3",     emoji: "📱", color: "bg-indigo-50/60",  accent: "text-indigo-700" },
+  { key: "emartCoupang", emoji: "🛒", color: "bg-orange-50/60",  accent: "text-orange-700" },
+  { key: "dyson",        emoji: "🌀", color: "bg-blue-50/60",    accent: "text-blue-700" },
+  { key: "kitchen",      emoji: "🔥", color: "bg-amber-50/60",   accent: "text-amber-700" },
+] as const;
+
 // Moore 책 정통 4기준 + 우리 클럽 추가 3차원 (보조). category로 시각 구분.
 const DIMENSIONS = [
   { key: "architectureControl", weight: 22, emoji: "🏗️", color: "bg-emerald-50/60", category: "moore" as const },
@@ -631,6 +641,39 @@ export default async function LearnPage({ params }: { params: Promise<{ locale: 
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ══════ ④-B Non-ICT Cases — Moore 4기준의 산업 보편성 ══════ */}
+      <section>
+        <h2 className="mb-3">{t("nonIctTitle")}</h2>
+        <p className="text-gray-500 text-sm font-medium mb-6">{t("nonIctSubtitle")}</p>
+        <div className="space-y-3">
+          {NON_ICT_CASES.map((c) => (
+            <div key={c.key} className={`toss-card ${c.color}`}>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0 mt-0.5">{c.emoji}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-baseline gap-2 mb-1">
+                    <span className={`font-extrabold text-sm ${c.accent}`}>{t(`nonIct.${c.key}.title`)}</span>
+                    <span className="toss-pill bg-white/70 text-gray-600 text-[10px]">{t(`nonIct.${c.key}.industry`)}</span>
+                    <span className="text-[10px] font-bold text-gray-400">{t(`nonIct.${c.key}.period`)}</span>
+                  </div>
+                  <div className="text-[0.8125rem] text-gray-700 leading-relaxed mb-2">
+                    <span className="font-bold text-gray-500 text-xs uppercase tracking-wide mr-1">4기준:</span>
+                    {t(`nonIct.${c.key}.criteria`)}
+                  </div>
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-xs">
+                    <span><span className="font-bold text-gray-500 uppercase tracking-wide">위치:</span> <span className="text-gray-800 font-bold">{t(`nonIct.${c.key}.status`)}</span></span>
+                  </div>
+                  <p className="text-[0.8125rem] text-gray-600 leading-relaxed mt-1.5 italic">→ {t(`nonIct.${c.key}.insight`)}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 rounded-xl bg-amber-50/60 ring-1 ring-amber-200 px-4 py-3">
+          <p className="text-[0.8125rem] text-amber-900 leading-relaxed">{t("nonIctClosing")}</p>
         </div>
       </section>
 
