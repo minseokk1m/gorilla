@@ -3,21 +3,59 @@ export const revalidate = 1800;
 
 import { getAllFirms, getAllClassifications } from "@/lib/data/providers/firm-provider";
 import { getAllPriceHistories } from "@/lib/data/providers/price-provider";
+import { detectAllFunnelPositions } from "@/lib/data/providers/funnel-engine";
 import FirmsTable from "@/components/firms/FirmsTable";
+import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import type { FunnelStage } from "@/types/funnel";
 
-export default async function FirmsPage({ params }: { params: Promise<{ locale: string }> }) {
+const FUNNEL_RANK: Record<FunnelStage, number> = {
+  Candidate: 0, Potential: 1, Confirmed: 2, Hold: 3,
+};
+
+const FUNNEL_LABELS_KO: Record<FunnelStage, string> = {
+  Candidate: "후보", Potential: "잠재", Confirmed: "가격 검증", Hold: "장기 보유",
+};
+
+const FUNNEL_LABELS_EN: Record<FunnelStage, string> = {
+  Candidate: "Candidate", Potential: "Potential", Confirmed: "Confirmed", Hold: "Hold",
+};
+
+function isFunnelStage(s: string | undefined): s is FunnelStage {
+  return s === "Candidate" || s === "Potential" || s === "Confirmed" || s === "Hold";
+}
+
+export default async function FirmsPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ funnel?: string }>;
+}) {
   const { locale } = await params;
+  const { funnel: funnelParam } = await searchParams;
   const t = await getTranslations({ locale, namespace: "firms" });
 
-  const [allFirms, classifications, prices] = await Promise.all([
+  const funnelFilter = isFunnelStage(funnelParam) ? funnelParam : null;
+
+  const [allFirms, classifications, prices, funnelPositions] = await Promise.all([
     getAllFirms(),
     getAllClassifications(locale),
     getAllPriceHistories(),
+    funnelFilter ? detectAllFunnelPositions() : Promise.resolve(null),
   ]);
   const priceMap = new Map(prices.map((p) => [p.firmId, p]));
 
-  const rows = allFirms
+  // Funnel 누적 필터: 'Potential' = Potential·Confirmed·Hold 모두 포함 (78 firms)
+  const minRank = funnelFilter ? FUNNEL_RANK[funnelFilter] : -1;
+  const filteredFirms = funnelFilter && funnelPositions
+    ? allFirms.filter((f) => {
+        const pos = funnelPositions.get(f.id);
+        return pos ? FUNNEL_RANK[pos.stage] >= minRank : false;
+      })
+    : allFirms;
+
+  const rows = filteredFirms
     .map((f) => {
       const cls = classifications.get(f.id)!;
       const price = priceMap.get(f.id);
@@ -39,6 +77,10 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
     })
     .sort((a, b) => b.totalScore - a.totalScore);
 
+  const funnelLabel = funnelFilter
+    ? (locale === "ko" ? FUNNEL_LABELS_KO[funnelFilter] : FUNNEL_LABELS_EN[funnelFilter])
+    : null;
+
   // Data timestamp
   const classifiedAt = rows[0]?.classifiedAt;
   const dataDate = classifiedAt
@@ -54,6 +96,23 @@ export default async function FirmsPage({ params }: { params: Promise<{ locale: 
           <p className="text-xs text-gray-400 font-medium mt-2">
             🕐 {t("dataAsOf", { date: dataDate })}
           </p>
+        )}
+        {funnelFilter && funnelLabel && (
+          <div className="mt-3 inline-flex items-center gap-2 rounded-xl bg-blue-50 ring-1 ring-blue-200 px-3 py-2">
+            <span className="text-xs font-extrabold text-blue-700 uppercase tracking-wider">
+              🔭 투자 깔때기 필터
+            </span>
+            <span className="text-sm font-extrabold text-blue-800">
+              {funnelLabel} 단계 이상
+            </span>
+            <span className="text-xs font-bold text-blue-600">({rows.length}개)</span>
+            <Link
+              href="/firms"
+              className="ml-2 text-xs font-bold text-gray-500 hover:text-gray-900 underline"
+            >
+              필터 해제 ✕
+            </Link>
+          </div>
         )}
       </div>
 
