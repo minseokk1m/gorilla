@@ -388,7 +388,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <section className="toss-card">
           <div className="flex items-baseline justify-between mb-1">
             <h2 className="!text-base">{tEco("substitutionTitle")}</h2>
-            <Link href="/ecosystems" className="text-[0.6875rem] font-bold text-[#0064FF] hover:underline shrink-0">
+            <Link href="/substitutions" className="text-[0.6875rem] font-bold text-[#0064FF] hover:underline shrink-0">
               {substitutionPaths.length} paths · {t("viewAllShort")}
             </Link>
           </div>
