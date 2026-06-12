@@ -32,12 +32,16 @@
   .intro-box h3 { margin: 12px 0 6px 0; color: #2d5016; font-size: 15px; }
   .intro-box h3:first-child { margin-top: 0; }
   .intro-box p { margin: 0 0 8px 0; font-size: 14px; color: #333; }
-  /* === v3 diff highlight === */
-  .diff { color: #1558b0; background-color: #eef4fc; padding: 0 3px; border-radius: 2px; }
-  .diff-block { border: 2px solid #1558b0; background-color: #eef4fc; color: #0b3c80; padding: 14px 18px; margin: 18px 0; border-radius: 6px; }
-  .diff-block h3, .diff-block strong { color: #0b3c80; }
-  .diff-banner { background: #1558b0; color: white; padding: 12px 18px; border-radius: 6px; margin: 20px 0 28px 0; font-size: 14px; line-height: 1.5; }
-  .diff-banner strong { color: #eef4fc; }
+  /* === v3 확정판 — 검토용 파란 마킹 중립화 (diff 클래스는 남겨두어 필요시 재점등 가능) === */
+  .diff { color: inherit; background: transparent; padding: 0; }
+  .diff-block { border: 1px solid #b9d49a; background-color: #f0f7e8; color: #1a1a1a; padding: 14px 18px; margin: 18px 0; border-radius: 6px; }
+  .diff-block h3, .diff-block strong { color: #2d5016; }
+  .diff-banner { background: #f0f7e8; color: #3a4a2a; border: 1px solid #b9d49a; padding: 12px 18px; border-radius: 6px; margin: 20px 0 28px 0; font-size: 14px; line-height: 1.5; }
+  .diff-banner strong { color: #2d5016; }
+  /* === 두괄식 리드 (한 줄 요약 먼저) === */
+  .lead { background:#f0f7e8; border-left:3px solid #2d5016; padding:8px 13px; margin:8px 0 12px 0; font-size:14.5px; color:#1a1a1a; border-radius:0 4px 4px 0; }
+  .lead b, .lead strong { color:#2d5016; }
+  td .lead { margin:0 0 10px 0; font-size:13.5px; }
   /* matrix */
   .matrix { border-collapse: collapse; margin: 14px 0; font-size: 13px; }
   .matrix td { border: 1px solid #bbb; padding: 10px 12px; text-align: center; width: 28%; }
@@ -68,25 +72,28 @@
 <h1>&#x1F98D; "투자 천재가 된 나잘난" — 고릴라 게임 만화 시리즈 <span class="diff">v3 · AI·반도체 중심 재편</span></h1>
 
 <div class="diff-banner">
-  <strong>v3 개정판 (2026-06-12).</strong> v2를 토대로 회장님 피드백을 전면 반영했습니다. <strong>v3에서 새로 추가·변경된 텍스트는 파란색</strong>으로 표시됩니다.<br>
-  핵심 변경: ① 본편 사례를 <strong>AI·반도체·테슬라 중심 시의성 사례로 재편</strong>(기존 비AI 사례는 「창고·번외」로 이관, 보존) ② 대상 독자에 <strong>Moore 3×3 매트릭스(정중앙=고릴라 투자자)</strong> 도입 + 타 기법(데이트레이딩·모멘텀·밸류) 차별화 명시 ③ 이론 계보·<strong>농업 뿌리</strong>(Ryan&amp;Gross → Rogers → Moore → Christensen) ④ <strong>표준화=전쟁</strong>(『마케팅 전쟁』) 강조 ⑤ <strong>고릴라 게임 10대 원칙</strong>(영한 병기) 전면화 ⑥ <strong>젠슨황 5단 케이크</strong> + AI 가치사슬(메모리·스토리지·데이터센터) + Moore 「기술의 층위」 ⑦ <strong>ETF 4종(TIME·ARTY·MEME·DRAM)</strong> + 「ETF의 역설」 ⑧ 학력 차별 표현 제거 + 단정적 표현 톤다운 ⑨ <strong>면책·저작권 고지</strong> 추가.
+  <strong>v3 정식 확정판 (2026-06-12).</strong> v2를 토대로 회장님 피드백 9건과 참고자료를 전면 반영한 확정본입니다(검토용 파란 마킹 정리 완료).<br>
+  v3 핵심 변경: ① 본편 사례를 <strong>AI·반도체·테슬라 중심 시의성 사례로 재편</strong>(기존 비AI 사례는 「창고·번외」로 이관, 보존) ② 대상 독자에 <strong>Moore 3×3 매트릭스(정중앙=고릴라 투자자)</strong> 도입 + 타 기법(데이트레이딩·모멘텀·밸류) 차별화 명시 ③ 이론 계보·<strong>농업 뿌리</strong>(Ryan&amp;Gross → Rogers → Moore → Christensen) ④ <strong>표준화=전쟁</strong>(『마케팅 전쟁』) 강조 ⑤ <strong>고릴라 게임 10대 원칙</strong>(영한 병기) 전면화 ⑥ <strong>젠슨황 5단 케이크</strong> + AI 가치사슬(메모리·스토리지·데이터센터) + Moore 「기술의 층위」 ⑦ <strong>ETF 4종(TIME·ARTY·MEME·DRAM)</strong> + 「ETF의 역설」 ⑧ 학력 차별 표현 제거 + 단정적 표현 톤다운 ⑨ <strong>면책·저작권 고지</strong> 추가.
 </div>
 
-<p>Geoffrey Moore의 3부작 — <em>Crossing the Chasm</em>(1991) · <em>Inside the Tornado</em>(1995) · <em>The Gorilla Game</em>(1998)에서 정립된 기술 채택 주기(TALC), 캐즘, 토네이도, 고릴라 게임 프레임워크를, <span class="diff">주식에 관심은 있지만 방법을 모르는 보통의 직장인·대학생 독자</span>가 만화로 이해할 수 있도록 구성한 <span class="diff">본편 40화 + 외전(시의성 트랙) + 창고·번외(역사 사례 보관)</span> 시리즈 기획안입니다. <span class="diff">v3에서는 오늘날 가장 뜨거운 AI·반도체·테슬라 사례를 중심으로 본편을 재편했습니다.</span></p>
+<p>Geoffrey Moore의 3부작, 즉 <em>Crossing the Chasm</em>(1991)·<em>Inside the Tornado</em>(1995)·<em>The Gorilla Game</em>(1998)에서 정립된 기술 채택 주기(TALC), 캐즘, 토네이도, 고릴라 게임 프레임워크를, <span class="diff">주식에 관심은 있지만 방법을 모르는 보통의 직장인·대학생 독자</span>가 만화로 이해할 수 있도록 구성한 <span class="diff">본편 40화 + 외전(시의성 트랙) + 창고·번외(역사 사례 보관)</span> 시리즈 기획안입니다. <span class="diff">v3에서는 오늘날 가장 뜨거운 AI·반도체·테슬라 사례를 중심으로 본편을 재편했습니다.</span></p>
 
-<p>모티프: <em>마케팅 천재가 된 맥스</em> — 일관된 캐릭터 중심 서사 + 실제 기업 사례 분석</p>
+<p>모티프: <em>마케팅 천재가 된 맥스</em>. 일관된 캐릭터 중심 서사에 실제 기업 사례 분석을 얹었다</p>
 
 <div class="intro-box">
   <h3>고릴라 게임이란 무엇인가</h3>
-  <p>기술 시장에서 <strong>"표준"을 잡은 단 하나의 기업(고릴라)</strong>에 집중 투자해서, 토네이도(폭발적 대중 채택) 구간의 초과수익을 누리는 투자 철학. 핵심 전제: <em>독점 아키텍처(proprietary architecture)</em>를 가진 시장에서는 1등이 가치의 대부분을 가져간다.</p>
-  <p><span class="diff">고릴라 게임의 작동 방식은 한 문장으로 요약된다 — <strong>"고릴라 후보들을 바구니에 담아두었다가, 누가 진짜 고릴라인지 드러나면 그 고릴라에 집중한다."</strong> 후보를 거르는 일(서식지 정찰)과 바구니에 담는 일은 오늘날 좋은 ETF가 상당 부분 대신해 주지만, 고릴라가 확정됐을 때 <strong>그 1등에 비중을 집중(몰빵)하는 일</strong>은 여전히 투자자의 몫이다. 이 차이가 고릴라 게임의 존재 이유다(외전·시즌5 참조).</span></p>
+  <p class="lead">표준을 잡은 1등 하나에 길게 집중 투자해, 폭발 성장(토네이도) 구간의 초과수익을 노리는 법이다.</p>
+  <p>핵심 전제는 하나다. <em>독점 아키텍처(proprietary architecture)</em>를 가진 시장에서는 1등(고릴라)이 가치의 대부분을 가져간다.</p>
+  <p><span class="diff">작동 방식은 한 문장이다. <strong>"후보들을 바구니에 담아두었다가, 진짜 고릴라가 드러나면 거기에 집중한다."</strong> 후보를 거르고 담는 일은 좋은 ETF가 상당 부분 대신해 주지만, 고릴라가 확정됐을 때 <strong>그 1등에 몰빵하는 일</strong>은 투자자의 몫이다. 이 차이가 고릴라 게임의 존재 이유다(외전·시즌5).</span></p>
 
   <h3 class="diff">다른 투자법과 무엇이 다른가 — 데이트레이딩·모멘텀·밸류가 아니다</h3>
-  <p>가치투자는 <em>저평가</em>를, 성장투자는 <em>매출 성장률</em>을, 모멘텀 투자는 <em>주가 추세</em>를 본다. <span class="diff">데이트레이딩은 <em>하루의 호가</em>를 본다.</span> 고릴라 게임은 <strong>"왜 이 기업이 구조적으로 이기는가"</strong>를 본다 — 아키텍처, 전환비용, 네트워크 효과 같은 구조 변수. <span class="diff">즉 고릴라 게임은 <strong>데이트레이딩도, 모멘텀 투자도, 밸류 투자도 아니다.</strong> 매일 차트를 보는 게임이 아니라, 산업의 구조가 정해지는 순간을 읽고 한번 사면 토네이도가 끝날 때까지 들고 가는 게임이다.</span></p>
+  <p class="lead">가격·실적 같은 '결과'를 좇는 다른 기법과 달리 '왜 구조적으로 이기는가'를 본다. 매일 차트 보는 게임이 아니다.</p>
+  <p>가치투자는 <em>저평가</em>, 성장투자는 <em>매출 성장률</em>, 모멘텀은 <em>주가 추세</em>, <span class="diff">데이트레이딩은 <em>하루의 호가</em></span>를 본다. 고릴라 게임이 보는 건 <strong>"왜 구조적으로 이기는가"</strong>, 곧 아키텍처·전환비용·네트워크 효과다. <span class="diff">산업 구조가 정해지는 순간을 읽고, 한번 사면 토네이도가 끝날 때까지 들고 간다.</span></p>
 
   <h3 class="diff">고릴라 게임 투자자는 누구인가 — Moore의 3×3 매트릭스 정중앙</h3>
+  <p class="lead">산업도 주식도 '중간'인 보통 사람이 정중앙이고, 그 자리가 일반인이 프로보다 잘할 수 있는 거의 유일한 자리다.</p>
   <div class="diff-block">
-    <p style="margin:0 0 10px 0;">Geoffrey Moore는 <em>The Gorilla Game</em> 서문(Figure 1.1)에서 투자자를 <strong>두 축</strong>으로 나눈다 — 가로축 <strong>공개주식 투자 지식(Public stock investment knowledge)</strong>, 세로축 <strong>하이테크 산업 지식(High-tech industry knowledge)</strong>. 각각 Low / Medium / High.</p>
+    <p style="margin:0 0 10px 0;">Geoffrey Moore는 <em>The Gorilla Game</em> 서문(Figure 1.1)에서 투자자를 <strong>두 축</strong>으로 나눈다. 가로축은 <strong>공개주식 투자 지식(Public stock investment knowledge)</strong>, 세로축은 <strong>하이테크 산업 지식(High-tech industry knowledge)</strong>이다. 각각 Low / Medium / High.</p>
     <table class="matrix">
       <tr><td class="axis">산업지식 High</td><td>High-tech 경영진</td><td>벤처캐피털(VC)</td><td>테크 펀드매니저</td></tr>
       <tr><td class="axis">산업지식 Medium</td><td>비즈니스 언론</td><td class="center">★ 고릴라 게임 투자자</td><td>그로스 펀드매니저</td></tr>
@@ -97,7 +104,8 @@
   </div>
 
   <h3 class="diff">대상 독자 — 세 층위</h3>
-  <p><span class="diff">이 만화의 페르소나: <strong>주식에 관심은 있고 자산을 불리고 싶지만 방법을 모르는, 평범하게 회사를 다니는 직장인·대학생.</strong> 위 매트릭스의 정중앙(Medium×Medium)에 해당하는 사람, Moore TALC상 <strong>실용주의자(Early Majority) + 일부 보수주의자(Late Majority)</strong>다.</span></p>
+  <p class="lead">주식에 관심은 있지만 방법을 모르는 평범한 직장인·대학생(실용주의자 + 일부 보수주의자)이 독자다.</p>
+  <p><span class="diff">위 매트릭스의 정중앙(Medium×Medium), Moore TALC상 <strong>실용주의자(Early Majority) + 일부 보수주의자(Late Majority)</strong>에 해당하는 사람이다.</span></p>
   <ul style="font-size:14px; color:#333;">
     <li class="diff"><strong>① 똘똘한 소수:</strong> 이 만화만 읽어도 원리가 바로 학습되고 스스로 응용까지 가는 사람.</li>
     <li class="diff"><strong>② 연결이 잘 안 되는 대다수:</strong> 읽어도 스스로 종목·산업에 연결하기 어려운 사람. 이들은 스터디그룹·집단지성 투자클럽·예행연습 모임으로 묶일 수 있다. <strong>(다만 커뮤니티·투자클럽·카페 운영은 별도 안건으로, 이 만화의 범위 밖이다.)</strong></li>
@@ -105,23 +113,28 @@
   </ul>
 
   <h3 class="diff">깊이의 상한선 — 애널리스트가 아닌 "활용 가능한 원리"까지</h3>
-  <p><span class="diff">이 만화는 펀드 애널리스트가 되라고 가르치지 않는다. NRR·세그먼트 매출·정밀 점수 모델 같은 도구는 본편에서 다루지 않는다. <strong>독자가 "원리를 이해한 다음, 이걸 어떻게 활용하지?"에 답을 찾을 수 있는 깊이</strong>까지만 간다. 정밀 분석은 별도 도구(고릴라 게임 웹사이트)로 위임한다.</span></p>
+  <p class="lead">애널리스트가 되라는 게 아니라, '원리를 이해하고 써먹을 수 있는' 깊이까지만 간다.</p>
+  <p><span class="diff">NRR·세그먼트 매출·정밀 점수 모델 같은 도구는 본편에서 다루지 않는다. <strong>"원리를 이해한 다음 어떻게 활용할까"에 답할 수 있는 깊이</strong>까지만 가고, 정밀 분석은 별도 도구(고릴라 게임 웹사이트)에 맡긴다.</span></p>
 
   <h3 class="diff">이 이론의 뿌리 — 아이오와 옥수수밭에서 시작됐다</h3>
-  <p><span class="diff">정글의 법칙은 IT에서 발명된 게 아니다. 그 뿌리는 <strong>농업</strong>이다. 1943년 아이오와 주립대 농촌사회학자 <strong>Bryce Ryan &amp; Neal Gross</strong>가 아이오와 농부들의 <strong>잡종 옥수수 종자(hybrid seed corn) 채택</strong>을 연구한 것이 확산이론의 시초다(출시 후 약 13년 만에 농부 거의 전원이 채택한 S자 곡선). 이를 <strong>Everett Rogers</strong>가 집대성해 <em>Diffusion of Innovations</em>(1962)로 정립했고(혁신가·선각자·다수·지각수용자 = TALC의 원형), 다시 <strong>Geoffrey Moore</strong>(캐즘·토네이도·고릴라)와 <strong>Clayton Christensen</strong>(파괴적 혁신)으로 이어졌다. <strong>계보: Ryan&amp;Gross(농업, 1943) → Rogers(1962) → Moore(1991~98) → Christensen.</strong> 세상 산업 발전사에 반복되는 보편 패턴을 실제 투자에 연결하는 것 — 그것이 우리가 하려는 일이다.</span></p>
+  <p class="lead">이 이론의 뿌리는 IT가 아니라 1943년 아이오와 잡종 옥수수 확산 연구다. 농업에서 시작된 보편 패턴을 투자에 연결한다.</p>
+  <p><span class="diff">정글의 법칙은 IT에서 발명된 게 아니다. 그 뿌리는 <strong>농업</strong>이다. 1943년 아이오와 주립대 농촌사회학자 <strong>Bryce Ryan &amp; Neal Gross</strong>가 아이오와 농부들의 <strong>잡종 옥수수 종자(hybrid seed corn) 채택</strong>을 연구한 것이 확산이론의 시초다(출시 후 약 13년 만에 농부 거의 전원이 채택한 S자 곡선). 이를 <strong>Everett Rogers</strong>가 집대성해 <em>Diffusion of Innovations</em>(1962)로 정립했고(혁신가·선각자·다수·지각수용자 = TALC의 원형), 다시 <strong>Geoffrey Moore</strong>(캐즘·토네이도·고릴라)와 <strong>Clayton Christensen</strong>(파괴적 혁신)으로 이어졌다. <strong>계보: Ryan&amp;Gross(농업, 1943) → Rogers(1962) → Moore(1991~98) → Christensen.</strong></span></p>
 
   <h3 class="diff">이건 거의 전쟁이다 — 표준화 전쟁</h3>
-  <p><span class="diff">표준을 잡는 것은 곧 전쟁이다. 메모리 전쟁(HBM·DRAM·NAND), GPU 전쟁(CUDA vs TPU vs ROCm), 그리고 윈텔 → 윈비디아의 PC 표준 교체까지 — 정글 곳곳에서 표준 전쟁이 벌어진다. 이 "전쟁" 프레임은 Al Ries &amp; Jack Trout의 <em>『마케팅 전쟁』(Marketing Warfare)</em>(클라우제비츠 『전쟁론』에서 배우는 마케팅 원칙)에서 가져온 시각이다. 누가 고지(표준)를 점령하느냐가 모든 가치를 결정한다.</span></p>
+  <p class="lead">표준을 잡는 일은 전쟁이다. 누가 고지(표준)를 점령하느냐가 모든 가치를 결정한다.</p>
+  <p><span class="diff">표준을 잡는 것은 곧 전쟁이다. 메모리 전쟁(HBM·DRAM·NAND), GPU 전쟁(CUDA vs TPU vs ROCm), 그리고 윈텔 → 윈비디아의 PC 표준 교체까지. 정글 곳곳에서 표준 전쟁이 벌어진다. 이 "전쟁" 프레임은 Al Ries &amp; Jack Trout의 <em>『마케팅 전쟁』(Marketing Warfare)</em>(클라우제비츠 『전쟁론』 기반)에서 가져왔다.</span></p>
 
   <h3>왜 AI·하이테크에서 특히 작동하는가 <span class="diff">(톤다운)</span></h3>
-  <p>전통 산업(은행, 정유, 항공)은 경쟁자도 비슷한 인프라를 쓰는 개방형 구조라 1등이 점유율을 크게 벌리기 어렵다. 반면 하이테크는 한 기업의 아키텍처가 다른 기업의 인프라가 되는 <span class="diff">경향이 강하다</span>(NVIDIA CUDA 위에 대부분의 AI 회사가 올라가는 식). 그래서 1등이 <span class="diff">매우 높은 점유율</span>을 가져가곤 한다. <span class="diff">고릴라 게임이 특히 의미를 갖는 대표적 산업이 바로 AI·반도체·하이테크다.</span></p>
+  <p class="lead">한 기업의 아키텍처가 남의 인프라가 되는 하이테크에선 1등이 점유율을 크게 가져가, 고릴라 게임이 특히 잘 통한다.</p>
+  <p>전통 산업(은행, 정유, 항공)은 경쟁자도 비슷한 인프라를 쓰는 개방형 구조라 1등이 점유율을 크게 벌리기 어렵다. 반면 하이테크는 한 기업의 아키텍처가 다른 기업의 인프라가 되는 <span class="diff">경향이 강하다</span>(NVIDIA CUDA 위에 대부분의 AI 회사가 올라가는 식). 그래서 1등이 <span class="diff">매우 높은 점유율</span>을 가져가곤 한다. <span class="diff">고릴라 게임의 대표 무대가 AI·반도체다.</span></p>
 
   <h3 class="diff">젠슨황의 5단 케이크 — AI는 5층 케이크다</h3>
+  <p class="lead">AI는 에너지·칩·인프라·모델·앱의 5층 케이크이고, 모든 층이 함께 커져야 경제성이 난다.</p>
   <div class="diff-block">
     <p style="margin:0 0 8px 0;">젠슨 황(NVIDIA CEO)은 AI 산업을 <strong>5층 케이크</strong>로 규정했다(2026, COMPUTEX/GTC). 아래에서 위로:</p>
     <div class="cake">
-      <div class="l5"><strong>⑤ Applications</strong> (앱) — 에이전트, 서비스</div>
-      <div class="l4"><strong>④ Models</strong> (AI 모델) — Gemini, GPT, Claude 등</div>
+      <div class="l5"><strong>⑤ Applications</strong> (앱), 에이전트, 서비스</div>
+      <div class="l4"><strong>④ Models</strong> (AI 모델), Gemini, GPT, Claude 등</div>
       <div class="l3"><strong>③ Infrastructure</strong> (클라우드 데이터센터)</div>
       <div class="l2"><strong>② Chips / Compute</strong> (반도체·GPU·메모리)</div>
       <div class="l1"><strong>① Energy</strong> (에너지·전력)</div>
@@ -130,10 +143,12 @@
   </div>
 
   <h3 class="diff">Moore의 「기술의 층위」 — 반도체에서 앱까지</h3>
-  <p><span class="diff">Moore 역시 <em>The Gorilla Game</em>(Figure 3.2)에서 하이테크 제품의 층위를 그렸다 — 위에서 아래로 <strong>End Users → 응용 소프트웨어(Application Layer) → 시스템/운영 소프트웨어 → 하드웨어 → 반도체(Enabling Technology Layers) → 전기(Electricity).</strong> 젠슨황의 5단 케이크와 거의 같은 그림이다. 고릴라는 이 층위 어딘가에서 표준을 장악한다. 우리는 <strong>"어느 층의 고릴라인가"</strong>를 묻는다.</span></p>
+  <p class="lead">Moore도 같은 층위 그림을 그렸다. 우리는 '어느 층의 고릴라인가'를 묻는다.</p>
+  <p><span class="diff">Moore 역시 <em>The Gorilla Game</em>(Figure 3.2)에서 하이테크 제품의 층위를 그렸다. 위에서 아래로 <strong>End Users → 응용 소프트웨어(Application Layer) → 시스템/운영 소프트웨어 → 하드웨어 → 반도체(Enabling Technology Layers) → 전기(Electricity).</strong> 젠슨황의 5단 케이크와 거의 같은 그림이다. 고릴라는 이 층위 어딘가에서 표준을 장악한다.</span></p>
 
   <h3>출처 표기 원칙</h3>
-  <p>이론은 Moore 3부작 + 후속 자료에서 인용. 사례 기업의 매출·점유율 수치는 각 기업 10-K(미국 SEC), DART(한국 금감원), IR 공식자료. 우리(작가 + Claude AI)가 만든 보조 분류·점수 모델은 시즌 5에서 "투자클럽의 도구"로 별도 표시 — 본 thesis는 Moore 책의 proven 개념에 한정한다. <span class="diff">ETF·시장 데이터는 각 운용사·정보업체 공식자료를 기준으로 하며, 구체 수치는 작성 시점 기준임을 명기한다.</span></p>
+  <p class="lead">이론은 Moore 3부작, 수치는 공식 공시(10-K·DART·IR), 우리 보조 도구는 별도 표시다.</p>
+  <p>이론은 Moore 3부작 + 후속 자료에서 인용. 사례 기업의 매출·점유율 수치는 각 기업 10-K(미국 SEC), DART(한국 금감원), IR 공식자료. 우리(작가 + Claude AI)가 만든 보조 분류·점수 모델은 시즌 5에서 "투자클럽의 도구"로 별도 표시, 본 thesis는 Moore 책의 proven 개념에 한정한다. <span class="diff">ETF·시장 데이터는 각 운용사·정보업체 공식자료를 기준으로 하며, 구체 수치는 작성 시점 기준임을 명기한다.</span></p>
 </div>
 
 <div class="disclaimer">
@@ -145,12 +160,13 @@
 
 <!-- ============ 10대 원칙 ============ -->
 <h2 class="diff">고릴라 게임 투자 운영 10대 원칙 (영한 병기)</h2>
-<p style="font-size:14px; color:#555;"><span class="diff">Moore <em>The Gorilla Game</em>의 매수·매도 원칙을 정본으로 전면화한다(v2의 "Ch.7 4룰"은 이 10대 원칙의 축약본이었다). 캐즘·토네이도 등 용어는 마케팅 번역 용어와 일치시켰다. ※ 2원칙의 "enabling(지원)"은 기존 번역서에서 오역 소지가 있던 대목으로, 영문을 병기한다.</span></p>
+<p class="lead">매수 타이밍(1·2)·바구니(3)·보유와 매도(4·5·6·7)·재투자(8)·충돌(9)·뉴스 무시(10)를 한 장으로. 핵심은 '대체 위협이 입증될 때만 판다'.</p>
+<p style="font-size:14px; color:#555;"><span class="diff">Moore <em>The Gorilla Game</em>의 매수·매도 원칙 정본이다(v2 "Ch.7 4룰"의 확대판). ※ 2원칙 "enabling(지원)"은 번역서에 오역 소지가 있어 영문을 병기한다.</span></p>
 <div class="principles diff">
 <ol>
   <li>카테고리가 <strong>응용 소프트웨어(Application Software)</strong>라면, <strong>볼링앨리(Bowling Alley)</strong> 단계에서 매수를 시작하라.<span class="en">If the category is application software, begin buying in the bowling alley.</span></li>
   <li>카테고리가 <strong>지원 하드웨어/소프트웨어(Enabling Hardware or Software)</strong>라면, <strong>토네이도(Tornado)</strong>가 형성된 뒤 매수를 시작하라.<span class="en">If the category is enabling hardware or software, begin buying after the tornado has formed.</span></li>
-  <li>모든 <strong>고릴라 후보</strong>를 <strong>바구니(basket)</strong>로 사라. 보통 2~3개, 통상 <strong>4개를 넘지 않게</strong>.<span class="en">Buy a basket comprising all the gorilla candidates — usually two, sometimes three, normally no more than four.</span></li>
+  <li>모든 <strong>고릴라 후보</strong>를 <strong>바구니(basket)</strong>로 사라. 보통 2~3개, 통상 <strong>4개를 넘지 않게</strong>.<span class="en">Buy a basket comprising all the gorilla candidates, usually two, sometimes three, normally no more than four.</span></li>
   <li>고릴라 주식은 <strong>장기 보유</strong>하라. <strong>대체 위협(substitution threat)이 입증되었을 때에만</strong> 팔아라.<span class="en">Hold gorilla stocks for the long term. Sell only on proven substitution threat.</span></li>
   <li><strong>응용SW 침팬지</strong>는 시장 확대 잠재력이 있는 한 보유하라. 그러나 <strong>지원기술(enabling) 침팬지는 보유하지 말라.</strong><span class="en">Hold application software chimp stocks as long as they exhibit potential for further market expansion. Do not hold enabling-technology chimps.</span></li>
   <li><strong>영주(King)와 기사(Prince)</strong>는 가볍게 보유하다가, 시장 하락에서 개별 종목을 팔고, 초고성장이 썰물 단계에 들면 <strong>카테고리 전체</strong>를 팔아라.<span class="en">Hold kings and princes lightly, selling individual stocks on a marketplace stumble and the category upon deceleration of hypergrowth.</span></li>
@@ -201,6 +217,7 @@
 </table>
 
 <h3 class="diff">[비주얼] TALC 채택 곡선과 캐즘 — "누가 어떤 순서로 사는가"</h3>
+<p class="lead">신기술은 혁신가 → 선각자 → 실용주의자 → 보수파 → 회의론자 순으로 퍼지고, 선각자와 실용주의자 사이의 '캐즘'이 최대 관문이다.</p>
 <figure style="margin:14px 0 28px 0; text-align:center;">
 <svg viewBox="0 0 880 300" width="100%" style="max-width:880px; font-family:'Apple SD Gothic Neo',sans-serif;">
   <text x="22" y="28" font-size="12" fill="#999">채택자 수</text>
@@ -224,6 +241,7 @@
 </figure>
 
 <h3 class="diff">[비주얼] Moore 시장 발전 생애주기 — TALC와 PLC가 한 곡선에</h3>
+<p class="lead">TALC(누가 사나)와 PLC(얼마나 팔리나)가 한 곡선에서 만난다. 카테고리가 죽으면 그 고릴라도 함께 쇠퇴한다.</p>
 <figure style="margin:14px 0 28px 0; text-align:center;">
 <svg viewBox="0 0 880 320" width="100%" style="max-width:880px; font-family:'Apple SD Gothic Neo',sans-serif;">
   <text x="22" y="26" font-size="12" fill="#999">매출 (Revenue)</text>
@@ -248,7 +266,8 @@
 
 <!-- ============ AI 가치사슬 ============ -->
 <h2 class="diff">[기초편] AI 산업의 구조 — 가치사슬과 메모리</h2>
-<p style="font-size:14px; color:#555;"><span class="diff">본편에 들어가기 전, AI 산업의 구조를 한 장으로 잡는다. "완전완비 제품(whole product)"이 되려면 아래 구성요소가 층층이 갖춰져야 한다(시즌3 Ep24·25에서 본격적으로 다룬다).</span></p>
+<p class="lead">AI 산업은 5층(에너지·칩·인프라·모델·앱) 구조이고, 그 ②층 '메모리'(DRAM·HBM·NAND·HBF)가 우리의 핵심 전장이다. 회사가 아니라 '층·카테고리' 단위로 본다.</p>
+<p style="font-size:14px; color:#555;"><span class="diff">본편 전에 AI 산업 구조를 한 장으로 잡는다. "완전완비 제품(whole product)"은 아래 구성요소가 층층이 갖춰져야 완성된다(시즌3 Ep24·25).</span></p>
 <div class="diff-block">
   <h3 style="margin-top:0;">AI 가치사슬 (젠슨황 5단 케이크를 펼치면)</h3>
   <table style="font-size:13px;">
@@ -290,8 +309,8 @@
   </figure>
   <h3>메모리·스토리지 분류 (②층의 핵심)</h3>
   <ul style="font-size:14px;">
-    <li><strong>메모리(휘발성, 빠름)</strong> — <strong>DRAM</strong>(표준 메모리, 30년 카테고리) · <strong>HBM</strong>(High Bandwidth Memory, AI 학습 GPU에 적층) · SRAM(GPU 내부 캐시)</li>
-    <li><strong>스토리지(비휘발성, 큼)</strong> — <strong>NAND/SSD</strong> · <strong>HDD</strong>(쇠퇴) · <span class="diff"><strong>HBF</strong>(High Bandwidth Flash, NAND 적층 — 차세대 후보)</span></li>
+    <li><strong>메모리(휘발성, 빠름)</strong>, <strong>DRAM</strong>(표준 메모리, 30년 카테고리) · <strong>HBM</strong>(High Bandwidth Memory, AI 학습 GPU에 적층) · SRAM(GPU 내부 캐시)</li>
+    <li><strong>스토리지(비휘발성, 큼)</strong>, <strong>NAND/SSD</strong> · <strong>HDD</strong>(쇠퇴) · <span class="diff"><strong>HBF</strong>(High Bandwidth Flash, NAND 적층, 차세대 후보)</span></li>
     <li><strong>메모리 피라미드</strong>(GPU 옆): GPU 내부 SRAM → HBM → <span class="diff">HBF</span> → SSD. 위로 갈수록 빠르고 작고, 아래로 갈수록 크고 느리다. <span class="diff">데이터센터 = 거대한 메모리 공장.</span></li>
   </ul>
   <figure style="margin:14px 0 20px 0; text-align:center;">
@@ -313,7 +332,8 @@
   <figcaption style="font-size:12px;color:#888;margin-top:2px;">메모리 피라미드 — 위로 갈수록 빠르고 작고, 아래로 갈수록 크고 느리다. HBF가 새 층으로 올라오는 중. (개념 도식)</figcaption>
   </figure>
   <h3>★ 제품 사이클의 교차(cross) = 고릴라 양상의 변화</h3>
-  <p style="font-size:14px; margin:0;"><span class="diff">&lt;표준 DRAM 제품 사이클&gt; 위로 &lt;HBM 제품 사이클&gt;이 새로 치고 올라오면서 <strong>두 곡선이 교차(cross)</strong>한다. 이 교차 지점에서 고릴라의 양상이 바뀐다. 핵심 차이: <strong>표준 메모리(DRAM·NAND)는 표준화되어 1·2·3등이 자리바꿈(교차)이 충분히 일어나는 개방형</strong>이지만, <strong>HBM은 전환비용·기술장벽이 높아 당분간 1등 교체가 잘 일어나지 않는다.</strong> 같은 "메모리"라도 카테고리마다 고릴라의 안정성이 다르다 — 이것이 회사가 아니라 카테고리 단위로 분석하는 이유다.</span></p>
+  <p class="lead">표준 메모리(DRAM·NAND)는 1·2·3등이 자리바꿈하지만, HBM은 전환비용이 높아 당분간 1등이 안 바뀐다. 같은 '메모리'라도 카테고리마다 고릴라의 안정성이 다르다.</p>
+  <p style="font-size:14px; margin:0;"><span class="diff">&lt;표준 DRAM 제품 사이클&gt; 위로 &lt;HBM 제품 사이클&gt;이 새로 치고 올라오면서 <strong>두 곡선이 교차(cross)</strong>한다. 이 교차 지점에서 고릴라의 양상이 바뀐다. 핵심 차이: <strong>표준 메모리(DRAM·NAND)는 표준화되어 1·2·3등이 자리바꿈(교차)이 충분히 일어나는 개방형</strong>이지만, <strong>HBM은 전환비용·기술장벽이 높아 당분간 1등 교체가 잘 일어나지 않는다.</strong> 같은 "메모리"라도 카테고리마다 고릴라의 안정성이 다르다. 이것이 회사가 아니라 카테고리 단위로 분석하는 이유다.</span></p>
   <figure style="margin:16px 0 6px 0; text-align:center;">
   <svg viewBox="0 0 760 290" width="100%" style="max-width:720px; font-family:'Apple SD Gothic Neo',sans-serif;">
     <line x1="50" y1="250" x2="720" y2="250" stroke="#999" stroke-width="1.5"/>
@@ -333,6 +353,7 @@
 </div>
 
 <h3 class="diff">[비주얼] AI 반도체 공급망 상세 지도 (Ep25에서 다룸)</h3>
+<p class="lead">한 종목이 아니라 가치사슬 '지도'를 본다. 칸(파운드리·메모리·장비·패키징…)마다 고릴라가 다르다.</p>
 <figure style="margin:14px 0 28px 0; text-align:center;">
 <svg viewBox="0 0 900 440" width="100%" style="max-width:900px; font-family:'Apple SD Gothic Neo',sans-serif;">
   <rect x="360" y="20" width="180" height="50" rx="8" fill="#2d5016"/>
@@ -376,7 +397,7 @@
 <!-- ============ 시즌 1 ============ -->
 <div class="season-header">
   <h2>시즌 1: 정글에 입장하다 (Ep 1~10)</h2>
-  <p>고릴라 게임 철학 + TALC + 캐즘 + PLC — 기술이 시장에 퍼지는 원리, 그리고 왜 우리가 이 게임을 하는가 <span class="diff">(사례 전면 AI·반도체·테슬라화)</span></p>
+  <p>고릴라 게임 철학 + TALC + 캐즘 + PLC, 기술이 시장에 퍼지는 원리, 그리고 왜 우리가 이 게임을 하는가 <span class="diff">(사례 전면 AI·반도체·테슬라화)</span></p>
 </div>
 
 <figure style="margin:8px 0 24px 0; text-align:center;">
@@ -412,77 +433,77 @@
     <td>"내가 할 수 있는 단 하나의 투자법" — 고릴라 게임이란</td>
     <td>고릴라 게임 정의 + 다른 투자법과의 차이 + <span class="diff">3×3 매트릭스(정중앙=고릴라 투자자)</span> + 일반인이 가장 잘할 수 있는 이유</td>
     <td>NVIDIA CUDA, 가치/성장/모멘텀/<span class="diff">데이트레이딩</span> 대비</td>
-    <td><strong>컷 1-2:</strong> 나잘난이 친구들 조언대로 AI 주식 매매 — 가치 친구 "PER 낮은 거 사", 성장 친구 "매출 늘어난 거 사", 나대출 "지금 핫한 거 사!". 셋 다 따라했는데 또 반토막. 진짜 이유 — <strong>펀드매니저가 같은 데이터로 더 빠르다.</strong> 같은 게임으론 못 이긴다. <br><br><strong>컷 3-4:</strong> 서점에서 『고릴라 게임』 발견. 카페에서 고집중 박사 첫 등장. "가치·성장·모멘텀·데이트레이딩은 다 '<em>결과</em>'(PER·매출·주가·호가)를 봐. 결과는 프로가 너보다 빠르지. 우리는 '<em>구조</em>'를 본다 — <strong>왜 이 기업이 구조적으로 안 무너지는가.</strong>" <br><br><span class="diff"><strong>컷 5 (신규 — 3×3 매트릭스):</strong> 박사가 화이트보드에 Moore의 3×3 매트릭스를 그림. "VC도, 펀드매니저도, 완전 초보도 아닌 — <strong>산업도 주식도 '중간'인 사람.</strong> 그 정중앙이 고릴라 게임 투자자야. <strong>그게 바로 너 같은 보통 직장인이야.</strong>"</span> <br><br><strong>컷 6:</strong> NVIDIA CUDA 시각화 — 대부분의 AI 회사가 NVIDIA 위에서 돈다. "한번 표준이 되면 한동안 안 무너져. 그게 고릴라야." <strong>고릴라 게임 = 표준 잡은 1등에 집중, 결과가 아닌 구조를 본다.</strong> <br><br><span class="diff"><strong>컷 7 (차별화 명시):</strong> "이건 <strong>데이트레이딩도, 모멘텀도, 밸류도 아니야.</strong> 매일 차트 보는 게임이 아니라, 산업 구조가 정해지는 순간을 읽고 한번 사면 길게 가는 게임이지. 결정이 적고(연 1~2번), 장기 보유라 직장과 양립하고, 펀드매니저가 단기 압박 때문에 못 하는 게임 — 일반인이 프로보다 잘할 수 있는 거의 유일한 영역이야."</span> <br><br><strong>컷 8:</strong> 나잘난: "내가 산 건 고릴라가 아니었구나…" 고집중: "이제 정글의 법칙을 배우자. 다음 시간 — 기술이 어떻게 퍼지는지부터. <span class="diff">사실 이 법칙은 70년 전 아이오와 옥수수밭에서 시작됐어.</span>"</td>
+    <td><div class="lead">친구들 말 따라 AI주 샀다 또 반토막. 결과가 아니라 '구조'를 보는 게 고릴라 게임이고, 그 정중앙(3×3 매트릭스)이 바로 너다.</div><strong>컷 1-2:</strong> 나잘난이 친구들 조언대로 AI 주식 매매, 가치 친구 "PER 낮은 거 사", 성장 친구 "매출 늘어난 거 사", 나대출 "지금 핫한 거 사!". 셋 다 따라했는데 또 반토막. 진짜 이유, <strong>펀드매니저가 같은 데이터로 더 빠르다.</strong> 같은 게임으론 못 이긴다. <br><br><strong>컷 3-4:</strong> 서점에서 『고릴라 게임』 발견. 카페에서 고집중 박사 첫 등장. "가치·성장·모멘텀·데이트레이딩은 다 '<em>결과</em>'(PER·매출·주가·호가)를 봐. 결과는 프로가 너보다 빠르지. 우리는 '<em>구조</em>'를 본다. <strong>왜 이 기업이 구조적으로 안 무너지는가.</strong>" <br><br><span class="diff"><strong>컷 5 (신규, 3×3 매트릭스):</strong> 박사가 화이트보드에 Moore의 3×3 매트릭스를 그림. "VC도, 펀드매니저도, 완전 초보도 아닌, <strong>산업도 주식도 '중간'인 사람.</strong> 그 정중앙이 고릴라 게임 투자자야. <strong>그게 바로 너 같은 보통 직장인이야.</strong>"</span> <br><br><strong>컷 6:</strong> NVIDIA CUDA 시각화, 대부분의 AI 회사가 NVIDIA 위에서 돈다. "한번 표준이 되면 한동안 안 무너져. 그게 고릴라야." <strong>고릴라 게임 = 표준 잡은 1등에 집중, 결과가 아닌 구조를 본다.</strong> <br><br><span class="diff"><strong>컷 7 (차별화 명시):</strong> "이건 <strong>데이트레이딩도, 모멘텀도, 밸류도 아니야.</strong> 매일 차트 보는 게임이 아니라, 산업 구조가 정해지는 순간을 읽고 한번 사면 길게 가는 게임이지. 결정이 적고(연 1~2번), 장기 보유라 직장과 양립하고, 펀드매니저가 단기 압박 때문에 못 하는 게임, 일반인이 프로보다 잘할 수 있는 거의 유일한 영역이야."</span> <br><br><strong>컷 8:</strong> 나잘난: "내가 산 건 고릴라가 아니었구나…" 고집중: "이제 정글의 법칙을 배우자. 다음 시간, 기술이 어떻게 퍼지는지부터. <span class="diff">사실 이 법칙은 70년 전 아이오와 옥수수밭에서 시작됐어.</span>"</td>
   </tr>
   <tr>
     <td><strong>2</strong></td>
     <td>"기술은 어떻게 퍼지는가" <span class="diff">— 아이오와 옥수수밭에서 ChatGPT까지</span></td>
     <td>TALC 5단계 + <span class="diff">확산이론의 농업 뿌리</span> + 불연속 vs 연속 혁신 + Compelling Reason to Buy</td>
     <td><span class="diff">잡종 옥수수(1943) → ChatGPT 채택, 아이폰 vs 갤럭시 연속개선</span></td>
-    <td><span class="diff"><strong>컷 1 (신규 — 뿌리):</strong> 고집중: "이 곡선은 1943년 아이오와 농부들이 <strong>잡종 옥수수</strong>를 받아들인 순서에서 나왔어. Ryan과 Gross가 연구했고, Rogers가 정리했지. 신기술이 퍼지는 순서는 옥수수든 AI든 똑같아."</span> <br><br><strong>컷 2:</strong> 화이트보드 종 모양 TALC 곡선 — 혁신가 2.5% → 선각자 13.5% → 실용주의자 34% → 보수파 34% → 회의론자 16%. 카메오 5인 등장: 선수용(혁신가) "새 모델 첫 주에 깔았지", IT 형(선각자) "이게 미래야", 김 대리(실용주의자) "동료가 잘 쓰면 그제야", 부모님(보수파) "남들 다 쓰면", 박 부장(회의론자) "난 폴더폰". <br><br><strong>컷 3:</strong> "정글 게임이 작동하려면 첫째, 기술이 <strong>불연속(discontinuous)</strong>이어야 해. ChatGPT는 새 카테고리(불연속), 갤럭시 S 매년 카메라만 좋아지는 건 연속. <strong>연속만 있는 시장은 1등 격차가 안 벌어진다.</strong>" <br><br><strong>컷 4:</strong> "둘째, <strong>compelling reason to buy</strong> — 살 수밖에 없는 진짜 pain이 있어야 해. <span class="diff">기업이 ChatGPT/코파일럿을 쓰는 건 '문서·코드 시간을 반으로 줄여준다'는 진짜 고통 해결.</span> 고통 없는 신기술은 캐즘에서 죽는다." <br><br><strong>컷 5:</strong> 나잘난이 자기가 산 주식에 두 질문 적용 — "불연속도 아니고, 진짜 고통도 안 풀어주네…" <br><br><strong>컷 6:</strong> "다음 시간 — 왜 멋있는 기술도 죽는지. <span class="diff">죽음의 계곡, 캐즘. 마침 지금 전기차가 거기 빠져 있어.</span>"</td>
+    <td><div class="lead">신기술이 퍼지는 순서(TALC)는 1943년 옥수수밭에서 왔다. 고릴라가 되려면 '불연속'과 '살 수밖에 없는 이유'가 있어야 한다.</div><span class="diff"><strong>컷 1 (신규, 뿌리):</strong> 고집중: "이 곡선은 1943년 아이오와 농부들이 <strong>잡종 옥수수</strong>를 받아들인 순서에서 나왔어. Ryan과 Gross가 연구했고, Rogers가 정리했지. 신기술이 퍼지는 순서는 옥수수든 AI든 똑같아."</span> <br><br><strong>컷 2:</strong> 화이트보드 종 모양 TALC 곡선, 혁신가 2.5% → 선각자 13.5% → 실용주의자 34% → 보수파 34% → 회의론자 16%. 카메오 5인 등장: 선수용(혁신가) "새 모델 첫 주에 깔았지", IT 형(선각자) "이게 미래야", 김 대리(실용주의자) "동료가 잘 쓰면 그제야", 부모님(보수파) "남들 다 쓰면", 박 부장(회의론자) "난 폴더폰". <br><br><strong>컷 3:</strong> "정글 게임이 작동하려면 첫째, 기술이 <strong>불연속(discontinuous)</strong>이어야 해. ChatGPT는 새 카테고리(불연속), 갤럭시 S 매년 카메라만 좋아지는 건 연속. <strong>연속만 있는 시장은 1등 격차가 안 벌어진다.</strong>" <br><br><strong>컷 4:</strong> "둘째, <strong>compelling reason to buy</strong>, 살 수밖에 없는 진짜 pain이 있어야 해. <span class="diff">기업이 ChatGPT/코파일럿을 쓰는 건 '문서·코드 시간을 반으로 줄여준다'는 진짜 고통 해결.</span> 고통 없는 신기술은 캐즘에서 죽는다." <br><br><strong>컷 5:</strong> 나잘난이 자기가 산 주식에 두 질문 적용. "불연속도 아니고, 진짜 고통도 안 풀어주네…" <br><br><strong>컷 6:</strong> "다음 시간, 왜 멋있는 기술도 죽는지. <span class="diff">죽음의 계곡, 캐즘. 마침 지금 전기차가 거기 빠져 있어.</span>"</td>
   </tr>
   <tr>
     <td><strong>3</strong></td>
     <td>"죽음의 계곡, 캐즘 — 일시적이 아니라 구조적이다" <span class="diff">(전기차 캐즘)</span></td>
     <td>캐즘의 정의 + 왜 구조적 문제인가 <span class="diff">+ 캐즘은 잠정적 정체가 아닌 구조적 정체</span></td>
-    <td><span class="diff">전기차(BEV) 캐즘 — 하이브리드·EREV의 등장이 그 증거</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 나잘난이 글로벌 전기차 판매 그래프를 봄 — 2010년대 폭발하던 BEV 성장률이 최근 둔화(이효석 아카데미 차트). "전기차가 미래라며? 왜 성장이 꺾여?"</span> <br><br><strong>컷 2:</strong> 김 대리(실용주의자) 카메오 — "전기차요? <strong>충전이 불안하고, 불날까 걱정되고, 주행거리도 애매해서</strong> 아직요. 세컨드카면 몰라도." → <strong>실용주의자가 안 산다 = 캐즘.</strong> <span class="diff">설문(CivicScience): 너무 비쌈 63%, 충전 어려움 48%, 주행거리 걱정 47%.</span> <br><br><span class="diff"><strong>컷 3 (★핵심 — EREV가 증거):</strong> 고집중: "봐. 시장이 <strong>하이브리드와 EREV(주행 중 충전)</strong>로 우회하기 시작했어. 현대 싼타페·GV70 EREV, 중국 Li Auto, 스텔란티스 RAM… <strong>이 우회 자체가 BEV가 캐즘에 빠졌다는 증거야.</strong> 충전이라는 완전제품이 아직 안 갖춰졌으니까."</span> <br><br><strong>컷 4 (구조적):</strong> "이건 시간이 풀어주는 게 아니야. <strong>인간 의사결정의 구조다.</strong> <span class="diff">캐즘은 잠정적 매출 정체가 아니라 <strong>구조적 매출 정체</strong>야.</span> 선각자의 성공 사례는 실용주의자에게 reference가 안 돼." <br><br><strong>컷 5:</strong> 다른 캐즘 사례 — 위성통신, Google Glass도 같은 패턴(선각자 폭발 → 실용주의자 침묵). <br><br><strong>컷 6:</strong> 나잘난: "그럼 테슬라도…?" 고집중: "<span class="diff">그 얘긴 시즌2 Ep18에서 제대로. 테슬라는 전기차+자율주행 결합인데 둘 다 아직 캐즘이거든.</span> 다음 시간 — 캐즘을 건너는 법, 노르망디."</td>
+    <td><span class="diff">전기차(BEV) 캐즘, 하이브리드·EREV의 등장이 그 증거</span></td>
+    <td><div class="lead">전기차가 캐즘에 빠졌다. 실용주의자가 안 사서 시장이 하이브리드·EREV로 우회 중이고, 캐즘은 일시가 아니라 구조적 정체다.</div><span class="diff"><strong>컷 1:</strong> 나잘난이 글로벌 전기차 판매 그래프를 봄, 2010년대 폭발하던 BEV 성장률이 최근 둔화(이효석 아카데미 차트). "전기차가 미래라며? 왜 성장이 꺾여?"</span> <br><br><strong>컷 2:</strong> 김 대리(실용주의자) 카메오. "전기차요? <strong>충전이 불안하고, 불날까 걱정되고, 주행거리도 애매해서</strong> 아직요. 세컨드카면 몰라도." → <strong>실용주의자가 안 산다 = 캐즘.</strong> <span class="diff">설문(CivicScience): 너무 비쌈 63%, 충전 어려움 48%, 주행거리 걱정 47%.</span> <br><br><span class="diff"><strong>컷 3 (★핵심, EREV가 증거):</strong> 고집중: "봐. 시장이 <strong>하이브리드와 EREV(주행 중 충전)</strong>로 우회하기 시작했어. 현대 싼타페·GV70 EREV, 중국 Li Auto, 스텔란티스 RAM… <strong>이 우회 자체가 BEV가 캐즘에 빠졌다는 증거야.</strong> 충전이라는 완전제품이 아직 안 갖춰졌으니까."</span> <br><br><strong>컷 4 (구조적):</strong> "이건 시간이 풀어주는 게 아니야. <strong>인간 의사결정의 구조다.</strong> <span class="diff">캐즘은 잠정적 매출 정체가 아니라 <strong>구조적 매출 정체</strong>야.</span> 선각자의 성공 사례는 실용주의자에게 reference가 안 돼." <br><br><strong>컷 5:</strong> 다른 캐즘 사례, 위성통신, Google Glass도 같은 패턴(선각자 폭발 → 실용주의자 침묵). <br><br><strong>컷 6:</strong> 나잘난: "그럼 테슬라도…?" 고집중: "<span class="diff">그 얘긴 시즌2 Ep18에서 제대로. 테슬라는 전기차+자율주행 결합인데 둘 다 아직 캐즘이거든.</span> 다음 시간, 캐즘을 건너는 법, 노르망디."</td>
   </tr>
   <tr>
     <td><strong>4</strong></td>
     <td>"노르망디 상륙작전"</td>
     <td>비치헤드 전략 + 완전제품(Whole Product)</td>
     <td><span class="diff">기업용 AI 코파일럿(개발자 비치헤드)</span></td>
-    <td><strong>컷 1:</strong> 1944년 노르망디. 고집중: "캐즘을 건너는 유일한 방법은 — <strong>한 점에 모든 화력을 집중.</strong> 전체 해안에 분산하면 죽어." <br><br><span class="diff"><strong>컷 2:</strong> AI 코파일럿 사례 — 전체 사무직을 한꺼번에 노린 게 아니라 <strong>개발자(코드 자동완성)</strong>라는 한 비치헤드를 먼저 완전 점령. 구글은 신규 코드의 상당 부분이 AI 생성이라고 밝힘.</span> <br><br><strong>컷 3 (완전제품):</strong> "그런데 핵심 제품만으론 김 대리(실용주의자)가 안 사. <strong>완전제품(Whole Product)</strong>이 필요해 — 보안, 사내 데이터 연동, 교육, 지원, 주변 도구. <strong>한 시나리오의 모든 디테일이 채워져야 산다.</strong>" <br><br><span class="diff"><strong>컷 4:</strong> Moore의 「기술 층위」를 다시 — 반도체→하드웨어→OS→앱. 완전제품은 이 층위가 한 시나리오 안에서 다 맞물릴 때 완성된다.</span> <br><br><strong>컷 5:</strong> 나잘난: "비치헤드 reference가 다음 reference가 되는 거군요." <br><br><strong>컷 6:</strong> "맞아. 다음 화 — <strong>볼링 핀이 쓰러진다.</strong>"</td>
+    <td><div class="lead">캐즘을 건너려면 한 점(비치헤드)에 화력을 모으고, 그 시나리오의 완전제품(보안·연동·교육·지원)을 다 채워야 한다.</div><strong>컷 1:</strong> 1944년 노르망디. 고집중: "캐즘을 건너는 유일한 방법은, <strong>한 점에 모든 화력을 집중.</strong> 전체 해안에 분산하면 죽어." <br><br><span class="diff"><strong>컷 2:</strong> AI 코파일럿 사례, 전체 사무직을 한꺼번에 노린 게 아니라 <strong>개발자(코드 자동완성)</strong>라는 한 비치헤드를 먼저 완전 점령. 구글은 신규 코드의 상당 부분이 AI 생성이라고 밝힘.</span> <br><br><strong>컷 3 (완전제품):</strong> "그런데 핵심 제품만으론 김 대리(실용주의자)가 안 사. <strong>완전제품(Whole Product)</strong>이 필요해, 보안, 사내 데이터 연동, 교육, 지원, 주변 도구. <strong>한 시나리오의 모든 디테일이 채워져야 산다.</strong>" <br><br><span class="diff"><strong>컷 4:</strong> Moore의 「기술 층위」를 다시, 반도체→하드웨어→OS→앱. 완전제품은 이 층위가 한 시나리오 안에서 다 맞물릴 때 완성된다.</span> <br><br><strong>컷 5:</strong> 나잘난: "비치헤드 reference가 다음 reference가 되는 거군요." <br><br><strong>컷 6:</strong> "맞아. 다음 화, <strong>볼링 핀이 쓰러진다.</strong>"</td>
   </tr>
   <tr>
     <td><strong>5</strong></td>
     <td>"볼링 핀이 쓰러진다"</td>
-    <td>볼링앨리 — 인접 niche 연쇄 공략 <span class="diff">(2축: 완전제품 레버리지 × 입소문 레버리지)</span></td>
+    <td>볼링앨리, 인접 niche 연쇄 공략 <span class="diff">(2축: 완전제품 레버리지 × 입소문 레버리지)</span></td>
     <td><span class="diff">사이버보안 CrowdStrike (엔드포인트 → 클라우드 → 신원보안)</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 선수용 등장 — "CrowdStrike 봐. Falcon으로 엔드포인트 보안 첫 핀을 잡고, 거기서 인접 영역으로 계속 번졌어. 이게 볼링앨리의 교과서야."</span> <br><br><strong>컷 2 (첫 핀):</strong> 한 비치헤드(엔드포인트 탐지)를 완전 점령 → 같은 업계 보안팀들이 reference 받고 합류. <br><br><span class="diff"><strong>컷 3 (★쉽게 — 핀은 두 방향으로 번진다):</strong> 고집중: "핀은 두 방향으로 쓰러져. <strong>① 옆 업종으로</strong> — 같은 기능을 다른 고객군에 그대로 팔고, <strong>② 같은 업종의 다른 용도로</strong> — 한 고객이 만족하면 그 안에서 새 기능으로 번져. 어렵게 말하면 <em>완전제품 레버리지·입소문 레버리지</em>인데, 쉽게는 그냥 <strong>'옆으로, 위로 번진다'</strong>는 뜻이야." 거점 핀(비치헤드) 하나가 쓰러지면 인접 핀이 연쇄로 쓰러진다.</span> <br><br><strong>컷 4 (연쇄):</strong> 클라우드 보안 → 신원·로그 분석 → … 핀마다 다음 핀의 reference가 자동 생성. <br><br><strong>컷 5:</strong> 나잘난: "핵심은 첫 비치헤드 위치 선정과 핀 사이 reference 흐름이네요." <br><br><strong>컷 6:</strong> "모든 핀이 쓰러질 때까진 토네이도가 아니야. 다음 화 — 그 폭풍이 진짜 오는 순간."</td>
+    <td><div class="lead">첫 거점이 쓰러지면 인접 시장이 연쇄로 쓰러진다. 쉽게는 옆으로(새 고객군)·위로(새 용도) 번진다(CrowdStrike).</div><span class="diff"><strong>컷 1:</strong> 선수용 등장. "CrowdStrike 봐. Falcon으로 엔드포인트 보안 첫 핀을 잡고, 거기서 인접 영역으로 계속 번졌어. 이게 볼링앨리의 교과서야."</span> <br><br><strong>컷 2 (첫 핀):</strong> 한 비치헤드(엔드포인트 탐지)를 완전 점령 → 같은 업계 보안팀들이 reference 받고 합류. <br><br><span class="diff"><strong>컷 3 (★쉽게, 핀은 두 방향으로 번진다):</strong> 고집중: "핀은 두 방향으로 쓰러져. <strong>① 옆 업종으로</strong>, 같은 기능을 다른 고객군에 그대로 팔고, <strong>② 같은 업종의 다른 용도로</strong>, 한 고객이 만족하면 그 안에서 새 기능으로 번져. 어렵게 말하면 <em>완전제품 레버리지·입소문 레버리지</em>인데, 쉽게는 그냥 <strong>'옆으로, 위로 번진다'</strong>는 뜻이야." 거점 핀(비치헤드) 하나가 쓰러지면 인접 핀이 연쇄로 쓰러진다.</span> <br><br><strong>컷 4 (연쇄):</strong> 클라우드 보안 → 신원·로그 분석 → … 핀마다 다음 핀의 reference가 자동 생성. <br><br><strong>컷 5:</strong> 나잘난: "핵심은 첫 비치헤드 위치 선정과 핀 사이 reference 흐름이네요." <br><br><strong>컷 6:</strong> "모든 핀이 쓰러질 때까진 토네이도가 아니야. 다음 화, 그 폭풍이 진짜 오는 순간."</td>
   </tr>
   <tr>
     <td><strong>6</strong></td>
     <td>"폭풍이 온다: 토네이도 — <span class="diff">AI가 표준을 잡는 순간</span>"</td>
-    <td>토네이도 — 폭발적 대중 채택 <span class="diff">+ 지원 하드웨어는 토네이도 후 매수(원칙 2)</span></td>
+    <td>토네이도, 폭발적 대중 채택 <span class="diff">+ 지원 하드웨어는 토네이도 후 매수(원칙 2)</span></td>
     <td><span class="diff">NVIDIA·HBM 토네이도(2023~), ChatGPT 2개월 1억 사용자</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 2022년 말 ChatGPT 등장 → 2개월 만에 1억 사용자. 김 대리(실용주의자) 카메오: "이거 우리 회사도 다 써요." <strong>실용주의자가 동시에 움직이는 순간 = 토네이도.</strong></span> <br><br><span class="diff"><strong>컷 2:</strong> 그 폭풍이 어디로 흘렀나 — <strong>NVIDIA GPU + HBM 메모리.</strong> NVIDIA 데이터센터 매출이 비선형 폭발. SK하이닉스·삼성·마이크론 HBM 동반 상승.</span> <br><br><span class="diff"><strong>컷 3 (★원칙 2):</strong> 고집중: "여기서 중요한 원칙 — <strong>NVIDIA·HBM처럼 '지원 하드웨어(enabling)'는 토네이도가 형성된 뒤 매수하는 거야.</strong> 응용 소프트웨어는 볼링앨리부터지만, 칩·메모리는 토네이도 확인 후. 카테고리 유형에 따라 매수 타이밍이 달라."</span> <br><br><strong>컷 4:</strong> "토네이도는 캐즘의 정반대야. 캐즘=실용주의자가 안 사는 시기, 토네이도=우르르 사는 시기. 그 사이에 비치헤드·볼링앨리가 다리를 놓았지." <br><br><strong>컷 5:</strong> 나잘난: "토네이도 진입을 어떻게 알아채요?" 고집중: "그게 시즌4 핵심 — <strong>매출이 비선형으로 가속하는가, 실용주의자가 사고 있는가.</strong>" <br><br><strong>컷 6:</strong> "다음 화 — 실용주의자의 떼거리 심리."</td>
+    <td><div class="lead">실용주의자가 한꺼번에 사는 순간이 토네이도. 칩·메모리 같은 지원 하드웨어는 토네이도를 확인한 뒤 산다(원칙 2).</div><span class="diff"><strong>컷 1:</strong> 2022년 말 ChatGPT 등장 → 2개월 만에 1억 사용자. 김 대리(실용주의자) 카메오: "이거 우리 회사도 다 써요." <strong>실용주의자가 동시에 움직이는 순간 = 토네이도.</strong></span> <br><br><span class="diff"><strong>컷 2:</strong> 그 폭풍이 어디로 흘렀나, <strong>NVIDIA GPU + HBM 메모리.</strong> NVIDIA 데이터센터 매출이 비선형 폭발. SK하이닉스·삼성·마이크론 HBM 동반 상승.</span> <br><br><span class="diff"><strong>컷 3 (★원칙 2):</strong> 고집중: "여기서 중요한 원칙, <strong>NVIDIA·HBM처럼 '지원 하드웨어(enabling)'는 토네이도가 형성된 뒤 매수하는 거야.</strong> 응용 소프트웨어는 볼링앨리부터지만, 칩·메모리는 토네이도 확인 후. 카테고리 유형에 따라 매수 타이밍이 달라."</span> <br><br><strong>컷 4:</strong> "토네이도는 캐즘의 정반대야. 캐즘=실용주의자가 안 사는 시기, 토네이도=우르르 사는 시기. 그 사이에 비치헤드·볼링앨리가 다리를 놓았지." <br><br><strong>컷 5:</strong> 나잘난: "토네이도 진입을 어떻게 알아채요?" 고집중: "그게 시즌4 핵심, <strong>매출이 비선형으로 가속하는가, 실용주의자가 사고 있는가.</strong>" <br><br><strong>컷 6:</strong> "다음 화, 실용주의자의 떼거리 심리."</td>
   </tr>
   <tr>
     <td><strong>7</strong></td>
     <td>"실용주의자의 떼거리 심리"</td>
     <td>떼거리 행동 + 양의 피드백 루프 + 표준의 탄생</td>
     <td><span class="diff">클라우드 표준(AWS·Azure) + 메모리 공급 길목</span></td>
-    <td><strong>컷 1:</strong> 나대출 등장 — "형, 저 3등 클라우드 관련주 샀어요. 싸 보여서!" <br><br><strong>컷 2:</strong> 고집중 화이트보드 — 클라우드 점유율은 AWS·Azure가 선두. "김 대리(실용주의자)는 무조건 검증된 1·2등만 사." <br><br><strong>컷 3:</strong> 김 대리 카메오: "3등이요? 우리 IT팀이 안 써봐서… 다들 쓰는 데로 가요." <br><br><strong>컷 4 (양의 피드백):</strong> "실용주의자가 1등을 더 사면 → 도구·파트너·교육이 더 붙고 → 또 새 실용주의자가 1등 선택. <strong>안전한 선택이 표준을 더 굳힌다.</strong>" <span class="diff">메모리도 같은 길목 — AI 빅테크가 HBM을 사면 SK하이닉스·삼성에 자본·생태계가 더 쏠린다.</span> <br><br><strong>컷 5:</strong> 나대출: "그럼 제 3등주는…" 고집중: "기술이 좋아도 실용주의자가 안 사면 2등에 머물기 쉬워." <br><br><strong>컷 6:</strong> 나대출 물림. 다음 화 — 표준 전쟁의 본질.</td>
+    <td><div class="lead">실용주의자는 검증된 1·2등만 산다. '안전한 선택'이 표준을 더 굳히는 양의 피드백이 1등을 점점 더 강하게 만든다.</div><strong>컷 1:</strong> 나대출 등장. "형, 저 3등 클라우드 관련주 샀어요. 싸 보여서!" <br><br><strong>컷 2:</strong> 고집중 화이트보드, 클라우드 점유율은 AWS·Azure가 선두. "김 대리(실용주의자)는 무조건 검증된 1·2등만 사." <br><br><strong>컷 3:</strong> 김 대리 카메오: "3등이요? 우리 IT팀이 안 써봐서… 다들 쓰는 데로 가요." <br><br><strong>컷 4 (양의 피드백):</strong> "실용주의자가 1등을 더 사면 → 도구·파트너·교육이 더 붙고 → 또 새 실용주의자가 1등 선택. <strong>안전한 선택이 표준을 더 굳힌다.</strong>" <span class="diff">메모리도 같은 길목, AI 빅테크가 HBM을 사면 SK하이닉스·삼성에 자본·생태계가 더 쏠린다.</span> <br><br><strong>컷 5:</strong> 나대출: "그럼 제 3등주는…" 고집중: "기술이 좋아도 실용주의자가 안 사면 2등에 머물기 쉬워." <br><br><strong>컷 6:</strong> 나대출 물림. 다음 화, 표준 전쟁의 본질.</td>
   </tr>
   <tr>
     <td><strong>8</strong></td>
     <td>"아키텍처 전쟁 — <span class="diff">표준화는 전쟁이다</span>"</td>
-    <td>표준 전쟁의 본질 — 더 좋은 기술이 이기는 게 아니다 <span class="diff">(『마케팅 전쟁』 프레임)</span></td>
+    <td>표준 전쟁의 본질, 더 좋은 기술이 이기는 게 아니다 <span class="diff">(『마케팅 전쟁』 프레임)</span></td>
     <td><span class="diff">CUDA vs ROCm vs TPU, VHS vs Betamax(창고 참조)</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 고집중: "표준을 잡는 건 전쟁이야. 『마케팅 전쟁』(Ries &amp; Trout)이 클라우제비츠에서 빌려온 시각이지 — <strong>누가 고지를 점령하느냐가 전부를 결정한다.</strong>"</span> <br><br><strong>컷 2 (CUDA):</strong> "NVIDIA CUDA vs AMD ROCm vs 구글 TPU. AMD ROCm이 기술적으로 나쁘지 않아도, <strong>모든 AI 연구자가 CUDA로 코드를 짜.</strong> 라이브러리·튜토리얼·인력이 다 CUDA 중심. <strong>기술이 아니라 생태계가 표준을 만든다.</strong>" <br><br><span class="diff"><strong>컷 3 (구글의 반격):</strong> "단, 구글은 달라. TPU + JAX·XLA로 CUDA 의존을 낮추고, <strong>TorchTPU 같은 호환 도구로 전환비용 자체를 공격</strong>하지(정확한 프로젝트명은 PyTorch/XLA). 자본·수직계열을 가진 도전자라 AMD와는 체급이 달라."</span> <br><br><strong>컷 4:</strong> "역사를 보면 VHS vs Betamax도 똑같았어(자세한 역사는 「창고」에). 더 좋은 기술(Betamax)이 진 이유 = 생태계." <br><br><strong>컷 5:</strong> 나잘난: "그럼 기술이 좋다고 사면 안 되겠네요." 고집중: "<strong>기술이 아니라 표준을 잡는 자에게 베팅해.</strong>" <br><br><strong>컷 6:</strong> "다음 화 — 표준이 잡히면 찾아오는 평화, 그리고 그 평화도 영원하지 않다는 진실."</td>
+    <td><div class="lead">표준은 더 좋은 기술이 아니라 생태계가 정한다(CUDA). 단 구글은 전환비용 자체를 공격하는 차원이 다른 도전자다.</div><span class="diff"><strong>컷 1:</strong> 고집중: "표준을 잡는 건 전쟁이야. 『마케팅 전쟁』(Ries &amp; Trout)이 클라우제비츠에서 빌려온 시각이지. <strong>누가 고지를 점령하느냐가 전부를 결정한다.</strong>"</span> <br><br><strong>컷 2 (CUDA):</strong> "NVIDIA CUDA vs AMD ROCm vs 구글 TPU. AMD ROCm이 기술적으로 나쁘지 않아도, <strong>모든 AI 연구자가 CUDA로 코드를 짜.</strong> 라이브러리·튜토리얼·인력이 다 CUDA 중심. <strong>기술이 아니라 생태계가 표준을 만든다.</strong>" <br><br><span class="diff"><strong>컷 3 (구글의 반격):</strong> "단, 구글은 달라. TPU + JAX·XLA로 CUDA 의존을 낮추고, <strong>TorchTPU 같은 호환 도구로 전환비용 자체를 공격</strong>하지(정확한 프로젝트명은 PyTorch/XLA). 자본·수직계열을 가진 도전자라 AMD와는 체급이 달라."</span> <br><br><strong>컷 4:</strong> "역사를 보면 VHS vs Betamax도 똑같았어(자세한 역사는 「창고」에). 더 좋은 기술(Betamax)이 진 이유 = 생태계." <br><br><strong>컷 5:</strong> 나잘난: "그럼 기술이 좋다고 사면 안 되겠네요." 고집중: "<strong>기술이 아니라 표준을 잡는 자에게 베팅해.</strong>" <br><br><strong>컷 6:</strong> "다음 화, 표준이 잡히면 찾아오는 평화, 그리고 그 평화도 영원하지 않다는 진실."</td>
   </tr>
   <tr>
     <td><strong>9</strong></td>
     <td>"메인 스트리트의 평화 — TALC와 PLC, <span class="diff">그리고 윈텔의 몰락</span>"</td>
     <td>메인 스트리트(성숙기) + 제품수명주기(PLC) + TALC와 PLC의 차이</td>
     <td><span class="diff">윈텔(Windows+Intel) → 윈비디아(Windows+NVIDIA) 표준 교체</span></td>
-    <td><strong>컷 1:</strong> 메인 스트리트 풍경 — 고릴라가 왕좌, 성장률은 떨어졌지만 매출 안정. <br><strong>컷 2:</strong> 나잘난: "이제 고릴라가 영원히 가는 거죠?" 고집중: "<strong>그게 함정이야.</strong>" <br><br><strong>컷 3 (TALC vs PLC):</strong> "TALC는 채택자 분포(<strong>누가 사는가</strong>), PLC는 매출 곡선(<strong>얼마나 팔리는가</strong>). 둘은 다른 곡선이야. 메인 스트리트 제품도 PLC의 정점·쇠퇴를 지난다." <br><br><span class="diff"><strong>컷 4 (★윈텔→윈비디아):</strong> 40년간 PC를 지배한 <strong>윈텔(Windows+Intel)</strong>. 그런데 2026년 젠슨황이 <strong>윈비디아(Windows+NVIDIA)</strong>를 선언 — NVIDIA가 두뇌(GPU), MS가 OS, 클라우드에서 온디바이스 AI로. <strong>인텔은 모토롤라·노키아처럼 표준 교체기에 밀려나는 과거 고릴라가 되어가고 있어.</strong>"</span> <br><br><strong>컷 5:</strong> "각 시대의 고릴라였어. <strong>카테고리(아날로그→피처폰→스마트폰, 윈텔→윈비디아)가 바뀌니 고릴라도 바뀌었지.</strong>" <br><br><strong>컷 6:</strong> 나잘난: "그럼 고릴라도 안전하지 않은 거네요?" 고집중: "<strong>카테고리가 죽으면 고릴라도 죽는다.</strong> 매도 원칙은 시즌4에서. 다음 화 — 네가 직접 단계 판별을 해보자."</td>
+    <td><div class="lead">표준을 잡으면 평화(메인 스트리트)가 오지만 영원하진 않다. 카테고리가 바뀌면(윈텔 → 윈비디아) 고릴라도 바뀐다.</div><strong>컷 1:</strong> 메인 스트리트 풍경, 고릴라가 왕좌, 성장률은 떨어졌지만 매출 안정. <br><strong>컷 2:</strong> 나잘난: "이제 고릴라가 영원히 가는 거죠?" 고집중: "<strong>그게 함정이야.</strong>" <br><br><strong>컷 3 (TALC vs PLC):</strong> "TALC는 채택자 분포(<strong>누가 사는가</strong>), PLC는 매출 곡선(<strong>얼마나 팔리는가</strong>). 둘은 다른 곡선이야. 메인 스트리트 제품도 PLC의 정점·쇠퇴를 지난다." <br><br><span class="diff"><strong>컷 4 (★윈텔→윈비디아):</strong> 40년간 PC를 지배한 <strong>윈텔(Windows+Intel)</strong>. 그런데 2026년 젠슨황이 <strong>윈비디아(Windows+NVIDIA)</strong>를 선언, NVIDIA가 두뇌(GPU), MS가 OS, 클라우드에서 온디바이스 AI로. <strong>인텔은 모토롤라·노키아처럼 표준 교체기에 밀려나는 과거 고릴라가 되어가고 있어.</strong>"</span> <br><br><strong>컷 5:</strong> "각 시대의 고릴라였어. <strong>카테고리(아날로그→피처폰→스마트폰, 윈텔→윈비디아)가 바뀌니 고릴라도 바뀌었지.</strong>" <br><br><strong>컷 6:</strong> 나잘난: "그럼 고릴라도 안전하지 않은 거네요?" 고집중: "<strong>카테고리가 죽으면 고릴라도 죽는다.</strong> 매도 원칙은 시즌4에서. 다음 화, 네가 직접 단계 판별을 해보자."</td>
   </tr>
   <tr>
     <td><strong>10</strong></td>
     <td>"나잘난의 첫 시험 — 메모리 한 섹터로 단계를 다 본다" <span class="diff">+ 젠슨황 5단 케이크</span></td>
-    <td>시즌1 종합 — 단계 판별 실습(반도체 메모리) <span class="diff">+ AI 가치사슬 5단 케이크 도입</span></td>
+    <td>시즌1 종합, 단계 판별 실습(반도체 메모리) <span class="diff">+ AI 가치사슬 5단 케이크 도입</span></td>
     <td>HBM(Tornado) · DRAM(Main Street) · NAND/SSD(→Main Street) · HDD(Declining)</td>
-    <td><span class="diff"><strong>컷 1:</strong> 고집중이 <strong>젠슨황 5단 케이크</strong>를 펼침 — 에너지·칩·인프라·모델·앱. "AI는 5층 케이크야. 오늘은 그중 ②층, <strong>메모리 한 섹터</strong>로 단계를 다 본다. 같은 메모리 안에서도 카테고리마다 단계가 달라."</span> <br><br><strong>컷 2 (HBM, Tornado):</strong> 나잘난: "HBM은 AI 학습 GPU에 적층되는 고대역폭 메모리. SK하이닉스 선두, 삼성·마이크론 추격. AI 빅테크가 다 사고 있어요 → <strong>Tornado.</strong>" 고집중: "✓" <br><br><strong>컷 3 (DRAM, Main Street):</strong> "PC·서버용 표준 DRAM은 30년 된 카테고리, 삼성+SK 과점. 사이클 따라 오르내리지만 카테고리는 안정 → <strong>Main Street.</strong>" <br><br><strong>컷 4 (NAND/SSD):</strong> "SSD가 HDD를 거의 대체 → <strong>Late Tornado에서 Main Street 진입 중.</strong>" <br><br><strong>컷 5 (HDD, Declining):</strong> "Seagate·WD. SSD에 자리 내주는 중 → <strong>Declining.</strong> 카테고리가 죽으면 그 고릴라도 같이 죽는다." <br><br><span class="diff"><strong>컷 6 (★cross):</strong> 선수용: "그리고 봐 — &lt;DRAM 사이클&gt; 위로 &lt;HBM 사이클&gt;이 치고 올라오며 <strong>교차</strong>하고 있어. <strong>표준 메모리는 1·2·3등이 자리바꿈하지만, HBM은 전환비용이 높아 당분간 1등 교체가 잘 안 일어나.</strong>" 나잘난: "삼성전자 한 회사가 4개 카테고리에 다 있는데, 카테고리별로 신호가 다 다르겠네요!" 고집중: "<strong>그래서 회사가 아니라 카테고리 단위로 본다.</strong>"</span> <br><br><strong>컷 7:</strong> "시즌1 끝. 다음 시즌 — 같은 단계 안에서 누가 진짜 1등인가. <strong>영장류 정글과 킹덤 정글, 두 정글이 있어.</strong>"</td>
+    <td><div class="lead">메모리 한 섹터 안에 4단계가 다 들어 있다. HBM은 토네이도, DRAM은 메인 스트리트, SSD는 전환, HDD는 쇠퇴다. 회사가 아니라 카테고리로 본다.</div><span class="diff"><strong>컷 1:</strong> 고집중이 <strong>젠슨황 5단 케이크</strong>를 펼침, 에너지·칩·인프라·모델·앱. "AI는 5층 케이크야. 오늘은 그중 ②층, <strong>메모리 한 섹터</strong>로 단계를 다 본다. 같은 메모리 안에서도 카테고리마다 단계가 달라."</span> <br><br><strong>컷 2 (HBM, Tornado):</strong> 나잘난: "HBM은 AI 학습 GPU에 적층되는 고대역폭 메모리. SK하이닉스 선두, 삼성·마이크론 추격. AI 빅테크가 다 사고 있어요 → <strong>Tornado.</strong>" 고집중: "✓" <br><br><strong>컷 3 (DRAM, Main Street):</strong> "PC·서버용 표준 DRAM은 30년 된 카테고리, 삼성+SK 과점. 사이클 따라 오르내리지만 카테고리는 안정 → <strong>Main Street.</strong>" <br><br><strong>컷 4 (NAND/SSD):</strong> "SSD가 HDD를 거의 대체 → <strong>Late Tornado에서 Main Street 진입 중.</strong>" <br><br><strong>컷 5 (HDD, Declining):</strong> "Seagate·WD. SSD에 자리 내주는 중 → <strong>Declining.</strong> 카테고리가 죽으면 그 고릴라도 같이 죽는다." <br><br><span class="diff"><strong>컷 6 (★cross):</strong> 선수용: "그리고 봐, &lt;DRAM 사이클&gt; 위로 &lt;HBM 사이클&gt;이 치고 올라오며 <strong>교차</strong>하고 있어. <strong>표준 메모리는 1·2·3등이 자리바꿈하지만, HBM은 전환비용이 높아 당분간 1등 교체가 잘 안 일어나.</strong>" 나잘난: "삼성전자 한 회사가 4개 카테고리에 다 있는데, 카테고리별로 신호가 다 다르겠네요!" 고집중: "<strong>그래서 회사가 아니라 카테고리 단위로 본다.</strong>"</span> <br><br><strong>컷 7:</strong> "시즌1 끝. 다음 시즌, 같은 단계 안에서 누가 진짜 1등인가. <strong>영장류 정글과 킹덤 정글, 두 정글이 있어.</strong>"</td>
   </tr>
 </table>
 
 <!-- ============ 시즌 2 ============ -->
 <div class="season-header">
   <h2>시즌 2: 정글의 서열 (Ep 11~20)</h2>
-  <p>Moore의 6등급 분류 — 영장류(Gorilla/Chimp/Monkey)와 <span class="diff">킹덤(영주/기사/소작농)</span>을 구별한다</p>
+  <p>Moore의 6등급 분류, 영장류(Gorilla/Chimp/Monkey)와 <span class="diff">킹덤(영주/기사/소작농)</span>을 구별한다</p>
 </div>
 
 <figure style="margin:8px 0 24px 0; text-align:center;">
@@ -517,70 +538,70 @@
     <td>"두 정글 — 영장류와 <span class="diff">킹덤(영주·기사·소작농)</span>"</td>
     <td>이중 트랙: Proprietary 시장 vs Open 시장 + 영장류·킹덤 비유</td>
     <td>NVIDIA(독점 아키텍처) vs Oracle(개방형 DB)</td>
-    <td><strong>컷 1:</strong> 고집중이 화이트보드에 갈래길. "정글은 둘이야. 어느 정글에 들어가느냐가 모든 걸 결정해." <br><strong>컷 2 (영장류):</strong> 고릴라(왕좌)+침팬지(2등)+원숭이(저가 클론). "<strong>종 사이 교배 불가.</strong> 한번 고릴라면 침팬지가 못 따라잡아. 격차가 오래간다." <br><span class="diff"><strong>컷 3 (킹덤):</strong> <strong>영주(King)+기사(Prince)+소작농(Serf)</strong>의 봉건 위계. "같은 종족 안 신분상승 게임이야. 기사가 영주에 도전할 수 있고, 영주 자리도 영원하지 않아."</span> <br><strong>컷 4 (구별 기준):</strong> "한 질문 — '<strong>이 시장이 독점 아키텍처(proprietary)인가, 개방형(open)인가?</strong>' 독점이면 영장류, 개방형이면 킹덤." <br><strong>컷 5:</strong> NVIDIA(CUDA 독점, 못 옮김) → 영장류. Oracle(SQL 공통 표준, 옮길 수 있음) → 킹덤. <br><strong>컷 6:</strong> "<strong>영장류 고릴라 = 구조적으로 안전, 킹덤 영주 = 흔들릴 수 있어 관찰.</strong> 시즌2는 두 정글의 등급을 한 화씩 본다."</td>
+    <td><div class="lead">정글은 둘이다. 독점 아키텍처면 영장류(격차 오래감), 개방형이면 킹덤(신분상승 가능). 어느 정글이냐가 모든 걸 가른다.</div><strong>컷 1:</strong> 고집중이 화이트보드에 갈래길. "정글은 둘이야. 어느 정글에 들어가느냐가 모든 걸 결정해." <br><strong>컷 2 (영장류):</strong> 고릴라(왕좌)+침팬지(2등)+원숭이(저가 클론). "<strong>종 사이 교배 불가.</strong> 한번 고릴라면 침팬지가 못 따라잡아. 격차가 오래간다." <br><span class="diff"><strong>컷 3 (킹덤):</strong> <strong>영주(King)+기사(Prince)+소작농(Serf)</strong>의 봉건 위계. "같은 종족 안 신분상승 게임이야. 기사가 영주에 도전할 수 있고, 영주 자리도 영원하지 않아."</span> <br><strong>컷 4 (구별 기준):</strong> "한 질문, '<strong>이 시장이 독점 아키텍처(proprietary)인가, 개방형(open)인가?</strong>' 독점이면 영장류, 개방형이면 킹덤." <br><strong>컷 5:</strong> NVIDIA(CUDA 독점, 못 옮김) → 영장류. Oracle(SQL 공통 표준, 옮길 수 있음) → 킹덤. <br><strong>컷 6:</strong> "<strong>영장류 고릴라 = 구조적으로 안전, 킹덤 영주 = 흔들릴 수 있어 관찰.</strong> 시즌2는 두 정글의 등급을 한 화씩 본다."</td>
   </tr>
   <tr>
     <td><strong>12</strong></td>
     <td>"고릴라를 만나다 — NVIDIA"</td>
-    <td>Gorilla 정의 — 독점 아키텍처 + 전환비용 + 네트워크 효과</td>
+    <td>Gorilla 정의, 독점 아키텍처 + 전환비용 + 네트워크 효과</td>
     <td>NVIDIA (CUDA)</td>
-    <td><strong>컷 1-2:</strong> AI 연구소, 모니터마다 CUDA 코드. 연구원: "여기 모든 코드가 CUDA. 바꾸려면 전부 다시 짜야 해." <br><strong>컷 3 (전환비용):</strong> ROCm으로 옮기면 코드 재작성·검증·재교육·튜닝… "<strong>몇 년과 막대한 비용. 그래서 안 옮겨.</strong>" <br><strong>컷 4 (네트워크 효과):</strong> "CUDA 개발자가 늘수록 라이브러리·논문이 늘고, 또 새 개발자가 CUDA를 배워. <strong>표준이 표준을 강화한다.</strong>" <br><span class="diff"><strong>컷 5:</strong> 단, 고집중: "교과서적 고릴라지만 만능은 아니야. 김정호 교수 같은 분은 'GPU보다 메모리가 병목이 된다'고 봐. NVIDIA의 최근 성능 향상엔 정밀도를 FP4로 낮춘 부분도 있다는 비판도 있고. 고릴라도 균열은 생겨 — 그게 시즌3·4의 주제."</span> <br><strong>컷 6:</strong> "다음 화 — 점유율이 극단에 가까운 더 순수한 고릴라, ASML."</td>
+    <td><div class="lead">NVIDIA가 교과서적 고릴라인 이유는 셋이다. 독점 아키텍처(CUDA), 높은 전환비용, 네트워크 효과. 단 균열(메모리 병목 등)도 함께 본다.</div><strong>컷 1-2:</strong> AI 연구소, 모니터마다 CUDA 코드. 연구원: "여기 모든 코드가 CUDA. 바꾸려면 전부 다시 짜야 해." <br><strong>컷 3 (전환비용):</strong> ROCm으로 옮기면 코드 재작성·검증·재교육·튜닝… "<strong>몇 년과 막대한 비용. 그래서 안 옮겨.</strong>" <br><strong>컷 4 (네트워크 효과):</strong> "CUDA 개발자가 늘수록 라이브러리·논문이 늘고, 또 새 개발자가 CUDA를 배워. <strong>표준이 표준을 강화한다.</strong>" <br><span class="diff"><strong>컷 5:</strong> 단, 고집중: "교과서적 고릴라지만 만능은 아니야. 김정호 교수 같은 분은 'GPU보다 메모리가 병목이 된다'고 봐. NVIDIA의 최근 성능 향상엔 정밀도를 FP4로 낮춘 부분도 있다는 비판도 있고. 고릴라도 균열은 생겨, 그게 시즌3·4의 주제."</span> <br><strong>컷 6:</strong> "다음 화, 점유율이 극단에 가까운 더 순수한 고릴라, ASML."</td>
   </tr>
   <tr>
     <td><strong>13</strong></td>
     <td>"유일무이한 독점: ASML <span class="diff">— 두 개의 Moore</span>"</td>
-    <td>Gorilla 극단 — 거의 100%에 가까운 점유 <span class="diff">+ 무어의 법칙과 고릴라 게임</span></td>
+    <td>Gorilla 극단, 거의 100%에 가까운 점유 <span class="diff">+ 무어의 법칙과 고릴라 게임</span></td>
     <td>ASML (EUV)</td>
-    <td><strong>컷 1:</strong> 네덜란드 본사. ASML — 극자외선(EUV) 노광 장비. 한 대 가격이 천문학적. <br><strong>컷 2:</strong> 선수용: "<strong>EUV를 양산할 수 있는 회사가 사실상 ASML 하나야.</strong> Canon·Nikon도 시도했지만 못 따라왔어." <br><strong>컷 3 (왜 못 따라하나):</strong> <span class="diff">주석 방울에 레이저를 <strong>초당 5만 번</strong> 발사, 거울 정밀도 <strong>약 50피코미터</strong>(실리콘 원자보다 작은 수준). 광학 파트너 ZEISS와 "two companies, one business", 부품(BOM)의 약 85%를 공급사가 제조.</span> "따라하려면 또 수십 년." <br><strong>컷 4 (점유율):</strong> "EUV에선 <span class="diff">사실상 독점에 가까워.</span> TSMC·삼성·인텔도 ASML 없으면 첨단 반도체를 못 만들어. <strong>완벽한 영장류 고릴라의 극단.</strong>" <br><span class="diff"><strong>컷 5 (★두 Moore):</strong> 고집중: "재밌는 게 — 이 게임의 뿌리에 'Moore'가 둘 있어. <strong>Gordon Moore의 무어의 법칙</strong>(2년마다 집적도 2배)이 ASML이 좇는 길이고, <strong>Geoffrey Moore의 고릴라 게임</strong>이 우리가 좇는 길이야. ASML은 무어의 법칙을 지속시키는 길목을 쥔 고릴라지." 그리고 "ASML 장비 규제가 곧 중국이 HBM·첨단칩을 못 따라오는 이유이기도 해."</span> <br><strong>컷 6:</strong> "단, 영장류 정글 안에서만. <strong>카테고리(첨단 반도체)가 사라지지 않는 한.</strong>"</td>
+    <td><div class="lead">ASML은 EUV를 사실상 독점한 고릴라의 극단. 정밀도·생태계 장벽이 수십 년치라 아무도 못 따라온다(두 Moore의 만남).</div><strong>컷 1:</strong> 네덜란드 본사. ASML, 극자외선(EUV) 노광 장비. 한 대 가격이 천문학적. <br><strong>컷 2:</strong> 선수용: "<strong>EUV를 양산할 수 있는 회사가 사실상 ASML 하나야.</strong> Canon·Nikon도 시도했지만 못 따라왔어." <br><strong>컷 3 (왜 못 따라하나):</strong> <span class="diff">주석 방울에 레이저를 <strong>초당 5만 번</strong> 발사, 거울 정밀도 <strong>약 50피코미터</strong>(실리콘 원자보다 작은 수준). 광학 파트너 ZEISS와 "two companies, one business", 부품(BOM)의 약 85%를 공급사가 제조.</span> "따라하려면 또 수십 년." <br><strong>컷 4 (점유율):</strong> "EUV에선 <span class="diff">사실상 독점에 가까워.</span> TSMC·삼성·인텔도 ASML 없으면 첨단 반도체를 못 만들어. <strong>완벽한 영장류 고릴라의 극단.</strong>" <br><span class="diff"><strong>컷 5 (★두 Moore):</strong> 고집중: "재밌는 게, 이 게임의 뿌리에 'Moore'가 둘 있어. <strong>Gordon Moore의 무어의 법칙</strong>(2년마다 집적도 2배)이 ASML이 좇는 길이고, <strong>Geoffrey Moore의 고릴라 게임</strong>이 우리가 좇는 길이야. ASML은 무어의 법칙을 지속시키는 길목을 쥔 고릴라지." 그리고 "ASML 장비 규제가 곧 중국이 HBM·첨단칩을 못 따라오는 이유이기도 해."</span> <br><strong>컷 6:</strong> "단, 영장류 정글 안에서만. <strong>카테고리(첨단 반도체)가 사라지지 않는 한.</strong>"</td>
   </tr>
   <tr>
     <td><strong>14</strong></td>
     <td>"침팬지의 비극 — AMD, <span class="diff">그리고 다른 차원의 도전자 구글</span>"</td>
-    <td>Chimp — 표준 전쟁의 패자 <span class="diff">+ 침팬지에도 종류가 있다(원칙 5)</span></td>
+    <td>Chimp, 표준 전쟁의 패자 <span class="diff">+ 침팬지에도 종류가 있다(원칙 5)</span></td>
     <td>AMD(GPU) vs NVIDIA <span class="diff">+ 구글 TPU</span></td>
-    <td><strong>컷 1:</strong> 나대출: "형, AMD 물타기 했어요. NVIDIA 너무 비싸서!" <br><strong>컷 2 (스펙):</strong> AMD MI 시리즈 사양은 매력적, 가격도 쌈. "<strong>스펙만 보면 끌리지.</strong>" <br><strong>컷 3 (반전):</strong> "그런데 왜 다 NVIDIA를 살까? <strong>소프트웨어 생태계.</strong> CUDA 위 수천 개 도구. AMD ROCm은 일부만 호환. <span class="diff">AMD MI455X가 HBM을 16개나 달아 메모리 병목을 공격해도, CUDA 생태계를 못 뚫으면 침팬지야.</span>" <br><span class="diff"><strong>컷 4 (★구글은 다르다):</strong> "단, 같은 2등이라도 <strong>구글 TPU는 차원이 달라.</strong> 자본·수직계열(검색·유튜브·안드로이드·데이터·TPU)을 갖고, JAX·XLA로 대체 스택을 만들고, 호환 도구로 <strong>전환비용 자체를 공격</strong>해. AMD가 못 넘은 해자를 정면으로 파고들지. 다만 TPU는 주로 구글 클라우드(자기 영토) 안에서 강해 — '자기 킹덤의 영주' 성격."</span> <br><span class="diff"><strong>컷 5 (★원칙 5):</strong> "그래서 원칙 5가 중요해 — <strong>응용SW 침팬지는 시장 확대 잠재력이 있으면 보유, 지원기술(enabling) 침팬지는 보유하지 마라.</strong> 침팬지에도 종류가 있어."</span> <br><strong>컷 6:</strong> "다음 화 — 더 위험한 등급, 원숭이."</td>
+    <td><div class="lead">AMD는 스펙이 좋아도 CUDA 생태계를 못 뚫는 침팬지. 단 구글 TPU는 전환비용을 직접 공격하는 차원이 다른 도전자다(원칙 5).</div><strong>컷 1:</strong> 나대출: "형, AMD 물타기 했어요. NVIDIA 너무 비싸서!" <br><strong>컷 2 (스펙):</strong> AMD MI 시리즈 사양은 매력적, 가격도 쌈. "<strong>스펙만 보면 끌리지.</strong>" <br><strong>컷 3 (반전):</strong> "그런데 왜 다 NVIDIA를 살까? <strong>소프트웨어 생태계.</strong> CUDA 위 수천 개 도구. AMD ROCm은 일부만 호환. <span class="diff">AMD MI455X가 HBM을 16개나 달아 메모리 병목을 공격해도, CUDA 생태계를 못 뚫으면 침팬지야.</span>" <br><span class="diff"><strong>컷 4 (★구글은 다르다):</strong> "단, 같은 2등이라도 <strong>구글 TPU는 차원이 달라.</strong> 자본·수직계열(검색·유튜브·안드로이드·데이터·TPU)을 갖고, JAX·XLA로 대체 스택을 만들고, 호환 도구로 <strong>전환비용 자체를 공격</strong>해. AMD가 못 넘은 해자를 정면으로 파고들지. 다만 TPU는 주로 구글 클라우드(자기 영토) 안에서 강해, '자기 킹덤의 영주' 성격."</span> <br><span class="diff"><strong>컷 5 (★원칙 5):</strong> "그래서 원칙 5가 중요해, <strong>응용SW 침팬지는 시장 확대 잠재력이 있으면 보유, 지원기술(enabling) 침팬지는 보유하지 마라.</strong> 침팬지에도 종류가 있어."</span> <br><strong>컷 6:</strong> "다음 화, 더 위험한 등급, 원숭이."</td>
   </tr>
   <tr>
     <td><strong>15</strong></td>
     <td>"원숭이는 왜 위험한가"</td>
-    <td>Monkey — 저가 클론의 함정</td>
+    <td>Monkey, 저가 클론의 함정</td>
     <td><span class="diff">중국 반도체·메모리 추격 업체들</span></td>
-    <td><strong>컷 1:</strong> 뉴스 — "중국 OO사 자체 장비/메모리 개발!" 나대출: "이거 사야 할까요? 싸잖아요!" <br><strong>컷 2:</strong> 고집중: "사양 봐. 세대가 한참 뒤야. 같은 카테고리도 아니야." <br><strong>컷 3 (정의):</strong> "원숭이 = 고릴라 아키텍처를 흉내 내지만 생태계·정밀도가 부족한 저가 클론. 그 싼 가격이 함정이야." <br><strong>컷 4 (왜 위험):</strong> "고릴라가 가격을 내리면 원숭이 매출이 즉시 사라져. <strong>고릴라는 가격 결정권이 있고, 원숭이는 없어.</strong>" <br><span class="diff"><strong>컷 5:</strong> "중국 메모리·장비 추격이 화제지만 — HBM 설계, 수율, 그리고 ASML 같은 미국·유럽 장비 규제 때문에 따라잡는 데 시간이 걸려. '싸다'만으로는 영장류 정글에서 못 이긴다."</span> <br><strong>컷 6:</strong> "다음 화부터 두 번째 정글, 킹덤으로."</td>
+    <td><div class="lead">원숭이 = 고릴라를 흉내 낸 저가 클론. 고릴라가 값을 내리면 매출이 즉시 사라지는 게 함정이다.</div><strong>컷 1:</strong> 뉴스. "중국 OO사 자체 장비/메모리 개발!" 나대출: "이거 사야 할까요? 싸잖아요!" <br><strong>컷 2:</strong> 고집중: "사양 봐. 세대가 한참 뒤야. 같은 카테고리도 아니야." <br><strong>컷 3 (정의):</strong> "원숭이 = 고릴라 아키텍처를 흉내 내지만 생태계·정밀도가 부족한 저가 클론. 그 싼 가격이 함정이야." <br><strong>컷 4 (왜 위험):</strong> "고릴라가 가격을 내리면 원숭이 매출이 즉시 사라져. <strong>고릴라는 가격 결정권이 있고, 원숭이는 없어.</strong>" <br><span class="diff"><strong>컷 5:</strong> "중국 메모리·장비 추격이 화제지만, HBM 설계, 수율, 그리고 ASML 같은 미국·유럽 장비 규제 때문에 따라잡는 데 시간이 걸려. '싸다'만으로는 영장류 정글에서 못 이긴다."</span> <br><strong>컷 6:</strong> "다음 화부터 두 번째 정글, 킹덤으로."</td>
   </tr>
   <tr>
     <td><strong>16</strong></td>
     <td>"킹덤의 영주와 기사"</td>
-    <td><span class="diff">영주(King) &amp; 기사(Prince)</span> — 개방형 시장의 리더 + 신분상승 가능성</td>
+    <td><span class="diff">영주(King) &amp; 기사(Prince)</span>, 개방형 시장의 리더 + 신분상승 가능성</td>
     <td>Cisco(네트워킹), Oracle(DB)</td>
-    <td><strong>컷 1:</strong> 두 번째 정글, 킹덤. "여기는 같은 종족 안 신분상승 게임이야." <br><span class="diff"><strong>컷 2 (영주):</strong> "Cisco는 네트워킹의 <strong>영주</strong>. 점유율 높지만 경쟁사가 같은 IP·Ethernet 표준을 써 — 마음먹으면 옮길 수 있어. 영장류 고릴라처럼 '못 옮기는' 구조가 아니야."</span> <br><span class="diff"><strong>컷 3 (또 다른 영주):</strong> "Oracle DB도 SQL 공통 표준이라 옮길 수 있어. 전환비용은 있지만 영장류만큼 살벌하진 않지."</span> <br><span class="diff"><strong>컷 4 (기사):</strong> "<strong>기사(Prince)</strong>는 도전자 — 영주에게 도전하지만 못 이기는 경우가 많아. 그래도 영장류 침팬지보단 가능성이 있어. 같은 게임이니까. <strong>기사가 영주를 베고 신분상승할 수도 있다.</strong>" <br><strong>컷 5 (투자 신호):</strong> "<strong>영주는 매수 확정이 아니라 관찰(WATCH).</strong> 왕좌가 흔들릴 수 있어서. 원칙 6 — 영주·기사는 가볍게 보유하다 시장 하락에 개별 종목 매도, 초고성장 썰물엔 카테고리 전체 매도." <br><strong>컷 6:</strong> "다음 화 — 킹덤의 바닥, 소작농."</td>
+    <td><div class="lead">킹덤의 영주·기사는 개방형 시장의 리더지만, 옮길 수 있어 흔들린다. 매수 확정이 아니라 '관찰(WATCH)' 대상이다.</div><strong>컷 1:</strong> 두 번째 정글, 킹덤. "여기는 같은 종족 안 신분상승 게임이야." <br><span class="diff"><strong>컷 2 (영주):</strong> "Cisco는 네트워킹의 <strong>영주</strong>. 점유율 높지만 경쟁사가 같은 IP·Ethernet 표준을 써, 마음먹으면 옮길 수 있어. 영장류 고릴라처럼 '못 옮기는' 구조가 아니야."</span> <br><span class="diff"><strong>컷 3 (또 다른 영주):</strong> "Oracle DB도 SQL 공통 표준이라 옮길 수 있어. 전환비용은 있지만 영장류만큼 살벌하진 않지."</span> <br><span class="diff"><strong>컷 4 (기사):</strong> "<strong>기사(Prince)</strong>는 도전자, 영주에게 도전하지만 못 이기는 경우가 많아. 그래도 영장류 침팬지보단 가능성이 있어. 같은 게임이니까. <strong>기사가 영주를 베고 신분상승할 수도 있다.</strong>"</span> <br><strong>컷 5 (투자 신호):</strong> "<strong>영주는 매수 확정이 아니라 관찰(WATCH).</strong> 왕좌가 흔들릴 수 있어서. 원칙 6, 영주·기사는 가볍게 보유하다 시장 하락에 개별 종목 매도, 초고성장 썰물엔 카테고리 전체 매도." <br><strong>컷 6:</strong> "다음 화, 킹덤의 바닥, 소작농."</td>
   </tr>
   <tr>
     <td><strong>17</strong></td>
     <td>"소작농의 교훈 <span class="diff">— 그리고 메모리는 고릴라인가?</span>"</td>
-    <td>Serf(<span class="diff">소작농</span>) — 차별화 없는 바닥 <span class="diff">+ commodity의 함정</span></td>
+    <td>Serf(<span class="diff">소작농</span>), 차별화 없는 바닥 <span class="diff">+ commodity의 함정</span></td>
     <td><span class="diff">무명 SaaS + 메모리(Micron) 고릴라 판별</span></td>
-    <td><strong>컷 1-2:</strong> 차별화 없는 소형 SaaS — 매출 늘어도 주가는 제자리. 마진 박함. "기능은 다른 100개와 비슷, 가격으로만 경쟁." <br><strong>컷 3 (소작농 정의):</strong> "<strong>소작농(Serf) = 영주도 기사도 아닌 바닥. 차별화가 없는 회사.</strong> 아키텍처도, 전환비용도, 네트워크 효과도 없어." <br><span class="diff"><strong>컷 4 (★메모리 논쟁):</strong> 선수용: "그럼 메모리는? 마이크론을 고릴라 5조건으로 따져봤어 — 독점 아키텍처 ✗(JEDEC 표준), 전환비용 ✗(삼성·SK와 대체 가능), 가격결정력 ✗(수급 사이클 종속). DRAM 평균판매가격(ASP)은 장기적으로 하락 추세였어. <strong>표준 메모리는 사실상 commodity — 고릴라가 아니라 소작농/원숭이에 가까워.</strong>" <br><strong>컷 5 (반전 — HBM):</strong> 고집중: "단 <strong>HBM은 달라.</strong> 전환비용·기술장벽이 높아 — <strong>'토네이도 속 니치 고릴라' 가능성</strong>이 있어. 같은 회사(삼성)도 DRAM에선 commodity, HBM에선 고릴라 후보일 수 있지. <strong>회사가 아니라 카테고리로 본다</strong>는 게 또 증명돼."</span> <br><strong>컷 6:</strong> 나잘난: "그럼 메모리는 commodity라 안 사요?" 고집중: "<span class="diff">카테고리를 나눠서 봐. HBM 토네이도냐, DRAM 사이클이냐에 따라 신호가 달라.</span> 다음 화 — 등급이 아닌 '위치'에 갇힌 자들."</td>
+    <td><div class="lead">차별화 없는 바닥이 소작농. 표준 메모리(DRAM)는 commodity라 소작농에 가깝지만, HBM은 '니치 고릴라'가 될 수 있다.</div><strong>컷 1-2:</strong> 차별화 없는 소형 SaaS, 매출 늘어도 주가는 제자리. 마진 박함. "기능은 다른 100개와 비슷, 가격으로만 경쟁." <br><strong>컷 3 (소작농 정의):</strong> "<strong>소작농(Serf) = 영주도 기사도 아닌 바닥. 차별화가 없는 회사.</strong> 아키텍처도, 전환비용도, 네트워크 효과도 없어." <br><span class="diff"><strong>컷 4 (★메모리 논쟁):</strong> 선수용: "그럼 메모리는? 마이크론을 고릴라 5조건으로 따져봤어, 독점 아키텍처 ✗(JEDEC 표준), 전환비용 ✗(삼성·SK와 대체 가능), 가격결정력 ✗(수급 사이클 종속). DRAM 평균판매가격(ASP)은 장기적으로 하락 추세였어. <strong>표준 메모리는 사실상 commodity, 고릴라가 아니라 소작농/원숭이에 가까워.</strong>" <br><strong>컷 5 (반전, HBM):</strong> 고집중: "단 <strong>HBM은 달라.</strong> 전환비용·기술장벽이 높아, <strong>'토네이도 속 니치 고릴라' 가능성</strong>이 있어. 같은 회사(삼성)도 DRAM에선 commodity, HBM에선 고릴라 후보일 수 있지. <strong>회사가 아니라 카테고리로 본다</strong>는 게 또 증명돼."</span> <br><strong>컷 6:</strong> 나잘난: "그럼 메모리는 commodity라 안 사요?" 고집중: "<span class="diff">카테고리를 나눠서 봐. HBM 토네이도냐, DRAM 사이클이냐에 따라 신호가 달라.</span> 다음 화, 등급이 아닌 '위치'에 갇힌 자들."</td>
   </tr>
   <tr>
     <td><strong>18</strong></td>
     <td>"캐즘에 빠진 자들 — <span class="diff">테슬라는 왜 아직 고릴라가 아닌가</span>"</td>
-    <td>In Chasm — 6등급에 없는 "위치/상태" <span class="diff">+ 두 분야 결합체의 캐즘</span></td>
+    <td>In Chasm, 6등급에 없는 "위치/상태" <span class="diff">+ 두 분야 결합체의 캐즘</span></td>
     <td><span class="diff">테슬라(전기차 + 자율주행)</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 나잘난: "테슬라는 고릴라죠? 전기차 1등인데." 고집중: "<strong>아직 아니야. 테슬라는 전기차 + 자율주행이라는 두 분야의 결합체인데, 둘 다 아직 캐즘을 못 건넜어.</strong> 그래서 주가도 길게 횡보하지."</span> <br><span class="diff"><strong>컷 2 (전기차 캐즘):</strong> "전기차는 충전소가 아직 완비 안 됐고, 화재 우려가 있고(BMS 소프트웨어 미완성으로 충전 중 화재 리콜·지하주차 금지 사례), 충전해도 주행거리가 애매해. 그래서 많은 사람이 <strong>퍼스트카가 아니라 세컨드카</strong>로 두고, 택시 등 완전 상용화도 아직이야 = compelling reason·완전제품 미완성."</span> <br><span class="diff"><strong>컷 3 (충전 표준의 반전):</strong> 선수용: "단 흥미로운 건 — 테슬라 슈퍼차저(NACS)는 미국 충전 '표준'을 선점했어. Ford 등도 채택했지. <strong>완성차로는 아직 고릴라가 아니지만, 충전 표준에선 고릴라적 자산을 갖고 있어.</strong>"</span> <br><span class="diff"><strong>컷 4 (자율주행 캐즘):</strong> "자율주행은 더 일러. 아직 Fully 다 못 맡겨. 서울 같은 데선 자동주차·자동호출도 인프라 부재로 잘 안 돼. <strong>결합체라 두 분야 모두에서 캐즘을 못 건너 = 아직 고릴라 아님.</strong>"</span> <br><strong>컷 5 (위치 vs 등급):</strong> "'캐즘에 빠짐'은 등급이 아니라 <strong>위치(상태)</strong>야. 정확한 표현 — '캐즘 위치의 잠재 고릴라.' 등급+위치 둘 다 봐야 정확해." <br><strong>컷 6:</strong> 나잘난: "그래서 횡보였구나." 고집중: "다음 화 — 누가 영주(고릴라)가 될지 모를 때, 잠재 고릴라."</td>
+    <td><div class="lead">테슬라는 전기차+자율주행 결합체이고 둘 다 캐즘이라 아직 고릴라가 아니다(주가 횡보). 단 충전표준 NACS는 별도의 고릴라적 자산.</div><span class="diff"><strong>컷 1:</strong> 나잘난: "테슬라는 고릴라죠? 전기차 1등인데." 고집중: "<strong>아직 아니야. 테슬라는 전기차 + 자율주행이라는 두 분야의 결합체인데, 둘 다 아직 캐즘을 못 건넜어.</strong> 그래서 주가도 길게 횡보하지."</span> <br><span class="diff"><strong>컷 2 (전기차 캐즘):</strong> "전기차는 충전소가 아직 완비 안 됐고, 화재 우려가 있고(BMS 소프트웨어 미완성으로 충전 중 화재 리콜·지하주차 금지 사례), 충전해도 주행거리가 애매해. 그래서 많은 사람이 <strong>퍼스트카가 아니라 세컨드카</strong>로 두고, 택시 등 완전 상용화도 아직이야 = compelling reason·완전제품 미완성."</span> <br><span class="diff"><strong>컷 3 (충전 표준의 반전):</strong> 선수용: "단 흥미로운 건, 테슬라 슈퍼차저(NACS)는 미국 충전 '표준'을 선점했어. Ford 등도 채택했지. <strong>완성차로는 아직 고릴라가 아니지만, 충전 표준에선 고릴라적 자산을 갖고 있어.</strong>"</span> <br><span class="diff"><strong>컷 4 (자율주행 캐즘):</strong> "자율주행은 더 일러. 아직 Fully 다 못 맡겨. 서울 같은 데선 자동주차·자동호출도 인프라 부재로 잘 안 돼. <strong>결합체라 두 분야 모두에서 캐즘을 못 건너 = 아직 고릴라 아님.</strong>"</span> <br><strong>컷 5 (위치 vs 등급):</strong> "'캐즘에 빠짐'은 등급이 아니라 <strong>위치(상태)</strong>야. 정확한 표현, '캐즘 위치의 잠재 고릴라.' 등급+위치 둘 다 봐야 정확해." <br><strong>컷 6:</strong> 나잘난: "그래서 횡보였구나." 고집중: "다음 화, 누가 영주(고릴라)가 될지 모를 때, 잠재 고릴라."</td>
   </tr>
   <tr>
     <td><strong>19</strong></td>
     <td>"잠재 고릴라 — <span class="diff">파운데이션 모델 전쟁, 개미가 들어갈 때인가</span>"</td>
-    <td>Potential Gorilla — 토네이도 전 후보 <span class="diff">+ 초기 하입에 개미가 들어가면 안 되는 이유</span></td>
+    <td>Potential Gorilla, 토네이도 전 후보 <span class="diff">+ 초기 하입에 개미가 들어가면 안 되는 이유</span></td>
     <td><span class="diff">OpenAI · Anthropic · Google Gemini (파운데이션 모델)</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 나잘난이 파운데이션 모델 시장을 봄 — "OpenAI, Anthropic, Google… 다들 잠재 고릴라 같은데 누가 진짜 영주가 될까?"</span> <br><strong>컷 2:</strong> 고집중: "아직 몰라. <strong>토네이도 안에서 결정돼.</strong> 지금은 누가 reference·생태계를 더 빨리 쌓는지 보는 단계." <br><strong>컷 3 (보조 라벨):</strong> "'잠재 고릴라(Potential Gorilla)'는 Moore가 책에서 명명한 등급이 아니야. <strong>토네이도 진입 전 후보를 표시하려는 보조 라벨</strong>이지." <br><span class="diff"><strong>컷 4 (★개미가 들어갈 때인가):</strong> 나대출: "OpenAI·Anthropic 비상장인데 초기에 들어가면 대박 아녜요?" 고집중: "<strong>아니. VC·Pre-IPO가 잔뜩 들어간 초기 단계는 개미가 들어갈 곳이 아니야.</strong> 3×3 매트릭스로 보면 그건 VC·테크 펀드의 영역이지 정중앙(개미)의 자리가 아니야. <strong>이건 초기 하입이지 토네이도가 아니거든.</strong> 지금도 Cerebras처럼 기대만 앞서 주가가 흘러내리는 사례가 있어."</span> <br><strong>컷 5:</strong> "그럼 어떻게? <strong>토네이도 직전 후보를 바구니로 담아두고</strong>, 누가 영주 되는지 보는 거야(원칙 3)." <br><strong>컷 6:</strong> "바구니 매수는 시즌4 Ep34에서 본격적으로. 다음 화 — 종합 시험."</td>
+    <td><div class="lead">OpenAI·Anthropic 같은 파운데이션 모델은 '잠재 고릴라'. VC가 잔뜩 들어간 초기 하입엔 개미가 들어갈 자리가 아니다.</div><span class="diff"><strong>컷 1:</strong> 나잘난이 파운데이션 모델 시장을 봄. "OpenAI, Anthropic, Google… 다들 잠재 고릴라 같은데 누가 진짜 영주가 될까?"</span> <br><strong>컷 2:</strong> 고집중: "아직 몰라. <strong>토네이도 안에서 결정돼.</strong> 지금은 누가 reference·생태계를 더 빨리 쌓는지 보는 단계." <br><strong>컷 3 (보조 라벨):</strong> "'잠재 고릴라(Potential Gorilla)'는 Moore가 책에서 명명한 등급이 아니야. <strong>토네이도 진입 전 후보를 표시하려는 보조 라벨</strong>이지." <br><span class="diff"><strong>컷 4 (★개미가 들어갈 때인가):</strong> 나대출: "OpenAI·Anthropic 비상장인데 초기에 들어가면 대박 아녜요?" 고집중: "<strong>아니. VC·Pre-IPO가 잔뜩 들어간 초기 단계는 개미가 들어갈 곳이 아니야.</strong> 3×3 매트릭스로 보면 그건 VC·테크 펀드의 영역이지 정중앙(개미)의 자리가 아니야. <strong>이건 초기 하입이지 토네이도가 아니거든.</strong> 지금도 Cerebras처럼 기대만 앞서 주가가 흘러내리는 사례가 있어."</span> <br><strong>컷 5:</strong> "그럼 어떻게? <strong>토네이도 직전 후보를 바구니로 담아두고</strong>, 누가 영주 되는지 보는 거야(원칙 3)." <br><strong>컷 6:</strong> "바구니 매수는 시즌4 Ep34에서 본격적으로. 다음 화, 종합 시험."</td>
   </tr>
   <tr>
     <td><strong>20</strong></td>
     <td>"나잘난의 분류표 <span class="diff">— TIME ETF를 해부하다</span>"</td>
-    <td>시즌2 종합 실습 — 6등급 분류 <span class="diff">+ ETF 보유종목 등급화</span></td>
+    <td>시즌2 종합 실습, 6등급 분류 <span class="diff">+ ETF 보유종목 등급화</span></td>
     <td><span class="diff">TIME 글로벌AI인공지능액티브 ETF 보유 종목 분류</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 시험지 — TIME ETF 보유 종목을 영장류/킹덤에 배치하고 등급 매기기.</span> <br><span class="diff"><strong>컷 2 (고릴라):</strong> NVIDIA → Gorilla(CUDA), ASML → Gorilla(EUV 거의 독점), ARM → Gorilla(모바일 IP 표준), TSMC → Gorilla(첨단 파운드리), Microsoft·Google·Amazon → 카테고리별 Gorilla.</span> <br><span class="diff"><strong>컷 3 (애매·킹덤):</strong> Broadcom·Salesforce → 강한 후보, Intel → <strong>쇠퇴하는 고릴라(Declining/Dethroned)</strong>, Oracle류 → 영주(King).</span> <br><span class="diff"><strong>컷 4 (침팬지·원숭이·잠재):</strong> AMD → Chimp, SK하이닉스/삼성 → DRAM은 commodity지만 HBM은 준고릴라, SanDisk·WDC·Seagate → 원숭이, CrowdStrike → 토네이도 진입 잠재 고릴라, Tesla → 캐즘 위치(단 NACS 표준 자산).</span> <br><span class="diff"><strong>컷 5 (★ETF의 역설 — 복선):</strong> 선수용: "그런데 이상해. 이 ETF에서 <strong>확실한 고릴라들의 합산 비중이 의외로 낮고(20% 안팎), 비고릴라(SanDisk·SK하이닉스 등)가 더 큰 비중</strong>이야. ETF가 고릴라만 담는 게 아니네?" 고집중: "<strong>좋은 발견이야. 그게 시즌5의 핵심 질문이 돼.</strong>"</span> <br><strong>컷 6:</strong> "왜 틀렸/헷갈렸는지는 다음 시즌 — Moore의 진짜 고릴라 판별 기준 4개를 배운다."</td>
+    <td><div class="lead">TIME ETF 종목을 6등급으로 분류해본다. 그런데 확실한 고릴라 비중이 의외로 낮다는 'ETF의 역설' 복선이 깔린다.</div><span class="diff"><strong>컷 1:</strong> 시험지. TIME ETF 보유 종목을 영장류/킹덤에 배치하고 등급 매기기.</span> <br><span class="diff"><strong>컷 2 (고릴라):</strong> NVIDIA → Gorilla(CUDA), ASML → Gorilla(EUV 거의 독점), ARM → Gorilla(모바일 IP 표준), TSMC → Gorilla(첨단 파운드리), Microsoft·Google·Amazon → 카테고리별 Gorilla.</span> <br><span class="diff"><strong>컷 3 (애매·킹덤):</strong> Broadcom·Salesforce → 강한 후보, Intel → <strong>쇠퇴하는 고릴라(Declining/Dethroned)</strong>, Oracle류 → 영주(King).</span> <br><span class="diff"><strong>컷 4 (침팬지·원숭이·잠재):</strong> AMD → Chimp, SK하이닉스/삼성 → DRAM은 commodity지만 HBM은 준고릴라, SanDisk·WDC·Seagate → 원숭이, CrowdStrike → 토네이도 진입 잠재 고릴라, Tesla → 캐즘 위치(단 NACS 표준 자산).</span> <br><span class="diff"><strong>컷 5 (★ETF의 역설, 복선):</strong> 선수용: "그런데 이상해. 이 ETF에서 <strong>확실한 고릴라들의 합산 비중이 의외로 낮고(20% 안팎), 비고릴라(SanDisk·SK하이닉스 등)가 더 큰 비중</strong>이야. ETF가 고릴라만 담는 게 아니네?" 고집중: "<strong>좋은 발견이야. 그게 시즌5의 핵심 질문이 돼.</strong>"</span> <br><strong>컷 6:</strong> "왜 틀렸/헷갈렸는지는 다음 시즌, Moore의 진짜 고릴라 판별 기준 4개를 배운다."</td>
   </tr>
 </table>
 
@@ -618,65 +639,65 @@
   <tr>
     <td><strong>21</strong></td>
     <td>"고릴라의 뼈대 (1) — Proprietary Architecture"</td>
-    <td>Moore 1번 기준 — 독점 아키텍처</td>
+    <td>Moore 1번 기준, 독점 아키텍처</td>
     <td>NVIDIA CUDA · Apple Silicon · <span class="diff">구글 TPU</span></td>
-    <td><strong>컷 1:</strong> 고집중이 4개 기둥을 그림. "6등급은 배웠지. 이제 진짜 고릴라를 가려내는 4가지 판별 기준." <br><strong>컷 2 (1번):</strong> "<strong>Proprietary Architecture.</strong> 질문 — '경쟁자가 따라하려면 처음부터 다시 만들어야 하는가?'" <br><strong>컷 3 (CUDA):</strong> "CUDA는 소프트웨어 생태계를 잠갔어. 모든 AI 라이브러리가 그 위에서 돌아가." <br><strong>컷 4 (Apple/TPU):</strong> "Apple Silicon은 하드웨어를 잠갔고, <span class="diff">구글 TPU는 자체 아키텍처 + JAX·XLA로 자기 스택을 만들었어.</span> 방식은 달라도 '내 위에서만 돌게' 만든 거야." <br><strong>컷 5-6:</strong> "1번 통과 = '이 회사가 죽으면 그 카테고리도 같이 죽는다'는 느낌. 다음 — 2번, 전환비용."</td>
+    <td><div class="lead">진짜 고릴라를 가리는 4기준 중 1번. 경쟁자가 따라하려면 처음부터 다시 만들어야 하는 '독점 아키텍처'인가.</div><strong>컷 1:</strong> 고집중이 4개 기둥을 그림. "6등급은 배웠지. 이제 진짜 고릴라를 가려내는 4가지 판별 기준." <br><strong>컷 2 (1번):</strong> "<strong>Proprietary Architecture.</strong> 질문, '경쟁자가 따라하려면 처음부터 다시 만들어야 하는가?'" <br><strong>컷 3 (CUDA):</strong> "CUDA는 소프트웨어 생태계를 잠갔어. 모든 AI 라이브러리가 그 위에서 돌아가." <br><strong>컷 4 (Apple/TPU):</strong> "Apple Silicon은 하드웨어를 잠갔고, <span class="diff">구글 TPU는 자체 아키텍처 + JAX·XLA로 자기 스택을 만들었어.</span> 방식은 달라도 '내 위에서만 돌게' 만든 거야." <br><strong>컷 5-6:</strong> "1번 통과 = '이 회사가 죽으면 그 카테고리도 같이 죽는다'는 느낌. 다음. 2번, 전환비용."</td>
   </tr>
   <tr>
     <td><strong>22</strong></td>
     <td>"고릴라의 뼈대 (2) — High Switching Costs"</td>
-    <td>Moore 2번 기준 — 높은 전환비용</td>
+    <td>Moore 2번 기준, 높은 전환비용</td>
     <td><span class="diff">CUDA lock-in</span>, Salesforce·SAP</td>
-    <td><strong>컷 1-2:</strong> <span class="diff">한 AI 팀이 CUDA에서 다른 스택으로 옮기려다 막막함 — 코드 100만 줄 재작성, 라이브러리 재검증, 엔지니어 재교육, 성능 재튜닝.</span> <br><strong>컷 3 (견적):</strong> "이전 비용·기간이 천문학적 → <strong>안 옮긴다.</strong>" <br><strong>컷 4:</strong> "한번 묶이면 시간·돈·습관·연동된 모든 게 잠겨. 이게 전환비용." <br><strong>컷 5 (NRR):</strong> SAP·Salesforce의 NRR(고객이 매년 더 쓰는 비율)이 100%를 넘는다. "락-인의 결과 — 매출이 자동으로 는다." <br><strong>컷 6:</strong> "질문 — 떠나려면 얼마를 더 써야 하나? 천문학적이면 통과. 다음 — 3번, 수확체증."</td>
+    <td><div class="lead">4기준 2번. 떠나려면 천문학적 비용·시간이 드는 '높은 전환비용'인가(CUDA 락인, NRR 100%+).</div><strong>컷 1-2:</strong> <span class="diff">한 AI 팀이 CUDA에서 다른 스택으로 옮기려다 막막함. 코드 100만 줄 재작성, 라이브러리 재검증, 엔지니어 재교육, 성능 재튜닝.</span> <br><strong>컷 3 (견적):</strong> "이전 비용·기간이 천문학적 → <strong>안 옮긴다.</strong>" <br><strong>컷 4:</strong> "한번 묶이면 시간·돈·습관·연동된 모든 게 잠겨. 이게 전환비용." <br><strong>컷 5 (NRR):</strong> SAP·Salesforce의 NRR(고객이 매년 더 쓰는 비율)이 100%를 넘는다. "락-인의 결과, 매출이 자동으로 는다." <br><strong>컷 6:</strong> "질문, 떠나려면 얼마를 더 써야 하나? 천문학적이면 통과. 다음. 3번, 수확체증."</td>
   </tr>
   <tr>
     <td><strong>23</strong></td>
     <td>"고릴라의 뼈대 (3) — Increasing Returns / Network Effects"</td>
-    <td>Moore 3번 기준 — 수확체증 + 네트워크 효과</td>
+    <td>Moore 3번 기준, 수확체증 + 네트워크 효과</td>
     <td>Alphabet(검색·YouTube·Android), <span class="diff">CUDA 개발자 생태계</span></td>
-    <td><strong>컷 1:</strong> "<strong>수확체증</strong> — 사용자가 늘수록 가치가 비선형으로 늘어. 정글의 엔진." <br><strong>컷 2 (대비):</strong> "공장은 수확체감(직원 2배여도 매출 2배 안 됨). 그래서 일반 산업은 1등 격차가 작아." <br><strong>컷 3 (시각화):</strong> YouTube — 크리에이터↑ → 시청자↑ → 광고주↑ → 또 크리에이터↑. 양의 피드백 루프. <br><span class="diff"><strong>컷 4:</strong> CUDA도 같아 — 개발자↑ → 도구·논문↑ → 또 개발자↑. 네트워크 효과가 1등을 압도적으로 만든다.</span> <br><strong>컷 5:</strong> "카카오톡, Visa, 앱스토어… 일상에도 곳곳에." <br><strong>컷 6:</strong> "질문 — 사용자가 늘수록 가치가 비선형으로 느나? 다음 — 4번, 완전제품과 생태계."</td>
+    <td><div class="lead">4기준 3번. 사용자가 늘수록 가치가 비선형으로 커지는 '수확체증·네트워크 효과'가 있는가.</div><strong>컷 1:</strong> "<strong>수확체증</strong>, 사용자가 늘수록 가치가 비선형으로 늘어. 정글의 엔진." <br><strong>컷 2 (대비):</strong> "공장은 수확체감(직원 2배여도 매출 2배 안 됨). 그래서 일반 산업은 1등 격차가 작아." <br><strong>컷 3 (시각화):</strong> YouTube, 크리에이터↑ → 시청자↑ → 광고주↑ → 또 크리에이터↑. 양의 피드백 루프. <br><span class="diff"><strong>컷 4:</strong> CUDA도 같아, 개발자↑ → 도구·논문↑ → 또 개발자↑. 네트워크 효과가 1등을 압도적으로 만든다.</span> <br><strong>컷 5:</strong> "카카오톡, Visa, 앱스토어… 일상에도 곳곳에." <br><strong>컷 6:</strong> "질문, 사용자가 늘수록 가치가 비선형으로 느나? 다음. 4번, 완전제품과 생태계."</td>
   </tr>
   <tr>
     <td><strong>24</strong></td>
     <td>"고릴라의 뼈대 (4) — Whole Product &amp; Ecosystem <span class="diff">+ 젠슨황 5단 케이크</span>"</td>
-    <td>Moore 4번 기준 — 완전제품·생태계 <span class="diff">+ AI 가치사슬의 층위</span></td>
+    <td>Moore 4번 기준, 완전제품·생태계 <span class="diff">+ AI 가치사슬의 층위</span></td>
     <td><span class="diff">Google 스택(검색·Gemini·TPU·MCP), Apple App Store</span></td>
-    <td><strong>컷 1 (완전제품 정의):</strong> "<strong>완전제품 = 핵심 + 보조 제품 + 서비스 + 표준 + 도구 + 교육 + 커뮤니티.</strong> 모든 게 모여야 실용주의자가 산다." <br><span class="diff"><strong>컷 2 (★5단 케이크):</strong> 고집중이 젠슨황 5단 케이크를 펼침 — 에너지→칩→인프라→모델→앱. "완전제품의 층위가 이거야. 한 층만 잘해선 부족해. <strong>모든 층이 함께 커져야 해.</strong>"</span> <br><span class="diff"><strong>컷 3 (★구글 스택):</strong> "그래서 구글이 무서워. 단말(안드로이드·픽셀)·서비스(검색·유튜브·Gmail)·모델(Gemini)·데이터·인프라·반도체(TPU)까지 <strong>전 층위를 수직 통합</strong>했어. 게다가 에이전트끼리 통신하는 <strong>MCP 표준</strong>까지 노리지. 단, TPU 핵심 IP는 Broadcom, 패키징·파운드리는 삼성·TSMC, HBM은 한국에 의존하는 빈틈도 있어."</span> <br><strong>컷 4 (앱스토어):</strong> Apple App Store — 개발자·앱·고객의 거대 생태계 = 비대칭 권력. <br><strong>컷 5:</strong> "질문 — 고객이 필요로 하는 모든 보조 제품·서비스가 이 회사 주변에 모여 있나? 4기준 다 통과 = 진짜 고릴라." <br><strong>컷 6:</strong> "다음 화 — 그 4기준으로 AI 가치사슬 전체를 해부한다."</td>
+    <td><div class="lead">4기준 4번. 고객이 필요한 모든 보조 제품·서비스가 모인 '완전제품·생태계'인가. 구글이 전 층위를 수직 통합한 게 무서운 이유.</div><strong>컷 1 (완전제품 정의):</strong> "<strong>완전제품 = 핵심 + 보조 제품 + 서비스 + 표준 + 도구 + 교육 + 커뮤니티.</strong> 모든 게 모여야 실용주의자가 산다." <br><span class="diff"><strong>컷 2 (★5단 케이크):</strong> 고집중이 젠슨황 5단 케이크를 펼침, 에너지→칩→인프라→모델→앱. "완전제품의 층위가 이거야. 한 층만 잘해선 부족해. <strong>모든 층이 함께 커져야 해.</strong>"</span> <br><span class="diff"><strong>컷 3 (★구글 스택):</strong> "그래서 구글이 무서워. 단말(안드로이드·픽셀)·서비스(검색·유튜브·Gmail)·모델(Gemini)·데이터·인프라·반도체(TPU)까지 <strong>전 층위를 수직 통합</strong>했어. 게다가 에이전트끼리 통신하는 <strong>MCP 표준</strong>까지 노리지. 단, TPU 핵심 IP는 Broadcom, 패키징·파운드리는 삼성·TSMC, HBM은 한국에 의존하는 빈틈도 있어."</span> <br><strong>컷 4 (앱스토어):</strong> Apple App Store, 개발자·앱·고객의 거대 생태계 = 비대칭 권력. <br><strong>컷 5:</strong> "질문, 고객이 필요로 하는 모든 보조 제품·서비스가 이 회사 주변에 모여 있나? 4기준 다 통과 = 진짜 고릴라." <br><strong>컷 6:</strong> "다음 화, 그 4기준으로 AI 가치사슬 전체를 해부한다."</td>
   </tr>
   <tr>
     <td><strong>25</strong></td>
     <td><span class="diff">"AI 가치사슬 대해부 — NVIDIA의 빅 모먼트"</span></td>
     <td><span class="diff">AI 산업구조 전체 지도 + 어느 층의 고릴라인가</span></td>
     <td><span class="diff">NVIDIA 공급망 맵(Foundry·메모리·패키징·통신·전원·ODM) + SW 레이어</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 고집중이 거대한 공급망 지도(NVIDIA's Big Moment)를 펼침. "NVIDIA 실적 충격이 어디로 퍼지는지 봐 — 이게 AI 반도체 가치사슬 전체야."</span> <br><span class="diff"><strong>컷 2 (하드웨어 층):</strong> <strong>Foundry</strong>(TSMC·삼성) → <strong>메모리</strong>(HBM·SSD·HDD: SK하이닉스·삼성·마이크론·SanDisk·WD) → <strong>패키징/테스트</strong>(ASE·Amkor) → <strong>통신</strong>(광모듈 Coherent·Fabrinet / 동선 Amphenol·Credo) → <strong>인터커넥트</strong>(Broadcom·Marvell·Astera) → <strong>전원·방열</strong>(Vertiv·MPS·Navitas) → <strong>PCB·ODM</strong>(TTM·Flex·Jabil).</span> <br><span class="diff"><strong>컷 3 (소프트웨어 층):</strong> 그 위로 ④모델(Gemini·GPT·Claude) ⑤앱(에이전트). "반도체 공급망 위에 소프트웨어 레이어가 얹혀. 챗봇에서 에이전트로 넘어가며 전통 SaaS가 위협받는 중(카테고리 substitution 신호)."</span> <br><span class="diff"><strong>컷 4 (어느 층의 고릴라인가):</strong> "각 칸마다 물어 — 여기 고릴라는 누구지? Foundry는 TSMC, EUV 장비는 ASML, GPU는 NVIDIA, HBM은 SK하이닉스(니치). <strong>층마다 고릴라가 다르다.</strong>"</span> <br><span class="diff"><strong>컷 5:</strong> 나잘난: "한 종목이 아니라 가치사슬 '지도'를 보는 거군요." 고집중: "맞아. 그래서 우리가 AI 섹터 ETF를 주목하는 거야 — 지도 전체를 한 바구니에 담으니까."</span> <br><strong>컷 6:</strong> "다음 화 — 그 지도의 심장, 메모리 전쟁."</td>
+    <td><div class="lead">4기준으로 AI 가치사슬 지도 전체를 해부한다. 층(파운드리·메모리·장비·패키징…)마다 고릴라가 다르다.</div><span class="diff"><strong>컷 1:</strong> 고집중이 거대한 공급망 지도(NVIDIA's Big Moment)를 펼침. "NVIDIA 실적 충격이 어디로 퍼지는지 봐, 이게 AI 반도체 가치사슬 전체야."</span> <br><span class="diff"><strong>컷 2 (하드웨어 층):</strong> <strong>Foundry</strong>(TSMC·삼성) → <strong>메모리</strong>(HBM·SSD·HDD: SK하이닉스·삼성·마이크론·SanDisk·WD) → <strong>패키징/테스트</strong>(ASE·Amkor) → <strong>통신</strong>(광모듈 Coherent·Fabrinet / 동선 Amphenol·Credo) → <strong>인터커넥트</strong>(Broadcom·Marvell·Astera) → <strong>전원·방열</strong>(Vertiv·MPS·Navitas) → <strong>PCB·ODM</strong>(TTM·Flex·Jabil).</span> <br><span class="diff"><strong>컷 3 (소프트웨어 층):</strong> 그 위로 ④모델(Gemini·GPT·Claude) ⑤앱(에이전트). "반도체 공급망 위에 소프트웨어 레이어가 얹혀. 챗봇에서 에이전트로 넘어가며 전통 SaaS가 위협받는 중(카테고리 substitution 신호)."</span> <br><span class="diff"><strong>컷 4 (어느 층의 고릴라인가):</strong> "각 칸마다 물어, 여기 고릴라는 누구지? Foundry는 TSMC, EUV 장비는 ASML, GPU는 NVIDIA, HBM은 SK하이닉스(니치). <strong>층마다 고릴라가 다르다.</strong>"</span> <br><span class="diff"><strong>컷 5:</strong> 나잘난: "한 종목이 아니라 가치사슬 '지도'를 보는 거군요." 고집중: "맞아. 그래서 우리가 AI 섹터 ETF를 주목하는 거야. 지도 전체를 한 바구니에 담으니까."</span> <br><strong>컷 6:</strong> "다음 화, 그 지도의 심장, 메모리 전쟁."</td>
   </tr>
   <tr>
     <td><strong>26</strong></td>
     <td><span class="diff">"메모리 전쟁 — HBM에서 HBF로, 메모리가 GPU를 삼킨다"</span></td>
     <td><span class="diff">메모리 중심 AI 반도체론 + 제품사이클 cross + 차세대 카테고리(HBF)</span></td>
     <td><span class="diff">HBM·DRAM·NAND·HBF, SK하이닉스·삼성·마이크론·Western Digital(SanDisk)</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 선수용이 김정호 교수("HBM의 아버지")의 관점을 가져옴 — "<strong>AI의 진짜 병목은 GPU가 아니라 메모리야. AI의 능력 = 기억력 = 메모리.</strong> 영상이 텍스트보다 메모리를 훨씬 많이 먹어서 수요가 폭발해."</span> <br><span class="diff"><strong>컷 2 (메모리가 GPU를 삼킨다):</strong> "GPU는 열·수율 때문에 2~4개가 한계인데, HBM은 16개씩 층층이 쌓여. 면적으로 보면 메모리가 GPU보다 커. <strong>메모리가 주인이 되고 GPU·CPU는 부품화한다</strong>는 게 그의 주장이야."</span> <br><span class="diff"><strong>컷 3 (★cross):</strong> 화이트보드 — &lt;DRAM 사이클&gt; 위로 &lt;HBM 사이클&gt;이 교차. "표준 DRAM·NAND는 표준화돼 1·2·3등이 자리바꿈하지만, <strong>HBM은 전환비용이 높아 당분간 1등 교체가 잘 안 일어나.</strong> 이선엽 대표 식으로 보면 — 제조사들이 투자를 미뤄 공급이 제한돼서, 비싸 보여도 아직 고점이 아니라는 거지."</span> <br><span class="diff"><strong>컷 4 (★HBF — 다음 카테고리):</strong> "그리고 김정호 교수는 한 발 더 나가 — <strong>HBM 다음은 HBF(High Bandwidth Flash, NAND 적층)</strong>래. DRAM보다 용량이 훨씬 크지. 'HBF 시장이 언젠가 HBM을 넘는다'는 거야. SanDisk·Western Digital이 후보인데, HBM이 없는 게 약점이라 <strong>NVIDIA가 메모리 회사를 인수할 수도 있다</strong>는 시나리오까지 나와."</span> <br><span class="diff"><strong>컷 5 (고릴라 게임 연결):</strong> 고집중: "봐 — HBM이 메모리의 표준을 잡고, 그 위로 HBF라는 <strong>새 카테고리</strong>가 올라오면, 이건 시즌1 Ep9에서 본 PLC·카테고리 교체야. <strong>지금 우리가 다음 고릴라가 태어나는 현장을 실시간으로 보는 거지.</strong>"</span> <br><strong>컷 6:</strong> "다음 화 — 70년 AI 역사와 표준 교체."</td>
+    <td><div class="lead">AI의 진짜 병목은 GPU가 아니라 메모리(김정호 교수). HBM 다음 HBF라는 새 카테고리가 올라오는 현장을 실시간으로 본다.</div><span class="diff"><strong>컷 1:</strong> 선수용이 김정호 교수("HBM의 아버지")의 관점을 가져옴. "<strong>AI의 진짜 병목은 GPU가 아니라 메모리야. AI의 능력 = 기억력 = 메모리.</strong> 영상이 텍스트보다 메모리를 훨씬 많이 먹어서 수요가 폭발해."</span> <br><span class="diff"><strong>컷 2 (메모리가 GPU를 삼킨다):</strong> "GPU는 열·수율 때문에 2~4개가 한계인데, HBM은 16개씩 층층이 쌓여. 면적으로 보면 메모리가 GPU보다 커. <strong>메모리가 주인이 되고 GPU·CPU는 부품화한다</strong>는 게 그의 주장이야."</span> <br><span class="diff"><strong>컷 3 (★cross):</strong> 화이트보드, &lt;DRAM 사이클&gt; 위로 &lt;HBM 사이클&gt;이 교차. "표준 DRAM·NAND는 표준화돼 1·2·3등이 자리바꿈하지만, <strong>HBM은 전환비용이 높아 당분간 1등 교체가 잘 안 일어나.</strong> 이선엽 대표 식으로 보면, 제조사들이 투자를 미뤄 공급이 제한돼서, 비싸 보여도 아직 고점이 아니라는 거지."</span> <br><span class="diff"><strong>컷 4 (★HBF, 다음 카테고리):</strong> "그리고 김정호 교수는 한 발 더 나가, <strong>HBM 다음은 HBF(High Bandwidth Flash, NAND 적층)</strong>래. DRAM보다 용량이 훨씬 크지. 'HBF 시장이 언젠가 HBM을 넘는다'는 거야. SanDisk·Western Digital이 후보인데, HBM이 없는 게 약점이라 <strong>NVIDIA가 메모리 회사를 인수할 수도 있다</strong>는 시나리오까지 나와."</span> <br><span class="diff"><strong>컷 5 (고릴라 게임 연결):</strong> 고집중: "봐, HBM이 메모리의 표준을 잡고, 그 위로 HBF라는 <strong>새 카테고리</strong>가 올라오면, 이건 시즌1 Ep9에서 본 PLC·카테고리 교체야. <strong>지금 우리가 다음 고릴라가 태어나는 현장을 실시간으로 보는 거지.</strong>"</span> <br><strong>컷 6:</strong> "다음 화, 70년 AI 역사와 표준 교체."</td>
   </tr>
   <tr>
     <td><strong>27</strong></td>
     <td>"AI 70년사와 표준 교체 — <span class="diff">윈텔에서 윈비디아로</span>"</td>
-    <td>역사적 사례 — 한 카테고리의 TALC 70년 + <span class="diff">표준 동맹의 교체</span></td>
+    <td>역사적 사례, 한 카테고리의 TALC 70년 + <span class="diff">표준 동맹의 교체</span></td>
     <td>1956 Dartmouth → AI Winter → 2012 ImageNet → ChatGPT, <span class="diff">윈텔 → 윈비디아</span></td>
-    <td><strong>컷 1:</strong> 70년 타임라인. "AI는 어제 시작된 게 아니야." <br><strong>컷 2 (혁신가):</strong> 1956 Dartmouth, 'AI' 탄생. 혁신가만 열광. <br><strong>컷 3 (캐즘):</strong> "1990년대 AI Winter — 30년간 캐즘에 갇혔어. 선각자는 열광했지만 실용주의자가 안 샀지." <br><strong>컷 4 (모먼트):</strong> 2012 ImageNet/딥러닝 부활. "그 와중에 NVIDIA가 그래픽 회사에서 AI 인프라가 됐어." <br><strong>컷 5 (토네이도):</strong> 2022 ChatGPT, 2개월 1억 사용자. "30년 캐즘 → 몇 년 만에 토네이도." <br><span class="diff"><strong>컷 6 (★표준 교체):</strong> "그리고 지금 — 40년 PC를 지배한 <strong>윈텔</strong>이 <strong>윈비디아</strong>로 교체되는 중. 클라우드에서 온디바이스 AI로, 인텔에서 NVIDIA로. <strong>한 카테고리는 수십 년 캐즘에 갇힐 수도 있지만, 풀리는 순간 표준 동맹이 통째로 바뀐다.</strong> 다음 화 — 한 시장에 고릴라가 둘일 수 있는가?"</span></td>
+    <td><div class="lead">AI는 70년간 캐즘에 갇혔다가 ChatGPT로 토네이도가 됐다. 지금 윈텔 → 윈비디아로 표준 동맹이 통째로 바뀌는 중.</div><strong>컷 1:</strong> 70년 타임라인. "AI는 어제 시작된 게 아니야." <br><strong>컷 2 (혁신가):</strong> 1956 Dartmouth, 'AI' 탄생. 혁신가만 열광. <br><strong>컷 3 (캐즘):</strong> "1990년대 AI Winter, 30년간 캐즘에 갇혔어. 선각자는 열광했지만 실용주의자가 안 샀지." <br><strong>컷 4 (모먼트):</strong> 2012 ImageNet/딥러닝 부활. "그 와중에 NVIDIA가 그래픽 회사에서 AI 인프라가 됐어." <br><strong>컷 5 (토네이도):</strong> 2022 ChatGPT, 2개월 1억 사용자. "30년 캐즘 → 몇 년 만에 토네이도." <br><span class="diff"><strong>컷 6 (★표준 교체):</strong> "그리고 지금, 40년 PC를 지배한 <strong>윈텔</strong>이 <strong>윈비디아</strong>로 교체되는 중. 클라우드에서 온디바이스 AI로, 인텔에서 NVIDIA로. <strong>한 카테고리는 수십 년 캐즘에 갇힐 수도 있지만, 풀리는 순간 표준 동맹이 통째로 바뀐다.</strong> 다음 화, 한 시장에 고릴라가 둘일 수 있는가?"</span></td>
   </tr>
   <tr>
     <td><strong>28</strong></td>
     <td>"한 시장에 고릴라가 둘일 수 있는가"</td>
-    <td>Oligopoly Exception — 일부 카테고리는 duopoly로 안정</td>
+    <td>Oligopoly Exception, 일부 카테고리는 duopoly로 안정</td>
     <td>AWS vs Azure, <span class="diff">삼성 vs SK하이닉스(메모리), Visa vs Mastercard</span></td>
-    <td><strong>컷 1:</strong> 나잘난: "교과서적으론 고릴라는 하나인데, 클라우드는 AWS·Azure 둘 다 잘 나가요." <br><strong>컷 2:</strong> "<strong>Moore도 인정한 예외 — Oligopoly Exception.</strong> 일부 카테고리는 duopoly로 안정돼." <br><strong>컷 3 (4기준 비교):</strong> AWS vs Azure — 둘 다 자기 아키텍처·높은 전환비용·강한 네트워크·완비된 완전제품. <br><strong>컷 4 (왜 둘 다):</strong> "워크로드가 나뉘어 있어(Azure=엔터프라이즈, AWS=스타트업) 직접 충돌이 적어." <br><span class="diff"><strong>컷 5 (★메모리 과점):</strong> "메모리도 비슷해 — <strong>삼성+SK하이닉스가 HBM·DRAM을 사실상 양분</strong>하고, 전 세계 NAND의 다수를 둘이 점유해. 한쪽이 망하면 시장 자체가 위험해서 안 무너지는 구조. Visa vs Mastercard도 마찬가지." <br><strong>컷 6:</strong> "이런 경우 <strong>양쪽 다 보유 = 헷지가 아니라 정공법</strong>(원칙 9, 시즌5 Ep38). 시즌3 끝. 다음 시즌 — 과열과 매도, 일반 투자자가 가장 많이 당하는 영역."</span></td>
+    <td><div class="lead">일부 카테고리는 1·2등 둘이 안정적으로 나눠 갖는다(AWS·Azure, 삼성·SK). 이땐 양쪽 다 보유가 헷지가 아니라 정공법.</div><strong>컷 1:</strong> 나잘난: "교과서적으론 고릴라는 하나인데, 클라우드는 AWS·Azure 둘 다 잘 나가요." <br><strong>컷 2:</strong> "<strong>Moore도 인정한 예외, Oligopoly Exception.</strong> 일부 카테고리는 duopoly로 안정돼." <br><strong>컷 3 (4기준 비교):</strong> AWS vs Azure, 둘 다 자기 아키텍처·높은 전환비용·강한 네트워크·완비된 완전제품. <br><strong>컷 4 (왜 둘 다):</strong> "워크로드가 나뉘어 있어(Azure=엔터프라이즈, AWS=스타트업) 직접 충돌이 적어." <br><span class="diff"><strong>컷 5 (★메모리 과점):</strong> "메모리도 비슷해, <strong>삼성+SK하이닉스가 HBM·DRAM을 사실상 양분</strong>하고, 전 세계 NAND의 다수를 둘이 점유해. 한쪽이 망하면 시장 자체가 위험해서 안 무너지는 구조. Visa vs Mastercard도 마찬가지." <br><strong>컷 6:</strong> "이런 경우 <strong>양쪽 다 보유 = 헷지가 아니라 정공법</strong>(원칙 9, 시즌5 Ep38). 시즌3 끝. 다음 시즌, 과열과 매도, 일반 투자자가 가장 많이 당하는 영역."</span></td>
   </tr>
 </table>
 
 <!-- ============ 시즌 4 ============ -->
 <div class="season-header">
   <h2>시즌 4: 과열과 공포 사이에서 (Ep 29~35)</h2>
-  <p>하입사이클 + 5기준 판별표 + 매수 3신호·4원칙 + <span class="diff">10대 원칙 종합</span> — 진짜 토네이도와 가짜 하입을 구별한다</p>
+  <p>하입사이클 + 5기준 판별표 + 매수 3신호·4원칙 + <span class="diff">10대 원칙 종합</span>, 진짜 토네이도와 가짜 하입을 구별한다</p>
 </div>
 
 <figure style="margin:14px 0 24px 0; text-align:center;">
@@ -709,56 +730,56 @@
     <td>"나대출의 하입 열차"</td>
     <td>Gartner Hype Cycle 소개</td>
     <td><span class="diff">2026 가트너 에이전틱 AI(Peak), Cerebras, SPAC</span></td>
-    <td><strong>컷 1:</strong> 나대출이 'AI 대장주'라며 매수 → 한 달 +200%. "형! 저 천재예요!" 나잘난: "왜 올라?" 나대출: "<strong>AI니까요!</strong>" <br><strong>컷 2 (Hype Cycle):</strong> 고집중 5단계 곡선 — Innovation Trigger → <strong>Peak of Inflated Expectations</strong> → Trough of Disillusionment → Slope of Enlightenment → Plateau of Productivity. <br><span class="diff"><strong>컷 3 (★2026 가트너):</strong> "가트너 2026 하입사이클을 봐 — <strong>에이전틱 AI가 기대의 정점(Peak)</strong>에 있어. 기업의 17%만 실제 배포했는데 60%+가 2년 내 배포 계획이래. 기대가 현실을 한참 앞서 있지. <strong>Peak이 가장 위험한 순간이야.</strong>"</span> <br><span class="diff"><strong>컷 4 (사례):</strong> Cerebras 같은 종목이 'NVIDIA보다 빠른 칩' 서사로 떴다가 흘러내리는 중. 2021 SPAC 열풍, C3.ai도 같은 패턴(IPO 후 폭등 → 폭락).</span> <br><strong>컷 5:</strong> "'이번엔 다르다'고 모두 외칠 때가 가장 위험해. 닷컴·ICO·SPAC 다 같은 패턴." <br><strong>컷 6:</strong> 나대출 -70%. 다음 화 — 진짜 토네이도와 가짜 하입을 어떻게 구별?</td>
+    <td><div class="lead">나대출이 'AI니까' 사서 +200%. 하입 사이클은 Innovation → Peak → Trough 순서로 움직이고, 기대가 정점(Peak)일 때가 가장 위험하다.</div><strong>컷 1:</strong> 나대출이 'AI 대장주'라며 매수 → 한 달 +200%. "형! 저 천재예요!" 나잘난: "왜 올라?" 나대출: "<strong>AI니까요!</strong>" <br><strong>컷 2 (Hype Cycle):</strong> 고집중 5단계 곡선, Innovation Trigger → <strong>Peak of Inflated Expectations</strong> → Trough of Disillusionment → Slope of Enlightenment → Plateau of Productivity. <br><span class="diff"><strong>컷 3 (★2026 가트너):</strong> "가트너 2026 하입사이클을 봐, <strong>에이전틱 AI가 기대의 정점(Peak)</strong>에 있어. 기업의 17%만 실제 배포했는데 60%+가 2년 내 배포 계획이래. 기대가 현실을 한참 앞서 있지. <strong>Peak이 가장 위험한 순간이야.</strong>"</span> <br><span class="diff"><strong>컷 4 (사례):</strong> Cerebras 같은 종목이 'NVIDIA보다 빠른 칩' 서사로 떴다가 흘러내리는 중. 2021 SPAC 열풍, C3.ai도 같은 패턴(IPO 후 폭등 → 폭락).</span> <br><strong>컷 5:</strong> "'이번엔 다르다'고 모두 외칠 때가 가장 위험해. 닷컴·ICO·SPAC 다 같은 패턴." <br><strong>컷 6:</strong> 나대출 -70%. 다음 화, 진짜 토네이도와 가짜 하입을 어떻게 구별?</td>
   </tr>
   <tr>
     <td><strong>30</strong></td>
     <td>"과열인가 토네이도인가"</td>
-    <td>Hype Cycle × TALC 통합 — <span class="diff">5기준 판별표 + 토네이도 진입 3신호</span></td>
+    <td>Hype Cycle × TALC 통합, <span class="diff">5기준 판별표 + 토네이도 진입 3신호</span></td>
     <td><span class="diff">에이전틱 AI(하입·가트너) vs 메모리/HBM(토네이도·실매출), 더밀크 낙관 vs 가트너 신중</span></td>
-    <td><strong>컷 1:</strong> 나잘난: "토네이도도 오르고 하입도 올라요. 어떻게 구별해요?" <br><strong>컷 2 (핵심 질문):</strong> "<strong>김 대리(실용주의자)가 사고 있나?</strong> 그러면 토네이도. 선각자만 열광하나? 그러면 하입." <br><span class="diff"><strong>컷 3 (★두 시선의 긴장):</strong> "예를 들어 에이전트 — 더밀크 같은 데선 '챗봇은 끝, 에이전트가 SaaS를 삼킨다'고 낙관해. 반대로 가트너는 '에이전틱 AI는 아직 Peak, 2027년까지 프로젝트 40%+가 취소될 것'이라고 신중하지. <strong>이 긴장 자체가 하입 판별의 훈련장이야.</strong>"</span> <br><span class="diff"><strong>컷 4 (★5기준 판별표):</strong> 고집중: "주가가 확 올랐을 때 외워둘 5기준 — ① PMF 입증(실제 사용 vs 서사만) ② 완전제품 완성도 ③ 매출/시총 비율(매출이 따라오나) ④ 고객 구성(실용주의자 합류 vs 혁신가뿐) ⑤ 카테고리 전체 vs 단일 서사주. <strong>5개 중 4개 이상 우측이면 토네이도, 3개 이하면 하입 의심.</strong> 메모리/HBM은 실제 매출이 비선형으로 폭발 → 토네이도. 에이전틱 AI는 아직 ④가 약함 → 하입 구간."</span> <br><span class="diff"><strong>컷 5 (★3진입 신호):</strong> "토네이도로 판단되면 언제 들어가? <strong>3신호가 동시에 켜질 때 — ① 비치헤드·볼링앨리 완료(실용주의자 reference 확산) ② 매출 2~3분기 연속 비선형 가속 ③ 완전제품 완비.</strong> NVIDIA 2023년 1분기가 그 시점이었지."</span> <br><strong>컷 6:</strong> "차트가 아니라 <strong>매출 차트</strong>를 봐. 다음 화 — 하입을 알면서 올라타는 보조 전략, RIDE."</td>
+    <td><div class="lead">하입과 토네이도는 둘 다 오르지만 다르다. '실용주의자가 사는가'와 5기준 판별표로 가른다. 진입은 3신호가 동시에 켜질 때.</div><strong>컷 1:</strong> 나잘난: "토네이도도 오르고 하입도 올라요. 어떻게 구별해요?" <br><strong>컷 2 (핵심 질문):</strong> "<strong>김 대리(실용주의자)가 사고 있나?</strong> 그러면 토네이도. 선각자만 열광하나? 그러면 하입." <br><span class="diff"><strong>컷 3 (★두 시선의 긴장):</strong> "예를 들어 에이전트, 더밀크 같은 데선 '챗봇은 끝, 에이전트가 SaaS를 삼킨다'고 낙관해. 반대로 가트너는 '에이전틱 AI는 아직 Peak, 2027년까지 프로젝트 40%+가 취소될 것'이라고 신중하지. <strong>이 긴장 자체가 하입 판별의 훈련장이야.</strong>"</span> <br><span class="diff"><strong>컷 4 (★5기준 판별표):</strong> 고집중: "주가가 확 올랐을 때 외워둘 5기준, ① PMF 입증(실제 사용 vs 서사만) ② 완전제품 완성도 ③ 매출/시총 비율(매출이 따라오나) ④ 고객 구성(실용주의자 합류 vs 혁신가뿐) ⑤ 카테고리 전체 vs 단일 서사주. <strong>5개 중 4개 이상 우측이면 토네이도, 3개 이하면 하입 의심.</strong> 메모리/HBM은 실제 매출이 비선형으로 폭발 → 토네이도. 에이전틱 AI는 아직 ④가 약함 → 하입 구간."</span> <br><span class="diff"><strong>컷 5 (★3진입 신호):</strong> "토네이도로 판단되면 언제 들어가? <strong>3신호가 동시에 켜질 때, ① 비치헤드·볼링앨리 완료(실용주의자 reference 확산) ② 매출 2~3분기 연속 비선형 가속 ③ 완전제품 완비.</strong> NVIDIA 2023년 1분기가 그 시점이었지."</span> <br><strong>컷 6:</strong> "차트가 아니라 <strong>매출 차트</strong>를 봐. 다음 화, 하입을 알면서 올라타는 보조 전략, RIDE."</td>
   </tr>
   <tr>
     <td><strong>31</strong></td>
     <td>"오르막의 신호: RIDE"</td>
-    <td>하입 매수 — 과열 오르막 단기 보조 전략</td>
+    <td>하입 매수, 과열 오르막 단기 보조 전략</td>
     <td><span class="diff">Cerebras 등 서사 기반 종목</span></td>
-    <td><strong>컷 1:</strong> "하입을 무조건 피하라는 게 아니야. 알면서 짧게 올라타는 보조 전략 — RIDE." <br><span class="diff"><strong>컷 2:</strong> Cerebras처럼 캐즘 전 기업이지만 서사가 주가를 끌어올리는 중. 실용주의자는 아직 안 사도 매수자는 들어옴.</span> <br><strong>컷 3 (정의):</strong> "<strong>고릴라 매수가 아니야. Pre-Peak에 짧게.</strong> 단기 + 출구 계획 필수." <br><strong>컷 4 (EXIT 3조건):</strong> "들어가기 전에 EXIT 미리 정해 — ① 매출이 안 받쳐줌 ② 실용주의자가 안 사면 ③ 더 강한 경쟁자 등장." <br><strong>컷 5:</strong> 나대출: "저도 할래요!" 고집중: "<strong>출구 계획 없으면 못 빠져나와. 너처럼 '더 오를 거예요!' 하다 -90%까지 가.</strong>" <br><strong>컷 6:</strong> "<strong>포트폴리오의 5% 이하만.</strong> 핵심은 여전히 고릴라 + 잠재 고릴라 바구니야."</td>
+    <td><div class="lead">하입을 알면서 짧게 올라타는 보조 전략(RIDE)이다. Pre-Peak에 소액, 출구 계획 필수, 포트폴리오 5% 이하만.</div><strong>컷 1:</strong> "하입을 무조건 피하라는 게 아니야. 알면서 짧게 올라타는 보조 전략, RIDE." <br><span class="diff"><strong>컷 2:</strong> Cerebras처럼 캐즘 전 기업이지만 서사가 주가를 끌어올리는 중. 실용주의자는 아직 안 사도 매수자는 들어옴.</span> <br><strong>컷 3 (정의):</strong> "<strong>고릴라 매수가 아니야. Pre-Peak에 짧게.</strong> 단기 + 출구 계획 필수." <br><strong>컷 4 (EXIT 3조건):</strong> "들어가기 전에 EXIT 미리 정해, ① 매출이 안 받쳐줌 ② 실용주의자가 안 사면 ③ 더 강한 경쟁자 등장." <br><strong>컷 5:</strong> 나대출: "저도 할래요!" 고집중: "<strong>출구 계획 없으면 못 빠져나와. 너처럼 '더 오를 거예요!' 하다 -90%까지 가.</strong>" <br><strong>컷 6:</strong> "<strong>포트폴리오의 5% 이하만.</strong> 핵심은 여전히 고릴라 + 잠재 고릴라 바구니야."</td>
   </tr>
   <tr>
     <td><strong>32</strong></td>
     <td>"꺾임의 공포: EXIT"</td>
-    <td>하입 매도 — 환멸의 골 진입 신호</td>
+    <td>하입 매도, 환멸의 골 진입 신호</td>
     <td><span class="diff">C3.ai, Cerebras 등 폭락 패턴</span></td>
-    <td><strong>컷 1:</strong> 나대출 RIDE 종목 폭락 — -30%, -50%, -70%. <br><strong>컷 2 (패턴):</strong> Peak 후 서사가 깨지는 순간. C3.ai·Cerebras류 모두 같은 폭락. <br><strong>컷 3 (왜 빠른가):</strong> "Peak에서 서사가 깨지면 추락이 빨라. 실용주의자가 안 받쳐주니까." <br><strong>컷 4 (EXIT 3신호):</strong> "① 분기 매출 컨센서스 크게 미스 ② 경쟁자·M&amp;A 뉴스 ③ 거래량 폭증+주가 하락." <br><strong>컷 5 (손절):</strong> 나대출 -50%에서 손절. "<strong>손절 = 패배가 아니야. 다음 라운드 출전권이야.</strong>" <br><strong>컷 6:</strong> "나대출이 처음으로 손절을 배웠어. 다음 화 — Peak에 가장 많이 모이는 함정, SPC."</td>
+    <td><div class="lead">Peak에서 서사가 깨지면 추락이 빠르다. EXIT 3신호(매출 미스·경쟁 뉴스·거래량 급증+하락)면 손절한다. 손절은 다음 라운드 출전권이다.</div><strong>컷 1:</strong> 나대출 RIDE 종목 폭락, -30%, -50%, -70%. <br><strong>컷 2 (패턴):</strong> Peak 후 서사가 깨지는 순간. C3.ai·Cerebras류 모두 같은 폭락. <br><strong>컷 3 (왜 빠른가):</strong> "Peak에서 서사가 깨지면 추락이 빨라. 실용주의자가 안 받쳐주니까." <br><strong>컷 4 (EXIT 3신호):</strong> "① 분기 매출 컨센서스 크게 미스 ② 경쟁자·M&amp;A 뉴스 ③ 거래량 폭증+주가 하락." <br><strong>컷 5 (손절):</strong> 나대출 -50%에서 손절. "<strong>손절 = 패배가 아니야. 다음 라운드 출전권이야.</strong>" <br><strong>컷 6:</strong> "나대출이 처음으로 손절을 배웠어. 다음 화, Peak에 가장 많이 모이는 함정, SPC."</td>
   </tr>
   <tr>
     <td><strong>33</strong></td>
     <td>"SPC 기업의 함정 <span class="diff">+ 에이전트 워싱</span>"</td>
-    <td>Single Product Company — 초기시장에서 헷갈리게 하는 기업 <span class="diff">+ Agent-Washing</span></td>
+    <td>Single Product Company, 초기시장에서 헷갈리게 하는 기업 <span class="diff">+ Agent-Washing</span></td>
     <td><span class="diff">C3.ai, 에이전트 워싱(RPA를 AI로 둔갑)</span></td>
-    <td><strong>컷 1:</strong> "<strong>가장 많이 당하는 함정 — SPC.</strong> 한 제품에 운명을 건 기업." <br><strong>컷 2 (사례):</strong> C3.ai·WeWork·Beyond Meat·Peloton — IPO 직후 폭등 → 폭락. <br><strong>컷 3 (왜 헷갈리나):</strong> "초기시장에서 빠르게 매출이 떠 토네이도처럼 보여. 그러나 완전제품·생태계가 없어 캐즘에서 무너져." <br><span class="diff"><strong>컷 4 (★에이전트 워싱):</strong> "요즘 버전이 <strong>에이전트 워싱</strong>이야 — 단순 RPA·매크로 봇을 'AI 에이전트'로 둔갑시켜 파는 거지. 가트너도 경고했어. PMF가 없는 서사주의 전형."</span> <br><strong>컷 5 (구별법):</strong> "Whole Product 기준을 적용해. 핵심 제품만 있고 생태계가 없으면 SPC." <br><strong>컷 6:</strong> "다음 화 — SPC를 피하면서 토네이도를 잡는 법, 바구니 매수."</td>
+    <td><div class="lead">가장 많이 당하는 함정 = 한 제품에 운명을 건 SPC. 요즘 버전은 RPA를 AI로 둔갑시킨 '에이전트 워싱'. 완전제품 기준으로 가른다.</div><strong>컷 1:</strong> "<strong>가장 많이 당하는 함정, SPC.</strong> 한 제품에 운명을 건 기업." <br><strong>컷 2 (사례):</strong> C3.ai·WeWork·Beyond Meat·Peloton, IPO 직후 폭등 → 폭락. <br><strong>컷 3 (왜 헷갈리나):</strong> "초기시장에서 빠르게 매출이 떠 토네이도처럼 보여. 그러나 완전제품·생태계가 없어 캐즘에서 무너져." <br><span class="diff"><strong>컷 4 (★에이전트 워싱):</strong> "요즘 버전이 <strong>에이전트 워싱</strong>이야. 단순 RPA·매크로 봇을 'AI 에이전트'로 둔갑시켜 파는 거지. 가트너도 경고했어. PMF가 없는 서사주의 전형."</span> <br><strong>컷 5 (구별법):</strong> "Whole Product 기준을 적용해. 핵심 제품만 있고 생태계가 없으면 SPC." <br><strong>컷 6:</strong> "다음 화, SPC를 피하면서 토네이도를 잡는 법, 바구니 매수."</td>
   </tr>
   <tr>
     <td><strong>34</strong></td>
     <td>"바구니를 만들어라 <span class="diff">— 그리고 얼마에 사는가</span>"</td>
     <td>바구니 매수(원칙 3) + 토네이도 후 집중 + <span class="diff">매수 가격 4원칙</span></td>
     <td><span class="diff">파운데이션 모델·AI 인프라 바구니</span></td>
-    <td><strong>컷 1:</strong> 나잘난: "토네이도 직전이 기회인데 누가 영주 될지 모르잖아요." <br><strong>컷 2 (바구니):</strong> "그래서 <strong>잠재 고릴라 후보 2~4개를 바구니로 사(원칙 3).</strong> 토네이도 안에서 1등이 결정되길 기다려." <br><span class="diff"><strong>컷 3 (실습):</strong> 데이터/AI 인프라 바구니 구성 — 후보 종목을 4개 균등. 비상장(OpenAI·Anthropic)은 직접 못 사니 ETF/상장 노출로 대체.</span> <br><strong>컷 4 (집중):</strong> "고릴라가 확정되면 나머지를 팔고(원칙 7·8) 1등에 집중. <strong>4개 중 1개가 크게 가면 바구니 전체가 산다.</strong>" <br><span class="diff"><strong>컷 5 (★4매수 원칙):</strong> 나잘난: "그런데 얼마에 사요? 너무 비싸 보여서…" 고집중: "<strong>원칙 A — Valuation만으로 미루지 마라</strong>(토네이도 진입이 확인되면 비싸 보여도). <strong>B — 3~6개월 분할 매수. C — 잠재 고릴라면 바구니. D — 매크로(금리·환율) 폭락은 보너스 매수 기회.</strong>"</span> <br><span class="diff"><strong>컷 6 (반면교사):</strong> 나대출: "NVIDIA 너무 비싸 보여서 못 샀어요." 고집중: "<strong>그게 valuation 함정이야. 토네이도 중이면 매출이 2배 되며 PER이 사후 정당화돼. 비쌈을 두려워 말고, 토네이도가 끝났는지를 두려워해.</strong> 다음 화 — 매수·매도의 종합, 10대 원칙."</span></td>
+    <td><div class="lead">누가 1등 될지 모를 때 후보 2~4개를 바구니로 사고, 확정되면 집중. 비싸 보여도 토네이도 중이면 valuation은 사후 정당화된다.</div><strong>컷 1:</strong> 나잘난: "토네이도 직전이 기회인데 누가 영주 될지 모르잖아요." <br><strong>컷 2 (바구니):</strong> "그래서 <strong>잠재 고릴라 후보 2~4개를 바구니로 사(원칙 3).</strong> 토네이도 안에서 1등이 결정되길 기다려." <br><span class="diff"><strong>컷 3 (실습):</strong> 데이터/AI 인프라 바구니 구성, 후보 종목을 4개 균등. 비상장(OpenAI·Anthropic)은 직접 못 사니 ETF/상장 노출로 대체.</span> <br><strong>컷 4 (집중):</strong> "고릴라가 확정되면 나머지를 팔고(원칙 7·8) 1등에 집중. <strong>4개 중 1개가 크게 가면 바구니 전체가 산다.</strong>" <br><span class="diff"><strong>컷 5 (★4매수 원칙):</strong> 나잘난: "그런데 얼마에 사요? 너무 비싸 보여서…" 고집중: "<strong>원칙 A, Valuation만으로 미루지 마라</strong>(토네이도 진입이 확인되면 비싸 보여도). <strong>B, 3~6개월 분할 매수. C, 잠재 고릴라면 바구니. D, 매크로(금리·환율) 폭락은 보너스 매수 기회.</strong>"</span> <br><span class="diff"><strong>컷 6 (반면교사):</strong> 나대출: "NVIDIA 너무 비싸 보여서 못 샀어요." 고집중: "<strong>그게 valuation 함정이야. 토네이도 중이면 매출이 2배 되며 PER이 사후 정당화돼. 비쌈을 두려워 말고, 토네이도가 끝났는지를 두려워해.</strong> 다음 화, 매수·매도의 종합, 10대 원칙."</span></td>
   </tr>
   <tr>
     <td><strong>35</strong></td>
     <td><span class="diff">"고릴라 게임 10대 원칙 — 매수·매도의 종합 + 뉴스를 무시하는 기술"</span></td>
     <td><span class="diff">Moore 10대 원칙 정본 정리</span> + 잡음 무시</td>
     <td><span class="diff">바구니→집중(원칙3·8), 장기보유(4), 카테고리 substitute 매도(4·6), valuation 매도 금지</span></td>
-    <td><span class="diff"><strong>컷 1:</strong> 나잘난: "시즌4 내내 매수·매도를 조각조각 배운 것 같아요. 한번에 정리해주세요." 고집중: "좋아. <em>The Gorilla Game</em>에 Moore가 정리한 <strong>10대 원칙</strong>이 있어. 이게 본편 매수·매도의 최종 정본이야."</span> <br><span class="diff"><strong>컷 2 (매수 타이밍 — 원칙 1·2):</strong> "카테고리가 <strong>응용 SW면 볼링앨리</strong>에서, <strong>지원 하드웨어(칩·메모리)면 토네이도 형성 후</strong> 매수. 카테고리 유형에 따라 타이밍이 달라."</span> <br><span class="diff"><strong>컷 3 (바구니→집중 — 3·7·8):</strong> "후보를 바구니(최대 4)로 사고, 고릴라가 안 될 종목은 즉시 팔아 남은 후보에 재투자. 매수와 매도가 한 묶음이야."</span> <br><span class="diff"><strong>컷 4 (보유·매도 — 4·5·6):</strong> "고릴라는 장기 보유, <strong>대체 위협(substitution)이 입증될 때만</strong> 매도. 응용SW 침팬지는 확장 잠재력 있으면 보유, enabling 침팬지는 보유 X. 영주·기사는 가볍게, 초고성장 썰물엔 카테고리 전체 매도."</span> <br><span class="diff"><strong>컷 5 (충돌·valuation — 9 + 보강):</strong> "고릴라 충돌 땐 결판날 때까지 보유. 그리고 — <strong>PER이 비싸다는 이유만으로 팔지 마라.</strong> 토네이도 중이면 valuation은 사후 정당화돼."</span> <br><span class="diff"><strong>컷 6 (★원칙 10 — 뉴스 무시):</strong> "<strong>대부분의 뉴스는 고릴라 게임과 무관해. 무시해.</strong> CEO 트윗, 어닝 미스 한 번, 정치·매크로 단기 변동 — 10대 원칙 중 하나가 트리거되지 않는 한 안 팔아. <strong>패턴 변화만 추적해. 분기에 한 번이면 충분 — 본업하면서 적용 가능한 게 핵심이야.</strong> 시즌4 끝. 마지막 시즌 — 네가 직접 사냥꾼이 되는 시간이야."</span></td>
+    <td><div class="lead">매수·매도를 Moore의 10대 원칙으로 종합한다. 핵심은 하나다. 대체 위협이 입증될 때만 팔고, 대부분의 뉴스는 무시한다.</div><span class="diff"><strong>컷 1:</strong> 나잘난: "시즌4 내내 매수·매도를 조각조각 배운 것 같아요. 한번에 정리해주세요." 고집중: "좋아. <em>The Gorilla Game</em>에 Moore가 정리한 <strong>10대 원칙</strong>이 있어. 이게 본편 매수·매도의 최종 정본이야."</span> <br><span class="diff"><strong>컷 2 (매수 타이밍, 원칙 1·2):</strong> "카테고리가 <strong>응용 SW면 볼링앨리</strong>에서, <strong>지원 하드웨어(칩·메모리)면 토네이도 형성 후</strong> 매수. 카테고리 유형에 따라 타이밍이 달라."</span> <br><span class="diff"><strong>컷 3 (바구니→집중, 3·7·8):</strong> "후보를 바구니(최대 4)로 사고, 고릴라가 안 될 종목은 즉시 팔아 남은 후보에 재투자. 매수와 매도가 한 묶음이야."</span> <br><span class="diff"><strong>컷 4 (보유·매도, 4·5·6):</strong> "고릴라는 장기 보유, <strong>대체 위협(substitution)이 입증될 때만</strong> 매도. 응용SW 침팬지는 확장 잠재력 있으면 보유, enabling 침팬지는 보유 X. 영주·기사는 가볍게, 초고성장 썰물엔 카테고리 전체 매도."</span> <br><span class="diff"><strong>컷 5 (충돌·valuation, 9 + 보강):</strong> "고릴라 충돌 땐 결판날 때까지 보유. 그리고, <strong>PER이 비싸다는 이유만으로 팔지 마라.</strong> 토네이도 중이면 valuation은 사후 정당화돼."</span> <br><span class="diff"><strong>컷 6 (★원칙 10, 뉴스 무시):</strong> "<strong>대부분의 뉴스는 고릴라 게임과 무관해. 무시해.</strong> CEO 트윗, 어닝 미스 한 번, 정치·매크로 단기 변동, 10대 원칙 중 하나가 트리거되지 않는 한 안 팔아. <strong>패턴 변화만 추적해. 분기에 한 번이면 충분, 본업하면서 적용 가능한 게 핵심이야.</strong> 시즌4 끝. 마지막 시즌, 네가 직접 사냥꾼이 되는 시간이야."</span></td>
   </tr>
 </table>
 
 <!-- ============ 시즌 5 ============ -->
 <div class="season-header">
   <h2>시즌 5: 고릴라 사냥꾼 (Ep 36~40)</h2>
-  <p>실전 통합 + 우리의 도구 — 나잘난이 독립적인 투자자로 성장한다 <span class="diff">(서칭 방법론 + ETF의 역설)</span></p>
+  <p>실전 통합 + 우리의 도구, 나잘난이 독립적인 투자자로 성장한다 <span class="diff">(서칭 방법론 + ETF의 역설)</span></p>
 </div>
 
 <figure style="margin:8px 0 24px 0; text-align:center;">
@@ -775,7 +796,7 @@
   <text x="444" y="150" text-anchor="middle" font-size="11.5" fill="#555" font-weight="bold">비고릴라가 더 큰 비중</text>
   <text x="444" y="166" text-anchor="middle" font-size="10.5" fill="#777">SanDisk·SK하이닉스·Ciena 등</text>
   <rect x="60" y="184" width="640" height="36" rx="6" fill="#eef9ef" stroke="#9bc49b"/>
-  <text x="380" y="207" text-anchor="middle" font-size="11.5" fill="#2d5016">ETF = 후보 '식별'까지. 고릴라 확정 후 '집중(몰빵)'은 고릴라 게임의 몫 (ETF는 비중 상한이 있어 몰빵 불가)</text>
+  <text x="380" y="207" text-anchor="middle" font-size="11.5" fill="#2d5016">ETF = 후보 '식별'까지. 고릴라 확정 후 '확신 집중(몰빵)'은 고릴라 게임의 몫 (분산형 ETF는 비중 상한, 세분시장 ETF도 규칙 기반)</text>
 </svg>
 <figcaption style="font-size:12px;color:#888;margin-top:2px;">좋은 ETF가 서식지 탐색을 대신해 주지만, 1등에 집중하는 일은 투자자가 한다. 비중은 예시 개념치. (개념 도식)</figcaption>
 </figure>
@@ -787,42 +808,42 @@
     <td>"서식지를 찾아라 <span class="diff">— 4가지 서칭 방법론</span>"</td>
     <td>Habitat Scouting + <span class="diff">현대화된 고릴라 사냥 툴킷</span></td>
     <td><span class="diff">AI 인프라·메모리·사이버보안 섹터 스캔</span></td>
-    <td><strong>컷 1:</strong> 고집중: "이제 너 혼자 사냥꾼이 되는 시간. 첫 단계 — 서식지(Habitat)를 찾아라." <br><strong>컷 2 (정의):</strong> "서식지 = 고릴라가 나올 만한 시장. 4기준이 작동할 수 있는 시장만." <br><strong>컷 3 (체크리스트):</strong> "① 불연속 혁신 진행 중? ② 토네이도 직전인가 메인 스트리트 안정기인가? ③ 카테고리가 죽는 PLC 끝물 아닌가?" <br><span class="diff"><strong>컷 4 (★4서칭 방법론):</strong> 선수용이 툴킷을 펼침 — "① <strong>밸류체인 병목</strong>(빅테크 CapEx가 어디서 막히나 — SemiAnalysis·TrendForce) ② <strong>군중정서·모멘텀</strong>(레딧·검색량 — ApeWisdom·Google Trends, MEME ETF 스타일) ③ <strong>개발자 생태계</strong>(GitHub·Hugging Face — 표준 선점 신호) ④ <strong>기관 13F</strong>(WhaleWisdom·Dataroma)."</span> <br><span class="diff"><strong>컷 5 (실습):</strong> 후보 서식지 — AI 인프라(NVIDIA·TSMC·ASML), 메모리(SK하이닉스·삼성), 사이버보안(CrowdStrike). 각 토네이도 단계 표시. 캐즘 위치(전기차·위성통신)는 제외.</span> <br><strong>컷 6:</strong> "다음 화 — 후보를 깊이 분석할 차례."</td>
+    <td><div class="lead">혼자 사냥꾼이 되는 첫 단계는 서식지(고릴라가 나올 시장) 찾기다. 밸류체인 병목·군중정서·개발자 생태계·기관 13F 4가지로 스캔한다.</div><strong>컷 1:</strong> 고집중: "이제 너 혼자 사냥꾼이 되는 시간. 첫 단계, 서식지(Habitat)를 찾아라." <br><strong>컷 2 (정의):</strong> "서식지 = 고릴라가 나올 만한 시장. 4기준이 작동할 수 있는 시장만." <br><strong>컷 3 (체크리스트):</strong> "① 불연속 혁신 진행 중? ② 토네이도 직전인가 메인 스트리트 안정기인가? ③ 카테고리가 죽는 PLC 끝물 아닌가?" <br><span class="diff"><strong>컷 4 (★4서칭 방법론):</strong> 선수용이 툴킷을 펼침. "① <strong>밸류체인 병목</strong>(빅테크 CapEx가 어디서 막히나, SemiAnalysis·TrendForce) ② <strong>군중정서·모멘텀</strong>(레딧·검색량, ApeWisdom·Google Trends, MEME ETF 스타일) ③ <strong>개발자 생태계</strong>(GitHub·Hugging Face, 표준 선점 신호) ④ <strong>기관 13F</strong>(WhaleWisdom·Dataroma)."</span> <br><span class="diff"><strong>컷 5 (실습):</strong> 후보 서식지. AI 인프라(NVIDIA·TSMC·ASML), 메모리(SK하이닉스·삼성), 사이버보안(CrowdStrike). 각 토네이도 단계 표시. 캐즘 위치(전기차·위성통신)는 제외.</span> <br><strong>컷 6:</strong> "다음 화, 후보를 깊이 분석할 차례."</td>
   </tr>
   <tr>
     <td><strong>37</strong></td>
     <td>"자격심사표를 채워라 <span class="diff">— Blue Sheet & SAHREAS</span>"</td>
     <td>Blue Sheet(Miller Heiman 6요소) + <span class="diff">SAHREAS 프로세스</span></td>
     <td>CrowdStrike 심층 분석</td>
-    <td><strong>컷 1:</strong> "이게 Blue Sheet야. Moore가 투자에도 쓰라고 한 영업 도구지." <br><strong>컷 2 (6요소):</strong> "① 투자 목표 ② 영향력 분석 ③ 강점·약점 ④ 레드플래그(매도 신호 미리) ⑤ 승리 조건 ⑥ 경쟁사 위치." <br><strong>컷 3 (실습 CrowdStrike):</strong> 목표 3년 2배 / 영향력 엔드포인트 보안 표준 / 강점 Falcon+클라우드+AI / 레드플래그 ① ARR 둔화 ② MS Defender 잠식 ③ 대형 보안사고 / 승리 +100% or 4기준 깨지면 EXIT. <br><span class="diff"><strong>컷 4 (★SAHREAS):</strong> "세미나에서 배운 프로세스로 묶어 — <strong>Scan(검토)·Hypothesize(가설)·Analyze(가치사슬)·Respond(매입)·Evaluate(평가)·Strengthen(강화).</strong> '종목보다 시기'가 핵심이야."</span> <br><strong>컷 5:</strong> 선수용: "이게 진짜 분석이지. 차트 보고 사는 거 말고." <br><strong>컷 6:</strong> "다음 화 — 고릴라 둘이 충돌하는 특수 케이스."</td>
+    <td><div class="lead">후보를 Blue Sheet(목표·강점·레드플래그·승리조건) + SAHREAS 프로세스로 심층 심사한다. '종목보다 시기'가 핵심.</div><strong>컷 1:</strong> "이게 Blue Sheet야. Moore가 투자에도 쓰라고 한 영업 도구지." <br><strong>컷 2 (6요소):</strong> "① 투자 목표 ② 영향력 분석 ③ 강점·약점 ④ 레드플래그(매도 신호 미리) ⑤ 승리 조건 ⑥ 경쟁사 위치." <br><strong>컷 3 (실습 CrowdStrike):</strong> 목표 3년 2배 / 영향력 엔드포인트 보안 표준 / 강점 Falcon+클라우드+AI / 레드플래그 ① ARR 둔화 ② MS Defender 잠식 ③ 대형 보안사고 / 승리 +100% or 4기준 깨지면 EXIT. <br><span class="diff"><strong>컷 4 (★SAHREAS):</strong> "세미나에서 배운 프로세스로 묶어, <strong>Scan(검토)·Hypothesize(가설)·Analyze(가치사슬)·Respond(매입)·Evaluate(평가)·Strengthen(강화).</strong> '종목보다 시기'가 핵심이야."</span> <br><strong>컷 5:</strong> 선수용: "이게 진짜 분석이지. 차트 보고 사는 거 말고." <br><strong>컷 6:</strong> "다음 화, 고릴라 둘이 충돌하는 특수 케이스."</td>
   </tr>
   <tr>
     <td><strong>38</strong></td>
     <td>"고릴라 충돌"</td>
-    <td>Moore 원칙 9 — 충돌 시 양쪽 보유</td>
+    <td>Moore 원칙 9, 충돌 시 양쪽 보유</td>
     <td>AWS vs Azure, <span class="diff">삼성 vs SK하이닉스(메모리)</span></td>
-    <td><strong>컷 1:</strong> Ep28 회상. 나잘난: "이런 경우 실전에서 어떻게 사요?" <br><strong>컷 2 (원칙 9):</strong> "<strong>두 고릴라가 충돌하면 결판날 때까지 둘 다 들고 있어.</strong>" <br><strong>컷 3 (실습):</strong> 클라우드 — MS(Azure) 50% + Amazon(AWS) 50%. <span class="diff">메모리 과점 — 삼성 + SK하이닉스 양쪽 보유.</span> <br><strong>컷 4 (왜):</strong> "한쪽이 망하면 다른 쪽이 시장 전체를 가져가. <strong>둘 다 보유하면 누가 이기든 카테고리 가치를 잡아. 헷지가 아니라 정공법.</strong>" <br><strong>컷 5 (주의):</strong> "단, 진짜 oligopoly인지 확인 — 둘 다 4기준 통과 + 워크로드 분리. 그냥 1·2등이면 안 돼(그건 영주 vs 기사)." <br><strong>컷 6:</strong> "다음 화 — 혼자 다 못 하니까, 집단 지성과 도구."</td>
+    <td><div class="lead">두 고릴라가 충돌하면(AWS·Azure, 삼성·SK) 결판날 때까지 양쪽 다 보유한다. 누가 이기든 카테고리 가치를 잡는 정공법이다(원칙 9).</div><strong>컷 1:</strong> Ep28 회상. 나잘난: "이런 경우 실전에서 어떻게 사요?" <br><strong>컷 2 (원칙 9):</strong> "<strong>두 고릴라가 충돌하면 결판날 때까지 둘 다 들고 있어.</strong>" <br><strong>컷 3 (실습):</strong> 클라우드, MS(Azure) 50% + Amazon(AWS) 50%. <span class="diff">메모리 과점, 삼성 + SK하이닉스 양쪽 보유.</span> <br><strong>컷 4 (왜):</strong> "한쪽이 망하면 다른 쪽이 시장 전체를 가져가. <strong>둘 다 보유하면 누가 이기든 카테고리 가치를 잡아. 헷지가 아니라 정공법.</strong>" <br><strong>컷 5 (주의):</strong> "단, 진짜 oligopoly인지 확인, 둘 다 4기준 통과 + 워크로드 분리. 그냥 1·2등이면 안 돼(그건 영주 vs 기사)." <br><strong>컷 6:</strong> "다음 화, 혼자 다 못 하니까, 집단 지성과 도구."</td>
   </tr>
   <tr>
     <td><strong>39</strong></td>
     <td>"집단 지성과 우리의 도구 <span class="diff">— ETF의 역설</span>"</td>
     <td>집단지성 + <span class="diff">ETF는 서식지 식별까지, 몰빵은 고릴라 게임의 몫</span></td>
     <td><span class="diff">TIME·ARTY·MEME·DRAM ETF, 고릴라 게임 웹사이트</span></td>
-    <td><strong>컷 1:</strong> 나잘난이 투자 클럽 제안 — "혼자 모든 시장을 못 봐. 분업하자." <br><span class="diff"><strong>컷 2 (★ETF 역설):</strong> 선수용: "그런데 발견한 게 있어. <strong>TIME 같은 AI ETF를 뜯어보니, 확실한 고릴라(NVIDIA·ASML·TSMC…)의 합산 비중이 20% 안팎밖에 안 돼.</strong> 오히려 SanDisk·SK하이닉스 같은 비고릴라가 더 큰 비중이야. <strong>ETF는 고릴라만 담는 게 아니라 하입·모멘텀까지 섞어 담아.</strong>"</span> <br><span class="diff"><strong>컷 3 (★차별점):</strong> 고집중: "바로 그거야. ETF는 <strong>서식지에서 후보를 식별(identification)하는 일</strong>을 대신해줘 — 그래서 좋은 ETF가 많아진 시대엔 직접 종목 찾는 경쟁우위가 줄었어. 게다가 ETF는 보통 종목당 비중 상한이 있어 <strong>리밸런싱으로 한 종목에 몰빵을 못 해.</strong> 그런데 <strong>고릴라가 확정됐을 때 그 1등에 집중(몰빵)하는 일은 ETF가 못 하고, 우리가 한다.</strong> 그게 고릴라 게임이 여전히 의미 있는 이유야."</span> <br><span class="diff"><strong>컷 4 (어떤 ETF인가):</strong> "그래서 우리가 주목하는 건 인덱스 ETF가 아니라 <strong>세분시장 특화 ETF</strong> — TIME 글로벌AI인공지능액티브, ARTY, MEME, DRAM 같은. 이들이 고릴라 게임 철학에 부합하게 후보를 골라놨거든. 단 <strong>레버리지 ETF(예: 한국 3배)는 나대출의 함정</strong>이니 조심."</span> <br><span class="diff"><strong>컷 5 (우리 도구 — 솔직하게):</strong> "Moore 책의 본 분류는 6등급·4기준. 우리 클럽은 운영을 위해 <strong>보조 도구(잠재 고릴라·캐즘 위치 라벨, 추가 점수 변수)</strong>를 만들었어. 본 thesis는 Moore에 한정하고, 이건 보조 장치야."</span> <br><strong>컷 6:</strong> 화면에 고릴라 게임 웹사이트(다수 firm × ecosystem 분류, 자동 업데이트). "이게 우리 클럽의 도구야. 다음 화 — 마지막, 정글의 법칙."</td>
+    <td><div class="lead">ETF는 후보를 '식별'해줄 뿐, 고릴라 확정 후 '집중(몰빵)'은 투자자 몫. AI ETF조차 고릴라만 담지 않는다는 'ETF의 역설'.</div><strong>컷 1:</strong> 나잘난이 투자 클럽 제안. "혼자 모든 시장을 못 봐. 분업하자." <br><span class="diff"><strong>컷 2 (★ETF 역설):</strong> 선수용: "그런데 발견한 게 있어. <strong>TIME 같은 AI ETF를 뜯어보니, 확실한 고릴라(NVIDIA·ASML·TSMC…)의 합산 비중이 20% 안팎밖에 안 돼.</strong> 오히려 SanDisk·SK하이닉스 같은 비고릴라가 더 큰 비중이야. <strong>ETF는 고릴라만 담는 게 아니라 하입·모멘텀까지 섞어 담아.</strong>"</span> <br><span class="diff"><strong>컷 3 (★차별점):</strong> 고집중: "바로 그거야. ETF는 <strong>서식지에서 후보를 식별(identification)하는 일</strong>을 대신해줘, 그래서 좋은 ETF가 많아진 시대엔 직접 종목 찾는 경쟁우위가 줄었어. 게다가 <strong>분산형 ETF</strong>는 종목당 비중 상한·정기 리밸런싱 때문에 한 종목 몰빵이 어려워(<strong>세분시장 ETF</strong>는 한 종목이 20%를 넘게 실리기도 하지만 그것도 규칙 기반이지 <strong>'확신에 따른 집중'은 아니야</strong>). 그런데 <strong>고릴라가 확정됐을 때 그 1등에 집중(몰빵)하는 일은 ETF가 못 하고, 우리가 한다.</strong> 그게 고릴라 게임이 여전히 의미 있는 이유야."</span> <br><span class="diff"><strong>컷 4 (어떤 ETF인가):</strong> "그래서 우리가 주목하는 건 인덱스 ETF가 아니라 <strong>세분시장 특화 ETF</strong>, TIME 글로벌AI인공지능액티브, ARTY, MEME, DRAM 같은. 이들이 고릴라 게임 철학에 부합하게 후보를 골라놨거든. 단 <strong>레버리지 ETF(예: 한국 3배)는 나대출의 함정</strong>이니 조심."</span> <br><span class="diff"><strong>컷 5 (우리 도구, 솔직하게):</strong> "Moore 책의 본 분류는 6등급·4기준. 우리 클럽은 운영을 위해 <strong>보조 도구(잠재 고릴라·캐즘 위치 라벨, 추가 점수 변수)</strong>를 만들었어. 본 thesis는 Moore에 한정하고, 이건 보조 장치야."</span> <br><strong>컷 6:</strong> 화면에 고릴라 게임 웹사이트(다수 firm × ecosystem 분류, 자동 업데이트). "이게 우리 클럽의 도구야. 다음 화, 마지막, 정글의 법칙."</td>
   </tr>
   <tr>
     <td><strong>40</strong></td>
     <td>"정글의 법칙 <span class="diff">— 다음 고릴라는 어디에</span>"</td>
     <td>전체 총정리 + 차세대 토네이도 후보</td>
     <td><span class="diff">HBF·온디바이스 AI(윈비디아)·에이전틱 AI</span></td>
-    <td><strong>컷 1:</strong> 마지막 화. 나잘난: "1년 동안 배운 게 많아요. 정리해주세요." <br><strong>컷 2 (불변):</strong> "정글은 변하지 않아. 기술·기업이 바뀌어도 캐즘 → 토네이도 → 고릴라의 법칙은 반복돼. 70년 전 아이오와 옥수수밭부터 오늘 AI까지." <br><strong>컷 3 (일반인의 우위):</strong> "고릴라 게임은 일반인이 프로보다 잘할 수 있는 거의 유일한 영역 — 결정이 적고, 장기 보유고, 단기 압박이 없어. 3×3 매트릭스의 정중앙, 그게 너였어." <br><strong>컷 4 (1년 후):</strong> 나잘난 포트폴리오 — 벤치마크를 웃도는 성과, 거래는 손에 꼽을 정도. "분기에 한 번만 봤는데도." <br><span class="diff"><strong>컷 5 (★다음 고릴라):</strong> "다음 고릴라는 어디? <strong>HBM 다음의 HBF, 클라우드 다음의 온디바이스 AI(윈비디아), 챗봇 다음의 에이전틱 AI.</strong> 지금 캐즘·하입 어딘가에 있어. TALC 5인이 또 같은 순서로 반응 중이지." 카메오 5인: 선수용(혁신가) "HBF 벌써 보고 있어", IT 형(선각자) "온디바이스가 미래", 김 대리(실용주의자) "에이전트 회사도 도입했어", 부모님(보수파) "AI 이제 익숙", 박 부장(회의론자) "글쎄…"</span> <br><strong>컷 6:</strong> 나잘난: "이제 박사님 없이도 사냥할 수 있을 것 같아요." 고집중: "<strong>정글의 법칙은 계속된다. 다음 고릴라는 — 네 눈으로 찾을 수 있잖아.</strong>" <span class="diff">— 본편 끝. <strong>외전(시의성 트랙)으로 이어집니다.</strong></span></td>
+    <td><div class="lead">정글의 법칙은 변하지 않는다. 70년 전 옥수수밭부터 오늘 AI까지 그대로다. 다음 고릴라(HBF·온디바이스·에이전틱)는 네 눈으로 찾는다.</div><strong>컷 1:</strong> 마지막 화. 나잘난: "1년 동안 배운 게 많아요. 정리해주세요." <br><strong>컷 2 (불변):</strong> "정글은 변하지 않아. 기술·기업이 바뀌어도 캐즘 → 토네이도 → 고릴라의 법칙은 반복돼. 70년 전 아이오와 옥수수밭부터 오늘 AI까지." <br><strong>컷 3 (일반인의 우위):</strong> "고릴라 게임은 일반인이 프로보다 잘할 수 있는 거의 유일한 영역, 결정이 적고, 장기 보유고, 단기 압박이 없어. 3×3 매트릭스의 정중앙, 그게 너였어." <br><strong>컷 4 (1년 후):</strong> 나잘난 포트폴리오, 벤치마크를 웃도는 성과, 거래는 손에 꼽을 정도. "분기에 한 번만 봤는데도." <br><span class="diff"><strong>컷 5 (★다음 고릴라):</strong> "다음 고릴라는 어디? <strong>HBM 다음의 HBF, 클라우드 다음의 온디바이스 AI(윈비디아), 챗봇 다음의 에이전틱 AI.</strong> 지금 캐즘·하입 어딘가에 있어. TALC 5인이 또 같은 순서로 반응 중이지." 카메오 5인: 선수용(혁신가) "HBF 벌써 보고 있어", IT 형(선각자) "온디바이스가 미래", 김 대리(실용주의자) "에이전트 회사도 도입했어", 부모님(보수파) "AI 이제 익숙", 박 부장(회의론자) "글쎄…"</span> <br><strong>컷 6:</strong> 나잘난: "이제 박사님 없이도 사냥할 수 있을 것 같아요." 고집중: "<strong>정글의 법칙은 계속된다. 다음 고릴라는, 네 눈으로 찾을 수 있잖아.</strong>" <span class="diff">, 본편 끝. <strong>외전(시의성 트랙)으로 이어집니다.</strong></span></td>
   </tr>
 </table>
 
 <!-- ============ 외전 시즌 ============ -->
 <div class="season-header diff-block">
   <h2 class="diff">외전 시즌: 시장 라이브 — 지금 정글에서 무슨 일이? (외전 1~5 / 본편 40화와 별도 카운트)</h2>
-  <p class="diff"><strong>시의성 트랙.</strong> 본편이 "원리 학습"이라면 외전은 "현재 진행 중인 종목·ETF·표준 전쟁을 만화로 해설·설득"한다. <strong>이 외전이 만화의 유니크 컨트리뷰션 — 좋은 ETF가 있어도 아직 캐즘을 못 건넌 인구(실용주의자·보수주의자)에게 다리를 놓는 콘텐츠.</strong> 분기 1회 업데이트 권장.</p>
+  <p class="diff"><strong>시의성 트랙.</strong> 본편이 "원리"라면 외전은 "지금 진행 중인 종목·ETF·표준 전쟁"을 해설한다. <strong>좋은 ETF가 있어도 아직 캐즘을 못 건넌 실용주의자·보수주의자에게 다리를 놓는 게 이 만화의 유니크 컨트리뷰션이다.</strong> 분기 1회 업데이트.</p>
 </div>
 
 <table>
@@ -832,42 +853,42 @@
     <td>"AI ETF는 정말 고릴라 바구니인가 — TIME ETF 해부와 ETF의 역설"</td>
     <td>ETF 리밸런싱을 4기준·6등급으로 해석 + ETF 역설</td>
     <td>TIME 글로벌AI인공지능액티브 (+ ARTY·MEME·DRAM 비교)</td>
-    <td><strong>요지:</strong> TIME ETF 상위 보유를 4기준으로 해부 → 대부분 본편의 고릴라/과점 1등. 그러나 <strong>확실한 고릴라 합산 비중은 20% 안팎, 비고릴라(SanDisk·SK하이닉스 등)가 더 큰 비중</strong>이라는 "ETF의 역설" 공개. 결론: ETF는 <strong>후보 식별까지</strong> 대신해 주지만, 고릴라 확정 후 집중은 투자자의 몫. 김 대리(실용주의자) 카메오: "그럼 ETF 하나 + 강한 확신 종목 1~2개가 답?" — <strong>합리적 시작점.</strong> 레버리지 ETF(KORU 3X 등)는 나대출의 함정으로 경고.</td>
+    <td><div class="lead">AI ETF가 정말 고릴라 바구니인지 해부한다. 확실한 고릴라 비중은 20% 안팎뿐이다. ETF는 후보 식별까지, 집중은 투자자 몫.</div><strong>요지:</strong> TIME ETF 상위 보유를 4기준으로 해부 → 대부분 본편의 고릴라/과점 1등. 그러나 <strong>확실한 고릴라 합산 비중은 20% 안팎, 비고릴라(SanDisk·SK하이닉스 등)가 더 큰 비중</strong>이라는 "ETF의 역설" 공개. 결론: ETF는 <strong>후보 식별까지</strong> 대신해 주지만, 고릴라 확정 후 집중은 투자자의 몫. 김 대리(실용주의자) 카메오: "그럼 ETF 하나 + 강한 확신 종목 1~2개가 답?". <strong>합리적 시작점.</strong> 레버리지 ETF(KORU 3X 등)는 나대출의 함정으로 경고.</td>
   </tr>
   <tr class="diff-row">
     <td><strong>외전 2</strong></td>
     <td>"Cerebras가 NVIDIA를 흔들 수 있을까"</td>
-    <td>4기준 실전 적용 — 도전자 검토 + RIDE 규칙</td>
+    <td>4기준 실전 적용, 도전자 검토 + RIDE 규칙</td>
     <td>Cerebras (Wafer-Scale Engine) vs NVIDIA</td>
-    <td><strong>요지:</strong> 나대출 "Cerebras가 NVIDIA보다 빠르대요!" → 4기준 검토: ① 자체 아키텍처 ✓ ② 전환비용 ✗(CUDA 락인 없음) ③ 네트워크효과 ✗✗(CUDA 생태계 격차) ④ 완전제품 ✗. <strong>1.5/4 = 침팬지/잠재 침팬지.</strong> 특정 niche의 King 가능성은 있어도 AI 컴퓨트 고릴라는 아님. <strong>5% 이하 RIDE는 가능, 본 thesis 매수 대상은 아님.</strong> 지금 주가가 흘러내리는 것이 하입의 증거.</td>
+    <td><div class="lead">Cerebras를 4기준으로 검토하면 1.5/4 = 침팬지급. AI 컴퓨트 고릴라가 아니다. 5% 이하 RIDE는 몰라도 본 매수 대상은 아니다.</div><strong>요지:</strong> 나대출 "Cerebras가 NVIDIA보다 빠르대요!" → 4기준 검토: ① 자체 아키텍처 ✓ ② 전환비용 ✗(CUDA 락인 없음) ③ 네트워크효과 ✗✗(CUDA 생태계 격차) ④ 완전제품 ✗. <strong>1.5/4 = 침팬지/잠재 침팬지.</strong> 특정 niche의 King 가능성은 있어도 AI 컴퓨트 고릴라는 아님. <strong>5% 이하 RIDE는 가능, 본 thesis 매수 대상은 아님.</strong> 지금 주가가 흘러내리는 것이 하입의 증거.</td>
   </tr>
   <tr class="diff-row">
     <td><strong>외전 3</strong></td>
     <td>"메모리 라이브 — HBM·DRAM·HBF, 그리고 MEME 함정"</td>
     <td>Ep10·26의 실시간 업데이트 + 하입 판별 실전</td>
     <td>SK하이닉스·삼성·마이크론·Western Digital, MEME 종목</td>
-    <td><strong>요지:</strong> 선수용이 메모리 실시간 분석 — HBM 점유율, DRAM 사이클, NAND→HBF 전환. 김정호 교수("HBM 당분간 교체 안 됨") + 이선엽 대표("공급 제한이라 비싸도 아직 고점 아님") 두 관점을 카메오로. 나대출 "레딧에서 작은 메모리 회사 +120%!" → <strong>Ep30 5기준표를 꺼내 하입/MEME 함정 판별</strong>(매출 정체·완전제품 없음·시총만 폭발). 결론: 본 thesis는 oligopoly 1·2등에 집중, MEME는 RIDE도 하지 마라.</td>
+    <td><div class="lead">메모리를 실시간으로 본다. HBM·DRAM·HBF, 김정호·이선엽 두 관점, 그리고 레딧 MEME 종목은 5기준표로 하입 판별. oligopoly 1·2등에 집중.</div><strong>요지:</strong> 선수용이 메모리 실시간 분석, HBM 점유율, DRAM 사이클, NAND→HBF 전환. 김정호 교수("HBM 당분간 교체 안 됨") + 이선엽 대표("공급 제한이라 비싸도 아직 고점 아님") 두 관점을 카메오로. 나대출 "레딧에서 작은 메모리 회사 +120%!" → <strong>Ep30 5기준표를 꺼내 하입/MEME 함정 판별</strong>(매출 정체·완전제품 없음·시총만 폭발). 결론: 본 thesis는 oligopoly 1·2등에 집중, MEME는 RIDE도 하지 마라.</td>
   </tr>
   <tr class="diff-row">
     <td><strong>외전 4</strong></td>
     <td>"윈텔의 죽음, 윈비디아의 탄생 — 표준 교체를 실시간으로"</td>
     <td>표준 전쟁·카테고리 substitution의 라이브 사례</td>
     <td>윈비디아(Windows+NVIDIA), 온디바이스 AI, 인텔</td>
-    <td><strong>요지:</strong> 젠슨황의 윈비디아 선언(2026) 해설 — 40년 윈텔(Windows+Intel)이 윈비디아(Windows+NVIDIA)로 교체, 클라우드 → 온디바이스 AI. <strong>인텔 = 과거 고릴라의 쇠퇴(원칙 4의 substitution 신호), NVIDIA = 새 표준 동맹.</strong> 하드웨어(NVIDIA)+소프트웨어(MS OS)의 수직 통합. 구글 스택(TPU·Gemini·MCP)과의 표준 전쟁 구도까지. "다음 고릴라는 표준이 교체되는 이 틈에서 태어난다."</td>
+    <td><div class="lead">40년 윈텔이 윈비디아로 교체되는 표준 전쟁을 실시간으로. 인텔 = 쇠퇴 고릴라, NVIDIA = 새 표준 동맹.</div><strong>요지:</strong> 젠슨황의 윈비디아 선언(2026) 해설, 40년 윈텔(Windows+Intel)이 윈비디아(Windows+NVIDIA)로 교체, 클라우드 → 온디바이스 AI. <strong>인텔 = 과거 고릴라의 쇠퇴(원칙 4의 substitution 신호), NVIDIA = 새 표준 동맹.</strong> 하드웨어(NVIDIA)+소프트웨어(MS OS)의 수직 통합. 구글 스택(TPU·Gemini·MCP)과의 표준 전쟁 구도까지. "다음 고릴라는 표준이 교체되는 이 틈에서 태어난다."</td>
   </tr>
   <tr class="diff-row">
     <td><strong>외전 5</strong></td>
     <td>"왜 다들 안 사는가 — ETF의 캐즘, 전기차의 캐즘, 그리고 이 만화의 답"</td>
     <td>만화의 유니크 컨트리뷰션 공식 선언</td>
     <td>전기차/EREV 캐즘 + AI ETF의 캐즘</td>
-    <td><strong>요지:</strong> 나잘난 "좋은 AI ETF가 있는데 왜 다들 안 사요? 전기차도 좋다면서 왜 하이브리드로 가요?" 고집중: "둘 다 <strong>캐즘</strong>이야. ① ETF의 캐즘 — 실용주의자·보수주의자에게 reference·완전제품(어떻게 시작·언제 팔지)이 부족 + 트레이딩 콘텐츠 잡음. ② 전기차의 캐즘 — 충전·안전·완전제품 미완성이라 EREV로 우회. <strong>캐즘은 구조적이다.</strong>" <strong>이 만화의 역할 = 그 다리.</strong> 본편(원리) + 외전(시의성) + 웹사이트(정밀 분석) + 투자클럽(reference)이 ETF의 whole product를 채운다. 독자에게 직접 호소: "옆자리 김 대리에게 이 만화를 권해줘. 그 reference가 캐즘을 건너게 해." — 외전 끝.</td>
+    <td><div class="lead">좋은 ETF·전기차가 있어도 다들 안 사는 건 둘 다 '캐즘'이기 때문. 이 만화가 reference·완전제품을 채우는 '다리'다.</div><strong>요지:</strong> 나잘난 "좋은 AI ETF가 있는데 왜 다들 안 사요? 전기차도 좋다면서 왜 하이브리드로 가요?" 고집중: "둘 다 <strong>캐즘</strong>이야. ① ETF의 캐즘, 실용주의자·보수주의자에게 reference·완전제품(어떻게 시작·언제 팔지)이 부족 + 트레이딩 콘텐츠 잡음. ② 전기차의 캐즘, 충전·안전·완전제품 미완성이라 EREV로 우회. <strong>캐즘은 구조적이다.</strong>" <strong>이 만화의 역할 = 그 다리.</strong> 본편(원리) + 외전(시의성) + 웹사이트(정밀 분석) + 투자클럽(reference)이 ETF의 whole product를 채운다. 독자에게 직접 호소: "옆자리 김 대리에게 이 만화를 권해줘. 그 reference가 캐즘을 건너게 해.". 외전 끝.</td>
   </tr>
 </table>
 
 <!-- ============ 창고/번외 ============ -->
 <div class="warehouse-header">
   <h2>&#x1F4E6; 창고 · 번외 — 역사 사례 보관소 (본편에서 분리)</h2>
-  <p><span class="diff">v3에서 본편을 AI·반도체·테슬라 중심으로 재편하며, 기존의 비AI 역사 사례들을 여기로 옮겨 보관합니다(삭제하지 않음). 후속작 또는 「고릴라 게임 역사편」 모음으로 별도 공유 가능. 각 사례는 본편 어느 원리와 연결되는지 표시.</span></p>
+  <p><span class="diff">본편을 AI·반도체·테슬라 중심으로 재편하며 기존 비AI 역사 사례를 여기로 옮겨 보관한다(삭제 아님). 후속작·「역사편」 모음으로 쓸 수 있다. 각 사례에 연결되는 본편 원리를 표시했다.</span></p>
 </div>
 
 <table>
@@ -876,7 +897,7 @@
   <tr><td><strong>Segway · Google Glass · C3.ai</strong></td><td>캐즘 사망(Ep3) / SPC(Ep33)</td><td>선각자 폭발 → 실용주의자 침묵 → 캐즘 사망. compelling reason 부재.</td></tr>
   <tr><td><strong>이마트 → 쿠팡 (한국 리테일)</strong></td><td>비치헤드·토네이도·PLC(Ep4·6·9)</td><td>이마트(주말 가족 장보기 비치헤드 → 토네이도 → 메인스트리트) → 쿠팡(로켓배송)이 다음 토네이도. 일상 비유.</td></tr>
   <tr><td><strong>코카콜라 · 다이슨 · P&amp;G</strong></td><td>비ICT 고릴라(4기준의 산업 보편성)</td><td>브랜드+유통망(코카콜라), 카테고리 1등(다이슨)도 4기준으로 분석 가능. 단 일반 산업은 통과율이 낮다.</td></tr>
-  <tr><td><strong>통신 3대 — 모토롤라 → 노키아 → 애플</strong></td><td>PLC·카테고리 교체(Ep9·27)</td><td>각 시대의 고릴라가 카테고리(아날로그→피처폰→스마트폰) 교체로 사라짐. 윈텔→윈비디아의 역사적 짝.</td></tr>
+  <tr><td><strong>통신 3대, 모토롤라 → 노키아 → 애플</strong></td><td>PLC·카테고리 교체(Ep9·27)</td><td>각 시대의 고릴라가 카테고리(아날로그→피처폰→스마트폰) 교체로 사라짐. 윈텔→윈비디아의 역사적 짝.</td></tr>
   <tr><td><strong>ServiceNow (ITSM→HR→CSM)</strong></td><td>볼링앨리(Ep5)</td><td>같은 회사 안 reference가 가장 강력. 볼링앨리 연쇄의 교과서. (v3 본편은 CrowdStrike로 대체)</td></tr>
   <tr><td><strong>Salesforce 초기 / Microsoft Office·365</strong></td><td>비치헤드·완전제품·전환비용(Ep4·22)</td><td>중소 영업팀 비치헤드 + 완전제품(AppExchange·컨설턴트·인증). NRR 락-인.</td></tr>
   <tr><td><strong>부엌·백화점 일상 비유</strong></td><td>표준 교체·완전제품(Ep21·24)</td><td>아궁이→구공탄→가스레인지→인덕션, 동네슈퍼→백화점/이마트. "Moore 4기준의 산업 보편성" framing.</td></tr>
@@ -890,11 +911,11 @@
 <table class="summary-table">
   <tr><th>시즌</th><th>에피소드</th><th>테마</th><th>핵심 학습</th></tr>
   <tr><td><strong>1. 정글에 입장하다</strong></td><td>1~10</td><td>철학 + TALC + 캐즘 + PLC <span class="diff">(AI·전기차·메모리)</span></td><td>고릴라 게임 정의, <span class="diff">3×3 매트릭스(정중앙 투자자)</span>, 데이트레이딩·모멘텀·밸류와 차별화, <span class="diff">확산이론의 농업 뿌리</span>, 캐즘=구조적<span class="diff">(전기차/EREV)</span>, 비치헤드·완전제품·볼링앨리·토네이도, <span class="diff">표준전쟁(윈텔→윈비디아)</span>, PLC, <span class="diff">메모리 단계 판별 + 5단 케이크</span></td></tr>
-  <tr><td><strong>2. 정글의 서열</strong></td><td>11~20</td><td>Moore 6등급 — 영장류 + <span class="diff">킹덤(영주·기사·소작농)</span></td><td>Gorilla/Chimp/Monkey(NVIDIA·ASML·AMD·중국클론) + <span class="diff">영주/기사/소작농</span>. <span class="diff">메모리 commodity 논쟁, 테슬라=캐즘 위치, 파운데이션 모델=잠재 고릴라(초기 하입 주의), TIME ETF 분류</span></td></tr>
+  <tr><td><strong>2. 정글의 서열</strong></td><td>11~20</td><td>Moore 6등급, 영장류 + <span class="diff">킹덤(영주·기사·소작농)</span></td><td>Gorilla/Chimp/Monkey(NVIDIA·ASML·AMD·중국클론) + <span class="diff">영주/기사/소작농</span>. <span class="diff">메모리 commodity 논쟁, 테슬라=캐즘 위치, 파운데이션 모델=잠재 고릴라(초기 하입 주의), TIME ETF 분류</span></td></tr>
   <tr><td><strong>3. 고릴라의 해부학</strong></td><td>21~28</td><td>Moore 4기준 + <span class="diff">AI 가치사슬·메모리 전쟁</span></td><td>독점 아키텍처·전환비용·수확체증·완전제품. <span class="diff">젠슨황 5단 케이크, NVIDIA 공급망 해부, 메모리 전쟁(HBM→HBF, 메모리가 GPU를 삼킨다), 윈텔→윈비디아, oligopoly(삼성·SK)</span></td></tr>
   <tr><td><strong>4. 과열과 공포 사이</strong></td><td>29~35</td><td>하입사이클 + 매수·매도 <span class="diff">10대 원칙</span></td><td><span class="diff">2026 가트너(에이전틱 AI=Peak), 5기준 판별표 + 3진입 신호, 매수 4원칙, RIDE/EXIT, SPC/에이전트 워싱, 바구니 매수, 10대 원칙 정본, 뉴스 무시</span></td></tr>
   <tr><td><strong>5. 고릴라 사냥꾼</strong></td><td>36~40</td><td>실전 통합 + 우리 도구</td><td><span class="diff">서식지 정찰 + 4서칭 방법론, Blue Sheet·SAHREAS, 고릴라 충돌, ETF의 역설(식별까지·몰빵은 고릴라게임), 다음 고릴라(HBF·온디바이스·에이전틱)</span></td></tr>
-  <tr class="diff-row"><td><strong><span class="diff">외전. 시장 라이브</span></strong></td><td><span class="diff">외전 1~5 <em>(별도 카운트)</em></span></td><td><span class="diff">시의성 — AI ETF·종목·표준전쟁 해설</span></td><td><span class="diff">TIME ETF 역설 / Cerebras 4기준 / 메모리(HBM·HBF·MEME) 라이브 / 윈비디아 표준교체 / ETF·전기차의 캐즘과 이 만화의 다리 역할. 분기 1회 업데이트.</span></td></tr>
+  <tr class="diff-row"><td><strong><span class="diff">외전. 시장 라이브</span></strong></td><td><span class="diff">외전 1~5 <em>(별도 카운트)</em></span></td><td><span class="diff">시의성, AI ETF·종목·표준전쟁 해설</span></td><td><span class="diff">TIME ETF 역설 / Cerebras 4기준 / 메모리(HBM·HBF·MEME) 라이브 / 윈비디아 표준교체 / ETF·전기차의 캐즘과 이 만화의 다리 역할. 분기 1회 업데이트.</span></td></tr>
   <tr><td><strong><span class="diff">📦 창고·번외</span></strong></td><td><span class="diff">역사 보관</span></td><td><span class="diff">본편서 분리한 비AI 역사 사례</span></td><td><span class="diff">VHS·Segway·이마트→쿠팡·코카콜라·통신3대·ServiceNow·Salesforce·일상 비유. 후속작/역사편 모음으로 보존.</span></td></tr>
 </table>
 
@@ -906,10 +927,10 @@
     <li><strong>나잘난의 포트폴리오</strong>가 매 시즌 진화 (손실 → 이해 → 분석 → 수익)</li>
     <li><strong><span class="diff">나대출</span></strong>이 매번 하입·<span class="diff">레버리지·빚투</span>에 물리며 "하지 말아야 할 것"을 보여주는 반면교사</li>
     <li><strong><span class="diff">선수용</span></strong>이 데이터로 검증 → 감(나잘난) vs 논리(선수용) 긴장감 + 혁신수용자 페르소나</li>
-    <li><strong><span class="diff">고집중 박사(전도사)</span>의 회상·인용</strong>으로 역사·전문가 시각 삽입 — <span class="diff">김정호 교수(메모리 중심론), 이선엽(반도체 사이클), 젠슨황(5단 케이크·윈비디아)</span></li>
-    <li><strong>TALC 5인 카메오</strong>(혁신가-선수용, 선각자-IT 형, 실용주의자-김 대리, 보수파-부모님, 회의론자-박 부장)가 매 시즌 같은 신기술<span class="diff">(AI·HBM·전기차)</span>에 어떻게 반응하는지 — 캐즘·토네이도 시각 장치</li>
+    <li><strong><span class="diff">고집중 박사(전도사)</span>의 회상·인용</strong>으로 역사·전문가 시각 삽입, <span class="diff">김정호 교수(메모리 중심론), 이선엽(반도체 사이클), 젠슨황(5단 케이크·윈비디아)</span></li>
+    <li><strong>TALC 5인 카메오</strong>(혁신가-선수용, 선각자-IT 형, 실용주의자-김 대리, 보수파-부모님, 회의론자-박 부장)가 매 시즌 같은 신기술<span class="diff">(AI·HBM·전기차)</span>에 어떻게 반응하는지. 캐즘·토네이도 시각 장치</li>
     <li class="diff"><strong>3×3 매트릭스(정중앙=고릴라 투자자)</strong>가 "이 만화의 주인공은 너"라는 메시지의 앵커. 학력이 아니라 "지식 중간 + 관심 있는 보통 사람"으로 독자 규정</li>
-    <li class="diff"><strong>두 축의 그림</strong> — 반도체 공급망(②③) + 소프트웨어 레이어(④⑤)를 젠슨황 5단 케이크 / Moore 기술 층위로 일관되게 시각화</li>
+    <li class="diff"><strong>두 축의 그림</strong>, 반도체 공급망(②③) + 소프트웨어 레이어(④⑤)를 젠슨황 5단 케이크 / Moore 기술 층위로 일관되게 시각화</li>
     <li class="diff"><strong>표준화=전쟁</strong> 톤(『마케팅 전쟁』)을 메모리 전쟁·GPU 전쟁·윈텔→윈비디아에 일관 적용</li>
     <li><strong>Moore 책의 proven 개념</strong>(TALC·캐즘·토네이도·6등급·4기준·<span class="diff">10대 원칙</span>)이 본 thesis. <strong>우리 클럽 보조 도구</strong>는 시즌5에서 도구로 가볍게 소개</li>
     <li><strong>출처</strong>: 이론은 Moore 3부작, 사례 수치는 SEC 10-K·DART·IR, 자체 분석은 별도 표시. <span class="diff">면책·저작권 고지 문서 상단 명시</span></li>
