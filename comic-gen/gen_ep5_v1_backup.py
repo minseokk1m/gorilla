@@ -5,8 +5,8 @@ import os, sys, re, time
 from openai import OpenAI
 import gen_images as g
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-FINAL = os.path.join(BASE, "final_ep5")
+BASE = os.path.expanduser("~/Desktop/고릴라헌터스_EP5")
+FINAL = os.path.join(BASE, "final")
 KEYF = os.path.join(BASE, "openai_key.txt")
 os.makedirs(FINAL, exist_ok=True)
 
@@ -15,14 +15,11 @@ def client():
     for f in (KEYF, getattr(g, "KEYF", "")):
         if not key and f and os.path.exists(f): key = open(f).read().strip()
     if not key: sys.exit("API 키 없음: " + KEYF)
-    return OpenAI(api_key=key, timeout=420.0, max_retries=2)
+    return OpenAI(api_key=key)
 
 CHARS = (g.CHARS +
     " EP5 RECURRING: HAN SIL-SOK (40s pragmatist 'Early Majority' everyman, neat shirt and knit "
-    "vest, metal glasses, calm, often by a laptop). "
-    "EP5 CRITICAL CONSISTENCY: NA BAE-UM is EXACTLY 39 years old and must look late-30s on EVERY "
-    "page. STUDY GROUP ROOM: one whiteboard, long table, bookshelves; NO trading desks, NO "
-    "multi-monitor setups, NO wall posters.")
+    "vest, metal glasses, calm, often by a laptop).")
 
 RULES_TEXT = (
     "FORMAT: a single vertical Korean webtoon PAGE with the panels described, thin white gutters. "
@@ -30,13 +27,8 @@ RULES_TEXT = (
     "Korean webtoon lettering, perfect spelling and spacing, NO garbled or invented characters. "
     "CRITICAL RULE: draw a speech/thought balloon or narration/caption box ONLY for each Korean line "
     "listed below, exactly that many, NO MORE; EVERY balloon/box MUST contain its Korean text; do NOT "
-    "draw any empty, blank, leftover, extra or decorative balloons anywhere. "
-    "SPEAKER RULE: each balloon's tail must point at the character named for that line; a thought "
-    "balloon belongs ONLY to the character named. "
-    "BACKGROUND TEXT RULE: NO readable text anywhere except the lines and diagram labels explicitly "
-    "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
-    "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
-    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified.")
+    "draw any empty, blank, leftover, extra or decorative balloons anywhere. Render English labels "
+    "(CrowdStrike, Falcon, endpoint) and diagram text cleanly and correctly when specified.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
  'narr':'a narration box','speech':'a speech balloon','think':'a thought (cloud) balloon',
@@ -50,18 +42,18 @@ def clean_spec(spec):
 PAGES = {
  "p01":"A cinematic chapter-title page. A bowling lane with pins lined up; the FIRST pin (the beachhead) is lit by a bright spotlight, the rear pins waiting faintly in shadow. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM asking JU BON-JIL what comes after taking the first beachhead; JU BON-JIL calm and knowing. (2 ~45% close-up) JU BON-JIL with a slight smile, ready to give a real example.",
- "p03":"Two panels, study room. (1 ~55%) HAN SIL-SOK (40s pragmatist, knit vest, metal glasses) turning his laptop to show the members; on the screen a simple team-adoption dashboard sketch: a code-editor pane with an AI copilot suggestion box, and a clean label '개발자 = 첫 핀'; nothing else readable on screen. (2 ~45%) close on the laptop screen: the code pane and copilot box, clean and abstract.",
- "p04":"Two panels. (1 ~55%) HAN SIL-SOK explaining his own company's story, gesturing at the laptop; members listening with interest. (2 ~45%) HAN SIL-SOK's calm face with a small proud smile.",
- "p05":"One panel (~100%). A clean bowling-lane illustration: the front pin labeled '개발자' falls darkly/strongly, and behind it the next pins carry small clean icons with labels '마케팅', '회계', '디자인'; arrows flow from the fallen first pin to the next pins; clear diagram, webtoon tone.",
+ "p03":"Two panels, study room. (1 ~55%) HAN SIL-SOK (40s pragmatist, knit vest, metal glasses) turning his laptop to show the members; on the screen a CrowdStrike Falcon-style cybersecurity dashboard with a clean label 'endpoint security = 첫 핀'. (2 ~45%) close on the dashboard screen, clean.",
+ "p04":"Two panels. (1 ~55%) HAN SIL-SOK explaining the CrowdStrike example, gesturing at the laptop; members listening. (2 ~45%) HAN SIL-SOK's confident calm face.",
+ "p05":"One panel (~100%). A clean bowling-lane illustration: the front pin (the beachhead) falls darkly/strongly, and icons of other same-industry security teams receive its reference and join via arrows toward the next pins; clear diagram.",
  "p06":"Two panels. (1 ~55%) JU BON-JIL adding the voice-over point about same-industry teams joining; NA BAE-UM noting. (2 ~45%) JU BON-JIL confident close-up.",
- "p07":"One panel (~100%). NA BAE-UM's open notebook close-up, two hand-written lines: '첫 핀 = 개발자 업무를 완전 점령' and '→ 옆 직군 참조사례 자동 생성'; a small bowling-pin doodle.",
+ "p07":"One panel (~100%). NA BAE-UM's open notebook close-up, two hand-written lines: '첫 핀 = 엔드포인트 탐지를 완전 점령' and '→ 동종업계 참조사례 자동 생성'; a small bowling-pin doodle.",
  "p08":"Two panels. (1 ~55%) NA BAE-UM looking up, asking in which direction it spreads; JU BON-JIL smiling, about to draw. (2 ~45%) JU BON-JIL picking up the marker.",
  "p09":"One panel (~100%). JU BON-JIL side view drawing on the clean whiteboard the BOWLING ALLEY two-axis grid: a horizontal axis to the right and a vertical axis upward, with a big dark-green pin labeled '교두보' at the bottom-left corner, and lighter pins fanning right and up with two red arrows. Hand-drawn diagram feel, bright whiteboard.",
  "p10":"Two panels. (1 ~55%) JU BON-JIL pointing at the horizontal axis of the grid, explaining; NA BAE-UM following. (2 ~45%) close on the horizontal arrow toward adjacent industries.",
  "p11":"Two panels. (1 ~55%) JU BON-JIL pointing at the vertical axis upward, explaining; NA BAE-UM nodding. (2 ~45%) close on the vertical arrow upward.",
  "p12":"Two panels. (1 ~55%) JU BON-JIL gesturing both directions on the grid, energetic; NA BAE-UM impressed. (2 ~45%) JU BON-JIL emphatic.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL simplifying the jargon with an easy gesture (sideways and up); NA BAE-UM relieved and getting it. (2 ~45%) NA BAE-UM's understanding face.",
- "p14":"One panel (~100%). A chain diagram on the whiteboard: 개발자 → 마케팅 → 회계·법무 → 디자인 → … each stage drawn as a bowling pin with an arrow to the next; JU BON-JIL beside it. Clean, legible labels, ONLY these four labels on the board.",
+ "p14":"One panel (~100%). A chain diagram on the whiteboard: 엔드포인트 → 클라우드 보안 → 신원·로그 분석 → … with each pin generating an arrow to the next pin's reference; JU BON-JIL beside it. Clean, legible labels.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL explaining the auto-generated reference chain; NA BAE-UM tracing it with his eyes. (2 ~45%) close on two pins, one tipping into the next.",
  "p16":"Two panels. (1 ~55%) JU BON-JIL making the key chain point, the pins toppling in sequence behind him; NA BAE-UM impressed. (2 ~45%) NA BAE-UM's eyes following the chain.",
  "p17":"Two panels. (1 ~55%) NA BAE-UM nodding, the model clicking into place. (2 ~45%) NA BAE-UM's satisfied realization.",
@@ -83,17 +75,17 @@ PAGES = {
 DLG = {
  "p01":[(1,'C','title','EPISODE 05\n볼링 핀이 쓰러진다\n첫 핀이 쓰러지면 인접 핀이 연쇄로\n시즌 1 · 정글에 입장하다')],
  "p02":[(1,'C','speech','교두보를 잡은 다음은\n어떻게 되는 거예요?'),
-        (2,'C','speech','지난 시간의 그 코파일럿,\n그 다음 이야기를 보면 돼')],
- "p03":[(1,'C','speech','우리 회사 얘기예요\nAI 코파일럿이 개발팀 첫 핀을 잡았죠'),
-        (2,'C','speech','개발자들 일이 눈에 띄게 빨라졌어요\n그게 시작이었어요')],
- "p04":[(1,'C','speech','개발팀이 확실히 빨라지니\n마케팅팀이 먼저 물어보더라고요\n우리도 쓰면 안 되냐고'),
+        (2,'C','speech','실제 사례 하나 보자\n보안 회사 CrowdStrike')],
+ "p03":[(1,'C','speech','CrowdStrike 봐\nFalcon으로 엔드포인트 보안 첫 핀을 잡았어'),
+        (2,'C','speech','거기서 인접 영역으로 계속 번졌지\n이게 볼링앨리의 교과서야')],
+ "p04":[(1,'C','speech','한 곳을 확실히 잡으니\n같은 업계가 따라오더라고'),
         (2,'C','think','첫 핀 하나가 시작이구나')],
- "p05":[(1,'C','speech','한 교두보를 완전 점령하면\n옆 부서, 옆 회사가\n그 참조사례를 보고 합류해'),
+ "p05":[(1,'C','speech','한 교두보를 완전 점령하면\n같은 업계 보안팀들이\n참조사례를 받고 합류해'),
         (1,'C','narr','첫 핀이 쓰러지자, 옆 핀들이 따라왔다')],
  "p06":[(1,'C','speech','교두보의 신뢰가\n다음 고객의 판단 근거가 되는 거지'),
         (2,'C','think','참조사례가 핀을 넘어뜨린다')],
- "p07":[(1,'C','label','첫 핀 = 개발자 업무를 완전 점령'),
-        (1,'C','label','→ 옆 직군 참조사례 자동 생성')],
+ "p07":[(1,'C','label','첫 핀 = 엔드포인트 탐지를 완전 점령'),
+        (1,'C','label','→ 동종업계 참조사례 자동 생성')],
  "p08":[(1,'C','speech','근데 어느 방향으로 번지는 거예요?'),
         (2,'C','speech','핀은 두 방향으로 쓰러져\n그려줄게')],
  "p09":[(1,'C','speech','왼쪽 아래가 교두보\n여기서 옆으로, 위로 번진다'),
@@ -106,7 +98,7 @@ DLG = {
         (2,'C','think','격자처럼 퍼지네')],
  "p13":[(1,'C','speech','어렵게는 완전완비제품·입소문 레버리지\n쉽게는 그냥 옆으로, 위로 번진다는 뜻이야'),
         (2,'C','think','아, 별거 아니네')],
- "p14":[(1,'C','speech','개발자 → 마케팅 → 회계·법무 → 디자인\n이렇게 핀이 줄줄이 이어져'),
+ "p14":[(1,'C','speech','엔드포인트 → 클라우드 보안 → 신원·로그 분석\n이렇게 핀이 줄줄이 이어져'),
         (1,'C','narr','핀마다 다음 핀의 참조사례가 자동으로')],
  "p15":[(1,'C','speech','교두보 핀 하나가 쓰러지면\n인접 핀이 연쇄로 쓰러진다'),
         (2,'C','think','한 번 터지면 줄줄이…')],
@@ -141,19 +133,11 @@ DLG = {
 }
 
 BANDS = {
- "p05":'교두보 완전 점령 → 인접 직군·회사가 참조사례 받고 합류 = 볼링앨리의 시작 (AI 코파일럿)',
+ "p05":'교두보 완전 점령 → 동종업계가 참조사례 받고 합류 = 볼링앨리의 시작 (CrowdStrike Falcon)',
  "p13":'핀은 두 방향으로 · ① 옆 업종, 같은 기능·다른 고객군(세그먼트 확장) ② 같은 업종, 새 용도(앱 확장)',
  "p16":'핀마다 다음 핀의 참조사례가 자동 생성 → 교두보 하나가 인접 핀을 연쇄로 쓰러뜨린다',
  "p19":'투자 관점 · 이 회사가 교두보에서 옆·위로 참조사례 연쇄로 번지고 있는가',
  "p27":'모든 핀이 다 쓰러질 때까진 아직 토네이도가 아니다 (다음 화)',
-}
-
-# 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 선별 부여
-NOTES = {
- "p05":'해설: 볼링앨리(Bowling Alley)는 교두보 세분시장의 참조사례와 완전완비제품을 지렛대로 인접 세분시장을 연쇄 공략하는 단계다. © The Chasm Group',
- "p13":'해설: Moore의 볼링핀 확장 2방향 — ①동일 응용제품 + 새 세분시장(옆으로) ②동일 세분시장 + 새 응용제품(위로). 원전: 유승삼 역 『토네이도 마케팅』',
- "p19":'투자 적용: 볼링앨리 단계 기업은 "다음 핀"이 보이는지로 판별한다. 교두보 점유율과 인접 시장 진입 발표가 관찰 지표',
- "p27":'해설: 볼링앨리는 아직 틈새의 연쇄다. 전체 실용주의자가 한꺼번에 움직이는 토네이도와 구별된다(다음 화)',
 }
 
 def instruction(pid):
@@ -173,7 +157,7 @@ def gen(c,pid):
 
 def main():
     args=sys.argv[1:] or ["all"]
-    allids=sorted(PAGES.keys())
+    allids=[f"p{i:02d}" for i in range(1,31)]
     if args==["all"]: ids=allids
     elif args==["rest"]: ids=[p for p in allids if not os.path.exists(os.path.join(FINAL,p+".png"))]
     else: ids=args

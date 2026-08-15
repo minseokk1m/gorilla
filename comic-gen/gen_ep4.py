@@ -5,8 +5,8 @@ import os, sys, re, time
 from openai import OpenAI
 import gen_images as g
 
-BASE = os.path.expanduser("~/Desktop/고릴라헌터스_EP4")
-FINAL = os.path.join(BASE, "final")
+BASE = os.path.dirname(os.path.abspath(__file__))
+FINAL = os.path.join(BASE, "final_ep4")
 KEYF = os.path.join(BASE, "openai_key.txt")
 os.makedirs(FINAL, exist_ok=True)
 
@@ -15,11 +15,14 @@ def client():
     for f in (KEYF, getattr(g, "KEYF", "")):
         if not key and f and os.path.exists(f): key = open(f).read().strip()
     if not key: sys.exit("API 키 없음: " + KEYF)
-    return OpenAI(api_key=key)
+    return OpenAI(api_key=key, timeout=420.0, max_retries=2)
 
 CHARS = (g.CHARS +
     " EP4 RECURRING: HAN SIL-SOK (40s pragmatist 'Early Majority' everyman, neat shirt and knit "
-    "vest, metal glasses, calm and careful).")
+    "vest, metal glasses, calm and careful). "
+    "EP4 CRITICAL CONSISTENCY: NA BAE-UM is EXACTLY 39 years old and must look late-30s on EVERY "
+    "page. STUDY GROUP ROOM: one whiteboard, long table, bookshelves; NO trading desks, NO "
+    "multi-monitor setups, NO wall posters.")
 
 RULES_TEXT = (
     "FORMAT: a single vertical Korean webtoon PAGE with the panels described, thin white gutters. "
@@ -27,8 +30,13 @@ RULES_TEXT = (
     "Korean webtoon lettering, perfect spelling and spacing, NO garbled or invented characters. "
     "CRITICAL RULE: draw a speech/thought balloon or narration/caption box ONLY for each Korean line "
     "listed below, exactly that many, NO MORE; EVERY balloon/box MUST contain its Korean text; do NOT "
-    "draw any empty, blank, leftover, extra or decorative balloons anywhere. Render English/diagram "
-    "labels (Whole Product, beachhead, AI copilot, %, layer stack) cleanly when specified.")
+    "draw any empty, blank, leftover, extra or decorative balloons anywhere. "
+    "SPEAKER RULE: each balloon's tail must point at the character named for that line; a thought "
+    "balloon belongs ONLY to the character named. "
+    "BACKGROUND TEXT RULE: NO readable text anywhere except the lines and diagram labels explicitly "
+    "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
+    "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
+    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
  'narr':'a narration box','speech':'a speech balloon','think':'a thought (cloud) balloon',
@@ -139,6 +147,15 @@ BANDS = {
  "p22":'교두보·완전완비제품은 내가 사는 신호가 아니라, 이 회사가 캐즘을 건널지 읽는 진단 도구',
 }
 
+# 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 선별 부여
+NOTES = {
+ "p01":'해설: 캐즘 극복 전략의 원형은 1944년 노르망디 상륙작전이다. 전 해안 분산이 아니라 단일 교두보(오마하 해변) 집중 — Moore, 『캐즘마케팅』(유승삼 역)',
+ "p05":'해설: D-Day 원칙 — ①캐즘 체류 시간 최소화 ②단일 세분 목표시장 설정 ③완전완비제품 형성 가속화 ④목표 세분시장 지배 ⑤성공을 근간으로 확장. © The Chasm Group',
+ "p13":'해설: 완전완비제품(Whole Product)은 Ted Levitt의 개념을 Moore가 발전시킨 것 — 핵심 제품만으로는 실용주의자가 사지 않으며, 보안·연동·교육·지원까지 갖춰져야 산다',
+ "p20":'해설: "실용주의자는 80%짜리 해결책을 사지 않는다. 교두보 세분시장의 요구를 100% 완결하라" — 유승삼 강연 자료에서',
+ "p22":'투자 적용: 교두보·완전완비제품은 매수 신호가 아니라, 이 회사가 캐즘을 건널 수 있는지 판별하는 진단 도구다',
+}
+
 def instruction(pid):
     parts=[]
     for panel,hint,role,text in DLG[pid]:
@@ -156,7 +173,7 @@ def gen(c,pid):
 
 def main():
     args=sys.argv[1:] or ["all"]
-    allids=[f"p{i:02d}" for i in range(1,31)]
+    allids=sorted(PAGES.keys())
     if args==["all"]: ids=allids
     elif args==["rest"]: ids=[p for p in allids if not os.path.exists(os.path.join(FINAL,p+".png"))]
     else: ids=args
