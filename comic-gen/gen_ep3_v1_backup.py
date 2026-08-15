@@ -5,8 +5,8 @@ import os, sys, re, time
 from openai import OpenAI
 import gen_images as g   # STYLE, CHARS base, MODEL, save_b64 (경로 무관)
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-FINAL = os.path.join(BASE, "final_ep3")
+BASE = os.path.expanduser("~/Desktop/고릴라헌터스_EP3")
+FINAL = os.path.join(BASE, "final")
 KEYF = os.path.join(BASE, "openai_key.txt")
 os.makedirs(FINAL, exist_ok=True)
 
@@ -16,15 +16,12 @@ def client():
         if not key and f and os.path.exists(f):
             key = open(f).read().strip()
     if not key: sys.exit("API 키 없음: " + KEYF)
-    return OpenAI(api_key=key, timeout=420.0, max_retries=2)
+    return OpenAI(api_key=key)
 
 CHARS = (g.CHARS +
     " EP3 RECURRING: HAN SIL-SOK (40s pragmatist 'Early Majority' everyman, neat shirt and knit "
     "vest, metal glasses, calm and careful, by a laptop); GO BI-JEON (30s visionary 'Early Adopter', "
-    "sharp stylish, bold confident). "
-    "EP3 CRITICAL CONSISTENCY: NA BAE-UM is EXACTLY 39 years old and must look late-30s on EVERY "
-    "page. STUDY GROUP ROOM: one whiteboard, long table, bookshelves; NO trading desks, NO "
-    "multi-monitor setups, NO wall posters.")
+    "sharp stylish, bold confident).")
 
 RULES_TEXT = (
     "FORMAT: a single vertical Korean webtoon PAGE with the panels described, thin white gutters. "
@@ -32,13 +29,8 @@ RULES_TEXT = (
     "Korean webtoon lettering, perfect spelling and spacing, NO garbled or invented characters. "
     "CRITICAL RULE: draw a speech/thought balloon or narration/caption box ONLY for each Korean line "
     "listed below, exactly that many, NO MORE; EVERY balloon/box MUST contain its Korean text; do NOT "
-    "draw any empty, blank, leftover, extra or decorative balloons anywhere. "
-    "SPEAKER RULE: each balloon's tail must point at the character named for that line; a thought "
-    "balloon belongs ONLY to the character named. "
-    "BACKGROUND TEXT RULE: NO readable text anywhere except the lines and diagram labels explicitly "
-    "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
-    "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
-    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified.")
+    "draw any empty, blank, leftover, extra or decorative balloons anywhere. Render English/diagram "
+    "labels (CHASM, BEV, EREV, %, charts) cleanly when specified.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
  'narr':'a narration box','speech':'a speech balloon','think':'a thought (cloud) balloon',
@@ -52,10 +44,8 @@ def clean_spec(spec):
 PAGES = {
  "p01":"A cinematic dark chapter-title page. A faint cracked CHASM canyon glows in the dark; a pure electric car (BEV) silhouette has fallen into the canyon, while hybrid/EREV cars detour around the rim; a spotlight on the canyon. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover, ominous tone.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM puzzled, asking JU BON-JIL about the chasm; JU BON-JIL calm, knowing. (2 ~45% close-up) JU BON-JIL with a slight serious smile, ready to explain.",
- "p02b":"Two panels, why EVs at all (F3-1). (1 ~55%) JU BON-JIL at the whiteboard with a simple hand-drawn three-arrow sketch: three labeled arrows '친환경', '화석연료 고갈', '자율주행의 약속' converging into a small electric car icon; NA BAE-UM listening. (2 ~45%) a 1990s vintage-tone inset (keep webtoon linework): a sleek 1990s two-seat experimental electric coupe on a test road, hopeful dawn light.",
- "p02c":"Two panels, the too-early pioneer (vintage tone continues). (1 ~55%) the same 1990s electric coupe being loaded onto a tow truck at dusk, a small crowd watching wistfully; melancholy. (2 ~45%) back to present: JU BON-JIL closing the story, NA BAE-UM curious; the whiteboard behind still shows only the three-arrow sketch.",
- "p03":"Two panels. (1 ~60%) NA BAE-UM alone at a cafe table looking at his laptop; on screen ONE chart with rising bars (sales still growing every year) and a growth-rate LINE above them that bends downward recently; the chart title reads exactly '글로벌 BEV 판매 증가율' and nothing else is written on screen. (2 ~40%) NA BAE-UM's puzzled, curious face lit by the screen.",
- "p04":"Two panels. (1 ~55%) close on the same laptop chart: the bars still rise but the growth-rate line clearly bends down; the ONLY text on the chart is the title '글로벌 BEV 판매 증가율'. (2 ~45%) NA BAE-UM leaning back, thinking, scratching his head.",
+ "p03":"Two panels. (1 ~60%) NA BAE-UM alone at a cafe table looking at his laptop, on screen a global EV (BEV) sales chart that explodes upward through the 2010s then visibly bends as the growth rate flattens recently; a small corner label '글로벌 BEV 판매 증가율 둔화'. (2 ~40%) NA BAE-UM's puzzled, curious face lit by the screen.",
+ "p04":"Two panels. (1 ~55%) close on the laptop chart, the slowing curve emphasized with a downward kink. (2 ~45%) NA BAE-UM leaning back, thinking, scratching his head.",
  "p05":"Two panels, study room. (1 ~55%) NA BAE-UM turning to HAN SIL-SOK (40s, neat shirt and knit vest, metal glasses, by a laptop) to ask a question; calm atmosphere. (2 ~45%) HAN SIL-SOK's calm, careful everyman face.",
  "p06":"Two panels. (1 ~55%) HAN SIL-SOK explaining his hesitation, a measured expression, gesturing mildly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK slightly firm close-up.",
  "p07":"One panel (~100%). HAN SIL-SOK on the left, and on the right a clean small horizontal bar-survey chart with three bars labeled cleanly: '너무 비쌈 63%', '충전 어려움 48%', '주행거리 걱정 47%'; JU BON-JIL's voice-over emphasis. Bright study room, clear infographic.",
@@ -87,15 +77,11 @@ PAGES = {
 DLG = {
  "p01":[(1,'C','title','EPISODE 03\n죽음의 계곡, 캐즘\n일시적이 아니라 구조적이다\n시즌 1 · 정글에 입장하다')],
  "p02":[(1,'C','speech','캐즘이 대체 뭐예요?\n전기차가 거기 빠졌다고요?'),
-        (2,'C','speech','직접 한번 들여다보자\n근데 먼저, 전기차가 왜 나왔는지부터')],
- "p02b":[(1,'C','speech','배기가스 문제, 언젠가 마를 기름\n그리고 자율주행이라는 약속\n이 셋이 모여 전기차를 불러냈지'),
-        (2,'C','narr','가장 먼저 움직인 건 90년대의 GM이었다\n양산 전기차를 세상에 처음 내놨다')],
- "p02c":[(1,'C','narr','하지만 너무 일렀다\n충전도, 배터리도, 세상도 준비가 안 됐다\n그 차는 조용히 회수되어 사라졌다'),
-        (2,'C','speech','20년 뒤에야 판이 다시 열렸어\n그럼 이번엔 잘 가고 있을까?')],
+        (2,'C','speech','직접 한번 들여다보자\n마침 좋은 증거가 굴러다니거든')],
  "p03":[(1,'C','narr','집에 와서 전기차 판매 그래프를 켜봤다'),
-        (2,'C','think','판매는 아직 늘고 있네?\n근데 왜 증가율이 꺾이지?')],
- "p04":[(1,'C','narr','추락이 아니다\n계속 팔리는데, 퍼지는 속도가 줄고 있다'),
-        (2,'C','think','산 사람은 샀는데\n다음 사람들이 안 움직이는 건가?')],
+        (2,'C','think','전기차가 미래라며?\n왜 성장이 꺾여?')],
+ "p04":[(1,'C','think','분명 폭발적으로 늘었는데…'),
+        (2,'C','think','어디서부터 막힌 거지?')],
  "p05":[(1,'C','caption','실용주의자 · 한실속 (Early Majority 34%)'),
         (1,'C','speech','실속 씨는 전기차 어때요?')],
  "p06":[(1,'C','speech','전기차요?\n충전이 불안하고, 불날까 걱정되고'),
@@ -112,7 +98,7 @@ DLG = {
         (2,'C','think','우회로가 곧 증거구나')],
  "p11":[(1,'C','speech','충전이라는 완전완비제품이\n아직 안 갖춰졌으니까'),
         (2,'C','think','완전완비제품이 없으면 대중은 안 사는구나')],
- "p12":[(1,'C','emph','캐즘은 일시적이 아니라\n장기적·구조적 정체'),
+ "p12":[(1,'C','emph','캐즘은 ‘잠정적’이 아니라 ‘구조적’ 정체'),
         (2,'C','think','시간이 풀어주는 게 아니라고?')],
  "p13":[(1,'C','speech','이건 시간이 풀어주는 게 아니야\n인간 의사결정의 구조다'),
         (2,'C','think','구조라면, 저절로 안 풀리겠네')],
@@ -155,19 +141,9 @@ DLG = {
 BANDS = {
  "p07":'실용주의자(대중의 첫 관문)가 안 사기 시작하면 = 캐즘 · 선각수용자에서 대중으로 못 넘어가는 골짜기',
  "p11":'EREV·하이브리드로 시장이 우회 = BEV가 캐즘에 빠졌다는 증거 · 충전이라는 완전완비제품이 아직 없어서',
- "p13":'캐즘은 일시적이 아니라 장기적·구조적 정체 · 시간이 아니라 인간 의사결정의 구조',
+ "p13":'캐즘은 잠정적이 아니라 구조적 정체 · 시간이 아니라 인간 의사결정의 구조',
  "p15":'선각수용자의 성공은 실용주의자에게 참조사례가 안 된다 · 대중은 비전이 아니라 동종업계 동료를 본다',
  "p18":'선각수용자 폭발 → 실용주의자 침묵 → 캐즘 · 위성통신·구글 글래스도 같은 패턴',
-}
-
-# 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 필요한 컷에만 선별 부여
-NOTES = {
- "p02b":'해설: 전기차 부활의 배경은 배출가스 규제(친환경), 화석연료 고갈 전망, 자율주행 기대의 결합이다. 양산 전기차의 첫 시도는 GM의 EV1(1996)이었다',
- "p02c":'사실 확인: GM EV1은 1996년 리스 방식으로 출시됐으나 2000년대 초 사업이 중단되고 차량 대부분이 회수·폐기됐다. 너무 이른 불연속 혁신의 대표 사례',
- "p04":'해설: 캐즘기의 특징은 판매 급락이 아니라 "확산 속도의 둔화"다. 선각수용자까지는 팔렸지만 전기다수 수용자가 관망하며 증가율이 꺾인다',
- "p07":'해설: 설문 수치는 미국 소비자 조사(CivicScience 등)의 전기차 구매 장애 요인 응답. 실용주의자가 움직이지 않는 이유가 곧 완전완비제품의 결핍 목록이다',
- "p12":'해설: Moore는 캐즘을 시간이 해결하는 일시 정체가 아니라, 수용자 집단 간 가치관 차이에서 오는 구조적 단절로 정의한다. © The Chasm Group',
- "p17":'사실 확인: 구글 글래스는 2013-14년 발표·판매 후 2015년 초 일반 소비자 판매를 중단했다. 선각수용자 열광 후 대중 침묵의 전형',
 }
 
 def instruction(pid):
@@ -187,7 +163,7 @@ def gen(c,pid):
 
 def main():
     args=sys.argv[1:] or ["all"]
-    allids=sorted(PAGES.keys())
+    allids=[f"p{i:02d}" for i in range(1,31)]
     if args==["all"]: ids=allids
     elif args==["rest"]: ids=[p for p in allids if not os.path.exists(os.path.join(FINAL,p+".png"))]
     else: ids=args
