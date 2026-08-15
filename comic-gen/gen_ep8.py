@@ -4,8 +4,8 @@ import os, sys, re, time
 from openai import OpenAI
 import gen_images as g
 
-BASE = os.path.expanduser("~/Desktop/고릴라헌터스_EP8")
-FINAL = os.path.join(BASE, "final"); KEYF = os.path.join(BASE, "openai_key.txt")
+BASE = os.path.dirname(os.path.abspath(__file__))
+FINAL = os.path.join(BASE, "final_ep8"); KEYF = os.path.join(BASE, "openai_key.txt")
 os.makedirs(FINAL, exist_ok=True)
 
 def client():
@@ -13,9 +13,11 @@ def client():
     for f in (KEYF, getattr(g, "KEYF", "")):
         if not key and f and os.path.exists(f): key = open(f).read().strip()
     if not key: sys.exit("API 키 없음: " + KEYF)
-    return OpenAI(api_key=key)
+    return OpenAI(api_key=key, timeout=420.0, max_retries=2)
 
 CHARS = g.CHARS
+
+CHARS = CHARS + (" CRITICAL CONSISTENCY: NA BAE-UM is EXACTLY 39 years old and must look late-30s on EVERY page. STUDY GROUP ROOM: one whiteboard, long table, bookshelves; NO trading desks, NO multi-monitor setups, NO wall posters.")
 
 RULES_TEXT = (
     "FORMAT: a single vertical Korean webtoon PAGE with the panels described, thin white gutters. "
@@ -23,8 +25,14 @@ RULES_TEXT = (
     "Korean webtoon lettering, perfect spelling and spacing, NO garbled or invented characters. "
     "CRITICAL RULE: draw a speech/thought balloon or narration/caption box ONLY for each Korean line "
     "listed below, exactly that many, NO MORE; EVERY balloon/box MUST contain its Korean text; do NOT "
-    "draw any empty, blank, leftover, extra or decorative balloons anywhere. Render English labels "
-    "(CUDA, ROCm, TPU, NVIDIA, AMD, Google, JAX, XLA, PyTorch, VHS, Betamax) cleanly and correctly.")
+    "draw any empty, blank, leftover, extra or decorative balloons anywhere. "
+    "SPEAKER RULE: each balloon's tail must point at the character named for that line; a thought "
+    "balloon belongs ONLY to the character named. "
+    "BACKGROUND TEXT RULE: NO readable text anywhere except the lines and diagram labels explicitly "
+    "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
+    "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
+    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
+    "When a page DOES specify diagram labels, render exactly those labels cleanly and nowhere else.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
  'narr':'a narration box','speech':'a speech balloon','think':'a thought (cloud) balloon',
@@ -151,7 +159,7 @@ def gen(c,pid):
 
 def main():
     args=sys.argv[1:] or ["all"]
-    allids=[f"p{i:02d}" for i in range(1,31)]
+    allids=sorted(PAGES.keys())
     if args==["all"]: ids=allids
     elif args==["rest"]: ids=[p for p in allids if not os.path.exists(os.path.join(FINAL,p+".png"))]
     else: ids=args
