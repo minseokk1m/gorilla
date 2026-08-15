@@ -45,7 +45,7 @@ PAGES = {
  "p04":"One panel (~100%). A big bold counter graphic '2개월 만에 1억 사용자' over a montage of many people on phones/laptops all using the AI chat at once; explosive adoption.",
  "p05":"Two panels, office. (1 ~55%) HAN SIL-SOK (pragmatist) in an office where he and all his colleagues are using the AI tool together at their desks; ordinary everyday adoption. (2 ~45%) HAN SIL-SOK's matter-of-fact face.",
  "p06":"Two panels. (1 ~55%) GU BON-JIL making the key point that this is the tornado, gesturing; NA BAE-UM nodding. (2 ~45%) GU BON-JIL emphatic close-up.",
- "p07":"One split panel (~100%). LEFT (dry, cold): a barren cracked canyon labeled 캐즘. RIGHT (stormy): a swirling tornado labeled 토네이도. Between them a small bridge (거점·볼링앨리) connecting the two. Clear contrast.",
+ "p07":"One split panel (~100%). LEFT (dry, cold): a barren cracked canyon labeled 캐즘. RIGHT (stormy): a swirling tornado labeled 토네이도. Between them a small bridge (교두보·볼링앨리) connecting the two. Clear contrast.",
  "p08":"Two panels. (1 ~55%) GU BON-JIL explaining the bridge between chasm and tornado; NA BAE-UM following. (2 ~45%) NA BAE-UM's understanding face.",
  "p09":"Two panels. (1 ~55%) NA BAE-UM asking where the storm's energy flowed; GU BON-JIL turning to the whiteboard. (2 ~45%) GU BON-JIL picking up the marker.",
  "p10":"One panel (~100%). A whiteboard sales chart: NVIDIA data-center revenue exploding in a steep non-linear curve, and below it parallel rising arrows for SK Hynix, Samsung, Micron HBM memory; clean labels 'NVIDIA GPU' and 'HBM'; GU BON-JIL pointing.",
@@ -84,7 +84,7 @@ DLG = {
         (2,'C','think','한꺼번에 우르르…')],
  "p07":[(1,'L','label','캐즘 = 안 사는 시기'),
         (1,'R','label','토네이도 = 우르르 사는 시기'),
-        (1,'C','speech','토네이도는 캐즘의 정반대야\n그 사이에 거점·볼링앨리가 다리를 놓았지')],
+        (1,'C','speech','토네이도는 캐즘의 정반대야\n그 사이에 교두보·볼링앨리가 다리를 놓았지')],
  "p08":[(1,'C','speech','다리를 건너면\n메마른 골짜기가 폭풍으로 바뀌는 거야'),
         (2,'C','think','캐즘을 건너야 토네이도구나')],
  "p09":[(1,'C','speech','근데 그 폭풍이\n어디로 흘렀을까요?'),
@@ -132,7 +132,7 @@ DLG = {
 }
 
 BANDS = {
- "p06":'실용주의자가 한꺼번에 사는 순간 = 토네이도 (캐즘의 정반대, 그 사이를 거점·볼링앨리가 잇는다)',
+ "p06":'실용주의자가 한꺼번에 사는 순간 = 토네이도 (캐즘의 정반대, 그 사이를 교두보·볼링앨리가 잇는다)',
  "p11":'폭풍이 흘러간 곳 = NVIDIA GPU + HBM 메모리 · AI 빅테크 수요로 매출이 비선형 폭발',
  "p14":'원칙1 응용 소프트웨어 = 볼링앨리부터 / 원칙2 칩·메모리(지원 하드웨어) = 토네이도 형성 후 매수',
  "p19":'토네이도 감지 = ① 매출이 비선형으로 가속 ② 실용주의자(대중)가 사고 있는가',

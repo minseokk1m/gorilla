@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 고릴라 헌터스 Ep9 "메인 스트리트의 평화" — TALC와 PLC, 윈텔의 몰락 — gpt-image-2 (~30장)
+# 고릴라 헌터스 Ep9 "중심가의 평화" — TALC와 PLC, 윈텔의 몰락 — gpt-image-2 (~30장)
 import os, sys, re, time
 from openai import OpenAI
 import gen_images as g
@@ -38,7 +38,7 @@ def clean_spec(spec):
 PAGES = {
  "p01":"A cinematic chapter-title page. A peaceful main-street townscape with a gorilla seated on a throne in silhouette; a warm sunset on one side of the sky hinting at decline; the throne lit by a warm spotlight. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM relaxed, asking GU BON-JIL; GU BON-JIL calm. (2 ~45% close-up) GU BON-JIL with a slight knowing look.",
- "p03":"One panel (~100%). A main-street scene: a gorilla peacefully on a throne, a growth-rate curve that has flattened but revenue resting on a high stable plateau; a clean label '메인 스트리트 = 성숙기'; calm and prosperous.",
+ "p03":"One panel (~100%). A main-street scene: a gorilla peacefully on a throne, a growth-rate curve that has flattened but revenue resting on a high stable plateau; a clean label '중심가 = 성숙기'; calm and prosperous.",
  "p04":"Two panels. (1 ~55%) NA BAE-UM reassured, asking if the gorilla lasts forever; GU BON-JIL's face turning slightly serious, raising a finger. (2 ~45%) GU BON-JIL's pointed look.",
  "p05":"Two panels. (1 ~55%) the sunset behind the throne deepening, a shadow falling; NA BAE-UM uneasy. (2 ~45%) the throne with a longer shadow.",
  "p06":"Two panels. (1 ~55%) GU BON-JIL turning to the whiteboard to draw two curves; NA BAE-UM ready. (2 ~45%) GU BON-JIL picking up the marker.",
@@ -69,11 +69,11 @@ PAGES = {
 }
 
 DLG = {
- "p01":[(1,'C','title','EPISODE 09\n메인 스트리트의 평화\n영원한 고릴라는 없다\n시즌 1 · 정글에 입장하다')],
+ "p01":[(1,'C','title','EPISODE 09\n중심가의 평화\n영원한 고릴라는 없다\n시즌 1 · 정글에 입장하다')],
  "p02":[(1,'C','speech','표준을 잡으면\n이제 좀 편해지는 거예요?'),
         (2,'C','speech','평화가 오긴 와\n근데 말이지')],
  "p03":[(1,'C','speech','성장률은 완만해져도\n매출은 높은 고원에서 안정돼'),
-        (1,'C','narr','이걸 메인 스트리트, 성숙기라 한다')],
+        (1,'C','narr','이걸 중심가, 성숙기라 한다')],
  "p04":[(1,'C','speech','이제 고릴라가\n영원히 가는 거죠?'),
         (2,'C','speech','그게 함정이야')],
  "p05":[(1,'C','think','평화가 함정이라고…?'),
@@ -82,7 +82,7 @@ DLG = {
         (2,'C','think','두 곡선…?')],
  "p07":[(1,'C','speech','TALC는 채택자 분포, 누가 사는가\nPLC는 매출 곡선, 얼마나 팔리는가'),
         (1,'C','narr','둘은 전혀 다른 곡선이다')],
- "p08":[(1,'C','speech','메인 스트리트 제품도\nPLC의 정점과 쇠퇴를 지나'),
+ "p08":[(1,'C','speech','중심가 제품도\nPLC의 정점과 쇠퇴를 지나'),
         (2,'C','think','매출도 결국 꺾이는구나')],
  "p09":[(1,'C','speech','누가 사느냐와\n얼마나 팔리느냐는 다른 얘기야'),
         (2,'C','think','두 개를 헷갈리면 안 되겠다')],
@@ -112,7 +112,7 @@ DLG = {
  "p22":[(1,'C','think','내 종목의 카테고리는\n지금 어느 단계지?'),
         (2,'C','think','회사가 아니라 단계를 보자')],
  "p23":[(1,'C','speech','그러니까 평화는…'),
-        (2,'C','caption','메인 스트리트 = 성숙기 · 단, 카테고리가 바뀌면 고릴라도 바뀐다')],
+        (2,'C','caption','중심가 = 성숙기 · 단, 카테고리가 바뀌면 고릴라도 바뀐다')],
  "p24":[(1,'C','think','왕좌도, 시대가 끝나면 빈다'),
         (2,'C','think','단계가 전부구나')],
  "p25":[(1,'C','think','회사를 사랑하지 말고\n단계를 보라'),
@@ -129,8 +129,8 @@ DLG = {
 }
 
 BANDS = {
- "p03":'메인 스트리트 = 성숙기(성장률↓, 매출은 높은 고원에서 안정) · 단 평화는 영원하지 않다',
- "p07":'TALC(누가 사는가) vs PLC(얼마나 팔리는가)는 다른 곡선 · 메인 스트리트 제품도 PLC 정점·쇠퇴를 지난다',
+ "p03":'중심가 = 성숙기(성장률↓, 매출은 높은 고원에서 안정) · 단 평화는 영원하지 않다',
+ "p07":'TALC(누가 사는가) vs PLC(얼마나 팔리는가)는 다른 곡선 · 중심가 제품도 PLC 정점·쇠퇴를 지난다',
  "p12":'윈텔(Windows+Intel) 40년 지배 → 윈비디아(Windows+NVIDIA, 2026 젠슨황) · 인텔=모토롤라·노키아처럼 과거 고릴라',
  "p19":'카테고리가 죽으면 그 고릴라도 같이 죽는다 (매도 원칙은 시즌4)',
 }

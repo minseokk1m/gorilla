@@ -95,9 +95,9 @@ DLG = {
         (2,'C','think','다음은 DRAM이다')],
  "p13":[(1,'C','speech','PC·서버용 표준 DRAM은\n30년 된 카테고리, 삼성+SK 과점이에요'),
         (1,'C','narr','사이클 따라 오르내려도 카테고리는 안정')],
- "p14":[(1,'C','speech','그래서 DRAM은\nMain Street예요'),
+ "p14":[(1,'C','speech','그래서 DRAM은\n중심가(Main Street)예요'),
         (2,'C','think','성숙한 표준 시장이구나')],
- "p15":[(1,'C','speech','SSD가 HDD를 거의 대체했어요\nLate Tornado에서 Main Street 진입 중'),
+ "p15":[(1,'C','speech','SSD가 HDD를 거의 대체했어요\nLate Tornado에서 중심가(Main Street) 진입 중'),
         (2,'C','think','막 성숙기로 들어가는 중')],
  "p16":[(1,'C','speech','NAND·SSD는\n아직 쏠림이 남아 있어요'),
         (2,'C','think','단계가 한 칸씩 다르네')],
@@ -133,7 +133,7 @@ DLG = {
 BANDS = {
  "p05":'젠슨황 5단 케이크 (Energy·Chips·Infra·Models·Apps) · 같은 메모리 안에서도 카테고리마다 단계가 다르다',
  "p09":'HBM = AI GPU에 적층되는 고대역폭 메모리, AI 빅테크가 다 산다 → Tornado (SK하이닉스 선두)',
- "p18":'카테고리별 단계 · DRAM=Main Street, NAND/SSD=Main Street 진입 중, HDD=Declining (카테고리가 죽으면 고릴라도 죽는다)',
+ "p18":'카테고리별 단계 · DRAM=중심가, NAND/SSD=중심가 진입 중, HDD=Declining (카테고리가 죽으면 고릴라도 죽는다)',
  "p26":'회사가 아니라 카테고리 단위로 본다 · 삼성 한 회사도 4개 카테고리 신호가 다 다르다',
 }
 
