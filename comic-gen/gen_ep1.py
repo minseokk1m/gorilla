@@ -202,10 +202,19 @@ NOTES = {
  "p35":'해설: 레버리지 ETF의 변동성 잠식(volatility decay) — 일간 수익률의 2배를 추적하므로 등락 반복 시 복리 효과로 원금이 침식된다. 장기 보유에 부적합',
 }
 
+SPEAKERS = {'한탕수':'HAN TANG-SU (red cap)', '안정만':'AN JEONG-MAN (value friend)',
+ '고성장':'GO SEONG-JANG (growth friend)', '젊은 주본질':'young JU BON-JIL in the flashback',
+ '동료':'the colleague in the flashback', '주본질':'JU BON-JIL (mentor)', '나배움':'NA BAE-UM'}
+
 def instruction(pid):
     parts=[]
     for panel,hint,role,text in DLG[pid]:
-        parts.append(f"(panel {panel}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
+        spk=""
+        for name,desc in SPEAKERS.items():
+            if text.startswith(name+": "):
+                text=text[len(name)+2:]; spk=f", spoken by {desc}, balloon tail pointing at that character, do NOT letter the speaker's name"
+                break
+        parts.append(f"(panel {panel}{spk}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
     if pid in BANDS:
         parts.append("at the very bottom, a parchment caption band reading: ‘"+BANDS[pid].replace(chr(10),' ')+"’")
     return "KOREAN LINES TO LETTER (render each cleanly inside its balloon/box):\n"+"\n".join(parts)
