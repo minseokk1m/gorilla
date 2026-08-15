@@ -47,6 +47,7 @@ PAGES = {
  "p01":"A cinematic chapter-title page. Two armies face off over a flag on a hilltop in silhouette, a strategy-map tone, the summit flag lit by a spotlight. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover, war-strategy mood.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM asking JU BON-JIL how the No.1 standard position is decided; JU BON-JIL calm. (2 ~45% close-up) JU BON-JIL with a sharp confident look.",
  "p03":"Two panels. (1 ~55%) JU BON-JIL at the whiteboard with a strategy map and a hill drawing, two books in an inset: '마케팅 전쟁' and a Clausewitz '전쟁론' silhouette; explaining. (2 ~45%) JU BON-JIL pointing at the hilltop flag.",
+ "p03b":"One panel (~100%). A whiteboard 2x2 hand-drawn quadrant titled '마케팅 전쟁의 네 가지 전략': four cells labeled '방어전 · 1등의 고지 수성', '공격전 · 2등의 정면 돌파', '측면전 · 빈 땅을 먼저 점령', '게릴라전 · 작은 틈새를 지킨다'; small army-figure icons in each cell; JU BON-JIL presenting, NA BAE-UM taking notes. ONLY these labels on the board.",
  "p04":"One panel (~100%). A whiteboard three-camp standoff diagram: a huge 'CUDA' camp (NVIDIA) crowded with library, tutorial and researcher icons; a smaller 'ROCm' camp (AMD) that is technically fine but sparse; a 'TPU' camp (Google); JU BON-JIL beside. Clean English labels.",
  "p05":"Two panels. (1 ~55%) JU BON-JIL pointing at the crowded CUDA camp vs the empty ROCm camp; NA BAE-UM noting. (2 ~45%) close on the dense icons around CUDA.",
  "p06":"Two panels. (1 ~55%) JU BON-JIL explaining that everyone codes in CUDA; NA BAE-UM following. (2 ~45%) JU BON-JIL emphatic close-up.",
@@ -55,6 +56,7 @@ PAGES = {
  "p09":"Two panels. (1 ~55%) NA BAE-UM asking if history shows the same; JU BON-JIL smiling, turning nostalgic. (2 ~45%) a faint sepia transition begins.",
  "p10":"One panel (~100%, warm SEPIA 1980s flashback). VHS tapes vs Betamax tapes face off; video rental shops and content all pile onto the VHS camp; a clean label 'VHS vs Betamax'; the better tech (Betamax) losing because of ecosystem.",
  "p11":"Two panels. (1 ~55%) JU BON-JIL (present) noting that VHS vs Betamax was the same; NA BAE-UM realizing. (2 ~45%) NA BAE-UM's dawning face.",
+ "p11b":"One panel (~100%). A history wall of standards wars drawn as two small vintage panels side by side: LEFT 'OS 전쟁' (a desktop PC with three flags around it), RIGHT '핸드셋 전쟁' (early smartphones with two rival camp flags); below them a hand-drawn alliance web: one central flag connected by lines to many small partner flags, labeled '연합군'; JU BON-JIL beside it. ONLY these labels.",
  "p12":"Two panels. (1 ~55%) NA BAE-UM saying you can't just buy the better tech; JU BON-JIL nodding. (2 ~45%) JU BON-JIL approving look.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL turning to add a twist about Google; NA BAE-UM curious. (2 ~45%) JU BON-JIL picking up the marker.",
  "p14":"One panel (~100%). A whiteboard diagram of Google's counterattack: 'TPU + JAX·XLA' lowering CUDA dependence, and 'PyTorch/XLA' compatible tools attacking the switching-cost itself with arrows; a small crack appearing in the CUDA moat; clean English labels.",
@@ -82,6 +84,8 @@ DLG = {
         (2,'C','speech','한마디로, 전쟁이야')],
  "p03":[(1,'C','speech','표준을 잡는 건 전쟁이야\n『마케팅 전쟁』이 클라우제비츠에서 빌려온 시각이지'),
         (2,'C','speech','누가 고지를 점령하느냐가\n전부를 결정한다')],
+ "p03b":[(1,'C','speech','전쟁에도 종류가 있어\n1등은 지키고, 2등은 치고\n작은 놈은 옆으로 돌거나 숨는 거야'),
+        (1,'C','narr','자기 체급에 안 맞는 전쟁을 고르면\n그 순간 진다')],
  "p04":[(1,'C','speech','지금 AI 칩은 세 진영이야\nCUDA, ROCm, TPU'),
         (1,'C','narr','CUDA 진영에 다 몰려 있었다')],
  "p05":[(1,'C','speech','AMD ROCm이 기술적으로 나쁘지 않아도\n주변이 한산하지'),
@@ -97,6 +101,8 @@ DLG = {
  "p10":[(1,'C','narr','더 좋은 기술이라던 Betamax가\n생태계에 밀려 사라졌다')],
  "p11":[(1,'C','speech','비디오 가게도, 콘텐츠도\n전부 VHS로 몰렸거든'),
         (2,'C','think','더 좋은 게 진 거였어')],
+ "p11b":[(1,'C','speech','OS 전쟁도, 핸드셋 전쟁도 같았어\n그리고 이 전쟁은 혼자 못 싸워\n진영, 그러니까 연합군을 만드는 싸움이지'),
+        (1,'C','narr','CUDA에 몰린 생태계도\n결국 거대한 연합군이다')],
  "p12":[(1,'C','speech','그럼 기술이 좋다고\n사면 안 되겠네요'),
         (2,'C','speech','바로 그거야')],
  "p13":[(1,'C','speech','단, 구글은 좀 달라'),
@@ -140,6 +146,15 @@ BANDS = {
  "p11":'VHS vs Betamax · 더 좋은 기술(Betamax)이 진 이유 = 생태계',
  "p15":'구글의 반격 · TPU+JAX·XLA로 CUDA 의존↓, PyTorch·XLA로 전환비용 자체 공격 (자본·수직계열, AMD와 체급 다름)',
  "p24":'기술 우위 ≠ 승리 · 표준을 잡는 자에게 베팅한다',
+}
+
+# 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 선별 부여
+NOTES = {
+ "p03":'해설: 『마케팅 전쟁』(Al Ries & Jack Trout)은 클라우제비츠의 전쟁론을 시장 경쟁에 적용한 고전이다. 표준 전쟁 분석의 기본 프레임으로 쓴다',
+ "p03b":'해설: 마케팅 전쟁의 4전략 — 방어전(시장 선도자), 공격전(2위의 정면 공격), 측면전(무주공산 선점), 게릴라전(수성 가능한 틈새). 기업의 체급에 따라 선택지가 다르다',
+ "p10":'사실 확인: 1970-80년대 VHS(JVC)와 Betamax(소니)의 표준 전쟁. 화질 우위로 평가받던 Betamax가 대여점·콘텐츠 생태계를 모은 VHS에 패배했다',
+ "p11b":'해설: OS 전쟁·핸드셋 전쟁·연합군(Strategic Partners & Alliance) 프레임은 유승삼 대표의 기술수용주기 강연에서 인용. 표준 전쟁은 단독전이 아니라 진영전이다',
+ "p14":'사실 확인: 구글은 자체 TPU와 JAX·XLA 스택으로 CUDA 의존을 낮추고, PyTorch/XLA 호환층으로 전환비용을 공격하는 전략을 편다',
 }
 
 def instruction(pid):

@@ -54,6 +54,9 @@ PAGES = {
  "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the difference between the two curves; NA BAE-UM following. (2 ~45%) close on the PLC peak-and-decline section.",
  "p09":"Two panels. (1 ~55%) JU BON-JIL noting even main-street products pass PLC's peak and decline; NA BAE-UM noting. (2 ~45%) NA BAE-UM's concerned face.",
  "p10":"One panel (~100%). NA BAE-UM's notebook close-up: 'татС = 누가 사는가' corrected to two clean lines 'TALC = 누가 사는가' and 'PLC = 얼마나 팔리는가'; a small two-curve doodle.",
+ "p10b":"One panel (~100%). The whiteboard with a THIRD curve, the HYPE CYCLE, drawn hand-sketch style: a sharp early spike, a deep dip, then a gentle long rise to a plateau; five small clean Korean labels along it in order: '기대 급등', '과잉 기대 정점', '환멸의 골짜기', '계몽', '생산성 고원'; JU BON-JIL drawing it, NA BAE-UM and HAN TANG-SU watching intently.",
+ "p10c":"One split panel (~100%), LEFT vs RIGHT contrast. LEFT half (hot red tone): the hype-cycle spike with a small rocket-shaped stock chart riding the spike, label box inside left half '하입을 탄 종목 · 정점에서 팔아야 한다'. RIGHT half (calm green tone): a steady stair-step structure curve with a gorilla icon holding firm, label box inside right half '고릴라 · 구조가 안 바뀌면 들고 간다'. A bold VS badge center.",
+ "p10d":"Two panels. (1 ~55%) JU BON-JIL delivering the hard truth about how confusing this is, serious; HAN TANG-SU gulping. (2 ~45%) NA BAE-UM's notebook close-up: ONLY two hand-written lines: '가격의 등락은 신호가 아니다' / '단계와 구조의 변화가 신호다'.",
  "p11":"Two panels. (1 ~55%) JU BON-JIL turning to a bigger point about standard replacement; NA BAE-UM attentive. (2 ~45%) JU BON-JIL serious look.",
  "p12":"One panel (~100%). A whiteboard standard-replacement diagram: LEFT a faded 'Wintel (Windows + Intel)' dominating PCs for 40 years; RIGHT a bright 'Winvidia (Windows + NVIDIA)' 2026; an arrow handing the standard over; beside Intel, faint tombstone silhouettes of Motorola and Nokia; clean English labels.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL explaining the Wintel-to-Winvidia shift; NA BAE-UM amazed. (2 ~45%) close on the bright Winvidia side.",
@@ -96,10 +99,15 @@ DLG = {
         (2,'C','think','두 개를 헷갈리면 안 되겠다')],
  "p10":[(1,'C','label','TALC = 누가 사는가'),
         (1,'C','label','PLC = 얼마나 팔리는가')],
+ "p10b":[(1,'C','speech','곡선이 하나 더 있어, 하입사이클\n기대가 먼저 치솟고, 환멸로 꺼졌다가\n진짜 쓸모가 생기면 다시 올라와'),
+        (1,'C','narr','기대의 곡선은 매출의 곡선보다\n항상 먼저, 항상 높게 움직인다')],
+ "p10c":[(1,'C','narr','여기서 팔 때를 헷갈리면 다 잃는다')],
+ "p10d":[(1,'C','speech','전기차에 자율주행까지 겹친 종목은\n이 판별이 제일 어려워\n그래서 단타쟁이들이 다 깨지는 거야'),
+        (2,'C','narr','노트에 두 줄을 적었다')],
  "p11":[(1,'C','speech','더 무서운 건\n표준 자체가 바뀌는 거야'),
         (2,'C','think','표준이 바뀐다고?')],
- "p12":[(1,'C','speech','40년간 PC를 지배한 윈텔\n근데 2026년, 젠슨황이 윈비디아를 선언했어'),
-        (2,'C','think','윈텔에서 윈비디아로…')],
+ "p12":[(1,'C','speech','40년간 PC를 지배한 윈텔\n근데 젠슨 황이 MS와 손잡고\nPC의 두뇌를 갈아 끼우기 시작했지'),
+        (2,'C','think','사람들은 윈비디아라 부른다던데…')],
  "p13":[(1,'C','speech','NVIDIA가 두뇌, MS가 OS\n표준이 통째로 넘어가는 거야'),
         (2,'C','think','한 시대가 저무네')],
  "p14":[(1,'C','speech','인텔은 모토롤라·노키아처럼\n표준 교체기에 밀려나는 과거 고릴라가 되어가고 있어'),
@@ -139,8 +147,17 @@ DLG = {
 BANDS = {
  "p03":'중심가 = 성숙기(성장률↓, 매출은 높은 고원에서 안정) · 단 평화는 영원하지 않다',
  "p07":'TALC(누가 사는가) vs PLC(얼마나 팔리는가)는 다른 곡선 · 중심가 제품도 PLC 정점·쇠퇴를 지난다',
- "p12":'윈텔(Windows+Intel) 40년 지배 → 윈비디아(Windows+NVIDIA, 2026 젠슨황) · 인텔=모토롤라·노키아처럼 과거 고릴라',
+ "p12":'윈텔(Windows+Intel) 40년 지배 → 이른바 윈비디아(Windows+NVIDIA) 시대 · 인텔=모토롤라·노키아처럼 과거 고릴라',
  "p19":'카테고리가 죽으면 그 고릴라도 같이 죽는다 (매도 원칙은 시즌4)',
+}
+
+# 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 선별 부여
+NOTES = {
+ "p07":'해설: TALC(기술수용주기)는 "누가 언제 채택하는가"의 분포, PLC(제품수명주기)는 "매출이 얼마나 되는가"의 곡선이다. 유승삼 강연 자료 「기술수용주기 vs. 제품수명주기」 참조',
+ "p10b":'해설: 하입사이클(Hype Cycle)은 가트너가 정리한 기대치 곡선 — 기대 급등·과잉 기대 정점·환멸의 골짜기·계몽·생산성 고원. 기대(하입)와 실제 매출(PLC)은 다른 곡선이다',
+ "p10c":'투자 적용: 하입을 탄 가격은 정점에서 매도, 고릴라는 구조(표준·전환비용) 변화가 없는 한 보유. 등락 자체는 매도 신호가 아니다 — 이 구분이 안 되면 단타로 흐른다',
+ "p12":'사실 확인: 2026년 NVIDIA는 Microsoft와 손잡고 Arm 기반 슈퍼칩(RTX Spark)으로 Windows AI PC에 진출했다(Dell·HP·ASUS 등 탑재). "윈비디아"는 이 동맹을 가리키는 별칭이다',
+ "p16":'해설: 아날로그→피처폰→스마트폰 각 시대의 지배자가 모두 달랐다(모토롤라→노키아→애플·삼성). 카테고리 교체는 고릴라 교체다',
 }
 
 def instruction(pid):
