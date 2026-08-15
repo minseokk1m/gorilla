@@ -38,7 +38,9 @@ RULES_TEXT = (
     "BACKGROUND TEXT RULE: NO readable text anywhere except the lines and diagram labels explicitly "
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
-    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified.")
+    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
+    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
  'narr':'a narration box','speech':'a speech balloon','think':'a thought (cloud) balloon',
@@ -53,35 +55,35 @@ PAGES = {
  "p01":"A cinematic dark chapter-title page. A faint cracked CHASM canyon glows in the dark; a pure electric car (BEV) silhouette has fallen into the canyon, while hybrid/EREV cars detour around the rim; a spotlight on the canyon. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover, ominous tone.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM puzzled, asking JU BON-JIL about the chasm; JU BON-JIL calm, knowing. (2 ~45% close-up) JU BON-JIL with a slight serious smile, ready to explain.",
  "p02b":"Two panels, why EVs at all (F3-1). (1 ~55%) JU BON-JIL at the whiteboard with a simple hand-drawn three-arrow sketch: three labeled arrows '친환경', '화석연료 고갈', '자율주행의 약속' converging into a small electric car icon; NA BAE-UM listening. (2 ~45%) a 1990s vintage-tone inset (keep webtoon linework): a sleek 1990s two-seat experimental electric coupe on a test road, hopeful dawn light.",
- "p02c":"Two panels, the too-early pioneer (vintage tone continues). (1 ~55%) the same 1990s electric coupe being loaded onto a tow truck at dusk, a small crowd watching wistfully; melancholy. (2 ~45%) back to present: JU BON-JIL closing the story, NA BAE-UM curious; the whiteboard behind still shows only the three-arrow sketch.",
+ "p02c":"Two panels, the too-early pioneer (vintage tone continues). (1 ~55%) the SAME sleek 1990s two-seat electric coupe from the previous page being loaded onto a tow truck at dusk; a small crowd of anonymous 1990s bystanders in period clothing watching wistfully (NO smartphones, NO red cap, NONE of the study-group members); melancholy. (2 ~45%) back to present: JU BON-JIL closing the story, NA BAE-UM curious; the whiteboard behind still shows the SAME three labeled arrows '친환경', '화석연료 고갈', '자율주행의 약속' converging into a small electric car icon.",
  "p03":"Two panels. (1 ~60%) NA BAE-UM alone at a cafe table looking at his laptop; on screen ONE chart with rising bars (sales still growing every year) and a growth-rate LINE above them that bends downward recently; the chart title reads exactly '글로벌 BEV 판매 증가율' and nothing else is written on screen. (2 ~40%) NA BAE-UM's puzzled, curious face lit by the screen.",
- "p04":"Two panels. (1 ~55%) close on the same laptop chart: the bars still rise but the growth-rate line clearly bends down; the ONLY text on the chart is the title '글로벌 BEV 판매 증가율'. (2 ~45%) NA BAE-UM leaning back, thinking, scratching his head.",
+ "p04":"Two panels. (1 ~55%) SAME night-time home living room as the previous page (NO whiteboard, NO study room): close on the same laptop chart, the bars still rise but the growth-rate line clearly bends down; the ONLY text on the chart is the title '글로벌 BEV 판매 증가율'. (2 ~45%) NA BAE-UM leaning back on his sofa, thinking, scratching his head.",
  "p05":"Two panels, study room. (1 ~55%) NA BAE-UM turning to HAN SIL-SOK (40s, neat shirt and knit vest, metal glasses, by a laptop) to ask a question; calm atmosphere. (2 ~45%) HAN SIL-SOK's calm, careful everyman face.",
- "p06":"Two panels. (1 ~55%) HAN SIL-SOK explaining his hesitation, a measured expression, gesturing mildly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK slightly firm close-up.",
+ "p06":"Two panels. (1 ~55%) the speaker in BOTH panels is HAN SIL-SOK: BLACK hair, 40s, knit VEST over a neat shirt, thin metal glasses — NOT grey hair, NOT a navy crewneck sweater; JU BON-JIL does NOT appear on this page. HAN SIL-SOK explaining his hesitation, measured, gesturing mildly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK slightly firm close-up (black hair, vest, glasses).",
  "p07":"One panel (~100%). HAN SIL-SOK on the left, and on the right a clean small horizontal bar-survey chart with three bars labeled cleanly: '너무 비쌈 63%', '충전 어려움 48%', '주행거리 걱정 47%'; JU BON-JIL's voice-over emphasis. Bright study room, clear infographic.",
  "p08":"Two panels. (1 ~60%) JU BON-JIL at the clean whiteboard drawing a cracked CHASM canyon, with one pure electric car (BEV) fallen inside it; NA BAE-UM watching. (2 ~40%) close on the whiteboard canyon drawing.",
  "p09":"One panel (~100%). The whiteboard CHASM canyon: along the rim a detour road is drawn, and hybrid/EREV cars drive around it crossing to the far side, bypassing the canyon; small clean labels on the detour cars: '현대 GV70 EREV', 'Li Auto', '스텔란티스 RAM'; JU BON-JIL pointing.",
  "p10":"Two panels. (1 ~55%) JU BON-JIL pointing at the detouring EREV cars, explaining; a small label near them. (2 ~45%) NA BAE-UM's dawning realization.",
- "p11":"Two panels. (1 ~55%) JU BON-JIL firm, gesturing at the whole canyon-and-detour drawing, making the key point; NA BAE-UM nodding seriously. (2 ~45%) JU BON-JIL emphatic close-up, finger raised.",
+ "p11":"Two panels. (1 ~55%) JU BON-JIL firm, gesturing at the whole canyon-and-detour drawing, making the key point; NA BAE-UM nodding seriously. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p12":"Two panels. (1 ~55%) JU BON-JIL side view at the whiteboard, behind him bold typographic space; serious teaching pose. (2 ~45%) NA BAE-UM absorbing it, brow furrowed.",
- "p13":"Two panels. (1 ~55%) JU BON-JIL making a grave point, hand flat, steady; NA BAE-UM listening. (2 ~45%) JU BON-JIL's steady eyes close-up.",
+ "p13":"Two panels. (1 ~55%) JU BON-JIL making a grave point, hand flat, steady; NA BAE-UM listening. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p14":"One split panel (~100%). LEFT: GO BI-JEON (visionary) pointing forward enthusiastically; RIGHT: HAN SIL-SOK (pragmatist) shaking his head, wary; a big RED X between the two halves; clean contrast.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL summarizing, calm and clear; NA BAE-UM writing in his notebook. (2 ~45%) NA BAE-UM's notebook close-up with a small chasm doodle.",
  "p16":"Two panels. (1 ~55%) NA BAE-UM looking up, asking whether it is only EVs; JU BON-JIL smiling. (2 ~45%) JU BON-JIL about to give other examples.",
  "p17":"One panel (~100%, comparison infographic, three columns). LEFT: an electric car (BEV) with the slowing curve, label 'EREV로 우회 = 캐즘'. CENTER: a consumer satellite-communication device with a flashy launch then a flat adoption chart, label '선각수용자 폭발 후 침묵'. RIGHT: Google Glass, a 2014 cheering launch then a 2015 'discontinued' tag, label '캐즘에 빠짐'. A top banner ties them together.",
  "p18":"Two panels. (1 ~55%) JU BON-JIL pointing across the three examples, NA BAE-UM impressed at the common pattern. (2 ~45%) NA BAE-UM connecting it, eyes widening.",
  "p19":"Two panels, comedic. (1 ~55%) HAN TANG-SU (red cap) butts in with a cocky grin and a question; JU BON-JIL beside with a dry amused look. (2 ~45%) HAN TANG-SU deflating sheepishly as JU BON-JIL retorts.",
- "p20":"Two panels. (1 ~55%) NA BAE-UM pulling out his phone with his own halved AI-stock chart, applying the lesson to himself, a rueful look. (2 ~45%) close on the red chart on his phone.",
- "p21":"Two panels. (1 ~55%) JU BON-JIL explaining how to tell a chasm apart, calm and clear; NA BAE-UM taking notes. (2 ~45%) JU BON-JIL confident close-up.",
+ "p20":"Two panels. (1 ~55%) NA BAE-UM pulling out his phone with his own halved AI-stock chart, applying the lesson to himself, a rueful look. (2 ~45%) close on the red chart on his phone: NO axis numbers anywhere; the line falls to roughly HALF of its peak with a dashed halfway line — a 50% drop, not a 90% crash.",
+ "p21":"Two panels. (1 ~55%) JU BON-JIL explaining how to tell a chasm apart, calm and clear; NA BAE-UM taking notes. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p22":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing a clean note line, JU BON-JIL nodding in the soft background. (2 ~40%) the notebook close-up, the line written, a small chasm-and-bridge doodle.",
  "p23":"Two panels. (1 ~55%) NA BAE-UM resolved, a small understanding settling; warm light. (2 ~45%) NA BAE-UM's thoughtful close-up.",
  "p24":"Two panels. (1 ~55%) NA BAE-UM leaning forward eagerly to ask a pointed question; JU BON-JIL raising a hand to gently defer. (2 ~45%) NA BAE-UM's curious, eager face.",
- "p25":"Two panels. (1 ~55%) JU BON-JIL answering with a knowing smile, deferring the topic; NA BAE-UM nodding. (2 ~45%) JU BON-JIL's amused knowing look.",
+ "p25":"Two panels. (1 ~55%) JU BON-JIL answering with a knowing smile, deferring the topic; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p26":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, the chasm idea sinking in, lots of negative space. (2 ~40%) NA BAE-UM's resolved eyes extreme close-up.",
- "p27":"Two panels, tone warming with hope. (1 ~55%) JU BON-JIL turning encouraging, a hopeful look, as if to say not all is lost; NA BAE-UM looking up. (2 ~45%) JU BON-JIL's warm confident close-up.",
+ "p27":"Two panels, tone warming with hope. (1 ~55%) JU BON-JIL turning encouraging, a hopeful look, as if to say not all is lost; NA BAE-UM looking up. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL gesturing as if pointing to a way across the canyon; NA BAE-UM hopeful. (2 ~45%) a small sketch of a bridge beginning to span the canyon.",
  "p29":"One panel (~100%). The dark study room; behind JU BON-JIL a faint sepia silhouette of the 1944 Normandy landing rises like a memory; JU BON-JIL smiles, delivering the cliffhanger. Cinematic.",
- "p30":"One panel (~100%). Closing chapter-end: the canyon with a faint bridge and the Normandy silhouette; NA BAE-UM and JU BON-JIL small silhouettes looking ahead; reserve a black caption band across the very bottom for the next-episode preview.",
+ "p30":"One panel (~100%). Closing chapter-end: the canyon with a faint bridge and the Normandy silhouette; NA BAE-UM and JU BON-JIL small silhouettes looking ahead; a black caption band across the very bottom — the preview caption text MUST be lettered INSIDE this black band (never elsewhere), do not leave the band empty.",
 }
 
 DLG = {

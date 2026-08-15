@@ -36,7 +36,9 @@ RULES_TEXT = (
     "BACKGROUND TEXT RULE: NO readable text anywhere except the lines and diagram labels explicitly "
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
-    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified.")
+    "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
+    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
  'narr':'a narration box','speech':'a speech balloon','think':'a thought (cloud) balloon',
@@ -52,10 +54,10 @@ PAGES = {
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM leaning in to ask JU BON-JIL how to cross the chasm; JU BON-JIL calm, knowing. (2 ~45% close-up) JU BON-JIL with a confident look, about to use a war analogy.",
  "p03":"Two panels, warm SEPIA 1944 war-memory tone. (1 ~60%) a wide Normandy beach; faint scattered arrows spread thin across the whole coast fading away. (2 ~40%) by contrast, all the firepower arrows converge into ONE concentrated point on a single beachhead, a small inset of JU BON-JIL at a whiteboard pointing.",
  "p04":"Two panels, sepia. (1 ~55%) the single beachhead being taken with concentrated force, dramatic. (2 ~45%) a faded image of forces spread thin and failing across the wide beach, contrast.",
- "p05":"Two panels. (1 ~55%) JU BON-JIL firm at the whiteboard pointing at the single converging point; NA BAE-UM noting. (2 ~45%) JU BON-JIL emphatic close-up, finger raised.",
+ "p05":"Two panels. (1 ~55%) JU BON-JIL firm at the whiteboard pointing at the single converging point; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p06":"Two panels. (1 ~55%) on the whiteboard a contrast sketch: scattered arrows labeled die vs one concentrated arrow labeled live; JU BON-JIL explaining. (2 ~45%) NA BAE-UM nodding, getting it.",
  "p07":"Two panels, modern IT. (1 ~55%) a developer at a desk using an AI copilot screen with code auto-completing; a clean label '개발자 = 교두보'; other office roles (marketing, accounting, design) faintly waiting in the background. (2 ~45%) close on the AI copilot code screen.",
- "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the copilot-beachhead idea, gesturing; NA BAE-UM impressed. (2 ~45%) JU BON-JIL confident close-up.",
+ "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the copilot-beachhead idea, gesturing; NA BAE-UM impressed. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p09":"Two panels. (1 ~55%) NA BAE-UM asking why only one beachhead; JU BON-JIL smiling. (2 ~45%) JU BON-JIL about to explain whole product.",
  "p10":"One panel (~100%). NA BAE-UM's open notebook close-up, hand-written two lines: '교두보 = 한 시장을 완전 점령' and '분산 = 죽음 / 집중 = 생존'; a small beachhead doodle.",
  "p11":"Two panels. (1 ~55%) JU BON-JIL at the whiteboard making the point that the core product alone is not enough; HAN SIL-SOK (pragmatist) in an inset shaking his head slightly. (2 ~45%) HAN SIL-SOK's careful face.",
@@ -66,9 +68,9 @@ PAGES = {
  "p16":"Two panels. (1 ~55%) JU BON-JIL explaining that the whole product is complete only when these layers interlock in one scenario; NA BAE-UM following. (2 ~45%) NA BAE-UM's concentrated face.",
  "p17":"Two panels. (1 ~55%) NA BAE-UM slapping his knee with a bright realization. (2 ~45%) NA BAE-UM's eyes lighting up.",
  "p18":"One panel (~100%). A reference-spread arrow diagram: a dark first beachhead market, with word-of-mouth arrows spreading outward to adjacent markets that get progressively lighter in color; JU BON-JIL gesturing.",
- "p19":"Two panels. (1 ~55%) JU BON-JIL explaining how a secured beachhead's reference becomes the next market's reference; NA BAE-UM noting. (2 ~45%) JU BON-JIL confident close-up.",
+ "p19":"Two panels. (1 ~55%) JU BON-JIL explaining how a secured beachhead's reference becomes the next market's reference; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p20":"One split panel (~100%). LEFT (red tone): a company spreading thin everywhere at once, falling into the chasm, label 죽음. RIGHT (green tone): a company fully dominating one spot and spreading, label 건널 신호. A clear contrast.",
- "p21":"Two panels. (1 ~55%) JU BON-JIL making the key investor point, a big magnifying-glass diagnostic icon behind him; NA BAE-UM intent. (2 ~45%) JU BON-JIL emphatic, finger raised.",
+ "p21":"Two panels. (1 ~55%) JU BON-JIL making the key investor point, a big magnifying-glass diagnostic icon behind him; NA BAE-UM intent. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p22":"Two panels. (1 ~55%) JU BON-JIL delivering the emphasized takeaway with a serious warm look; NA BAE-UM absorbing it. (2 ~45%) NA BAE-UM's understanding close-up.",
  "p23":"Two panels. (1 ~55%) NA BAE-UM pulling out his phone, applying the diagnostic to his own past stock, rueful. (2 ~45%) close on his red chart.",
  "p24":"Two panels, comedic. (1 ~55%) HAN TANG-SU (red cap) butts in with a cocky question; JU BON-JIL with a dry amused look. (2 ~45%) HAN TANG-SU deflating as JU BON-JIL retorts.",

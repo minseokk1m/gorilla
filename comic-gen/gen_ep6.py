@@ -35,6 +35,8 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
+    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing. "
     "When a page DOES specify diagram labels, render exactly those labels cleanly and nowhere else.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
@@ -52,20 +54,20 @@ PAGES = {
  "p03":"Two panels, late-2022 vibe. (1 ~55%) a ChatGPT-style AI chat screen spreading explosively, glowing, shared everywhere. (2 ~45%) close on the screen, a sense of viral explosion.",
  "p04":"One panel (~100%). A big bold counter graphic '2개월 만에 1억 사용자' over a montage of many people on phones/laptops all using the AI chat at once; explosive adoption.",
  "p05":"Two panels, office. (1 ~55%) HAN SIL-SOK (pragmatist) in an office where he and all his colleagues are using the AI tool together at their desks; ordinary everyday adoption. (2 ~45%) HAN SIL-SOK's matter-of-fact face.",
- "p06":"Two panels. (1 ~55%) JU BON-JIL making the key point that this is the tornado, gesturing; NA BAE-UM nodding. (2 ~45%) JU BON-JIL emphatic close-up.",
+ "p06":"Two panels. (1 ~55%) JU BON-JIL making the key point that this is the tornado, gesturing; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p07":"One split panel (~100%). LEFT (dry, cold): a barren cracked canyon labeled 캐즘. RIGHT (stormy): a swirling tornado labeled 토네이도. Between them a small bridge (교두보·볼링앨리) connecting the two. Clear contrast.",
  "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the bridge between chasm and tornado; NA BAE-UM following. (2 ~45%) NA BAE-UM's understanding face.",
  "p09":"Two panels. (1 ~55%) NA BAE-UM asking where the storm's energy flowed; JU BON-JIL turning to the whiteboard. (2 ~45%) JU BON-JIL picking up the marker.",
  "p10":"One panel (~100%). A whiteboard sales chart: NVIDIA data-center revenue exploding in a steep non-linear curve, and below it parallel rising arrows for SK Hynix, Samsung, Micron HBM memory; clean labels 'NVIDIA GPU' and 'HBM'; JU BON-JIL pointing.",
  "p11":"Two panels. (1 ~55%) JU BON-JIL explaining that AI big-tech bought all of it; NA BAE-UM amazed. (2 ~45%) close on the steep non-linear part of the curve.",
  "p12":"Two panels. (1 ~55%) NA BAE-UM pointing at the soaring chart, astonished. (2 ~45%) NA BAE-UM's amazed close-up.",
- "p13":"Two panels. (1 ~55%) JU BON-JIL raising a finger to mark an important principle; NA BAE-UM ready to note. (2 ~45%) JU BON-JIL serious teaching look.",
+ "p13":"Two panels. (1 ~55%) JU BON-JIL raising a finger to mark an important principle; NA BAE-UM ready to note. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p14":"One panel (~100%). A whiteboard with TWO labeled rows for buy-timing: '응용 소프트웨어 → 볼링앨리부터' and '지원 하드웨어(칩·메모리) → 토네이도 형성 후'; NVIDIA and HBM icons placed in the 'after tornado' row; JU BON-JIL beside.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL explaining that timing differs by category type; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's focused face.",
  "p16":"One panel (~100%). NA BAE-UM's notebook close-up, two hand-written lines: '원칙1 SW = 볼링앨리부터' and '원칙2 칩·메모리 = 토네이도 후'; a small tornado doodle.",
  "p17":"Two panels. (1 ~55%) NA BAE-UM raising his hand to ask how to detect tornado entry; JU BON-JIL smiling. (2 ~45%) JU BON-JIL pointing at a chart.",
  "p18":"Two panels. (1 ~55%) JU BON-JIL pointing at a non-linear accelerating revenue curve; NA BAE-UM watching. (2 ~45%) close on the accelerating curve.",
- "p19":"Two panels. (1 ~55%) JU BON-JIL making the detection point clearly; NA BAE-UM noting. (2 ~45%) JU BON-JIL confident close-up.",
+ "p19":"Two panels. (1 ~55%) JU BON-JIL making the detection point clearly; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
  "p20":"Two panels. (1 ~55%) NA BAE-UM connecting it, eyes widening. (2 ~45%) NA BAE-UM's realization.",
  "p21":"Two panels, comedic. (1 ~55%) HAN TANG-SU (red cap) butts in with a cocky question; JU BON-JIL with a dry amused look. (2 ~45%) HAN TANG-SU deflating as JU BON-JIL retorts.",
  "p22":"Two panels. (1 ~55%) NA BAE-UM applying it to himself thoughtfully. (2 ~45%) his analytical face.",
