@@ -19,7 +19,7 @@ def client():
     for f in (KEYF, getattr(g, "KEYF", "")):
         if not key and f and os.path.exists(f): key = open(f).read().strip()
     if not key: sys.exit("API 키 없음: " + KEYF)
-    return OpenAI(api_key=key)
+    return OpenAI(api_key=key, timeout=420.0, max_retries=2)
 
 CHARS = (g.CHARS +
     " EP1 CRITICAL CONSISTENCY: NA BAE-UM is EXACTLY 39 years old and must look late-30s on EVERY "
