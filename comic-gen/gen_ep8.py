@@ -77,7 +77,7 @@ PAGES = {
  "p27":"Two panels. (1 ~55%) JU BON-JIL hinting that peace follows when a standard is set, but it is not eternal; NA BAE-UM curious. (2 ~45%) the gorilla-throne silhouette, calm but with a faint sunset.",
  "p28":"One panel (~100%). A peaceful main-street tone with the gorilla on a distant throne, a faint sunset hinting decline; JU BON-JIL's small figure.",
  "p29":"Two panels. (1 ~55%) JU BON-JIL delivering the cliffhanger about coming peace and its impermanence; NA BAE-UM listening. (2 ~45%) the distant throne under a faint sunset.",
- "p30":"One panel (~100%). Closing chapter-end: the gorilla on a distant throne at dusk; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview.",
+ "p30":"One panel (~100%). Closing chapter-end: the gorilla on a distant throne at dusk; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band; NO white caption box anywhere; exactly TWO small distant figures (NA BAE-UM and JU BON-JIL).",
 }
 
 DLG = {
@@ -128,11 +128,11 @@ DLG = {
  "p22":[(1,'C','think','전쟁의 승부는 화력이 아니라 보급이었어'),
         (2,'C','think','생태계가 보급선이구나')],
  "p23":[(1,'C','speech','그래서 결론은 하나야'),
-        (2,'C','think','베팅 대상이…')],
- "p24":[(1,'C','emph','기술이 아니라, 표준을 잡는 자에게 베팅해'),
+        (2,'C','think','투자할 곳이…')],
+ "p24":[(1,'C','emph','기술이 아니라, 표준을 잡는 자에게 투자해'),
         (1,'C','narr','고지의 깃발은 하나뿐이다')],
  "p25":[(1,'C','speech','기술 우위가\n곧 승리는 아니네요'),
-        (2,'C','caption','베팅 대상 = 표준을 쥔 1등 · 기술 우위 ≠ 승리')],
+        (2,'C','caption','투자 대상 = 표준을 쥔 1등 · 기술 우위 ≠ 승리')],
  "p26":[(1,'C','narr','표준이 잡히자\n전쟁터에 평화가 찾아왔다'),
         (2,'C','think','이제 고릴라가 왕좌에 앉았네')],
  "p27":[(1,'C','speech','근데 그 평화도\n영원하진 않아'),

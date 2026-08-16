@@ -53,7 +53,7 @@ PAGES = {
  "p05":"Two panels. (1 ~55%) the sunset behind the throne deepening, a shadow falling; NA BAE-UM uneasy. (2 ~45%) the throne with a longer shadow.",
  "p06":"Two panels. (1 ~55%) JU BON-JIL turning to the whiteboard to draw two curves; NA BAE-UM ready. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p07":"One panel (~100%). A whiteboard with TWO curves side by side: a bell-shaped 'TALC' curve (adopter distribution) and a 'PLC' revenue curve that peaks and then declines; a clean label noting they are different curves; JU BON-JIL pointing.",
- "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the difference between the two curves; NA BAE-UM following. (2 ~45%) close on the PLC peak-and-decline section.",
+ "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the difference between the two curves; NA BAE-UM following. (2 ~45%) close on the PLC peak-and-decline section. The whiteboard shows ONLY ONE red PLC curve rising to a peak then declining, labeled 'PLC' in red (matching the previous page); NO second curve, NO dashed line, NO other labels.",
  "p09":"Two panels. (1 ~55%) JU BON-JIL noting even main-street products pass PLC's peak and decline; NA BAE-UM noting. (2 ~45%) NA BAE-UM's concerned face.",
  "p10":"One panel (~100%). NA BAE-UM's notebook close-up: 'татС = 누가 사는가' corrected to two clean lines 'TALC = 누가 사는가' and 'PLC = 얼마나 팔리는가'; a small two-curve doodle.",
  "p10b":"One panel (~100%). The whiteboard with a THIRD curve, the HYPE CYCLE, drawn hand-sketch style: a sharp early spike, a deep dip, then a gentle long rise to a plateau; five small clean Korean labels along it in order: '기대 급등', '과잉 기대 정점', '환멸의 골짜기', '계몽', '생산성 고원'; JU BON-JIL drawing it, NA BAE-UM and HAN TANG-SU watching intently.",
@@ -78,7 +78,7 @@ PAGES = {
  "p27":"Two panels. (1 ~55%) JU BON-JIL turning encouraging, hinting at NA BAE-UM's own upcoming test; a memory-chip silhouette in the background. (2 ~45%) NA BAE-UM surprised but eager.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL smiling, delivering the cliffhanger about NA BAE-UM doing the staging himself; NA BAE-UM determined. (2 ~45%) the memory-chip silhouette glowing.",
  "p29":"One panel (~100%). A memory-chip silhouette glows in the dark as NA BAE-UM looks toward it, ready for his first test; anticipatory.",
- "p30":"One panel (~100%). Closing chapter-end: the sunset throne and a memory-chip silhouette; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview.",
+ "p30":"One panel (~100%). Closing chapter-end: the sunset throne and a memory-chip silhouette; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band; NO white caption box anywhere; do NOT invent any preview or tagline text.",
 }
 
 DLG = {
