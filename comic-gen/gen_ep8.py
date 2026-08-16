@@ -32,7 +32,7 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
-    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "SCREEN RULE: every background laptop/tablet/phone in any scene is switched OFF with a plain dark screen unless its content is explicitly specified; NEVER draw any stock chart, graph, arrow or text on any screen. NEVER print any text, sound-effect or logo on clothing. "
     "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing. "
     "When a page DOES specify diagram labels, render exactly those labels cleanly and nowhere else.")
 
@@ -52,7 +52,7 @@ PAGES = {
  "p03b":"One panel (~100%). A whiteboard 2x2 hand-drawn quadrant titled '마케팅 전쟁의 네 가지 전략': four cells labeled '방어전 · 1등의 고지 수성', '공격전 · 2등의 정면 돌파', '측면전 · 빈 땅을 먼저 점령', '게릴라전 · 작은 틈새를 지킨다'; small army-figure icons in each cell; JU BON-JIL presenting, NA BAE-UM taking notes. ONLY these labels on the board.",
  "p04":"One panel (~100%). A whiteboard three-camp standoff diagram: a huge 'CUDA' camp (NVIDIA) crowded with library, tutorial and researcher icons; a smaller 'ROCm' camp (AMD) that is technically fine but sparse; a 'TPU' camp (Google); JU BON-JIL beside. Clean English labels.",
  "p05":"Two panels. (1 ~55%) JU BON-JIL pointing at the crowded CUDA camp vs the empty ROCm camp; NA BAE-UM noting. (2 ~45%) close on the dense icons around CUDA.",
- "p06":"Two panels. (1 ~55%) JU BON-JIL explaining that everyone codes in CUDA; NA BAE-UM following. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p06":"Two panels. (1 ~55%) JU BON-JIL explaining that everyone codes in CUDA; NA BAE-UM following. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p07":"Two panels. (1 ~55%) JU BON-JIL making the key point with a finger raised; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's understanding face.",
  "p08":"One panel (~100%). NA BAE-UM's notebook close-up: two lines '표준 = 더 좋은 기술 X' and '표준 = 생태계 O'; a small flag-on-hill doodle.",
  "p09":"Two panels. (1 ~55%) NA BAE-UM asking if history shows the same; JU BON-JIL smiling, turning nostalgic. (2 ~45%) a faint sepia transition begins.",
@@ -60,17 +60,17 @@ PAGES = {
  "p11":"Two panels. (1 ~55%) JU BON-JIL (present) noting that VHS vs Betamax was the same; NA BAE-UM realizing. (2 ~45%) NA BAE-UM's dawning face.",
  "p11b":"One panel (~100%). A history wall of standards wars drawn as two small vintage panels side by side: LEFT 'OS 전쟁' (a desktop PC with three flags around it), RIGHT '핸드셋 전쟁' (early smartphones with two rival camp flags); below them a hand-drawn alliance web: one central flag connected by lines to many small partner flags, labeled '연합군'; JU BON-JIL beside it. ONLY these labels.",
  "p12":"Two panels. (1 ~55%) NA BAE-UM saying you can't just buy the better tech; JU BON-JIL nodding. (2 ~45%) JU BON-JIL approving look.",
- "p13":"Two panels. (1 ~55%) JU BON-JIL turning to add a twist about Google; NA BAE-UM curious. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p13":"Two panels. (1 ~55%) JU BON-JIL turning to add a twist about Google; NA BAE-UM curious. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p14":"One panel (~100%). A whiteboard diagram of Google's counterattack: 'TPU + JAX·XLA' lowering CUDA dependence, and 'PyTorch/XLA' compatible tools attacking the switching-cost itself with arrows; a small crack appearing in the CUDA moat; clean English labels.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL explaining Google's different approach, serious; NA BAE-UM intent. (2 ~45%) close on the crack in the CUDA moat.",
- "p16":"Two panels. (1 ~55%) JU BON-JIL noting Google is a different class of challenger with capital and vertical integration; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p16":"Two panels. (1 ~55%) JU BON-JIL noting Google is a different class of challenger with capital and vertical integration; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p17":"Two panels. (1 ~55%) NA BAE-UM comparing AMD and Google in his mind, thoughtful. (2 ~45%) NA BAE-UM analytical.",
  "p18":"Two panels, comedic. (1 ~55%) HAN TANG-SU (red cap) butts in with a cocky question; JU BON-JIL with a dry amused look. (2 ~45%) HAN TANG-SU deflating as JU BON-JIL retorts.",
  "p19":"Two panels. (1 ~55%) NA BAE-UM applying the ecosystem idea to a stock, thoughtful. (2 ~45%) his focused face.",
  "p20":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing a clean summary line; JU BON-JIL nodding behind. (2 ~40%) the notebook close-up with a flag doodle.",
  "p21":"Two panels. (1 ~55%) NA BAE-UM resolved, understanding settling. (2 ~45%) his thoughtful close-up.",
  "p22":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, negative space. (2 ~40%) his resolved eyes extreme close-up.",
- "p23":"Two panels. (1 ~55%) JU BON-JIL raising a finger for the key bet; NA BAE-UM attentive. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p23":"Two panels. (1 ~55%) JU BON-JIL raising a finger for the key bet; NA BAE-UM attentive. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p24":"One panel (~100%). JU BON-JIL upper body, finger raised, behind him a single flag on a hilltop summit; a strong emphatic composition.",
  "p25":"Two panels. (1 ~55%) NA BAE-UM nodding and writing; JU BON-JIL approving. (2 ~45%) the notebook line close-up.",
  "p26":"Two panels, tone calming. (1 ~55%) the scene tone becomes peaceful; a gorilla on a throne silhouette appears faintly in the distance; JU BON-JIL warm. (2 ~45%) NA BAE-UM looking toward the throne.",

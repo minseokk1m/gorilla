@@ -33,7 +33,7 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
-    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "SCREEN RULE: every background laptop/tablet/phone in any scene is switched OFF with a plain dark screen unless its content is explicitly specified; NEVER draw any stock chart, graph, arrow or text on any screen. NEVER print any text, sound-effect or logo on clothing. "
     "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing. "
     "When a page DOES specify diagram labels, render exactly those labels cleanly and nowhere else.")
 
@@ -66,7 +66,7 @@ PAGES = {
  "p16":"Two panels. (1 ~55%) NA BAE-UM explaining SSD nearly replacing HDD, moving from late tornado into main street; members following. (2 ~45%) close on the SSD-vs-HDD share arrows.",
  "p17":"One panel (~100%). An HDD illustration (Seagate, WD) with a declining downward curve in a sunset tone; a clean label 'HDD = Declining'; NA BAE-UM presenting.",
  "p18":"Two panels. (1 ~55%) NA BAE-UM explaining HDD makers yielding to SSD; JU BON-JIL adding a grave voice-over point. (2 ~45%) the declining HDD curve close-up.",
- "p19":"Two panels. (1 ~55%) JU BON-JIL emphasizing the category-death point; NA BAE-UM sober. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p19":"Two panels. (1 ~55%) JU BON-JIL emphasizing the category-death point; NA BAE-UM sober. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p20":"Two panels. (1 ~55%) NA BAE-UM connecting all the stages, the picture forming. (2 ~45%) NA BAE-UM's understanding face.",
  "p21":"Two panels. (1 ~55%) JU BON-JIL turning to a deeper twist with HAN SIL-SOK; HAN SIL-SOK ready to add. (2 ~45%) HAN SIL-SOK calm close-up.",
  "p22":"One panel (~100%). A whiteboard CROSS diagram: a <DRAM cycle> curve with an <HBM cycle> curve rising up and crossing over it with arrows; a clean label noting standard memory swaps 1·2·3 ranks while HBM's high switching cost keeps the leader stable; HAN SIL-SOK pointing.",
@@ -74,7 +74,7 @@ PAGES = {
  "p23b":"One split panel (~100%), LEFT vs RIGHT contrast of two jungles. LEFT half (deep green): one massive calm gorilla on a high rock, a wide deep moat around it, label box inside left half '고릴라 게임 · 전환비용 큰 정글'. RIGHT half (lighter tone): three similar-sized lions circling a rotating crown on a pedestal, label box inside right half '킹덤 게임 · 전환비용 작은 정글'. A bold VS badge center, webtoon ink tone.",
  "p24":"One panel (~100%). A Samsung-Electronics-style single logo at top, with FOUR arrows branching down to four categories (HBM, DRAM, NAND, HDD), each arrow ending in a different stage label (Tornado / Main Street / 진입 / Declining); NA BAE-UM pointing.",
  "p25":"Two panels. (1 ~55%) NA BAE-UM realizing one company spans four categories with different signals each; JU BON-JIL approving. (2 ~45%) NA BAE-UM's bright realization.",
- "p26":"Two panels. (1 ~55%) JU BON-JIL making the key takeaway with a finger raised; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p26":"Two panels. (1 ~55%) JU BON-JIL making the key takeaway with a finger raised; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p27":"One panel (~100%). NA BAE-UM's notebook close-up: a clean line '회사가 아니라 카테고리 단위로 본다'; a small four-branch doodle; satisfying.",
  "p27b":"One panel (~100%). The whiteboard with a simple compound-interest sketch: a hand-written formula '72 ÷ 10 = 7.2년' and a small two-step stair doodle showing money doubling twice over the years; JU BON-JIL presenting warmly, NA BAE-UM and HAN TANG-SU wide-eyed; ONLY these figures on the board.",
  "p27c":"Two panels, the club closing. (1 ~60%) the whole study group around the long table, hands stacked together in the middle like a team huddle, warm laughter; notebooks and a corkboard with blank cards behind. (2 ~40%) JU BON-JIL's warm face delivering the final line of the season's lesson.",

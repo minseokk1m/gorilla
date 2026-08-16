@@ -35,7 +35,7 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
-    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "SCREEN RULE: every background laptop/tablet/phone in any scene is switched OFF with a plain dark screen unless its content is explicitly specified; NEVER draw any stock chart, graph, arrow or text on any screen. NEVER print any text, sound-effect or logo on clothing. "
     "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing. "
     "When a page DOES specify diagram labels, render exactly those labels cleanly and nowhere else.")
 
@@ -54,18 +54,18 @@ PAGES = {
  "p03":"Two panels, study room. (1 ~55%) HAN TANG-SU (red cap) proudly holding up his smartphone showing a 'buy' screen for a 3rd-place cloud-related stock; cocky. (2 ~45%) NA BAE-UM glancing at him with mild worry.",
  "p04":"Two panels. (1 ~55%) HAN TANG-SU boasting about buying the cheap 3rd-place stock; members reacting. (2 ~45%) HAN TANG-SU's confident grin.",
  "p05":"One panel (~100%). A whiteboard cloud market-share bar chart: a tall 'AWS' bar (leader), a tall 'Azure' bar (2nd), and small '그 외' bars; 1st and 2nd overwhelmingly large; JU BON-JIL pointing. Clean English labels AWS, Azure.",
- "p06":"Two panels. (1 ~55%) JU BON-JIL explaining that pragmatists only buy the verified 1st and 2nd; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p06":"Two panels. (1 ~55%) JU BON-JIL explaining that pragmatists only buy the verified 1st and 2nd; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p07":"Two panels. (1 ~55%) HAN TANG-SU's confident face starting to waver, uneasy. (2 ~45%) a small share-chart shadow behind him.",
  "p08":"Two panels. (1 ~55%) NA BAE-UM asking why only 1st and 2nd; JU BON-JIL turning to HAN SIL-SOK. (2 ~45%) HAN SIL-SOK's calm face.",
  "p09":"Two panels. (1 ~55%) HAN SIL-SOK (pragmatist) explaining his choice calmly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK matter-of-fact close-up.",
- "p10":"Two panels. (1 ~55%) JU BON-JIL turning to the whiteboard to draw a loop; NA BAE-UM ready. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p10":"Two panels. (1 ~55%) JU BON-JIL turning to the whiteboard to draw a loop; NA BAE-UM ready. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p11":"One panel (~100%). A whiteboard POSITIVE FEEDBACK LOOP drawn as a circular arrow diagram with clean Korean labels around the circle: '실용주의자가 1등 선택' → '도구·파트너·교육이 더 붙음' → '또 새 실용주의자가 1등 선택' → (loops back); the circle growing larger as the leader strengthens; JU BON-JIL beside.",
  "p12":"Two panels. (1 ~55%) JU BON-JIL tracing the loop, explaining the first half; NA BAE-UM following. (2 ~45%) close on the loop arrows.",
- "p13":"Two panels. (1 ~55%) JU BON-JIL completing the loop point, emphatic; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p13":"Two panels. (1 ~55%) JU BON-JIL completing the loop point, emphatic; NA BAE-UM nodding. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p14":"One panel (~100%). The same loop diagram, now with the circle clearly enlarged and the leader bar towering; a small side label 'AI 빅테크가 HBM을 사면 SK하이닉스·삼성에 자본·생태계가 쏠린다'; JU BON-JIL pointing.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL adding that memory follows the same path; NA BAE-UM impressed. (2 ~45%) NA BAE-UM's understanding face.",
  "p16":"Two panels. (1 ~55%) NA BAE-UM with a realization, the winner-takes-more idea clicking. (2 ~45%) NA BAE-UM's eyes lighting up.",
- "p17":"Two panels. (1 ~55%) JU BON-JIL summarizing the investor takeaway; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p17":"Two panels. (1 ~55%) JU BON-JIL summarizing the investor takeaway; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p18":"Two panels. (1 ~55%) JU BON-JIL describing the loop as the gorilla's moat, calm and clear; NA BAE-UM absorbing. (2 ~45%) NA BAE-UM thoughtful.",
  "p19":"Two panels. (1 ~55%) NA BAE-UM applying it to his own past pick, rueful. (2 ~45%) close on his red chart.",
  "p20":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing a clean summary line; JU BON-JIL nodding in the background. (2 ~40%) the notebook close-up with a small loop doodle.",
@@ -73,7 +73,7 @@ PAGES = {
  "p22":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, negative space. (2 ~40%) his resolved eyes extreme close-up.",
  "p23":"Two panels. (1 ~55%) JU BON-JIL turning back to the group; HAN TANG-SU shrinking a little, anxious. (2 ~45%) HAN TANG-SU's worried face.",
  "p24":"Two panels. (1 ~55%) HAN TANG-SU anxiously asking about his 3rd-place stock; JU BON-JIL with a measured look. (2 ~45%) HAN TANG-SU's worried close-up.",
- "p25":"Two panels. (1 ~55%) JU BON-JIL answering plainly about the fate of non-leaders; NA BAE-UM watching. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p25":"Two panels. (1 ~55%) JU BON-JIL answering plainly about the fate of non-leaders; NA BAE-UM watching. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p26":"One panel (~100%). HAN TANG-SU's smartphone screen showing a red loss, his shoulders slumping; a small label '또 모멘텀만 쫓다 물림'; rueful comic-foil mood.",
  "p27":"Two panels. (1 ~55%) NA BAE-UM giving HAN TANG-SU a wry sympathetic glance. (2 ~45%) HAN TANG-SU dejected.",
  "p28":"One panel (~100%). In the background, two flags clash on a hilltop in silhouette (a standards war); JU BON-JIL's small figure in front, serious.",

@@ -32,7 +32,7 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
-    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "SCREEN RULE: every background laptop/tablet/phone in any scene is switched OFF with a plain dark screen unless its content is explicitly specified; NEVER draw any stock chart, graph, arrow or text on any screen. NEVER print any text, sound-effect or logo on clothing. "
     "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing. "
     "When a page DOES specify diagram labels, render exactly those labels cleanly and nowhere else.")
 
@@ -51,7 +51,7 @@ PAGES = {
  "p03":"One panel (~100%). A main-street scene: a gorilla peacefully on a throne, a growth-rate curve that has flattened but revenue resting on a high stable plateau; a clean label '중심가 = 성숙기'; calm and prosperous.",
  "p04":"Two panels. (1 ~55%) NA BAE-UM reassured, asking if the gorilla lasts forever; JU BON-JIL's face turning slightly serious, raising a finger. (2 ~45%) JU BON-JIL's pointed look.",
  "p05":"Two panels. (1 ~55%) the sunset behind the throne deepening, a shadow falling; NA BAE-UM uneasy. (2 ~45%) the throne with a longer shadow.",
- "p06":"Two panels. (1 ~55%) JU BON-JIL turning to the whiteboard to draw two curves; NA BAE-UM ready. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p06":"Two panels. (1 ~55%) JU BON-JIL turning to the whiteboard to draw two curves; NA BAE-UM ready. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p07":"One panel (~100%). A whiteboard with TWO curves side by side: a bell-shaped 'TALC' curve (adopter distribution) and a 'PLC' revenue curve that peaks and then declines; a clean label noting they are different curves; JU BON-JIL pointing.",
  "p08":"Two panels. (1 ~55%) JU BON-JIL explaining the difference between the two curves; NA BAE-UM following. (2 ~45%) close on the PLC peak-and-decline section.",
  "p09":"Two panels. (1 ~55%) JU BON-JIL noting even main-street products pass PLC's peak and decline; NA BAE-UM noting. (2 ~45%) NA BAE-UM's concerned face.",
@@ -59,7 +59,7 @@ PAGES = {
  "p10b":"One panel (~100%). The whiteboard with a THIRD curve, the HYPE CYCLE, drawn hand-sketch style: a sharp early spike, a deep dip, then a gentle long rise to a plateau; five small clean Korean labels along it in order: '기대 급등', '과잉 기대 정점', '환멸의 골짜기', '계몽', '생산성 고원'; JU BON-JIL drawing it, NA BAE-UM and HAN TANG-SU watching intently.",
  "p10c":"One split panel (~100%), LEFT vs RIGHT contrast. LEFT half (hot red tone): the hype-cycle spike with a small rocket-shaped stock chart riding the spike, label box inside left half '하입을 탄 종목 · 정점에서 팔아야 한다'. RIGHT half (calm green tone): a steady stair-step structure curve with a gorilla icon holding firm, label box inside right half '고릴라 · 구조가 안 바뀌면 들고 간다'. A bold VS badge center.",
  "p10d":"Two panels. (1 ~55%) JU BON-JIL delivering the hard truth about how confusing this is, serious; HAN TANG-SU gulping. (2 ~45%) NA BAE-UM's notebook close-up: ONLY two hand-written lines: '가격의 등락은 신호가 아니다' / '단계와 구조의 변화가 신호다'.",
- "p11":"Two panels. (1 ~55%) JU BON-JIL turning to a bigger point about standard replacement; NA BAE-UM attentive. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p11":"Two panels. (1 ~55%) JU BON-JIL turning to a bigger point about standard replacement; NA BAE-UM attentive. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p12":"One panel (~100%). A whiteboard standard-replacement diagram: LEFT a faded 'Wintel (Windows + Intel)' dominating PCs for 40 years; RIGHT a bright 'Winvidia (Windows + NVIDIA)' 2026; an arrow handing the standard over; beside Intel, faint tombstone silhouettes of Motorola and Nokia; clean English labels.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL explaining the Wintel-to-Winvidia shift; NA BAE-UM amazed. (2 ~45%) close on the bright Winvidia side.",
  "p14":"Two panels. (1 ~55%) JU BON-JIL noting Intel is becoming a past gorilla like Motorola and Nokia; NA BAE-UM grave. (2 ~45%) the tombstone silhouettes close-up.",
@@ -74,7 +74,7 @@ PAGES = {
  "p23":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing a clean summary line; JU BON-JIL nodding behind. (2 ~40%) the notebook close-up with a sunset-throne doodle.",
  "p24":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, negative space. (2 ~40%) his resolved eyes extreme close-up.",
  "p25":"Two panels. (1 ~55%) NA BAE-UM resolved with new understanding; JU BON-JIL warm. (2 ~45%) NA BAE-UM thoughtful.",
- "p26":"Two panels. (1 ~55%) JU BON-JIL noting the selling rule will come in a later season; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p26":"Two panels. (1 ~55%) JU BON-JIL noting the selling rule will come in a later season; NA BAE-UM nodding. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p27":"Two panels. (1 ~55%) JU BON-JIL turning encouraging, hinting at NA BAE-UM's own upcoming test; a memory-chip silhouette in the background. (2 ~45%) NA BAE-UM surprised but eager.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL smiling, delivering the cliffhanger about NA BAE-UM doing the staging himself; NA BAE-UM determined. (2 ~45%) the memory-chip silhouette glowing.",
  "p29":"One panel (~100%). A memory-chip silhouette glows in the dark as NA BAE-UM looks toward it, ready for his first test; anticipatory.",

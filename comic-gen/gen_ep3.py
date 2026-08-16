@@ -39,7 +39,7 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
-    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "SCREEN RULE: every background laptop/tablet/phone in any scene is switched OFF with a plain dark screen unless its content is explicitly specified; NEVER draw any stock chart, graph, arrow or text on any screen. NEVER print any text, sound-effect or logo on clothing. "
     "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
@@ -64,9 +64,9 @@ PAGES = {
  "p08":"Two panels. (1 ~60%) JU BON-JIL at the clean whiteboard drawing a cracked CHASM canyon, with one pure electric car (BEV) fallen inside it; NA BAE-UM watching. (2 ~40%) close on the whiteboard canyon drawing.",
  "p09":"One panel (~100%). The whiteboard CHASM canyon: along the rim a detour road is drawn, and hybrid/EREV cars drive around it crossing to the far side, bypassing the canyon; small clean labels on the detour cars: '현대 GV70 EREV', 'Li Auto', '스텔란티스 RAM'; JU BON-JIL pointing.",
  "p10":"Two panels. (1 ~55%) JU BON-JIL pointing at the detouring EREV cars, explaining; a small label near them. (2 ~45%) NA BAE-UM's dawning realization.",
- "p11":"Two panels. (1 ~55%) JU BON-JIL firm, gesturing at the whole canyon-and-detour drawing, making the key point; NA BAE-UM nodding seriously. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p11":"Two panels. (1 ~55%) JU BON-JIL firm, gesturing at the whole canyon-and-detour drawing, making the key point; NA BAE-UM nodding seriously. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p12":"Two panels. (1 ~55%) JU BON-JIL side view at the whiteboard, behind him bold typographic space; serious teaching pose. (2 ~45%) NA BAE-UM absorbing it, brow furrowed.",
- "p13":"Two panels. (1 ~55%) JU BON-JIL making a grave point, hand flat, steady; NA BAE-UM listening. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p13":"Two panels. (1 ~55%) JU BON-JIL making a grave point, hand flat, steady; NA BAE-UM listening. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p14":"One split panel (~100%). LEFT: GO BI-JEON (visionary) pointing forward enthusiastically; RIGHT: HAN SIL-SOK (pragmatist) shaking his head, wary; a big RED X between the two halves; clean contrast.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL summarizing, calm and clear; NA BAE-UM writing in his notebook. (2 ~45%) NA BAE-UM's notebook close-up with a small chasm doodle.",
  "p16":"Two panels. (1 ~55%) NA BAE-UM looking up, asking whether it is only EVs; JU BON-JIL smiling. (2 ~45%) JU BON-JIL about to give other examples.",
@@ -74,16 +74,16 @@ PAGES = {
  "p18":"Two panels. (1 ~55%) JU BON-JIL pointing across the three examples, NA BAE-UM impressed at the common pattern. (2 ~45%) NA BAE-UM connecting it, eyes widening.",
  "p19":"Two panels, comedic. (1 ~55%) HAN TANG-SU (red cap) butts in with a cocky grin and a question; JU BON-JIL beside with a dry amused look. (2 ~45%) HAN TANG-SU deflating sheepishly as JU BON-JIL retorts.",
  "p20":"Two panels. (1 ~55%) NA BAE-UM pulling out his phone with his own halved AI-stock chart, applying the lesson to himself, a rueful look. (2 ~45%) close on the red chart on his phone: NO axis numbers anywhere; the line falls to roughly HALF of its peak with a dashed halfway line — a 50% drop, not a 90% crash.",
- "p21":"Two panels. (1 ~55%) JU BON-JIL explaining how to tell a chasm apart, calm and clear; NA BAE-UM taking notes. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p21":"Two panels. (1 ~55%) JU BON-JIL explaining how to tell a chasm apart, calm and clear; NA BAE-UM taking notes. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p22":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing a clean note line, JU BON-JIL nodding in the soft background. (2 ~40%) the notebook close-up, the line written, a small chasm-and-bridge doodle.",
  "p23":"Two panels. (1 ~55%) NA BAE-UM resolved, a small understanding settling; warm light. (2 ~45%) NA BAE-UM's thoughtful close-up.",
  "p24":"Two panels. (1 ~55%) NA BAE-UM leaning forward eagerly to ask a pointed question; JU BON-JIL raising a hand to gently defer. (2 ~45%) NA BAE-UM's curious, eager face.",
- "p25":"Two panels. (1 ~55%) JU BON-JIL answering with a knowing smile, deferring the topic; NA BAE-UM nodding. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p25":"Two panels. (1 ~55%) JU BON-JIL answering with a knowing smile, deferring the topic; NA BAE-UM nodding. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p26":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, the chasm idea sinking in, lots of negative space. (2 ~40%) NA BAE-UM's resolved eyes extreme close-up.",
- "p27":"Two panels, tone warming with hope. (1 ~55%) JU BON-JIL turning encouraging, a hopeful look, as if to say not all is lost; NA BAE-UM looking up. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p27":"Two panels, tone warming with hope. (1 ~55%) JU BON-JIL turning encouraging, a hopeful look, as if to say not all is lost; NA BAE-UM looking up. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL gesturing as if pointing to a way across the canyon; NA BAE-UM hopeful. (2 ~45%) a small sketch of a bridge beginning to span the canyon.",
  "p29":"One panel (~100%). The dark study room; behind JU BON-JIL a faint sepia silhouette of the 1944 Normandy landing rises like a memory; JU BON-JIL smiles, delivering the cliffhanger. Cinematic.",
- "p30":"One panel (~100%). Closing chapter-end: the canyon with a faint bridge and the Normandy silhouette; NA BAE-UM and JU BON-JIL small silhouettes looking ahead; a black caption band across the very bottom — the preview caption text MUST be lettered INSIDE this black band (never elsewhere), do not leave the band empty.",
+ "p30":"One panel (~100%). Closing chapter-end: the canyon with a faint bridge and the Normandy silhouette; NA BAE-UM and JU BON-JIL small silhouettes looking ahead; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption, lettered in white INSIDE this bottom black band; NO white caption box, NO text anywhere else on the page.",
 }
 
 DLG = {

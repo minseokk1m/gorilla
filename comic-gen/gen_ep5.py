@@ -37,7 +37,7 @@ RULES_TEXT = (
     "specified below. If the content of a whiteboard, notebook, phone screen, book, sign or any prop "
     "is NOT explicitly specified, it must be completely BLANK: no writing, no diagrams, no charts, no "
     "logos, no brand names. Never invent labels, tickers, flowcharts or lists that are not specified. "
-    "SCREEN RULE: laptop/tablet/phone screens in any scene must be BLANK or dark unless their content is explicitly specified. NEVER print any text, sound-effect or logo on clothing. "
+    "SCREEN RULE: every background laptop/tablet/phone in any scene is switched OFF with a plain dark screen unless its content is explicitly specified; NEVER draw any stock chart, graph, arrow or text on any screen. NEVER print any text, sound-effect or logo on clothing. "
     "FLASHBACK RULE: period/flashback scenes contain ONLY period-appropriate anonymous people and props; never the modern cast, smartphones or modern clothing.")
 
 DESC = {'title':'the big title text in the dark title area','subtitle':'the subtitle',
@@ -55,20 +55,20 @@ PAGES = {
  "p03":"Two panels, study room. (1 ~55%) HAN SIL-SOK (40s pragmatist, knit vest, metal glasses) turning his laptop to show the members; on the screen a simple team-adoption dashboard sketch: a code-editor pane with an AI copilot suggestion box, and a clean label '개발자 = 첫 핀'; nothing else readable on screen. (2 ~45%) close on the laptop screen: the code pane and copilot box, clean and abstract.",
  "p04":"Two panels. (1 ~55%) HAN SIL-SOK explaining his own company's story, gesturing at the laptop; members listening with interest. (2 ~45%) HAN SIL-SOK's calm face with a small proud smile.",
  "p05":"One panel (~100%). A clean bowling-lane illustration: the front pin labeled '개발자' falls darkly/strongly, and behind it the next pins carry small clean icons with labels '마케팅', '회계', '디자인'; arrows flow from the fallen first pin to the next pins; clear diagram, webtoon tone.",
- "p06":"Two panels. (1 ~55%) JU BON-JIL adding the voice-over point about same-industry teams joining; NA BAE-UM noting. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p06":"Two panels. (1 ~55%) JU BON-JIL adding the voice-over point about same-industry teams joining; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p07":"One panel (~100%). NA BAE-UM's open notebook close-up, two hand-written lines: '첫 핀 = 개발자 업무를 완전 점령' and '→ 옆 직군 참조사례 자동 생성'; a small bowling-pin doodle.",
  "p08":"Two panels. (1 ~55%) NA BAE-UM looking up, asking in which direction it spreads; JU BON-JIL smiling, about to draw. (2 ~45%) JU BON-JIL picking up the marker.",
  "p09":"One panel (~100%). JU BON-JIL side view drawing on the clean whiteboard the BOWLING ALLEY two-axis grid: a horizontal axis to the right and a vertical axis upward, with a big dark-green pin labeled '교두보' at the bottom-left corner, and lighter pins fanning right and up with two red arrows. Hand-drawn diagram feel, bright whiteboard.",
  "p10":"Two panels. (1 ~55%) JU BON-JIL pointing at the horizontal axis of the grid, explaining; NA BAE-UM following. (2 ~45%) close on the horizontal arrow toward adjacent industries.",
  "p11":"Two panels. (1 ~55%) JU BON-JIL pointing at the vertical axis upward, explaining; NA BAE-UM nodding. (2 ~45%) close on the vertical arrow upward.",
- "p12":"Two panels. (1 ~55%) JU BON-JIL gesturing both directions on the grid, energetic; NA BAE-UM impressed. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p12":"Two panels. (1 ~55%) JU BON-JIL gesturing both directions on the grid, energetic; NA BAE-UM impressed. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL simplifying the jargon with an easy gesture (sideways and up); NA BAE-UM relieved and getting it. (2 ~45%) NA BAE-UM's understanding face.",
  "p14":"One panel (~100%). A chain diagram on the whiteboard: 개발자 → 마케팅 → 회계·법무 → 디자인 → … each stage drawn as a bowling pin with an arrow to the next; JU BON-JIL beside it. Clean, legible labels, ONLY these four labels on the board.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL explaining the auto-generated reference chain; NA BAE-UM tracing it with his eyes. (2 ~45%) close on two pins, one tipping into the next.",
  "p16":"Two panels. (1 ~55%) JU BON-JIL making the key chain point, the pins toppling in sequence behind him; NA BAE-UM impressed. (2 ~45%) NA BAE-UM's eyes following the chain.",
  "p17":"Two panels. (1 ~55%) NA BAE-UM nodding, the model clicking into place. (2 ~45%) NA BAE-UM's satisfied realization.",
- "p18":"Two panels. (1 ~55%) NA BAE-UM summarizing while pointing at the whiteboard pins; JU BON-JIL nodding in an inset. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
- "p19":"Two panels. (1 ~55%) JU BON-JIL adding the investor angle, calm and clear; NA BAE-UM taking notes. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p18":"Two panels. (1 ~55%) the speaker is NA BAE-UM (seated, polite tone), pointing at the whiteboard pins, balloon tail to NA BAE-UM; JU BON-JIL appears ONLY in a small round inset, nodding. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
+ "p19":"Two panels. (1 ~55%) JU BON-JIL adding the investor angle, calm and clear; NA BAE-UM taking notes. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p20":"Two panels. (1 ~55%) NA BAE-UM applying it, checking whether a company's pins are toppling in a chain; thoughtful. (2 ~45%) NA BAE-UM's analytical face.",
  "p21":"Two panels, comedic. (1 ~55%) HAN TANG-SU (red cap) butts in with a cocky question; JU BON-JIL with a dry amused look. (2 ~45%) HAN TANG-SU deflating as JU BON-JIL retorts.",
  "p22":"Two panels. (1 ~55%) NA BAE-UM checking his own past stock against the chain idea, rueful. (2 ~45%) close on his red chart, no chain.",
@@ -76,7 +76,7 @@ PAGES = {
  "p24":"Two panels. (1 ~55%) NA BAE-UM resolved, a small understanding settling in. (2 ~45%) his thoughtful close-up.",
  "p25":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, the bowling-alley idea sinking in, negative space. (2 ~40%) his resolved eyes extreme close-up.",
  "p26":"One panel (~100%). A bowling-lane illustration where only HALF the pins have fallen and the rest still stand; a clear sense that it is not finished yet; clean.",
- "p27":"Two panels. (1 ~55%) JU BON-JIL turning serious-hopeful, gesturing at the standing pins; NA BAE-UM attentive. (2 ~45%) NA BAE-UM's thoughtful reaction close-up, the thought bubble clearly belonging to NA BAE-UM.",
+ "p27":"Two panels. (1 ~55%) JU BON-JIL turning serious-hopeful, gesturing at the standing pins; NA BAE-UM attentive. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p28":"One panel (~100%). In the distance behind the bowling lane, a faint TORNADO storm silhouette approaches on the horizon; ominous-anticipatory mood; JU BON-JIL's small silhouette looking toward it.",
  "p29":"Two panels. (1 ~55%) JU BON-JIL in warm light delivering the cliffhanger about the coming storm; NA BAE-UM listening. (2 ~45%) the tornado silhouette looming closer.",
  "p30":"One panel (~100%). Closing chapter-end: the bowling lane with half-fallen pins and a distant tornado; NA BAE-UM and JU BON-JIL small silhouettes; reserve a black caption band across the very bottom for the next-episode preview.",
