@@ -49,7 +49,7 @@ def clean_spec(spec):
     s = re.sub(r'\bempty\b','',s,flags=re.I); s = re.sub(r'\s{2,}',' ',s); return s
 
 PAGES = {
- "p01":"A cinematic chapter-title page drawn in the SAME inked Korean webtoon linework as the interior pages (bold ink lines, flat washes; NOT photographic, NOT CGI): a massive TORNADO storm silhouette sweeps over a city skyline, lightning and churning clouds, a spotlight at the storm's core. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover, epic stormy tone.",
+ "p01":"A FLAT HAND-INKED Korean webtoon title illustration — bold black ink outlines, flat screentone washes, visible line art everywhere, absolutely NO photographic rendering, NO CGI, NO realistic clouds: a stylized swirling tornado drawn with thick spiral ink lines over a simple flat city skyline silhouette; a clean dark band across the middle for the title text, thin band at the bottom.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM asking JU BON-JIL what comes when all the bowling pins finally fall; JU BON-JIL calm. (2 ~45% close-up) JU BON-JIL with a knowing look, about to explain the storm.",
  "p03":"Two panels, late-2022 vibe. (1 ~55%) a ChatGPT-style AI chat screen spreading explosively, glowing, shared everywhere. (2 ~45%) close on the screen, a sense of viral explosion.",
  "p04":"One panel (~100%). A big bold counter graphic '2개월 만에 1억 사용자' over a montage of many people on phones/laptops all using the AI chat at once; explosive adoption.",
@@ -91,13 +91,13 @@ DLG = {
  "p05":[(1,'C','speech','이거 우리 회사도 다 써요'),
         (2,'C','narr','실용주의자들이 한꺼번에 움직였다')],
  "p06":[(1,'C','speech','실용주의자가 동시에 움직이는 순간\n그게 바로 토네이도야'),
-        (2,'C','think','한꺼번에 우르르…')],
+        (2,'C','think','다 같이 우르르…')],
  "p07":[(1,'L','label','캐즘 = 안 사는 시기'),
         (1,'R','label','토네이도 = 우르르 사는 시기'),
         (1,'C','speech','토네이도는 캐즘의 정반대야\n그 사이에 교두보·볼링앨리가 다리를 놓았지')],
  "p08":[(1,'C','speech','다리를 건너면\n메마른 골짜기가 폭풍으로 바뀌는 거야'),
         (2,'C','think','캐즘을 건너야 토네이도구나')],
- "p09":[(1,'C','speech','근데 그 폭풍이\n어디로 흘렀을까요?'),
+ "p09":[(1,'C','speech','근데 그 폭풍이\n어디로 몰렸을까요?'),
         (2,'C','speech','좋은 질문이야\n칩과 메모리로 갔지')],
  "p10":[(1,'C','speech','NVIDIA GPU와 HBM 메모리야\nAI 빅테크가 다 사들였거든'),
         (1,'C','narr','매출이 비선형으로 폭발했다')],
