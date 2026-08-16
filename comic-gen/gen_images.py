@@ -54,7 +54,7 @@ CHARS = (
     "HAN TANG-SU (comic foil) early-20s, slightly chubby, messy dark hair under a RED cap, "
     "mustard-orange oversized hoodie and blue jeans, always holding a smartphone, cocky restless. "
     "Minor: VALUE friend (late-20s, glasses, thick finance book), GROWTH friend (late-20s, "
-    "energetic, tablet with a rising revenue graph), FUND MANAGER (back/silhouette, six monitors)."
+    "energetic, holds a tablet that is ALWAYS switched OFF with a plain dark screen), FUND MANAGER (back/silhouette, six monitors)."
 )
 RULES = (
     "FORMAT: a single vertical Korean webtoon PAGE with the panels described, separated by thin "

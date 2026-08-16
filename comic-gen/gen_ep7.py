@@ -56,13 +56,13 @@ PAGES = {
  "p05":"One panel (~100%). A whiteboard cloud market-share bar chart: a tall 'AWS' bar (leader), a tall 'Azure' bar (2nd), and small '그 외' bars; 1st and 2nd overwhelmingly large; JU BON-JIL pointing. Clean English labels AWS, Azure.",
  "p06":"Two panels. (1 ~55%) JU BON-JIL explaining that pragmatists only buy the verified 1st and 2nd; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p07":"Two panels. (1 ~55%) HAN TANG-SU's confident face starting to waver, uneasy. (2 ~45%) a small share-chart shadow behind him.",
- "p08":"Two panels. (1 ~55%) NA BAE-UM asking why only 1st and 2nd; JU BON-JIL turning to HAN SIL-SOK. (2 ~45%) HAN SIL-SOK's calm face.",
- "p09":"Two panels. (1 ~55%) HAN SIL-SOK (pragmatist) explaining his choice calmly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK matter-of-fact close-up.",
+ "p08":"Two panels. (1 ~55%) NA BAE-UM asking why only 1st and 2nd; JU BON-JIL turning to HAN SIL-SOK. (2 ~45%) HAN SIL-SOK's calm face. Panel 2 shows JU BON-JIL's face ONLY (grey-streaked hair, navy crewneck sweater, NO vest).",
+ "p09":"Two panels. (1 ~55%) HAN SIL-SOK (pragmatist) explaining his choice calmly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK matter-of-fact close-up. HAN SIL-SOK ONLY speaks on this page: BLACK hair, 40s, knit VEST over a neat shirt, thin metal glasses; JU BON-JIL (grey hair, navy sweater) must NOT appear.",
  "p10":"Two panels. (1 ~55%) JU BON-JIL turning to the whiteboard to draw a loop; NA BAE-UM ready. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p11":"One panel (~100%). A whiteboard POSITIVE FEEDBACK LOOP drawn as a circular arrow diagram with clean Korean labels around the circle: '실용주의자가 1등 선택' → '도구·파트너·교육이 더 붙음' → '또 새 실용주의자가 1등 선택' → (loops back); the circle growing larger as the leader strengthens; JU BON-JIL beside.",
  "p12":"Two panels. (1 ~55%) JU BON-JIL tracing the loop, explaining the first half; NA BAE-UM following. (2 ~45%) close on the loop arrows.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL completing the loop point, emphatic; NA BAE-UM nodding. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
- "p14":"One panel (~100%). The same loop diagram, now with the circle clearly enlarged and the leader bar towering; a small side label 'AI 빅테크가 HBM을 사면 SK하이닉스·삼성에 자본·생태계가 쏠린다'; JU BON-JIL pointing.",
+ "p14":"One panel (~100%). The same loop diagram, now with the circle clearly enlarged and the leader bar towering; a small side label 'AI 빅테크가 HBM을 사면 SK하이닉스·삼성에 자본·생태계가 쏠린다'; JU BON-JIL pointing. The whiteboard shows EXACTLY one circular 3-label loop diagram (arrows in a circle), labels ONLY: '실용주의자가 1등 선택' / '도구·파트너·교육이 더 붙음' / '또 새 실용주의자가 1등 선택'; NO hub-and-spoke shape, NO other node labels.",
  "p15":"Two panels. (1 ~55%) JU BON-JIL adding that memory follows the same path; NA BAE-UM impressed. (2 ~45%) NA BAE-UM's understanding face.",
  "p16":"Two panels. (1 ~55%) NA BAE-UM with a realization, the winner-takes-more idea clicking. (2 ~45%) NA BAE-UM's eyes lighting up.",
  "p17":"Two panels. (1 ~55%) JU BON-JIL summarizing the investor takeaway; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
@@ -78,7 +78,7 @@ PAGES = {
  "p27":"Two panels. (1 ~55%) NA BAE-UM giving HAN TANG-SU a wry sympathetic glance. (2 ~45%) HAN TANG-SU dejected.",
  "p28":"One panel (~100%). In the background, two flags clash on a hilltop in silhouette (a standards war); JU BON-JIL's small figure in front, serious.",
  "p29":"Two panels. (1 ~55%) JU BON-JIL delivering the cliffhanger about the coming standards war; NA BAE-UM listening intently. (2 ~45%) the two clashing flags, dramatic.",
- "p30":"One panel (~100%). Closing chapter-end: two flags clashing on a hilltop; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview.",
+ "p30":"One panel (~100%). Closing chapter-end: two flags clashing on a hilltop; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band; NO white caption box; the two figures are SMALL distant silhouettes watching, NOT holding the flags; flag colors blue and red matching the previous page.",
 }
 
 DLG = {

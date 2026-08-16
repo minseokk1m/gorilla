@@ -49,7 +49,7 @@ def clean_spec(spec):
     s = re.sub(r'\bempty\b','',s,flags=re.I); s = re.sub(r'\s{2,}',' ',s); return s
 
 PAGES = {
- "p01":"A cinematic chapter-title page. A massive TORNADO storm silhouette sweeps over a city skyline, lightning and churning clouds, a spotlight at the storm's core. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover, epic stormy tone.",
+ "p01":"A cinematic chapter-title page drawn in the SAME inked Korean webtoon linework as the interior pages (bold ink lines, flat washes; NOT photographic, NOT CGI): a massive TORNADO storm silhouette sweeps over a city skyline, lightning and churning clouds, a spotlight at the storm's core. Leave a clean dark band across the center for the episode title. Korean webtoon chapter cover, epic stormy tone.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM asking JU BON-JIL what comes when all the bowling pins finally fall; JU BON-JIL calm. (2 ~45% close-up) JU BON-JIL with a knowing look, about to explain the storm.",
  "p03":"Two panels, late-2022 vibe. (1 ~55%) a ChatGPT-style AI chat screen spreading explosively, glowing, shared everywhere. (2 ~45%) close on the screen, a sense of viral explosion.",
  "p04":"One panel (~100%). A big bold counter graphic '2개월 만에 1억 사용자' over a montage of many people on phones/laptops all using the AI chat at once; explosive adoption.",
@@ -75,7 +75,7 @@ PAGES = {
  "p24":"Two panels. (1 ~55%) NA BAE-UM resolved, understanding settling. (2 ~45%) his thoughtful close-up.",
  "p25":"Two panels, quiet beat. (1 ~60%) NA BAE-UM alone, contemplative, negative space. (2 ~40%) his resolved eyes extreme close-up.",
  "p26":"One panel (~100%). A crowd of people (pragmatist masses) rushing together in the same direction in silhouette; a sense of herd movement.",
- "p27":"Two panels. (1 ~55%) JU BON-JIL turning toward the crowd idea, a knowing smile; NA BAE-UM curious. (2 ~45%) the crowd silhouette in the background.",
+ "p27":"Two panels. (1 ~55%) JU BON-JIL turning toward the crowd idea, a knowing smile; NA BAE-UM curious. (2 ~45%) the crowd silhouette in the background. The thought balloon belongs ONLY to NA BAE-UM, its tail pointing at NA BAE-UM, NEVER at the red-cap character.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL delivering the cliffhanger about herd psychology; NA BAE-UM listening. (2 ~45%) the crowd rushing one way, stronger.",
  "p29":"One panel (~100%). The crowd surging toward one direction with JU BON-JIL's small silhouette watching; dramatic.",
  "p30":"One panel (~100%). Closing chapter-end: the herd crowd silhouette; NA BAE-UM and JU BON-JIL small figures; reserve a black caption band across the very bottom for the next-episode preview.",
