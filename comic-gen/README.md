@@ -23,3 +23,16 @@ API 키는 각 폴더의 `openai_key.txt`(리포 미포함) 또는 `OPENAI_API_K
 1. 피드백을 회차·페이지 단위로 매핑
 2. 해당 `gen_epN.py`의 `PAGES`/`DLG` 항목 수정 (또는 `gen_images.py`의 STYLE/CHARS 수정)
 3. 바뀐 페이지만 `python3 gen_epN.py pNN`으로 재생성 후 PDF 재조립
+
+
+## 시즌 2 (Ep11-20) — 2026-09-13 콘티 완성, 작화 대기
+
+기획: `season2-plan.md`(회차별 이론·사례·페이지 비트·해설·팩트 재확인 목록). 콘티: `gen_ep11.py` ~ `gen_ep20.py`(총 314p). 학습 지도 ③(Ep11-18)·④(Ep19-20).
+
+- `ep_common.py` — 시즌 2 공용 엔진. 회차 파일은 `PAGES / DLG / BANDS / NOTES / STAGE / EXTRA_CHARS / SPEAKERS_EXTRA`만 정의하고 `run(globals())`로 실행. 룰(로고·묘비·따옴표 금지, 도식 라벨 가림 방지, 화자 지정)은 여기서 한 번만 고친다
+- `precheck.py epN` — API 호출 전 콘티 검사(PAGES/DLG 키 일치, 화자 등록, 온점·em dash, NOTES/BANDS 키, 말풍선 밀도). **생성 전 반드시 오류 0 확인**
+- `python3 gen_epN.py prompt` — API 호출 없이 전 페이지 프롬프트 출력(검토용)
+
+작화 절차(크레딧 충전 후): ① `season2-plan.md` 부록 B의 시사 팩트를 웹으로 갱신(양자컴 주가·IonQ 실적, NVIDIA 점유율·AMD 계약, 테슬라 로보택시, Cerebras, TIME ETF 구성, 가트너 최신판) → 해당 NOTES 수정 ② `precheck.py` 전 회차 오류 0 ③ 1장 테스트 ④ 회차별 생성(2~3 병렬 스트림, `caffeinate -i`) → 전수 검수 → 결함 재생성 → `assemble.py epN` → 데스크탑 `고릴라헌터스_v3완성본/`(시즌 2 첫 판은 v3 번호 체계를 따름). 예상 비용 ≈ 314장 × $0.2 + 재생성 ≈ $70~80.
+
+미확정: Ep20 p33 IRL 클럽 안내 문구(회장님 확정 후), Ep13 RIDE 규칙의 보수성(회장님 성향 확인), Ep10 말미 ④ 맛보기 추가 여부.
