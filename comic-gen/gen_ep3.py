@@ -59,7 +59,7 @@ PAGES = {
  "p03":"Two panels. (1 ~60%) NA BAE-UM alone at a cafe table looking at his laptop; on screen ONE chart with rising bars (sales still growing every year) and a growth-rate LINE above them that bends downward recently; the chart title reads exactly '글로벌 BEV 판매 증가율' and nothing else is written on screen. (2 ~40%) NA BAE-UM's puzzled, curious face lit by the screen.",
  "p04":"Two panels. (1 ~55%) SAME night-time home living room as the previous page (NO whiteboard, NO study room): close on the same laptop chart, the bars still rise but the growth-rate line clearly bends down; the ONLY text on the chart is the title '글로벌 BEV 판매 증가율'. (2 ~45%) NA BAE-UM leaning back on his sofa, thinking, scratching his head.",
  "p05":"Two panels, study room. (1 ~55%) NA BAE-UM turning to HAN SIL-SOK (40s, neat shirt and knit vest, metal glasses, by a laptop) to ask a question; calm atmosphere. (2 ~45%) HAN SIL-SOK's calm, careful everyman face.",
- "p06":"Two panels. (1 ~55%) the speaker in BOTH panels is HAN SIL-SOK: BLACK hair, 40s, knit VEST over a neat shirt, thin metal glasses — NOT grey hair, NOT a navy crewneck sweater; JU BON-JIL does NOT appear on this page. HAN SIL-SOK explaining his hesitation, measured, gesturing mildly; NA BAE-UM listening. (2 ~45%) HAN SIL-SOK slightly firm close-up (black hair, vest, glasses).",
+ "p06":"Two panels. (1 ~55%) the speaker in BOTH panels is HAN SIL-SOK: BLACK hair, 40s, knit VEST over a neat shirt, thin metal glasses — NOT grey hair, NOT a navy crewneck sweater; JU BON-JIL does NOT appear on this page. HAN SIL-SOK explaining his hesitation, measured, gesturing mildly; NA BAE-UM listening: NA BAE-UM is a MAN, late-30s, short neat black hair, NO glasses, charcoal button shirt, holding a notebook (NOT a woman, NO bob haircut, NO earrings). (2 ~45%) HAN SIL-SOK slightly firm close-up (black hair, vest, glasses).",
  "p07":"One panel (~100%). HAN SIL-SOK on the left, and on the right a clean small horizontal bar-survey chart with three bars labeled cleanly: '너무 비쌈 63%', '충전 어려움 48%', '주행거리 걱정 47%'; JU BON-JIL's voice-over emphasis. Bright study room, clear infographic.",
  "p08":"Two panels. (1 ~60%) JU BON-JIL at the clean whiteboard drawing a cracked CHASM canyon, with one pure electric car (BEV) fallen inside it; NA BAE-UM watching. (2 ~40%) close on the whiteboard canyon drawing.",
  "p09":"One panel (~100%). The whiteboard CHASM canyon: along the rim a detour road is drawn, and hybrid/EREV cars drive around it crossing to the far side, bypassing the canyon; small clean labels on the detour cars: '현대 GV70 EREV', 'Li Auto', '스텔란티스 RAM'; JU BON-JIL pointing.",
@@ -76,6 +76,9 @@ PAGES = {
  "p20":"Two panels. (1 ~55%) NA BAE-UM pulling out his phone with his own halved AI-stock chart, applying the lesson to himself, a rueful look. (2 ~45%) close on the red chart on his phone: NO axis numbers anywhere; the line falls to roughly HALF of its peak with a dashed halfway line — a 50% drop, not a 90% crash.",
  "p21":"Two panels. (1 ~55%) JU BON-JIL explaining how to tell a chasm apart, calm and clear; NA BAE-UM taking notes. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
  "p22":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing a clean note line, JU BON-JIL nodding in the soft background. (2 ~40%) the notebook close-up, the line written, a small chasm-and-bridge doodle.",
+ "p22b":"One panel (~100%). The whiteboard shows a clean hand-drawn 2-column checklist TABLE titled '초기시장인가, 골짜기를 건넜나'; the two column headers are '초기시장' and '골짜기 건넘'; four rows with row labels down the left: '누가 사나', '참조사례', '완전완비제품', '매출'; cell texts row by row: '선구자만' / '실용주의자도' ; '비전을 말함' / '동료가 쓴다고 함' ; '없음' / '있음' ; '띄엄띄엄' / '가속'; JU BON-JIL presenting beside it, NA BAE-UM copying into his notebook; ONLY these labels on the board, every cell filled exactly as written.",
+ "p22c":"Two panels. (1 ~55%) NA BAE-UM at the table ticking his notebook with a pen; the notebook shows ONLY the four row labels '누가 사나', '참조사례', '완전완비제품', '매출' each followed by a small hand-drawn X mark; JU BON-JIL watching, pleased. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt) with a wry satisfied learning smile; JU BON-JIL must NOT appear in this panel.",
+ "p23b":"One panel (~100%). The whiteboard: the TALC bell curve drawn as five plain segments (NO segment labels, NO percentages) with the RED dashed CHASM line between the 2nd and 3rd segments; OVER it a second, taller, thin RED curve: a sharp spike rising high above the 2nd segment, then plunging down into the chasm, then a gentle long rise across the 3rd and 4th segments; ONLY ONE small label on the whole board, placed at the top of the spike: '기대'; JU BON-JIL tapping the spike with a teasing smile; NA BAE-UM and HAN TANG-SU (red cap) staring at it.",
  "p23":"Two panels. (1 ~55%) NA BAE-UM resolved, a small understanding settling; warm light. (2 ~45%) NA BAE-UM's thoughtful close-up.",
  "p24":"Two panels. (1 ~55%) NA BAE-UM leaning forward eagerly to ask a pointed question; JU BON-JIL raising a hand to gently defer. (2 ~45%) NA BAE-UM's curious, eager face.",
  "p25":"Two panels. (1 ~55%) JU BON-JIL answering with a knowing smile, deferring the topic; NA BAE-UM nodding. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
@@ -100,8 +103,8 @@ DLG = {
         (2,'C','think','산 사람은 샀는데\n다음 사람들이 안 움직이는 건가?')],
  "p05":[(1,'C','caption','실용주의자 · 한실속 (Early Majority 34%)'),
         (1,'C','speech','실속 씨는 전기차 어때요?')],
- "p06":[(1,'C','speech','전기차요?\n충전이 불안하고, 불날까 걱정되고'),
-        (2,'C','speech','주행거리도 애매해서 아직요\n세컨드카면 몰라도')],
+ "p06":[(1,'C','speech','한실속: 전기차요?\n충전이 불안하고, 불날까 걱정되고'),
+        (2,'C','speech','한실속: 아직 완벽하지도 않은데 내가 왜 사요?\n완벽해지면 그때 살게요\n세컨드카면 몰라도')],
  "p07":[(1,'L','label','너무 비쌈 63%'),
         (1,'C','label','충전 어려움 48%'),
         (1,'R','label','주행거리 걱정 47%'),
@@ -138,6 +141,12 @@ DLG = {
         (2,'C','think','완전완비제품 여부가 잣대구나')],
  "p22":[(1,'C','speech','그러니까 캐즘은…'),
         (2,'C','caption','캐즘 = 구조적 정체 · 완전완비제품 없으면 대중은 안 산다')],
+ "p22b":[(1,'C','speech','주본질: 이 네 줄이면 돼\n지금 이 회사가 초기시장인지\n골짜기를 건넜는지 갈라져')],
+ "p22c":[(1,'C','speech','나배움: 전기차는 선구자만, 참조사례 없음\n충전 없음, 증가율 둔화\n네 개 다 초기시장 쪽이네요'),
+        (1,'C','speech','주본질: 그래서 골짜기지\n이 표를 들고 다니면 뉴스에 안 휘둘려'),
+        (2,'C','think','나배움: 판별표 하나로 뉴스가 조용해진다')],
+ "p23b":[(1,'C','speech','주본질: 참, 이 골짜기 위엔 곡선이 하나 더 떠 있어\n사람들의 기대라는 곡선\n이건 시즌2에서 제대로 보자'),
+        (1,'C','think','한탕수: 저 뾰족한 데가 제일 재밌어 보이는데')],
  "p23":[(1,'C','think','멋있다고 다 팔리는 게 아니구나'),
         (2,'C','think','대중이 살 이유, 그게 먼저다')],
  "p24":[(1,'C','speech','그럼 테슬라도…?'),
@@ -154,12 +163,15 @@ DLG = {
  "p30":[(1,'C','caption','Episode 3 끝 · 다음 화 · 노르망디 상륙작전\n(교두보 + 완전완비제품)')],
 }
 
+STAGE = "② 사례로 익히기"
+
 BANDS = {
  "p07":'실용주의자(대중의 첫 관문)가 안 사기 시작하면 = 캐즘 · 선각수용자에서 대중으로 못 넘어가는 골짜기',
  "p11":'EREV·하이브리드로 시장이 우회 = BEV가 캐즘에 빠졌다는 증거 · 충전이라는 완전완비제품이 아직 없어서',
  "p13":'캐즘은 일시적이 아니라 장기적·구조적 정체 · 시간이 아니라 인간 의사결정의 구조',
  "p15":'선각수용자의 성공은 실용주의자에게 참조사례가 안 된다 · 대중은 비전이 아니라 동종업계 동료를 본다',
  "p18":'선각수용자 폭발 → 실용주의자 침묵 → 캐즘 · 위성통신·구글 글래스도 같은 패턴',
+ "p22b":'판별표 · 누가 사나(선구자만/실용주의자도) · 참조사례(비전/동료) · 완전완비제품(없음/있음) · 매출(띄엄띄엄/가속)',
 }
 
 # 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 필요한 컷에만 선별 부여
@@ -169,13 +181,23 @@ NOTES = {
  "p04":'해설: 캐즘기의 특징은 판매 급락이 아니라 "확산 속도의 둔화"다. 선각수용자까지는 팔렸지만 전기다수 수용자가 관망하며 증가율이 꺾인다',
  "p07":'해설: 설문 수치는 미국 소비자 조사(CivicScience 등)의 전기차 구매 장애 요인 응답. 실용주의자가 움직이지 않는 이유가 곧 완전완비제품의 결핍 목록이다',
  "p12":'해설: Moore는 캐즘을 시간이 해결하는 일시 정체가 아니라, 수용자 집단 간 가치관 차이에서 오는 구조적 단절로 정의한다. © The Chasm Group',
+ "p22b":'해설: 이 판별표는 이후 회차에서 반복 사용된다. 초기시장 단계의 기업은 선구자 고객·비전 중심 서사·완전완비제품 부재·매출 정체가 특징이고, 캐즘을 건넌 기업은 실용주의자 고객·동료 참조사례·완전완비제품·매출 가속이 함께 나타난다',
+ "p23b":'해설: 붉은 곡선은 가트너(Gartner)의 하입사이클(기대치 곡선)이다. 기대는 선각수용자 구간에서 정점을 찍고 캐즘에서 환멸의 골로 떨어진다. 기술수용주기(누가 사는가)와 하입사이클(얼마나 기대하는가)을 겹쳐 읽고 구분해 투자하는 법은 시즌 2에서 다룬다',
  "p17":'사실 확인: 구글 글래스는 2013-14년 발표·판매 후 2015년 초 일반 소비자 판매를 중단했다. 선각수용자 열광 후 대중 침묵의 전형',
 }
+
+SPEAKERS = {'한탕수':'HAN TANG-SU (red cap)', '나배움':'NA BAE-UM', '주본질':'JU BON-JIL (mentor)',
+ '한실속':'HAN SIL-SOK (pragmatist, knit vest, glasses)', '고비전':'GO BI-JEON (visionary, navy suit)'}
 
 def instruction(pid):
     parts=[]
     for panel,hint,role,text in DLG[pid]:
-        parts.append(f"(panel {panel}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
+        spk=""
+        for name,desc in SPEAKERS.items():
+            if text.startswith(name+": "):
+                text=text[len(name)+2:]; spk=f", spoken by {desc}, balloon tail pointing at that character, do NOT letter the speaker's name"
+                break
+        parts.append(f"(panel {panel}{spk}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
     if pid in BANDS:
         parts.append("at the very bottom, a parchment caption band reading: ‘"+BANDS[pid].replace(chr(10),' ')+"’")
     return "KOREAN LINES TO LETTER (render each cleanly inside its balloon/box):\n"+"\n".join(parts)

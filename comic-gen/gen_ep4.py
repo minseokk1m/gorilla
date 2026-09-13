@@ -63,9 +63,12 @@ PAGES = {
  "p11":"Two panels. (1 ~55%) JU BON-JIL at the whiteboard making the point that the core product alone is not enough; HAN SIL-SOK (pragmatist) shaking his head slightly at the table. (2 ~45%) NA BAE-UM in the foreground watching HAN SIL-SOK (visible in background); the thought balloon belongs to NA BAE-UM; JU BON-JIL not in this panel.",
  "p12":"One panel (~100%). The whiteboard showing a DONUT/ring diagram — one smaller circle drawn fully INSIDE a larger circle (concentric, never overlapping side-by-side): the INNER circle labeled '핵심 제품' (an AI copilot engine icon), the OUTER ring labeled '완전완비제품 Whole Product'; JU BON-JIL pointing, HAN SIL-SOK nodding at the outer ring. Clean infographic.",
  "p13":"One panel (~100%). The same two-circle diagram, with the OUTER ring's components labeled cleanly around it: '보안', '사내 데이터 연동', '교육', '지원', '주변 도구'; JU BON-JIL explaining.",
+ "p13b":"Two panels, a storybook inset (soft vintage tone, keep webtoon ink linework; ONLY anonymous ancient-Egyptian-era people in period clothing, NO modern cast, NO readable text). (1 ~55%) at a pyramid construction site a stern foreman refuses a wooden wheel offered by the bearded inventor, pointing instead at rows of stone-laden sledges. (2 ~45%) the same site later: a young woman engineer fitting wheels under a sledge while workers gather to be taught, the foreman now nodding with satisfaction.",
  "p14":"Two panels. (1 ~55%) HAN SIL-SOK (pragmatist) pointing at the outer ring of the SAME Whole Product DONUT diagram — one smaller circle fully INSIDE a larger circle, concentric, never side-by-side (the whiteboard shows ONLY this diagram; NO English labels, NO adoption curve, NO other writing), finally convinced, nodding. (2 ~45%) NA BAE-UM in the foreground watching him warmly (HAN SIL-SOK small in background); the thought balloon belongs to NA BAE-UM; JU BON-JIL not in this panel.",
  "p15":"One panel (~100%). A clean 4-layer technology STACK diagram drawn bottom-to-top with small icons: 반도체 → 하드웨어 → OS → 앱; arrows showing the layers interlocking within one scenario; JU BON-JIL beside it.",
  "p16":"Two panels. (1 ~55%) JU BON-JIL explaining that the whole product is complete only when these layers interlock in one scenario; NA BAE-UM following. (2 ~45%) NA BAE-UM's concentrated face.",
+ "p16b":"Two panels. (1 ~55%) NA BAE-UM holding up his phone showing ONLY a simple price chart: one tall green candle on the first day followed by a gentle downward drift (NO numbers, NO ticker, NO text); HAN TANG-SU (red cap) leaning in excitedly. (2 ~45%) JU BON-JIL at the whiteboard drawing the same DONUT diagram as before (one smaller circle fully INSIDE a larger circle): the inner circle labeled '핵심 제품' and shaded solid, the outer ring labeled '완전완비제품' drawn as a DASHED, mostly empty ring; ONLY these two labels.",
+ "p16c":"One panel (~100%). The whiteboard DONUT diagram with the outer ring divided into four dashed EMPTY slots labeled '소프트웨어 생태계', '다수 고객', '참조사례', '지원망'; beside it a small hand-drawn pie chart with one huge slice labeled '고객 두 곳 86%' and a thin remainder; JU BON-JIL pointing at the pie; NA BAE-UM sobered, HAN TANG-SU deflating; ONLY these labels on the board.",
  "p17":"Two panels. (1 ~55%) NA BAE-UM slapping his knee with a bright realization. (2 ~45%) NA BAE-UM's eyes lighting up.",
  "p18":"One panel (~100%). A reference-spread arrow diagram: a dark first beachhead market, with word-of-mouth arrows spreading outward to adjacent markets that get progressively lighter in color; JU BON-JIL gesturing.",
  "p19":"Two panels. (1 ~55%) JU BON-JIL explaining how a secured beachhead's reference becomes the next market's reference; NA BAE-UM noting. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear in this panel; the thought balloon belongs to NA BAE-UM.",
@@ -107,12 +110,19 @@ DLG = {
  "p12":[(1,'C','speech','필요한 건 완전완비제품이야\nWhole Product'),
         (2,'C','think','안쪽은 핵심, 바깥은 완전완비제품…')],
  "p13":[(1,'C','speech','보안, 사내 데이터 연동, 교육, 지원, 주변 도구\n한 시나리오의 모든 디테일이 채워져야 산다')],
- "p14":[(1,'C','speech','이 정도 다 갖춰지면\n그제야 우리도 쓰죠'),
+ "p13b":[(1,'C','narr','맥스의 바퀴도 그랬다\n피라미드 공사 책임자는 말했다\n썰매에 달아주고 쓰는 법도 가르쳐 주시오\n아니면 계약은 없소'),
+        (2,'C','speech','주본질: 바퀴만으론 안 팔렸어\n장착과 교육과 지원까지 붙이자 팔렸지\n그게 완전완비제품이야')],
+ "p14":[(1,'C','speech','한실속: 아직 완벽하지 않은데 왜 쓰냐고 했잖아요\n이 정도 다 갖춰지면\n그제야 우리도 씁니다'),
         (2,'C','think','실용주의자가 끄덕인다')],
  "p15":[(1,'C','speech','완전완비제품은 이 층위가\n한 시나리오 안에서 다 맞물릴 때 완성돼'),
         (2,'C','think','반도체부터 앱까지…')],
  "p16":[(1,'C','speech','한 층이라도 비면\n시나리오가 안 돌아가'),
         (2,'C','think','전부 맞물려야 하는구나')],
+ "p16b":[(1,'C','speech','나배움: 올해 상장한 AI 칩 회사요\n웨이퍼 한 장이 통째로 칩이라던데\n첫날 두 배 가까이 올랐어요'),
+        (1,'C','speech','한탕수: 저도 들어갈까요?'),
+        (2,'C','speech','주본질: 핵심 제품은 분명 대단해\n근데 바깥 고리를 채워봐')],
+ "p16c":[(1,'C','speech','주본질: 매출의 86%가 고객 두 곳\n선구자 몇의 초기시장도 아직 다 안 만들어졌는데\n시장이 먼저 값을 매긴 거야'),
+        (1,'C','emph','완전완비제품 없이 상장한 회사는\n시장을 산 게 아니라 기대를 산 것이다')],
  "p17":[(1,'C','speech','교두보의 참조사례가\n다음 참조사례가 되는 거군요!'),
         (2,'C','think','이제 좀 보인다')],
  "p18":[(1,'C','speech','한 교두보를 확실히 잡으면\n그 참조사례가 다음 시장의 참조사례가 돼'),
@@ -141,11 +151,14 @@ DLG = {
  "p30":[(1,'C','caption','Episode 4 끝 · 다음 화 · 볼링 핀이 쓰러진다\n(인접 niche 연쇄 공략)')],
 }
 
+STAGE = "② 사례로 익히기"
+
 BANDS = {
  "p05":'캐즘을 건너는 유일한 방법 · 넓게 분산 말고 한 교두보(beachhead)에 모든 화력 집중',
  "p08":'AI 코파일럿은 전체 사무직이 아니라 개발자라는 한 교두보를 먼저 완전 점령했다',
  "p13":'완전완비제품(Whole Product) · 핵심 제품 + 보안·데이터연동·교육·지원·주변도구, 한 시나리오의 모든 디테일',
  "p16":'기술 층위(반도체→하드웨어→OS→앱)가 한 시나리오 안에서 맞물릴 때 완전완비제품이 완성된다',
+ "p16c":'핵심 제품은 있는데 완전완비제품·다수 고객·참조사례가 없다 = 초기시장도 미완 · 상장은 시장 형성의 증거가 아니다',
  "p22":'교두보·완전완비제품은 내가 사는 신호가 아니라, 이 회사가 캐즘을 건널지 읽는 진단 도구',
 }
 
@@ -154,14 +167,24 @@ NOTES = {
  "p01":'해설: 캐즘 극복 전략의 원형은 1944년 노르망디 상륙작전이다. 전 해안 분산이 아니라 단일 교두보(오마하 해변) 집중 — Moore, 『캐즘마케팅』(유승삼 역)',
  "p05":'해설: D-Day 원칙 — ①캐즘 체류 시간 최소화 ②단일 세분 목표시장 설정 ③완전완비제품 형성 가속화 ④목표 세분시장 지배 ⑤성공을 근간으로 확장. © The Chasm Group',
  "p13":'해설: 완전완비제품(Whole Product)은 Ted Levitt의 개념을 Moore가 발전시킨 것 — 핵심 제품만으로는 실용주의자가 사지 않으며, 보안·연동·교육·지원까지 갖춰져야 산다',
+ "p13b":'해설: 『마케팅 천재가 된 맥스』에서 대형 고객(피라미드 공사)은 바퀴 자체가 아니라 장착·교육·유지보수를 포함한 토털 솔루션을 요구한다. Moore의 완전완비제품 개념을 이야기로 보여주는 대목이다',
+ "p16c":'사실 확인: 세레브라스(Cerebras)는 2026년 5월 나스닥에 상장했다(공모가 185달러, 첫날 350달러 개장). 2025년 매출 5.1억 달러 중 86%가 UAE 계열 두 고객(MBZUAI 62%, G42 24%)에서 나왔다(S-1, 2026년 4월). 이 회사가 캐즘을 건널지는 관찰 대상이며, 본 만화는 특정 종목의 매수·매도를 권하지 않는다',
  "p20":'해설: "실용주의자는 80%짜리 해결책을 사지 않는다. 교두보 세분시장의 요구를 100% 완결하라" — 유승삼 강연 자료에서',
  "p22":'투자 적용: 교두보·완전완비제품은 매수 신호가 아니라, 이 회사가 캐즘을 건널 수 있는지 판별하는 진단 도구다',
 }
 
+SPEAKERS = {'한탕수':'HAN TANG-SU (red cap)', '나배움':'NA BAE-UM', '주본질':'JU BON-JIL (mentor)',
+ '한실속':'HAN SIL-SOK (pragmatist, knit vest, glasses)'}
+
 def instruction(pid):
     parts=[]
     for panel,hint,role,text in DLG[pid]:
-        parts.append(f"(panel {panel}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
+        spk=""
+        for name,desc in SPEAKERS.items():
+            if text.startswith(name+": "):
+                text=text[len(name)+2:]; spk=f", spoken by {desc}, balloon tail pointing at that character, do NOT letter the speaker's name"
+                break
+        parts.append(f"(panel {panel}{spk}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
     if pid in BANDS:
         parts.append("at the very bottom, a parchment caption band reading: ‘"+BANDS[pid].replace(chr(10),' ')+"’")
     return "KOREAN LINES TO LETTER (render each cleanly inside its balloon/box):\n"+"\n".join(parts)

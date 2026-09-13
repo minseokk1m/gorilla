@@ -73,13 +73,19 @@ PAGES = {
  "p13":"Two panels, archetypes 4 and 5. (1 ~50%) SHIN JUNG-HAE (brown cardigan) waving a gentle 'not yet' hand with an apologetic smile; a small clean label box near her. (2 ~50%) AN MID-EO (stern, flip phone) snapping his flip phone shut decisively; a small clean label box near him.",
  "p14":"One large panel (~100%). The whiteboard with the finished bell-shaped TALC curve divided into FIVE colored segments left to right, each labeled in TWO lines (formal name on top, nickname below): '혁신수용자 / 기술애호가 2.5%' (purple), '선각수용자 / 선구자 13.5%' (blue), '전기다수 수용자 / 실용주의자 34%' (green), '후기다수 수용자 / 보수주의자 34%' (orange), '지각수용자 / 회의론자 16%' (gray); a RED dashed vertical line between the 2nd and 3rd segments labeled 'CHASM'. JU BON-JIL beside it, NA BAE-UM taking notes. Labels exactly as written, clean.",
  "p15":"One large panel (~100%). The same TALC curve smaller at the top, completely UNLABELED (NO title, NO letters, NO segment names, NO English words on or near the curve); below it the five archetype members standing on their segment positions, each with ONE short slogan balloon: SIN-SANG '시험해 보자!', BI-JEON '무리보다 앞서 가자!', SIL-SOK '무리와 함께 가자!', JUNG-HAE '버틸 만큼 버텨보자!', MID-EO '절대 안 간다!'. Clean ensemble infographic, webtoon tone.",
+ "p15b":"Two panels, the early market. (1 ~55%) JU BON-JIL at the whiteboard: the TALC bell curve drawn plain, with ONLY its first two segments shaded (a small purple one, then a blue one) and ONE bracket above those two segments labeled '초기시장'; the rest of the curve is unshaded and has NO labels at all; NA BAE-UM asking, hand raised. (2 ~45%) close on CHOI SIN-SANG (headphones) and GO BI-JEON (navy suit) standing together, pleased; the other three archetypes faint in the background.",
+ "p15c":"One panel (~100%). The whiteboard shows TWO hand-drawn numbered boxes side by side: the left box labeled '① 기술이 일단 작동한다' with a small gear icon, the right box labeled '② 선구자의 고통을 풀어준다' with a small bandage icon; below both boxes one short arrow down to a small label '초기시장 형성'; JU BON-JIL pointing at the right box; GO BI-JEON (navy suit) nodding beside him; ONLY these labels on the board. Letter the balloon texts WITHOUT any quotation marks or apostrophes around them.",
+ "p15d":"Two panels, when the technology is not ready. (1 ~55%) the whiteboard: the same plain TALC curve, but a thin jagged CRACK is drawn at the very START of the curve, before the first segment, with a tiny gadget icon tumbling into it; JU BON-JIL grave, tapping the crack; NA BAE-UM sober. (2 ~45%) a small vintage-tone inset (keep webtoon linework, NO modern cast, NO readable text): the foggy tombstone hill from earlier, the videophone-shaped and pen-laptop-shaped tombstones in front, a crow on one.",
+ "p15e":"Two panels, 2016. (1 ~55%) a Go (baduk) board seen from above with ONE black stone under a spotlight; behind it, silhouettes of suited executives and lab-coated researchers rising from their seats in shock (anonymous, NO readable text, NO names, NO chyron). (2 ~45%) a three-frame montage strip: a government building with a big simple money-bag icon; a corporate office corridor with a NEW door plate showing ONLY a small brain icon; a university lab crowded with young researchers; NO readable text anywhere.",
+ "p15f":"Two panels. (1 ~55%) JU BON-JIL holding open the plain orange book whose cover reads ONLY '마케팅 천재가 된 맥스' (the same book as Ep1, NO other text), quoting from it with a smile; NA BAE-UM writing fast. (2 ~45%) NA BAE-UM's notebook close-up: ONLY these three hand-written lines: '초기시장 = 기술애호가 + 선구자' / '조건: 작동한다 + 고통을 푼다' / '덜 된 기술은 틈에 빠진다'.",
+ "p15g":"Two panels. (1 ~55%) HAN SIL-SOK (knit vest, glasses) seated with arms crossed, calm and unmoved, while CHOI SIN-SANG and GO BI-JEON are excited on either side of him. (2 ~45%) JU BON-JIL pointing at the whiteboard curve: ONLY the first two segments shaded, a RED dashed vertical line right after them, NO other labels; his expression says 'that is next'.",
  "p16":"Two panels. (1 ~55%) NA BAE-UM asking a sharp question, hand raised; JU BON-JIL pleased. (2 ~45%) whiteboard corner: a tiny reminder sketch of the transportation staircase from Ep1 (three small ascending bars only, labels '말', '기차', '자동차'), JU BON-JIL pointing at it.",
  "p17":"One split panel (~100%), LEFT vs RIGHT contrast. LEFT half: a glowing AI chat screen creating a document, code and a picture at once, label box inside left half '불연속 · 판을 새로 깐다'. RIGHT half: a row of five nearly identical generic smartphones (no brand, no logos) with only the camera lens slightly larger each year, label box inside right half '연속 · 매년 조금씩 좋아진다'. Clean contrast, each label stays inside its own half.",
  "p18":"Two panels, compelling reason. (1 ~55%) a night office: an exhausted developer buried in paper stacks and a glowing screen; beside him the same scene transformed — an AI copilot pane suggested as abstract blurred colored bars (NO readable characters or code), the stack shrunk, the clock moved from 23:00 to 18:00 (two small clock faces). (2 ~45%) JU BON-JIL snapping his fingers with the point.",
  "p19":"Two panels, the counter-example. (1 ~55%) a flashy tech launch event stage: a presenter unveiling a shiny gadget (generic, no brand) with confetti; the audience of ordinary people looking politely puzzled, one yawning. (2 ~45%) the same gadget in a closet gathering dust, a sad spotlight; comic melancholy.",
- "p20":"Two panels, AI history part 1. (1 ~55%) a 2011-era TV quiz-show stage rendered simply: a computer terminal on a podium defeating two human champions (abstract, no network logos, no readable text); vintage tone. (2 ~45%) then: a deep dark crack in the ground (the chasm) with a small robot figure sitting at the bottom, dusty and forgotten, a single spotlight from above.",
- "p21":"Two panels, AI history part 2. (1 ~55%) 2016: a Go (baduk) board seen from above, a human hand hesitating over a stone, a small screen showing a move number; crowd silhouettes shocked in the background; NO readable text beyond the specified narration. (2 ~45%) ordinary people watching a street screen showing ONLY the Go board image (NO caption, NO chyron, NO names, no readable text), amazed, but then walking on unchanged, hands in pockets.",
- "p22":"Two panels, AI history part 3. (1 ~55%) 2022: an ordinary desk at night, a person typing into a chat interface and a finished document appearing; warm light of usefulness, the crack from p20 shown healing/bridged in a small inset sketch. (2 ~45%) JU BON-JIL concluding at the whiteboard which shows ONLY three hand-written years in a row: '2011', '2016', '2022' with a small curve dipping into a crack and climbing out.",
+ "p20":"Two panels, AI history part 1. (1 ~55%) a 2011-era TV quiz-show stage rendered simply: a computer terminal on a podium defeating two human champions (abstract, no network logos, no readable text); vintage tone. (2 ~45%) the study room: the whiteboard shows ONLY a small plain curve with a thin CRACK at its very start and a tiny computer-terminal icon fallen into the crack, NO labels; JU BON-JIL grave beside it, members listening. STRICTLY NO tombstone, NO gravestone, NO memorial portrait, NO framed photo, NO flowers, NO dates or names anywhere in this panel (the graveyard belongs to a different page).",
+ "p21":"Two panels, AI history part 2. (1 ~55%) 2016: a Go (baduk) board seen from above, a human hand hesitating over a stone; behind, suited executives and researchers leaning in with wide eyes (anonymous, NO readable text). (2 ~45%) ordinary people on a street walking past a big screen showing ONLY the Go board image (NO caption, NO chyron, NO names, NO readable text), glancing once and walking on, hands in pockets.",
+ "p22":"Two panels, AI history part 3. (1 ~55%) 2022, a split mini-scene: LEFT an office worker pasting a messy draft into a chat window and a clean corrected version appearing (abstract blurred text blocks, NO readable characters); RIGHT a person typing ONE question into a chat box instead of scrolling a long list of search results; warm light of usefulness. The chat interface is a GENERIC plain gray-and-white chat window with NO app logo, NO brand icon, NO avatar badge, NO green knot/flower symbol, NO company mark of any kind anywhere on any screen. (2 ~45%) JU BON-JIL at the whiteboard which shows ONLY: three hand-written years '2011', '2016', '2022' under one curve that has a crack at the start, a small hill at 2016, then dips into a canyon and climbs out after 2022 toward a big shaded middle segment labeled '전기다수'.",
  "p23":"Two panels, the gorilla defends. (1 ~55%) a symbolic webtoon-style scene: a big calm gorilla sitting on a hill labeled with a simple hand-drawn magnifying-glass icon (search), while a nimble challenger monkey with a chat-bubble flag charges up; the gorilla raises one massive arm to block, twin stars glinting in its eyes. (2 ~45%) the gorilla now holding its OWN chat-bubble flag too, standing firm; the challenger monkey pausing mid-charge.",
  "p24":"Two panels. (1 ~55%) JU BON-JIL explaining with both palms up, balanced; NA BAE-UM absorbing. (2 ~45%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: '고릴라는 공격도 받지만 방어도 한다' / '누가 이길지는 관찰로 확인'.",
  "p25":"Two panels, the pivot to investing. (1 ~55%) JU BON-JIL closing the marker cap, shifting tone, warm firm look at the group; his sweater is plain with NO lettering. (2 ~45%) the whiteboard with ONLY two hand-written phrases connected by an arrow: '마케팅 이론' → '투자에 적용'.",
@@ -114,9 +120,9 @@ DLG = {
  "p11":[(1,'C','speech','고비전: 이건 판을 바꿔요\n남들보다 먼저 올라타야\n격차를 벌릴 수 있죠'),
         (1,'C','label','선각수용자 · 선구자 · 고비전'),
         (2,'C','narr','미래를 먼저 보고, 먼저 베팅하는 사람')],
- "p12":[(1,'C','speech','한실속: 저는 아직요\n옆 팀이 써서 일이 실제로 빨라지면\n그때 시작해도 안 늦어요'),
+ "p12":[(1,'C','speech','한실속: 아직 완벽하지도 않은데\n내가 왜 써요?\n완벽해지면 그때 돈 낼게요'),
         (1,'C','label','전기다수 수용자 · 실용주의자 · 한실속'),
-        (2,'C','think','한실속: 검증 안 된 건 내 일에 못 쓰지')],
+        (2,'C','think','한실속: 옆 팀이 써서 일이 빨라지면\n그때 시작해도 안 늦지')],
  "p13":[(1,'C','speech','신중해: 난 남들 다 쓰면 그때 할게요'),
         (1,'C','label','후기다수 수용자 · 보수주의자 · 신중해'),
         (2,'C','speech','안믿어: 난 이거면 충분해'),
@@ -124,6 +130,19 @@ DLG = {
  "p14":[(1,'C','speech','주본질: 다섯 유형을 곡선에 올리면 이렇게 돼\n이게 기술수용주기, TALC야'),
         (1,'C','narr','옥수수밭의 순서가\n80년 뒤 AI에도 그대로 반복된다')],
  "p15":[(1,'C','narr','다섯 사람의 한마디가\n다섯 구간의 본심이다')],
+ "p15b":[(1,'C','speech','나배움: 그럼 처음 두 사람이 사면\n시장이 생긴 거예요?'),
+        (1,'C','speech','주본질: 그걸 초기시장이라고 불러\n기술애호가와 선구자가 만드는 작은 시장이지'),
+        (2,'C','narr','작지만, 여기서 모든 게 시작된다')],
+ "p15c":[(1,'C','speech','주본질: 조건이 둘이야\n기술이 최소한 돌아가야 하고\n선구자가 진짜 아파하는 곳을 긁어줘야 해'),
+        (1,'C','speech','고비전: 맞아요, 완벽할 필요는 없어요\n내 문제 하나만 풀리면 삽니다')],
+ "p15d":[(1,'C','speech','주본질: 기술이 덜 됐으면\n여기 갈라진 틈에 빠져\n초기시장이 아예 안 생기지'),
+        (2,'C','narr','화상전화도 펜 노트북도\n선구자조차 붙잡지 못하고\n무덤으로 갔다')],
+ "p15e":[(1,'C','narr','2016년 알파고가 바둑을 이기자\n놀란 건 대중이 아니라 선구자들이었다'),
+        (2,'C','narr','정부는 1조원 펀드를 꺼냈고\n기업마다 AI 조직이 생겼다\nAI의 초기시장이 그렇게 형성됐다')],
+ "p15f":[(1,'C','speech','주본질: 1화의 맥스 기억하지? 오라클이 그랬어\n첫 구매자는 위험을 무릅쓰고 기회를 사는 소수라고\n그 소수가 초기시장이야'),
+        (2,'C','narr','노트에 세 줄을 적었다')],
+ "p15g":[(1,'C','speech','한실속: 선구자들이 사는 건 알겠어요\n근데 저는요?\n완벽해지기 전엔 안 삽니다'),
+        (2,'C','speech','주본질: 바로 그 말이 골짜기야\n초기시장이 생겼다고 끝이 아니지\n다음 시간의 주제야')],
  "p16":[(1,'C','speech','나배움: 그럼 아무 신기술이나\n이 곡선을 타는 거예요?'),
         (2,'C','speech','주본질: 아니, 조건이 둘 있어\n1화의 그 계단, 기억하지?')],
  "p17":[(1,'C','narr','첫째 조건, 불연속\n판을 새로 까는 기술이어야 한다')],
@@ -131,12 +150,12 @@ DLG = {
         (2,'C','speech','주본질: 이 둘이 없으면\n곡선은 시작도 안 돼')],
  "p19":[(1,'C','narr','화려한데 고통을 안 풀어주는 신제품은'),
         (2,'C','narr','박수만 받고, 옷장으로 간다')],
- "p20":[(1,'C','narr','AI도 이 곡선을 탔다가, 죽어봤다\n2011년 퀴즈쇼를 이긴 AI가 있었다'),
-        (2,'C','narr','하지만 대중이 쓸 이유가 없었다\nAI는 골짜기 바닥에서 십 년을 보냈다')],
- "p21":[(1,'C','narr','2016년, 바둑에서 인간이 졌다\n세상이 놀랐다'),
-        (2,'C','narr','놀라기만 했다\n내 일과는 상관없었으니까')],
- "p22":[(1,'C','narr','2022년, 채팅창 하나가 나왔다\n보고서가, 코드가, 번역이 반나절에서 한 시간으로'),
-        (2,'C','speech','주본질: 살 수밖에 없는 이유가 생긴 순간\nAI는 골짜기에서 기어 나왔어')],
+ "p20":[(1,'C','narr','AI도 이 길을 걸었다\n2011년 퀴즈쇼를 이긴 AI가 있었다\n병원을 바꾸겠다고 했다'),
+        (2,'C','narr','하지만 마케팅이 기술보다 앞섰다\n의사들의 고통을 풀지 못했고\n초기시장도 못 만든 채 팔려 나갔다')],
+ "p21":[(1,'C','narr','2016년 알파고, 이번엔 달랐다\n선구자들이 지갑을 열었고\n초기시장이 생겼다'),
+        (2,'C','narr','하지만 거리의 사람들은 그냥 지나갔다\n내 일과는 상관없었으니까\n초기시장은 초기시장일 뿐이었다')],
+ "p22":[(1,'C','narr','2022년, 채팅창 하나가 나왔다\n내 글을 고쳐주고, 검색 대신 답을 줬다\n살 수밖에 없는 이유가 생겼다'),
+        (2,'C','speech','주본질: 그 순간 실용주의자들이 들어왔어\n알파고가 초기시장을 열었다면\n챗GPT는 골짜기를 건넌 거야')],
  "p23":[(1,'C','narr','그 채팅창은 검색의 왕좌까지 넘봤다\n하지만 왕좌의 고릴라는 만만치 않았다'),
         (2,'C','narr','고릴라는 제 손으로 챗봇을 만들어\n온 제품에 깔며 반격했다')],
  "p24":[(1,'C','speech','주본질: 도전자가 항상 이기는 게 아니야\n고릴라에겐 지킬 힘도 있거든\n이 전쟁 얘긴 나중에 제대로 하자'),
@@ -151,10 +170,13 @@ DLG = {
         (2,'C','caption','Episode 2 끝 · 다음 화 · 죽음의 계곡, 캐즘\n(전기차는 왜 거기 빠졌나)')],
 }
 
+STAGE = "① 기술수용주기 이해"
+
 BANDS = {
  "p08":'옥수수의 채택 순서(Ryan & Gross 1943 → Rogers) = 모든 불연속 혁신이 퍼지는 순서',
  "p14":'기술수용주기(TALC) · 혁신수용자 2.5 → 선각수용자 13.5 → 전기다수 34 → 후기다수 34 → 지각수용자 16%',
- "p22":'불연속 + 살 수밖에 없는 이유, 둘이 갖춰진 순간 곡선이 다시 달린다',
+ "p15c":'초기시장 형성 조건 · ①기술이 일단 작동 ②선구자의 고통을 serving · 둘 중 하나가 없으면 틈(크랙)에 빠진다',
+ "p22":'왓슨=틈에 빠짐 · 알파고=초기시장 형성 · 챗GPT=캐즘 돌파 · 살 수밖에 없는 이유가 생긴 순간 실용주의자가 들어온다',
 }
 
 # 이원복식 하단 해설 — PDF 조립 시 텍스트 합성(이미지 미포함), 필요한 컷에만 선별 부여
@@ -163,7 +185,12 @@ NOTES = {
  "p04":'해설: 국내 가전 3사는 1988년 무렵 디지털 TV·고선명 TV를 세계 두 번째로 개발했으나 시장 개화까지 15년이 걸렸다. 인터넷은 1975년 태동 후 브라우저·WWW와 함께 1995년에야 부상했다(같은 기고문)',
  "p06":'해설: Ryan & Gross(1943)의 아이오와 잡종 옥수수 확산 연구가 수용자 유형 구분의 기원이다. Rogers가 『Diffusion of Innovations』(1962)로 이론화했고, Moore가 하이테크 시장에 수정 적용했다',
  "p14":'해설: 다섯 유형의 정식 명칭과 비율은 Moore·유승삼 번역 체계를 따른다. 캐즘(Chasm)은 선각수용자와 전기다수 수용자 사이의 단절이다. © The Chasm Group',
- "p22":'사실 확인: IBM 왓슨의 퀴즈쇼(제퍼디!) 우승 2011년, 알파고-이세돌 대국 2016년, ChatGPT 공개 2022년 11월',
+ "p15b":'해설: 초기시장(Early Market)은 혁신수용자(기술애호가)와 선각수용자(선구자)가 만드는 첫 시장이다. 규모는 작지만 모든 불연속 혁신은 여기서 출발한다. Moore, 『캐즘마케팅』(유승삼 역)',
+ "p15d":'해설: 기술 완성도가 선구자의 기대에도 못 미치면 초기시장 자체가 형성되지 않는다. 3화의 캐즘(초기시장과 주류시장 사이)과 구별되는, 곡선 시작점의 틈이다',
+ "p15e":'사실 확인: 알파고-이세돌 대국(2016년 3월) 직후 한국 정부는 1조원 규모 AI 투자 계획을 발표했다(Nature, 2016.3). 같은 시기 국내외 기업·대학의 AI 조직 신설과 벤처 투자가 급증했다',
+ "p15f":'해설: "첫 구매자는 위험을 감수하며 기회를 사는 소수"는 『마케팅 천재가 된 맥스』 오라클의 가르침으로, 1화에서 본 그 장면이다',
+ "p20":'사실 확인: IBM 왓슨은 2011년 제퍼디! 우승 후 2015년 왓슨 헬스를 출범했으나 약 40억 달러를 투자하고도 매출 10억 달러 수준에 그쳐 2022년 사업을 매각했다. "마케팅 비전이 기술을 앞섰다"는 것이 업계 평가다(Slate·STAT, 2022)',
+ "p22":'사실 확인: OpenAI·NBER의 ChatGPT 사용 연구(2025)에 따르면 직장 내 이용의 40%가 글쓰기(그중 3분의 2는 내 글 수정·번역), 전체 메시지의 49%가 질문·정보 탐색이었고 코딩은 4% 남짓이었다. 대중이 산 이유는 코드가 아니라 글과 검색이었다',
  "p23":'사실 확인: ChatGPT 급부상 이후 구글은 2023년 제미나이(Gemini)를 출시하고 검색·워크스페이스 등 전 제품군에 통합하며 검색 시장 지위를 방어했다',
 }
 
@@ -194,7 +221,7 @@ def gen(c,pid):
 
 def main():
     args=sys.argv[1:] or ["all"]
-    allids=[f"p{i:02d}" for i in range(1,29)]
+    allids=sorted(PAGES.keys())
     if args==["all"]: ids=allids
     elif args==["rest"]: ids=[p for p in allids if not os.path.exists(os.path.join(FINAL,p+".png"))]
     else: ids=args

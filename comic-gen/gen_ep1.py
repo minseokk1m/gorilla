@@ -74,8 +74,12 @@ PAGES = {
  "p17":"Two panels, flashback in a clearly different warm vintage tone (soft grain, faded warm colors, keep webtoon linework). (1 ~55%) 1990s Silicon Valley: a younger JU BON-JIL (30s, same face structure, no glasses) at a 1990s chip-design workstation (bulky CRT monitors, paper binders all textless) in a semiconductor office, exhausted, a falling chart printout (line only, no words) in his hand; period-accurate 1990s props only. (2 ~45%) the same young JU BON-JIL in a small US cafe holding the book 'The Gorilla Game', a colleague sliding it across the table to him.",
  "p18":"Two panels, back to present. (1 ~55%) JU BON-JIL sitting across from NA BAE-UM at the study room table, listening to his story with hands folded; NA BAE-UM mid-gesture, embarrassed. (2 ~45%) JU BON-JIL leaning in slightly with a gentle but piercing question, one eyebrow raised.",
  "p19":"Two panels. (1 ~60%) the study room whiteboard, JU BON-JIL beside it; the whiteboard shows ONLY three big hand-written words in a row: 'PER', '매출', '차트', each crossed with a single red diagonal line. (2 ~40%) NA BAE-UM blinking, confused; small question marks around his head.",
+ "p19b":"Two panels, a second book. (1 ~55%) JU BON-JIL lifts a second book from the study-room table and shows its cover to NA BAE-UM: a plain warm-orange hardcover whose cover carries ONLY the Korean title '마케팅 천재가 된 맥스' in clean lettering and a small simple line-drawn wooden wheel; NO other text, NO photo, NO publisher logo; NA BAE-UM curious, HAN TANG-SU peeking. (2 ~45%) a storybook inset in soft vintage tone (keep webtoon ink linework; ONLY anonymous ancient-Egyptian-era people in period clothing, NO modern cast, NO readable text): a bearded inventor proudly holding up a wooden wheel to a merchant who shrugs and turns away, while in the background laborers and an elephant drag a huge stone block on a sledge.",
+ "p19c":"Two panels. (1 ~55%) the same vintage storybook tone: the inventor and his wife kneel before a wise old oracle with a long white beard at a cave mouth; the oracle holds up one finger, teaching; NO readable text. (2 ~45%) back to the present study room: JU BON-JIL closing the orange book and tapping its cover, NA BAE-UM leaning in with a notebook; the whiteboard behind them is completely BLANK.",
  "p20":"One large panel (~100%), the key concept infographic drawn as a hand sketch on the whiteboard, JU BON-JIL drawing it side-view, NA BAE-UM and two members watching. The sketch: a staircase diagram titled '육상 교통 수단의 변천' — a rising sequence of short horizontal bars from bottom-left to top-right, labeled in order: 걷기·달리기 (one low green bar), then separate higher bars 말, 마차, 기차, 자동차, 전철, 자기부상열차; vertical axis label '불연속적 혁신', horizontal axis label '시대'. Hand-drawn marker feel, clean readable labels.",
  "p21":"Two panels. (1 ~55%) JU BON-JIL pointing at the SAME staircase sketch from the previous page (one single low green bar labeled 걷기·달리기, then separate higher bars 말, 마차, 기차 rising to the right; 걷기 and 달리기 share ONE bar, no unlabeled bars), his finger on the gap between the 걷기·달리기 bar and the 말 bar; NA BAE-UM leaning in. (2 ~45%) a small clean inset diagram: a horse and a train with a broken arrow between them, labels '말 시대의 인프라' (a stable, a saddle) fading out and '기차 시대의 인프라' (rails, a station) appearing new.",
+ "p21b":"One panel (~100%). The whiteboard shows a hand-drawn strip of THREE small scenes side by side, each with ONE clean Korean label box under it: LEFT scene a lone rider on a horse on a dirt track beside a small stable, label '말 · 마구간과 안장'; CENTER scene a horse-drawn stagecoach on a paved post road passing a way-station where a row of fresh horses waits, label '마차 · 포장길과 역참'; RIGHT scene a steam locomotive on iron rails at a station platform with a crowd, label '기차 · 철로와 역'; JU BON-JIL stands fully to the RIGHT SIDE of the board, outside its edge, gesturing with an open palm so that NO hand, marker or body covers ANY part of the three label boxes (all three labels must be completely visible and readable); NA BAE-UM taking notes; ONLY these three labels on the board, marker-sketch feel.",
+ "p21c":"Two panels. (1 ~55%) a vintage-tone inset (keep webtoon linework; ONLY anonymous 1820s English people in period clothing, NO modern cast, NO smartphones, NO readable text): on a brand-new iron railway a single passenger coach is being pulled along the rails by a HORSE, while behind it a small early steam locomotive hauls coal wagons; onlookers in top hats look puzzled. (2 ~45%) present day: JU BON-JIL grinning and holding up two fingers, NA BAE-UM amused, HAN TANG-SU scratching his head under his red cap.",
  "p22":"Two panels. (1 ~60%) the whiteboard now shows a simple two-column hand-written table: left column titled '결과' listing 'PER · 매출 · 주가' , right column titled '구조' listing '판이 바뀌나 · 표준을 잡나 · 안 무너지나'; JU BON-JIL tapping the right column. (2 ~40%) NA BAE-UM's face, the first real spark of understanding.",
  "p23":"One large panel (~100%). The whiteboard with a clean hand-drawn 3x3 grid; horizontal axis below: '주식 투자 지식: 낮음 → 중간 → 높음'; vertical axis left: '하이테크 산업 지식: 낮음 → 중간 → 높음'. Cell labels hand-written small: top row '하이테크 경영진', 'VC', '테크 펀드매니저'; middle row '비즈니스 언론', '★ 고릴라 게임 투자자', '그로스 펀드매니저'; bottom row '초보 투자자', '리테일 브로커', '일반 펀드매니저'. The CENTER cell has a big star and a mustard-yellow highlight box. ALL NINE cells must contain their label (check the bottom-right cell 일반 펀드매니저 is present). JU BON-JIL pointing at the center, NA BAE-UM taking notes. Labels must be exactly as written, clean.",
  "p24":"Two panels. (1 ~55%) JU BON-JIL's finger moves from the matrix's center cell toward NA BAE-UM, warm decisive moment; nothing else is written on the whiteboard beyond the 3x3 grid. (2 ~45%) NA BAE-UM pointing at himself asking, and JU BON-JIL beside him answering with two fingers raised; TWO separate balloons with tails to their own speakers.",
@@ -88,6 +92,7 @@ PAGES = {
  "p31":"One split panel (~100%), a clear LEFT vs RIGHT contrast with a bold VS badge in the middle. LEFT half (cold blue tone): a trader at 3 AM, six monitors, unbranded plain energy drink cans (NO logos, no brand text), alarm clock showing 03:00, exhausted face; the label box '매일 차트 보는 게임' sits INSIDE the left half at its bottom. RIGHT half (warm tone): NA BAE-UM at a family dinner table laughing, phone face-down on a shelf far away; the label box '분기에 한 번 점검하는 게임' sits INSIDE the right half at its bottom. Labels must stay each inside its own half.",
  "p32":"Two panels. (1 ~60%) whiteboard with three simple hand-drawn icons in a row: a calendar with one circled day and label '결정은 1년에 한두 번', a briefcase with label '본업과 양립', a chess piece with label '프로가 못 하는 게임'; JU BON-JIL presenting. (2 ~40%) NA BAE-UM nodding slowly, relieved warm face.",
  "p33":"Two panels. (1 ~55%) JU BON-JIL pointing warmly at NA BAE-UM, the group behind smiling; golden late-afternoon light; the whiteboard behind is completely BLANK. (2 ~45%) NA BAE-UM's face: for the first time, quiet determination instead of confusion.",
+ "p33b":"One panel (~100%). The whiteboard with a clean hand-drawn LEARNING ROADMAP: four numbered boxes in a row connected left-to-right by arrows, labeled exactly '① 기술수용주기 이해', '② 사례로 익히기', '③ 투자와 연결', '④ 실전'; under boxes ① and ② one bracket labeled '시즌 1', under boxes ③ and ④ one bracket labeled '시즌 2'; JU BON-JIL presenting, NA BAE-UM copying it into his notebook, HAN TANG-SU peeking over his shoulder; ONLY these labels on the board, nothing else written.",
  "p34":"Two panels, comedy then ominous. (1 ~55%) HAN TANG-SU jumps up waving his phone showing a simple chart screen with one big '2X' badge and a steep rising red line (NO tickers, NO word lists, nothing else readable), over-excited grin, members startled. (2 ~45%) JU BON-JIL's face hardening just a little, the room tone cooling.",
  "p35":"Two panels. (1 ~60%) whiteboard quick sketch: a jagged line going up and down around a flat dashed line, and below it a second line stepping lower each swing, labeled '2배 레버리지'; JU BON-JIL serious. (2 ~40%) HAN TANG-SU still grinning but with one drop of cold sweat; a dark narration box at the bottom.",
  "p36":"Two panels, quiet night ending. (1 ~55%) the quiet study room in warm lamp light after the meeting; NA BAE-UM alone at the table, gently holding a book whose cover shows the English title 'The Gorilla Game' with a gorilla silhouette, gazing at the whiteboard which shows only faint half-erased sketch traces (no readable words). (2 ~45%) close on his tired but clear eyes reflecting the whiteboard light.",
@@ -144,12 +149,23 @@ DLG = {
         (2,'C','speech','근데, 자네가 왜 졌는지는 아나?')],
  "p19":[(1,'C','speech','PER, 매출, 차트\n자네가 본 건 전부 결과야\n결과는 프로가 자네보다 빠르지'),
         (2,'C','think','결과가… 아니면 뭘 보지?')],
+ "p19b":[(1,'C','speech','주본질: 잠깐, 이야기 하나 먼저\n옛날에 맥스라는 사람이 바퀴를 발명했어\n세상에서 제일 쓸모 있는 물건을'),
+        (2,'C','narr','그런데 아무도 사지 않았다\n사람들은 코끼리로 돌을 옮기고 있었고\n그걸로 충분하다고 믿었다')],
+ "p19c":[(1,'C','speech','오라클: 경쟁자는 다른 바퀴가 아니오\n예전부터 써 온 코끼리지\n위험을 무릅쓰고 기회를 사는 소수부터 찾으시오'),
+        (2,'C','speech','주본질: 맥스의 바퀴가 마차가 되고, 기차가 됐지\n새 판이 열릴 때마다\n똑같은 일이 반복돼'),
+        (2,'C','narr','바퀴는 육상 교통의 첫 계단이었다')],
  "p20":[(1,'C','speech','이 그림 하나면 돼\n걷기가 아무리 늘어도 달리기지\n말은 아예 다른 물건이잖아'),
         (1,'C','speech','한탕수: 축지법은요?'),
         (1,'C','speech','주본질: 축지법이야말로 완벽한 불연속이지\n실존했다면 말이야'),
         (1,'C','narr','걷기에서 달리기는 연속적 개선\n말, 기차, 자동차는 판을 새로 까는\n불연속적 혁신이다')],
  "p21":[(1,'C','speech','말에서 기차로 넘어갈 때\n마구간과 안장은 필요가 없어져\n대신 철로와 역이 새로 깔리지'),
         (2,'C','narr','판이 바뀌면 인프라가 통째로 새로 깔린다\n그 새 판 위에서, 표준을 잡는 자가 나온다')],
+ "p21b":[(1,'L','label','말 · 마구간과 안장'),
+        (1,'C','label','마차 · 포장길과 역참'),
+        (1,'R','label','기차 · 철로와 역'),
+        (1,'C','speech','주본질: 말은 사람 하나를 나르지\n마차는 길을 닦고 역참을 두니 여럿이 함께\n기차는 아예 쇠길을 새로 깔았어')],
+ "p21c":[(1,'C','narr','1825년 영국, 세계 첫 공공 철도가 열렸다\n처음 몇 해는 쇠길 위를 말이 끌었다\n사람들은 새 판을 옛 방식으로 썼다'),
+        (2,'C','speech','주본질: 그러다 기관차가 표준이 되자\n마구간은 사라지고 역이 도시가 됐어\n판이 바뀔 땐 늘 이런 어정쩡한 시기가 있지')],
  "p22":[(1,'C','speech','우리는 결과 대신 구조를 봐\n지금 판이 바뀌고 있는가\n누가 그 판의 표준을 잡는가'),
         (2,'C','think','주식을 보는 게 아니라\n판을 보는 거구나')],
  "p23":[(1,'C','speech','무어가 그린 지도야\n산업도 주식도 중간쯤인 보통 사람\n그 정중앙이 고릴라 게임 투자자지'),
@@ -177,6 +193,8 @@ DLG = {
         (2,'C','think','이건… 회사 다니면서도 되겠는데')],
  "p33":[(1,'C','speech','프로는 분기마다 성적표가 나와서\n이 게임을 못 해\n기다림은 개인만 가진 무기야'),
         (2,'C','narr','처음으로, 내가 이길 수 있는 판이 보였다')],
+ "p33b":[(1,'C','speech','주본질: 앞으로 배울 순서야\n먼저 기술이 퍼지는 법칙, 그다음 사례\n그걸 투자에 연결하고, 마지막이 실전이지'),
+        (1,'C','narr','법칙을 모르면 사례가 안 보이고\n사례가 없으면 투자가 안 된다')],
  "p34":[(1,'C','speech','에이 그래도 핫한 게 최고죠\n2배 레버리지 들어갑니다!'),
         (2,'C','speech','한탕수, 그 상품이 어떻게 생겼는지는 알고?')],
  "p35":[(1,'C','speech','2배 레버리지는 내리면 두 배로 잃고\n오르내리기만 반복해도 원금이 조금씩 녹아\n지수가 제자리로 와도 내 돈은 제자리가 아니야'),
@@ -186,6 +204,8 @@ DLG = {
  "p37":[(1,'C','speech','다음엔 기술이 어떻게 퍼지는지 보자\n이 법칙, 사실 80년 전\n아이오와 옥수수밭에서 시작됐거든'),
         (2,'C','caption','Episode 1 끝 · 다음 화 · 기술은 어떻게 퍼지는가\n(옥수수밭에서 태어난 기술수용주기)')],
 }
+
+STAGE = "① 기술수용주기 이해"
 
 BANDS = {
  "p12":'같은 데이터, 더 빠른 프로와 퀀트 · 개인이 결과의 게임으로는 이길 수 없는 판',
@@ -197,6 +217,10 @@ BANDS = {
 NOTES = {
  "p02":'본 만화는 교육 목적이며 투자 권유·자문이 아닙니다. 열람은 NDA에 준하는 대외비 조건을 따릅니다. 이론·도식 © Geoffrey A. Moore, The Chasm Group',
  "p12":'해설: 퀀트(quant)는 수학 모델과 알고리즘으로 초단위 매매하는 기관 투자 방식. 속도와 데이터로 겨루는 단기 매매에서 개인은 구조적으로 불리하다',
+ "p19b":'해설: 『마케팅 천재가 된 맥스』(제프 콕스·하워드 스티븐스, 김영한·김형준 역, 위즈덤하우스 2003)는 고대 이집트의 바퀴 발명가 맥스가 신기술 파는 법을 배우는 마케팅 소설이다. 신기술이 시장에 퍼지는 과정을 이야기로 풀어낸 모범 사례로, 본 만화는 그 모티프를 빌려 온다',
+ "p19c":'해설: 오라클의 가르침(고객은 누구인가, 경쟁자는 기존 기술이다, 첫 구매자는 위험을 감수하는 소수다)은 Moore의 초기시장 개념과 정확히 겹친다. 2화에서 다시 등장한다',
+ "p21c":'사실 확인: 스톡턴-달링턴 철도(1825)는 세계 첫 공공 증기철도였으나 초기 여객 열차는 말이 끌었고, 증기 여객 정기운행은 1833년부터였다(리버풀-맨체스터 철도는 1830년 개통부터 증기 운행). 새 인프라가 깔려도 표준이 잡히기까지는 과도기가 있다',
+ "p33b":'해설: 이 학습 지도(①~④)는 시리즈 전체의 순서다. 매 페이지 상단의 단계 표시가 지금 어디를 배우는 중인지 알려준다. 시즌 1은 ①②, 시즌 2는 ③④',
  "p20":'해설: 불연속적 혁신(Discontinuous Innovation)은 기존 행동양식·인프라와 호환되지 않는 도약. 「육상 교통 수단의 변천」 도식은 유승삼 대표의 기술수용주기 강연(VentureTek)에서 인용',
  "p23":'해설: 3×3 지식 매트릭스는 Moore, 『The Gorilla Game』의 프레임. 산업 지식과 투자 지식이 모두 "중간"인 보통 사람이 고릴라 게임의 최적 플레이어다',
  "p26":'사실 확인: AMD는 2026년 7월 랙스케일 AI 시스템 Helios를 출시했고, Microsoft(Azure)·OpenAI·Meta·Anthropic이 도입을 발표·준비 중이다(2026-08 기준)',
@@ -206,7 +230,7 @@ NOTES = {
 
 SPEAKERS = {'한탕수':'HAN TANG-SU (red cap)', '안정만':'AN JEONG-MAN (value friend)',
  '고성장':'GO SEONG-JANG (growth friend)', '젊은 주본질':'young JU BON-JIL in the flashback',
- '동료':'the colleague in the flashback', '주본질':'JU BON-JIL (mentor)', '나배움':'NA BAE-UM'}
+ '동료':'the colleague in the flashback', '오라클':'the old bearded oracle in the storybook inset', '주본질':'JU BON-JIL (mentor)', '나배움':'NA BAE-UM'}
 
 def instruction(pid):
     parts=[]
@@ -230,7 +254,7 @@ def gen(c,pid):
 
 def main():
     args=sys.argv[1:] or ["all"]
-    allids=[f"p{i:02d}" for i in range(1,38)]
+    allids=sorted(PAGES.keys())
     if args==["all"]: ids=allids
     elif args==["rest"]: ids=[p for p in allids if not os.path.exists(os.path.join(FINAL,p+".png"))]
     else: ids=args

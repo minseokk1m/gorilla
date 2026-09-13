@@ -2,6 +2,7 @@
 # 고릴라 헌터스 — PDF 조립기: 페이지 PNG + 선별 해설 밴드(이원복식, 후처리 합성) → 완성본 PDF
 # usage: python3 assemble.py ep1            # gen_ep1.py의 NOTES·FINAL 사용
 #        python3 assemble.py ep1 out.pdf
+# 각 gen_epN.py의 STAGE(학습 지도 단계)가 있으면 표지를 제외한 전 페이지 상단에 얇은 띠+배지로 합성됨
 import os, sys, importlib, textwrap
 from PIL import Image, ImageDraw, ImageFont
 
@@ -41,16 +42,35 @@ def note_band(width, text):
         y += size + leading
     return band
 
+def stage_strip(img, text):
+    """학습 지도 단계 띠: 페이지 위에 얇은 띠를 덧붙이고 우측에 머스타드 배지 (F3-1, 후처리 합성, 그림과 겹치지 않음)"""
+    size = 22; font = load_font(size)
+    pad_x, pad_y, margin, strip_h = 16, 6, 18, 48
+    strip = Image.new("RGB", (img.width, strip_h), "#f6f2ea")
+    d = ImageDraw.Draw(strip, "RGBA")
+    d.rectangle([0, strip_h - 3, img.width, strip_h], fill="#c8bfae")
+    tw = d.textlength(text, font=font)
+    w, h = int(tw + pad_x * 2), size + pad_y * 2
+    x0, y0 = img.width - margin - w, (strip_h - 3 - h) // 2
+    d.rounded_rectangle([x0, y0, x0 + w, y0 + h], radius=h // 2, fill=(232, 181, 58, 255), outline=(58, 54, 48, 255), width=2)
+    d.text((x0 + pad_x, y0 + pad_y - 3), text, font=font, fill=(58, 54, 48, 255))
+    merged = Image.new("RGB", (img.width, img.height + strip_h), "#ffffff")
+    merged.paste(strip, (0, 0)); merged.paste(img, (0, strip_h))
+    return merged
+
 def main():
     ep = sys.argv[1] if len(sys.argv) > 1 else "ep1"
     mod = importlib.import_module(f"gen_{ep}")
     final = mod.FINAL
     notes = getattr(mod, "NOTES", {})
+    stage = getattr(mod, "STAGE", None)
     out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(final, f"고릴라헌터스_{ep.upper()}_완성본.pdf")
     pids = sorted(p[:-4] for p in os.listdir(final) if p.endswith(".png"))
     pages = []
     for pid in pids:
         img = Image.open(os.path.join(final, pid + ".png")).convert("RGB")
+        if stage and pid != pids[0]:  # 표지 제외
+            img = stage_strip(img, "학습 지도 " + stage)
         if pid in notes:
             band = note_band(img.width, notes[pid])
             merged = Image.new("RGB", (img.width, img.height + band.height), "#ffffff")
