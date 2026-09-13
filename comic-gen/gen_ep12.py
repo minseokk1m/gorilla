@@ -47,7 +47,7 @@ PAGES = {
  "p29":"Two panels, quiet beat. (1 ~60%) evening study room, members leaving, NA BAE-UM folding the two index cards into his notebook. (2 ~40%) NA BAE-UM's face, a quiet confidence.",
  "p30":"Two panels. (1 ~55%) at the door JU BON-JIL turns back with a teasing question; NA BAE-UM stops. (2 ~45%) JU BON-JIL's knowing smile as he mentions the next case.",
  "p31":"One panel (~100%). A dark moody image: a glowing cluster of small spheres connected by faint lines (an abstract quantum-computer motif, NO text), and above it a thin red peak silhouette; anticipatory; keep webtoon ink style.",
- "p32":"One panel (~100%). Closing chapter-end: the thermometer silhouette and the five-row table silhouette in the distance; NA BAE-UM and JU BON-JIL small figures; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band.",
+ "p32":"One panel (~100%). Closing chapter-end: a large old-fashioned thermometer silhouette standing on a hill and a faint five-row grid silhouette in the sky; NA BAE-UM and JU BON-JIL small figures looking at them; the top of the page has NO band and NO text; a solid BLACK caption band runs across the very BOTTOM edge of the page (bottom 10%), and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band, centered, nothing written anywhere else.",
 }
 
 DLG = {
