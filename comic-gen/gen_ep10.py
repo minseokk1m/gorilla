@@ -80,6 +80,8 @@ PAGES = {
  "p27c":"Two panels, the club closing. (1 ~60%) the whole study group around the long table, hands stacked together in the middle like a team huddle, warm laughter; notebooks and a corkboard with blank cards behind. (2 ~40%) JU BON-JIL's warm face delivering the final line of the season's lesson.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL smiling warmly, congratulating NA BAE-UM on passing his first test; the group warm. (2 ~45%) NA BAE-UM proud and moved.",
  "p28b":"One panel (~100%). The whiteboard with the same clean hand-drawn LEARNING ROADMAP as Ep1: four numbered boxes in a row connected by arrows, labeled exactly '① 기술수용주기 이해', '② 사례로 익히기', '③ 투자와 연결', '④ 실전'; boxes ① and ② each carry a big GREEN check mark and share one bracket labeled '시즌 1'; boxes ③ and ④ share one bracket labeled '시즌 2'; JU BON-JIL tapping box ③; the study group watching; ONLY these labels on the board.",
+ "p28c":"One panel (~100%). The whiteboard: a hand-drawn card titled '분기 점검표' with four numbered boxes in a row labeled exactly '① 채택 위치', '② 기대 위치', '③ 등급', '④ 신호'; inside box ① NA BAE-UM has hand-written ONLY the word '토네이도' with a tiny memory-chip doodle; boxes ②, ③ and ④ are EMPTY except for one small question mark each; NA BAE-UM at the board holding the marker, JU BON-JIL beside him; ONLY these labels.",
+ "p28d":"Two panels. (1 ~55%) NA BAE-UM standing at the whiteboard staring at the three empty question-mark boxes of the '분기 점검표' card (labels '① 채택 위치', '② 기대 위치', '③ 등급', '④ 신호', box ① holding ONLY the word '토네이도'), marker hovering, a little lost; JU BON-JIL beside him with a patient smile; the table is completely BARE (NO paper cards, NO notes, NO extra writing anywhere). (2 ~45%) close on JU BON-JIL's warm face, one finger up; plain background.",
  "p29":"One panel (~100%). In the dark background a thin glowing RED curve rises to a sharp peak and falls (a bare line, NO labels), and beyond it two faint jungle silhouettes (a primate jungle and a kingdom jungle); JU BON-JIL in front smiling, delivering the season-2 hook: BOTH speech balloons on this page are spoken by JU BON-JIL (grey hair, glasses, navy knit) and both tails must point at HIM; NA BAE-UM beside him silently looking up at the red peak, and the single thought balloon belongs to NA BAE-UM only.",
  "p30":"One panel (~100%). Closing SEASON-1 finale: two jungle silhouettes in the distance; NA BAE-UM and JU BON-JIL and the study members together as a group; reserve a black caption band across the very bottom for the season-2 preview. Triumphant, warm. The caption appears EXACTLY ONCE, inside the bottom black band only; NO white caption box, NO other caption anywhere.",
 }
@@ -150,6 +152,11 @@ DLG = {
         (2,'C','think','1년 전의 나는, 더 이상 없다')],
  "p28b":[(1,'C','speech','지도에서 두 칸을 채웠어\n법칙과 사례\n다음 시즌은 그걸 돈과 연결하는 시간이야'),
         (1,'C','narr','① ② 시즌 1 끝\n③ ④ 시즌 2')],
+ "p28c":[(1,'C','label','분기 점검표'),(1,'C','label','① 채택 위치'),(1,'C','label','② 기대 위치'),(1,'C','label','③ 등급'),(1,'C','label','④ 신호'),
+        (1,'C','speech','나배움: 실전은 어떻게 생겼는데요?'),
+        (1,'C','speech','주본질: 이 표 한 장이야, 분기에 한 번 네 칸을 채우는 것\n첫 칸은 오늘 시험으로 이미 채웠지')],
+ "p28d":[(1,'C','think','나배움: 나머지 세 칸은 아직 뭔지도 모르겠다'),
+        (2,'C','speech','주본질: 그 세 칸을 채우는 게 시즌 2야\n기대, 등급, 신호\n다 채우면 네 손으로 사냥할 수 있어')],
  "p29":[(1,'C','speech','주본질: 시즌1은 여기까지\n다음 시즌엔 곡선이 하나 더 나와\n기대라는 이름의 곡선'),
         (1,'C','speech','주본질: 그걸 읽고 나면 정글의 서열\n그리고 우리 클럽의 진짜 루틴이야'),
         (1,'C','think','나배움: 곡선이 하나 더…')],
@@ -172,6 +179,7 @@ NOTES = {
  "p22":'해설: 표준(commodity) 메모리는 세대 교체마다 1·2·3위가 바뀌는 낮은 전환비용 시장, HBM은 검증·설계 종속으로 전환비용이 높아 선두가 유지되기 쉽다',
  "p23b":'해설: 고릴라 게임(전환비용 큰 정글, 1등 장기 지배) vs 킹덤 게임(전환비용 작은 정글, 왕관이 순환 — 예: 표준 메모리/DRAM). 상세 분류는 시즌 2',
  "p27b":'해설: Rule of 72 — 원금이 두 배 되는 기간 ≈ 72 ÷ 연수익률(%). 연 10%면 약 7.2년, 20년이면 약 4배. 복리는 시간이 만드는 지렛대다',
+ "p28c":'해설: 분기 점검표는 시즌 2 마지막에 완성되는 ④실전의 도구다. ① 채택 위치는 시즌 1의 판별표(초기시장·캐즘·토네이도·중심가)로 채우고, ② 기대 위치·③ 등급·④ 신호는 시즌 2에서 배운다. 학습 지도 ④의 맛보기',
  "p28b":'해설: 시즌 1에서 ①기술수용주기와 ②사례를 배웠다. 시즌 2는 ③하입사이클을 겹쳐 읽고 등급(영장류·킹덤)을 매겨 투자와 연결한 뒤, ④분기 루틴과 투자클럽으로 실전에 들어간다',
  "p27c":'해설: 정보수집·분석·원칙 적용·일관성 유지는 혼자 하기 어렵다(1화 참조). 서식지 판별을 돕는 ETF 같은 도구도 등장했지만, 판단의 틀은 클럽의 집단지성이 기른다',
 }
