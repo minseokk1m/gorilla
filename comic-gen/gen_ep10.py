@@ -80,7 +80,7 @@ PAGES = {
  "p27c":"Two panels, the club closing. (1 ~60%) the whole study group around the long table, hands stacked together in the middle like a team huddle, warm laughter; notebooks and a corkboard with blank cards behind. (2 ~40%) JU BON-JIL's warm face delivering the final line of the season's lesson.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL smiling warmly, congratulating NA BAE-UM on passing his first test; the group warm. (2 ~45%) NA BAE-UM proud and moved.",
  "p28b":"One panel (~100%). The whiteboard with the same clean hand-drawn LEARNING ROADMAP as Ep1: four numbered boxes in a row connected by arrows, labeled exactly '① 기술수용주기 이해', '② 사례로 익히기', '③ 투자와 연결', '④ 실전'; boxes ① and ② each carry a big GREEN check mark and share one bracket labeled '시즌 1'; boxes ③ and ④ share one bracket labeled '시즌 2'; JU BON-JIL tapping box ③; the study group watching; ONLY these labels on the board.",
- "p29":"One panel (~100%). In the dark background a thin glowing RED curve rises to a sharp peak and falls (a bare line, NO labels), and beyond it two faint jungle silhouettes (a primate jungle and a kingdom jungle); JU BON-JIL in front smiling, delivering the season-2 hook; NA BAE-UM beside him looking at the red peak.",
+ "p29":"One panel (~100%). In the dark background a thin glowing RED curve rises to a sharp peak and falls (a bare line, NO labels), and beyond it two faint jungle silhouettes (a primate jungle and a kingdom jungle); JU BON-JIL in front smiling, delivering the season-2 hook: BOTH speech balloons on this page are spoken by JU BON-JIL (grey hair, glasses, navy knit) and both tails must point at HIM; NA BAE-UM beside him silently looking up at the red peak, and the single thought balloon belongs to NA BAE-UM only.",
  "p30":"One panel (~100%). Closing SEASON-1 finale: two jungle silhouettes in the distance; NA BAE-UM and JU BON-JIL and the study members together as a group; reserve a black caption band across the very bottom for the season-2 preview. Triumphant, warm. The caption appears EXACTLY ONCE, inside the bottom black band only; NO white caption box, NO other caption anywhere.",
 }
 
@@ -150,8 +150,9 @@ DLG = {
         (2,'C','think','1년 전의 나는, 더 이상 없다')],
  "p28b":[(1,'C','speech','지도에서 두 칸을 채웠어\n법칙과 사례\n다음 시즌은 그걸 돈과 연결하는 시간이야'),
         (1,'C','narr','① ② 시즌 1 끝\n③ ④ 시즌 2')],
- "p29":[(1,'C','speech','시즌1은 여기까지\n다음 시즌엔 곡선이 하나 더 나와\n기대라는 이름의 곡선'),
-        (1,'C','speech','그걸 읽고 나면 정글의 서열\n그리고 우리 클럽의 진짜 루틴이야')],
+ "p29":[(1,'C','speech','주본질: 시즌1은 여기까지\n다음 시즌엔 곡선이 하나 더 나와\n기대라는 이름의 곡선'),
+        (1,'C','speech','주본질: 그걸 읽고 나면 정글의 서열\n그리고 우리 클럽의 진짜 루틴이야'),
+        (1,'C','think','나배움: 곡선이 하나 더…')],
  "p30":[(1,'C','caption','Episode 10 끝 · 시즌 1 완결 · 다음 시즌 · 두 번째 곡선과 정글의 서열\n(하입사이클 → 영장류 vs 킹덤 → 투자클럽)')],
 }
 
@@ -175,10 +176,18 @@ NOTES = {
  "p27c":'해설: 정보수집·분석·원칙 적용·일관성 유지는 혼자 하기 어렵다(1화 참조). 서식지 판별을 돕는 ETF 같은 도구도 등장했지만, 판단의 틀은 클럽의 집단지성이 기른다',
 }
 
+SPEAKERS = {'한탕수':'HAN TANG-SU (red cap)', '나배움':'NA BAE-UM', '주본질':'JU BON-JIL (mentor)',
+ '한실속':'HAN SIL-SOK (pragmatist, knit vest, glasses)'}
+
 def instruction(pid):
     parts=[]
     for panel,hint,role,text in DLG[pid]:
-        parts.append(f"(panel {panel}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
+        spk=""
+        for name,desc in SPEAKERS.items():
+            if text.startswith(name+": "):
+                text=text[len(name)+2:]; spk=f", spoken by {desc}, balloon tail pointing at that character, do NOT letter the speaker's name"
+                break
+        parts.append(f"(panel {panel}{spk}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
     if pid in BANDS:
         parts.append("at the very bottom, a parchment caption band reading: ‘"+BANDS[pid].replace(chr(10),' ')+"’")
     return "KOREAN LINES TO LETTER (render each cleanly inside its balloon/box):\n"+"\n".join(parts)
