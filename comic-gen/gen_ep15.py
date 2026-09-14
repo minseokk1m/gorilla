@@ -14,15 +14,18 @@ EXTRA_CHARS = ("EP15 NOTE: jungle metaphor scenes are drawn in the SAME inked we
                "PRIMATE JUNGLE = a calm big gorilla on a stone throne, a smaller chimp below, tiny monkeys with bananas; "
                "KINGDOM JUNGLE = a crowned king on a castle wall, an armored knight below with a raised sword, peasants in a field. Never mix the two jungles in one scene unless specified.")
 
+GRADES = ("a clean hand-drawn SIX-GRADE table with two columns headed '영장류 정글 (독점)' and '킹덤 정글 (개방형)' and three rows: '고릴라' / '영주' ; '침팬지' / '기사' ; '원숭이' / '소작농'; beneath the table a small line '+ 위치 라벨: 캐즘 위치 · 잠재 고릴라'")
+INK = "drawn in the SAME inked Korean webtoon style as the study-room pages (visible ink linework, flat colors, absolutely NO photoreal, NO painterly or 3D render); "
+
 PAGES = {
- "p01":"A cinematic episode-title page, Korean webtoon ink style (keep inked linework, NO photoreal). A forked jungle path in the dark: the left fork leads to a stone throne with a gorilla silhouette, the right fork to a castle wall with a crowned king silhouette; no labels. A clean dark band across the middle for the title text, a thin band at the bottom.",
+ "p01":f"A cinematic episode-title page, {INK} A forked jungle path in the dark: the left fork leads to a stone throne with a gorilla silhouette, the right fork to a castle wall with a crowned king silhouette; no labels. A clean dark band across the middle for the title text, a thin band at the bottom.",
  "p02":"Two panels, study room. (1 ~55%) NA BAE-UM asking JU BON-JIL, a puzzled frown; the whiteboard behind is BLANK. (2 ~45%) JU BON-JIL drawing a forked path on the board (no text).",
  "p03":"Two panels. (1 ~55%) JU BON-JIL at the board where ONLY two words are written at the ends of the fork: '영장류' (left) and '킹덤' (right); HAN TANG-SU mouthing the words. (2 ~45%) close on JU BON-JIL's knowing smile.",
- "p04":"One panel (~100%). A jungle metaphor scene in inked webtoon style: a calm big gorilla seated on a stone throne at the top, a smaller chimpanzee on a lower rock looking up, and three tiny monkeys at the bottom clutching bananas; three small clean labels beside them: '고릴라', '침팬지', '원숭이'; ONLY these labels.",
+ "p04":f"One panel (~100%). A jungle metaphor scene {INK} a calm big gorilla seated on a stone throne at the top, a smaller chimpanzee on a lower rock looking up, and three tiny monkeys at the bottom clutching bananas; three small clean labels beside them: '고릴라', '침팬지', '원숭이'; ONLY these labels.",
  "p05":"Two panels. (1 ~55%) JU BON-JIL pointing at the gorilla in a small inset of the jungle scene; NA BAE-UM noting. (2 ~45%) close on the chimp looking up at the throne, unable to climb.",
  "p06":"Two panels. (1 ~55%) JU BON-JIL drawing on the board ONLY a thick horizontal line between a small gorilla sketch above and a chimp sketch below, with a small 'X' on the line (no words). (2 ~45%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: '영장류 정글' / '종 사이 교배 불가' / '격차가 오래간다'.",
  "p07":"Two panels. (1 ~55%) HAN TANG-SU asking with a smirk; JU BON-JIL amused. (2 ~45%) close on the tiny monkeys with bananas, one monkey dropping its banana.",
- "p08":"One panel (~100%). A kingdom metaphor scene in inked webtoon style: a crowned king standing on a castle wall at the top, an armored knight on horseback below raising a sword toward the wall, and peasants working a field at the bottom; three small clean labels: '영주', '기사', '소작농'; ONLY these labels.",
+ "p08":f"One panel (~100%). A kingdom metaphor scene {INK} a crowned king standing on a castle wall at the top, an armored knight on horseback below raising a sword toward the wall, and peasants working a field at the bottom; three small clean labels: '영주', '기사', '소작농'; ONLY these labels.",
  "p09":"Two panels. (1 ~55%) JU BON-JIL pointing at the knight in a small inset; NA BAE-UM intrigued. (2 ~45%) close on the knight's raised sword and the king glancing down nervously.",
  "p10":"Two panels. (1 ~55%) JU BON-JIL drawing on the board ONLY a vertical ladder sketch between a crown sketch above and a helmet sketch below, with a small upward arrow (no words). (2 ~45%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: '킹덤 정글' / '같은 종족 안의 신분상승' / '왕좌가 영원하지 않다'.",
  "p11":"Two panels. (1 ~55%) NA BAE-UM asking the key question, hand raised; JU BON-JIL pleased. (2 ~45%) JU BON-JIL writing ONE line on the board: '독점 아키텍처인가, 개방형인가'.",
@@ -39,12 +42,12 @@ PAGES = {
  "p22":"One panel (~100%). The whiteboard: two hand-drawn luggage-tag shapes with ONE label each: '캐즘 위치' and '잠재 고릴라'; beneath them a short line '등급이 아니라 위치'; a small car icon under the first tag and a small egg icon under the second; JU BON-JIL to the side; ONLY these labels.",
  "p23":"Two panels. (1 ~55%) JU BON-JIL explaining the two tags; NA BAE-UM thinking of Ep3's Tesla mention. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear; the thought balloon belongs to NA BAE-UM.",
  "p24":"Two panels. (1 ~55%) JU BON-JIL erasing and preparing the final board; the group settling. (2 ~45%) NA BAE-UM turning to a fresh notebook page.",
- "p25":"One panel (~100%). The whiteboard: a clean hand-drawn SIX-GRADE table with two columns headed '영장류 정글 (독점)' and '킹덤 정글 (개방형)'; three rows: '고릴라' / '영주' ; '침팬지' / '기사' ; '원숭이' / '소작농'; beneath the table a small line: '+ 위치 라벨: 캐즘 위치 · 잠재 고릴라'; JU BON-JIL to the side, NA BAE-UM copying; ONLY these labels.",
- "p26":"Two panels. (1 ~55%) JU BON-JIL summarizing with the marker across the table; the group attentive. (2 ~45%) NA BAE-UM's notebook close-up with the same six-grade table hand-copied: '고릴라 / 영주', '침팬지 / 기사', '원숭이 / 소작농' and nothing else.",
+ "p25":f"One panel (~100%). The whiteboard shows {GRADES}; JU BON-JIL to the side, NA BAE-UM copying; ONLY these labels.",
+ "p26":f"Two panels. (1 ~55%) JU BON-JIL summarizing with the marker across the whiteboard which shows {GRADES}; the group attentive. (2 ~45%) NA BAE-UM's notebook close-up with the same six-grade table hand-copied: '고릴라 / 영주', '침팬지 / 기사', '원숭이 / 소작농' and nothing else.",
  "p27":"Two panels. (1 ~55%) HAN SIL-SOK asking a practical question; JU BON-JIL turning. (2 ~45%) JU BON-JIL answering with a calm nod.",
- "p28":"Two panels, quiet beat. (1 ~60%) evening study room, NA BAE-UM looking at the six-grade table on the board (labels as p25), the others leaving. (2 ~40%) NA BAE-UM's resolved face.",
- "p29":"Two panels. (1 ~55%) at the door JU BON-JIL turns back, teasing the next lesson. (2 ~45%) a faint dreamy image in webtoon ink style: a big calm gorilla on a throne, a chimp with a shiny new sword below, tiny monkeys copying it; NO text.",
- "p30":"One panel (~100%). Closing chapter-end: the two jungles side by side in the distance, the left one lit; NA BAE-UM and JU BON-JIL small figures walking toward it; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band.",
+ "p28":f"Two panels, quiet beat. (1 ~60%) evening study room, NA BAE-UM looking at the whiteboard which shows {GRADES}, the others leaving. (2 ~40%) NA BAE-UM's resolved face.",
+ "p29":f"Two panels. (1 ~55%) at the door JU BON-JIL turns back, teasing the next lesson; the whiteboard behind is completely BLANK. (2 ~45%) a faint dreamy image {INK} a big calm gorilla on a throne, a chimp with a shiny new sword below, tiny monkeys copying it; NO text.",
+ "p30":f"One panel (~100%). Closing chapter-end, {INK}the two jungles side by side in the distance, the left one lit; NA BAE-UM and JU BON-JIL small figures walking toward it; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band.",
 }
 
 DLG = {
