@@ -51,7 +51,7 @@ PAGES = {
  "p29":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing the summary; JU BON-JIL in the soft background; the whiteboard behind is completely BLANK (no writing of any kind). (2 ~40%) the notebook close-up: ONLY these hand-written lines: '고릴라: 아키텍처·전환비용·네트워크' / '침팬지: 스펙이 아니라 생태계' / '원숭이: 가격 결정권 없음'.",
  "p30":"Two panels, quiet beat. (1 ~60%) evening, HAN TANG-SU quietly erasing a name from his phone note (screen shows ONLY a blurred short line), NA BAE-UM beside him; the whiteboard behind is completely BLANK. (2 ~40%) NA BAE-UM's thoughtful face.",
  "p31":f"Two panels. (1 ~55%) at the door JU BON-JIL turns back with the next hook; the whiteboard behind is completely BLANK. (2 ~45%) a faint dreamy image {INK} a crowned king on a castle wall glancing nervously at a knight below; NO text.",
- "p32":f"One panel (~100%). Closing chapter-end, {INK}the primate jungle behind, the kingdom castle ahead; NA BAE-UM, JU BON-JIL and HAN TANG-SU small figures; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band.",
+ "p32":f"One panel (~100%). Closing chapter-end, {INK}the primate jungle behind, the kingdom castle ahead on a distant hill; NA BAE-UM, JU BON-JIL and HAN TANG-SU as small figures walking away; the top of the page has NO band and NO text box of any kind; a solid BLACK caption band runs across the very BOTTOM edge of the page (bottom 10%), and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band, centered; do NOT invent any other sentence, slogan or narration anywhere.",
 }
 
 DLG = {
