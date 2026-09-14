@@ -20,6 +20,8 @@ TABLE5 = ("the FIVE-row checklist TABLE titled '초기시장인가, 골짜기를
 
 TIMELINE = ("the SAME hand-drawn price timeline as before: a low flat start, a steep climb to a high peak, a sudden cliff drop to less than half, a partial rebound, another climb to a higher peak, then a long slide down to about a third, with EXACTLY these five small Korean labels and NO other writing: '2024 급등', '2025년 1월 한마디', '철회', '재급등', '2026 조정'")
 
+EXITCARD = ("a hand-drawn EXIT rule card with the letters 'EXIT' as a heading and three short Korean lines beneath, exactly: '매출이 예상을 크게 밑돈다' / '경쟁이나 규제 뉴스가 뜬다' / '거래량은 폭증, 가격은 하락'; a small exit-door icon; nothing else on the board")
+
 PAGES = {
  "p01":"A cinematic episode-title page, Korean webtoon ink style (keep inked linework, NO photoreal). A golden chandelier-like cryostat (abstract quantum computer) glows in the dark; above it a thin RED curve rises to a sharp peak; no labels. A clean dark band across the middle for the title text, a thin band at the bottom.",
  "p02":"Two panels, study room. (1 ~55%) HAN TANG-SU (red cap) bursting in waving his phone (screen OFF), breathless; the members turning. (2 ~45%) CHOI SIN-SANG (headphones, gadget vest) raising a hand eagerly, a small laptop open in front of him showing ONLY an abstract cluster of glowing dots (no text).",
@@ -44,15 +46,15 @@ PAGES = {
  "p21":"One panel (~100%). The whiteboard: a hand-drawn EXIT rule card with the letters 'EXIT' as a heading and three short Korean lines beneath, exactly: '매출이 예상을 크게 밑돈다' / '경쟁이나 규제 뉴스가 뜬다' / '거래량은 폭증, 가격은 하락'; a small exit-door icon; JU BON-JIL presenting; ONLY these labels.",
  "p22":"Two panels. (1 ~55%) HAN TANG-SU writing the three EXIT lines on his own phone note (screen shows ONLY three short blurred lines, no readable text), serious for once. (2 ~45%) JU BON-JIL watching him, a hint of approval.",
  "p23":"Two panels, the practice run. (1 ~55%) a montage strip: HAN TANG-SU tapping buy on his phone (screen shows ONLY a simple curve with a dot before its peak, no text), then a calendar flipping. (2 ~45%) HAN TANG-SU's phone showing ONLY the curve now past the peak with a red downward segment, his face tense.",
- "p24":"Two panels. (1 ~55%) HAN TANG-SU looking at JU BON-JIL, torn; JU BON-JIL silent, pointing at the EXIT card on the board (labels as p21). (2 ~45%) HAN TANG-SU pressing a button on his phone with a grimace, eyes shut.",
+ "p24":f"Two panels. (1 ~55%) HAN TANG-SU looking at JU BON-JIL, torn; JU BON-JIL silent, pointing at the whiteboard which shows {EXITCARD}. (2 ~45%) HAN TANG-SU pressing a button on his phone with a grimace, eyes shut; plain background.",
  "p25":"Two panels. (1 ~55%) HAN TANG-SU slumped, then looking up as JU BON-JIL speaks; NA BAE-UM beside, supportive. (2 ~45%) close on HAN TANG-SU's face, a small brave nod.",
  "p26":"Two panels. (1 ~55%) NA BAE-UM at the table summarizing to himself; JU BON-JIL in the background. (2 ~45%) the notebook close-up: ONLY these hand-written lines: '초기시장이 진짜여도' / '가격이 초기시장을 넘어섰으면 하입' / '타려면 작게, 출구부터'.",
  "p27":"Two panels. (1 ~55%) HAN SIL-SOK asking a grounded question from the table; JU BON-JIL turning to him. (2 ~45%) JU BON-JIL answering, calm and clear.",
  "p28":"Two panels. (1 ~55%) JU BON-JIL writing on the board ONLY one short line: '손절은 다음 라운드 출전권'; HAN TANG-SU staring at it. (2 ~45%) close on HAN TANG-SU's face, something settling in.",
  "p29":"Two panels, quiet beat. (1 ~60%) evening, HAN TANG-SU and NA BAE-UM walking out together, HAN TANG-SU quieter than usual, NA BAE-UM patting his shoulder. (2 ~40%) NA BAE-UM's thoughtful face under the streetlight.",
  "p30":"Two panels. (1 ~55%) at the door JU BON-JIL calls after them with a teasing look. (2 ~45%) JU BON-JIL holding up four fingers, then drawing a small cross-shaped grid in the air.",
- "p31":"One panel (~100%). A dark moody image: a large empty 2x2 board like a game board, and four small game pieces (a sphere, a car, a memory chip, a magnifying glass) scattered around it waiting to be placed; NO text; keep webtoon ink style.",
- "p32":"One panel (~100%). Closing chapter-end: the timeline silhouette and the 2x2 board in the distance; NA BAE-UM, JU BON-JIL and HAN TANG-SU small figures; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band.",
+ "p31":"One panel (~100%). A dark moody image drawn in the SAME inked Korean webtoon style as the rest of the episode (visible ink linework and flat colors, absolutely NO photoreal, NO 3D render, NO glossy studio lighting): a large EMPTY 2x2 board like a game board whose four cells are completely BLANK (absolutely NO words, NO letters, NO labels inside or around the board), and four small game pieces (a sphere, a car, a memory chip, a magnifying glass) scattered around it waiting to be placed. The single emphasis caption is lettered WITHOUT any quotation marks or apostrophes around it.",
+ "p32":"One panel (~100%). Closing chapter-end, inked webtoon style: an outdoor evening scene, NA BAE-UM, JU BON-JIL and HAN TANG-SU as small figures on a hill looking at a large faint 2x2 board floating in the sky with NO labels and a thin faint price-line silhouette beside it; NO study room, NO monitors, NO desks, NO whiteboard, NO readable text anywhere; a solid BLACK caption band runs across the very BOTTOM edge of the page and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band.",
 }
 
 DLG = {

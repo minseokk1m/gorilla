@@ -73,7 +73,10 @@ def instruction(mod, pid):
             if text.startswith(name+": "):
                 text=text[len(name)+2:]; spk=f", spoken by {desc}, balloon tail pointing at that character, do NOT letter the speaker's name"
                 break
-        parts.append(f"(panel {panel}{spk}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
+        if role in ('emph','caption'):  # 강조 캡션·예고 캡션은 따옴표 오식자가 잦아 원문만 제시
+            parts.append(f"(panel {panel}) in {DESC.get(role)}, whose exact text (lettered with NO quotation marks or apostrophes of any kind around it) is: {text.replace(chr(10),' ')}")
+        else:
+            parts.append(f"(panel {panel}{spk}) in {DESC.get(role,'a balloon')}: ‘{text.replace(chr(10),' ')}’")
     bands = getattr(mod, "BANDS", {})
     if pid in bands:
         parts.append("at the very bottom, a parchment caption band reading: ‘"+bands[pid].replace(chr(10),' ')+"’")
