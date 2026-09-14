@@ -48,7 +48,7 @@ PAGES = {
  "p27":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing the summary; JU BON-JIL in the soft background; the whiteboard behind is completely BLANK (no writing of any kind). (2 ~40%) the notebook close-up: ONLY these hand-written lines: '영주: 옮길 수 있는 1등' / '기사: 영주를 벨 수 있는 도전자' / '소작농: 차별화 없는 바닥'.",
  "p28":"Two panels, quiet beat. (1 ~60%) evening, HAN SIL-SOK packing his laptop with a small proud smile, NA BAE-UM giving him a thumbs up. (2 ~40%) NA BAE-UM's warm face.",
  "p29":f"Two panels. (1 ~55%) at the door JU BON-JIL turns back with the next hook; the whiteboard behind is completely BLANK. (2 ~45%) a faint dreamy image {INK} a small car teetering at a canyon edge, and beyond the canyon an egg with a faint gorilla shape inside; NO text.",
- "p30":f"One panel (~100%). Closing chapter-end, {INK}the castle behind, the canyon ahead; NA BAE-UM, JU BON-JIL and HAN SIL-SOK small figures; a black caption band across the very bottom. THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE the bottom black band.",
+ "p30":f"One panel (~100%). Closing chapter-end, {INK}the castle behind, the canyon ahead; NA BAE-UM, JU BON-JIL and HAN SIL-SOK as small figures seen from behind; the top of the page has NO band and NO text box of any kind; a solid BLACK caption band runs across the very BOTTOM edge of the page (bottom 10%), and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band, centered; do NOT invent any other sentence, slogan or narration anywhere.",
 }
 
 DLG = {
