@@ -80,9 +80,18 @@ def instruction(mod, pid):
         parts.append("at the very bottom, a parchment caption band whose exact text (no quotation marks) is: "+bands[pid].replace(chr(10),' '))
     return "KOREAN LINES TO LETTER (render each cleanly inside its balloon/box):\n"+"\n".join(parts)
 
+def balloon_count_rule(mod, pid):
+    # 2026-10-04: 캘리브레이션 #25(여분 말풍선 "그래.", "음, 맞는 말이에요" 자생) 대응.
+    # 페이지의 말풍선(speech/think) 수를 세어 1개면 "exactly ONE, NO reply balloon", 0개면 "NO speech balloons"를 자동 명시.
+    n = sum(1 for _,_,r,_ in mod.DLG[pid] if r in ('speech','think'))
+    boxes = sum(1 for _,_,r,_ in mod.DLG[pid] if r in ('narr','emph','caption'))
+    if n == 0: return " BALLOON COUNT: this page has NO speech or thought balloons at all" + (f" (only {boxes} narration/caption box{'es' if boxes>1 else ''})." if boxes else ".")
+    if n == 1: return " BALLOON COUNT: this page has exactly ONE speech/thought balloon and NO reply balloon; no other character speaks."
+    return f" BALLOON COUNT: this page has exactly {n} speech/thought balloons, no more."
+
 def build_prompt(mod, pid):
     chars = CHARS_S2 + " " + getattr(mod, "EXTRA_CHARS", "")
-    return f"{RULES_TEXT}\n\nPAGE CONTENT: {clean_spec(mod.PAGES[pid])}\n\n{instruction(mod, pid)}\n\n{chars}\n\nSTYLE: {g.STYLE}"
+    return f"{RULES_TEXT}\n\nPAGE CONTENT: {clean_spec(mod.PAGES[pid])}{balloon_count_rule(mod, pid)}\n\n{instruction(mod, pid)}\n\n{chars}\n\nSTYLE: {g.STYLE}"
 
 def gen(c, mod, pid):
     prompt = build_prompt(mod, pid)
