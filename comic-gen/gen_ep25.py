@@ -44,7 +44,7 @@ PAGES = {
  "p08":f"One panel (~100%). {MAP_HW}; JU BON-JIL finishing the last card in the 'PCB·ODM' box; the group watching; ONLY the titles and cards listed.",
  "p09":f"Two panels. (1 ~60%) wide shot pulling back: the full map ({MAP_HW}) fills the wall, the eight members small in front of it; NO other text. (2 ~40%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear; the thought balloon belongs to NA BAE-UM.",
  "p10":f"One panel (~100%). {MAP_SW}; JU BON-JIL drawing the upper band; ONLY the titles, cards and the two band labels.",
- "p11":f"Two panels. (1 ~55%) GO BI-JEON (navy suit, tablet under arm) asking a question from the table; the map behind shows {MAP_SW}. (2 ~45%) JU BON-JIL tapping the upper band labeled '⑤ 앱·에이전트' with the marker, a serious look.",
+ "p11":f"Two panels. (1 ~55%) GO BI-JEON (navy suit, tablet under arm (screen OFF)) asking a question from the table; the map behind shows {MAP_SW}. (2 ~45%) JU BON-JIL tapping the upper band labeled '⑤ 앱·에이전트' with the marker, a serious look.",
  "p12":"Two panels. (1 ~55%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: '지도 = 반도체 여덟 칸 + 소프트웨어 두 층' / '에이전트가 앱을 흔든다 → 대체 신호 후보'. (2 ~45%) NA BAE-UM's thoughtful face, plain background.",
  "p13":"Two panels. (1 ~55%) JU BON-JIL holding out the marker to NA BAE-UM, a sheet of small round blank stickers in his other hand; the map behind is out of focus with no readable text. (2 ~45%) NA BAE-UM standing up, taking the marker and the stickers, determined.",
  "p14":f"One panel (~100%). {LOCK_NB}The map shows {GOR_TOP}; NA BAE-UM pressing the sticker onto the '장비' box; ONLY the titles, cards and the four top-row sticker labels.",

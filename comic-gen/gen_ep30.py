@@ -58,7 +58,7 @@ PAGES = {
  "p22":f"Two panels. (1 ~55%) HAN SIL-SOK (black hair, glasses, knit vest) restating it from the table, his balloon tail pointing at him; the whiteboard behind shows {ROLE2}. (2 ~45%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: 'ETF는 후보를 찾아주고 사이클을 태운다' / '우리는 고릴라에 집중하고 썰물 전에 내린다'.",
  "p23":f"One panel (~100%). The whiteboard shows {ETF3}; JU BON-JIL to the side; ONLY these labels.",
  "p24":f"Two panels. (1 ~55%) JU BON-JIL pointing at the first two boxes of the whiteboard which shows {ETF3}. (2 ~45%) a small inset recalling Ep1: HAN TANG-SU sweating in front of a phone showing ONLY a red falling line (no numbers), while JU BON-JIL in the main scene points at the third box labeled '레버리지'.",
- "p25":"Two panels. (1 ~55%) GO BI-JEON (navy suit, tablet under arm) asking with a confident smile; the whiteboard behind is out of focus with no readable text. (2 ~45%) HAN SIL-SOK nodding slowly, reassured.",
+ "p25":"Two panels. (1 ~55%) GO BI-JEON (navy suit, tablet under arm (screen OFF)) asking with a confident smile; the whiteboard behind is out of focus with no readable text. (2 ~45%) HAN SIL-SOK nodding slowly, reassured.",
  "p26":"Two panels. (1 ~55%) JU BON-JIL cautioning with one raised hand, sincere; the whiteboard behind is completely BLANK. (2 ~45%) SHIN JUNG-HAE writing in the log, a small smile.",
  "p27":f"One panel (~100%). The whiteboard shows {TOOLS}; JU BON-JIL to the side; ONLY these labels.",
  "p28":f"Two panels. (1 ~55%) JU BON-JIL beside the whiteboard which shows {TOOLS}, one hand on each column. (2 ~45%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: '뼈대는 Moore' / '도구는 우리 것' / '섞지 않는다'.",

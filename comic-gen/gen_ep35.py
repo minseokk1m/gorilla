@@ -61,7 +61,7 @@ PAGES = {
  "p18":f"Two panels. (1 ~55%) {LOCK_HS}HAN SIL-SOK explaining beside the whiteboard which shows {MEM_SPLIT}; JU BON-JIL nodding from the table. (2 ~45%) a small memory inset {INK}: the Ep17 image of a stacked memory chip bolted onto a large GPU chip with a padlock icon, NO text.",
  "p19":f"Two panels. (1 ~55%) HAN TANG-SU (red cap) asking about the small third card, pointing at the whiteboard which shows {MEM_SPLIT}. (2 ~45%) JU BON-JIL answering, holding up two fingers.",
  "p20":"Two panels. (1 ~55%) NA BAE-UM's notebook close-up: ONLY these hand-written lines: '메모리는 양쪽을 들되' / 'HBM은 원칙 9, DRAM은 원칙 6'. (2 ~45%) HAN SIL-SOK sitting down, satisfied, glasses pushed up.",
- "p21":"Two panels. (1 ~55%) GO BI-JEON (navy suit, tablet under arm, tablet screen OFF) asking about the model companies, confident; the whiteboard behind is completely BLANK. (2 ~45%) JU BON-JIL shaking his head slowly with a half smile.",
+ "p21":"Two panels. (1 ~55%) GO BI-JEON (navy suit, tablet under arm (screen OFF), tablet screen OFF) asking about the model companies, confident; the whiteboard behind is completely BLANK. (2 ~45%) JU BON-JIL shaking his head slowly with a half smile.",
  "p22":f"One panel (~100%). The whiteboard shows {SUB2}; JU BON-JIL to the side; ONLY this label.",
  "p23":f"Two panels. (1 ~55%) JU BON-JIL explaining beside the whiteboard which shows {SUB2}; GO BI-JEON nodding. (2 ~45%) close on JU BON-JIL's face, a warning look.",
  "p24":"Two panels. (1 ~55%) SHIN JUNG-HAE (cardigan) writing in the club log, the recorder; CHOI SIN-SANG (headphones) leaning in with a comment. (2 ~45%) JU BON-JIL answering CHOI SIN-SANG, amused.",

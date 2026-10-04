@@ -19,7 +19,7 @@ EXTRA_CHARS = ("EP31 NOTE: all presentation boards are clean hand-drawn whiteboa
 
 INK = "drawn in the SAME inked Korean webtoon style as the study-room pages (visible ink linework, flat colors, absolutely NO photoreal, NO painterly or 3D render); "
 
-LOCK_GB = ("ABSOLUTE RULE: the presenter standing at the whiteboard holding the marker is GO BI-JEON (40s, sharp NAVY SUIT, confident gaze, tablet under his arm) "
+LOCK_GB = ("ABSOLUTE RULE: the presenter standing at the whiteboard holding the marker is GO BI-JEON (40s, sharp NAVY SUIT, confident gaze, tablet under his arm (screen OFF)) "
            "and his speech balloon tail points at HIM; JU BON-JIL (grey hair, navy knit) sits at the table and does NOT present (a grey-haired man at the board would be WRONG). ")
 LOCK_HT = ("ABSOLUTE RULE: the presenter standing at the whiteboard holding the marker is HAN TANG-SU (early-20s, RED CAP, mustard-orange hoodie) "
            "and his speech balloon tail points at HIM; JU BON-JIL (grey hair, navy knit) sits at the table and does NOT present (a grey-haired man at the board would be WRONG). ")
