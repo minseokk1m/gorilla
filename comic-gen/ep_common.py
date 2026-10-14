@@ -19,7 +19,9 @@ CHARS_S2 = (g.CHARS +
     "GO BI-JEON 'visionary' (40s male, sharp navy suit, confident gaze, tablet under arm); "
     "HAN SIL-SOK 'pragmatist' (40s male, neat shirt and knit vest, thin metal glasses, calm careful); "
     "SHIN JUNG-HAE 'conservative' (50s female, warm brown cardigan, reserved kind face); "
-    "AN MID-EO 'skeptic' (50s male, stern brow, old flip phone always in hand).")
+    "AN MID-EO 'skeptic' (50s male, stern brow, old flip phone always in hand). "
+    "GLASSES RULE: ONLY JU BON-JIL and HAN SIL-SOK wear glasses; CHOI SIN-SANG, GO BI-JEON, SHIN JUNG-HAE, AN MID-EO, NA BAE-UM and HAN TANG-SU wear NO glasses. "
+    "PROP RULE: the old flip phone belongs ONLY to AN MID-EO; no other character holds a flip phone; the headphones belong ONLY to CHOI SIN-SANG. Exactly ONE of each cast member per page, never duplicated.")
 
 RULES_TEXT = (
     "FORMAT: a single vertical Korean webtoon PAGE with the panels described, thin white gutters. "
