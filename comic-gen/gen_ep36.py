@@ -21,7 +21,7 @@ INK = "drawn in the SAME inked Korean webtoon style as the study-room pages (vis
 LOCK_NB = ("ABSOLUTE RULE: the presenter standing at the whiteboard holding the marker is NA BAE-UM (late-30s, plain BLACK hair, NO glasses, charcoal shirt) "
            "and his speech balloon tail points at HIM; JU BON-JIL (grey hair, navy knit, glasses) sits at the table and does NOT present (a grey-haired man at the board would be WRONG). ")
 
-SELL5 = ("a clean hand-drawn card titled '파는 이유는 다섯뿐' with FIVE short numbered Korean lines exactly: '① 고릴라는 대체 위협이 입증될 때만' / '② 영주와 기사는 흔들리면 개별, 썰물이면 카테고리' / "
+SELL5 = ("a clean hand-drawn card titled '파는 이유는 다섯뿐' with FIVE short numbered Korean lines exactly: '① 고릴라는 대체 위협이 입증될 때만' (the word 입증될 is spelled exactly 입-증-될, NOT 입종될) / '② 영주와 기사는 흔들리면 개별, 썰물이면 카테고리' / "
          "'③ 고릴라 못 될 종목은 즉시' / '④ RIDE는 EXIT 신호에' / '⑤ 비싸다는 이유만으로는 팔지 않는다' (the fifth line in RED marker)")
 SUB3 = ("a hand-drawn card titled '대체 위협 3단계' with three short lines exactly: '① 새 카테고리가 생겼나' / '② 실용주의자가 옮기기 시작했나' / '③ 옛 전환비용이 녹고 있나'; "
         "each of the three lines has a small lit lamp icon beside it")
@@ -55,7 +55,7 @@ PAGES = {
  "p16":f"Two panels, HAN TANG-SU's past as memory insets {INK}(no readable text). (1 ~50%) memory inset: HAN TANG-SU (same red cap, mustard hoodie) at a cafe table tapping his phone whose screen is OFF, a regretful face; draw NO balloon inside the inset itself (the narration box sits at the panel edge). (2 ~50%) HAN TANG-SU in the present at the study table, head down, embarrassed; the whiteboard behind is out of focus with no readable text.",
  "p17":"Two panels. (1 ~50%) memory inset: HAN TANG-SU in a dark room staring at his phone whose screen shows ONLY a single red falling line, no text, sweating. (2 ~50%) present: JU BON-JIL recounting the two failures kindly; HAN TANG-SU nodding, small.",
  "p18":f"One panel (~100%). The whiteboard shows {EXITCARD_1}; HAN TANG-SU (red cap, mustard hoodie) standing in front of it with the marker, having just circled the first line, serious; his speech balloon tail points at HIM; JU BON-JIL watches from the table; ONLY the card labels.",
- "p19":"Two panels. (1 ~55%) HAN TANG-SU putting his phone face down on the table after a single tap, exhaling; the phone screen is OFF. (2 ~45%) SHIN JUNG-HAE (cardigan) writing in the club log, warm smile.",
+ "p19":"Two panels. (1 ~55%) HAN TANG-SU putting his ONE and ONLY phone face down on the table after a single tap, exhaling, BOTH of his hands now empty (he owns exactly one phone, no second phone anywhere); the phone screen is OFF. (2 ~45%) SHIN JUNG-HAE (cardigan) writing in the club log, warm smile.",
  "p20":"Two panels. (1 ~55%) JU BON-JIL putting a hand on HAN TANG-SU's shoulder. (2 ~45%) close on HAN TANG-SU's face, red cap pushed up, a mix of loss and relief.",
  "p21":f"One panel (~100%). {LOCK_NB}The whiteboard shows {EBB} with a small header card above it labeled '종목 K'; NA BAE-UM presenting, standing fully to the side; ONLY these labels.",
  "p22":f"Two panels. (1 ~55%) {LOCK_NB}NA BAE-UM explaining beside the whiteboard which shows {EBB} with the small header card '종목 K'; the group listening. (2 ~45%) the whiteboard corner: {RULE5}; ONLY this label.",
@@ -67,7 +67,7 @@ PAGES = {
  "p28":"Two panels. (1 ~60%, over-the-shoulder) NA BAE-UM writing the summary; JU BON-JIL in the soft background; the whiteboard behind is completely BLANK (no writing of any kind). (2 ~40%) the notebook close-up: ONLY these hand-written lines: '파는 이유는 다섯뿐' / '입증을 기다리되 부정하지 않는다' / '원칙대로 판 매도는 후회가 없다'.",
  "p29":"Two panels. (1 ~55%) AN MID-EO holding up his old flip phone with a straight face; the whole club bursting into laughter. (2 ~45%) JU BON-JIL laughing too, wiping an eye.",
  "p30":"Two panels. (1 ~55%) at the door NA BAE-UM (black hair, no glasses, charcoal shirt) asks JU BON-JIL what comes next, the balloon tail pointing at NA BAE-UM; JU BON-JIL smiles; the whiteboard behind is completely BLANK. (2 ~45%) JU BON-JIL holding up four fingers at the doorway.",
- "p31":f"One panel (~100%). A quiet mood shot {INK}: the study room at night, the club log lying closed on the long table with a pen on it, a single lamp; the whiteboard is completely BLANK; NO readable text anywhere.",
+ "p31":f"One panel (~100%). A quiet mood shot {INK}: a tight STILL-LIFE close-up (no wide room view) of the near corner of the long table at night: the club log lying closed with a pen on it under a single lamp, the frame cropped so tightly that NO person can be visible anywhere (absolutely NO people, NO faces, NO hands, NO cast); NO readable text anywhere.",
  "p32":f"One panel (~100%). Closing chapter-end, {INK}four kraft notebooks laid in a row on a wooden desk under a window showing four seasons blended across the glass (spring blossoms to winter snow), NO people; the top of the page has NO band and NO text box; a solid BLACK caption band runs across the very BOTTOM edge of the page (bottom 10%), and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band, centered; do NOT invent any other sentence anywhere.",
 }
 
@@ -135,7 +135,7 @@ DLG = {
 }
 
 BANDS = {
- "p04":'파는 이유는 다섯뿐 · ① 대체 위협 입증 ② 영주·기사의 썰물 ③ 고릴라 못 될 종목 ④ RIDE의 EXIT ⑤ 비쌈만으로는 팔지 않는다',
+ "p04":'파는 이유는 다섯뿐 · ① 대체 위협이 확실할 때 ② 영주·기사의 썰물 ③ 고릴라 못 될 종목 ④ RIDE의 EXIT ⑤ 비쌈만으로는 팔지 않는다',
  "p07":'원칙 6의 썰물 · 성장률이 두 분기 연속 둔화하면 카테고리째 판다 (본 만화의 보조 기준)',
  "p12":'뉴스의 체 · 10대 원칙 중 하나를 건드리나? · 예면 남기고 아니오면 버린다',
  "p15":'원칙 10 · 뉴스를 무시하라가 아니라 뉴스에서 잡음을 무시하라',

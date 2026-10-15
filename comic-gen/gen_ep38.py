@@ -27,7 +27,7 @@ STORM2 = ("a hand-drawn contrast: LEFT a teacup with a tiny swirl inside, labele
 SIG3 = ("a hand-drawn card titled '진입 3신호' with three small traffic lights and ONE label each exactly: '① 참조사례 확산' / '② 매출 가속' / '③ 완전완비제품'")
 
 PAGES = {
- "p01":f"A cinematic episode-title page, {INK} The ENTIRE page is ONE single illustration with NO panel borders and NO second scene: a lone figure seen from behind on a grassy hilltop at dawn, holding a marker like a pointer toward a far horizon where THREE small tornadoes stand over a jungle; NO readable text anywhere in the illustration. The bottom third of the page is a clean dark band containing ONLY the title block below; nothing is drawn beneath the band.",
+ "p01":f"A cinematic episode-title page, {INK} The ENTIRE page is ONE single illustration with NO panel borders and NO second scene: a lone figure seen from behind on a grassy hilltop at dawn, and that figure is NA BAE-UM (late-30s man, short BLACK hair, NO glasses, charcoal button shirt, beige slacks, NOT the grey-haired mentor), holding a marker like a pointer toward a far horizon where THREE small tornadoes stand over a jungle; NO readable text anywhere in the illustration. The bottom third of the page is a clean dark band containing ONLY the title block below; nothing is drawn beneath the band.",
  "p02":"Two panels, study room. (1 ~55%) JU BON-JIL SEATED at the long table, sliding the marker across the table toward NA BAE-UM; the whole club present (HAN TANG-SU, the TALC five); the whiteboard behind is completely BLANK. (2 ~45%) NA BAE-UM taking the marker, standing up, nervous but resolved.",
  "p03":f"One panel (~100%). {LOCK_NB}NA BAE-UM at the whiteboard which shows {GRID0}; he stands fully to the side; ONLY the grid title and the four axis labels.",
  "p04":f"Two panels. (1 ~55%) {LOCK_NB}NA BAE-UM beside the whiteboard which shows {GRID0}; JU BON-JIL seated, arms folded, asking the first question. (2 ~45%) NA BAE-UM taking a breath, three white cards fanned in his hand (their faces turned away, no readable text).",
@@ -75,7 +75,7 @@ DLG = {
  "p06":[(1,'C','narr','판별표 다섯 행, 세 번째 보는 표였다')],
  "p07":[(1,'C','speech','나배움: 규격은 나왔는데 샘플은 내년, 양산은 그다음\n사는 사람은 아직 연구소뿐, 참조사례도 시연뿐\n매출은 없고 기대만 올라갑니다'),
         (2,'C','think','나배움: 넷이 왼쪽, 초기시장')],
- "p08":[(1,'C','label','HBF'),
+ "p08":[
         (1,'C','speech','나배움: 초기시장, 그리고 기대는 올라가는 중\n왼쪽 위, 스탠스는 바구니 관찰입니다')],
  "p09":[(1,'C','speech','나배움: 아직 살 수 있는 종목이 아니라\n규격이 정해지고 샘플이 나오는지 분기마다 봅니다'),
         (2,'C','speech','최신상: 저 벌써 보고 있어요\n설명회 여섯 시간짜리를 다 들었어요')],
@@ -85,13 +85,13 @@ DLG = {
  "p11":[(1,'C','speech','나배움: 실용주의자도 삽니다, 동료가 쓴다고 하고\n완전완비제품도 갖춰졌어요\n그런데 매출 가속이 끊겼습니다, 메모리 값 때문에')],
  "p12":[(1,'C','speech','한실속: 저희 회사 노트북 교체 주기에 AI PC가 들어왔어요\n근데 메모리 값이 올라서 반년 미뤘어요'),
         (2,'C','speech','나배움: 그게 바로 공급 역풍이에요')],
- "p13":[(1,'C','label','온디바이스 AI'),
+ "p13":[
         (1,'C','speech','나배움: 골짜기를 건너는 중인데 역풍이 붑니다\n왼쪽 아래, 캐즘과 골\n판별표를 분기마다 다시 채웁니다')],
  "p14":[(1,'C','speech','나배움: 건넜다고 확인되면 오른쪽으로 옮깁니다\n그때 진입 신호를 봅니다'),
         (2,'C','speech','고비전: 온디바이스가 미래예요\n저는 벌써 다 바꿨습니다')],
  "p15":[(1,'C','narr','두 장, 두 위치'),
         (2,'C','speech','주본질: 셋째, 제일 시끄러운 놈')],
- "p16":[(1,'C','label','에이전틱 AI'),
+ "p16":[
         (1,'C','narr','기대 곡선의 꼭대기에 점 하나'),
         (2,'C','speech','나배움: 11화의 곡선으로 보면 지금 정점입니다\n올해 발표된 곡선에서 생성형은 골짜기로 내려갔고\n에이전트는 정점에 서 있습니다')],
  "p17":[(1,'C','speech','한실속: 저희도 에이전트 셋을 돌려요\n도입은 했는데 이익은 아직이에요\n하나는 보니까 예전 매크로더라고요'),
@@ -101,7 +101,7 @@ DLG = {
         (1,'C','speech','나배움: 응용 소프트웨어라 원칙 1, 볼링앨리에서 삽니다\n그래서 보는 신호는 첫째, 참조사례가 퍼지는가')],
  "p19":[(1,'C','speech','나배움: 실속 씨 회사 같은 실용주의자가\n옆 회사한테 쓴다고 말하기 시작하면 그때가 교두보예요'),
         (2,'C','think','나배움: 신호 하나, 아직 꺼져 있다')],
- "p20":[(1,'C','label','에이전틱 AI'),
+ "p20":[
         (1,'C','speech','나배움: 정점, 그리고 골짜기로 내려가는 길목\n스탠스는 관찰, 볼링앨리 신호가 켜지면 후보')],
  "p21":[(1,'C','speech','신중해: AI는 이제 익숙해요\n세 장이 다 다른 칸이네요'),
         (2,'C','speech','안믿어: 글쎄…\n셋 다 아직 살 게 없다는 소리 아니오')],
@@ -113,7 +113,7 @@ DLG = {
         (2,'C','speech','나배움: 구조적 돌풍만 고릴라를 낳습니다')],
  "p25":[(1,'C','narr','세 줄'),
         (2,'C','speech','주본질: 보너스 하나, 로봇은?')],
- "p26":[(1,'C','label','피지컬 AI'),
+ "p26":[
         (2,'C','speech','나배움: 초기시장입니다, 사는 곳은 자기 공장과 선도 고객뿐\n대부분 비상장이라 정중앙의 자리도 아직 아니고요\n18화의 알처럼 바구니 관찰만 합니다')],
  "p27":[(1,'C','narr','맥스도 마지막에 같은 말을 들었다'),
         (2,'C','speech','오라클: 일용품이 된 바퀴는 팔게\n그 돈으로 아직 이름 없는 것을 만들게')],

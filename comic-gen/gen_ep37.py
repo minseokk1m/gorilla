@@ -12,8 +12,8 @@ FINAL = os.path.join(BASE, "final_ep37")
 STAGE = "④ 실전 · 고릴라 사냥꾼"
 
 EXTRA_CHARS = ("EP37 NOTE: the four quarterly meetings are all in the SAME study room; the season is shown ONLY by a small window view (spring blossoms / summer green / autumn leaves / winter snow) and the members' clothing layers. "
-               "The '사냥 일지' is a plain kraft-cover notebook; this episode uses FOUR of them stacked. Stock candidates are ONLY the letters 'A', 'B', 'C' on white paper cards; NEVER real tickers or logos. "
-               "NO phone screens, NO website, NO app, NO dashboard, NO monitor anywhere in this episode; the club tool is a PAPER card with two drawn gauges. NO numbers for returns anywhere.")
+               "The '사냥 일지' is a plain kraft-cover notebook with NO writing on its cover; this episode uses FOUR of them stacked. Stock candidates are ONLY the letters 'A', 'B', 'C' on white paper cards, and those cards appear ONLY on pages that explicitly mention them (otherwise NO cards on the table); NEVER real tickers or logos. "
+               "NO phone screens, NO website, NO app, NO dashboard, NO monitor anywhere in this episode; the club tool is a PAPER card with two drawn gauges that appears ONLY on the pages that explicitly describe it (never on other tables, and NEVER with any words other than the two specified gauge labels). NO numbers for returns anywhere. Window season per page is binding: when a page says winter, the window shows bare branches or snow, NOT blossoms.")
 
 INK = "drawn in the SAME inked Korean webtoon style as the study-room pages (visible ink linework, flat colors, absolutely NO photoreal, NO painterly or 3D render); "
 Q4 = ("a hand-drawn board with FOUR boxes in a row, each with a tiny season icon (a blossom, a sun, a leaf, a snowflake) and ONE label each exactly: '1분기 서식지·바구니' / '2분기 심사표·분할 매수' / '3분기 충돌·정리' / '4분기 리밸런싱·결산'")
@@ -48,7 +48,7 @@ PAGES = {
  "p15":f"Two panels. (1 ~55%) {LOCK_NB}NA BAE-UM explaining beside the whiteboard which shows {BASK_T3}; HAN TANG-SU listening with an unusually serious face. (2 ~45%) close on HAN TANG-SU (red cap) raising his hand slowly, his balloon tail pointing at him; no phone in his hand.",
  "p16":"Two panels. (1 ~55%) HAN TANG-SU standing (NOT at the whiteboard, beside his chair), cap in his hands, speaking to the group with his balloon tail pointing at him; JU BON-JIL watching with quiet approval; the whiteboard behind is out of focus with no readable text. (2 ~45%) SHIN JUNG-HAE writing into the third notebook with a small smile.",
  "p17":"Two panels. (1 ~55%) a transition strip: the window view now shows falling snow; the fourth kraft notebook opened; the club in warm layers (scarves, cardigans). (2 ~45%) JU BON-JIL at the table holding up five fingers and folding one down, referring to a rule.",
- "p18":"Two panels, winter, the fourth quarterly meeting. (1 ~55%) the whiteboard shows ONLY a hand-drawn chart of five quarterly bars whose heights rise less and less, the last two bars almost flat, with a small label '증가율 둔화 두 분기' beneath; NA BAE-UM at the table pointing at it; the group deciding. (2 ~45%) HAN SIL-SOK and NA BAE-UM both raising a hand for a vote, calm.",
+ "p18":"Two panels, winter, the fourth quarterly meeting. (1 ~55%) the whiteboard shows ONLY a hand-drawn chart of five quarterly bars that each stand TALLER than the previous one (still rising, never falling), but with the extra height getting smaller each time so the last two bars are only slightly taller than the one before, with a small label '증가율 둔화 두 분기' beneath; NA BAE-UM at the table pointing at it; the group deciding. (2 ~45%) HAN SIL-SOK and NA BAE-UM both raising a hand for a vote, calm.",
  "p19":f"One panel (~100%). A close-up of the OPEN kraft notebook on the wooden desk (NO whiteboard, NO people, NO room): {LOG_Y}.",
  "p20":f"Two panels. (1 ~55%) JU BON-JIL holding up {TOOL2} for the group to see, the card small in his hands; NA BAE-UM leaning in. (2 ~45%) close on the paper card ONLY ({TOOL2}), filling the panel, held by two hands; NO screen, NO device.",
  "p21":f"One panel (~100%). The whiteboard shows {FAIL4_OK}; JU BON-JIL to the side; ONLY these four labels.",
@@ -61,8 +61,8 @@ PAGES = {
  "p28":"Two panels. (1 ~55%) JU BON-JIL standing up, putting the marker down on the table in front of NA BAE-UM; the whiteboard behind is completely BLANK. (2 ~45%) close-up of NA BAE-UM ONLY (late-30s, plain black hair, NO glasses, charcoal shirt); JU BON-JIL must NOT appear; the thought balloon belongs to NA BAE-UM.",
  "p29":"Two panels. (1 ~55%) NA BAE-UM picking up the marker, looking at the BLANK whiteboard, a mix of fear and resolve; the group watching him warmly. (2 ~45%) HAN TANG-SU giving a small thumbs-up, cap tilted.",
  "p30":"Two panels. (1 ~55%) at the door JU BON-JIL turns back with the hook for the next episode; the whiteboard behind is completely BLANK. (2 ~45%) NA BAE-UM alone, marker in hand, facing the BLANK whiteboard, exactly ONE thought balloon.",
- "p31":f"One panel (~100%). A faint dreamy image {INK}three small tornadoes far on a horizon beyond a jungle, seen from a hilltop where a single small figure stands with a marker; the top of the page has NO band and NO text box; NO readable text anywhere on this page.",
- "p32":f"One panel (~100%). Closing chapter-end, {INK}the study room empty at night, the whiteboard BLANK, a marker resting on its ledge and the four kraft notebooks stacked on the table; the top of the page has NO band and NO text box; a solid BLACK caption band runs across the very BOTTOM edge of the page (bottom 10%), and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band, centered; do NOT invent any other sentence anywhere.",
+ "p31":f"One panel (~100%). A faint dreamy image {INK}three small tornadoes far on a horizon beyond a jungle, seen from a hilltop where a single SMALL distant figure stands with a marker, and that figure is NA BAE-UM (short BLACK hair, charcoal shirt, NOT the grey-haired mentor); the top of the page has NO band and NO text box; NO readable text anywhere on this page.",
+ "p32":f"One panel (~100%). Closing chapter-end, {INK}a tight STILL-LIFE close-up at night of the four plain kraft notebooks stacked on the table corner beside a marker, with the BLANK whiteboard edge behind, the frame cropped so tightly that NO person can be visible anywhere (absolutely NO people, NO cast, NO gauge card, NO letter cards, NO writing on the notebook covers); the top of the page has NO band and NO text box; a solid BLACK caption band runs across the very BOTTOM edge of the page (bottom 10%), and THE ONLY TEXT ON THIS ENTIRE PAGE is the specified caption lettered in white INSIDE that bottom black band, centered; do NOT invent any other sentence anywhere.",
 }
 
 DLG = {
@@ -83,7 +83,7 @@ DLG = {
         (2,'C','speech','안믿어: C는 둘밖에 안 되지 않소\n절반이면 둘인데 턱걸이요')],
  "p08":[(1,'C','speech','신중해: 반론 기록했어요\nC는 다음 분기에 다시 심사'),
         (2,'C','narr','그리고 여름이 왔다')],
- "p09":[(1,'C','label','Blue Sheet'),
+ "p09":[
         (1,'C','speech','한실속: 둘째 분기, 후보 B의 심사표입니다\n구매 영향자 넷이 전부 B로 모였습니다\n레드플래그 셋은 아직 하나도 안 켜졌고요')],
  "p10":[(1,'C','speech','한실속: 승리 조건은 목표 달성, 아니면\n4기준 중 하나가 깨지면 나갑니다'),
         (2,'C','label','분할 매수 6개월'),
@@ -93,7 +93,7 @@ DLG = {
         (2,'C','narr','기록, 두 번째 반론')],
  "p12":[(1,'C','narr','가을, 셋째 회의\n제일 결정이 많은 분기였다'),
         (2,'C','speech','주본질: 오늘은 배움이가 발표해')],
- "p13":[(1,'C','label','50 : 50'),
+ "p13":[
         (1,'C','speech','나배움: 결제망 두 고릴라는 그대로 양쪽 보유\n대체 위협 세 단계 중 켜진 게 없습니다')],
  "p14":[(1,'C','label','A'),(1,'C','label','B'),(1,'C','label','C'),
         (1,'C','speech','나배움: 그리고 A는 고릴라가 될 수 없다고 판단했습니다\n원칙 7, 가격은 보지 않고 팝니다\n뺀 돈은 원칙 8, B로 갑니다')],
