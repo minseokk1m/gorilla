@@ -2,6 +2,7 @@
 # 고릴라 헌터스 — PDF 조립기: 페이지 PNG + 선별 해설 밴드(이원복식, 후처리 합성) → 완성본 PDF
 # usage: python3 assemble.py ep1            # gen_ep1.py의 NOTES·FINAL 사용
 #        python3 assemble.py ep1 out.pdf
+#        python3 assemble.py ep21 out.pdf --numbered   # 상단 중앙 빨간 쪽번호 합성(회장님 코멘트용, API 비용 0)
 # 각 gen_epN.py의 STAGE(학습 지도 단계)가 있으면 표지를 제외한 전 페이지 상단에 얇은 띠+배지로 합성됨
 import os, sys, importlib, textwrap
 from PIL import Image, ImageDraw, ImageFont
@@ -58,19 +59,35 @@ def stage_strip(img, text):
     merged.paste(strip, (0, 0)); merged.paste(img, (0, strip_h))
     return merged
 
+def page_number(img, n):
+    """쪽번호 합성: 상단 중앙에 큰 빨간 숫자(회장님 코멘트용, 수작업 버전과 같은 양식). 흰 테두리로 그림 위에서도 판독되게"""
+    size = 72; font = load_font(size)
+    d = ImageDraw.Draw(img)
+    text = str(n)
+    tw = d.textlength(text, font=font)
+    x, y = (img.width - tw) / 2, 2
+    for dx in (-3, 0, 3):
+        for dy in (-3, 0, 3):
+            if dx or dy: d.text((x + dx, y + dy), text, font=font, fill="#ffffff")
+    d.text((x, y), text, font=font, fill="#e0202a")
+    return img
+
 def main():
-    ep = sys.argv[1] if len(sys.argv) > 1 else "ep1"
+    args = [x for x in sys.argv[1:] if x != "--numbered"]
+    numbered = "--numbered" in sys.argv
+    ep = args[0] if args else "ep1"
     mod = importlib.import_module(f"gen_{ep}")
     final = mod.FINAL
     notes = getattr(mod, "NOTES", {})
     stage = getattr(mod, "STAGE", None)
-    out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(final, f"고릴라헌터스_{ep.upper()}_완성본.pdf")
+    out = args[1] if len(args) > 1 else os.path.join(final, f"고릴라헌터스_{ep.upper()}_완성본.pdf")
     pids = sorted(p[:-4] for p in os.listdir(final) if p.endswith(".png"))
     pages = []
-    for pid in pids:
+    for n, pid in enumerate(pids, 1):
         img = Image.open(os.path.join(final, pid + ".png")).convert("RGB")
         if stage and pid != pids[0]:  # 표지 제외
             img = stage_strip(img, "학습 지도 " + stage)
+        if numbered: img = page_number(img, n)
         if pid in notes:
             band = note_band(img.width, notes[pid])
             merged = Image.new("RGB", (img.width, img.height + band.height), "#ffffff")
